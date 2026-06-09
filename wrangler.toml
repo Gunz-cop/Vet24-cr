@@ -1,2 +1,5 @@
 name = "veterinarias-cr"
-pages_build_output_dir = "dist"
+compatibility_date = "2026-06-09"
+
+[assets]
+directory = "./dist"
