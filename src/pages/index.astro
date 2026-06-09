@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FiltrosProvincia from '../components/FiltrosProvincia.astro';
 import ClinicaCard from '../components/ClinicaCard.astro';
 import FiltrosDashboard from '../components/FiltrosDashboard.astro';
+import MapaClinicas from '../components/MapaClinicas.astro';
 
 // Fetch all clinics
 const allClinicas = await getCollection('clinicas');
@@ -28,6 +29,21 @@ const sortedClinicas = [...publishedClinicas].sort((a, b) => {
 // Title & SEO info
 const pageTitle = "Directorio de Veterinarias de Emergencia en Costa Rica";
 const pageDesc = "Busca y encuentra clínicas veterinarias de emergencias 24/7, servicios nocturnos y atención para animales exóticos en Costa Rica.";
+
+// Build map data array
+const mapData = sortedClinicas.map(c => ({
+  nombre: c.data.nombre,
+  slug: c.data.slug,
+  zona: c.data.zona,
+  telefono1: c.data.telefono1,
+  emergencias24h: c.data.emergencias24h,
+  latitude: c.data.latitude ?? 0,
+  longitude: c.data.longitude ?? 0,
+  waze_url: c.data.waze_url,
+  maps_url: c.data.maps_url,
+  emergency_tier: c.data.emergency_tier,
+  confidence_score: c.data.confidence_score,
+}));
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
@@ -75,24 +91,17 @@ const pageDesc = "Busca y encuentra clínicas veterinarias de emergencias 24/7, 
     <!-- Province Filter Component -->
     <FiltrosProvincia />
 
+    <!-- Interactive Map -->
+    <MapaClinicas clinicas={mapData} />
+
     <!-- Quick Filters Dashboard -->
     <FiltrosDashboard />
 
     <!-- Clinics Grid -->
-    {sortedClinicas.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid">
-        {sortedClinicas.map(clinica => (
-          <ClinicaCard clinica={clinica.data} />
-        ))}
-      </div>
-    ) : (
-      <div class="text-center py-16 bg-slate-900/10 border border-dashed border-slate-800 rounded-2xl p-8" id="empty-state">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-slate-600 mb-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 7.5h.008v.008H12v-.008Z" />
-        </svg>
-        <h3 class="text-base font-semibold text-slate-200">No se encontraron clínicas publicadas</h3>
-        <p class="text-sm text-slate-500 mt-1">Actualmente no hay clínicas que coincidan con estos filtros en el directorio.</p>
-      </div>
-    )}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid">
+      {sortedClinicas.map(clinica => (
+        <ClinicaCard clinica={clinica.data} />
+      ))}
+    </div>
   </section>
 </BaseLayout>
