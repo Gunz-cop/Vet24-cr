@@ -74,13 +74,24 @@ const canonical = canonicalUrl || Astro.url.href;
           </span>
         </div>
 
-        <nav class="flex items-center gap-6" aria-label="Navegación principal">
-          <a href="/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors" id="nav-home">
+        <nav class="flex items-center gap-3 sm:gap-6" aria-label="Navegación principal">
+          <a href="/" class="hidden sm:inline-block text-sm font-medium text-slate-300 hover:text-white transition-colors" id="nav-home">
             Inicio
           </a>
-          <a href="/#directorio" class="text-sm font-medium text-slate-300 hover:text-white transition-colors" id="nav-directory">
+          <a href="/#directorio" class="hidden sm:inline-block text-sm font-medium text-slate-300 hover:text-white transition-colors mr-2" id="nav-directory">
             Directorio
           </a>
+          <button
+            id="btn-sos-emergency"
+            class="relative inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-xs font-black rounded-full border border-rose-500/80 bg-rose-950/40 text-rose-450 hover:text-white hover:bg-rose-600 hover:border-rose-600 transition-all cursor-pointer active:scale-95 shadow-md shadow-rose-950/30 font-['Outfit',sans-serif] tracking-wider"
+            title="¡Ayuda médica de emergencia inmediata!"
+          >
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+            </span>
+            🚨 SOS EMERGENCIA
+          </button>
 
         </nav>
       </div>
@@ -106,6 +117,18 @@ const canonical = canonicalUrl || Astro.url.href;
         </div>
       </div>
     </footer>
+    
+    <script>
+      document.getElementById('btn-sos-emergency')?.addEventListener('click', () => {
+        const path = window.location.pathname;
+        const isHomepage = path === '/' || path === '/index.html' || path.endsWith('/veterinarias-cr/dist/index.html');
+        if (isHomepage) {
+          window.dispatchEvent(new CustomEvent('sos-trigger'));
+        } else {
+          window.location.href = '/?sos=true';
+        }
+      });
+    </script>
   </body>
 </html>
 

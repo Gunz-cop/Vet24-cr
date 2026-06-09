@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FiltrosProvincia from '../../components/FiltrosProvincia.astro';
 import ClinicaCard from '../../components/ClinicaCard.astro';
 import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
+import MapaClinicas from '../../components/MapaClinicas.astro';
 
 export async function getStaticPaths() {
   const provincesMap = [
@@ -60,6 +61,21 @@ const sortedClinicas = [...filteredClinicas].sort((a, b) => {
   return priorityB - priorityA;
 });
 
+// Build map data array
+const mapData = sortedClinicas.map(c => ({
+  nombre: c.data.nombre,
+  slug: c.data.slug,
+  zona: c.data.zona,
+  telefono1: c.data.telefono1,
+  emergencias24h: c.data.emergencias24h,
+  latitude: c.data.latitude ?? 0,
+  longitude: c.data.longitude ?? 0,
+  waze_url: c.data.waze_url,
+  maps_url: c.data.maps_url,
+  emergency_tier: c.data.emergency_tier,
+  confidence_score: c.data.confidence_score,
+}));
+
 const pageTitle = `Veterinarias de Emergencias en ${nombreProvincia}`;
 const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atención nocturna en la provincia de ${nombreProvincia}, Costa Rica.`;
 ---
@@ -89,6 +105,9 @@ const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atenci�
 
     <!-- Province Filter Component (Highlights Active Province) -->
     <FiltrosProvincia activeProvincia={slugProvincia} />
+
+    <!-- Interactive Map -->
+    <MapaClinicas clinicas={mapData} />
 
     <!-- Quick Filters Dashboard -->
     <FiltrosDashboard />

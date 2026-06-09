@@ -1,10 +1,5 @@
 import { defineConfig, devices, test as baseTest } from '@playwright/test';
-
-// 1x1 transparent PNG image buffer for offline tile replacement
-const TRANSPARENT_PNG = Buffer.from(
-  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
-  'base64'
-);
+import path from 'path';
 
 // Custom test fixture that intercepts OpenStreetMap tile requests
 export const test = baseTest.extend({
@@ -13,7 +8,7 @@ export const test = baseTest.extend({
       await route.fulfill({
         status: 200,
         contentType: 'image/png',
-        body: TRANSPARENT_PNG,
+        path: path.resolve(process.cwd(), 'tests/e2e/transparent.png'),
       });
     });
     await use(page);

@@ -70,10 +70,20 @@ if (clinica.emergencias24h) {
   data-record-status={clinica.record_status || "PARTIAL"}
   data-confidence={clinica.confidence_score || "medium"}
   data-emergency-verified={clinica.emergency_verified ? "true" : "false"}
-  data-nombre={clinica.nombre.toLowerCase()}
-  data-zona-text={clinica.zona.toLowerCase()}
-  data-lat={clinica.latitude ?? 0}
-  data-lng={clinica.longitude ?? 0}
+  data-nombre={clinica.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}
+  data-zona-text={clinica.zona.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}
+  data-provincia-text={clinica.provincia.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}
+  data-latitude={clinica.latitude ?? 0}
+  data-longitude={clinica.longitude ?? 0}
+  data-slug={clinica.slug}
+  data-is-open="false"
+  data-telefono={clinica.telefono1}
+  data-waze-url={clinica.waze_url}
+  data-maps-url={clinica.maps_url}
+  data-original-nombre={clinica.nombre}
+  data-direccion={clinica.direccion}
+  data-horario-texto={clinica.horarioTexto}
+  data-copy={clinica.copyDiferenciador}
 >
   <div>
     <!-- Header: Schedule Badge & Specializations -->
@@ -84,10 +94,7 @@ if (clinica.emergencias24h) {
         <span class="status-indicator-badge text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-950/80 text-slate-400 border border-slate-800 w-fit" data-status-for={clinica.slug}>
           Horario...
         </span>
-        {/* Distance badge — injected by geolocation JS */}
-        <span class="dist-badge hidden text-[9px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 w-fit">
-          📍 — km
-        </span>
+        <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 w-fit hidden" data-distance-for={clinica.slug}></span>
         {clinica.last_verified && (
           <span class="text-[9px] text-slate-600 font-medium">
             ✓ Verificado: {clinica.last_verified}
@@ -122,6 +129,7 @@ if (clinica.emergencias24h) {
       <a href={`/clinica/${clinica.slug}`} id={`clinica-link-${clinica.id}`}>
         {clinica.nombre}
       </a>
+      <span class="hidden" aria-hidden="true">{clinica.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}</span>
     </h3>
     
     <div class="flex items-start gap-1.5 text-xs text-slate-400 mb-3">

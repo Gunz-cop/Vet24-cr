@@ -24,7 +24,7 @@ const clinicasConCoords = clinicas.filter(c => c.latitude !== 0 && c.longitude !
 const clinicasJson = JSON.stringify(clinicasConCoords);
 ---
 
-<div class="w-full mb-8 rounded-2xl overflow-hidden border border-slate-800/60 bg-slate-950/40" id="mapa-container">
+<div class="w-full mb-8 rounded-2xl overflow-hidden border border-slate-800/60 bg-slate-950/40" id="map-container">
   <div class="flex items-center justify-between px-4 py-3 bg-slate-900/50 border-b border-slate-800/60">
     <div class="flex items-center gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-rose-400">
@@ -52,7 +52,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
 </div>
 
 <!-- Inject clinic data for the map script -->
-<script type="application/json" id="clinicas-map-data" set:text={clinicasJson}></script>
+<script type="application/json" id="clinicas-map-data" set:html={clinicasJson}></script>
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -64,7 +64,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
       if ((window as any).L) { resolve((window as any).L); return; }
       const script = document.createElement('script');
       script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2GqnA=';
+      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
       script.crossOrigin = '';
       script.onload = () => resolve((window as any).L);
       script.onerror = reject;
@@ -128,6 +128,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
           border-radius: 50% 50% 50% 0; 
           transform: rotate(-45deg);
           box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+          pointer-events: none;
         "></div>`,
         className: '',
         iconSize: [28, 28],
@@ -148,7 +149,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
                    (c.emergency_tier === 'Tier B' ? iconTierB : iconTierC);
 
       const callBtn = c.telefono1 
-        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" style="
+        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" class="btn-popup-call" style="
             display:inline-flex;align-items:center;gap:4px;
             padding:6px 12px;border-radius:8px;
             background:#1e293b;color:#e2e8f0;
@@ -158,7 +159,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
         : '';
 
       const wazeBtn = c.waze_url 
-        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" style="
+        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" class="btn-popup-nav" style="
             display:inline-flex;align-items:center;gap:4px;
             padding:6px 12px;border-radius:8px;
             background:#0f172a;color:#fb923c;
@@ -190,10 +191,25 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
         </div>
       `);
 
-      L.marker([c.latitude, c.longitude], { icon })
+      const marker = L.marker([c.latitude, c.longitude], { icon })
         .addTo(map)
         .bindPopup(popup);
+
+      (window as any).__vet24Markers = (window as any).__vet24Markers || {};
+      (window as any).__vet24Markers[c.slug] = marker;
     });
+
+    // Auto-fit bounds of initial markers
+    const coords: [number, number][] = [];
+    clinicas.forEach(c => {
+      if (c.latitude && c.longitude) {
+        coords.push([c.latitude, c.longitude]);
+      }
+    });
+    if (coords.length > 0) {
+      const bounds = L.latLngBounds(coords);
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    }
 
     // Hide loading overlay
     if (loading) loading.style.display = 'none';
@@ -214,7 +230,11 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
   });
 
   // Init on load
-  document.addEventListener('DOMContentLoaded', initMap);
+  if (document.readyState !== 'loading') {
+    initMap();
+  } else {
+    document.addEventListener('DOMContentLoaded', initMap);
+  }
 </script>
 
 <style is:global>

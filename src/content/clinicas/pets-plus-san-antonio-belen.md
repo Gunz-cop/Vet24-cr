@@ -1,4 +1,4 @@
-﻿---id: 23
+---id: 23
 nombre: "PETS+ San Antonio"
 provincia: "Heredia / Alajuela"
 zona: "San Antonio de Belén"
@@ -20,14 +20,14 @@ copyDiferenciador: "Hospital con 6 consultorios. Especialistas en ortopedia, oft
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.9757
 longitude: -84.1779

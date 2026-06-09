@@ -1,4 +1,4 @@
-﻿---id: 17
+---id: 17
 nombre: "Hospital Veterinario Santamaría"
 provincia: "Alajuela"
 zona: "Alajuela"
@@ -20,14 +20,14 @@ copyDiferenciador: "Primer hospital veterinario en Alajuela con emergencias 24/7
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 10.0191
 longitude: -84.2145

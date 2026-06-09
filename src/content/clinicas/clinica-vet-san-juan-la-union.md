@@ -1,4 +1,4 @@
-﻿---id: 22
+---id: 22
 nombre: "Clínica Veterinaria San Juan"
 provincia: "Cartago"
 zona: "La Unión"
@@ -20,14 +20,14 @@ copyDiferenciador: "Cubre la zona de La Unión y zonas limítrofes entre Cartago
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.9067
 longitude: -83.9971

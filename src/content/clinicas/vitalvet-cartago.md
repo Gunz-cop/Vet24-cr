@@ -1,4 +1,4 @@
-﻿---id: 20
+---id: 20
 nombre: "VitalVet – Veterinaria Cartago"
 provincia: "Cartago"
 zona: "Cartago"
@@ -22,14 +22,14 @@ copyDiferenciador: "Única veterinaria 24/7 en la provincia de Cartago con banco
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.8645
 longitude: -83.9269
