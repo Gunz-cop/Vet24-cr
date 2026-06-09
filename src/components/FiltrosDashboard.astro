@@ -1,0 +1,234 @@
+---
+---
+
+<div class="w-full mb-8 p-4 rounded-2xl bg-slate-900/20 border border-slate-900 backdrop-blur-sm flex flex-col gap-4">
+  <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <!-- Status Toggles -->
+    <div class="flex items-center gap-2">
+      <span class="text-xs text-slate-500 font-bold mr-1 uppercase">Estado:</span>
+      <button 
+        id="filter-quick-open" 
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+        Abierto Ahora
+      </button>
+      
+      <button 
+        id="filter-quick-247" 
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+        Solo 24/7
+      </button>
+    </div>
+
+    <!-- Animal Types scrollable pills -->
+    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="animal-filters-container">
+      <span class="text-xs text-slate-500 font-bold mr-1 shrink-0 uppercase">Especie:</span>
+      <button 
+        data-filter-animal="todos" 
+        class="px-3 py-1.5 text-xs font-bold rounded-lg border border-transparent bg-rose-500 text-white transition-all cursor-pointer active:scale-95 shrink-0"
+      >
+        Todos
+      </button>
+      <button 
+        data-filter-animal="domesticos" 
+        class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+      >
+        🐶🐱 Domésticos
+      </button>
+      <button 
+        data-filter-animal="exoticos" 
+        class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+      >
+        🐢 Exóticos
+      </button>
+      <button 
+        data-filter-animal="peces" 
+        class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+      >
+        🐠 Peces
+      </button>
+      <button 
+        data-filter-animal="granja" 
+        class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+      >
+        🐴 Granja (Vacas/Caballos)
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-none {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
+
+<script>
+  function getCostaRicaTime() {
+    // Get local date/time resolved in Costa Rica timezone (UTC-6)
+    const options = { timeZone: "America/Costa_Rica", hour12: false };
+    const localeString = new Date().toLocaleString("en-US", options);
+    const crDate = new Date(localeString);
+    return {
+      day: crDate.getDay(), // 0: Sun, 1-6: Mon-Sat
+      hour: crDate.getHours(),
+      minute: crDate.getMinutes()
+    };
+  }
+
+  function updateClinicsStatus() {
+    const { day, hour } = getCostaRicaTime();
+    const cards = document.querySelectorAll('#clinicas-grid article');
+
+    cards.forEach(card => {
+      const is247 = card.getAttribute('data-247') === 'true';
+      const schedule = card.getAttribute('data-schedule'); // e.g. "1-6:8-20,0:8-19"
+      const statusBadge = card.querySelector('[data-status-for]');
+      
+      let isOpen = false;
+
+      if (is247) {
+        isOpen = true;
+      } else if (schedule && schedule !== '24h') {
+        const rules = schedule.split(',');
+        for (const rule of rules) {
+          const [daysPart, hoursPart] = rule.split(':');
+          const [startHour, endHour] = hoursPart.split('-').map(Number);
+          
+          if (daysPart.includes('-')) {
+            const [startDay, endDay] = daysPart.split('-').map(Number);
+            if (day >= startDay && day <= endDay) {
+              isOpen = hour >= startHour && hour < endHour;
+              break;
+            }
+          } else {
+            const exactDay = Number(daysPart);
+            if (day === exactDay) {
+              isOpen = hour >= startHour && hour < endHour;
+              break;
+            }
+          }
+        }
+      }
+
+      // Store evaluated state on the card element
+      card.setAttribute('data-is-open', isOpen ? 'true' : 'false');
+
+      // Update status indicator visual badge
+      if (statusBadge) {
+        if (isOpen) {
+          statusBadge.innerHTML = '🟢 Abierto ahora';
+          statusBadge.className = 'status-indicator-badge text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-450 border border-emerald-500/20 w-fit';
+        } else {
+          statusBadge.innerHTML = '🔴 Cerrado ahora';
+          statusBadge.className = 'status-indicator-badge text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-900 text-slate-450 border border-slate-800 w-fit';
+        }
+      }
+    });
+  }
+
+  function setupFilters() {
+    const filterOpenBtn = document.getElementById('filter-quick-open');
+    const filter247Btn = document.getElementById('filter-quick-247');
+    const animalFilters = document.querySelectorAll('[data-filter-animal]');
+    
+    let activeAnimal = 'todos';
+    let filterOnlyOpen = false;
+    let filterOnly247 = false;
+
+    function applyAllFilters() {
+      const cards = document.querySelectorAll('#clinicas-grid article');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const isOpen = card.getAttribute('data-is-open') === 'true';
+        const is247 = card.getAttribute('data-247') === 'true';
+        const atiendeExoticos = card.getAttribute('data-exoticos') === 'true';
+        const atiendeGranja = card.getAttribute('data-granja') === 'true';
+        const atiendePeces = card.getAttribute('data-peces') === 'true';
+        const confidence = card.getAttribute('data-confidence');
+        const status = card.getAttribute('data-record-status');
+        const emergencyVerified = card.getAttribute('data-emergency-verified') === 'true';
+
+        let show = true;
+
+        // Safety rules: If seeking active help (Open Now or 24/7 toggles), hide unverified/low-confidence data
+        if (filterOnlyOpen || filterOnly247) {
+          if (confidence === 'low' || status === 'REVIEW_REQUIRED' || !emergencyVerified) {
+            show = false;
+          }
+        }
+
+        if (filterOnlyOpen && !isOpen) show = false;
+        if (filterOnly247 && !is247) show = false;
+
+        if (activeAnimal === 'exoticos' && !atiendeExoticos) show = false;
+        if (activeAnimal === 'granja' && !atiendeGranja) show = false;
+        if (activeAnimal === 'peces' && !atiendePeces) show = false;
+
+        if (show) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Update counters or empty states
+      const emptyState = document.getElementById('empty-state');
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    // Toggle controls click handlers
+    filterOpenBtn?.addEventListener('click', () => {
+      filterOnlyOpen = !filterOnlyOpen;
+      filterOpenBtn.classList.toggle('bg-emerald-500/10');
+      filterOpenBtn.classList.toggle('text-emerald-400');
+      filterOpenBtn.classList.toggle('border-emerald-500/25');
+      applyAllFilters();
+    });
+
+    filter247Btn?.addEventListener('click', () => {
+      filterOnly247 = !filterOnly247;
+      filter247Btn.classList.toggle('bg-rose-500/15');
+      filter247Btn.classList.toggle('text-rose-450');
+      filter247Btn.classList.toggle('border-rose-500/25');
+      applyAllFilters();
+    });
+
+    animalFilters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        animalFilters.forEach(b => {
+          b.classList.remove('bg-rose-500', 'text-white', 'border-transparent');
+          b.classList.add('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
+        });
+        btn.classList.add('bg-rose-500', 'text-white', 'border-transparent');
+        btn.classList.remove('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
+        
+        activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
+        applyAllFilters();
+      });
+    });
+  }
+
+  // Initialize status updates and filter events
+  document.addEventListener('DOMContentLoaded', () => {
+    updateClinicsStatus();
+    setupFilters();
+  });
+</script>

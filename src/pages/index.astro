@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FiltrosProvincia from '../components/FiltrosProvincia.astro';
+import ClinicaCard from '../components/ClinicaCard.astro';
+import FiltrosDashboard from '../components/FiltrosDashboard.astro';
+
+// Fetch all clinics
+const allClinicas = await getCollection('clinicas');
+
+// Show all clinics in the catalog
+const publishedClinicas = allClinicas;
+
+// Map of priority values for sorting
+const sortingPriority = {
+  "24/7 Emergencias": 3,
+  "Cierra después 21h": 2,
+  "Horario normal": 1
+};
+
+// Sort by schedule category priority
+const sortedClinicas = [...publishedClinicas].sort((a, b) => {
+  const priorityA = sortingPriority[a.data.categoriaHorario] || 0;
+  const priorityB = sortingPriority[b.data.categoriaHorario] || 0;
+  return priorityB - priorityA; // Descending order: highest priority first
+});
+
+// Title & SEO info
+const pageTitle = "Directorio de Veterinarias de Emergencia en Costa Rica";
+const pageDesc = "Busca y encuentra clínicas veterinarias de emergencias 24/7, servicios nocturnos y atención para animales exóticos en Costa Rica.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <!-- Hero Section -->
+  <section class="text-center py-12 md:py-20 relative overflow-hidden" aria-labelledby="hero-title">
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 mb-4 animate-pulse">
+        Atención Médica 24 Horas
+      </span>
+      
+      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 font-['Outfit',sans-serif]">
+        Veterinarias de Guardia y <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-rose-400 via-amber-400 to-rose-400 bg-clip-text text-transparent">Emergencias 24/7</span>
+      </h1>
+      
+      <p class="text-lg text-slate-350 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+        El directorio de clínicas veterinarias en Costa Rica especializado en servicios nocturnos, urgencias quirúrgicas y atención de fauna exótica.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
+        <a href="#directorio" class="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white transition-all shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 hover:scale-[1.02] active:scale-[0.98]" id="cta-directorio">
+          Ver Directorio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section id="directorio" class="scroll-mt-20 py-8" aria-labelledby="directorio-title">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-slate-900 pb-6">
+      <div>
+        <h2 id="directorio-title" class="text-2xl md:text-3xl font-bold text-slate-100 font-['Outfit',sans-serif]">
+          Clínicas Veterinarias Registradas
+        </h2>
+        <p class="text-sm text-slate-450 mt-1">
+          Mostrando clínicas verificadas y activas en el GAM y playas.
+        </p>
+      </div>
+      <div class="text-sm font-medium text-slate-400">
+        Total: <span class="text-slate-100 font-bold bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">{sortedClinicas.length} clínicas</span>
+      </div>
+    </div>
+
+    <!-- Province Filter Component -->
+    <FiltrosProvincia />
+
+    <!-- Quick Filters Dashboard -->
+    <FiltrosDashboard />
+
+    <!-- Clinics Grid -->
+    {sortedClinicas.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid">
+        {sortedClinicas.map(clinica => (
+          <ClinicaCard clinica={clinica.data} />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16 bg-slate-900/10 border border-dashed border-slate-800 rounded-2xl p-8" id="empty-state">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-slate-600 mb-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 7.5h.008v.008H12v-.008Z" />
+        </svg>
+        <h3 class="text-base font-semibold text-slate-200">No se encontraron clínicas publicadas</h3>
+        <p class="text-sm text-slate-500 mt-1">Actualmente no hay clínicas que coincidan con estos filtros en el directorio.</p>
+      </div>
+    )}
+  </section>
+</BaseLayout>

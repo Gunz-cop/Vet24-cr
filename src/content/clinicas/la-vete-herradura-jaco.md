@@ -1,0 +1,34 @@
+---id: 25
+nombre: "La Vete Herradura"
+provincia: "Puntarenas"
+zona: "Herradura / Jacó"
+direccion: "Plaza Herradura, contiguo Banco Nacional"
+telefono1: "2102-7028"
+telefono2: ""
+whatsapp: "8800-9575"
+horarioTexto: "L-S 8am-8pm | D 8am-7pm"
+categoriaHorario: "Horario normal"
+emergencias24h: false
+atiendeExoticos: true
+cirugiaEmergencia: false
+web: "lavete.com"
+facebook: "facebook.com/LaVeteCR"
+instagram: "@lavete_cr"
+slug: "la-vete-herradura-jaco"
+estado: "verificado"
+copyDiferenciador: "Única sucursal de La Vete fuera del GAM. Cubre a propietarios de mascotas en la zona de Jacó y Herradura, destino turístico con alta concentración de expatriados."
+confidence_score: "high"
+record_status: "VERIFIED"
+emergency_tier: "Tier C"
+last_verified: ""
+phone_verified: true
+address_verified: true
+schedule_verified: true
+emergency_verified: false
+has_surgery: false
+has_hospitalization: false
+verification_source: ""
+overnight_doctor_present: false
+---
+
+Única sucursal de La Vete fuera del GAM. Cubre a propietarios de mascotas en la zona de Jacó y Herradura, destino turístico con alta concentración de expatriados.
