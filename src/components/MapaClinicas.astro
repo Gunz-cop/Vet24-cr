@@ -35,19 +35,28 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     </div>
     <button 
       id="toggle-mapa-btn"
-      class="text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors px-2 py-1 rounded bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50"
+      class="hidden md:inline-block text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors px-2 py-1 rounded bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 cursor-pointer"
     >
       Ocultar mapa
     </button>
   </div>
   
-  <div id="mapa-wrapper" style="height: 420px; position: relative;">
+  <div id="mapa-wrapper" class="hidden md:block relative w-full h-[350px]">
     <!-- Loading placeholder -->
     <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950 z-10">
       <div class="w-8 h-8 border-2 border-rose-500 border-t-transparent rounded-full animate-spin mb-3"></div>
       <p class="text-sm text-slate-400">Cargando mapa…</p>
     </div>
-    <div id="mapa-vet24" style="height: 100%; width: 100%;"></div>
+    <div id="mapa-vet24" class="h-full w-full"></div>
+  </div>
+
+  <div class="block md:hidden border-t border-slate-850 bg-slate-900/10">
+    <button
+      id="btn-toggle-mapa-mobile"
+      class="w-full py-3.5 text-xs font-bold text-rose-400 hover:text-rose-350 hover:bg-slate-900/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+    >
+      <span>Ver en mapa 🗺️</span>
+    </button>
   </div>
 </div>
 
@@ -220,13 +229,37 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
   }
 
   // Toggle map visibility
-  document.getElementById('toggle-mapa-btn')?.addEventListener('click', () => {
-    const wrapper = document.getElementById('mapa-wrapper');
-    const btn = document.getElementById('toggle-mapa-btn');
-    if (!wrapper || !btn) return;
-    const hidden = wrapper.style.display === 'none';
-    wrapper.style.display = hidden ? '' : 'none';
-    btn.textContent = hidden ? 'Ocultar mapa' : 'Mostrar mapa';
+  const toggleBtnDesktop = document.getElementById('toggle-mapa-btn');
+  const toggleBtnMobile = document.getElementById('btn-toggle-mapa-mobile');
+  const wrapper = document.getElementById('mapa-wrapper');
+
+  function updateMapState(hidden: boolean) {
+    if (!wrapper) return;
+    if (hidden) {
+      wrapper.classList.add('hidden');
+      if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Mostrar mapa';
+      if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ver en mapa 🗺️</span>';
+    } else {
+      wrapper.classList.remove('hidden');
+      if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Ocultar mapa';
+      if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ocultar mapa ✖</span>';
+      
+      // Leaflet needs a resize trigger when container size changes/shows
+      setTimeout(() => {
+        const map = (window as any).__vet24Map;
+        if (map) map.invalidateSize();
+      }, 50);
+    }
+  }
+
+  toggleBtnDesktop?.addEventListener('click', () => {
+    const isHidden = wrapper?.classList.contains('hidden');
+    updateMapState(!isHidden);
+  });
+
+  toggleBtnMobile?.addEventListener('click', () => {
+    const isHidden = wrapper?.classList.contains('hidden');
+    updateMapState(!isHidden);
   });
 
   // Init on load
