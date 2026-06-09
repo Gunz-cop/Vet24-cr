@@ -806,14 +806,24 @@
       };
 
       if (navigator.permissions && navigator.permissions.query) {
-        navigator.permissions.query({ name: 'geolocation' }).then((result) => {
-          if (result.state === 'granted') {
-            triggerAutoGeo();
-          } else if (result.state === 'prompt' && isTodasProvincias) {
-            // Only prompt automatically on the home page (Todas las provincias) after a short delay
-            setTimeout(triggerAutoGeo, 800);
-          }
-        });
+        try {
+          navigator.permissions.query({ name: 'geolocation' })
+            .then((result) => {
+              if (result.state === 'granted') {
+                triggerAutoGeo();
+              } else if (result.state === 'prompt' && isTodasProvincias) {
+                // Only prompt automatically on the home page (Todas las provincias) after a short delay
+                setTimeout(triggerAutoGeo, 800);
+              }
+            })
+            .catch((err) => {
+              console.warn('Permissions query rejected:', err);
+              if (isTodasProvincias) setTimeout(triggerAutoGeo, 800);
+            });
+        } catch (e) {
+          console.warn('Permissions query threw error:', e);
+          if (isTodasProvincias) setTimeout(triggerAutoGeo, 800);
+        }
       } else if (isTodasProvincias) {
         // Fallback for browsers that don't support query permission
         setTimeout(triggerAutoGeo, 800);
