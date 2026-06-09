@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 10.01218
 longitude: -84.09839
-waze_url: "https://waze.com/ul?ll=10.01218%2C-84.09839&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=10.01218,-84.09839"
+waze_url: "https://waze.com/ul?q=Cl%C3%ADnica+Veterinaria+Ram%C3%ADrez+San+Rafael+Heredia+Costa+Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Veterinaria+Ram%C3%ADrez+San+Rafael+Heredia+Costa+Rica"
 ---
 
 Clínica con 15+ años de experiencia en Heredia. Especialistas en cardiología, ortopedia y oftalmología. Hotel de mascotas y servicio a domicilio.

@@ -1,4 +1,4 @@
-﻿---id: 25
+---id: 25
 nombre: "La Vete Herradura"
 provincia: "Puntarenas"
 zona: "Herradura / Jacó"
@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.6501
 longitude: -84.6189
-waze_url: "https://waze.com/ul?ll=9.6501%2C-84.6189&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.6501,-84.6189"
+waze_url: "https://waze.com/ul?q=La+Vete+Herradura+Jaco+Costa+Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La+Vete+Herradura+Jaco+Costa+Rica"
 ---
 
 Única sucursal de La Vete fuera del GAM. Cubre a propietarios de mascotas en la zona de Jacó y Herradura, destino turístico con alta concentración de expatriados.

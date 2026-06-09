@@ -31,8 +31,8 @@ verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 10.0191
 longitude: -84.2145
-waze_url: "https://waze.com/ul?ll=10.0191%2C-84.2145&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=10.0191,-84.2145"
+waze_url: "https://waze.com/ul?q=Hospital+Veterinario+Santamar%C3%ADa+Alajuela+Costa+Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital+Veterinario+Santamar%C3%ADa+Alajuela+Costa+Rica"
 ---
 
 Primer hospital veterinario en Alajuela con emergencias 24/7. Ambulancia disponible en horario diurno. Cirugías oncológicas y ortopédicas.
