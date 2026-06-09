@@ -309,6 +309,48 @@
   let filterOnly247 = false;
   let activeAnimal = 'todos';
   let inSOSFlow = false;
+  let originalCardsOrder: HTMLElement[] = [];
+
+  // Helper to restore original order and reset proximity status
+  function restoreDefaultSorting() {
+    const grid = document.getElementById('clinicas-grid');
+    if (!grid || originalCardsOrder.length === 0) return;
+
+    // Re-append in original priority order
+    originalCardsOrder.forEach(card => grid.appendChild(card));
+
+    // Hide distance badges
+    originalCardsOrder.forEach(card => {
+      const distBadge = card.querySelector<HTMLElement>('[data-distance-for]');
+      if (distBadge) {
+        distBadge.classList.add('hidden');
+        distBadge.textContent = '';
+      }
+    });
+
+    // Reset state variables
+    geoActive = false;
+    userLat = null;
+    userLng = null;
+
+    // Reset button style
+    const geoBtn = document.getElementById('btn-use-location');
+    const geoBtnText = document.getElementById('geo-btn-text');
+    if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+    if (geoBtn) {
+      geoBtn.classList.remove('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5', 'opacity-60', 'pointer-events-none');
+    }
+
+    // Remove user pin from the map
+    const map = (window as any).__vet24Map;
+    if (map) {
+      map.eachLayer((layer: any) => {
+        if (layer.options && layer.options.icon && layer.options.icon.options && layer.options.icon.options.className === 'user-location-pin') {
+          map.removeLayer(layer);
+        }
+      });
+    }
+  }
 
   // ─── Apply all filters ─────────────────────────────────────────────────
   function applyAllFilters() {
@@ -503,6 +545,13 @@
     const L = (window as any).__vet24L;
     const map = (window as any).__vet24Map;
     if (L && map) {
+      // First clean up any existing user pins
+      map.eachLayer((layer: any) => {
+        if (layer.options && layer.options.icon && layer.options.icon.options && layer.options.icon.options.className === 'user-location-pin') {
+          map.removeLayer(layer);
+        }
+      });
+
       const userIcon = L.divIcon({
         html: `<div style="
           width:16px;height:16px;
@@ -571,6 +620,8 @@
         todosBtn.classList.remove('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
         todosBtn.classList.add('bg-rose-500', 'text-white', 'border-transparent');
       }
+
+      restoreDefaultSorting();
       applyAllFilters();
     };
 
@@ -597,6 +648,12 @@
 
     // ── Geolocation ──
     geoBtn?.addEventListener('click', () => {
+      if (geoActive) {
+        restoreDefaultSorting();
+        applyAllFilters();
+        return;
+      }
+
       if (!navigator.geolocation) {
         alert('Tu navegador no soporta geolocalización.');
         return;
@@ -707,7 +764,61 @@
 
   function init() {
     updateClinicsStatus();
+    
+    // Store original order of clinic cards
+    const grid = document.getElementById('clinicas-grid');
+    if (grid) {
+      originalCardsOrder = Array.from(grid.querySelectorAll<HTMLElement>('article'));
+    }
+
     setupFilters();
+
+    // Auto-locate if permission is already granted or on the home page (Todas las provincias)
+    const isTodasProvincias = window.location.pathname === '/' || window.location.pathname === '/index.html' || !window.location.pathname.includes('/provincia/');
+    const geoBtn = document.getElementById('btn-use-location');
+    const geoBtnText = document.getElementById('geo-btn-text');
+
+    if (navigator.geolocation && geoBtn) {
+      const triggerAutoGeo = () => {
+        if (geoBtnText) geoBtnText.textContent = 'Obteniendo ubicación…';
+        geoBtn.classList.add('opacity-60', 'pointer-events-none');
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            userLat = pos.coords.latitude;
+            userLng = pos.coords.longitude;
+            geoActive = true;
+
+            if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
+            geoBtn.classList.remove('opacity-60', 'pointer-events-none');
+            geoBtn.classList.add('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5');
+
+            sortByProximity(userLat, userLng);
+            applyAllFilters();
+          },
+          (err) => {
+            console.warn('Auto-geolocation error:', err.message);
+            if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+            geoBtn.classList.remove('opacity-60', 'pointer-events-none');
+          },
+          { timeout: 10000, maximumAge: 300000 }
+        );
+      };
+
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+          if (result.state === 'granted') {
+            triggerAutoGeo();
+          } else if (result.state === 'prompt' && isTodasProvincias) {
+            // Only prompt automatically on the home page (Todas las provincias) after a short delay
+            setTimeout(triggerAutoGeo, 800);
+          }
+        });
+      } else if (isTodasProvincias) {
+        // Fallback for browsers that don't support query permission
+        setTimeout(triggerAutoGeo, 800);
+      }
+    }
   }
 
   if (document.readyState !== 'loading') {

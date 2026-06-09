@@ -236,11 +236,11 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
   function updateMapState(hidden: boolean) {
     if (!wrapper) return;
     if (hidden) {
-      wrapper.classList.add('hidden');
+      wrapper.style.display = 'none';
       if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Mostrar mapa';
       if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ver en mapa 🗺️</span>';
     } else {
-      wrapper.classList.remove('hidden');
+      wrapper.style.display = 'block';
       if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Ocultar mapa';
       if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ocultar mapa ✖</span>';
       
@@ -253,12 +253,12 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
   }
 
   toggleBtnDesktop?.addEventListener('click', () => {
-    const isHidden = wrapper?.classList.contains('hidden');
+    const isHidden = window.getComputedStyle(wrapper!).display === 'none';
     updateMapState(!isHidden);
   });
 
   toggleBtnMobile?.addEventListener('click', () => {
-    const isHidden = wrapper?.classList.contains('hidden');
+    const isHidden = window.getComputedStyle(wrapper!).display === 'none';
     updateMapState(!isHidden);
   });
 
