@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 10.0153
 longitude: -84.2143
-waze_url: "https://waze.com/ul?ll=10.0153%2C-84.2143&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=10.0153,-84.2143"
+waze_url: "https://waze.com/ul?q=La%20Vete%20Alajuela%20Alajuela%20Alajuela%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La%20Vete%20Alajuela%20Alajuela%20Alajuela%20Costa%20Rica"
 ---
 
 Sucursal original fundada en 1981. La primera de la cadena. Amplio horario y pet shop completo en el centro de Alajuela.

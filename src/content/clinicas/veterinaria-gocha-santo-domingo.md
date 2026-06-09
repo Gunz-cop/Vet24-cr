@@ -34,8 +34,8 @@ verification_notes: ["Canal telefónico exclusivo nocturno 24/7 confirmado (4000
 verification_source: "Búsqueda web — micanton.com, wanderboat.ai"
 latitude: 9.9759
 longitude: -84.0721
-waze_url: "https://waze.com/ul?ll=9.9759%2C-84.0721&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9759,-84.0721"
+waze_url: "https://waze.com/ul?q=Veterinaria%20Gocha%20Santo%20Domingo%20de%20Heredia%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Veterinaria%20Gocha%20Santo%20Domingo%20de%20Heredia%20Heredia%20Costa%20Rica"
 ---
 
 14 años sirviendo a Santo Domingo. Canal telefónico exclusivo 24/7 para urgencias. Atienden fauna silvestre: tortugas, erizos, culebras, aves. Atención física L-S 8:30am-6:30pm.

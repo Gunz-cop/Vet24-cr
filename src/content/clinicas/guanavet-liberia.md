@@ -34,8 +34,8 @@ verification_notes: ["Teléfono y WhatsApp confirmados por directorios locales. 
 verification_source: "Búsqueda web — directorios locales"
 latitude: 10.6355
 longitude: -85.437
-waze_url: "https://waze.com/ul?q=Guanavet+Liberia+Costa+Rica&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=Guanavet+Liberia+Costa+Rica"
+waze_url: "https://waze.com/ul?q=Guanavet%20Liberia%20Guanacaste%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Guanavet%20Liberia%20Guanacaste%20Costa%20Rica"
 ---
 
 La única veterinaria con presencia veterinaria en Liberia, Guanacaste. Teléfono y dirección confirmados. Pendiente verificar disponibilidad real de emergencias nocturnas.

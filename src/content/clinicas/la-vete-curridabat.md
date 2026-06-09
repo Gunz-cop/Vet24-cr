@@ -31,8 +31,8 @@ verification_source: "Llamada directa de auditoría de prueba"
 overnight_doctor_present: true
 latitude: 9.9173
 longitude: -84.0442
-waze_url: "https://waze.com/ul?ll=9.9173%2C-84.0442&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9173,-84.0442"
+waze_url: "https://waze.com/ul?q=La%20Vete%20Curridabat%20Curridabat%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La%20Vete%20Curridabat%20Curridabat%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Emergencias 24/7 en zona este del GAM. Cubre Curridabat, Guayabos y alrededores. Sin cita previa para emergencias.

@@ -33,8 +33,8 @@ verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.8645
 longitude: -83.9269
-waze_url: "https://waze.com/ul?ll=9.8645%2C-83.9269&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.8645,-83.9269"
+waze_url: "https://waze.com/ul?q=VitalVet%20%E2%80%93%20Veterinaria%20Cartago%20Cartago%20Cartago%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=VitalVet%20%E2%80%93%20Veterinaria%20Cartago%20Cartago%20Cartago%20Costa%20Rica"
 ---
 
 Única veterinaria 24/7 en la provincia de Cartago con banco de sangre propio. Especialistas en oncología e imágenes diagnósticas.

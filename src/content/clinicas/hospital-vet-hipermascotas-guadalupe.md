@@ -32,8 +32,8 @@ verification_notes: ["Dirección, teléfono y WhatsApp confirmados. Hipermascota
 verification_source: "Búsqueda web — infoguia.co.cr, chip247.com, hipermascotas.cr"
 latitude: 9.9553
 longitude: -84.0601
-waze_url: "https://waze.com/ul?ll=9.9553%2C-84.0601&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9553,-84.0601"
+waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20Hipermascotas%20Guadalupe%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20Hipermascotas%20Guadalupe%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Pet shop con atención veterinaria en Guadalupe. Farmacia, peluquería y servicios clínicos generales. Servicios quirúrgicos y emergencias nocturnas pendientes de confirmación.

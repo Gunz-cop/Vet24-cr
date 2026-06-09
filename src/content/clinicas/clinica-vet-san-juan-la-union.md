@@ -31,8 +31,8 @@ verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.90950
 longitude: -83.99515
-waze_url: "https://waze.com/ul?q=Cl%C3%ADnica+Veterinaria+San+Juan+La+Uni%C3%B3n+Costa+Rica&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Veterinaria+San+Juan+La+Uni%C3%B3n+Costa+Rica"
+waze_url: "https://waze.com/ul?q=Cl%C3%ADnica%20Veterinaria%20San%20Juan%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica%20Veterinaria%20San%20Juan%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica"
 ---
 
 Cubre la zona de La Unión y zonas limítrofes entre Cartago y San José. Referencia local para emergencias nocturnas en el este.

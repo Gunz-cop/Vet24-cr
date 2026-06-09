@@ -31,8 +31,8 @@ verification_source: "Llamada directa de auditoría de prueba"
 overnight_doctor_present: true
 latitude: 9.9197
 longitude: -84.1434
-waze_url: "https://waze.com/ul?ll=9.9197%2C-84.1434&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9197,-84.1434"
+waze_url: "https://waze.com/ul?q=La%20Vete%20Escaz%C3%BA%20Escaz%C3%BA%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La%20Vete%20Escaz%C3%BA%20Escaz%C3%BA%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Primera cadena veterinaria del país con emergencias 24/7. Única sucursal de La Vete con guardia médica nocturna en zona oeste.

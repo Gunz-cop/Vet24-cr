@@ -33,8 +33,8 @@ verification_source: "Auditoría de datos"
 overnight_doctor_present: true
 latitude: 9.9328
 longitude: -84.1903
-waze_url: "https://waze.com/ul?ll=9.9328%2C-84.1903&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9328,-84.1903"
+waze_url: "https://waze.com/ul?q=IVDSA%20Santa%20Ana%20Santa%20Ana%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=IVDSA%20Santa%20Ana%20Santa%20Ana%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Instituto Veterinario Docente Sede Santa Ana. Emergencias 24/7 con médicos especializados y enfoque docente.

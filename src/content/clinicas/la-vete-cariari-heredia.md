@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.9722
 longitude: -84.1459
-waze_url: "https://waze.com/ul?ll=9.9722%2C-84.1459&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9722,-84.1459"
+waze_url: "https://waze.com/ul?q=La%20Vete%20Bel%C3%A9n%20Cariari%20Be%20Cariari%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La%20Vete%20Bel%C3%A9n%20Cariari%20Be%20Cariari%20Heredia%20Costa%20Rica"
 ---
 
 Sucursal en zona Cariari, conveniente para residentes de Belén, Ulloa y alrededores del aeropuerto.

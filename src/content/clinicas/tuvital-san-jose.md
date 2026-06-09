@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.9261
 longitude: -84.1081
-waze_url: "https://waze.com/ul?ll=9.9261%2C-84.1081&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9261,-84.1081"
+waze_url: "https://waze.com/ul?q=Tuvital%20por%20confirmar%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Tuvital%20por%20confirmar%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Clínica listada en directorio oficial del Colegio de Veterinarios. Pendiente verificar horario nocturno y servicios completos.

@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: true
 latitude: 9.9139
 longitude: -84.0427
-waze_url: "https://waze.com/ul?ll=9.9139%2C-84.0427&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9139,-84.0427"
+waze_url: "https://waze.com/ul?q=Medical%20Pets%20Curridabat%20Curridabat%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Medical%20Pets%20Curridabat%20Curridabat%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Clínica 24/7 con rayos X, laboratorio y financiamiento de tratamientos. También cubre emergencias por WhatsApp.
