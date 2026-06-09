@@ -29,10 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
-latitude: 9.9067
-longitude: -83.9971
-waze_url: "https://waze.com/ul?ll=9.9067%2C-83.9971&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9067,-83.9971"
+latitude: 9.909618
+longitude: -83.995400
+waze_url: "https://waze.com/ul?ll=9.909618%2C-83.995400&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.909618,-83.995400"
 ---
 
 Cubre la zona de La Unión y zonas limítrofes entre Cartago y San José. Referencia local para emergencias nocturnas en el este.
