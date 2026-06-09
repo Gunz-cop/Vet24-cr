@@ -1,7 +1,0 @@
-name = "vet24-cr"
-pages_build_output_dir = "./dist"
-compatibility_date = "2024-04-03"
-
-[[kv_namespaces]]
-binding = "SESSION"
-id = "b58bf278db0e4f4da22b87d1f21c0d29"

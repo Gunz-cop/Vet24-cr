@@ -1,4 +1,4 @@
----id: 2
+﻿---id: 2
 nombre: "La Vete Curridabat"
 provincia: "San José"
 zona: "Curridabat"
@@ -29,6 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: "Llamada directa de auditoría de prueba"
 overnight_doctor_present: true
+latitude: 9.9173
+longitude: -84.0442
+waze_url: "https://waze.com/ul?ll=9.9173%2C-84.0442&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9173,-84.0442"
 ---
 
 Emergencias 24/7 en zona este del GAM. Cubre Curridabat, Guayabos y alrededores. Sin cita previa para emergencias.

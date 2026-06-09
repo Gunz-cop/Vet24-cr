@@ -1,4 +1,4 @@
----id: 3
+﻿---id: 3
 nombre: "La Vete San Francisco"
 provincia: "San José"
 zona: "San Francisco de Dos Ríos"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9013
+longitude: -84.0573
+waze_url: "https://waze.com/ul?ll=9.9013%2C-84.0573&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9013,-84.0573"
 ---
 
 Sucursal en zona sur de San José. Horario amplio de lunes a domingo. Pet shop completo y servicios clínicos.

@@ -1,4 +1,4 @@
----id: 10
+﻿---id: 10
 nombre: "La Vete Belén Cariari"
 provincia: "Heredia"
 zona: "Be Cariari"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9722
+longitude: -84.1459
+waze_url: "https://waze.com/ul?ll=9.9722%2C-84.1459&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9722,-84.1459"
 ---
 
 Sucursal en zona Cariari, conveniente para residentes de Belén, Ulloa y alrededores del aeropuerto.

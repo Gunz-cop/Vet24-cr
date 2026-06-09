@@ -1,4 +1,4 @@
----id: 4
+﻿---id: 4
 nombre: "Petopia Hospital Veterinario"
 provincia: "San José"
 zona: "Tibás"
@@ -29,6 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: "Llamada directa de auditoría de prueba"
 overnight_doctor_present: true
+latitude: 9.9611
+longitude: -84.0869
+waze_url: "https://waze.com/ul?ll=9.9611%2C-84.0869&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9611,-84.0869"
 ---
 
 Hospital de última generación abierto en 2025. Instalaciones de 2 pisos, sala de espera separada para gatos y perros. Parqueo para +15 vehículos.

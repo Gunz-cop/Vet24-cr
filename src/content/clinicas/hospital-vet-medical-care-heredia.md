@@ -1,4 +1,4 @@
----id: 14
+﻿---id: 14
 nombre: "Hospital Veterinario Medical Care"
 provincia: "Heredia"
 zona: "Heredia centro"
@@ -29,6 +29,10 @@ has_surgery: true
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9997
+longitude: -84.1164
+waze_url: "https://waze.com/ul?ll=9.9997%2C-84.1164&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9997,-84.1164"
 ---
 
 Horario continuo hasta las 9pm todos los días. Cirugía, laboratorio, internamiento y parqueo privado. Abrió en 2021.

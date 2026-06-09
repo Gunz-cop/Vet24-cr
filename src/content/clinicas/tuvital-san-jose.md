@@ -1,4 +1,4 @@
----id: 26
+﻿---id: 26
 nombre: "Tuvital"
 provincia: "San José"
 zona: "por confirmar"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9261
+longitude: -84.1081
+waze_url: "https://waze.com/ul?ll=9.9261%2C-84.1081&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9261,-84.1081"
 ---
 
 Clínica listada en directorio oficial del Colegio de Veterinarios. Pendiente verificar horario nocturno y servicios completos.

@@ -1,4 +1,4 @@
----id: 21
+﻿---id: 21
 nombre: "Medical Pets Cartago"
 provincia: "Cartago"
 zona: "Cartago / La Unión"
@@ -29,6 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: ""
 overnight_doctor_present: true
+latitude: 9.9143
+longitude: -83.9833
+waze_url: "https://waze.com/ul?ll=9.9143%2C-83.9833&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9143,-83.9833"
 ---
 
 Segunda sede de Medical Pets. Emergencias 24/7 con contacto por WhatsApp. Rayos X y laboratorio in situ.

@@ -1,4 +1,4 @@
----id: 18
+﻿---id: 18
 nombre: "La Vete / Agromédica Alajuela"
 provincia: "Alajuela"
 zona: "San Rafael de Alajuela"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 10.0342
+longitude: -84.2084
+waze_url: "https://waze.com/ul?ll=10.0342%2C-84.2084&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=10.0342,-84.2084"
 ---
 
 Sede en zona Concasa, conveniente para residentes del oeste del Valle Central. Horario extendido entre semana hasta las 9pm.

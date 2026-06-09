@@ -1,4 +1,4 @@
----id: 11
+﻿---id: 11
 nombre: "La Vete Mall Oxígeno"
 provincia: "Heredia"
 zona: "Mall Oxígeno"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9986
+longitude: -84.1186
+waze_url: "https://waze.com/ul?ll=9.9986%2C-84.1186&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9986,-84.1186"
 ---
 
 Horario extendido hasta las 9pm entre semana — ideal para dueños que trabajan. Dentro del Mall Oxígeno con fácil parqueo.

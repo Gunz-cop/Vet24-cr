@@ -1,4 +1,4 @@
----id: 20
+﻿---id: 20
 nombre: "VitalVet – Veterinaria Cartago"
 provincia: "Cartago"
 zona: "Cartago"
@@ -31,6 +31,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: ""
 overnight_doctor_present: true
+latitude: 9.8645
+longitude: -83.9269
+waze_url: "https://waze.com/ul?ll=9.8645%2C-83.9269&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.8645,-83.9269"
 ---
 
 Única veterinaria 24/7 en la provincia de Cartago con banco de sangre propio. Especialistas en oncología e imágenes diagnósticas.

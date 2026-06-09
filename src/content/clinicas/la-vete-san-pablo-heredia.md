@@ -1,4 +1,4 @@
----id: 9
+﻿---id: 9
 nombre: "La Vete San Pablo"
 provincia: "Heredia"
 zona: "San Pablo de Heredia"
@@ -29,6 +29,10 @@ has_surgery: false
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
+latitude: 9.9849
+longitude: -84.0902
+waze_url: "https://waze.com/ul?ll=9.9849%2C-84.0902&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9849,-84.0902"
 ---
 
 Sucursal en el corazón de San Pablo. Amplio horario para citas de rutina y pet shop completo.

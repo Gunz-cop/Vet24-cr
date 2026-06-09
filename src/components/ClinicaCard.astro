@@ -22,6 +22,9 @@ interface Props {
     record_status?: "VERIFIED" | "PARTIAL" | "REVIEW_REQUIRED" | "CANDIDATE_REMOVAL";
     emergency_tier?: "Tier A" | "Tier B" | "Tier C" | "Tier D";
     emergency_verified?: boolean;
+    last_verified?: string;
+    latitude?: number;
+    longitude?: number;
     web?: string;
     slug: string;
     copyDiferenciador: string;
@@ -67,6 +70,10 @@ if (clinica.emergencias24h) {
   data-record-status={clinica.record_status || "PARTIAL"}
   data-confidence={clinica.confidence_score || "medium"}
   data-emergency-verified={clinica.emergency_verified ? "true" : "false"}
+  data-nombre={clinica.nombre.toLowerCase()}
+  data-zona-text={clinica.zona.toLowerCase()}
+  data-lat={clinica.latitude ?? 0}
+  data-lng={clinica.longitude ?? 0}
 >
   <div>
     <!-- Header: Schedule Badge & Specializations -->
@@ -77,6 +84,15 @@ if (clinica.emergencias24h) {
         <span class="status-indicator-badge text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-slate-950/80 text-slate-400 border border-slate-800 w-fit" data-status-for={clinica.slug}>
           Horario...
         </span>
+        {/* Distance badge — injected by geolocation JS */}
+        <span class="dist-badge hidden text-[9px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 w-fit">
+          📍 — km
+        </span>
+        {clinica.last_verified && (
+          <span class="text-[9px] text-slate-600 font-medium">
+            ✓ Verificado: {clinica.last_verified}
+          </span>
+        )}
       </div>
       
       <div class="flex flex-wrap items-center gap-1.5 max-w-[55%] justify-end">

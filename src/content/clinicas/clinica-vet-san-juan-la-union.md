@@ -1,4 +1,4 @@
----id: 22
+﻿---id: 22
 nombre: "Clínica Veterinaria San Juan"
 provincia: "Cartago"
 zona: "La Unión"
@@ -29,6 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: ""
 overnight_doctor_present: true
+latitude: 9.9067
+longitude: -83.9971
+waze_url: "https://waze.com/ul?ll=9.9067%2C-83.9971&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.9067,-83.9971"
 ---
 
 Cubre la zona de La Unión y zonas limítrofes entre Cartago y San José. Referencia local para emergencias nocturnas en el este.

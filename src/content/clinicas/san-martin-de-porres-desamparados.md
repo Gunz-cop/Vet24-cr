@@ -1,4 +1,4 @@
----
+﻿---
 id: 28
 nombre: "Veterinaria San Martín de Porres"
 provincia: "San José"
@@ -34,6 +34,10 @@ overnight_doctor_present: false
 accepts_emergency_walkins: false
 verification_notes: ["Auditado por falsos positivos de 24/7. Opera únicamente como clínica diurna en horario normal."]
 verification_source: "Auditoría telefónica"
+latitude: 9.8869
+longitude: -84.0793
+waze_url: "https://waze.com/ul?ll=9.8869%2C-84.0793&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=9.8869,-84.0793"
 ---
 
 Clínica de atención primaria y diurna en Desamparados. Ofrece consulta médica general, vacunación y desparasitación.
