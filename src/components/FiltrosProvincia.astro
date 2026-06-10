@@ -31,15 +31,15 @@ const currentSlug = activeProvincia || "todas";
         <a
           href={prov.href}
           id={`filter-prov-${prov.slug}`}
-          class={`inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-xl border whitespace-nowrap transition-all duration-200 group cursor-pointer ${
+          class={`inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-2xl border whitespace-nowrap transition-all duration-300 group cursor-pointer ${
             isActive
-              ? "bg-brand-primary text-[#1a1a18] dark:text-[#1a1a18] border-transparent shadow-md shadow-brand-primary/10 scale-[1.02]"
-              : "bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-text border-brand-card-border hover:border-brand-primary/30 hover:scale-[1.01]"
+              ? "bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white border-transparent shadow-lg shadow-brand-primary/25 scale-[1.03]"
+              : "bg-brand-card-bg/55 backdrop-blur-md hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-text border-brand-card-border hover:border-brand-primary/30 hover:scale-[1.01]"
           }`}
         >
-          <span class={`text-[9px] font-black px-1.5 py-0.5 rounded transition-colors duration-200 ${
+          <span class={`text-[9px] font-black px-1.5 py-0.5 rounded transition-colors duration-300 ${
             isActive
-              ? "bg-[#1a1a18]/15 text-[#1a1a18] dark:bg-[#1a1a18]/15 dark:text-[#1a1a18]"
+              ? "bg-white/20 text-white"
               : "bg-brand-bg/60 text-brand-text-muted group-hover:text-brand-primary group-hover:bg-brand-primary/10"
           }`}>
             {prov.code}

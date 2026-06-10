@@ -21,45 +21,45 @@
 }
 
 :root {
-  /* Default to Dark Theme (Calming Sage & Charcoal) */
-  --brand-bg: #121412;
-  --brand-text: #f8fff7;
-  --brand-text-muted: #adcfb6;
-  --brand-primary: #adcfb6;
-  --brand-primary-hover: #c9ebd1;
-  --brand-secondary: #2f4d3a;
-  --brand-card-bg: #1b1e1b;
-  --brand-card-border: #2f4d3a;
-  --brand-success: #adcfb6;
-  --brand-success-border: rgba(173, 207, 182, 0.25);
-  --brand-success-bg: rgba(173, 207, 182, 0.1);
-  --brand-warning-bg: rgba(217, 119, 6, 0.1);
-  --brand-warning-border: rgba(217, 119, 6, 0.25);
-  --brand-warning-text: #d97706;
-  --brand-danger-bg: rgba(185, 28, 28, 0.1);
-  --brand-danger-border: rgba(185, 28, 28, 0.25);
-  --brand-danger-text: #b91c1c;
+  /* Default to Dark Theme (Calming Forest & Neon Mint) */
+  --brand-bg: #050a0a;
+  --brand-text: #f3f4f6;
+  --brand-text-muted: #829c99;
+  --brand-primary: #ff2e63;
+  --brand-primary-hover: #ff0040;
+  --brand-secondary: #10b981;
+  --brand-card-bg: rgba(13, 27, 27, 0.45);
+  --brand-card-border: rgba(16, 185, 129, 0.08);
+  --brand-success: #10b981;
+  --brand-success-border: rgba(16, 185, 129, 0.25);
+  --brand-success-bg: rgba(16, 185, 129, 0.1);
+  --brand-warning-bg: rgba(251, 191, 36, 0.1);
+  --brand-warning-border: rgba(251, 191, 36, 0.25);
+  --brand-warning-text: #fbbf24;
+  --brand-danger-bg: rgba(255, 46, 99, 0.08);
+  --brand-danger-border: rgba(255, 46, 99, 0.2);
+  --brand-danger-text: #ff2e63;
 }
 
 :root.light, .light {
-  /* Light Theme (Warm Ivory & Sage Green) */
-  --brand-bg: #faf9f4;
-  --brand-text: #1b1c19;
-  --brand-text-muted: #424843;
-  --brand-primary: #45634f;
-  --brand-primary-hover: #5d7c67;
-  --brand-secondary: #fdcb9b;
-  --brand-card-bg: #f5f4ef;
-  --brand-card-border: #dbdad5;
-  --brand-success: #45634f;
-  --brand-success-border: rgba(69, 99, 79, 0.25);
-  --brand-success-bg: rgba(69, 99, 79, 0.1);
+  /* Light Theme (Warm Sand & Botanical Green) */
+  --brand-bg: #faf9f6;
+  --brand-text: #0d221f;
+  --brand-text-muted: #536360;
+  --brand-primary: #e11d48;
+  --brand-primary-hover: #be123c;
+  --brand-secondary: #059669;
+  --brand-card-bg: #ffffff;
+  --brand-card-border: #e8e6df;
+  --brand-success: #059669;
+  --brand-success-border: rgba(5, 150, 105, 0.25);
+  --brand-success-bg: rgba(5, 150, 105, 0.1);
   --brand-warning-bg: rgba(217, 119, 6, 0.1);
   --brand-warning-border: rgba(217, 119, 6, 0.25);
   --brand-warning-text: #d97706;
-  --brand-danger-bg: rgba(185, 28, 28, 0.1);
-  --brand-danger-border: rgba(185, 28, 28, 0.25);
-  --brand-danger-text: #b91c1c;
+  --brand-danger-bg: rgba(225, 29, 72, 0.1);
+  --brand-danger-border: rgba(225, 29, 72, 0.25);
+  --brand-danger-text: #e11d48;
 }
 
 /* Custom Leaflet Map tile styling in dark mode */
@@ -67,7 +67,7 @@ html:not(.light) .leaflet-tile-container {
   filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
 }
 html:not(.light) .leaflet-container {
-  background: #121412 !important;
+  background: #050a0a !important;
 }
 
 /* Utility Animations */
