@@ -92,7 +92,7 @@ const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atenci�
           Volver al Inicio
         </a>
         <h1 id="provincia-title" class="text-3xl md:text-4xl font-extrabold text-brand-text font-['Outfit',sans-serif] tracking-tight">
-          Veterinarias en <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">{nombreProvincia}</span>
+          Veterinarias en <span class="text-brand-primary">{nombreProvincia}</span>
         </h1>
         <p class="text-sm text-brand-text-muted mt-1">
           Directorio especializado en urgencias médicas y atención nocturna.
@@ -120,13 +120,13 @@ const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atenci�
         ))}
       </div>
     ) : (
-      <div class="text-center py-16 bg-brand-card-bg/20 border border-dashed border-brand-card-border rounded-2xl p-8" id="empty-state">
+      <div class="text-center py-16 bg-brand-card-bg border border-dashed border-brand-card-border rounded-xl p-8" id="empty-state">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-brand-text-muted/65 mb-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 7.5h.008v.008H12v-.008Z" />
         </svg>
         <h3 class="text-base font-semibold text-brand-text">No hay clínicas activas en {nombreProvincia}</h3>
         <p class="text-sm text-brand-text-muted mt-1">Actualmente no disponemos de registros verificados o publicados en esta zona.</p>
-        <a href="/" class="inline-flex items-center gap-1 mt-4 px-4 py-2 text-xs font-semibold rounded-lg bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text border border-brand-card-border hover:border-brand-primary/35 transition-colors" id="btn-fallback-home">
+        <a href="/" class="inline-flex items-center gap-1 mt-4 px-4 py-2 text-xs font-semibold rounded-xl bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text border border-brand-card-border hover:border-brand-primary/35 transition-colors" id="btn-fallback-home">
           Ver todas las provincias
         </a>
       </div>

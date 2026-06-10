@@ -24,8 +24,8 @@ const clinicasConCoords = clinicas.filter(c => c.latitude !== 0 && c.longitude !
 const clinicasJson = JSON.stringify(clinicasConCoords);
 ---
 
-<div class="w-full mb-8 rounded-3xl overflow-hidden border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md shadow-2xl transition-colors duration-200" id="map-container">
-  <div class="flex items-center justify-between px-5 py-4 bg-brand-bg/65 border-b border-brand-card-border/80 transition-colors duration-200">
+<div class="w-full mb-8 rounded-2xl overflow-hidden border border-brand-card-border bg-brand-card-bg shadow-md transition-colors duration-200" id="map-container">
+  <div class="flex items-center justify-between px-5 py-4 bg-brand-bg/40 border-b border-brand-card-border transition-colors duration-200">
     <div class="flex items-center gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-brand-primary">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
@@ -35,7 +35,7 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     </div>
     <button 
       id="toggle-mapa-btn"
-      class="hidden md:inline-block text-xs font-bold text-brand-text-muted hover:text-brand-text transition-all px-3 py-1.5 rounded-xl bg-brand-bg/50 hover:bg-brand-primary/10 border border-brand-card-border hover:border-brand-primary/35 cursor-pointer active:scale-95"
+      class="hidden md:inline-block text-xs font-bold text-brand-text-muted hover:text-brand-text transition-all px-3 py-1.5 rounded-xl bg-brand-bg/40 hover:bg-brand-primary/10 border border-brand-card-border hover:border-brand-primary/35 cursor-pointer active:scale-95"
     >
       Ocultar mapa
     </button>
@@ -173,23 +173,11 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
                    (c.emergency_tier === 'Tier B' ? iconTierB : iconTierC);
 
       const callBtn = c.telefono1 
-        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" class="btn-popup-call" style="
-            display:inline-flex;align-items:center;gap:4px;
-            padding:6px 12px;border-radius:8px;
-            background:var(--brand-primary);color:white;
-            font-size:11px;font-weight:700;text-decoration:none;
-            border:none;
-          ">📞 Llamar</a>` 
+        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" class="btn-popup-call">📞 Llamar</a>` 
         : '';
 
       const wazeBtn = c.waze_url 
-        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" class="btn-popup-nav" style="
-            display:inline-flex;align-items:center;gap:4px;
-            padding:6px 12px;border-radius:8px;
-            background:var(--brand-card-bg);color:var(--brand-secondary);
-            font-size:11px;font-weight:700;text-decoration:none;
-            border:1px solid var(--brand-card-border);
-          ">🚗 Waze</a>`
+        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" class="btn-popup-nav">🚗 Waze</a>`
         : '';
 
       const statusBadge = c.emergencias24h 
@@ -299,42 +287,88 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
 
   /* Override Leaflet popup styles dynamically based on theme variables */
   .leaflet-popup-content-wrapper {
-    background: var(--brand-card-bg, #0f172a) !important;
-    border: 1px solid var(--brand-card-border, #1e293b) !important;
+    background: var(--brand-card-bg) !important;
+    border: 1px solid var(--brand-card-border) !important;
     border-radius: 16px !important;
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5) !important;
-    color: var(--brand-text, #f1f5f9) !important;
-    backdrop-filter: blur(8px);
+    color: var(--brand-text) !important;
   }
   .leaflet-popup-tip {
-    background: var(--brand-card-bg, #0f172a) !important;
-    border: 1px solid var(--brand-card-border, #1e293b) !important;
+    background: var(--brand-card-bg) !important;
+    border: 1px solid var(--brand-card-border) !important;
   }
   .leaflet-popup-close-button {
-    color: var(--brand-text-muted, #64748b) !important;
+    color: var(--brand-text-muted) !important;
   }
   .leaflet-popup-close-button:hover {
-    color: var(--brand-primary, #f43f5e) !important;
+    color: var(--brand-primary) !important;
   }
   .leaflet-container {
-    background: var(--brand-bg, #020617) !important;
+    background: var(--brand-bg) !important;
     color: var(--brand-text) !important;
   }
   .leaflet-control-zoom a {
-    background: var(--brand-card-bg, #0f172a) !important;
-    color: var(--brand-text-muted, #94a3b8) !important;
-    border-color: var(--brand-card-border, #1e293b) !important;
+    background: var(--brand-card-bg) !important;
+    color: var(--brand-text-muted) !important;
+    border-color: var(--brand-card-border) !important;
   }
   .leaflet-control-zoom a:hover {
-    background: var(--brand-primary, #f43f5e) !important;
-    color: white !important;
+    background: var(--brand-primary) !important;
+    color: #1a1a18 !important;
+  }
+  .dark .leaflet-control-zoom a:hover {
+    color: #1a1a18 !important;
   }
   .leaflet-control-attribution {
-    background: var(--brand-bg, rgba(2, 6, 23, 0.7)) !important;
-    color: var(--brand-text-muted, #475569) !important;
+    background: var(--brand-bg) !important;
+    color: var(--brand-text-muted) !important;
     font-size: 9px !important;
   }
   .leaflet-control-attribution a {
-    color: var(--brand-primary, #f43f5e) !important;
+    color: var(--brand-primary) !important;
+  }
+
+  /* Popup buttons */
+  .btn-popup-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--brand-primary) !important;
+    color: #ffffff !important;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    transition: all 0.2s ease;
+  }
+  .dark .btn-popup-call {
+    color: #1a1a18 !important;
+  }
+  .btn-popup-call:hover {
+    background: var(--brand-primary-hover) !important;
+  }
+
+  .btn-popup-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--brand-card-bg) !important;
+    color: var(--brand-text-muted) !important;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--brand-card-border) !important;
+    transition: all 0.2s ease;
+  }
+  .btn-popup-nav:hover {
+    background: var(--brand-primary) !important;
+    color: #1a1a18 !important;
+  }
+  .dark .btn-popup-nav:hover {
+    color: #1a1a18 !important;
   }
 </style>

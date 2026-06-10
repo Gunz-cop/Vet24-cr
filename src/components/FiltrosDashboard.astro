@@ -3,7 +3,7 @@
 
 <div class="w-full mb-8 flex flex-col gap-4">
   <!-- Search Bar -->
-  <div class="relative group rounded-2xl bg-brand-card-bg/30 border border-brand-card-border/80 shadow-md focus-within:border-brand-primary/45 focus-within:ring-2 focus-within:ring-brand-primary/10 transition-all duration-300">
+  <div class="relative group rounded-2xl bg-brand-card-bg border border-brand-card-border shadow-md focus-within:ring-2 focus-within:ring-brand-primary/30 focus-within:border-brand-primary transition-all duration-300">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" 
       class="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-brand-text-muted/60 pointer-events-none group-focus-within:text-brand-primary transition-colors">
       <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -23,30 +23,30 @@
   </div>
 
   <!-- Filters row -->
-  <div class="p-4 rounded-3xl bg-brand-card-bg/40 border border-brand-card-border/70 backdrop-blur-md flex flex-col gap-4 shadow-xl transition-all duration-300">
+  <div class="p-4 rounded-2xl bg-brand-card-bg border border-brand-card-border flex flex-col gap-4 shadow-md transition-all duration-300">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
       <!-- Status Toggles + Geolocation -->
       <div class="flex items-center gap-2.5 flex-wrap">
         <span class="text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] mr-1">Estado:</span>
         <button 
           id="filter-quick-open" 
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-2 w-2 rounded-full bg-brand-secondary/80 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+          <span class="h-2 w-2 rounded-full bg-brand-success"></span>
           Abierto Ahora
         </button>
         
         <button 
           id="filter-quick-247" 
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-2 w-2 rounded-full bg-brand-primary/85 shadow-[0_0_8px_rgba(255,46,99,0.5)] animate-pulse"></span>
+          <span class="h-2 w-2 rounded-full bg-brand-danger-text animate-pulse"></span>
           Solo 24/7
         </button>
 
         <button
           id="btn-use-location"
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Ordenar por cercanía a tu ubicación"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
@@ -58,7 +58,7 @@
 
         <button
           id="reset-all-filters"
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Restablecer todos los filtros"
         >
           Restablecer
@@ -70,31 +70,31 @@
         <span class="text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] mr-1 shrink-0">Especie:</span>
         <button 
           data-filter-animal="todos" 
-          class="px-4 py-2 text-xs font-black rounded-xl border border-transparent bg-brand-primary text-white shadow-md shadow-brand-primary/15 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-black rounded-xl border border-transparent bg-brand-primary text-[#1a1a18] dark:text-[#1a1a18] shadow-md shadow-brand-primary/15 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           Todos
         </button>
         <button 
           data-filter-animal="domesticos" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐶🐱 Domésticos
         </button>
         <button 
           data-filter-animal="exoticos" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐢 Exóticos
         </button>
         <button 
           data-filter-animal="peces" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐠 Peces
         </button>
         <button 
           data-filter-animal="granja" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐴 Granja
         </button>
@@ -182,39 +182,39 @@
       const maps_url = el.getAttribute('data-maps-url') || '';
 
       sosContainer.innerHTML = `
-        <div class="relative overflow-hidden p-6 rounded-2xl border-2 border-rose-500 bg-gradient-to-r from-rose-950/60 to-slate-900/90 shadow-2xl shadow-rose-900/10 flex flex-col gap-4 animate-[pulse_3s_infinite]" id="sos-emergency-card">
+        <div class="relative overflow-hidden p-6 rounded-2xl border border-brand-primary bg-brand-card-bg shadow-xl flex flex-col gap-4" id="sos-emergency-card">
           <!-- Badge -->
           <div class="flex items-center justify-between flex-wrap gap-2">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-rose-500 text-white animate-pulse">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-brand-primary text-[#1a1a18] dark:text-[#1a1a18]">
               🚨 LA VETERINARIA ABIERTA 24/7 MÁS CERCANA
             </span>
-            <span class="text-xs font-black text-rose-450 uppercase tracking-widest font-['Outfit',sans-serif]">
+            <span class="text-xs font-black text-brand-primary uppercase tracking-widest font-['Outfit',sans-serif]">
               A ${minDistance.toFixed(1)} km de ti
             </span>
           </div>
 
           <!-- Content -->
           <div>
-            <h3 class="text-xl font-black text-white capitalize mb-1 font-['Outfit',sans-serif]">${nombre}</h3>
-            <p class="text-xs text-slate-300 capitalize mb-1">📍 ${zona} — <span class="font-normal text-slate-450">${direccion}</span></p>
-            <p class="text-xs text-rose-450 font-bold mb-3">🕒 Horario de emergencias: ${horarioTexto}</p>
-            <p class="text-xs text-slate-450 font-light leading-relaxed">${copyDiferenciador}</p>
+            <h3 class="text-xl font-black text-brand-text capitalize mb-1 font-['Outfit',sans-serif]">${nombre}</h3>
+            <p class="text-xs text-brand-text-muted capitalize mb-1">📍 ${zona} — <span class="font-normal text-brand-text-muted/80">${direccion}</span></p>
+            <p class="text-xs text-brand-primary font-bold mb-3">🕒 Horario de emergencias: ${horarioTexto}</p>
+            <p class="text-xs text-brand-text-muted/70 font-light leading-relaxed">${copyDiferenciador}</p>
           </div>
 
           <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-3 border-t border-rose-500/20 pt-4 mt-1">
+          <div class="flex flex-wrap items-center gap-3 border-t border-brand-card-border pt-4 mt-1">
             ${telefono1 ? `
-              <a href="tel:+506${telefono1.replace(/\D/g,'')}" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-extrabold rounded-xl bg-rose-500 hover:bg-rose-600 text-white transition-all shadow-lg shadow-rose-500/20 active:scale-95 text-center">
+              <a href="tel:+506${telefono1.replace(/\D/g,'')}" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-extrabold rounded-xl bg-brand-primary text-[#1a1a18] dark:text-[#1a1a18] hover:bg-brand-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center">
                 📞 LLAMAR DE INMEDIATO
               </a>
             ` : ''}
             ${waze_url ? `
-              <a href="${waze_url}" target="_blank" rel="noopener" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-slate-950 border border-slate-800 text-amber-400 hover:text-amber-300 transition-all active:scale-95 text-center">
+              <a href="${waze_url}" target="_blank" rel="noopener" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-card-bg border border-brand-card-border text-brand-primary hover:bg-brand-primary/10 transition-all active:scale-95 text-center">
                 🚗 Waze
               </a>
             ` : ''}
             ${maps_url ? `
-              <a href="${maps_url}" target="_blank" rel="noopener" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-slate-950 border border-slate-800 text-slate-300 hover:text-white transition-all active:scale-95 text-center">
+              <a href="${maps_url}" target="_blank" rel="noopener" class="flex-grow sm:flex-grow-0 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-card-bg border border-brand-card-border text-brand-text-muted hover:text-brand-text transition-all active:scale-95 text-center">
                 🗺️ Google Maps
               </a>
             ` : ''}
@@ -233,11 +233,11 @@
     if (!sosContainer) return;
     
     sosContainer.innerHTML = `
-      <div class="relative overflow-hidden p-6 rounded-2xl border border-rose-500/30 bg-rose-950/20 shadow-xl flex flex-col gap-3">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-rose-500/10 text-rose-455 border border-rose-500/20 w-fit">
+      <div class="relative overflow-hidden p-6 rounded-2xl border border-brand-card-border bg-brand-card-bg shadow-xl flex flex-col gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 w-fit">
           ⚠️ ATENCIÓN DE EMERGENCIA
         </span>
-        <p class="text-sm font-semibold text-slate-200">${message}</p>
+        <p class="text-sm font-semibold text-brand-text">${message}</p>
       </div>
     `;
     sosContainer.classList.remove('hidden');
@@ -610,16 +610,16 @@
       if (clearBtn) clearBtn.classList.add('hidden');
 
       filterOpenBtn?.classList.remove('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
-      filter247Btn?.classList.remove('bg-brand-danger-bg', 'text-brand-primary', 'border-brand-danger-border');
+      filter247Btn?.classList.remove('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
 
       animalFilters.forEach(b => {
-        b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-        b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+        b.classList.remove('bg-brand-primary', 'text-[#1a1a18]', 'dark:text-[#1a1a18]', 'border-transparent');
+        b.classList.add('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
       });
       const todosBtn = document.querySelector<HTMLElement>('[data-filter-animal="todos"]');
       if (todosBtn) {
-        todosBtn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
-        todosBtn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
+        todosBtn.classList.remove('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
+        todosBtn.classList.add('bg-brand-primary', 'text-[#1a1a18]', 'dark:text-[#1a1a18]', 'border-transparent');
       }
 
       restoreDefaultSorting();
@@ -642,7 +642,7 @@
     filter247Btn?.addEventListener('click', () => {
       filterOnly247 = !filterOnly247;
       filter247Btn.classList.toggle('bg-brand-danger-bg');
-      filter247Btn.classList.toggle('text-brand-primary');
+      filter247Btn.classList.toggle('text-brand-danger-text');
       filter247Btn.classList.toggle('border-brand-danger-border');
       applyAllFilters();
     });
@@ -693,11 +693,11 @@
     animalFilters.forEach(btn => {
       btn.addEventListener('click', () => {
         animalFilters.forEach(b => {
-          b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-          b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          b.classList.remove('bg-brand-primary', 'text-[#1a1a18]', 'dark:text-[#1a1a18]', 'border-transparent');
+          b.classList.add('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
         });
-        btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-        btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+        btn.classList.add('bg-brand-primary', 'text-[#1a1a18]', 'dark:text-[#1a1a18]', 'border-transparent');
+        btn.classList.remove('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
       });
@@ -716,7 +716,7 @@
         filterOpenBtn.classList.add('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
       }
       if (filter247Btn) {
-        filter247Btn.classList.add('bg-brand-danger-bg', 'text-brand-primary', 'border-brand-danger-border');
+        filter247Btn.classList.add('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
       }
 
       const sosContainer = document.getElementById('sos-highlight-container');
