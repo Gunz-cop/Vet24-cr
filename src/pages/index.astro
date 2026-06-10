@@ -50,21 +50,21 @@ const mapData = sortedClinicas.map(c => ({
   <!-- Hero Section -->
   <section class="text-center py-12 md:py-20 relative overflow-hidden" aria-labelledby="hero-title">
     <div class="relative z-10 max-w-3xl mx-auto">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 mb-4 animate-pulse">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-4 animate-pulse">
         Atención Médica 24 Horas
       </span>
       
-      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 font-['Outfit',sans-serif]">
+      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-text mb-6 font-['Outfit',sans-serif]">
         Veterinarias de Guardia y <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-rose-400 via-amber-400 to-rose-400 bg-clip-text text-transparent">Emergencias 24/7</span>
+        <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">Emergencias 24/7</span>
       </h1>
       
-      <p class="text-lg text-slate-350 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+      <p class="text-lg text-brand-text-muted mb-8 max-w-2xl mx-auto font-light leading-relaxed">
         El directorio de clínicas veterinarias en Costa Rica especializado en servicios nocturnos, urgencias quirúrgicas y atención de fauna exótica.
       </p>
       
       <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
-        <a href="#directorio" class="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white transition-all shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 hover:scale-[1.02] active:scale-[0.98]" id="cta-directorio">
+        <a href="#directorio" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary hover:brightness-110 text-white transition-all shadow-lg shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98]" id="cta-directorio">
           Ver Directorio
         </a>
       </div>
@@ -74,17 +74,17 @@ const mapData = sortedClinicas.map(c => ({
   <!-- Content Section -->
   <section id="directorio" class="scroll-mt-20 py-8" aria-labelledby="directorio-title">
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-slate-900 pb-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6 transition-colors duration-200">
       <div>
-        <h2 id="directorio-title" class="text-2xl md:text-3xl font-bold text-slate-100 font-['Outfit',sans-serif]">
+        <h2 id="directorio-title" class="text-2xl md:text-3xl font-bold text-brand-text font-['Outfit',sans-serif]">
           Clínicas Veterinarias Registradas
         </h2>
-        <p class="text-sm text-slate-450 mt-1">
+        <p class="text-sm text-brand-text-muted mt-1">
           Mostrando clínicas verificadas y activas en el GAM y playas.
         </p>
       </div>
-      <div class="text-sm font-medium text-slate-400">
-        Total: <span class="text-slate-100 font-bold bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">{sortedClinicas.length} clínicas</span>
+      <div class="text-sm font-medium text-brand-text-muted">
+        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
       </div>
     </div>
 

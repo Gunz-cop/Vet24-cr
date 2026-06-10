@@ -56,7 +56,10 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 35.6762, longitude: 139.6503 }); // Tokyo
 
-      await page.click('#btn-use-location');
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
       const badgeText = await page.locator('[data-distance-for]').first().textContent();
@@ -75,7 +78,10 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 9.9989, longitude: -84.1219 });
 
-      await page.click('#btn-use-location');
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       const hemsCard = page.locator('#clinicas-grid article', { hasText: 'HEMS' });
       const badge = hemsCard.locator('[data-distance-for]');
@@ -125,7 +131,7 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
 
     test('33. should handle Leaflet load failure gracefully', async ({ page }) => {
       // Block Leaflet JS loading
-      await page.route('**/unpkg.com/leaflet@**/*.js', async (route) => {
+      await page.route((url) => url.toString().includes('leaflet') && url.toString().endsWith('.js'), async (route) => {
         await route.abort('failed');
       });
 
@@ -273,23 +279,26 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
     });
   });
 
-  test.describe('Report Form Boundaries (Milestone 4 - Pending)', () => {
-    test.fixme('46. should show validation errors when submitting empty report form', async ({ page }) => {
+  test.describe('Report Form Boundaries', () => {
+    test('46. should show validation errors when submitting empty report form', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
       await page.click('#btn-submit-report');
       // Assert validation errors are visible on fields
+      await expect(page.locator('#error-description')).toBeVisible();
     });
 
-    test.fixme('47. should show validation error when contact phone has invalid format', async ({ page }) => {
+    test('47. should show validation error when contact phone has invalid format', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
+      await page.fill('#report-description', 'El horario es incorrecto');
       await page.fill('#report-contact', 'invalid_phone');
       await page.click('#btn-submit-report');
       // Assert phone validation error
+      await expect(page.locator('#error-contact')).toBeVisible();
     });
 
-    test.fixme('48. should submit successfully when description has extremely long text', async ({ page }) => {
+    test('48. should submit successfully when description has extremely long text', async ({ page }) => {
       await page.route('**/api/report-incorrect', async (route) => {
         await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ success: true }) });
       });
@@ -300,16 +309,17 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
       await expect(page.locator('#report-success-msg')).toBeVisible();
     });
 
-    test.fixme('49. should preserve or reset form fields when modal is closed and reopened', async ({ page }) => {
+    test('49. should preserve or reset form fields when modal is closed and reopened', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
       await page.fill('#report-description', 'Outdated schedule');
       await page.click('#btn-close-report-modal');
       await page.click('#btn-open-report');
-      // Verify description is empty or preserved depending on implementation choice
+      // Verify description is empty after reopening
+      await expect(page.locator('#report-description')).toHaveValue('');
     });
 
-    test.fixme('50. should disable submit button during submission to prevent duplicate reports', async ({ page }) => {
+    test('50. should disable submit button during submission to prevent duplicate reports', async ({ page }) => {
       await page.route('**/api/report-incorrect', async (route) => {
         // Slow response
         await new Promise(r => setTimeout(r, 1000));

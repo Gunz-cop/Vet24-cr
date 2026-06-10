@@ -5,7 +5,7 @@
   <!-- Search Bar -->
   <div class="relative">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
-      class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none">
+      class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-text-muted/70 pointer-events-none">
       <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
     </svg>
     <input 
@@ -13,9 +13,9 @@
       id="search-input" 
       placeholder="Buscar por nombre, zona, cantón…"
       autocomplete="off"
-      class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:border-rose-500/50 focus:ring-1 focus:ring-rose-500/20 transition-all"
+      class="w-full pl-10 pr-4 py-3 rounded-xl bg-brand-card-bg border border-brand-card-border text-brand-text placeholder-brand-text-muted/65 text-sm focus:outline-none focus:border-brand-primary/50 focus:ring-1 focus:ring-brand-primary/20 transition-all duration-200"
     />
-    <button id="btn-clear-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 hidden" aria-label="Limpiar búsqueda font-semibold">
+    <button id="btn-clear-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-text hidden" aria-label="Limpiar búsqueda font-semibold">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
@@ -23,30 +23,30 @@
   </div>
 
   <!-- Filters row -->
-  <div class="p-3 rounded-2xl bg-slate-900/20 border border-slate-900 backdrop-blur-sm flex flex-col gap-3">
+  <div class="p-3 rounded-2xl bg-brand-card-bg border border-brand-card-border backdrop-blur-sm flex flex-col gap-3 transition-colors duration-200">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
       <!-- Status Toggles + Geolocation -->
       <div class="flex items-center gap-2 flex-wrap">
-        <span class="text-xs text-slate-500 font-bold mr-1 uppercase">Estado:</span>
+        <span class="text-xs text-brand-text-muted font-bold mr-1 uppercase">Estado:</span>
         <button 
           id="filter-quick-open" 
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-success"></span>
           Abierto Ahora
         </button>
         
         <button 
           id="filter-quick-247" 
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
           Solo 24/7
         </button>
 
         <button
           id="btn-use-location"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-blue-300 hover:border-blue-500/30 transition-all cursor-pointer active:scale-95"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Ordenar por cercanía a tu ubicación"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
@@ -58,7 +58,7 @@
 
         <button
           id="reset-all-filters"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 hover:text-rose-350 hover:border-rose-500/30 transition-all cursor-pointer active:scale-95"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Restablecer todos los filtros"
         >
           Restablecer filtros
@@ -67,36 +67,36 @@
 
       <!-- Animal Types -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="animal-filters-container">
-        <span class="text-xs text-slate-500 font-bold mr-1 shrink-0 uppercase">Especie:</span>
+        <span class="text-xs text-brand-text-muted font-bold mr-1 shrink-0 uppercase">Especie:</span>
         <button 
           data-filter-animal="todos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-transparent bg-rose-500 text-white transition-all cursor-pointer active:scale-95 shrink-0"
+          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-transparent bg-brand-primary text-white transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           Todos
         </button>
         <button 
           data-filter-animal="domesticos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐶🐱 Domésticos
         </button>
         <button 
           data-filter-animal="exoticos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐢 Exóticos
         </button>
         <button 
           data-filter-animal="peces" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐠 Peces
         </button>
         <button 
           data-filter-animal="granja" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 hover:text-white transition-all cursor-pointer active:scale-95 shrink-0"
+          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
-          🐴 Granja (Vacas/Caballos)
+          🐴 Granja
         </button>
       </div>
     </div>
@@ -108,11 +108,11 @@
 
 <!-- Enhanced empty state with fallback clinics -->
 <div id="empty-state" class="hidden w-full">
-  <div class="text-center py-10 bg-slate-900/20 border border-dashed border-slate-800 rounded-2xl p-8 mb-6">
+  <div class="text-center py-10 bg-brand-card-bg/20 border border-dashed border-brand-card-border rounded-2xl p-8 mb-6">
     <div class="text-4xl mb-3">🔍</div>
-    <h3 class="text-base font-semibold text-slate-200 mb-1">No encontramos veterinarias con estos filtros</h3>
-    <p class="text-sm text-slate-500 max-w-md mx-auto">Prueba cambiando los filtros o amplía la búsqueda.</p>
-    <button id="reset-all-filters-empty" class="mt-4 px-4 py-2 text-xs font-bold rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 hover:bg-rose-500/20 transition-colors cursor-pointer">
+    <h3 class="text-base font-semibold text-brand-text mb-1">No encontramos veterinarias con estos filtros</h3>
+    <p class="text-sm text-brand-text-muted max-w-md mx-auto">Prueba cambiando los filtros o amplía la búsqueda.</p>
+    <button id="reset-all-filters-empty" class="mt-4 px-4 py-2 text-xs font-bold rounded-lg bg-brand-primary/10 text-brand-primary border border-brand-primary/20 hover:bg-brand-primary/20 transition-colors cursor-pointer duration-200">
       Restablecer filtros
     </button>
   </div>
@@ -120,10 +120,10 @@
   <!-- Nearby fallback section (shown when geolocation is active) -->
   <div id="fallback-cercanas" class="hidden">
     <div class="flex items-center gap-2 mb-4">
-      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">
         ⚠️ Llamar antes de salir
       </span>
-      <span class="text-xs text-slate-400">Las más cercanas a ti (aunque estén cerradas ahora)</span>
+      <span class="text-xs text-brand-text-muted">Las más cercanas a ti (aunque estén cerradas ahora)</span>
     </div>
     <div id="empty-state-fallback-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </div>
@@ -310,6 +310,7 @@
   let activeAnimal = 'todos';
   let inSOSFlow = false;
   let originalCardsOrder: HTMLElement[] = [];
+  let autoGeoTimeoutId: any = null;
 
   // Helper to restore original order and reset proximity status
   function restoreDefaultSorting() {
@@ -338,7 +339,7 @@
     const geoBtnText = document.getElementById('geo-btn-text');
     if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
     if (geoBtn) {
-      geoBtn.classList.remove('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5', 'opacity-60', 'pointer-events-none');
+      geoBtn.classList.remove('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10', 'opacity-60', 'pointer-events-none');
     }
 
     // Remove user pin from the map
@@ -466,15 +467,15 @@
 
           if (cardsWithCoords.length > 0) {
             fallbackGrid.innerHTML = cardsWithCoords.map(({ dist, nombre, zone, href, is247 }) => `
-              <a href="${href}" class="flex flex-col gap-1.5 p-4 rounded-xl bg-slate-900/40 border border-amber-500/20 hover:border-amber-500/40 transition-all">
+              <a href="${href}" class="flex flex-col gap-1.5 p-4 rounded-xl bg-brand-card-bg border border-brand-card-border hover:border-brand-primary/35 transition-all">
                 <div class="flex items-center gap-2 justify-between">
-                  <span class="text-xs font-bold text-slate-200 capitalize">${nombre}</span>
-                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full ${is247 ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' : 'bg-slate-800 text-slate-500 border border-slate-700'}">
+                  <span class="text-xs font-bold text-brand-text capitalize">${nombre}</span>
+                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full ${is247 ? 'bg-brand-danger-bg text-brand-primary border border-brand-danger-border' : 'bg-brand-card-bg border border-brand-card-border text-brand-text-muted'}">
                     ${is247 ? '24/7' : 'Horario regular'}
                   </span>
                 </div>
-                <span class="text-[10px] text-slate-500 capitalize">📍 ${zone}</span>
-                <span class="text-[10px] font-semibold text-blue-400">🗺️ A ${dist.toFixed(1)} km de ti</span>
+                <span class="text-[10px] text-brand-text-muted capitalize">📍 ${zone}</span>
+                <span class="text-[10px] font-semibold text-brand-primary">🗺️ A ${dist.toFixed(1)} km de ti</span>
               </a>
             `).join('');
             fallbackSection.classList.remove('hidden');
@@ -555,10 +556,10 @@
       const userIcon = L.divIcon({
         html: `<div style="
           width:16px;height:16px;
-          background:#3b82f6;
+          background:#f43f5e;
           border:3px solid white;
           border-radius:50%;
-          box-shadow:0 0 0 4px rgba(59,130,246,0.3);
+          box-shadow:0 0 0 4px rgba(244,63,94,0.3);
           pointer-events: none;
         "></div>`,
         className: 'user-location-pin',
@@ -567,7 +568,7 @@
       });
       L.marker([lat, lng], { icon: userIcon })
         .addTo(map)
-        .bindPopup('<strong style="color:#93c5fd">📍 Tu ubicación</strong>')
+        .bindPopup('<strong style="color:#f43f5e">📍 Tu ubicación</strong>')
         .openPopup();
       map.setView([lat, lng], 11, { animate: true });
     }
@@ -608,17 +609,17 @@
       if (searchInput) searchInput.value = '';
       if (clearBtn) clearBtn.classList.add('hidden');
 
-      filterOpenBtn?.classList.remove('bg-emerald-500/10', 'text-emerald-400', 'border-emerald-500/25');
-      filter247Btn?.classList.remove('bg-rose-500/15', 'text-rose-400', 'border-rose-500/25');
+      filterOpenBtn?.classList.remove('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
+      filter247Btn?.classList.remove('bg-brand-danger-bg', 'text-brand-primary', 'border-brand-danger-border');
 
       animalFilters.forEach(b => {
-        b.classList.remove('bg-rose-500', 'text-white', 'border-transparent');
-        b.classList.add('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
+        b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
+        b.classList.add('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
       });
       const todosBtn = document.querySelector<HTMLElement>('[data-filter-animal="todos"]');
       if (todosBtn) {
-        todosBtn.classList.remove('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
-        todosBtn.classList.add('bg-rose-500', 'text-white', 'border-transparent');
+        todosBtn.classList.remove('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
+        todosBtn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
       }
 
       restoreDefaultSorting();
@@ -631,23 +632,26 @@
     // ── Open Now ──
     filterOpenBtn?.addEventListener('click', () => {
       filterOnlyOpen = !filterOnlyOpen;
-      filterOpenBtn.classList.toggle('bg-emerald-500/10');
-      filterOpenBtn.classList.toggle('text-emerald-400');
-      filterOpenBtn.classList.toggle('border-emerald-500/25');
+      filterOpenBtn.classList.toggle('bg-brand-success-bg');
+      filterOpenBtn.classList.toggle('text-brand-success');
+      filterOpenBtn.classList.toggle('border-brand-success-border');
       applyAllFilters();
     });
 
     // ── Solo 24/7 ──
     filter247Btn?.addEventListener('click', () => {
       filterOnly247 = !filterOnly247;
-      filter247Btn.classList.toggle('bg-rose-500/15');
-      filter247Btn.classList.toggle('text-rose-400');
-      filter247Btn.classList.toggle('border-rose-500/25');
+      filter247Btn.classList.toggle('bg-brand-danger-bg');
+      filter247Btn.classList.toggle('text-brand-primary');
+      filter247Btn.classList.toggle('border-brand-danger-border');
       applyAllFilters();
     });
 
     // ── Geolocation ──
     geoBtn?.addEventListener('click', () => {
+      if (autoGeoTimeoutId) {
+        clearTimeout(autoGeoTimeoutId);
+      }
       if (geoActive) {
         restoreDefaultSorting();
         applyAllFilters();
@@ -670,7 +674,7 @@
 
           if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
           geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-          geoBtn.classList.add('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5');
+          geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
 
           sortByProximity(userLat, userLng);
           applyAllFilters();
@@ -689,11 +693,11 @@
     animalFilters.forEach(btn => {
       btn.addEventListener('click', () => {
         animalFilters.forEach(b => {
-          b.classList.remove('bg-rose-500', 'text-white', 'border-transparent');
-          b.classList.add('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
+          b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
+          b.classList.add('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
         });
-        btn.classList.add('bg-rose-500', 'text-white', 'border-transparent');
-        btn.classList.remove('bg-slate-950/40', 'text-slate-400', 'border-slate-800');
+        btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
+        btn.classList.remove('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
       });
@@ -701,15 +705,18 @@
 
     // ── SOS Emergency Trigger ──
     const triggerSOSEmergency = () => {
+      if (autoGeoTimeoutId) {
+        clearTimeout(autoGeoTimeoutId);
+      }
       inSOSFlow = true;
       filterOnlyOpen = true;
       filterOnly247 = true;
 
       if (filterOpenBtn) {
-        filterOpenBtn.classList.add('bg-emerald-500/10', 'text-emerald-400', 'border-emerald-500/25');
+        filterOpenBtn.classList.add('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
       }
       if (filter247Btn) {
-        filter247Btn.classList.add('bg-rose-500/15', 'text-rose-400', 'border-rose-500/25');
+        filter247Btn.classList.add('bg-brand-danger-bg', 'text-brand-primary', 'border-brand-danger-border');
       }
 
       const sosContainer = document.getElementById('sos-highlight-container');
@@ -734,7 +741,7 @@
           if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
           if (geoBtn) {
             geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-            geoBtn.classList.add('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5');
+            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
           }
 
           sortByProximity(userLat, userLng);
@@ -780,6 +787,7 @@
 
     if (navigator.geolocation && geoBtn) {
       const triggerAutoGeo = () => {
+        if (geoActive) return; // Don't run if already active or clicked
         if (geoBtnText) geoBtnText.textContent = 'Obteniendo ubicación…';
         geoBtn.classList.add('opacity-60', 'pointer-events-none');
 
@@ -791,7 +799,7 @@
 
             if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
             geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-            geoBtn.classList.add('text-blue-400', 'border-blue-500/30', 'bg-blue-500/5');
+            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
 
             sortByProximity(userLat, userLng);
             applyAllFilters();
@@ -813,20 +821,20 @@
                 triggerAutoGeo();
               } else if (result.state === 'prompt' && isTodasProvincias) {
                 // Only prompt automatically on the home page (Todas las provincias) after a short delay
-                setTimeout(triggerAutoGeo, 800);
+                autoGeoTimeoutId = setTimeout(triggerAutoGeo, 800);
               }
             })
             .catch((err) => {
               console.warn('Permissions query rejected:', err);
-              if (isTodasProvincias) setTimeout(triggerAutoGeo, 800);
+              if (isTodasProvincias) autoGeoTimeoutId = setTimeout(triggerAutoGeo, 800);
             });
         } catch (e) {
           console.warn('Permissions query threw error:', e);
-          if (isTodasProvincias) setTimeout(triggerAutoGeo, 800);
+          if (isTodasProvincias) autoGeoTimeoutId = setTimeout(triggerAutoGeo, 800);
         }
       } else if (isTodasProvincias) {
         // Fallback for browsers that don't support query permission
-        setTimeout(triggerAutoGeo, 800);
+        autoGeoTimeoutId = setTimeout(triggerAutoGeo, 800);
       }
     }
   }

@@ -1,1 +1,71 @@
 @import "tailwindcss";
+
+@theme {
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-text: var(--brand-text);
+  --color-brand-text-muted: var(--brand-text-muted);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-card-bg: var(--brand-card-bg);
+  --color-brand-card-border: var(--brand-card-border);
+  --color-brand-success: var(--brand-success);
+  --color-brand-success-border: var(--brand-success-border);
+  --color-brand-success-bg: var(--brand-success-bg);
+  --color-brand-warning-bg: var(--brand-warning-bg);
+  --color-brand-warning-border: var(--brand-warning-border);
+  --color-brand-warning-text: var(--brand-warning-text);
+  --color-brand-danger-bg: var(--brand-danger-bg);
+  --color-brand-danger-border: var(--brand-danger-border);
+  --color-brand-danger-text: var(--brand-danger-text);
+}
+
+:root {
+  /* Default to Dark Theme (Calming Obsidian) */
+  --brand-bg: #060814;
+  --brand-text: #f8fafc;
+  --brand-text-muted: #94a3b8;
+  --brand-primary: #f43f5e;
+  --brand-primary-hover: #e11d48;
+  --brand-secondary: #fbbf24;
+  --brand-card-bg: rgba(15, 23, 42, 0.45);
+  --brand-card-border: rgba(30, 41, 59, 0.6);
+  --brand-success: #10b981;
+  --brand-success-border: rgba(16, 185, 129, 0.25);
+  --brand-success-bg: rgba(16, 185, 129, 0.1);
+  --brand-warning-bg: rgba(251, 191, 36, 0.1);
+  --brand-warning-border: rgba(251, 191, 36, 0.25);
+  --brand-warning-text: #fbbf24;
+  --brand-danger-bg: rgba(244, 63, 94, 0.1);
+  --brand-danger-border: rgba(244, 63, 94, 0.25);
+  --brand-danger-text: #f43f5e;
+}
+
+:root.light, .light {
+  /* Light Theme (Clinical slate white) */
+  --brand-bg: #f8fafc;
+  --brand-text: #0f172a;
+  --brand-text-muted: #475569;
+  --brand-primary: #e11d48;
+  --brand-primary-hover: #be123c;
+  --brand-secondary: #d97706;
+  --brand-card-bg: #ffffff;
+  --brand-card-border: #e2e8f0;
+  --brand-success: #059669;
+  --brand-success-border: rgba(5, 150, 105, 0.25);
+  --brand-success-bg: rgba(5, 150, 105, 0.1);
+  --brand-warning-bg: rgba(217, 119, 6, 0.1);
+  --brand-warning-border: rgba(217, 119, 6, 0.25);
+  --brand-warning-text: #d97706;
+  --brand-danger-bg: rgba(225, 29, 72, 0.1);
+  --brand-danger-border: rgba(225, 29, 72, 0.25);
+  --brand-danger-text: #e11d48;
+}
+
+/* Custom Leaflet Map tile styling in dark mode */
+html:not(.light) .leaflet-tile-container {
+  filter: invert(100%) hue-rotate(180deg) brightness(90%) contrast(85%);
+}
+html:not(.light) .leaflet-container {
+  background: #060814 !important;
+}

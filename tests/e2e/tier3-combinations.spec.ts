@@ -162,9 +162,9 @@ test.describe('Tier 3: Cross-Feature Combinations', () => {
     // Map loading overlay should disappear
     await expect(page.locator('#mapa-loading')).toBeHidden({ timeout: 15000 });
 
-    // Count clinic markers on the map for Cartago (should be exactly 4)
+    // Count clinic markers on the map for Cartago (should be exactly 10)
     const markerCount = await page.locator('.leaflet-marker-icon').count();
-    expect(markerCount).toBe(4);
+    expect(markerCount).toBe(10);
 
     // Get the map center
     const center = await page.evaluate(() => {

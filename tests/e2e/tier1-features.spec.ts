@@ -48,18 +48,19 @@ test.describe('Tier 1: Feature Coverage', () => {
       const called = await page.evaluate(() => (window as any).__geolocationCalled);
       expect(called).toBe(true);
     });
-
     test('2. should sort clinics by proximity with user location set to San José coordinates', async ({ page, context }) => {
       // Grant geolocation permission and mock position to San José
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
-      // Click sorting button
-      await page.click('#btn-use-location');
+      // Click sorting button if not already active
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       // Wait for distances to be updated
       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
-
       // Retrieve all active clinic cards (non-hidden) with valid coordinates
       const cards = page.locator('#clinicas-grid article:not(.hidden)');
       const count = await cards.count();
@@ -85,7 +86,10 @@ test.describe('Tier 1: Feature Coverage', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
-      await page.click('#btn-use-location');
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       const firstBadge = page.locator('[data-distance-for]').first();
       await expect(firstBadge).toBeVisible();
@@ -97,7 +101,10 @@ test.describe('Tier 1: Feature Coverage', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
-      await page.click('#btn-use-location');
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       const firstBadge = page.locator('[data-distance-for]').first();
       await expect(firstBadge).toBeVisible();
@@ -109,7 +116,10 @@ test.describe('Tier 1: Feature Coverage', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 10.6350, longitude: -85.4377 });
 
-      await page.click('#btn-use-location');
+      const btnText = await page.locator('#geo-btn-text').textContent();
+      if (!btnText?.includes('Ordenado')) {
+        await page.click('#btn-use-location');
+      }
 
       // Wait for distances to be updated
       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
@@ -289,18 +299,18 @@ test.describe('Tier 1: Feature Coverage', () => {
   });
 
   test.describe('Report Incorrect Data form', () => {
-    test.fixme('21. should show report incorrect data button on clinic detail page', async ({ page }) => {
+    test('21. should show report incorrect data button on clinic detail page', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await expect(page.locator('#btn-open-report')).toBeVisible();
     });
 
-    test.fixme('22. should open report incorrect data modal when clicking report button', async ({ page }) => {
+    test('22. should open report incorrect data modal when clicking report button', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
       await expect(page.locator('#report-modal')).toBeVisible();
     });
 
-    test.fixme('23. should show validation error when submitting empty description in form', async ({ page }) => {
+    test('23. should show validation error when submitting empty description in form', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
       
@@ -311,7 +321,7 @@ test.describe('Tier 1: Feature Coverage', () => {
       await expect(page.locator('#error-description')).toBeVisible();
     });
 
-    test.fixme('24. should show success message after mock submitting report form with POST request intercepted', async ({ page }) => {
+    test('24. should show success message after mock submitting report form with POST request intercepted', async ({ page }) => {
       await page.route('**/api/report-incorrect', async (route) => {
         expect(route.request().method()).toBe('POST');
         const payload = route.request().postDataJSON();
@@ -336,7 +346,7 @@ test.describe('Tier 1: Feature Coverage', () => {
       await expect(page.locator('#report-success-msg')).toBeVisible();
     });
 
-    test.fixme('25. should hide report modal when clicking close button', async ({ page }) => {
+    test('25. should hide report modal when clicking close button', async ({ page }) => {
       await page.goto('/clinica/hems-una-heredia');
       await page.click('#btn-open-report');
       await expect(page.locator('#report-modal')).toBeVisible();

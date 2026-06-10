@@ -57,7 +57,16 @@ test.describe('Tier 4: Real-World Application Scenarios', () => {
     await expect(page.locator('#clinica-name')).toContainText(firstCardName!.trim());
   });
 
-  test.fixme('58. should execute scenario: user reporting incorrect schedule data on details page', async ({ page }) => {
+  test('58. should execute scenario: user reporting incorrect schedule data on details page', async ({ page }) => {
+    // Mock the POST request to API endpoint
+    await page.route('**/api/report-incorrect', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ success: true }),
+      });
+    });
+
     // 1. Go to clinic details page
     await page.goto('/clinica/hems-una-heredia');
 
