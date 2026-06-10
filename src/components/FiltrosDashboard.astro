@@ -157,6 +157,7 @@
     let minDistanceOverall = Infinity;
 
     cards.forEach(card => {
+      if (card.classList.contains('hidden')) return;
       const isOpen = card.getAttribute('data-is-open') === 'true';
       const cLat = parseFloat(card.getAttribute('data-latitude') || '0');
       const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
@@ -275,10 +276,14 @@
 
   // ─── Costa Rica local time ─────────────────────────────────────────────
   function getCostaRicaTime() {
-    const options = { timeZone: "America/Costa_Rica", hour12: false } as const;
-    const localeString = new Date().toLocaleString("en-US", options);
-    const crDate = new Date(localeString);
-    return { day: crDate.getDay(), hour: crDate.getHours(), minute: crDate.getMinutes() };
+    const now = new Date();
+    // Costa Rica is UTC-6 all year round (no DST)
+    const crTime = new Date(now.getTime() - (6 * 60 * 60 * 1000));
+    return {
+      day: crTime.getUTCDay(),
+      hour: crTime.getUTCHours(),
+      minute: crTime.getUTCMinutes()
+    };
   }
 
   // ─── Status update ─────────────────────────────────────────────────────
@@ -302,7 +307,10 @@
           const [startHour, endHour] = hoursPart.split('-').map(Number);
           if (daysPart.includes('-')) {
             const [startDay, endDay] = daysPart.split('-').map(Number);
-            if (day >= startDay && day <= endDay) {
+            const isDayMatch = startDay <= endDay 
+              ? (day >= startDay && day <= endDay) 
+              : (day >= startDay || day <= endDay);
+            if (isDayMatch) {
               isOpen = hour >= startHour && hour < endHour;
               break;
             }
@@ -411,8 +419,16 @@
       let show = true;
 
       // Safety: hide unverified clinics when filtering for emergency help
-      if (filterOnlyOpen || filterOnly247) {
+      if (filterOnly247) {
         if (confidence === 'low' || status === 'REVIEW_REQUIRED' || !emergencyVerified) {
+          show = false;
+        }
+      } else if (filterOnlyOpen) {
+        // En búsqueda diurna (Abierto Ahora), permitimos veterinarias diurnas normales que sean confiables,
+        // pero seguimos filtrando aquellas con baja confianza, en revisión, o si dicen ser 24/7 sin verificación.
+        if (confidence === 'low' || status === 'REVIEW_REQUIRED') {
+          show = false;
+        } else if (is247 && !emergencyVerified) {
           show = false;
         }
       }
