@@ -78,9 +78,26 @@ const mapData = sortedClinicas.map(c => ({
 
 const pageTitle = `Veterinarias de Emergencias en ${nombreProvincia}`;
 const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atención nocturna en la provincia de ${nombreProvincia}, Costa Rica.`;
+
+// Build ItemList Schema Markup for Province Directory SEO
+const schemaItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": `Veterinarias de Emergencia en ${nombreProvincia}`,
+  "description": `Lista de clínicas veterinarias en la provincia de ${nombreProvincia}, Costa Rica con servicios de emergencias 24/7 y atención nocturna.`,
+  "numberOfItems": sortedClinicas.length,
+  "itemListElement": sortedClinicas.map((c, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": new URL(`/clinica/${c.data.slug}`, Astro.url.href).href,
+    "name": c.data.nombre
+  }))
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
+  <!-- Inject Directory Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
   <!-- Section Header -->
   <section class="py-6 scroll-mt-20" aria-labelledby="provincia-title">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6 transition-colors duration-200">

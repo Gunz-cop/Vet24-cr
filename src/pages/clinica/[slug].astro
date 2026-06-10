@@ -46,6 +46,8 @@ const {
   accepts_emergency_walkins = false,
   verification_notes = [],
   verification_source = "",
+  latitude = 0,
+  longitude = 0,
   waze_url = "",
   maps_url = ""
 } = clinica.data;
@@ -57,7 +59,13 @@ const tel2Href = telefono2 ? `tel:+506${cleanPhone(telefono2)}` : null;
 const whatsappHref = whatsapp ? `https://wa.me/506${cleanPhone(whatsapp)}` : null;
 const webUrl = web ? (web.startsWith('http') ? web : `https://${web}`) : null;
 
-// JSON-LD Schema Markup
+// Collect social media and website URLs for schema sameAs
+const schemaSameAs: string[] = [];
+if (webUrl) schemaSameAs.push(webUrl);
+if (facebook) schemaSameAs.push(`https://${facebook}`);
+if (instagram) schemaSameAs.push(`https://instagram.com/${instagram.replace('@', '')}`);
+
+// JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "VeterinaryCare"],
@@ -67,12 +75,24 @@ const schemaMarkup = {
   "image": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800",
   "url": webUrl || Astro.url.href,
   "telephone": telefono1 || whatsapp || "",
+  "priceRange": "$$",
+  "sameAs": schemaSameAs.length > 0 ? schemaSameAs : undefined,
+  "hasMap": maps_url || undefined,
+  "geo": latitude && longitude ? {
+    "@type": "GeoCoordinates",
+    "latitude": latitude,
+    "longitude": longitude
+  } : undefined,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": direccion,
     "addressLocality": zona,
     "addressRegion": provincia,
     "addressCountry": "CR"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": provincia
   },
   "openingHoursSpecification": emergencias24h ? [
     {
@@ -87,7 +107,11 @@ const schemaMarkup = {
 };
 
 const pageTitle = `${nombre} | Vet24 Costa Rica`;
-const pageDesc = `${nombre} en ${zona}, ${provincia}. ${copyDiferenciador}`;
+
+// Generate highly optimized meta description based on clinic emergency tier
+const pageDesc = emergencias24h
+  ? `¿Urgencia veterinaria? Contacta a ${nombre} en ${zona}, ${provincia}. Servicio de emergencias veterinarias 24/7. 📞 Llama ahora al ${telefono1 || whatsapp}. Atendemos de inmediato.`
+  : `Horarios, teléfono y dirección de ${nombre} en ${zona}, ${provincia}. Encuentra servicios veterinarios y de consulta general para tu mascota en Costa Rica.`;
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>

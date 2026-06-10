@@ -44,9 +44,27 @@ const mapData = sortedClinicas.map(c => ({
   emergency_tier: c.data.emergency_tier,
   confidence_score: c.data.confidence_score,
 }));
+
+// Build ItemList Schema Markup for Directory SEO
+const schemaItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Directorio de Veterinarias de Emergencia en Costa Rica",
+  "description": "Lista de las mejores clínicas veterinarias con servicios de emergencias 24/7 y atención nocturna en Costa Rica.",
+  "numberOfItems": sortedClinicas.length,
+  "itemListElement": sortedClinicas.map((c, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": new URL(`/clinica/${c.data.slug}`, Astro.url.href).href,
+    "name": c.data.nombre
+  }))
+};
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
+  <!-- Inject Directory Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
+
   <!-- Hero Section -->
   <section class="text-center py-16 md:py-24 relative overflow-hidden" aria-labelledby="hero-title">
     <!-- Modern tech grid backdrop -->
