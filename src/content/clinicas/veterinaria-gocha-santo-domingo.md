@@ -1,11 +1,11 @@
-﻿---id: 13
+---id: 13
 nombre: "Veterinaria Gocha"
 provincia: "Heredia"
 zona: "Santo Domingo de Heredia"
 direccion: "De la McDonald's de Santo Domingo, 50 m este y 50 m norte, Santo Domingo de Heredia"
 telefono1: "4000-2795"
 telefono2: "2244-8726"
-whatsapp: "4000-2795"
+whatsapp: "8964-6632"
 horarioTexto: "Urgencias 24/7 — canal exclusivo nocturno"
 categoriaHorario: "Cierra después 21h"
 emergencias24h: false

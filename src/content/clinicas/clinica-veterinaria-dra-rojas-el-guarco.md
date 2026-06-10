@@ -22,7 +22,7 @@ estado: "verificado"
 copyDiferenciador: "Amplia trayectoria en el Guarco de Cartago, con servicio de emergencias móvil nocturno."
 confidence_score: "high"
 record_status: "VERIFIED"
-emergency_tier: "Tier A"
+emergency_tier: "Tier B"
 last_verified: "2026-06-09"
 phone_verified: true
 address_verified: true

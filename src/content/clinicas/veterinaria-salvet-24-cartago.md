@@ -29,7 +29,7 @@ address_verified: true
 schedule_verified: true
 emergency_verified: true
 has_surgery: true
-has_hospitalization: false
+has_hospitalization: true
 verification_source: "Búsqueda web - directorio local"
 overnight_doctor_present: true
 latitude: 9.864
