@@ -149,23 +149,52 @@
   // ─── SOS Helpers ───────────────────────────────────────────────────────
   function renderClosestSOSEmergency(lat: number, lng: number) {
     const cards = Array.from(document.querySelectorAll<HTMLElement>('#clinicas-grid article'));
-    let closestClinic: HTMLElement | null = null;
-    let minDistance = Infinity;
+    
+    let closestTierAB: HTMLElement | null = null;
+    let minDistanceTierAB = Infinity;
+    
+    let closestOverall: HTMLElement | null = null;
+    let minDistanceOverall = Infinity;
 
     cards.forEach(card => {
       const isOpen = card.getAttribute('data-is-open') === 'true';
-      const is247 = card.getAttribute('data-247') === 'true';
       const cLat = parseFloat(card.getAttribute('data-latitude') || '0');
       const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
+      const tier = card.getAttribute('data-tier') || '';
       
-      if (isOpen && is247 && cLat !== 0 && cLng !== 0) {
+      if (isOpen && cLat !== 0 && cLng !== 0) {
         const dist = haversineKm(lat, lng, cLat, cLng);
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestClinic = card;
+        
+        if (dist < minDistanceOverall) {
+          minDistanceOverall = dist;
+          closestOverall = card;
+        }
+
+        if (tier === 'Tier A' || tier === 'Tier B') {
+          if (dist < minDistanceTierAB) {
+            minDistanceTierAB = dist;
+            closestTierAB = card;
+          }
         }
       }
     });
+
+    let closestClinic: HTMLElement | null = null;
+    let minDistance = Infinity;
+    let isPreferredTier = false;
+
+    // Si hay una clínica de Tier A o B abierta a menos de 15 km, la preferimos por estar más equipada para emergencias.
+    // De lo contrario, sugerimos la clínica abierta más cercana en general (que puede ser de horario regular Tier C/D).
+    if (closestTierAB && minDistanceTierAB <= 15) {
+      closestClinic = closestTierAB;
+      minDistance = minDistanceTierAB;
+      isPreferredTier = true;
+    } else if (closestOverall) {
+      closestClinic = closestOverall;
+      minDistance = minDistanceOverall;
+      const tier = closestClinic.getAttribute('data-tier') || '';
+      isPreferredTier = (tier === 'Tier A' || tier === 'Tier B');
+    }
 
     const sosContainer = document.getElementById('sos-highlight-container');
     if (!sosContainer) return;
@@ -186,7 +215,7 @@
           <!-- Badge -->
           <div class="flex items-center justify-between flex-wrap gap-2">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-brand-primary text-[#1a1a18] dark:text-[#1a1a18]">
-              🚨 LA VETERINARIA ABIERTA 24/7 MÁS CERCANA
+              🚨 ${isPreferredTier ? 'LA VETERINARIA ABIERTA 24/7 MÁS CERCANA' : 'LA VETERINARIA ABIERTA MÁS CERCANA (HORARIO REGULAR)'}
             </span>
             <span class="text-xs font-black text-brand-primary uppercase tracking-widest font-['Outfit',sans-serif]">
               A ${minDistance.toFixed(1)} km de ti
@@ -197,7 +226,7 @@
           <div>
             <h3 class="text-xl font-black text-brand-text capitalize mb-1 font-['Outfit',sans-serif]">${nombre}</h3>
             <p class="text-xs text-brand-text-muted capitalize mb-1">📍 ${zona} — <span class="font-normal text-brand-text-muted/80">${direccion}</span></p>
-            <p class="text-xs text-brand-primary font-bold mb-3">🕒 Horario de emergencias: ${horarioTexto}</p>
+            <p class="text-xs text-brand-primary font-bold mb-3">🕒 Horario de atención: ${horarioTexto}</p>
             <p class="text-xs text-brand-text-muted/70 font-light leading-relaxed">${copyDiferenciador}</p>
           </div>
 
@@ -224,7 +253,7 @@
       sosContainer.classList.remove('hidden');
       sosContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      showSOSSafetyNotice('No encontramos clínicas 24/7 abiertas en este momento. Revisa el listado regular abajo:');
+      showSOSSafetyNotice('No encontramos clínicas abiertas en este momento. Revisa el listado regular abajo:');
     }
   }
 
@@ -710,13 +739,14 @@
       }
       inSOSFlow = true;
       filterOnlyOpen = true;
-      filterOnly247 = true;
+      filterOnly247 = false; // Permitimos cualquier clínica abierta, no solo 24/7, para atender emergencias diurnas localmente
 
       if (filterOpenBtn) {
         filterOpenBtn.classList.add('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
       }
       if (filter247Btn) {
-        filter247Btn.classList.add('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
+        // En SOS diurno no forzamos el filtro visual de 24/7
+        filter247Btn.classList.remove('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
       }
 
       const sosContainer = document.getElementById('sos-highlight-container');
@@ -725,7 +755,7 @@
       if (!navigator.geolocation) {
         applyAllFilters();
         inSOSFlow = false;
-        showSOSSafetyNotice('Tu navegador no soporta geolocalización, pero filtramos todas las de emergencia 24/7 abiertas ahora.');
+        showSOSSafetyNotice('Tu navegador no soporta geolocalización, pero filtramos todas las clínicas abiertas en este momento.');
         return;
       }
 
@@ -755,7 +785,7 @@
           if (geoBtn) geoBtn.classList.remove('opacity-60', 'pointer-events-none');
 
           applyAllFilters();
-          showSOSSafetyNotice('No pudimos acceder a tu ubicación. Mostrando todas las clínicas de emergencia 24/7 abiertas ahora:');
+          showSOSSafetyNotice('No pudimos acceder a tu ubicación. Mostrando todas las clínicas abiertas en este momento:');
           inSOSFlow = false;
         },
         { timeout: 10000, maximumAge: 300000 }
