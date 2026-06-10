@@ -21,45 +21,45 @@
 }
 
 :root {
-  /* Default to Dark Theme (Calming Sage & Charcoal) */
-  --brand-bg: #121412;
-  --brand-text: #f8fff7;
-  --brand-text-muted: #adcfb6;
-  --brand-primary: #adcfb6;
-  --brand-primary-hover: #c9ebd1;
-  --brand-secondary: #2f4d3a;
-  --brand-card-bg: #1b1e1b;
-  --brand-card-border: #2f4d3a;
-  --brand-success: #adcfb6;
-  --brand-success-border: rgba(173, 207, 182, 0.25);
-  --brand-success-bg: rgba(173, 207, 182, 0.1);
+  /* Default to Dark Theme (Midnight Slate & Sky Blue) */
+  --brand-bg: #0b0f19;
+  --brand-text: #f8fafc;
+  --brand-text-muted: #94a3b8;
+  --brand-primary: #0ea5e9;
+  --brand-primary-hover: #38bdf8;
+  --brand-secondary: #1e293b;
+  --brand-card-bg: #131a2c;
+  --brand-card-border: #1e293b;
+  --brand-success: #10b981;
+  --brand-success-border: rgba(16, 185, 129, 0.25);
+  --brand-success-bg: rgba(16, 185, 129, 0.1);
   --brand-warning-bg: rgba(217, 119, 6, 0.1);
   --brand-warning-border: rgba(217, 119, 6, 0.25);
   --brand-warning-text: #d97706;
-  --brand-danger-bg: rgba(185, 28, 28, 0.1);
-  --brand-danger-border: rgba(185, 28, 28, 0.25);
-  --brand-danger-text: #b91c1c;
+  --brand-danger-bg: rgba(244, 63, 94, 0.1);
+  --brand-danger-border: rgba(244, 63, 94, 0.25);
+  --brand-danger-text: #f43f5e;
 }
 
 :root.light, .light {
-  /* Light Theme (Warm Ivory & Sage Green) */
-  --brand-bg: #faf9f4;
-  --brand-text: #1b1c19;
-  --brand-text-muted: #424843;
-  --brand-primary: #45634f;
-  --brand-primary-hover: #5d7c67;
-  --brand-secondary: #fdcb9b;
-  --brand-card-bg: #f5f4ef;
-  --brand-card-border: #dbdad5;
-  --brand-success: #45634f;
-  --brand-success-border: rgba(69, 99, 79, 0.25);
-  --brand-success-bg: rgba(69, 99, 79, 0.1);
+  /* Light Theme (Clean Slate & Tech Blue) */
+  --brand-bg: #fafbfc;
+  --brand-text: #0f172a;
+  --brand-text-muted: #475569;
+  --brand-primary: #0284c7;
+  --brand-primary-hover: #0369a1;
+  --brand-secondary: #e2e8f0;
+  --brand-card-bg: #ffffff;
+  --brand-card-border: #e2e8f0;
+  --brand-success: #059669;
+  --brand-success-border: rgba(5, 150, 105, 0.25);
+  --brand-success-bg: rgba(5, 150, 105, 0.1);
   --brand-warning-bg: rgba(217, 119, 6, 0.1);
   --brand-warning-border: rgba(217, 119, 6, 0.25);
   --brand-warning-text: #d97706;
-  --brand-danger-bg: rgba(185, 28, 28, 0.1);
-  --brand-danger-border: rgba(185, 28, 28, 0.25);
-  --brand-danger-text: #b91c1c;
+  --brand-danger-bg: rgba(244, 63, 94, 0.1);
+  --brand-danger-border: rgba(244, 63, 94, 0.25);
+  --brand-danger-text: #f43f5e;
 }
 
 /* Custom Leaflet Map tile styling in dark mode */
@@ -67,7 +67,7 @@ html:not(.light) .leaflet-tile-container {
   filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
 }
 html:not(.light) .leaflet-container {
-  background: #121412 !important;
+  background: #0b0f19 !important;
 }
 
 /* Utility Animations */
