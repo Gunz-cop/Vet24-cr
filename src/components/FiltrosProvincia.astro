@@ -6,37 +6,44 @@ interface Props {
 const { activeProvincia } = Astro.props;
 
 const provincias = [
-  { nombre: "Todas las Provincias", slug: "todas", href: "/" },
-  { nombre: "San José", slug: "san-jose", href: "/provincia/san-jose" },
-  { nombre: "Heredia", slug: "heredia", href: "/provincia/heredia" },
-  { nombre: "Alajuela", slug: "alajuela", href: "/provincia/alajuela" },
-  { nombre: "Cartago", slug: "cartago", href: "/provincia/cartago" },
-  { nombre: "Guanacaste", slug: "guanacaste", href: "/provincia/guanacaste" },
-  { nombre: "Puntarenas", slug: "puntarenas", href: "/provincia/puntarenas" },
-  { nombre: "Limón", slug: "limon", href: "/provincia/limon" }
+  { nombre: "Todas", code: "CR", slug: "todas", href: "/" },
+  { nombre: "San José", code: "SJ", slug: "san-jose", href: "/provincia/san-jose" },
+  { nombre: "Heredia", code: "HE", slug: "heredia", href: "/provincia/heredia" },
+  { nombre: "Alajuela", code: "AL", slug: "alajuela", href: "/provincia/alajuela" },
+  { nombre: "Cartago", code: "CA", slug: "cartago", href: "/provincia/cartago" },
+  { nombre: "Guanacaste", code: "GU", slug: "guanacaste", href: "/provincia/guanacaste" },
+  { nombre: "Puntarenas", code: "PU", slug: "puntarenas", href: "/provincia/puntarenas" },
+  { nombre: "Limón", code: "LI", slug: "limon", href: "/provincia/limon" }
 ];
 
 const currentSlug = activeProvincia || "todas";
 ---
 
 <div class="w-full mb-8">
-  <h2 class="text-xs font-semibold text-brand-text-muted uppercase tracking-wider mb-3 block">
+  <h2 class="text-xs font-black text-brand-text-muted uppercase tracking-wider mb-4 block font-['Outfit',sans-serif]">
     Filtrar por Provincia
   </h2>
   
-  <nav class="flex items-center gap-2 overflow-x-auto pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Filtro de provincias">
+  <nav class="flex items-center gap-3 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Filtro de provincias">
     {provincias.map((prov) => {
       const isActive = currentSlug === prov.slug;
       return (
         <a
           href={prov.href}
           id={`filter-prov-${prov.slug}`}
-          class={`inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-semibold rounded-full border whitespace-nowrap transition-all duration-200 ${
+          class={`inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold rounded-2xl border whitespace-nowrap transition-all duration-300 group cursor-pointer ${
             isActive
-              ? "bg-gradient-to-r from-brand-primary to-brand-secondary text-white border-transparent shadow-md shadow-brand-primary/25 scale-[1.02]"
-              : "bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-text border-brand-card-border hover:border-brand-primary/30"
+              ? "bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white border-transparent shadow-lg shadow-brand-primary/25 scale-[1.03]"
+              : "bg-brand-card-bg/55 backdrop-blur-md hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-text border-brand-card-border hover:border-brand-primary/30 hover:scale-[1.01]"
           }`}
         >
+          <span class={`text-[9px] font-black px-1.5 py-0.5 rounded transition-colors duration-300 ${
+            isActive
+              ? "bg-white/20 text-white"
+              : "bg-brand-bg/60 text-brand-text-muted group-hover:text-brand-primary group-hover:bg-brand-primary/10"
+          }`}>
+            {prov.code}
+          </span>
           {prov.nombre}
         </a>
       );

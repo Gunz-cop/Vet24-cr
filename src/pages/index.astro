@@ -48,25 +48,44 @@ const mapData = sortedClinicas.map(c => ({
 
 <BaseLayout title={pageTitle} description={pageDesc}>
   <!-- Hero Section -->
-  <section class="text-center py-12 md:py-20 relative overflow-hidden" aria-labelledby="hero-title">
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-4 animate-pulse">
+  <section class="text-center py-16 md:py-24 relative overflow-hidden" aria-labelledby="hero-title">
+    <!-- Modern tech grid backdrop -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
+    
+    <div class="relative z-10 max-w-3xl mx-auto px-4">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-black tracking-wider uppercase rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-6 animate-pulse">
         Atención Médica 24 Horas
       </span>
       
-      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight text-brand-text mb-6 font-['Outfit',sans-serif]">
+      <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-text mb-6 font-['Outfit',sans-serif] leading-[1.1]">
         Veterinarias de Guardia y <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">Emergencias 24/7</span>
+        <span class="bg-gradient-to-r from-brand-primary via-emerald-400 to-brand-primary bg-clip-text text-transparent drop-shadow-sm">Emergencias 24/7</span>
       </h1>
       
-      <p class="text-lg text-brand-text-muted mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+      <p class="text-base sm:text-lg text-brand-text-muted mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
         El directorio de clínicas veterinarias en Costa Rica especializado en servicios nocturnos, urgencias quirúrgicas y atención de fauna exótica.
       </p>
       
       <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
-        <a href="#directorio" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary hover:brightness-110 text-white transition-all shadow-lg shadow-brand-primary/20 hover:scale-[1.02] active:scale-[0.98]" id="cta-directorio">
+        <a href="#directorio" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:brightness-110 text-white transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:shadow-brand-primary/45 hover:scale-[1.03] active:scale-[0.97]" id="cta-directorio">
           Ver Directorio
         </a>
+      </div>
+
+      <!-- Trust Stats Bar -->
+      <div class="mt-14 flex flex-wrap justify-center gap-4 sm:gap-8 relative z-10">
+        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-brand-secondary/30 transition-colors">
+          <span class="text-brand-secondary text-sm">🟢</span>
+          <span class="text-xs font-bold text-brand-text">79 Veterinarias</span>
+        </div>
+        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-brand-primary/30 transition-colors">
+          <span class="text-brand-primary text-sm">🚨</span>
+          <span class="text-xs font-bold text-brand-text">Guardia 24/7</span>
+        </div>
+        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-sky-400/30 transition-colors">
+          <span class="text-sky-400 text-sm">📍</span>
+          <span class="text-xs font-bold text-brand-text">GAM y Playas</span>
+        </div>
       </div>
     </div>
   </section>

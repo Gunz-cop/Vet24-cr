@@ -66,8 +66,8 @@ const canonical = canonicalUrl || Astro.url.href;
   <body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-brand-primary/20 selection:text-brand-primary transition-colors duration-200">
     <!-- Glowing background elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-      <div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] rounded-full bg-emerald-500/5 blur-[120px] dark:opacity-100 opacity-40"></div>
-      <div class="absolute top-[20%] -right-[25%] w-[60%] h-[60%] rounded-full bg-brand-primary/5 blur-[120px] dark:opacity-100 opacity-40"></div>
+      <div class="absolute -top-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-emerald-500/10 blur-[130px] dark:opacity-90 opacity-40 animate-orb-1"></div>
+      <div class="absolute top-[30%] -right-[20%] w-[60%] h-[60%] rounded-full bg-brand-primary/8 blur-[120px] dark:opacity-85 opacity-35 animate-orb-2"></div>
     </div>
 
     <!-- Header / Navbar -->
@@ -117,12 +117,12 @@ const canonical = canonicalUrl || Astro.url.href;
 
           <button
             id="btn-sos-emergency"
-            class="relative inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-1.5 text-[10px] sm:text-xs font-black rounded-full border border-brand-primary/80 bg-brand-danger-bg text-brand-primary hover:text-white hover:bg-brand-primary hover:border-brand-primary transition-all cursor-pointer active:scale-95 shadow-md shadow-brand-primary/20 font-['Outfit',sans-serif] tracking-wider"
+            class="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-extrabold rounded-full border border-brand-primary/40 bg-gradient-to-r from-brand-primary/20 to-brand-primary/10 text-brand-primary hover:text-white hover:from-brand-primary hover:to-brand-primary-hover hover:border-brand-primary transition-all duration-300 cursor-pointer active:scale-95 shadow-lg hover:shadow-brand-primary/25 shadow-brand-primary/10 font-['Outfit',sans-serif] tracking-wider"
             title="¡Ayuda médica de emergencia inmediata!"
           >
-            <span class="relative flex h-2 w-2">
+            <span class="relative flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-primary"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-primary"></span>
             </span>
             🚨 SOS EMERGENCIA
           </button>

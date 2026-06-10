@@ -1,21 +1,21 @@
 ---
 ---
 
-<div class="w-full mb-8 flex flex-col gap-3">
+<div class="w-full mb-8 flex flex-col gap-4">
   <!-- Search Bar -->
-  <div class="relative">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
-      class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-text-muted/70 pointer-events-none">
+  <div class="relative group rounded-2xl bg-brand-card-bg/30 border border-brand-card-border/80 shadow-md focus-within:border-brand-primary/45 focus-within:ring-2 focus-within:ring-brand-primary/10 transition-all duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" 
+      class="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-brand-text-muted/60 pointer-events-none group-focus-within:text-brand-primary transition-colors">
       <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
     </svg>
     <input 
       type="search" 
       id="search-input" 
-      placeholder="Buscar por nombre, zona, cantón…"
+      placeholder="Buscar por nombre, zona, cantón o palabra clave..."
       autocomplete="off"
-      class="w-full pl-10 pr-4 py-3 rounded-xl bg-brand-card-bg border border-brand-card-border text-brand-text placeholder-brand-text-muted/65 text-sm focus:outline-none focus:border-brand-primary/50 focus:ring-1 focus:ring-brand-primary/20 transition-all duration-200"
+      class="w-full pl-12 pr-10 py-3.5 bg-transparent text-brand-text placeholder-brand-text-muted/50 text-sm focus:outline-none focus:ring-0 transition-colors"
     />
-    <button id="btn-clear-search" class="absolute right-3 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-text hidden" aria-label="Limpiar búsqueda font-semibold">
+    <button id="btn-clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-primary transition-colors cursor-pointer hidden" aria-label="Limpiar búsqueda">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
@@ -23,30 +23,30 @@
   </div>
 
   <!-- Filters row -->
-  <div class="p-3 rounded-2xl bg-brand-card-bg border border-brand-card-border backdrop-blur-sm flex flex-col gap-3 transition-colors duration-200">
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+  <div class="p-4 rounded-3xl bg-brand-card-bg/40 border border-brand-card-border/70 backdrop-blur-md flex flex-col gap-4 shadow-xl transition-all duration-300">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
       <!-- Status Toggles + Geolocation -->
-      <div class="flex items-center gap-2 flex-wrap">
-        <span class="text-xs text-brand-text-muted font-bold mr-1 uppercase">Estado:</span>
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <span class="text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] mr-1">Estado:</span>
         <button 
           id="filter-quick-open" 
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-brand-success"></span>
+          <span class="h-2 w-2 rounded-full bg-brand-secondary/80 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
           Abierto Ahora
         </button>
         
         <button 
           id="filter-quick-247" 
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
         >
-          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+          <span class="h-2 w-2 rounded-full bg-brand-primary/85 shadow-[0_0_8px_rgba(255,46,99,0.5)] animate-pulse"></span>
           Solo 24/7
         </button>
 
         <button
           id="btn-use-location"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Ordenar por cercanía a tu ubicación"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
@@ -58,43 +58,43 @@
 
         <button
           id="reset-all-filters"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
           title="Restablecer todos los filtros"
         >
-          Restablecer filtros
+          Restablecer
         </button>
       </div>
 
       <!-- Animal Types -->
-      <div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="animal-filters-container">
-        <span class="text-xs text-brand-text-muted font-bold mr-1 shrink-0 uppercase">Especie:</span>
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 scrollbar-none" id="animal-filters-container">
+        <span class="text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] mr-1 shrink-0">Especie:</span>
         <button 
           data-filter-animal="todos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-transparent bg-brand-primary text-white transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-black rounded-xl border border-transparent bg-brand-primary text-white shadow-md shadow-brand-primary/15 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           Todos
         </button>
         <button 
           data-filter-animal="domesticos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐶🐱 Domésticos
         </button>
         <button 
           data-filter-animal="exoticos" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐢 Exóticos
         </button>
         <button 
           data-filter-animal="peces" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐠 Peces
         </button>
         <button 
           data-filter-animal="granja" 
-          class="px-3 py-1.5 text-xs font-bold rounded-lg border border-brand-card-border bg-brand-bg/50 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
+          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
         >
           🐴 Granja
         </button>
@@ -614,11 +614,11 @@
 
       animalFilters.forEach(b => {
         b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-        b.classList.add('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
+        b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
       });
       const todosBtn = document.querySelector<HTMLElement>('[data-filter-animal="todos"]');
       if (todosBtn) {
-        todosBtn.classList.remove('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
+        todosBtn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
         todosBtn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
       }
 
@@ -694,10 +694,10 @@
       btn.addEventListener('click', () => {
         animalFilters.forEach(b => {
           b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-          b.classList.add('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
+          b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
         });
         btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-        btn.classList.remove('bg-brand-bg/50', 'text-brand-text-muted', 'border-brand-card-border');
+        btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
       });
