@@ -5,13 +5,18 @@ interface Props {
   title: string;
   description?: string;
   canonicalUrl?: string;
+  image?: string;
 }
 
-const { title, description, canonicalUrl } = Astro.props;
+const { title, description, canonicalUrl, image } = Astro.props;
 const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
 const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
 const canonical = canonicalUrl || Astro.url.href;
+
+// Resolve absolute URL for the Open Graph image
+const shareImage = image || "/images/og-share-default.png";
+const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -30,12 +35,14 @@ const canonical = canonicalUrl || Astro.url.href;
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={metaDesc} />
+    <meta property="og:image" content={shareImageUrl} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={metaDesc} />
+    <meta property="twitter:image" content={shareImageUrl} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

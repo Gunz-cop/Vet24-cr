@@ -65,6 +65,13 @@ if (webUrl) schemaSameAs.push(webUrl);
 if (facebook) schemaSameAs.push(`https://${facebook}`);
 if (instagram) schemaSameAs.push(`https://instagram.com/${instagram.replace('@', '')}`);
 
+// Determine default schema image based on clinic characteristics for search listings
+const schemaImage = emergencias24h
+  ? "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800" // Emergency/Hospital look
+  : (atiendeExoticos
+      ? "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&q=80&w=800" // Exotic/Nature look
+      : "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"); // Standard vet clinic
+
 // JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
   "@context": "https://schema.org",
@@ -72,7 +79,7 @@ const schemaMarkup = {
   "@id": Astro.url.href,
   "name": nombre,
   "description": copyDiferenciador,
-  "image": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800",
+  "image": schemaImage,
   "url": webUrl || Astro.url.href,
   "telephone": telefono1 || whatsapp || "",
   "priceRange": "$$",
