@@ -2,9 +2,12 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://vet24cr.com', // Reemplazar con el dominio final una vez adquirido
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
   }
