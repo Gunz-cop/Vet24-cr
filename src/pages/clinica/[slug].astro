@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BadgeHorario from '../../components/BadgeHorario.astro';
+import linkzipCache from '../../linkzip-cache.json';
 
 export async function getStaticPaths() {
   const allClinicas = await getCollection('clinicas');
@@ -58,12 +59,19 @@ const tel1Href = telefono1 ? `tel:+506${cleanPhone(telefono1)}` : null;
 const tel2Href = telefono2 ? `tel:+506${cleanPhone(telefono2)}` : null;
 const whatsappHref = whatsapp ? `https://wa.me/506${cleanPhone(whatsapp)}` : null;
 const webUrl = web ? (web.startsWith('http') ? web : `https://${web}`) : null;
+const facebookUrl = facebook ? (facebook.startsWith('http') ? facebook : `https://${facebook}`) : null;
+const instagramUrl = instagram ? (instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram.replace('@', '')}`) : null;
 
-// Collect social media and website URLs for schema sameAs
+// Shortened links using Linkzip API cache (falling back to original URLs)
+const shortenedWeb = webUrl ? (linkzipCache[webUrl] || webUrl) : null;
+const shortenedFacebook = facebookUrl ? (linkzipCache[facebookUrl] || facebookUrl) : null;
+const shortenedInstagram = instagramUrl ? (linkzipCache[instagramUrl] || instagramUrl) : null;
+
+// Collect social media and website URLs for schema sameAs (must use original URLs for SEO)
 const schemaSameAs: string[] = [];
 if (webUrl) schemaSameAs.push(webUrl);
-if (facebook) schemaSameAs.push(`https://${facebook}`);
-if (instagram) schemaSameAs.push(`https://instagram.com/${instagram.replace('@', '')}`);
+if (facebookUrl) schemaSameAs.push(facebookUrl);
+if (instagramUrl) schemaSameAs.push(instagramUrl);
 
 // Determine default schema image based on clinic characteristics for search listings
 const schemaImage = emergencias24h
@@ -520,7 +528,7 @@ const pageDesc = emergencias24h
                 </svg>
                 <div>
                   <span class="block text-xs text-brand-text-muted font-semibold uppercase">Sitio Web</span>
-                  <a href={webUrl} target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-primary-hover transition-colors font-medium break-all" id="btn-web">
+                  <a href={shortenedWeb} target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:text-brand-primary-hover transition-colors font-medium break-all" id="btn-web">
                     {web}
                   </a>
                 </div>
@@ -534,7 +542,7 @@ const pageDesc = emergencias24h
                 </svg>
                 <div>
                   <span class="block text-xs text-brand-text-muted font-semibold uppercase">Facebook</span>
-                  <a href={`https://${facebook}`} target="_blank" rel="noopener noreferrer" class="text-brand-text-muted hover:text-brand-text transition-colors font-medium break-all" id="btn-fb">
+                  <a href={shortenedFacebook} target="_blank" rel="noopener noreferrer" class="text-brand-text-muted hover:text-brand-text transition-colors font-medium break-all" id="btn-fb">
                     {facebook}
                   </a>
                 </div>
@@ -548,7 +556,9 @@ const pageDesc = emergencias24h
                 </svg>
                 <div>
                   <span class="block text-xs text-brand-text-muted font-semibold uppercase">Instagram</span>
-                  <span class="text-brand-text font-medium">{instagram}</span>
+                  <a href={shortenedInstagram} target="_blank" rel="noopener noreferrer" class="text-brand-text-muted hover:text-brand-text transition-colors font-medium break-all" id="btn-ig">
+                    {instagram}
+                  </a>
                 </div>
               </li>
             )}

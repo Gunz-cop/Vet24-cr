@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/shorten-links.js && astro build",
+    "shorten": "node scripts/shorten-links.js",
     "preview": "astro preview",
     "astro": "astro"
   },
