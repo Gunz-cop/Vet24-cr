@@ -103,11 +103,18 @@ async function run() {
     }
   }
 
-  // Filter out URLs that are already cached
-  const missingUrls = urlsToShorten.filter(item => !cache[item.originalUrl]);
+  // Filter out URLs that are already cached AND deduplicate to avoid hitting rate limits on duplicate URLs
+  const seenUrls = new Set();
+  const missingUrls = [];
+  for (const item of urlsToShorten) {
+    if (!cache[item.originalUrl] && !seenUrls.has(item.originalUrl)) {
+      seenUrls.add(item.originalUrl);
+      missingUrls.push(item);
+    }
+  }
   
   console.log(`Found ${urlsToShorten.length} total URLs.`);
-  console.log(`Missing from cache: ${missingUrls.length} URLs.`);
+  console.log(`Missing from cache (deduplicated): ${missingUrls.length} URLs.`);
 
   if (missingUrls.length === 0) {
     console.log('✅ All URLs are already cached. Nothing to shorten.');
