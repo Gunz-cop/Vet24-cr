@@ -150,10 +150,12 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
             © {new Date().getFullYear()} Vet24 Costa Rica. Creado con fines informativos para emergencias veterinarias.
           </p>
         </div>
-        <div class="flex items-center gap-6 text-sm">
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm justify-center md:justify-end">
           <a href="/#directorio" class="hover:text-brand-text transition-colors">Provincias</a>
-          <a href="#" class="hover:text-brand-text transition-colors">Términos</a>
-          <a href="#" class="hover:text-brand-text transition-colors">Privacidad</a>
+          <a href="/acerca" class="hover:text-brand-text transition-colors">Acerca de</a>
+          <a href="/terminos" class="hover:text-brand-text transition-colors">Términos</a>
+          <a href="/privacidad" class="hover:text-brand-text transition-colors">Privacidad</a>
+          <a href="/cookies" class="hover:text-brand-text transition-colors">Cookies</a>
         </div>
       </div>
     </footer>

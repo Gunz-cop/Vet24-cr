@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Política de Privacidad";
+const pageDesc = "Conozca cómo se protegen sus datos y cómo se utiliza la geolocalización del navegador en el directorio de Vet24 Costa Rica.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <div class="max-w-3xl mx-auto py-10 px-4">
+    <!-- Header -->
+    <div class="mb-10 border-b border-brand-card-border pb-6">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-brand-text mb-3">Política de Privacidad</h1>
+      <p class="text-sm text-brand-text-muted">Última actualización: 10 de junio, 2026</p>
+    </div>
+
+    <!-- Privacy Content -->
+    <div class="space-y-8 text-brand-text-muted text-sm leading-relaxed">
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">1. Compromiso de Privacidad</h2>
+        <p>
+          En Vet24 Costa Rica valoramos y respetamos plenamente la privacidad de nuestros usuarios. Esta política de privacidad describe cómo se gestiona y procesa cualquier información cuando visita nuestro Sitio. **No recopilamos datos personales de identificación (como nombres, correos electrónicos o números telefónicos) para realizar búsquedas en el directorio.**
+        </p>
+      </section>
+
+      <section class="border border-brand-card-border bg-brand-card-bg/40 rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-brand-text mb-3 flex items-center gap-2">
+          📍 2. Geolocalización del Navegador
+        </h2>
+        <p>
+          Para facilitarle la localización de la clínica veterinaria más cercana a su ubicación actual, nuestro mapa interactivo solicita permisos opcionales de geolocalización provistos por su navegador web.
+        </p>
+        <ul class="list-disc list-inside mt-3 space-y-1 text-xs">
+          <li><strong>Procesamiento Local:</strong> Los datos de su latitud y longitud se procesan única y exclusivamente de forma local en su dispositivo móvil o computadora.</li>
+          <li><strong>Sin Almacenamiento:</strong> Vet24 Costa Rica **nunca almacena, registra ni transmite** sus coordenadas geográficas a servidores externos. Su ubicación se borra inmediatamente al cerrar o recargar la pestaña del Sitio.</li>
+          <li><strong>Uso Opcional:</strong> Si decide denegar el permiso de localización, aún podrá navegar y filtrar el directorio por provincia o cantón de forma manual sin ningún inconveniente.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">3. Almacenamiento Local (LocalStorage)</h2>
+        <p>
+          Utilizamos pequeños registros locales en su navegador para almacenar sus preferencias visuales de interfaz. Concretamente, guardamos su elección del **modo de pantalla (tema claro u oscuro)** para que no tenga que configurarlo nuevamente en cada visita. Este almacenamiento local no rastrea su actividad de navegación fuera de nuestro Sitio ni se utiliza con fines publicitarios.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">4. Cookies de Analítica (Opcional)</h2>
+        <p>
+          Podríamos utilizar herramientas analíticas ligeras con el fin exclusivo de conocer métricas generales agregadas de tráfico (por ejemplo, cuántas personas visitan el sitio al mes y qué provincias son las más buscadas). Estas métricas son completamente anónimas y no identifican individualmente a ningún usuario.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">5. Seguridad de la Información</h2>
+        <p>
+          Implementamos protocolos de seguridad estándar de la industria, incluyendo la navegación segura cifrada mediante HTTPS, para garantizar que su interacción con el Sitio no pueda ser interceptada por terceros.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">6. Consultas e Información de Contacto</h2>
+        <p>
+          Si tiene alguna duda sobre nuestra política de privacidad o sobre el tratamiento de los datos de su veterinaria en nuestro directorio, por favor no dude en escribirnos a nuestro correo electrónico: <a href="mailto:info@vet24.cr" class="text-brand-primary hover:underline">info@vet24.cr</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
