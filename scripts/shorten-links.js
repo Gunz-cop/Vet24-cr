@@ -156,9 +156,9 @@ async function run() {
       console.error(`   └─ Request failed for ${item.originalUrl}:`, err.message);
     }
 
-    // Add a delay (e.g. 500ms) to stay within rate limits (60/min)
+    // Add a delay (e.g. 1500ms) to stay within rate limits (60/min)
     if (i < missingUrls.length - 1) {
-      await delay(500);
+      await delay(1500);
     }
   }
 
