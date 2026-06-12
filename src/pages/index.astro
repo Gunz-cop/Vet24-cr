@@ -55,7 +55,7 @@ const schemaItemList = {
   "itemListElement": sortedClinicas.map((c, index) => ({
     "@type": "ListItem",
     "position": index + 1,
-    "url": new URL(`/clinica/${c.data.slug}`, Astro.url.href).href,
+    "url": new URL(`/clinica/${c.data.slug}/`, Astro.url.href).href,
     "name": c.data.nombre
   }))
 };

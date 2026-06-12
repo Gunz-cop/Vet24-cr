@@ -7,13 +7,13 @@ const { activeProvincia } = Astro.props;
 
 const provincias = [
   { nombre: "Todas", code: "CR", slug: "todas", href: "/" },
-  { nombre: "San José", code: "SJ", slug: "san-jose", href: "/provincia/san-jose" },
-  { nombre: "Heredia", code: "HE", slug: "heredia", href: "/provincia/heredia" },
-  { nombre: "Alajuela", code: "AL", slug: "alajuela", href: "/provincia/alajuela" },
-  { nombre: "Cartago", code: "CA", slug: "cartago", href: "/provincia/cartago" },
-  { nombre: "Guanacaste", code: "GU", slug: "guanacaste", href: "/provincia/guanacaste" },
-  { nombre: "Puntarenas", code: "PU", slug: "puntarenas", href: "/provincia/puntarenas" },
-  { nombre: "Limón", code: "LI", slug: "limon", href: "/provincia/limon" }
+  { nombre: "San José", code: "SJ", slug: "san-jose", href: "/provincia/san-jose/" },
+  { nombre: "Heredia", code: "HE", slug: "heredia", href: "/provincia/heredia/" },
+  { nombre: "Alajuela", code: "AL", slug: "alajuela", href: "/provincia/alajuela/" },
+  { nombre: "Cartago", code: "CA", slug: "cartago", href: "/provincia/cartago/" },
+  { nombre: "Guanacaste", code: "GU", slug: "guanacaste", href: "/provincia/guanacaste/" },
+  { nombre: "Puntarenas", code: "PU", slug: "puntarenas", href: "/provincia/puntarenas/" },
+  { nombre: "Limón", code: "LI", slug: "limon", href: "/provincia/limon/" }
 ];
 
 const currentSlug = activeProvincia || "todas";

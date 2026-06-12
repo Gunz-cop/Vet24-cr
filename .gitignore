@@ -27,3 +27,5 @@ pnpm-debug.log*
 playwright-report/
 test-results/
 
+# Credentials
+service-account.json

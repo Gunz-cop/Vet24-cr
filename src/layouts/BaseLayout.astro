@@ -46,6 +46,8 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Google Fonts -->
@@ -152,10 +154,10 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
         </div>
         <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm justify-center md:justify-end">
           <a href="/#directorio" class="hover:text-brand-text transition-colors">Provincias</a>
-          <a href="/acerca" class="hover:text-brand-text transition-colors">Acerca de</a>
-          <a href="/terminos" class="hover:text-brand-text transition-colors">Términos</a>
-          <a href="/privacidad" class="hover:text-brand-text transition-colors">Privacidad</a>
-          <a href="/cookies" class="hover:text-brand-text transition-colors">Cookies</a>
+          <a href="/acerca/" class="hover:text-brand-text transition-colors">Acerca de</a>
+          <a href="/terminos/" class="hover:text-brand-text transition-colors">Términos</a>
+          <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
+          <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
         </div>
       </div>
     </footer>

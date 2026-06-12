@@ -10,6 +10,8 @@
     "build": "node scripts/shorten-links.js && astro build",
     "shorten": "node scripts/shorten-links.js",
     "preview": "astro preview",
+    "indexing": "node scripts/google-indexing.js",
+    "indexing:dry": "node scripts/google-indexing.js --dry-run",
     "astro": "astro"
   },
   "dependencies": {

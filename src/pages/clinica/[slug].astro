@@ -80,6 +80,115 @@ const schemaImage = emergencias24h
       ? "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&q=80&w=800" // Exotic/Nature look
       : "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"); // Standard vet clinic
 
+interface OpeningHoursSpec {
+  "@type": "OpeningHoursSpecification";
+  dayOfWeek: string[];
+  opens: string;
+  closes: string;
+}
+
+const getOpeningHoursSpec = (): OpeningHoursSpec[] => {
+  if (emergencias24h) {
+    return [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }];
+  }
+  
+  const text = horarioTexto.toLowerCase();
+  if (text.includes("10am-9pm")) {
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "10:00",
+        "closes": "20:00"
+      }
+    ];
+  } else if (text.includes("8am-9pm")) {
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ];
+  } else if (text.includes("9am-9pm")) {
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ];
+  } else if (text.includes("9am-7pm")) {
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "17:00"
+      }
+    ];
+  } else {
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      }
+    ];
+  }
+};
+
+const getProvinceSlug = (prov: string) => {
+  const map: Record<string, string> = {
+    "san josé": "san-jose",
+    "heredia": "heredia",
+    "alajuela": "alajuela",
+    "cartago": "cartago",
+    "guanacaste": "guanacaste",
+    "puntarenas": "puntarenas",
+    "limón": "limon"
+  };
+  return map[prov.toLowerCase()] || prov.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-").replace(/^-+|-+$/g, "");
+};
+
 // JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
   "@context": "https://schema.org",
@@ -109,19 +218,36 @@ const schemaMarkup = {
     "@type": "AdministrativeArea",
     "name": provincia
   },
-  "openingHoursSpecification": emergencias24h ? [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-      ],
-      "opens": "00:00",
-      "closes": "23:59"
-    }
-  ] : undefined
+  "openingHoursSpecification": getOpeningHoursSpec()
 };
 
-const pageTitle = `${nombre} | Vet24 Costa Rica`;
+// Breadcrumb Schema Markup
+const schemaBreadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://vet24cr.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": provincia,
+      "item": `https://vet24cr.com/provincia/${getProvinceSlug(provincia)}/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": nombre,
+      "item": Astro.url.href
+    }
+  ]
+};
+
+const pageTitle = nombre;
 
 // Generate highly optimized meta description based on clinic emergency tier
 const pageDesc = emergencias24h
@@ -132,6 +258,7 @@ const pageDesc = emergencias24h
 <BaseLayout title={pageTitle} description={pageDesc}>
   <!-- Inject Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
 
   <div class="max-w-5xl mx-auto py-4">
     <!-- Back Button -->
@@ -765,7 +892,7 @@ const pageDesc = emergencias24h
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            clinic: window.location.pathname.split('/').pop(),
+            clinic: window.location.pathname.split('/').filter(Boolean).pop(),
             reason: reasonSelect?.value || '',
             description: descVal,
             contact: contactVal,

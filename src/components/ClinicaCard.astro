@@ -128,7 +128,7 @@ if (clinica.emergencias24h) {
 
     <!-- Title & Location -->
     <h3 class="text-lg font-black text-brand-text group-hover:text-brand-primary transition-colors mb-2 font-['Outfit',sans-serif]">
-      <a href={`/clinica/${clinica.slug}`} id={`clinica-link-${clinica.id}`}>
+      <a href={`/clinica/${clinica.slug}/`} id={`clinica-link-${clinica.id}`}>
         {clinica.nombre}
       </a>
       <span class="hidden" aria-hidden="true">{clinica.nombre.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}</span>
@@ -192,7 +192,7 @@ if (clinica.emergencias24h) {
     </div>
 
     <div class="flex items-center justify-between gap-2 mt-2 pt-2 border-t border-brand-card-border/50">
-      <a href={`/clinica/${clinica.slug}`} class="flex items-center gap-1.5 py-1.5 text-xs text-brand-primary hover:text-brand-primary-hover font-black transition-colors" id={`btn-details-${clinica.id}`}>
+      <a href={`/clinica/${clinica.slug}/`} class="flex items-center gap-1.5 py-1.5 text-xs text-brand-primary hover:text-brand-primary-hover font-black transition-colors" id={`btn-details-${clinica.id}`}>
         Ver detalles y mapa
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -201,7 +201,7 @@ if (clinica.emergencias24h) {
 
       <button 
         class="share-btn flex items-center gap-1.5 py-1.5 px-3 text-xs text-brand-text-muted hover:text-brand-primary font-bold transition-all cursor-pointer bg-brand-card-bg/60 hover:bg-brand-primary/10 border border-brand-card-border rounded-xl active:scale-95"
-        data-url={`/clinica/${clinica.slug}`}
+        data-url={`/clinica/${clinica.slug}/`}
         data-title={clinica.nombre}
         id={`btn-share-${clinica.id}`}
       >

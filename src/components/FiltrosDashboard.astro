@@ -495,7 +495,7 @@
       // Sync map markers with filter state
       const linkEl = card.querySelector('a[id^="clinica-link"]');
       const hrefAttr = linkEl ? linkEl.getAttribute('href') : '';
-      const slug = hrefAttr ? hrefAttr.split('/').pop() : '';
+      const slug = hrefAttr ? hrefAttr.split('/').filter(Boolean).pop() : '';
       const markers = (window as any).__vet24Markers;
       const map = (window as any).__vet24Map;
 

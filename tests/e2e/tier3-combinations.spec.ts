@@ -154,7 +154,7 @@ test.describe('Tier 3: Cross-Feature Combinations', () => {
 
   test('57. should render interactive map on province-specific pages containing only that province\'s clinics', async ({ page }) => {
     // Navigate to Cartago province page
-    await page.goto('/provincia/cartago');
+    await page.goto('/provincia/cartago/');
 
     // Map container should be visible
     await expect(page.locator('#map-container')).toBeVisible();
