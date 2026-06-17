@@ -3,6 +3,8 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCache from '../../linkzip-cache.json';
+import { absoluteUrl, canonicalUrl } from '../../lib/seo';
+import { getClinicZoneSlug } from '../../lib/zones';
 
 export async function getStaticPaths() {
   const allClinicas = await getCollection('clinicas');
@@ -189,15 +191,19 @@ const getProvinceSlug = (prov: string) => {
   return map[prov.toLowerCase()] || prov.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-").replace(/^-+|-+$/g, "");
 };
 
+const clinicCanonical = canonicalUrl(`/clinica/${clinica.data.slug}/`);
+const provinceCanonical = absoluteUrl(`/provincia/${getProvinceSlug(provincia)}/`);
+const zoneCanonical = absoluteUrl(`/zona/${getClinicZoneSlug(zona)}/`);
+
 // JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "VeterinaryCare"],
-  "@id": Astro.url.href,
+  "@id": clinicCanonical,
   "name": nombre,
   "description": copyDiferenciador,
   "image": schemaImage,
-  "url": webUrl || Astro.url.href,
+  "url": clinicCanonical,
   "telephone": telefono1 || whatsapp || "",
   "priceRange": "$$",
   "sameAs": schemaSameAs.length > 0 ? schemaSameAs : undefined,
@@ -230,19 +236,19 @@ const schemaBreadcrumbs = {
       "@type": "ListItem",
       "position": 1,
       "name": "Inicio",
-      "item": "https://vet24cr.com/"
+      "item": absoluteUrl("/")
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": provincia,
-      "item": `https://vet24cr.com/provincia/${getProvinceSlug(provincia)}/`
+      "item": provinceCanonical
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": nombre,
-      "item": Astro.url.href
+      "item": clinicCanonical
     }
   ]
 };
@@ -253,14 +259,40 @@ const pageTitle = nombre;
 const pageDesc = emergencias24h
   ? `¿Urgencia veterinaria? Contacta a ${nombre} en ${zona}, ${provincia}. Servicio de emergencias veterinarias 24/7. 📞 Llama ahora al ${telefono1 || whatsapp}. Atendemos de inmediato.`
   : `Horarios, teléfono y dirección de ${nombre} en ${zona}, ${provincia}. Encuentra servicios veterinarios y de consulta general para tu mascota en Costa Rica.`;
+
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `¿Cuál es el horario de ${nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `${nombre} reporta este horario: ${horarioTexto}. Recomendamos confirmar por teléfono o WhatsApp antes de trasladarte.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿${nombre} atiende emergencias 24 horas en ${zona}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": emergencias24h
+          ? `${nombre} aparece marcado con emergencias 24/7 en ${zona}, ${provincia}.`
+          : `${nombre} no aparece como emergencia 24/7 confirmada. Para urgencias nocturnas, revisa clínicas marcadas como 24/7 en Vet24 Costa Rica.`
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc}>
+<BaseLayout title={pageTitle} description={pageDesc} canonicalUrl={clinicCanonical}>
   <!-- Inject Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
   <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
 
-  <div class="max-w-5xl mx-auto py-4">
+  <div class="max-w-5xl mx-auto py-4" data-page-province={getProvinceSlug(provincia)} data-page-zone={getClinicZoneSlug(zona)}>
     <!-- Back Button -->
     <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-primary-hover mb-6 transition-colors" id="btn-back">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
@@ -312,6 +344,26 @@ const pageDesc = emergencias24h
             </span>
           </div>
         </header>
+
+        <section class="grid grid-cols-1 sm:grid-cols-3 gap-3" aria-labelledby="seo-quick-facts-title">
+          <h2 id="seo-quick-facts-title" class="sr-only">Datos rápidos de {nombre}</h2>
+          <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
+            <span class="block text-[10px] font-black uppercase tracking-wider text-brand-text-muted">Horario</span>
+            <p class="mt-1 text-sm font-bold text-brand-text">{horarioTexto}</p>
+          </div>
+          <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
+            <span class="block text-[10px] font-black uppercase tracking-wider text-brand-text-muted">Emergencia 24/7</span>
+            <p class={`mt-1 text-sm font-bold ${emergencias24h ? 'text-brand-primary' : 'text-brand-text'}`}>
+              {emergencias24h ? 'Confirmada en esta ficha' : 'No confirmada como 24/7'}
+            </p>
+          </div>
+          <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
+            <span class="block text-[10px] font-black uppercase tracking-wider text-brand-text-muted">Zona</span>
+            <a href={zoneCanonical} class="mt-1 inline-flex text-sm font-bold text-brand-primary hover:text-brand-primary-hover">
+              Veterinarias en {zona}
+            </a>
+          </div>
+        </section>
 
         {!emergencias24h && (
           <div class="bg-brand-danger-bg/25 border border-brand-danger-border rounded-2xl p-4 sm:p-5 flex items-start gap-3 relative overflow-hidden transition-all duration-300 shadow-md shadow-brand-primary/5 animate-pulse" id="warning-diurnal-alert">
@@ -401,6 +453,22 @@ const pageDesc = emergencias24h
             </a>
           )}
         </div>
+
+        <section class="grid gap-3 md:grid-cols-2" aria-labelledby="faq-clinica-title">
+          <h2 id="faq-clinica-title" class="sr-only">Preguntas frecuentes sobre {nombre}</h2>
+          <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
+            <h3 class="text-sm font-black text-brand-text mb-2">¿Cuál es el horario de {nombre}?</h3>
+            <p class="text-sm text-brand-text-muted">{nombre} reporta este horario: <strong class="text-brand-text">{horarioTexto}</strong>. Confirma por teléfono antes de viajar.</p>
+          </div>
+          <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
+            <h3 class="text-sm font-black text-brand-text mb-2">¿Atiende emergencias 24 horas en {zona}?</h3>
+            <p class="text-sm text-brand-text-muted">
+              {emergencias24h
+                ? `${nombre} aparece como opción 24/7 para emergencias veterinarias en ${zona}, ${provincia}.`
+                : `${nombre} no aparece como 24/7 confirmado. Si es una urgencia nocturna, revisa opciones marcadas como 24/7 en el directorio.`}
+            </p>
+          </div>
+        </section>
 
         <!-- Verification & Trust Panel -->
         <section class="bg-brand-card-bg/40 border border-brand-card-border rounded-3xl p-6 sm:p-8 flex flex-col gap-4 relative overflow-hidden transition-all duration-300 shadow-xl" aria-labelledby="auditoria-title">
@@ -619,7 +687,7 @@ const pageDesc = emergencias24h
 
             <button 
               class="share-btn flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-all border border-white/20 cursor-pointer active:scale-98"
-              data-url={Astro.url.href}
+              data-url={clinicCanonical}
               data-title={nombre}
               id="btn-share-sidebar"
             >
@@ -644,7 +712,7 @@ const pageDesc = emergencias24h
               </svg>
               <div>
                 <span class="block text-xs text-brand-text-muted font-semibold uppercase">Horario</span>
-                <span class="text-brand-text font-semibold">{horarioTexto}</span>
+                <span class="text-brand-text font-semibold" id="clinic-schedule-text">{horarioTexto}</span>
               </div>
             </li>
 
@@ -960,6 +1028,71 @@ const pageDesc = emergencias24h
         }
       }
     });
+
+    // Check for real-time status overrides from Cloudflare D1
+    const slug = window.location.pathname.split('/').filter(Boolean).pop();
+    if (slug) {
+      fetch(`/api/status-override?slug=${slug}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.override) {
+            const override = data.override;
+            
+            // 1. Handle temporary closure override
+            if (override.is_temporarily_closed) {
+              const header = document.querySelector('header');
+              if (header) {
+                const alertBar = document.createElement('div');
+                alertBar.className = "bg-brand-danger-bg/25 border border-brand-danger-border rounded-2xl p-4 sm:p-5 flex items-start gap-3 mt-4 relative overflow-hidden transition-all duration-300 shadow-md shadow-brand-primary/5 animate-pulse";
+                alertBar.innerHTML = `
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-brand-danger-text shrink-0 mt-0.5 animate-bounce">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                  </svg>
+                  <div>
+                    <h3 class="text-sm font-black text-brand-danger-text uppercase tracking-wide">⚠️ CLÍNICA CERRADA TEMPORALMENTE</h3>
+                    <p class="text-xs text-brand-text-muted mt-1 font-semibold leading-relaxed">
+                      ${override.override_status_text || 'Esta clínica se encuentra cerrada temporalmente por motivos de fuerza mayor. Por favor, comunícate por teléfono antes de viajar.'}
+                    </p>
+                  </div>
+                `;
+                header.parentNode?.insertBefore(alertBar, header.nextSibling);
+              }
+              
+              const diurnalAlert = document.getElementById('warning-diurnal-alert');
+              if (diurnalAlert) diurnalAlert.classList.add('hidden');
+            } else if (override.override_status_text) {
+              const header = document.querySelector('header');
+              if (header) {
+                const infoBar = document.createElement('div');
+                infoBar.className = "bg-brand-primary/10 border border-brand-primary/20 rounded-2xl p-4 sm:p-5 flex items-start gap-3 mt-4 relative overflow-hidden transition-all duration-300 shadow-md";
+                infoBar.innerHTML = `
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-brand-primary shrink-0 mt-0.5 animate-pulse">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75 0 111.085 1.033l-2.524 2.65a.75 0 01-1.084 0l-1.026-1.026a.75 0 111.06-1.06l.496.496 2.012-2.112z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l6-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div>
+                    <h3 class="text-sm font-black text-brand-primary uppercase tracking-wide">Aviso de Disponibilidad en Tiempo Real</h3>
+                    <p class="text-xs text-brand-text-muted mt-1 font-semibold leading-relaxed">
+                      ${override.override_status_text}
+                    </p>
+                  </div>
+                `;
+                header.parentNode?.insertBefore(infoBar, header.nextSibling);
+              }
+            }
+            
+            // 2. Handle schedule text override
+            if (override.override_schedule_text) {
+              const schedEl = document.getElementById('clinic-schedule-text');
+              if (schedEl) {
+                schedEl.textContent = override.override_schedule_text;
+                schedEl.classList.add('text-brand-primary');
+              }
+            }
+          }
+        })
+        .catch(err => console.warn('Failed to load status overrides:', err));
+    }
   }
 
   if (document.readyState !== 'loading') {

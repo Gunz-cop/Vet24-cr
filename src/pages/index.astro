@@ -1,10 +1,14 @@
 ---
+export const prerender = false;
+
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FiltrosProvincia from '../components/FiltrosProvincia.astro';
 import ClinicaCard from '../components/ClinicaCard.astro';
 import FiltrosDashboard from '../components/FiltrosDashboard.astro';
 import MapaClinicas from '../components/MapaClinicas.astro';
+import { absoluteUrl, canonicalUrl } from '../lib/seo';
+import { priorityZones } from '../lib/zones';
 
 // Fetch all clinics
 const allClinicas = await getCollection('clinicas');
@@ -26,12 +30,66 @@ const sortedClinicas = [...publishedClinicas].sort((a, b) => {
   return priorityB - priorityA; // Descending order: highest priority first
 });
 
-// Title & SEO info
-const pageTitle = "Directorio de Veterinarias de Emergencia en Costa Rica";
-const pageDesc = "Busca y encuentra clínicas veterinarias de emergencias 24/7, servicios nocturnos y atención para animales exóticos en Costa Rica.";
+// Haversine distance helper for server-side sorting
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
 
-// Build map data array
-const mapData = sortedClinicas.map(c => ({
+// Attempt to read geolocation details from Cloudflare request (IP Geolocation)
+let edgeLat: number | null = null;
+let edgeLng: number | null = null;
+let edgeCity: string | null = null;
+let edgeGeoActive = false;
+
+const cf = (Astro.request as any).cf;
+if (cf) {
+  if (cf.latitude && cf.longitude) {
+    edgeLat = parseFloat(cf.latitude);
+    edgeLng = parseFloat(cf.longitude);
+    edgeCity = cf.city || null;
+    edgeGeoActive = true;
+  }
+} else {
+  // Check headers as a fallback
+  const latHeader = Astro.request.headers.get('cf-iplatitude');
+  const lngHeader = Astro.request.headers.get('cf-iplongitude');
+  const cityHeader = Astro.request.headers.get('cf-ipcity');
+  if (latHeader && lngHeader) {
+    edgeLat = parseFloat(latHeader);
+    edgeLng = parseFloat(lngHeader);
+    edgeCity = cityHeader ? decodeURIComponent(cityHeader) : null;
+    edgeGeoActive = true;
+  }
+}
+
+// Sort by proximity if edge geolocation is available
+let processedClinicas = [...sortedClinicas];
+if (edgeGeoActive && edgeLat !== null && edgeLng !== null) {
+  processedClinicas.sort((a, b) => {
+    const aLat = a.data.latitude ?? 0;
+    const aLng = a.data.longitude ?? 0;
+    const bLat = b.data.latitude ?? 0;
+    const bLng = b.data.longitude ?? 0;
+    
+    const aDist = (aLat === 0 && aLng === 0) ? Infinity : haversineKm(edgeLat!, edgeLng!, aLat, aLng);
+    const bDist = (bLat === 0 && bLng === 0) ? Infinity : haversineKm(edgeLat!, edgeLng!, bLat, bLng);
+    return aDist - bDist;
+  });
+}
+
+// Title & SEO info
+const pageTitle = "Veterinarias Abiertas Hoy, Cerca de Mí y 24 Horas en Costa Rica";
+const pageDesc = "Encuentra veterinarias abiertas hoy, de guardia y 24 horas cerca de ti en Costa Rica. Llama, escribe por WhatsApp o abre la ruta en Waze.";
+const canonical = canonicalUrl("/");
+
+// Build map data array matching our sorted/processed order
+const mapData = processedClinicas.map(c => ({
   nombre: c.data.nombre,
   slug: c.data.slug,
   zona: c.data.zona,
@@ -51,22 +109,22 @@ const schemaItemList = {
   "@type": "ItemList",
   "name": "Directorio de Veterinarias de Emergencia en Costa Rica",
   "description": "Lista de las mejores clínicas veterinarias con servicios de emergencias 24/7 y atención nocturna en Costa Rica.",
-  "numberOfItems": sortedClinicas.length,
-  "itemListElement": sortedClinicas.map((c, index) => ({
+  "numberOfItems": processedClinicas.length,
+  "itemListElement": processedClinicas.map((c, index) => ({
     "@type": "ListItem",
     "position": index + 1,
-    "url": new URL(`/clinica/${c.data.slug}/`, Astro.url.href).href,
+    "url": absoluteUrl(`/clinica/${c.data.slug}/`),
     "name": c.data.nombre
   }))
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc}>
+<BaseLayout title={pageTitle} description={pageDesc} canonicalUrl={canonical}>
   <!-- Inject Directory Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
 
   <!-- Hero Section -->
-  <section class="text-center py-16 md:py-24 relative overflow-hidden" aria-labelledby="hero-title">
+  <section class="text-center py-16 md:py-24 relative overflow-hidden" aria-labelledby="hero-title" data-page-province="costa-rica">
     <!-- Modern tech grid backdrop -->
     <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
     
@@ -81,7 +139,7 @@ const schemaItemList = {
       </h1>
       
       <p class="text-base sm:text-lg text-brand-text-muted mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-        El directorio de clínicas veterinarias en Costa Rica especializado en servicios nocturnos, urgencias quirúrgicas y atención de fauna exótica.
+        Busca veterinarias abiertas ahora, clínicas de guardia y opciones 24/7 cerca de tu zona en Costa Rica.
       </p>
       
       <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
@@ -121,12 +179,31 @@ const schemaItemList = {
         </p>
       </div>
       <div class="text-sm font-medium text-brand-text-muted">
-        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
+        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{processedClinicas.length} clínicas</span>
       </div>
     </div>
 
     <!-- Province Filter Component -->
     <FiltrosProvincia />
+
+    <section class="mb-8 rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5 sm:p-6" aria-labelledby="zonas-title">
+      <div class="flex flex-col gap-2 mb-4">
+        <h2 id="zonas-title" class="text-sm font-black uppercase tracking-wider text-brand-text-muted font-['Outfit',sans-serif]">
+          Zonas con búsquedas urgentes
+        </h2>
+        <p class="text-sm text-brand-text-muted">
+          Accesos rápidos para encontrar veterinarias abiertas hoy, horarios y opciones de emergencia en cantones con demanda local.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {priorityZones.map((zone) => (
+          <a href={`/zona/${zone.slug}/`} class="inline-flex items-center gap-2 rounded-xl border border-brand-card-border bg-brand-bg/55 px-3.5 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/40 hover:bg-brand-primary/10 hover:text-brand-text">
+            <span class="text-brand-primary">#</span>
+            Veterinarias en {zone.nombre}
+          </a>
+        ))}
+      </div>
+    </section>
 
     <!-- Interactive Map -->
     <MapaClinicas clinicas={mapData} />
@@ -135,10 +212,22 @@ const schemaItemList = {
     <FiltrosDashboard />
 
     <!-- Clinics Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid">
-      {sortedClinicas.map(clinica => (
-        <ClinicaCard clinica={clinica.data} />
-      ))}
+    <div 
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+      id="clinicas-grid"
+      data-edge-lat={edgeLat}
+      data-edge-lng={edgeLng}
+      data-edge-city={edgeCity}
+      data-edge-active={edgeGeoActive ? "true" : "false"}
+    >
+      {processedClinicas.map(clinica => {
+        const cLat = clinica.data.latitude ?? 0;
+        const cLng = clinica.data.longitude ?? 0;
+        const dist = (edgeGeoActive && edgeLat !== null && edgeLng !== null && cLat !== 0 && cLng !== 0)
+          ? haversineKm(edgeLat, edgeLng, cLat, cLng)
+          : undefined;
+        return <ClinicaCard clinica={clinica.data} distance={dist} />;
+      })}
     </div>
   </section>
 </BaseLayout>

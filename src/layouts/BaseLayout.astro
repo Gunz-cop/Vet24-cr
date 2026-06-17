@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ const { title, description, canonicalUrl, image } = Astro.props;
 const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
 const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
-const canonical = canonicalUrl || Astro.url.href;
+const canonical = canonicalUrl || buildCanonicalUrl(Astro.url.pathname);
 
 // Resolve absolute URL for the Open Graph image
 const shareImage = image || "/images/og-share-default.png";
@@ -53,7 +54,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- Theme Manager Initialization Script (Blocks render to avoid flash of unstyled content) -->
     <script is:inline>
@@ -203,6 +204,45 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
           detail: { theme: isCurrentlyLight ? 'light' : 'dark' }
         }));
       });
+
+      // Lightweight conversion analytics for SEO landing pages.
+      document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement | null;
+        const el = target?.closest('a,button') as HTMLElement | null;
+        if (!el) return;
+
+        const href = el instanceof HTMLAnchorElement ? el.href : '';
+        const id = el.id || '';
+        let action = '';
+
+        if (href.startsWith('tel:')) action = 'call_click';
+        else if (href.includes('wa.me')) action = 'whatsapp_click';
+        else if (href.includes('waze.com')) action = 'waze_click';
+        else if (href.includes('google.com/maps')) action = 'maps_click';
+        else if (el.classList.contains('share-btn')) action = 'share_click';
+        else if (id === 'btn-open-report') action = 'report_open';
+
+        if (!action) return;
+
+        const payload = JSON.stringify({
+          query: window.location.pathname,
+          province: document.querySelector('[data-page-province]')?.getAttribute('data-page-province') || null,
+          canton: document.querySelector('[data-page-zone]')?.getAttribute('data-page-zone') || null,
+          filter_type: action,
+        });
+
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/analytics', new Blob([payload], { type: 'application/json' }));
+          return;
+        }
+
+        fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true,
+        }).catch(() => {});
+      }, { capture: true });
     </script>
   </body>
 </html>
