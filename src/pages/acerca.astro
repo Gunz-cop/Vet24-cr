@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Acerca de Nosotros";
+const pageDesc = "Conoce más sobre Vet24 Costa Rica, un directorio gratuito y colaborativo creado para ayudarte a localizar veterinarias de emergencia 24/7.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <div class="max-w-4xl mx-auto py-10 px-4">
+    <!-- Header -->
+    <div class="text-center mb-16 relative">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
+      
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-black tracking-wider uppercase rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-4">
+        Nuestra Misión
+      </span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-brand-text mb-6">
+        Sobre <span class="bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">Vet24 Costa Rica</span>
+      </h1>
+      <p class="text-lg text-brand-text-muted max-w-2xl mx-auto leading-relaxed">
+        Una iniciativa digital, gratuita e informativa nacida del amor por las mascotas y la necesidad de actuar rápido ante una emergencia veterinaria.
+      </p>
+    </div>
+
+    <!-- Core Content Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div class="p-8 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 backdrop-blur-md hover:border-brand-primary/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-2xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-brand-text mb-3">¿Por qué creamos Vet24?</h2>
+        <p class="text-brand-text-muted text-sm leading-relaxed">
+          En momentos de crisis de salud con nuestras mascotas, cada minuto cuenta. Encontrar información verídica y actualizada sobre qué clínicas veterinarias realmente ofrecen servicio nocturno o de 24 horas en Costa Rica a menudo resultaba difícil. Este directorio centraliza esa información crítica.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 backdrop-blur-md hover:border-brand-secondary/30 transition-all duration-300">
+        <div class="w-12 h-12 rounded-2xl bg-brand-secondary/10 flex items-center justify-center text-brand-secondary mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-brand-text mb-3">Información Verificada</h2>
+        <p class="text-brand-text-muted text-sm leading-relaxed">
+          Buscamos, filtramos y clasificamos activamente las veterinarias que ofrecen servicios más allá del horario comercial. Evaluamos si cuentan con servicio de urgencias localizable, médicos de guardia y disponibilidad nocturna para brindar paz mental cuando más se necesita.
+        </p>
+      </div>
+    </div>
+
+    <!-- Details block -->
+    <div class="prose prose-invert max-w-none border border-brand-card-border bg-brand-card-bg/40 backdrop-blur-md rounded-3xl p-8 md:p-12 mb-16">
+      <h2 class="text-2xl font-bold text-brand-text mb-4">¿Cómo funciona?</h2>
+      <p class="text-brand-text-muted mb-6 leading-relaxed">
+        Vet24 Costa Rica es un <strong>directorio de libre acceso</strong>. No cobramos a las clínicas por pertenecer a nuestra base de datos ni a los usuarios por realizar consultas. Nuestro mapa interactivo y filtros avanzados te permiten localizar instantáneamente la veterinaria más cercana según tu provincia, cantón y necesidad particular (especialidades o atención de emergencias).
+      </p>
+      
+      <h2 class="text-2xl font-bold text-brand-text mt-8 mb-4">Nota de Transparencia</h2>
+      <p class="text-brand-text-muted leading-relaxed">
+        Este sitio web recopila información de contacto pública y provista por las mismas veterinarias. Aunque nos esforzamos por mantener los datos exactos y actualizados periódicamente, <strong>siempre recomendamos realizar una llamada telefónica antes de trasladarse con su mascota</strong> para confirmar la presencia del personal médico de turno.
+      </p>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center border border-brand-card-border bg-gradient-to-tr from-brand-card-bg to-brand-primary/5 rounded-3xl p-8 md:p-12">
+      <h3 class="text-2xl font-bold text-brand-text mb-3">¿Eres dueño de una veterinaria 24/7?</h3>
+      <p class="text-brand-text-muted mb-6 max-w-xl mx-auto text-sm leading-relaxed">
+        Si tu clínica ofrece servicios nocturnos o de emergencia 24 horas en Costa Rica y deseas añadirla al directorio o actualizar tus datos, ponte en contacto con nosotros para actualizar el mapa.
+      </p>
+      <a href="mailto:info@vet24.cr" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-brand-primary hover:bg-brand-primary-hover text-white text-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+        Contactar / Añadir Veterinaria
+      </a>
+    </div>
+  </div>
+</BaseLayout>

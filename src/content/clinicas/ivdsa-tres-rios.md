@@ -33,8 +33,8 @@ verification_source: "Auditoría de datos"
 overnight_doctor_present: true
 latitude: 9.8891
 longitude: -83.9854
-waze_url: "https://waze.com/ul?ll=9.8891%2C-83.9854&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.8891,-83.9854"
+waze_url: "https://waze.com/ul?q=IVDSA%20Tres%20R%C3%ADos%20Tres%20R%C3%ADos%20Cartago%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=IVDSA%20Tres%20R%C3%ADos%20Tres%20R%C3%ADos%20Cartago%20Costa%20Rica"
 ---
 
 Instituto Veterinario Docente Sede Tres Ríos. Emergencias 24/7 con médicos especializados y enfoque docente.

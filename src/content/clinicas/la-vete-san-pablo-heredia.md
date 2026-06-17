@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.9849
 longitude: -84.0902
-waze_url: "https://waze.com/ul?ll=9.9849%2C-84.0902&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9849,-84.0902"
+waze_url: "https://waze.com/ul?q=La%20Vete%20San%20Pablo%20San%20Pablo%20de%20Heredia%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=La%20Vete%20San%20Pablo%20San%20Pablo%20de%20Heredia%20Heredia%20Costa%20Rica"
 ---
 
 Sucursal en el corazón de San Pablo. Amplio horario para citas de rutina y pet shop completo.

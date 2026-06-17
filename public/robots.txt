@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vet24cr.com/sitemap-index.xml

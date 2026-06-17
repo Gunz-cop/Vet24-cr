@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.9997
 longitude: -84.1164
-waze_url: "https://waze.com/ul?ll=9.9997%2C-84.1164&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9997,-84.1164"
+waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20Medical%20Care%20Heredia%20centro%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20Medical%20Care%20Heredia%20centro%20Heredia%20Costa%20Rica"
 ---
 
 Horario continuo hasta las 9pm todos los días. Cirugía, laboratorio, internamiento y parqueo privado. Abrió en 2021.

@@ -31,8 +31,8 @@ verification_source: "Llamada directa de auditoría de prueba"
 overnight_doctor_present: true
 latitude: 9.9611
 longitude: -84.0869
-waze_url: "https://waze.com/ul?ll=9.9611%2C-84.0869&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9611,-84.0869"
+waze_url: "https://waze.com/ul?q=Petopia%20Hospital%20Veterinario%20Tib%C3%A1s%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Petopia%20Hospital%20Veterinario%20Tib%C3%A1s%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Hospital de última generación abierto en 2025. Instalaciones de 2 pisos, sala de espera separada para gatos y perros. Parqueo para +15 vehículos.

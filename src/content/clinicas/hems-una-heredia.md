@@ -33,8 +33,8 @@ verification_source: ""
 overnight_doctor_present: false
 latitude: 9.9989
 longitude: -84.1219
-waze_url: "https://waze.com/ul?ll=9.9989%2C-84.1219&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9989,-84.1219"
+waze_url: "https://waze.com/ul?q=HEMS%20Heredia%20(UNA)%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=HEMS%20Heredia%20(UNA)%20Heredia%20Costa%20Rica"
 ---
 
 Único hospital universitario del país. Especialistas en fauna silvestre y especies exóticas. Campañas veterinarias gratuitas en zonas vulnerables.

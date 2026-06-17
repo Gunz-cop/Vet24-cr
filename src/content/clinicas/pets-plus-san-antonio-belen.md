@@ -1,4 +1,4 @@
-﻿---id: 23
+---id: 23
 nombre: "PETS+ San Antonio"
 provincia: "Heredia / Alajuela"
 zona: "San Antonio de Belén"
@@ -20,19 +20,19 @@ copyDiferenciador: "Hospital con 6 consultorios. Especialistas en ortopedia, oft
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
 latitude: 9.9757
 longitude: -84.1779
-waze_url: "https://waze.com/ul?ll=9.9757%2C-84.1779&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9757,-84.1779"
+waze_url: "https://waze.com/ul?q=PETS%2B%20San%20Antonio%20San%20Antonio%20de%20Bel%C3%A9n%20Heredia%20%2F%20Alajuela%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=PETS%2B%20San%20Antonio%20San%20Antonio%20de%20Bel%C3%A9n%20Heredia%20%2F%20Alajuela%20Costa%20Rica"
 ---
 
 Hospital con 6 consultorios. Especialistas en ortopedia, oftalmología, oncología y endoscopía. El dueño puede acompañar a la mascota en consulta.

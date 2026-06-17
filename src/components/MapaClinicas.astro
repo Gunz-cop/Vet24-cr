@@ -24,38 +24,47 @@ const clinicasConCoords = clinicas.filter(c => c.latitude !== 0 && c.longitude !
 const clinicasJson = JSON.stringify(clinicasConCoords);
 ---
 
-<div class="w-full mb-8 rounded-2xl overflow-hidden border border-slate-800/60 bg-slate-950/40" id="mapa-container">
-  <div class="flex items-center justify-between px-4 py-3 bg-slate-900/50 border-b border-slate-800/60">
+<div class="w-full mb-8 rounded-3xl overflow-hidden border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md shadow-2xl transition-colors duration-200" id="map-container">
+  <div class="flex items-center justify-between px-5 py-4 bg-brand-bg/65 border-b border-brand-card-border/80 transition-colors duration-200">
     <div class="flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-rose-400">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-brand-primary">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
       </svg>
-      <span class="text-xs font-bold text-slate-300 uppercase tracking-wide">Mapa Interactivo</span>
-      <span class="text-xs text-slate-500">— {clinicasConCoords.length} clínicas con ubicación</span>
+      <span class="text-xs font-black text-brand-text uppercase tracking-wider font-['Outfit',sans-serif]">Mapa Interactivo</span>
+      <span class="text-xs text-brand-text-muted font-semibold">— {clinicasConCoords.length} clínicas con ubicación</span>
     </div>
     <button 
       id="toggle-mapa-btn"
-      class="text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors px-2 py-1 rounded bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50"
+      class="hidden md:inline-block text-xs font-bold text-brand-text-muted hover:text-brand-text transition-all px-3 py-1.5 rounded-xl bg-brand-bg/50 hover:bg-brand-primary/10 border border-brand-card-border hover:border-brand-primary/35 cursor-pointer active:scale-95"
     >
       Ocultar mapa
     </button>
   </div>
   
-  <div id="mapa-wrapper" style="height: 420px; position: relative;">
+  <div id="mapa-wrapper" class="hidden md:block relative w-full h-[350px]">
     <!-- Loading placeholder -->
-    <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950 z-10">
-      <div class="w-8 h-8 border-2 border-rose-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-      <p class="text-sm text-slate-400">Cargando mapa…</p>
+    <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">
+      <div class="w-8 h-8 border-2 border-brand-primary border-t-transparent rounded-full animate-spin mb-3"></div>
+      <p class="text-sm text-brand-text-muted">Cargando mapa…</p>
     </div>
-    <div id="mapa-vet24" style="height: 100%; width: 100%;"></div>
+    <div id="mapa-vet24" class="h-full w-full"></div>
+  </div>
+
+  <div class="block md:hidden border-t border-brand-card-border bg-brand-bg/30">
+    <button
+      id="btn-toggle-mapa-mobile"
+      class="w-full py-3.5 text-xs font-bold text-brand-primary hover:text-brand-primary-hover hover:bg-brand-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
+    >
+      <span>Ver en mapa 🗺️</span>
+    </button>
   </div>
 </div>
 
 <!-- Inject clinic data for the map script -->
-<script type="application/json" id="clinicas-map-data" set:text={clinicasJson}></script>
+<script type="application/json" id="clinicas-map-data" set:html={clinicasJson}></script>
 
 <!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
 <script>
   // Load Leaflet dynamically
@@ -63,8 +72,8 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     return new Promise((resolve, reject) => {
       if ((window as any).L) { resolve((window as any).L); return; }
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2GqnA=';
+      script.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js';
+      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
       script.crossOrigin = '';
       script.onload = () => resolve((window as any).L);
       script.onerror = reject;
@@ -119,26 +128,42 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     }).addTo(map);
 
     // Custom icon factory
-    function createIcon(color: string) {
+    function createIcon(cssVarColor: string, pulse: boolean = false) {
+      const pulseHtml = pulse 
+        ? `<div style="
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%;
+            background: ${cssVarColor};
+            opacity: 0.6;
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+            z-index: -1;
+          "></div>`
+        : '';
+
       return L.divIcon({
-        html: `<div style="
-          width: 28px; height: 28px; 
-          background: ${color}; 
-          border: 3px solid white; 
-          border-radius: 50% 50% 50% 0; 
-          transform: rotate(-45deg);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        "></div>`,
+        html: `<div style="position: relative; width: 24px; height: 24px;">
+          ${pulseHtml}
+          <div style="
+            width: 24px; height: 24px; 
+            background: ${cssVarColor}; 
+            border: 2px solid var(--brand-bg); 
+            border-radius: 50% 50% 50% 0; 
+            transform: rotate(-45deg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            pointer-events: none;
+          "></div>
+        </div>`,
         className: '',
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
-        popupAnchor: [0, -30],
+        iconSize: [24, 24],
+        iconAnchor: [12, 24],
+        popupAnchor: [0, -26],
       });
     }
 
-    const iconTierA  = createIcon('#ef4444'); // red - 24/7 real
-    const iconTierB  = createIcon('#f59e0b'); // amber - extended hours
-    const iconTierC  = createIcon('#64748b'); // slate - normal hours
+    const iconTierA  = createIcon('var(--brand-primary)', true); // crimson - 24/7 real with pulsing glow
+    const iconTierB  = createIcon('var(--brand-secondary)'); // amber - extended hours
+    const iconTierC  = createIcon('var(--brand-text-muted)'); // slate - normal hours
 
     // Add markers for each clinic
     clinicas.forEach((c) => {
@@ -148,28 +173,28 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
                    (c.emergency_tier === 'Tier B' ? iconTierB : iconTierC);
 
       const callBtn = c.telefono1 
-        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" style="
+        ? `<a href="tel:+506${c.telefono1.replace(/\D/g,'')}" class="btn-popup-call" style="
             display:inline-flex;align-items:center;gap:4px;
             padding:6px 12px;border-radius:8px;
-            background:#1e293b;color:#e2e8f0;
+            background:var(--brand-primary);color:white;
             font-size:11px;font-weight:700;text-decoration:none;
-            border:1px solid #334155;
+            border:none;
           ">📞 Llamar</a>` 
         : '';
 
       const wazeBtn = c.waze_url 
-        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" style="
+        ? `<a href="${c.waze_url}" target="_blank" rel="noopener" class="btn-popup-nav" style="
             display:inline-flex;align-items:center;gap:4px;
             padding:6px 12px;border-radius:8px;
-            background:#0f172a;color:#fb923c;
+            background:var(--brand-card-bg);color:var(--brand-secondary);
             font-size:11px;font-weight:700;text-decoration:none;
-            border:1px solid #7c3aed55;
-          ">🗺️ Waze</a>`
+            border:1px solid var(--brand-card-border);
+          ">🚗 Waze</a>`
         : '';
 
       const statusBadge = c.emergencias24h 
-        ? '<span style="background:#dc262620;color:#f87171;border:1px solid #dc262630;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;">🔴 24/7</span>'
-        : '<span style="background:#1e293b;color:#94a3b8;border:1px solid #334155;padding:2px 8px;border-radius:99px;font-size:10px;">Horario regular</span>';
+        ? '<span style="background:var(--brand-danger-bg);color:var(--brand-danger-text);border:1px solid var(--brand-danger-border);padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;">🔴 24/7</span>'
+        : '<span style="background:var(--brand-card-bg);color:var(--brand-text-muted);border:1px solid var(--brand-card-border);padding:2px 8px;border-radius:99px;font-size:10px;">Horario regular</span>';
 
       const popup = L.popup({
         maxWidth: 240,
@@ -177,23 +202,38 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
       }).setContent(`
         <div style="font-family:'Outfit',system-ui,sans-serif;padding:4px;">
           <div style="margin-bottom:8px;">${statusBadge}</div>
-          <strong style="font-size:14px;color:#f1f5f9;display:block;margin-bottom:2px;">${c.nombre}</strong>
-          <span style="font-size:11px;color:#94a3b8;">📍 ${c.zona}</span>
+          <strong style="font-size:14px;color:var(--brand-text);display:block;margin-bottom:2px;">${c.nombre}</strong>
+          <span style="font-size:11px;color:var(--brand-text-muted);">📍 ${c.zona}</span>
           <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
             ${callBtn}
             ${wazeBtn}
           </div>
-          <a href="/clinica/${c.slug}" style="
+          <a href="/clinica/${c.slug}/" style="
             display:block;margin-top:8px;
-            font-size:10px;color:#f87171;text-decoration:none;font-weight:600;
+            font-size:10px;color:var(--brand-primary);text-decoration:none;font-weight:600;
           ">Ver detalles →</a>
         </div>
       `);
 
-      L.marker([c.latitude, c.longitude], { icon })
+      const marker = L.marker([c.latitude, c.longitude], { icon })
         .addTo(map)
         .bindPopup(popup);
+
+      (window as any).__vet24Markers = (window as any).__vet24Markers || {};
+      (window as any).__vet24Markers[c.slug] = marker;
     });
+
+    // Auto-fit bounds of initial markers
+    const coords: [number, number][] = [];
+    clinicas.forEach(c => {
+      if (c.latitude && c.longitude) {
+        coords.push([c.latitude, c.longitude]);
+      }
+    });
+    if (coords.length > 0) {
+      const bounds = L.latLngBounds(coords);
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    }
 
     // Hide loading overlay
     if (loading) loading.style.display = 'none';
@@ -204,55 +244,97 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
   }
 
   // Toggle map visibility
-  document.getElementById('toggle-mapa-btn')?.addEventListener('click', () => {
-    const wrapper = document.getElementById('mapa-wrapper');
-    const btn = document.getElementById('toggle-mapa-btn');
-    if (!wrapper || !btn) return;
-    const hidden = wrapper.style.display === 'none';
-    wrapper.style.display = hidden ? '' : 'none';
-    btn.textContent = hidden ? 'Ocultar mapa' : 'Mostrar mapa';
+  const toggleBtnDesktop = document.getElementById('toggle-mapa-btn');
+  const toggleBtnMobile = document.getElementById('btn-toggle-mapa-mobile');
+  const wrapper = document.getElementById('mapa-wrapper');
+
+  function updateMapState(hidden: boolean) {
+    if (!wrapper) return;
+    if (hidden) {
+      wrapper.style.display = 'none';
+      if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Mostrar mapa';
+      if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ver en mapa 🗺️</span>';
+    } else {
+      wrapper.style.display = 'block';
+      if (toggleBtnDesktop) toggleBtnDesktop.textContent = 'Ocultar mapa';
+      if (toggleBtnMobile) toggleBtnMobile.innerHTML = '<span>Ocultar mapa ✖</span>';
+      
+      // Leaflet needs a resize trigger when container size changes/shows
+      setTimeout(() => {
+        const map = (window as any).__vet24Map;
+        if (map) map.invalidateSize();
+      }, 50);
+    }
+  }
+
+  toggleBtnDesktop?.addEventListener('click', () => {
+    const isHidden = window.getComputedStyle(wrapper!).display === 'none';
+    updateMapState(!isHidden);
+  });
+
+  toggleBtnMobile?.addEventListener('click', () => {
+    const isHidden = window.getComputedStyle(wrapper!).display === 'none';
+    updateMapState(!isHidden);
   });
 
   // Init on load
-  document.addEventListener('DOMContentLoaded', initMap);
+  if (document.readyState !== 'loading') {
+    initMap();
+  } else {
+    document.addEventListener('DOMContentLoaded', initMap);
+  }
 </script>
 
 <style is:global>
-  /* Override Leaflet popup styles for dark theme */
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.65);
+      opacity: 0.6;
+    }
+    80%, 100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* Override Leaflet popup styles dynamically based on theme variables */
   .leaflet-popup-content-wrapper {
-    background: #0f172a !important;
-    border: 1px solid #1e293b !important;
-    border-radius: 12px !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
-    color: #f1f5f9 !important;
+    background: var(--brand-card-bg, #0f172a) !important;
+    border: 1px solid var(--brand-card-border, #1e293b) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5) !important;
+    color: var(--brand-text, #f1f5f9) !important;
+    backdrop-filter: blur(8px);
   }
   .leaflet-popup-tip {
-    background: #0f172a !important;
+    background: var(--brand-card-bg, #0f172a) !important;
+    border: 1px solid var(--brand-card-border, #1e293b) !important;
   }
   .leaflet-popup-close-button {
-    color: #64748b !important;
+    color: var(--brand-text-muted, #64748b) !important;
   }
   .leaflet-popup-close-button:hover {
-    color: #f87171 !important;
+    color: var(--brand-primary, #f43f5e) !important;
   }
   .leaflet-container {
-    background: #020617 !important;
+    background: var(--brand-bg, #020617) !important;
+    color: var(--brand-text) !important;
   }
   .leaflet-control-zoom a {
-    background: #0f172a !important;
-    color: #94a3b8 !important;
-    border-color: #1e293b !important;
+    background: var(--brand-card-bg, #0f172a) !important;
+    color: var(--brand-text-muted, #94a3b8) !important;
+    border-color: var(--brand-card-border, #1e293b) !important;
   }
   .leaflet-control-zoom a:hover {
-    background: #1e293b !important;
-    color: #f1f5f9 !important;
+    background: var(--brand-primary, #f43f5e) !important;
+    color: white !important;
   }
   .leaflet-control-attribution {
-    background: rgba(2, 6, 23, 0.7) !important;
-    color: #475569 !important;
+    background: var(--brand-bg, rgba(2, 6, 23, 0.7)) !important;
+    color: var(--brand-text-muted, #475569) !important;
     font-size: 9px !important;
   }
   .leaflet-control-attribution a {
-    color: #64748b !important;
+    color: var(--brand-primary, #f43f5e) !important;
   }
 </style>

@@ -1,4 +1,4 @@
-﻿---id: 22
+---id: 22
 nombre: "Clínica Veterinaria San Juan"
 provincia: "Cartago"
 zona: "La Unión"
@@ -20,19 +20,19 @@ copyDiferenciador: "Cubre la zona de La Unión y zonas limítrofes entre Cartago
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: ""
-phone_verified: false
-address_verified: false
-schedule_verified: false
+last_verified: "2026-06-08"
+phone_verified: true
+address_verified: true
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: ""
+verification_source: "Auditoría telefónica"
 overnight_doctor_present: true
-latitude: 9.9067
-longitude: -83.9971
-waze_url: "https://waze.com/ul?ll=9.9067%2C-83.9971&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9067,-83.9971"
+latitude: 9.90950
+longitude: -83.99515
+waze_url: "https://waze.com/ul?q=Cl%C3%ADnica%20Veterinaria%20San%20Juan%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica%20Veterinaria%20San%20Juan%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica"
 ---
 
 Cubre la zona de La Unión y zonas limítrofes entre Cartago y San José. Referencia local para emergencias nocturnas en el este.

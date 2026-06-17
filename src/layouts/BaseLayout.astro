@@ -1,17 +1,23 @@
 ---
 import '../styles/global.css';
+import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
 
 interface Props {
   title: string;
   description?: string;
   canonicalUrl?: string;
+  image?: string;
 }
 
-const { title, description, canonicalUrl } = Astro.props;
+const { title, description, canonicalUrl, image } = Astro.props;
 const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
 const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
-const canonical = canonicalUrl || Astro.url.href;
+const canonical = canonicalUrl || buildCanonicalUrl(Astro.url.pathname);
+
+// Resolve absolute URL for the Open Graph image
+const shareImage = image || "/images/og-share-default.png";
+const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
 ---
 
 <!doctype html>
@@ -30,58 +36,106 @@ const canonical = canonicalUrl || Astro.url.href;
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={metaDesc} />
+    <meta property="og:image" content={shareImageUrl} />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={metaDesc} />
+    <meta property="twitter:image" content={shareImageUrl} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Theme Manager Initialization Script (Blocks render to avoid flash of unstyled content) -->
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'dark'; // default to dark mode
+      };
+      
+      const theme = getTheme();
+      if (theme === 'light') {
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.remove('light');
+      }
+    </script>
   </head>
-  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-rose-500/30 selection:text-rose-200">
+  <body class="bg-brand-bg text-brand-text min-h-screen flex flex-col font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-brand-primary/20 selection:text-brand-primary transition-colors duration-200">
     <!-- Glowing background elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-      <div class="absolute -top-[40%] -left-[20%] w-[80%] h-[80%] rounded-full bg-emerald-500/5 blur-[120px]"></div>
-      <div class="absolute top-[20%] -right-[25%] w-[60%] h-[60%] rounded-full bg-rose-500/5 blur-[120px]"></div>
+      <div class="absolute -top-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-emerald-500/10 blur-[130px] dark:opacity-90 opacity-40 animate-orb-1"></div>
+      <div class="absolute top-[30%] -right-[20%] w-[60%] h-[60%] rounded-full bg-brand-primary/8 blur-[120px] dark:opacity-85 opacity-35 animate-orb-2"></div>
     </div>
 
     <!-- Header / Navbar -->
-    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-brand-card-border bg-brand-bg/80 backdrop-blur-md sticky top-0 z-50 transition-colors duration-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 group" id="nav-logo">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-400 flex items-center justify-center shadow-lg shadow-rose-500/20 group-hover:scale-105 transition-transform">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-secondary flex items-center justify-center shadow-lg shadow-brand-primary/20 group-hover:scale-105 transition-transform">
               <!-- Paw Icon -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-white">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
               </svg>
             </div>
-            <span class="font-['Outfit',sans-serif] text-xl font-bold tracking-tight bg-gradient-to-r from-slate-50 to-slate-300 bg-clip-text text-transparent group-hover:text-rose-400 transition-colors">
-              Vet<span class="text-rose-500">24</span>
+            <span class="font-['Outfit',sans-serif] text-xl font-bold tracking-tight text-brand-text group-hover:text-brand-primary transition-colors">
+              Vet<span class="text-brand-primary">24</span>
             </span>
           </a>
-          <span class="hidden sm:inline-block px-2.5 py-0.5 text-xs font-semibold rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
+          <span class="hidden sm:inline-block px-2.5 py-0.5 text-xs font-semibold rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
             Costa Rica
           </span>
         </div>
 
-        <nav class="flex items-center gap-6" aria-label="Navegación principal">
-          <a href="/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors" id="nav-home">
+        <nav class="flex items-center gap-3 sm:gap-5" aria-label="Navegación principal">
+          <a href="/" class="hidden sm:inline-block text-sm font-medium text-brand-text-muted hover:text-brand-text transition-colors" id="nav-home">
             Inicio
           </a>
-          <a href="/#directorio" class="text-sm font-medium text-slate-300 hover:text-white transition-colors" id="nav-directory">
+          <a href="/#directorio" class="hidden sm:inline-block text-sm font-medium text-brand-text-muted hover:text-brand-text transition-colors mr-1" id="nav-directory">
             Directorio
           </a>
 
+          <!-- Theme Switcher Button -->
+          <button
+            id="btn-theme-toggle"
+            class="p-2 rounded-xl border border-brand-card-border bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-primary transition-all cursor-pointer active:scale-95"
+            aria-label="Alternar tema"
+          >
+            <!-- Sun Icon (shown in dark theme) -->
+            <svg id="theme-toggle-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 hidden">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.72 4.72l1.59 1.59M16.127 16.127l1.59 1.59M3 12h2.25m13.5 0H21M4.72 19.28l1.59-1.59M16.127 7.873l1.59-1.59M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z" />
+            </svg>
+            <!-- Moon Icon (shown in light theme) -->
+            <svg id="theme-toggle-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 hidden">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+            </svg>
+          </button>
+
+          <button
+            id="btn-sos-emergency"
+            class="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-extrabold rounded-full border border-brand-primary/40 bg-gradient-to-r from-brand-primary/20 to-brand-primary/10 text-brand-primary hover:text-white hover:from-brand-primary hover:to-brand-primary-hover hover:border-brand-primary transition-all duration-300 cursor-pointer active:scale-95 shadow-lg hover:shadow-brand-primary/25 shadow-brand-primary/10 font-['Outfit',sans-serif] tracking-wider"
+            title="¡Ayuda médica de emergencia inmediata!"
+          >
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-primary"></span>
+            </span>
+            🚨 SOS EMERGENCIA
+          </button>
         </nav>
       </div>
     </header>
@@ -92,20 +146,104 @@ const canonical = canonicalUrl || Astro.url.href;
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-900 bg-slate-950 py-8 mt-12 text-slate-500">
+    <footer class="border-t border-brand-card-border bg-brand-bg py-8 mt-12 text-brand-text-muted transition-colors duration-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <p class="text-sm">
             © {new Date().getFullYear()} Vet24 Costa Rica. Creado con fines informativos para emergencias veterinarias.
           </p>
         </div>
-        <div class="flex items-center gap-6 text-sm">
-          <a href="/#directorio" class="hover:text-slate-300 transition-colors">Províncias</a>
-          <a href="#" class="hover:text-slate-300 transition-colors">Términos</a>
-          <a href="#" class="hover:text-slate-300 transition-colors">Privacidad</a>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm justify-center md:justify-end">
+          <a href="/#directorio" class="hover:text-brand-text transition-colors">Provincias</a>
+          <a href="/acerca/" class="hover:text-brand-text transition-colors">Acerca de</a>
+          <a href="/terminos/" class="hover:text-brand-text transition-colors">Términos</a>
+          <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
+          <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
         </div>
       </div>
     </footer>
+    
+    <script>
+      // SOS button handling
+      document.getElementById('btn-sos-emergency')?.addEventListener('click', () => {
+        const path = window.location.pathname;
+        const isHomepage = path === '/' || path === '/index.html' || path.endsWith('/veterinarias-cr/dist/index.html');
+        if (isHomepage) {
+          window.dispatchEvent(new CustomEvent('sos-trigger'));
+        } else {
+          window.location.href = '/?sos=true';
+        }
+      });
+
+      // Theme toggle handling
+      const themeToggleBtn = document.getElementById('btn-theme-toggle');
+      const sunIcon = document.getElementById('theme-toggle-sun');
+      const moonIcon = document.getElementById('theme-toggle-moon');
+
+      const updateIcons = () => {
+        const isLight = document.documentElement.classList.contains('light');
+        if (isLight) {
+          sunIcon?.classList.add('hidden');
+          moonIcon?.classList.remove('hidden');
+        } else {
+          sunIcon?.classList.remove('hidden');
+          moonIcon?.classList.add('hidden');
+        }
+      };
+
+      // Set initial icon states
+      updateIcons();
+
+      themeToggleBtn?.addEventListener('click', () => {
+        const isCurrentlyLight = document.documentElement.classList.toggle('light');
+        localStorage.setItem('theme', isCurrentlyLight ? 'light' : 'dark');
+        updateIcons();
+        
+        // Dispatch theme change event so that Leaflet map can refresh
+        window.dispatchEvent(new CustomEvent('theme-changed', {
+          detail: { theme: isCurrentlyLight ? 'light' : 'dark' }
+        }));
+      });
+
+      // Lightweight conversion analytics for SEO landing pages.
+      document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement | null;
+        const el = target?.closest('a,button') as HTMLElement | null;
+        if (!el) return;
+
+        const href = el instanceof HTMLAnchorElement ? el.href : '';
+        const id = el.id || '';
+        let action = '';
+
+        if (href.startsWith('tel:')) action = 'call_click';
+        else if (href.includes('wa.me')) action = 'whatsapp_click';
+        else if (href.includes('waze.com')) action = 'waze_click';
+        else if (href.includes('google.com/maps')) action = 'maps_click';
+        else if (el.classList.contains('share-btn')) action = 'share_click';
+        else if (id === 'btn-open-report') action = 'report_open';
+
+        if (!action) return;
+
+        const payload = JSON.stringify({
+          query: window.location.pathname,
+          province: document.querySelector('[data-page-province]')?.getAttribute('data-page-province') || null,
+          canton: document.querySelector('[data-page-zone]')?.getAttribute('data-page-zone') || null,
+          filter_type: action,
+        });
+
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/analytics', new Blob([payload], { type: 'application/json' }));
+          return;
+        }
+
+        fetch('/api/analytics', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true,
+        }).catch(() => {});
+      }, { capture: true });
+    </script>
   </body>
 </html>
 
@@ -119,3 +257,4 @@ const canonical = canonicalUrl || Astro.url.href;
     font-family: 'Outfit', sans-serif;
   }
 </style>
+

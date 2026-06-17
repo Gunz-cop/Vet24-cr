@@ -1,4 +1,4 @@
-﻿---id: 12
+---id: 12
 nombre: "Clínica Veterinaria Ramírez"
 provincia: "Heredia"
 zona: "San Rafael de Heredia"
@@ -29,10 +29,10 @@ has_surgery: true
 has_hospitalization: false
 verification_source: ""
 overnight_doctor_present: false
-latitude: 9.9944
-longitude: -84.1003
-waze_url: "https://waze.com/ul?ll=9.9944%2C-84.1003&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9944,-84.1003"
+latitude: 10.01218
+longitude: -84.09839
+waze_url: "https://waze.com/ul?q=Cl%C3%ADnica%20Veterinaria%20Ram%C3%ADrez%20San%20Rafael%20de%20Heredia%20Heredia%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica%20Veterinaria%20Ram%C3%ADrez%20San%20Rafael%20de%20Heredia%20Heredia%20Costa%20Rica"
 ---
 
 Clínica con 15+ años de experiencia en Heredia. Especialistas en cardiología, ortopedia y oftalmología. Hotel de mascotas y servicio a domicilio.

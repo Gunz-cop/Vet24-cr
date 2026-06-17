@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Términos y Condiciones de Uso";
+const pageDesc = "Términos de servicio de Vet24 Costa Rica. Lea nuestro descargo de responsabilidad sobre la información de veterinarias de emergencia.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <div class="max-w-3xl mx-auto py-10 px-4">
+    <!-- Header -->
+    <div class="mb-10 border-b border-brand-card-border pb-6">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-brand-text mb-3">Términos y Condiciones</h1>
+      <p class="text-sm text-brand-text-muted">Última actualización: 10 de junio, 2026</p>
+    </div>
+
+    <!-- Terms Content -->
+    <div class="space-y-8 text-brand-text-muted text-sm leading-relaxed">
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">1. Aceptación de los Términos</h2>
+        <p>
+          Al acceder y utilizar el sitio web de Vet24 Costa Rica (en adelante, "el Sitio"), usted acepta cumplir y estar sujeto a los siguientes términos y condiciones de uso. Si no está de acuerdo con alguna parte de estos términos, le solicitamos que no utilice nuestro sitio.
+        </p>
+      </section>
+
+      <section class="border border-brand-danger-border bg-brand-danger-bg rounded-2xl p-6">
+        <h2 class="text-lg font-bold text-brand-danger-text mb-3 flex items-center gap-2">
+          ⚠️ 2. Descargo de Responsabilidad Médica y Profesional
+        </h2>
+        <p class="text-brand-text mb-3 font-semibold">
+          Vet24 Costa Rica es únicamente un directorio de carácter informativo.
+        </p>
+        <p class="text-xs">
+          La información proporcionada en el Sitio, incluyendo de forma enunciativa pero no limitativa, números de teléfono, direcciones, horarios de atención, servicios médicos disponibles y disponibilidad 24 horas de las clínicas veterinarias, se provee únicamente con fines de referencia. **Vet24 Costa Rica no ofrece consejos médicos veterinarios, diagnósticos ni tratamientos de ningún tipo.**
+        </p>
+        <p class="text-xs mt-3">
+          El uso de la información del Sitio es bajo su propia responsabilidad. Es de suma importancia que **llame directamente a la clínica veterinaria antes de trasladarse** con su mascota para confirmar que disponen de un veterinario de turno capacitado para atender su urgencia en ese momento específico.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">3. Enlaces y Servicios de Terceros</h2>
+        <p>
+          El Sitio contiene enlaces a sitios web de terceros, mapas de ubicación (como Google Maps, Waze) y números telefónicos directos. Vet24 Costa Rica no tiene control sobre la disponibilidad, políticas de privacidad ni contenidos de dichos sitios externos, por lo que no asume responsabilidad alguna por los daños o perjuicios derivados de su uso.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">4. Limitación de Responsabilidad</h2>
+        <p>
+          En la medida máxima permitida por las leyes aplicables en la República de Costa Rica, Vet24 Costa Rica y sus desarrolladores o colaboradores no serán responsables por ningún daño indirecto, incidental, especial, consecuente o punitivo, ni por la pérdida de vidas de mascotas, retrasos en la atención médica, complicaciones de salud o cualquier otra eventualidad derivada del uso de este directorio informativo.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">5. Modificaciones de la Información y el Sitio</h2>
+        <p>
+          Nos reservamos el derecho de modificar, suspender o discontinuar cualquier parte del Sitio, así como de corregir o actualizar la información del directorio en cualquier momento y sin previo aviso. Le recomendamos revisar periódicamente esta página para mantenerse informado sobre cualquier cambio en estos Términos.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold text-brand-text mb-3">6. Ley Aplicable</h2>
+        <p>
+          Estos términos se regirán e interpretarán de acuerdo con las leyes vigentes de la República de Costa Rica. Cualquier disputa relacionada con el uso de este Sitio será sometida a la jurisdicción exclusiva de los tribunales de San José, Costa Rica.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

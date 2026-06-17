@@ -36,8 +36,8 @@ verification_notes: ["Auditado por falsos positivos de 24/7. Opera únicamente c
 verification_source: "Auditoría telefónica"
 latitude: 9.8869
 longitude: -84.0793
-waze_url: "https://waze.com/ul?ll=9.8869%2C-84.0793&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.8869,-84.0793"
+waze_url: "https://waze.com/ul?q=Veterinaria%20San%20Mart%C3%ADn%20de%20Porres%20Desamparados%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Veterinaria%20San%20Mart%C3%ADn%20de%20Porres%20Desamparados%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Clínica de atención primaria y diurna en Desamparados. Ofrece consulta médica general, vacunación y desparasitación.

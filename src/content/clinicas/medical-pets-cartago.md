@@ -31,8 +31,8 @@ verification_source: ""
 overnight_doctor_present: true
 latitude: 9.9143
 longitude: -83.9833
-waze_url: "https://waze.com/ul?ll=9.9143%2C-83.9833&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9143,-83.9833"
+waze_url: "https://waze.com/ul?q=Medical%20Pets%20Cartago%20Cartago%20%2F%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Medical%20Pets%20Cartago%20Cartago%20%2F%20La%20Uni%C3%B3n%20Cartago%20Costa%20Rica"
 ---
 
 Segunda sede de Medical Pets. Emergencias 24/7 con contacto por WhatsApp. Rayos X y laboratorio in situ.

@@ -1,4 +1,4 @@
-﻿---id: 8
+---id: 8
 nombre: "Hospital Veterinario Agromédica"
 provincia: "San José"
 zona: "Escazú"
@@ -29,10 +29,10 @@ has_surgery: true
 has_hospitalization: true
 verification_source: ""
 overnight_doctor_present: true
-latitude: 9.9281
-longitude: -84.1397
-waze_url: "https://waze.com/ul?ll=9.9281%2C-84.1397&navigate=yes"
-maps_url: "https://www.google.com/maps/search/?api=1&query=9.9281,-84.1397"
+latitude: 9.924898
+longitude: -84.140898
+waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20Agrom%C3%A9dica%20Escaz%C3%BA%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
+maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20Agrom%C3%A9dica%20Escaz%C3%BA%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
 
 Más de 20 años de experiencia. Uno de los pocos hospitales con especialistas en animales exóticos (conejos, aves, reptiles). Hotel de mascotas y trámites de exportación.

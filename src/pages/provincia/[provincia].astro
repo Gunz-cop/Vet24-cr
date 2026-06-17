@@ -4,6 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FiltrosProvincia from '../../components/FiltrosProvincia.astro';
 import ClinicaCard from '../../components/ClinicaCard.astro';
 import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
+import MapaClinicas from '../../components/MapaClinicas.astro';
+import { absoluteUrl, canonicalUrl, normalizeSlug } from '../../lib/seo';
+import { getClinicZoneSlug, getClinicZoneName, priorityZones } from '../../lib/zones';
 
 export async function getStaticPaths() {
   const provincesMap = [
@@ -30,20 +33,13 @@ const { nombreProvincia, slugProvincia } = Astro.props;
 // Fetch all clinics
 const allClinicas = await getCollection('clinicas');
 
-// Helper to normalize strings to slugs (matches the path format)
-const normalizeText = (text: string) => {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
+// Show all clinics
+const publishedClinicas = allClinicas;
 
+// Helper to normalize strings to slugs (matches the path format)
 // Filter clinics by province
-const filteredClinicas = allClinicas.filter(c => {
-  return normalizeText(c.data.provincia) === slugProvincia;
+const filteredClinicas = publishedClinicas.filter(c => {
+  return normalizeSlug(c.data.provincia) === slugProvincia;
 });
 
 // Map of priority values for sorting
@@ -60,35 +56,126 @@ const sortedClinicas = [...filteredClinicas].sort((a, b) => {
   return priorityB - priorityA;
 });
 
+// Build map data array
+const mapData = sortedClinicas.map(c => ({
+  nombre: c.data.nombre,
+  slug: c.data.slug,
+  zona: c.data.zona,
+  telefono1: c.data.telefono1,
+  emergencias24h: c.data.emergencias24h,
+  latitude: c.data.latitude ?? 0,
+  longitude: c.data.longitude ?? 0,
+  waze_url: c.data.waze_url,
+  maps_url: c.data.maps_url,
+  emergency_tier: c.data.emergency_tier,
+  confidence_score: c.data.confidence_score,
+}));
+
 const pageTitle = `Veterinarias de Emergencias en ${nombreProvincia}`;
 const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atención nocturna en la provincia de ${nombreProvincia}, Costa Rica.`;
+const canonical = canonicalUrl(`/provincia/${slugProvincia}/`);
+const provinceZoneLinks = priorityZones
+  .map(zone => {
+    const count = sortedClinicas.filter(c => getClinicZoneSlug(c.data.zona) === zone.slug).length;
+    return { ...zone, count };
+  })
+  .filter(zone => zone.count > 0);
+
+// Build ItemList Schema Markup for Province Directory SEO
+const schemaItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": `Veterinarias de Emergencia en ${nombreProvincia}`,
+  "description": `Lista de clínicas veterinarias en la provincia de ${nombreProvincia}, Costa Rica con servicios de emergencias 24/7 y atención nocturna.`,
+  "numberOfItems": sortedClinicas.length,
+  "itemListElement": sortedClinicas.map((c, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": absoluteUrl(`/clinica/${c.data.slug}/`),
+    "name": c.data.nombre
+  }))
+};
+
+// Build BreadcrumbList Schema Markup for Province page
+const schemaBreadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://vet24cr.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": nombreProvincia,
+      "item": canonical
+    }
+  ]
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc}>
+<BaseLayout title={pageTitle} description={pageDesc} canonicalUrl={canonical}>
+  <!-- Inject Directory Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
   <!-- Section Header -->
-  <section class="py-6 scroll-mt-20" aria-labelledby="provincia-title">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-slate-900 pb-6">
+  <section class="py-6 scroll-mt-20" aria-labelledby="provincia-title" data-page-province={slugProvincia}>
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6 transition-colors duration-200">
       <div>
-        <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-rose-400 hover:text-rose-300 mb-2 transition-colors" id="btn-back-home">
+        <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-primary-hover mb-2 transition-colors" id="btn-back-home">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
           Volver al Inicio
         </a>
-        <h1 id="provincia-title" class="text-3xl md:text-4xl font-bold text-slate-100 font-['Outfit',sans-serif]">
-          Veterinarias en <span class="bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text text-transparent">{nombreProvincia}</span>
+        <h1 id="provincia-title" class="text-3xl md:text-4xl font-extrabold text-brand-text font-['Outfit',sans-serif] tracking-tight">
+          Veterinarias en <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">{nombreProvincia}</span>
         </h1>
-        <p class="text-sm text-slate-450 mt-1">
+        <p class="text-sm text-brand-text-muted mt-1">
           Directorio especializado en urgencias médicas y atención nocturna.
         </p>
       </div>
-      <div class="text-sm font-medium text-slate-400">
-        Total: <span class="text-slate-100 font-bold bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">{sortedClinicas.length} clínicas</span>
+      <div class="text-sm font-medium text-brand-text-muted">
+        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
       </div>
     </div>
 
     <!-- Province Filter Component (Highlights Active Province) -->
     <FiltrosProvincia activeProvincia={slugProvincia} />
+
+    {provinceZoneLinks.length > 0 && (
+      <section class="mb-8 rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5 sm:p-6" aria-labelledby="zonas-provincia-title">
+        <h2 id="zonas-provincia-title" class="text-sm font-black uppercase tracking-wider text-brand-text-muted font-['Outfit',sans-serif] mb-3">
+          Zonas destacadas en {nombreProvincia}
+        </h2>
+        <div class="flex flex-wrap gap-2">
+          {provinceZoneLinks.map((zone) => (
+            <a href={`/zona/${zone.slug}/`} class="inline-flex items-center gap-2 rounded-xl border border-brand-card-border bg-brand-bg/55 px-3.5 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/40 hover:bg-brand-primary/10 hover:text-brand-text">
+              {getClinicZoneName(zone.nombre)}
+              <span class="rounded-md bg-brand-primary/10 px-1.5 py-0.5 text-[10px] text-brand-primary">{zone.count}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mb-8 grid gap-3 md:grid-cols-2" aria-labelledby="faq-provincia-title">
+      <h2 id="faq-provincia-title" class="sr-only">Preguntas frecuentes de veterinarias en {nombreProvincia}</h2>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
+        <h3 class="text-sm font-black text-brand-text mb-2">¿Hay veterinarias abiertas hoy en {nombreProvincia}?</h3>
+        <p class="text-sm text-brand-text-muted">Sí. Revisa el horario de cada ficha y usa los botones de llamada o WhatsApp para confirmar antes de trasladarte.</p>
+      </div>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
+        <h3 class="text-sm font-black text-brand-text mb-2">¿Cuáles atienden emergencias 24/7 en {nombreProvincia}?</h3>
+        <p class="text-sm text-brand-text-muted">Las clínicas marcadas como 24/7 o Tier A aparecen priorizadas cuando tienen emergencia confirmada o auditoría reciente.</p>
+      </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <MapaClinicas clinicas={mapData} />
 
     <!-- Quick Filters Dashboard -->
     <FiltrosDashboard />
@@ -101,13 +188,13 @@ const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atenci�
         ))}
       </div>
     ) : (
-      <div class="text-center py-16 bg-slate-900/10 border border-dashed border-slate-800 rounded-2xl p-8" id="empty-state">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-slate-600 mb-4">
+      <div class="text-center py-16 bg-brand-card-bg/20 border border-dashed border-brand-card-border rounded-2xl p-8" id="empty-state">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto h-12 w-12 text-brand-text-muted/65 mb-4">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 7.5h.008v.008H12v-.008Z" />
         </svg>
-        <h3 class="text-base font-semibold text-slate-200">No hay clínicas activas en {nombreProvincia}</h3>
-        <p class="text-sm text-slate-500 mt-1">Actualmente no disponemos de registros verificados o publicados en esta zona.</p>
-        <a href="/" class="inline-flex items-center gap-1 mt-4 px-4 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white transition-colors" id="btn-fallback-home">
+        <h3 class="text-base font-semibold text-brand-text">No hay clínicas activas en {nombreProvincia}</h3>
+        <p class="text-sm text-brand-text-muted mt-1">Actualmente no disponemos de registros verificados o publicados en esta zona.</p>
+        <a href="/" class="inline-flex items-center gap-1 mt-4 px-4 py-2 text-xs font-semibold rounded-lg bg-brand-card-bg hover:bg-brand-primary/10 text-brand-text border border-brand-card-border hover:border-brand-primary/35 transition-colors" id="btn-fallback-home">
           Ver todas las provincias
         </a>
       </div>
