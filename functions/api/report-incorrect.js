@@ -3,6 +3,46 @@ export async function onRequestPost(context) {
     const { request, env } = context;
     const body = await request.json();
 
+    // Obtener la IP y generar un hash SHA-256 para preservar privacidad
+    const ip = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
+    const msgUint8 = new TextEncoder().encode(ip);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const ipHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+    const db = env.DB;
+    if (db) {
+      try {
+        // Limitar a máximo 3 reportes cada 15 minutos por IP
+        const rateCheck = await db.prepare(
+          "SELECT COUNT(*) as count FROM reports WHERE ip_hash = ? AND created_at > datetime('now', '-15 minutes')"
+        ).bind(ipHash).first();
+
+        if (rateCheck && rateCheck.count >= 3) {
+          return new Response(JSON.stringify({ 
+            error: "Has enviado demasiados reportes. Por favor, inténtalo de nuevo en 15 minutos." 
+          }), {
+            status: 429,
+            headers: { "Content-Type": "application/json" }
+          });
+        }
+
+        // Guardar reporte en base de datos D1
+        await db.prepare(
+          "INSERT INTO reports (clinic_slug, clinic_name, reason, description, contact, ip_hash) VALUES (?, ?, ?, ?, ?, ?)"
+        ).bind(
+          body.clinic || "",
+          body.clinic || "", // Guardamos el slug como nombre provisional
+          body.reason || "",
+          body.description || "",
+          body.contact || "",
+          ipHash
+        ).run();
+      } catch (dbErr) {
+        console.error("Error al guardar el reporte en Cloudflare D1:", dbErr.message);
+      }
+    }
+
     const resendApiKey = env.RESEND_API_KEY;
     const toEmail = env.TO_EMAIL || "grcx1@live.com"; // Default target email
 
@@ -12,6 +52,7 @@ export async function onRequestPost(context) {
       return new Response(JSON.stringify({ 
         success: true, 
         mocked: true,
+        db_saved: !!db,
         message: "Report received (Local fallback mode)" 
       }), {
         status: 200,

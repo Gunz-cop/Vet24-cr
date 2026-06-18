@@ -136,6 +136,7 @@ test.describe('Tier 4: Real-World Application Scenarios', () => {
 
     // 6. Go back to home page and verify full catalog is restored
     await page.click('#btn-back-home');
+    await page.waitForURL('**/');
     await expect(page.locator('#clinicas-grid article').first()).toBeVisible();
     
     const cards = page.locator('#clinicas-grid article');

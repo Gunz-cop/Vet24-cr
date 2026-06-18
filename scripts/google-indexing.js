@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 // Setup paths
 const sitemapPath = './dist/sitemap-0.xml';
 const defaultKeyPath = './service-account.json';

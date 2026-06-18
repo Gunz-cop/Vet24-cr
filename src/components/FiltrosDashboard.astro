@@ -359,6 +359,7 @@
   let userLat: number | null = null;
   let userLng: number | null = null;
   let geoActive = false;
+  let edgeGeoActive = false;
   let searchQuery = '';
   let filterOnlyOpen = false;
   let filterOnly247 = false;
@@ -366,6 +367,31 @@
   let inSOSFlow = false;
   let originalCardsOrder: HTMLElement[] = [];
   let autoGeoTimeoutId: any = null;
+  let debounceTimeoutId: any = null;
+
+  async function logInteraction(data: { query?: string; province?: string; canton?: string; filter_type?: string }) {
+    try {
+      let province = data.province || null;
+      if (!province) {
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts[0] === 'provincia' && pathParts[1]) {
+          province = pathParts[1];
+        }
+      }
+      await fetch('/api/analytics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: data.query || null,
+          province: province,
+          canton: data.canton || null,
+          filter_type: data.filter_type || null
+        })
+      });
+    } catch (e) {
+      console.warn('Error recording search analytics:', e);
+    }
+  }
 
   // Helper to restore original order and reset proximity status
   function restoreDefaultSorting() {
@@ -375,26 +401,59 @@
     // Re-append in original priority order
     originalCardsOrder.forEach(card => grid.appendChild(card));
 
-    // Hide distance badges
+    const edgeActive = grid.getAttribute('data-edge-active') === 'true';
+    const edgeLatAttr = grid.getAttribute('data-edge-lat');
+    const edgeLngAttr = grid.getAttribute('data-edge-lng');
+
+    // Hide or update distance badges based on server-side geolocation fallback
     originalCardsOrder.forEach(card => {
       const distBadge = card.querySelector<HTMLElement>('[data-distance-for]');
       if (distBadge) {
-        distBadge.classList.add('hidden');
-        distBadge.textContent = '';
+        if (edgeActive && edgeLatAttr && edgeLngAttr) {
+          const cLat = parseFloat(card.getAttribute('data-latitude') || '0');
+          const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
+          if (cLat !== 0 || cLng !== 0) {
+            const km = haversineKm(parseFloat(edgeLatAttr), parseFloat(edgeLngAttr), cLat, cLng);
+            distBadge.textContent = `📍 A ${km.toFixed(1)} km`;
+            distBadge.classList.remove('hidden');
+          } else {
+            distBadge.classList.add('hidden');
+            distBadge.textContent = '';
+          }
+        } else {
+          distBadge.classList.add('hidden');
+          distBadge.textContent = '';
+        }
       }
     });
 
     // Reset state variables
     geoActive = false;
-    userLat = null;
-    userLng = null;
 
-    // Reset button style
-    const geoBtn = document.getElementById('btn-use-location');
-    const geoBtnText = document.getElementById('geo-btn-text');
-    if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
-    if (geoBtn) {
-      geoBtn.classList.remove('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10', 'opacity-60', 'pointer-events-none');
+    if (edgeActive && edgeLatAttr && edgeLngAttr) {
+      userLat = parseFloat(edgeLatAttr);
+      userLng = parseFloat(edgeLngAttr);
+      edgeGeoActive = true;
+
+      const geoBtn = document.getElementById('btn-use-location');
+      const geoBtnText = document.getElementById('geo-btn-text');
+      const cityAttr = grid.getAttribute('data-edge-city');
+      if (geoBtnText) geoBtnText.textContent = cityAttr ? `📍 Cerca de ${cityAttr}` : '📍 Cerca de tu zona';
+      if (geoBtn) {
+        geoBtn.classList.remove('opacity-60', 'pointer-events-none');
+        geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+      }
+    } else {
+      userLat = null;
+      userLng = null;
+      edgeGeoActive = false;
+
+      const geoBtn = document.getElementById('btn-use-location');
+      const geoBtnText = document.getElementById('geo-btn-text');
+      if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+      if (geoBtn) {
+        geoBtn.classList.remove('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10', 'opacity-60', 'pointer-events-none');
+      }
     }
 
     // Remove user pin from the map
@@ -513,8 +572,8 @@
       if (visibleCount === 0) {
         emptyState.classList.remove('hidden');
 
-        // Show nearby fallback if geolocation is active
-        if (geoActive && userLat !== null && userLng !== null && fallbackSection && fallbackGrid) {
+        // Show nearby fallback if geolocation is active (either browser GPS or server Edge IP)
+        if ((geoActive || edgeGeoActive) && userLat !== null && userLng !== null && fallbackSection && fallbackGrid) {
           const cardsWithCoords = cards
             .filter(c => parseFloat(c.getAttribute('data-latitude') || '0') !== 0)
             .map(c => ({
@@ -567,8 +626,50 @@
     }
   }
 
+  // Helper to draw user location marker on the map safely when Leaflet is ready
+  function drawUserPinOnMap(lat: number, lng: number) {
+    const L = (window as any).__vet24L;
+    const map = (window as any).__vet24Map;
+    if (L && map) {
+      // First clean up any existing user pins
+      map.eachLayer((layer: any) => {
+        if (layer.options && layer.options.icon && layer.options.icon.options && layer.options.icon.options.className === 'user-location-pin') {
+          map.removeLayer(layer);
+        }
+      });
+
+      const userIcon = L.divIcon({
+        html: `<div style="
+          width:16px;height:16px;
+          background:#f43f5e;
+          border:3px solid white;
+          border-radius:50%;
+          box-shadow:0 0 0 4px rgba(244,63,94,0.3);
+          pointer-events: none;
+        "></div>`,
+        className: 'user-location-pin',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+      });
+      L.marker([lat, lng], { icon: userIcon })
+        .addTo(map)
+        .bindPopup('<strong style="color:#f43f5e">📍 Tu ubicación</strong>')
+        .openPopup();
+      map.setView([lat, lng], 11, { animate: true });
+    }
+  }
+
   // ─── Sort by proximity ────────────────────────────────────────────────
   function sortByProximity(lat: number, lng: number) {
+    // Dynamically trigger map initialization in background without rendering block if not ready yet
+    if (!(window as any).__vet24Map && (window as any).__triggerMapInitialization) {
+      (window as any).__triggerMapInitialization().then(() => {
+        drawUserPinOnMap(lat, lng);
+      });
+    } else {
+      drawUserPinOnMap(lat, lng);
+    }
+
     const grid = document.getElementById('clinicas-grid');
     if (!grid) return;
 
@@ -604,37 +705,6 @@
         }
       }
     });
-
-    // Add user pin to the map if available
-    const L = (window as any).__vet24L;
-    const map = (window as any).__vet24Map;
-    if (L && map) {
-      // First clean up any existing user pins
-      map.eachLayer((layer: any) => {
-        if (layer.options && layer.options.icon && layer.options.icon.options && layer.options.icon.options.className === 'user-location-pin') {
-          map.removeLayer(layer);
-        }
-      });
-
-      const userIcon = L.divIcon({
-        html: `<div style="
-          width:16px;height:16px;
-          background:#f43f5e;
-          border:3px solid white;
-          border-radius:50%;
-          box-shadow:0 0 0 4px rgba(244,63,94,0.3);
-          pointer-events: none;
-        "></div>`,
-        className: 'user-location-pin',
-        iconSize: [16, 16],
-        iconAnchor: [8, 8],
-      });
-      L.marker([lat, lng], { icon: userIcon })
-        .addTo(map)
-        .bindPopup('<strong style="color:#f43f5e">📍 Tu ubicación</strong>')
-        .openPopup();
-      map.setView([lat, lng], 11, { animate: true });
-    }
   }
 
   // ─── Setup event listeners ─────────────────────────────────────────────
@@ -654,6 +724,14 @@
       searchQuery = searchInput.value.trim().toLowerCase();
       if (clearBtn) clearBtn.classList.toggle('hidden', !searchQuery);
       applyAllFilters();
+
+      // Debounce analytics
+      if (debounceTimeoutId) clearTimeout(debounceTimeoutId);
+      if (searchQuery) {
+        debounceTimeoutId = setTimeout(() => {
+          logInteraction({ query: searchQuery, filter_type: 'search' });
+        }, 1500);
+      }
     });
 
     clearBtn?.addEventListener('click', () => {
@@ -699,6 +777,7 @@
       filterOpenBtn.classList.toggle('text-brand-success');
       filterOpenBtn.classList.toggle('border-brand-success-border');
       applyAllFilters();
+      logInteraction({ filter_type: filterOnlyOpen ? 'filter_open_true' : 'filter_open_false' });
     });
 
     // ── Solo 24/7 ──
@@ -708,6 +787,7 @@
       filter247Btn.classList.toggle('text-brand-danger-text');
       filter247Btn.classList.toggle('border-brand-danger-border');
       applyAllFilters();
+      logInteraction({ filter_type: filterOnly247 ? 'filter_247_true' : 'filter_247_false' });
     });
 
     // ── Geolocation ──
@@ -741,12 +821,14 @@
 
           sortByProximity(userLat, userLng);
           applyAllFilters();
+          logInteraction({ filter_type: 'geo_gps_success' });
         },
         (err) => {
           console.warn('Geolocation error:', err.message);
           if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
           geoBtn.classList.remove('opacity-60', 'pointer-events-none');
           alert('No pudimos acceder a tu ubicación. Revisa los permisos del navegador.');
+          logInteraction({ filter_type: 'geo_gps_error' });
         },
         { timeout: 10000, maximumAge: 300000 }
       );
@@ -763,6 +845,7 @@
         btn.classList.remove('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
+        logInteraction({ filter_type: `filter_animal_${activeAnimal}` });
       });
     });
 
@@ -840,6 +923,29 @@
     const grid = document.getElementById('clinicas-grid');
     if (grid) {
       originalCardsOrder = Array.from(grid.querySelectorAll<HTMLElement>('article'));
+
+      const edgeActive = grid.getAttribute('data-edge-active') === 'true';
+      if (edgeActive) {
+        const latAttr = grid.getAttribute('data-edge-lat');
+        const lngAttr = grid.getAttribute('data-edge-lng');
+        const cityAttr = grid.getAttribute('data-edge-city');
+        
+        if (latAttr && lngAttr) {
+          userLat = parseFloat(latAttr);
+          userLng = parseFloat(lngAttr);
+          edgeGeoActive = true;
+          
+          // Update button text to show it is sorted by Edge IP location
+          const geoBtnText = document.getElementById('geo-btn-text');
+          const geoBtn = document.getElementById('btn-use-location');
+          if (geoBtnText) {
+            geoBtnText.textContent = cityAttr ? `📍 Cerca de ${cityAttr}` : '📍 Cerca de tu zona';
+          }
+          if (geoBtn) {
+            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+          }
+        }
+      }
     }
 
     setupFilters();

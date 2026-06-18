@@ -29,9 +29,10 @@ interface Props {
     slug: string;
     copyDiferenciador: string;
   };
+  distance?: number;
 }
 
-const { clinica } = Astro.props;
+const { clinica, distance } = Astro.props;
 
 // Helper to clean phone numbers for href links
 const cleanPhone = (num: string) => num.replace(/\D/g, '');
@@ -96,7 +97,9 @@ if (clinica.emergencias24h) {
         <span class="status-indicator-badge text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-brand-bg/85 text-brand-text-muted border border-brand-card-border w-fit" data-status-for={clinica.slug}>
           Horario...
         </span>
-        <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 w-fit hidden" data-distance-for={clinica.slug}></span>
+        <span class={`text-[9px] font-black px-2 py-0.5 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 w-fit ${distance !== undefined ? '' : 'hidden'}`} data-distance-for={clinica.slug}>
+          {distance !== undefined ? `📍 A ${distance.toFixed(1)} km` : ''}
+        </span>
         {clinica.last_verified && (
           <span class="text-[9px] text-brand-text-muted/70 font-bold">
             ✓ Verificado: {clinica.last_verified}

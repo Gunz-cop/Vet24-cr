@@ -3,3 +3,8 @@ compatibility_date = "2026-06-09"
 
 [assets]
 directory = "./dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vet24_db"
+database_id = "550e8400-e29b-41d4-a716-446655440000"

@@ -27,5 +27,8 @@ pnpm-debug.log*
 playwright-report/
 test-results/
 
+# Cloudflare local state
+.wrangler/
+
 # Credentials
 service-account.json

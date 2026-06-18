@@ -151,10 +151,11 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
         JSON.parse = function(text, reviver) {
           const data = originalParse.call(JSON, text, reviver);
           if (Array.isArray(data) && data.length > 0) {
-            data[0].telefono1 = undefined;
-            data[0].latitude = 9.9999;
-            data[0].longitude = -84.1111;
-            data[0].nombre = "Clinica Sin Telefono";
+            const clinic = data.find(c => c.slug === 'agromedica-escazu') || data[0];
+            clinic.telefono1 = undefined;
+            clinic.latitude = 9.9999;
+            clinic.longitude = -84.1111;
+            clinic.nombre = "Clinica Sin Telefono";
           }
           return data;
         };
