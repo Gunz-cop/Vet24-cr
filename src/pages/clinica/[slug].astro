@@ -69,6 +69,72 @@ const shortenedWeb = webUrl ? (linkzipCache[webUrl] || webUrl) : null;
 const shortenedFacebook = facebookUrl ? (linkzipCache[facebookUrl] || facebookUrl) : null;
 const shortenedInstagram = instagramUrl ? (linkzipCache[instagramUrl] || instagramUrl) : null;
 
+const normalizeHours = (text: string) => {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/:00/g, '')
+    .replace(/a\.m\.|am/g, 'am')
+    .replace(/p\.m\.|pm/g, 'pm');
+};
+
+const hourTo24 = (value: string) => {
+  const match = value.match(/^(\d{1,2})(am|pm)$/);
+  if (!match) return null;
+  let hour = Number(match[1]);
+  const period = match[2];
+  if (period === 'pm' && hour < 12) hour += 12;
+  if (period === 'am' && hour === 12) hour = 0;
+  return hour;
+};
+
+const rangeToSchedule = (days: string, start: string, end: string) => {
+  const startHour = hourTo24(start);
+  const endHour = hourTo24(end);
+  if (startHour === null || endHour === null) return "";
+  return `${days}:${startHour}-${endHour}`;
+};
+
+const getClientScheduleAttr = () => {
+  if (emergencias24h) return "24h";
+
+  const text = normalizeHours(horarioTexto);
+  if (text.includes("oxígeno") || text.includes("10am-9pm")) {
+    return "1-6:10-21,0:10-20";
+  }
+  if (text.includes("concasa") || text.includes("8am-9pm")) {
+    return "1-5:8-21,6:9-19,0:9-17";
+  }
+  if (text.includes("medical care") || text.includes("9am-9pm")) {
+    return "1-0:9-21";
+  }
+  if (text.includes("hems") || text.includes("9am-7pm")) {
+    return "1-5:9-19,6-0:10-17";
+  }
+
+  const rules: string[] = [];
+  const dayPatterns = [
+    { pattern: /l-d(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-0" },
+    { pattern: /l-s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-6" },
+    { pattern: /l-v(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-5" },
+    { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6-0" },
+    { pattern: /d(?:yferiados)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "0" },
+    { pattern: /s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6" },
+  ];
+
+  for (const { pattern, days } of dayPatterns) {
+    const match = text.match(pattern);
+    if (match) {
+      const rule = rangeToSchedule(days, match[1], match[2]);
+      if (rule) rules.push(rule);
+    }
+  }
+
+  return [...new Set(rules)].join(",");
+};
+
+const scheduleAttr = getClientScheduleAttr();
+
 // Collect social media and website URLs for schema sameAs (must use original URLs for SEO)
 const schemaSameAs: string[] = [];
 if (webUrl) schemaSameAs.push(webUrl);
@@ -312,6 +378,13 @@ const schemaFaq = {
           
           <div class="flex flex-wrap items-center gap-2.5 mb-4 relative z-10">
             <BadgeHorario categoriaHorario={categoriaHorario} />
+            <span
+              class="detail-status-badge inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-brand-card-bg/80 text-brand-text-muted border border-brand-card-border"
+              data-detail-status="inline"
+              data-schedule={scheduleAttr}
+            >
+              Verificando horario...
+            </span>
             {record_status === 'VERIFIED' ? (
               <span class="inline-flex items-center gap-1 px-3 py-1 text-xs font-black rounded-full bg-brand-success-bg text-brand-success border border-brand-success-border shadow-sm shadow-emerald-950/20" title="Información auditada por llamada de prueba">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 animate-pulse">
@@ -349,6 +422,13 @@ const schemaFaq = {
           <h2 id="seo-quick-facts-title" class="sr-only">Datos rápidos de {nombre}</h2>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
             <span class="block text-[10px] font-black uppercase tracking-wider text-brand-text-muted">Horario</span>
+            <span
+              class="detail-status-badge mt-2 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black rounded-xl bg-brand-card-bg text-brand-text-muted border border-brand-card-border shadow-sm"
+              data-detail-status="block"
+              data-schedule={scheduleAttr}
+            >
+              Verificando horario...
+            </span>
             <p class="mt-1 text-sm font-bold text-brand-text">{horarioTexto}</p>
           </div>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
@@ -882,6 +962,53 @@ const schemaFaq = {
 
 <script>
   function init() {
+    function isOpenBySchedule(schedule: string) {
+      if (!schedule) return false;
+      if (schedule === '24h') return true;
+
+      const now = new Date();
+      const day = now.getDay();
+      const hour = now.getHours() + now.getMinutes() / 60;
+      const rules = schedule.split(',').filter(Boolean);
+
+      return rules.some((rule) => {
+        const [daysPart, hoursPart] = rule.split(':');
+        if (!daysPart || !hoursPart) return false;
+
+        const [startDay, endDay = startDay] = daysPart.split('-').map(Number);
+        const [openHour, closeHour] = hoursPart.split('-').map(Number);
+        if ([startDay, endDay, openHour, closeHour].some(Number.isNaN)) return false;
+
+        const isDayMatch = startDay <= endDay
+          ? day >= startDay && day <= endDay
+          : day >= startDay || day <= endDay;
+
+        if (!isDayMatch) return false;
+
+        if (closeHour < openHour) {
+          return hour >= openHour || hour < closeHour;
+        }
+
+        return hour >= openHour && hour < closeHour;
+      });
+    }
+
+    function updateDetailStatusBadges() {
+      const badges = document.querySelectorAll<HTMLElement>('[data-detail-status]');
+      badges.forEach((badge) => {
+        const schedule = badge.getAttribute('data-schedule') || '';
+        const isOpen = isOpenBySchedule(schedule);
+
+        badge.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+        const spacing = badge.getAttribute('data-detail-status') === 'block' ? 'mt-2 ' : '';
+        badge.className = isOpen
+          ? `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black rounded-xl bg-brand-success-bg text-brand-success border border-brand-success-border shadow-sm w-fit`
+          : `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-black rounded-xl bg-brand-card-bg text-brand-text-muted border border-brand-card-border shadow-sm w-fit`;
+      });
+    }
+
+    updateDetailStatusBadges();
+
     // Report Incorrect Data Form Logic
     const openReportBtn = document.getElementById('btn-open-report');
     const closeReportBtn = document.getElementById('btn-close-report-modal');

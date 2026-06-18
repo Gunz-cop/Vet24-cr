@@ -40,11 +40,37 @@ const tel1Href = clinica.telefono1 ? `tel:+506${cleanPhone(clinica.telefono1)}` 
 const whatsappHref = clinica.whatsapp ? `https://wa.me/506${cleanPhone(clinica.whatsapp)}` : null;
 
 // Calculate schedule pattern for client-side JS open/closed status check
+const normalizeHours = (text: string) => {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/:00/g, '')
+    .replace(/a\.m\.|am/g, 'am')
+    .replace(/p\.m\.|pm/g, 'pm');
+};
+
+const hourTo24 = (value: string) => {
+  const match = value.match(/^(\d{1,2})(am|pm)$/);
+  if (!match) return null;
+  let hour = Number(match[1]);
+  const period = match[2];
+  if (period === 'pm' && hour < 12) hour += 12;
+  if (period === 'am' && hour === 12) hour = 0;
+  return hour;
+};
+
+const rangeToSchedule = (days: string, start: string, end: string) => {
+  const startHour = hourTo24(start);
+  const endHour = hourTo24(end);
+  if (startHour === null || endHour === null) return "";
+  return `${days}:${startHour}-${endHour}`;
+};
+
 let scheduleAttr = "";
 if (clinica.emergencias24h) {
   scheduleAttr = "24h";
 } else {
-  const text = clinica.horarioTexto.toLowerCase();
+  const text = normalizeHours(clinica.horarioTexto);
   if (text.includes("oxígeno") || text.includes("10am-9pm")) {
     scheduleAttr = "1-6:10-21,0:10-20";
   } else if (text.includes("concasa") || text.includes("8am-9pm")) {
@@ -54,7 +80,25 @@ if (clinica.emergencias24h) {
   } else if (text.includes("hems") || text.includes("9am-7pm")) {
     scheduleAttr = "1-5:9-19,6-0:10-17";
   } else {
-    scheduleAttr = "1-6:8-20,0:8-19"; // Default L-S 8-20, D 8-19
+    const rules: string[] = [];
+    const dayPatterns = [
+      { pattern: /l-d(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-0" },
+      { pattern: /l-s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-6" },
+      { pattern: /l-v(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-5" },
+      { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6-0" },
+      { pattern: /d(?:yferiados)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "0" },
+      { pattern: /s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6" },
+    ];
+
+    for (const { pattern, days } of dayPatterns) {
+      const match = text.match(pattern);
+      if (match) {
+        const rule = rangeToSchedule(days, match[1], match[2]);
+        if (rule) rules.push(rule);
+      }
+    }
+
+    scheduleAttr = [...new Set(rules)].join(",");
   }
 }
 ---

@@ -153,6 +153,8 @@ const schemaFaq = {
       </div>
     </div>
 
+    <FiltrosDashboard />
+
     <FiltrosProvincia />
 
     <section class="mb-8 grid gap-3 md:grid-cols-2" aria-labelledby="faq-zona-title">
@@ -172,10 +174,9 @@ const schemaFaq = {
     </section>
 
     <MapaClinicas clinicas={mapData} />
-    <FiltrosDashboard />
 
     {filteredClinicas.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid" data-edge-active="false">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-24" id="clinicas-grid" data-edge-active="false">
         {filteredClinicas.map(clinica => (
           <ClinicaCard clinica={clinica.data} />
         ))}

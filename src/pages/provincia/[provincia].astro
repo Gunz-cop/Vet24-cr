@@ -143,6 +143,9 @@ const schemaBreadcrumbs = {
       </div>
     </div>
 
+    <!-- Primary filters -->
+    <FiltrosDashboard />
+
     <!-- Province Filter Component (Highlights Active Province) -->
     <FiltrosProvincia activeProvincia={slugProvincia} />
 
@@ -177,12 +180,9 @@ const schemaBreadcrumbs = {
     <!-- Interactive Map -->
     <MapaClinicas clinicas={mapData} />
 
-    <!-- Quick Filters Dashboard -->
-    <FiltrosDashboard />
-
     <!-- Clinics Grid -->
     {sortedClinicas.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clinicas-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-24" id="clinicas-grid">
         {sortedClinicas.map(clinica => (
           <ClinicaCard clinica={clinica.data} />
         ))}

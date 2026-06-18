@@ -1,7 +1,20 @@
+const escapeHtml = (value = "") => String(value)
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;")
+  .replace(/'/g, "&#039;");
+
+const isEmail = (value = "") => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
     const body = await request.json();
+    const clinic = body.clinic || "Sin clínica indicada";
+    const reason = body.reason || "Sin motivo indicado";
+    const description = body.description || "Sin descripción";
+    const contact = body.contact || "";
 
     // Obtener la IP y generar un hash SHA-256 para preservar privacidad
     const ip = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
@@ -31,11 +44,11 @@ export async function onRequestPost(context) {
         await db.prepare(
           "INSERT INTO reports (clinic_slug, clinic_name, reason, description, contact, ip_hash) VALUES (?, ?, ?, ?, ?, ?)"
         ).bind(
-          body.clinic || "",
-          body.clinic || "", // Guardamos el slug como nombre provisional
-          body.reason || "",
-          body.description || "",
-          body.contact || "",
+          clinic,
+          clinic,
+          reason,
+          description,
+          contact,
           ipHash
         ).run();
       } catch (dbErr) {
@@ -43,12 +56,16 @@ export async function onRequestPost(context) {
       }
     }
 
-    const resendApiKey = env.RESEND_API_KEY;
-    const toEmail = env.TO_EMAIL || "grcx1@live.com"; // Default target email
+    const emailBinding = env.EMAIL;
+    const toEmail = env.REPORTS_TO_EMAIL || env.TO_EMAIL || "g1721m@gmail.com";
+    const fromEmail = env.REPORTS_FROM_EMAIL || "reportes@vet24cr.com";
+    const safeClinic = escapeHtml(clinic);
+    const safeReason = escapeHtml(reason);
+    const safeDescription = escapeHtml(description);
+    const safeContact = contact ? escapeHtml(contact) : "<em>No proporcionado</em>";
 
-    if (!resendApiKey) {
-      // If no API key is configured yet, mock a successful response and log the report details
-      console.warn("RESEND_API_KEY is not configured in Cloudflare Pages env. Logging report instead:", body);
+    if (!emailBinding?.send) {
+      console.warn("Cloudflare Email binding EMAIL is not configured. Logging report instead:", body);
       return new Response(JSON.stringify({ 
         success: true, 
         mocked: true,
@@ -60,55 +77,52 @@ export async function onRequestPost(context) {
       });
     }
 
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${resendApiKey}`,
-        "Content-Type": "application/json"
+    await emailBinding.send({
+      to: toEmail,
+      from: {
+        email: fromEmail,
+        name: "Vet24 Reportes"
       },
-      body: JSON.stringify({
-        from: "Vet24 Reports <onboarding@resend.dev>", // Resend sandbox domain, replace with verified domain when ready
-        to: [toEmail],
-        subject: `[Vet24] Inconsistencia: ${body.clinic}`,
-        html: `
-          <div style="font-family: sans-serif; padding: 20px; color: #333;">
-            <h2 style="color: #45634f; border-bottom: 2px solid #adcfb6; padding-bottom: 10px;">🐾 Alerta de Inconsistencia en Clínica</h2>
-            <p style="font-size: 16px;">Se ha enviado una notificación de datos incorrectos para la siguiente clínica:</p>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-              <tr style="background: #faf9f4;">
-                <td style="padding: 10px; border: 1px solid #dbdad5; font-weight: bold; width: 120px;">Clínica:</td>
-                <td style="padding: 10px; border: 1px solid #dbdad5;">${body.clinic}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border: 1px solid #dbdad5; font-weight: bold;">Motivo:</td>
-                <td style="padding: 10px; border: 1px solid #dbdad5; text-transform: capitalize;">${body.reason}</td>
-              </tr>
-              <tr style="background: #faf9f4;">
-                <td style="padding: 10px; border: 1px solid #dbdad5; font-weight: bold;">Descripción:</td>
-                <td style="padding: 10px; border: 1px solid #dbdad5; white-space: pre-wrap;">${body.description}</td>
-              </tr>
-              <tr>
-                <td style="padding: 10px; border: 1px solid #dbdad5; font-weight: bold;">Contacto:</td>
-                <td style="padding: 10px; border: 1px solid #dbdad5;">${body.contact || "<em>No proporcionado</em>"}</td>
-              </tr>
-            </table>
-          </div>
-        `
-      })
+      ...(isEmail(contact) ? { replyTo: contact } : {}),
+      subject: `[Vet24] Inconsistencia: ${clinic}`,
+      text: [
+        "Alerta de inconsistencia en clínica",
+        "",
+        `Clínica: ${clinic}`,
+        `Motivo: ${reason}`,
+        `Descripción: ${description}`,
+        `Contacto: ${contact || "No proporcionado"}`
+      ].join("\n"),
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px; color: #25312b;">
+          <h2 style="color: #e71d54; border-bottom: 2px solid #f4b6c8; padding-bottom: 10px;">Alerta de inconsistencia en clínica</h2>
+          <p style="font-size: 16px;">Un usuario reportó datos posiblemente incorrectos en Vet24.</p>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+            <tr style="background: #fff5f8;">
+              <td style="padding: 10px; border: 1px solid #ead7dd; font-weight: bold; width: 120px;">Clínica:</td>
+              <td style="padding: 10px; border: 1px solid #ead7dd;">${safeClinic}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ead7dd; font-weight: bold;">Motivo:</td>
+              <td style="padding: 10px; border: 1px solid #ead7dd;">${safeReason}</td>
+            </tr>
+            <tr style="background: #fff5f8;">
+              <td style="padding: 10px; border: 1px solid #ead7dd; font-weight: bold;">Descripción:</td>
+              <td style="padding: 10px; border: 1px solid #ead7dd; white-space: pre-wrap;">${safeDescription}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ead7dd; font-weight: bold;">Contacto:</td>
+              <td style="padding: 10px; border: 1px solid #ead7dd;">${safeContact}</td>
+            </tr>
+          </table>
+        </div>
+      `
     });
 
-    if (response.ok) {
-      return new Response(JSON.stringify({ success: true }), {
-        status: 200,
-        headers: { "Content-Type": "application/json" }
-      });
-    } else {
-      const errText = await response.text();
-      return new Response(JSON.stringify({ error: errText }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
-    }
+    return new Response(JSON.stringify({ success: true, db_saved: !!db, email_sent: true }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), {
       status: 500,

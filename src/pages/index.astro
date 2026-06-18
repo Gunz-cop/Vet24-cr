@@ -142,8 +142,20 @@ const schemaItemList = {
         Busca veterinarias abiertas ahora, clínicas de guardia y opciones 24/7 cerca de tu zona en Costa Rica.
       </p>
       
-      <div class="flex flex-wrap justify-center gap-4 text-sm font-semibold">
-        <a href="#directorio" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:brightness-110 text-white transition-all duration-300 shadow-lg shadow-brand-primary/25 hover:shadow-brand-primary/45 hover:scale-[1.03] active:scale-[0.97]" id="cta-directorio">
+      <div class="flex flex-col sm:flex-row justify-center gap-3 text-sm font-semibold">
+        <button
+          type="button"
+          data-sos-trigger
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:brightness-110 text-white transition-all duration-300 shadow-lg shadow-brand-primary/30 hover:shadow-brand-primary/50 hover:scale-[1.03] active:scale-[0.97] font-extrabold"
+          id="cta-sos-hero"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+          </span>
+          🚨 SOS EMERGENCIA
+        </button>
+        <a href="#directorio" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-brand-card-border bg-brand-card-bg/45 hover:bg-brand-primary/10 hover:border-brand-primary/35 text-brand-text transition-all duration-300 active:scale-[0.97]" id="cta-directorio">
           Ver Directorio
         </a>
       </div>
@@ -183,6 +195,9 @@ const schemaItemList = {
       </div>
     </div>
 
+    <!-- Primary filters -->
+    <FiltrosDashboard />
+
     <!-- Province Filter Component -->
     <FiltrosProvincia />
 
@@ -208,12 +223,9 @@ const schemaItemList = {
     <!-- Interactive Map -->
     <MapaClinicas clinicas={mapData} />
 
-    <!-- Quick Filters Dashboard -->
-    <FiltrosDashboard />
-
     <!-- Clinics Grid -->
     <div 
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-24" 
       id="clinicas-grid"
       data-edge-lat={edgeLat}
       data-edge-lng={edgeLng}

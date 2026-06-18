@@ -127,6 +127,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
 
           <button
             id="btn-sos-emergency"
+            data-sos-trigger
             class="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-extrabold rounded-full border border-brand-primary/40 bg-gradient-to-r from-brand-primary/20 to-brand-primary/10 text-brand-primary hover:text-white hover:from-brand-primary hover:to-brand-primary-hover hover:border-brand-primary transition-all duration-300 cursor-pointer active:scale-95 shadow-lg hover:shadow-brand-primary/25 shadow-brand-primary/10 font-['Outfit',sans-serif] tracking-wider"
             title="¡Ayuda médica de emergencia inmediata!"
           >
@@ -165,14 +166,23 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     
     <script>
       // SOS button handling
-      document.getElementById('btn-sos-emergency')?.addEventListener('click', () => {
+      const triggerSOSFlow = () => {
         const path = window.location.pathname;
         const isHomepage = path === '/' || path === '/index.html' || path.endsWith('/veterinarias-cr/dist/index.html');
         if (isHomepage) {
           window.dispatchEvent(new CustomEvent('sos-trigger'));
         } else {
-          window.location.href = '/?sos=true';
+          try {
+            window.sessionStorage.setItem('vet24-sos-pending', 'true');
+          } catch (e) {
+            console.warn('No se pudo guardar el estado SOS:', e);
+          }
+          window.location.href = '/?sos=true#directorio';
         }
+      };
+
+      document.querySelectorAll('[data-sos-trigger]').forEach((btn) => {
+        btn.addEventListener('click', triggerSOSFlow);
       });
 
       // Theme toggle handling

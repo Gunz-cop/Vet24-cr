@@ -4,6 +4,11 @@ const CANONICAL_HOST = "vet24cr.com";
 
 export const onRequest = defineMiddleware((context, next) => {
   const url = new URL(context.request.url);
+  const isLocalHost = url.hostname === "localhost" || url.hostname === "127.0.0.1";
+  if (isLocalHost) {
+    return next();
+  }
+
   const isCanonicalHost = url.hostname === CANONICAL_HOST;
   const isHttps = url.protocol === "https:";
   const hasIndex = url.pathname.endsWith("/index.html");
@@ -29,4 +34,3 @@ export const onRequest = defineMiddleware((context, next) => {
 
   return next();
 });
-
