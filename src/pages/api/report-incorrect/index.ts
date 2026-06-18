@@ -131,4 +131,3 @@ export async function POST({ request, locals }: APIContext) {
     }, 500);
   }
 }
-
