@@ -9,5 +9,9 @@ binding = "DB"
 database_name = "vet24_db"
 database_id = "550e8400-e29b-41d4-a716-446655440000"
 
+[[kv_namespaces]]
+binding = "SESSION"
+id = "b58bf278db0e4f4da22b87d1f21c0d29"
+
 [[send_email]]
 name = "EMAIL"
