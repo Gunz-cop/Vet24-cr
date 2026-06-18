@@ -1,4 +1,5 @@
 import type { APIContext } from "astro";
+import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
@@ -18,9 +19,8 @@ const jsonResponse = (body: Record<string, unknown>, status = 200) => {
   });
 };
 
-export async function POST({ request, locals }: APIContext) {
+export async function POST({ request }: APIContext) {
   try {
-    const env = (locals as any).runtime?.env;
     const body = await request.json();
     const clinic = body.clinic || "Sin clínica indicada";
     const reason = body.reason || "Sin motivo indicado";
@@ -33,7 +33,7 @@ export async function POST({ request, locals }: APIContext) {
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const ipHash = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 
-    const db = env?.DB;
+    const db = (env as any)?.DB;
     if (db) {
       try {
         const rateCheck = await db.prepare(
@@ -61,9 +61,9 @@ export async function POST({ request, locals }: APIContext) {
       }
     }
 
-    const emailBinding = env?.EMAIL;
-    const toEmail = env?.REPORTS_TO_EMAIL || env?.TO_EMAIL || "g1721m@gmail.com";
-    const fromEmail = env?.REPORTS_FROM_EMAIL || "reportes@vet24cr.com";
+    const emailBinding = (env as any)?.EMAIL;
+    const toEmail = (env as any)?.REPORTS_TO_EMAIL || (env as any)?.TO_EMAIL || "g1721m@gmail.com";
+    const fromEmail = (env as any)?.REPORTS_FROM_EMAIL || "reportes@vet24cr.com";
 
     if (!emailBinding?.send) {
       console.warn("Cloudflare Email binding EMAIL is not configured. Logging report instead:", body);
