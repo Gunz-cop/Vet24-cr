@@ -777,6 +777,13 @@
       }
     });
 
+    searchInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        scrollToFirstVisibleResult();
+      }
+    });
+
     clearBtn?.addEventListener('click', () => {
       if (searchInput) searchInput.value = '';
       searchQuery = '';

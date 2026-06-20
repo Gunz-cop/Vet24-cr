@@ -1,14 +1,14 @@
-﻿---
+---
 id: 27
-nombre: "Hospital Veterinario VEHASA"
+nombre: "Hospital Veterinario VEHASA (Beasa)"
 provincia: "San José"
 zona: "Hatillo"
 direccion: "Centro Comercial Vehasa, Hatillo Centro, San José"
 telefono1: "2254-1920"
 telefono2: ""
-whatsapp: ""
-horarioTexto: "Atención de emergencia depende de disponibilidad (Llamar previamente)"
-categoriaHorario: "Cierra después 21h"
+whatsapp: "8993-3471"
+horarioTexto: "L-V 8am-7pm, S 8am-6pm, D 8am-4pm"
+categoriaHorario: "Horario normal"
 emergencias24h: false
 atiendeExoticos: false
 cirugiaEmergencia: true
@@ -23,7 +23,7 @@ copyDiferenciador: "Hospital veterinario de referencia en Hatillo Centro. Atenci
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier B"
-last_verified: "2026-06-08"
+last_verified: "2026-06-20"
 phone_verified: true
 address_verified: true
 schedule_verified: true
