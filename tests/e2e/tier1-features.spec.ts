@@ -15,7 +15,7 @@ function haversine(lat1: number, lon1: number, lat2: number, lon2: number) {
 test.describe('Tier 1: Feature Coverage', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to homepage before each test
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
   });
 
   test.describe('Geolocation Proximity Sorting', () => {
@@ -50,7 +50,7 @@ test.describe('Tier 1: Feature Coverage', () => {
     });
     test('2. should sort clinics by proximity with user location set to San José coordinates', async ({ page, context }) => {
       // Grant geolocation permission and mock position to San José
-      await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
+      await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
       // Click sorting button if not already active
@@ -83,7 +83,7 @@ test.describe('Tier 1: Feature Coverage', () => {
     });
 
     test('3. should calculate distances in kilometers and display them on distance badges', async ({ page, context }) => {
-      await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
+      await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
       const btnText = await page.locator('#geo-btn-text').textContent();
@@ -98,7 +98,7 @@ test.describe('Tier 1: Feature Coverage', () => {
     });
 
     test('4. should format distance badge text as 📍 A X.X km', async ({ page, context }) => {
-      await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
+      await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
       const btnText = await page.locator('#geo-btn-text').textContent();
@@ -359,11 +359,12 @@ test.describe('Tier 1: Feature Coverage', () => {
   test.describe('SOS Emergency Button', () => {
     test('61. should activate SOS flow on homepage when clicking SOS button', async ({ page, context }) => {
       // Grant geolocation permission and mock position to San José
-      await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
+      await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
+      await page.reload({ waitUntil: 'domcontentloaded' });
 
-      // Click the SOS button in the navbar
-      await page.click('#btn-sos-emergency');
+      // Click the SOS button in the hero
+      await page.click('#cta-sos-hero');
 
       // The SOS emergency card should be visible
       const card = page.locator('#sos-emergency-card');
@@ -373,9 +374,41 @@ test.describe('Tier 1: Feature Coverage', () => {
       await expect(card).toContainText('LA VETERINARIA ABIERTA 24/7 MÁS CERCANA');
     });
 
+    test('61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow', async ({ page, context }) => {
+      await page.addInitScript(() => {
+        const fixedTime = new Date('2026-06-22T01:08:00.000Z');
+        const RealDate = Date;
+        class MockDate extends RealDate {
+          constructor(...args: ConstructorParameters<typeof Date>) {
+            if (args.length === 0) {
+              super(fixedTime.getTime());
+            } else {
+              super(...args);
+            }
+          }
+          static now() {
+            return fixedTime.getTime();
+          }
+        }
+        window.Date = MockDate as DateConstructor;
+      });
+      await page.reload({ waitUntil: 'domcontentloaded' });
+
+      await context.grantPermissions(['geolocation']);
+      await context.setGeolocation({ latitude: 9.89, longitude: -84.11 });
+
+      await page.click('#btn-sos-emergency');
+
+      const card = page.locator('#sos-emergency-card');
+      await expect(card).toBeVisible({ timeout: 15000 });
+      await expect(card).toContainText('LA VETERINARIA ABIERTA MÁS CERCANA (HORARIO REGULAR)');
+      await expect(card).toContainText('Veterinaria San Martín de Porres');
+      await expect(card).not.toContainText('Hospital Veterinario Agromédica');
+    });
+
     test('62. should redirect to homepage with sos=true parameter when clicking SOS button on details page', async ({ page }) => {
       // Navigate to a details page
-      await page.goto('/clinica/hospital-vet-santamaria-alajuela/');
+      await page.goto('/clinica/hospital-vet-santamaria-alajuela/', { waitUntil: 'domcontentloaded' });
 
       // Click the SOS button
       await page.click('#btn-sos-emergency');
@@ -387,4 +420,3 @@ test.describe('Tier 1: Feature Coverage', () => {
     });
   });
 });
-

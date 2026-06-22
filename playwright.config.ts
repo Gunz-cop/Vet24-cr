@@ -1,6 +1,8 @@
 import { defineConfig, devices, test as baseTest } from '@playwright/test';
 import path from 'path';
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321';
+
 // Custom test fixture that intercepts OpenStreetMap tile requests
 export const test = baseTest.extend({
   page: async ({ page }, use) => {
@@ -28,7 +30,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
@@ -43,7 +45,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run preview',
-    url: 'http://localhost:4321',
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
   },

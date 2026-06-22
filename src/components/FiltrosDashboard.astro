@@ -215,9 +215,10 @@
     let minDistance = Infinity;
     let isPreferredTier = false;
 
-    // Si hay una clínica de Tier A o B abierta a menos de 15 km, la preferimos por estar más equipada para emergencias.
-    // De lo contrario, sugerimos la clínica abierta más cercana en general (que puede ser de horario regular Tier C/D).
-    if (closestTierAB && minDistanceTierAB <= 15) {
+    // En SOS el tiempo manda: sugerimos la clínica abierta más cercana.
+    // Solo preferimos Tier A/B si el rodeo es mínimo, para no enviar a alguien varios kilómetros extra.
+    const maxSpecializedDetourKm = 0.75;
+    if (closestTierAB && minDistanceTierAB <= minDistanceOverall + maxSpecializedDetourKm) {
       closestClinic = closestTierAB;
       minDistance = minDistanceTierAB;
       isPreferredTier = true;
