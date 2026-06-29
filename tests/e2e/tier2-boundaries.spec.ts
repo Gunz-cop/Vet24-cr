@@ -55,12 +55,14 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
     test('28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo)', async ({ page, context }) => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 35.6762, longitude: 139.6503 }); // Tokyo
+      await page.goto('/');
 
       const btnText = await page.locator('#geo-btn-text').textContent();
       if (!btnText?.includes('Ordenado')) {
         await page.click('#btn-use-location');
       }
 
+      await expect(page.locator('#geo-btn-text')).toContainText('Ordenado');
       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
       const badgeText = await page.locator('[data-distance-for]').first().textContent();
       expect(badgeText).toContain('km');
@@ -77,12 +79,14 @@ test.describe('Tier 2: Boundary & Corner Cases', () => {
       // HEMS is at: latitude: 9.9989, longitude: -84.1219
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 9.9989, longitude: -84.1219 });
+      await page.goto('/');
 
       const btnText = await page.locator('#geo-btn-text').textContent();
       if (!btnText?.includes('Ordenado')) {
         await page.click('#btn-use-location');
       }
 
+      await expect(page.locator('#geo-btn-text')).toContainText('Ordenado');
       const hemsCard = page.locator('#clinicas-grid article', { hasText: 'HEMS' });
       const badge = hemsCard.locator('[data-distance-for]');
       await expect(badge).toBeVisible();
