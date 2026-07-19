@@ -24,23 +24,23 @@ const clinicasConCoords = clinicas.filter(c => c.latitude !== 0 && c.longitude !
 const clinicasJson = JSON.stringify(clinicasConCoords);
 ---
 
-<div class="w-full mb-8 rounded-3xl overflow-hidden border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md shadow-2xl transition-colors duration-200" id="map-container">
-  <div class="flex items-center justify-between px-5 py-4 bg-brand-bg/65 border-b border-brand-card-border/80 transition-colors duration-200">
+<div class="w-full mb-8 rounded-2xl overflow-hidden border border-brand-card-border bg-brand-card-bg transition-colors duration-200" id="map-container">
+  <div class="flex items-center justify-between px-5 py-3.5 border-b border-brand-card-border transition-colors duration-200">
     <div class="flex items-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 text-brand-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-brand-primary">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
       </svg>
-      <span class="text-xs font-black text-brand-text uppercase tracking-wider font-['Outfit',sans-serif]">Mapa Interactivo</span>
-      <span class="text-xs text-brand-text-muted font-semibold">— {clinicasConCoords.length} clínicas con ubicación</span>
+      <span class="text-sm font-bold text-brand-text font-['Outfit',sans-serif]">Mapa</span>
+      <span class="text-xs text-brand-text-muted font-medium">· {clinicasConCoords.length} clínicas con ubicación</span>
     </div>
-    <button 
+    <button
       id="toggle-mapa-btn"
-      class="hidden md:inline-block text-xs font-bold text-brand-text-muted hover:text-brand-text transition-all px-3 py-1.5 rounded-xl bg-brand-bg/50 hover:bg-brand-primary/10 border border-brand-card-border hover:border-brand-primary/35 cursor-pointer active:scale-95"
+      class="hidden md:inline-block text-xs font-bold text-brand-text-muted hover:text-brand-text transition-colors px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-bg border border-brand-card-border cursor-pointer"
     >
       Ocultar mapa
     </button>
   </div>
-  
+
   <div id="mapa-wrapper" class="hidden md:block relative w-full h-[350px]">
     <!-- Loading placeholder -->
     <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">
@@ -50,10 +50,10 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     <div id="mapa-vet24" class="h-full w-full"></div>
   </div>
 
-  <div class="block md:hidden border-t border-brand-card-border bg-brand-bg/30">
+  <div class="block md:hidden border-t border-brand-card-border">
     <button
       id="btn-toggle-mapa-mobile"
-      class="w-full py-3.5 text-xs font-bold text-brand-primary hover:text-brand-primary-hover hover:bg-brand-primary/5 transition-all flex items-center justify-center gap-2 cursor-pointer"
+      class="w-full py-3.5 text-sm font-bold text-brand-primary hover:text-brand-primary-hover transition-colors flex items-center justify-center gap-2 cursor-pointer"
     >
       <span>Ver en mapa 🗺️</span>
     </button>
@@ -172,9 +172,9 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
       });
     }
 
-    const iconTierA  = createIcon('var(--brand-primary)', true); // crimson - 24/7 real with pulsing glow
-    const iconTierB  = createIcon('var(--brand-secondary)'); // amber - extended hours
-    const iconTierC  = createIcon('var(--brand-text-muted)'); // slate - normal hours
+    const iconTierA  = createIcon('var(--brand-emergency)', true); // red — 24/7 real with pulsing glow
+    const iconTierB  = createIcon('var(--brand-primary)'); // teal — extended hours
+    const iconTierC  = createIcon('var(--brand-text-muted)'); // slate — normal hours
 
     // Add markers for each clinic
     clinicas.forEach((c) => {
@@ -243,7 +243,9 @@ const clinicasJson = JSON.stringify(clinicasConCoords);
     });
     if (coords.length > 0) {
       const bounds = L.latLngBounds(coords);
-      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+      // animate:false — an interrupted zoom transition can leave Leaflet's
+      // _animatingZoom stuck and silently swallow every later fitBounds/setView.
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12, animate: false });
     }
 
     // Hide loading overlay

@@ -97,7 +97,7 @@ test.describe('Tier 1: Feature Coverage', () => {
       expect(badgeText).toContain('km');
     });
 
-    test('4. should format distance badge text as 📍 A X.X km', async ({ page, context }) => {
+    test('4. should format distance badge text as A X.X km', async ({ page, context }) => {
       await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
@@ -108,7 +108,7 @@ test.describe('Tier 1: Feature Coverage', () => {
 
       const firstBadge = page.locator('[data-distance-for]').first();
       await expect(firstBadge).toBeVisible();
-      await expect(firstBadge).toHaveText(/📍 A \d+(\.\d+)? km/);
+      await expect(firstBadge).toHaveText(/A \d+(\.\d+)? km/);
     });
 
     test('5. should updated sorting order when user coordinates change', async ({ page, context }) => {
@@ -116,18 +116,21 @@ test.describe('Tier 1: Feature Coverage', () => {
       await context.grantPermissions(['geolocation'], { origin: 'http://localhost:4321' });
       await context.setGeolocation({ latitude: 10.6350, longitude: -85.4377 });
 
-      const btnText = await page.locator('#geo-btn-text').textContent();
-      if (!btnText?.includes('Ordenado')) {
+      // Wait for auto-geolocation to kick in; only click if it did not
+      const geoText = page.locator('#geo-btn-text');
+      try {
+        await expect(geoText).toHaveText(/Ordenado/, { timeout: 3000 });
+      } catch {
         await page.click('#btn-use-location');
+        await expect(geoText).toHaveText(/Ordenado/, { timeout: 10000 });
       }
 
       // Wait for distances to be updated
       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
 
-      // Retrieve first clinic slug in sorted list
+      // First clinic in sorted list should be the one closest to Liberia
       const firstCard = page.locator('#clinicas-grid article:not(.hidden)').first();
-      const slug = await firstCard.getAttribute('data-slug');
-      expect(slug).toBe('guanavet-liberia');
+      await expect(firstCard).toHaveAttribute('data-slug', 'guanavet-liberia');
     });
   });
 
@@ -371,7 +374,7 @@ test.describe('Tier 1: Feature Coverage', () => {
       await expect(card).toBeVisible({ timeout: 15000 });
 
       // The card should display the title / text indicating it's the closest open 24/7 clinic
-      await expect(card).toContainText('LA VETERINARIA ABIERTA 24/7 MÁS CERCANA');
+      await expect(card).toContainText('Veterinaria de emergencias abierta más cercana');
     });
 
     test('61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow', async ({ page, context }) => {
@@ -401,7 +404,7 @@ test.describe('Tier 1: Feature Coverage', () => {
 
       const card = page.locator('#sos-emergency-card');
       await expect(card).toBeVisible({ timeout: 15000 });
-      await expect(card).toContainText('LA VETERINARIA ABIERTA MÁS CERCANA (HORARIO REGULAR)');
+      await expect(card).toContainText('Veterinaria abierta más cercana (horario regular)');
       await expect(card).toContainText('Veterinaria San Martín de Porres');
       await expect(card).not.toContainText('Hospital Veterinario Agromédica');
     });

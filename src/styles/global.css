@@ -2,11 +2,14 @@
 
 @theme {
   --color-brand-bg: var(--brand-bg);
+  --color-brand-surface: var(--brand-surface);
   --color-brand-text: var(--brand-text);
   --color-brand-text-muted: var(--brand-text-muted);
   --color-brand-primary: var(--brand-primary);
   --color-brand-primary-hover: var(--brand-primary-hover);
   --color-brand-secondary: var(--brand-secondary);
+  --color-brand-emergency: var(--brand-emergency);
+  --color-brand-emergency-hover: var(--brand-emergency-hover);
   --color-brand-card-bg: var(--brand-card-bg);
   --color-brand-card-border: var(--brand-card-border);
   --color-brand-success: var(--brand-success);
@@ -21,78 +24,169 @@
 }
 
 :root {
-  /* Default to Dark Theme (Calming Forest & Neon Mint) */
-  --brand-bg: #050a0a;
-  --brand-text: #f3f4f6;
-  --brand-text-muted: #829c99;
-  --brand-primary: #ff2e63;
-  --brand-primary-hover: #ff0040;
-  --brand-secondary: #10b981;
-  --brand-card-bg: rgba(13, 27, 27, 0.45);
-  --brand-card-border: rgba(16, 185, 129, 0.08);
-  --brand-success: #10b981;
-  --brand-success-border: rgba(16, 185, 129, 0.25);
-  --brand-success-bg: rgba(16, 185, 129, 0.1);
-  --brand-warning-bg: rgba(251, 191, 36, 0.1);
-  --brand-warning-border: rgba(251, 191, 36, 0.25);
+  /*
+   * Dark theme (default): calm night-clinic.
+   * The interface accent is teal (trust/health); red is reserved
+   * exclusively for emergency signals: SOS, 24/7, "Llamar".
+   */
+  --brand-bg: #0b1120;
+  --brand-surface: #101a2e;
+  --brand-text: #eef2f7;
+  --brand-text-muted: #94a5ba;
+  --brand-primary: #2dd4bf;
+  --brand-primary-hover: #5eead4;
+  --brand-secondary: #38bdf8;
+  --brand-emergency: #fb5c74;
+  --brand-emergency-hover: #f43f5e;
+  --brand-card-bg: #121d33;
+  --brand-card-border: rgba(148, 163, 184, 0.16);
+  --brand-success: #34d399;
+  --brand-success-border: rgba(52, 211, 153, 0.3);
+  --brand-success-bg: rgba(52, 211, 153, 0.12);
+  --brand-warning-bg: rgba(251, 191, 36, 0.12);
+  --brand-warning-border: rgba(251, 191, 36, 0.3);
   --brand-warning-text: #fbbf24;
-  --brand-danger-bg: rgba(255, 46, 99, 0.08);
-  --brand-danger-border: rgba(255, 46, 99, 0.2);
-  --brand-danger-text: #ff2e63;
+  --brand-danger-bg: rgba(251, 92, 116, 0.1);
+  --brand-danger-border: rgba(251, 92, 116, 0.3);
+  --brand-danger-text: #fb5c74;
 }
 
 :root.light, .light {
-  /* Light Theme (Warm Sand & Botanical Green) */
-  --brand-bg: #faf9f6;
-  --brand-text: #0d221f;
-  --brand-text-muted: #536360;
-  --brand-primary: #e11d48;
-  --brand-primary-hover: #be123c;
-  --brand-secondary: #059669;
+  /* Light theme: clean daylight clinic. */
+  --brand-bg: #f6f8fa;
+  --brand-surface: #eef2f6;
+  --brand-text: #142433;
+  --brand-text-muted: #55697c;
+  --brand-primary: #0d9488;
+  --brand-primary-hover: #0f766e;
+  --brand-secondary: #0284c7;
+  --brand-emergency: #e11d48;
+  --brand-emergency-hover: #be123c;
   --brand-card-bg: #ffffff;
-  --brand-card-border: #e8e6df;
+  --brand-card-border: #dde5ec;
   --brand-success: #059669;
-  --brand-success-border: rgba(5, 150, 105, 0.25);
+  --brand-success-border: rgba(5, 150, 105, 0.3);
   --brand-success-bg: rgba(5, 150, 105, 0.1);
   --brand-warning-bg: rgba(217, 119, 6, 0.1);
-  --brand-warning-border: rgba(217, 119, 6, 0.25);
-  --brand-warning-text: #d97706;
-  --brand-danger-bg: rgba(225, 29, 72, 0.1);
-  --brand-danger-border: rgba(225, 29, 72, 0.25);
+  --brand-warning-border: rgba(217, 119, 6, 0.3);
+  --brand-warning-text: #b45309;
+  --brand-danger-bg: rgba(225, 29, 72, 0.08);
+  --brand-danger-border: rgba(225, 29, 72, 0.28);
   --brand-danger-text: #e11d48;
 }
 
-/* Custom Leaflet Map tile styling in dark mode */
+/* ── Base ──────────────────────────────────────────────────────────── */
+
+html {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+/* Visible, consistent keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ── Filter chips (toggled by JS with .is-active) ──────────────────── */
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--brand-card-border);
+  background: var(--brand-card-bg);
+  color: var(--brand-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.filter-chip:hover {
+  color: var(--brand-text);
+  border-color: color-mix(in srgb, var(--brand-primary) 45%, transparent);
+}
+
+.filter-chip.is-active {
+  background: color-mix(in srgb, var(--brand-primary) 14%, var(--brand-card-bg));
+  border-color: color-mix(in srgb, var(--brand-primary) 55%, transparent);
+  color: var(--brand-primary);
+}
+
+.filter-chip.is-active:hover {
+  color: var(--brand-primary);
+}
+
+/* Emergency-flavored chip (the 24/7 filter) */
+.filter-chip--emergency.is-active {
+  background: var(--brand-danger-bg);
+  border-color: var(--brand-danger-border);
+  color: var(--brand-emergency);
+}
+
+/* Open/closed status pill on cards */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--brand-card-border);
+  background: var(--brand-card-bg);
+  color: var(--brand-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.status-pill.is-open {
+  background: var(--brand-success-bg);
+  border-color: var(--brand-success-border);
+  color: var(--brand-success);
+}
+
+.status-pill.is-closed {
+  background: var(--brand-surface);
+  border-color: var(--brand-card-border);
+  color: var(--brand-text-muted);
+}
+
+/* ── Map (dark mode tiles) ─────────────────────────────────────────── */
+
 html:not(.light) .leaflet-tile-container {
   filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
 }
 html:not(.light) .leaflet-container {
-  background: #050a0a !important;
+  background: var(--brand-bg) !important;
 }
 
-/* Utility Animations */
-@keyframes breathe-orb-1 {
-  0%, 100% { transform: scale(1) translate(0px, 0px); opacity: 0.45; }
-  50% { transform: scale(1.15) translate(40px, -30px); opacity: 0.65; }
+/* ── Utilities ─────────────────────────────────────────────────────── */
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Soft pulse reserved for the SOS live dot */
+@keyframes sos-ping {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.1); opacity: 0; }
+}
+.animate-sos-ping {
+  animation: sos-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-@keyframes breathe-orb-2 {
-  0%, 100% { transform: scale(1) translate(0px, 0px); opacity: 0.45; }
-  50% { transform: scale(1.1) translate(-30px, 35px); opacity: 0.6; }
-}
-
-.animate-orb-1 {
-  animation: breathe-orb-1 12s ease-in-out infinite;
-}
-
-.animate-orb-2 {
-  animation: breathe-orb-2 15s ease-in-out infinite;
-}
-
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: var(--brand-card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--brand-card-border);
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

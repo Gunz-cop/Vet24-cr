@@ -125,21 +125,21 @@ const schemaBreadcrumbs = {
   <section class="py-6 scroll-mt-20" aria-labelledby="provincia-title" data-page-province={slugProvincia}>
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6 transition-colors duration-200">
       <div>
-        <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-primary-hover mb-2 transition-colors" id="btn-back-home">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-hover mb-2 transition-colors" id="btn-back-home">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
-          Volver al Inicio
+          Volver al inicio
         </a>
-        <h1 id="provincia-title" class="text-3xl md:text-4xl font-extrabold text-brand-text font-['Outfit',sans-serif] tracking-tight">
-          Veterinarias en <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">{nombreProvincia}</span>
+        <h1 id="provincia-title" class="text-3xl md:text-4xl font-bold text-brand-text font-['Outfit',sans-serif] tracking-tight">
+          Veterinarias en <span class="text-brand-primary">{nombreProvincia}</span>
         </h1>
-        <p class="text-sm text-brand-text-muted mt-1">
-          Directorio especializado en urgencias médicas y atención nocturna.
+        <p class="text-sm sm:text-base text-brand-text-muted mt-1.5">
+          Emergencias, guardias nocturnas y consultas de todos los días en {nombreProvincia}.
         </p>
       </div>
-      <div class="text-sm font-medium text-brand-text-muted">
-        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
+      <div class="text-sm font-medium text-brand-text-muted shrink-0">
+        <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-lg border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
       </div>
     </div>
 
@@ -150,15 +150,15 @@ const schemaBreadcrumbs = {
     <FiltrosProvincia activeProvincia={slugProvincia} />
 
     {provinceZoneLinks.length > 0 && (
-      <section class="mb-8 rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5 sm:p-6" aria-labelledby="zonas-provincia-title">
-        <h2 id="zonas-provincia-title" class="text-sm font-black uppercase tracking-wider text-brand-text-muted font-['Outfit',sans-serif] mb-3">
+      <section class="mb-8 rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 sm:p-6" aria-labelledby="zonas-provincia-title">
+        <h2 id="zonas-provincia-title" class="text-base font-bold text-brand-text font-['Outfit',sans-serif] mb-3">
           Zonas destacadas en {nombreProvincia}
         </h2>
         <div class="flex flex-wrap gap-2">
           {provinceZoneLinks.map((zone) => (
-            <a href={`/zona/${zone.slug}/`} class="inline-flex items-center gap-2 rounded-xl border border-brand-card-border bg-brand-bg/55 px-3.5 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/40 hover:bg-brand-primary/10 hover:text-brand-text">
+            <a href={`/zona/${zone.slug}/`} class="filter-chip">
               {getClinicZoneName(zone.nombre)}
-              <span class="rounded-md bg-brand-primary/10 px-1.5 py-0.5 text-[10px] text-brand-primary">{zone.count}</span>
+              <span class="rounded-md bg-brand-primary/10 px-1.5 py-0.5 text-xs text-brand-primary font-bold">{zone.count}</span>
             </a>
           ))}
         </div>
@@ -167,13 +167,13 @@ const schemaBreadcrumbs = {
 
     <section class="mb-8 grid gap-3 md:grid-cols-2" aria-labelledby="faq-provincia-title">
       <h2 id="faq-provincia-title" class="sr-only">Preguntas frecuentes de veterinarias en {nombreProvincia}</h2>
-      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
-        <h3 class="text-sm font-black text-brand-text mb-2">¿Hay veterinarias abiertas hoy en {nombreProvincia}?</h3>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5">
+        <h3 class="text-sm font-bold text-brand-text mb-2">¿Hay veterinarias abiertas hoy en {nombreProvincia}?</h3>
         <p class="text-sm text-brand-text-muted">Sí. Revisa el horario de cada ficha y usa los botones de llamada o WhatsApp para confirmar antes de trasladarte.</p>
       </div>
-      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
-        <h3 class="text-sm font-black text-brand-text mb-2">¿Cuáles atienden emergencias 24/7 en {nombreProvincia}?</h3>
-        <p class="text-sm text-brand-text-muted">Las clínicas marcadas como 24/7 o Tier A aparecen priorizadas cuando tienen emergencia confirmada o auditoría reciente.</p>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5">
+        <h3 class="text-sm font-bold text-brand-text mb-2">¿Cuáles atienden emergencias 24/7 en {nombreProvincia}?</h3>
+        <p class="text-sm text-brand-text-muted">Las clínicas marcadas como 24/7 aparecen priorizadas cuando tienen emergencia confirmada o auditoría reciente.</p>
       </div>
     </section>
 

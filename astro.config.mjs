@@ -11,6 +11,10 @@ export default defineConfig({
   trailingSlash: 'always',
   adapter: cloudflare(),
   integrations: [sitemap()],
+  server: {
+    // Respect the PORT env var (e.g. from tooling) but keep 4321 as default
+    port: process.env.PORT ? Number(process.env.PORT) : 4321
+  },
   vite: {
     plugins: [tailwindcss()]
   }

@@ -6,61 +6,37 @@ interface Props {
 const { activeProvincia } = Astro.props;
 
 const provincias = [
-  { nombre: "Todas", code: "CR", slug: "todas", href: "/#clinicas-grid" },
-  { nombre: "San José", code: "SJ", slug: "san-jose", href: "/provincia/san-jose/#clinicas-grid" },
-  { nombre: "Heredia", code: "HE", slug: "heredia", href: "/provincia/heredia/#clinicas-grid" },
-  { nombre: "Alajuela", code: "AL", slug: "alajuela", href: "/provincia/alajuela/#clinicas-grid" },
-  { nombre: "Cartago", code: "CA", slug: "cartago", href: "/provincia/cartago/#clinicas-grid" },
-  { nombre: "Guanacaste", code: "GU", slug: "guanacaste", href: "/provincia/guanacaste/#clinicas-grid" },
-  { nombre: "Puntarenas", code: "PU", slug: "puntarenas", href: "/provincia/puntarenas/#clinicas-grid" },
-  { nombre: "Limón", code: "LI", slug: "limon", href: "/provincia/limon/#clinicas-grid" }
+  { nombre: "Todas", slug: "todas", href: "/#clinicas-grid" },
+  { nombre: "San José", slug: "san-jose", href: "/provincia/san-jose/#clinicas-grid" },
+  { nombre: "Heredia", slug: "heredia", href: "/provincia/heredia/#clinicas-grid" },
+  { nombre: "Alajuela", slug: "alajuela", href: "/provincia/alajuela/#clinicas-grid" },
+  { nombre: "Cartago", slug: "cartago", href: "/provincia/cartago/#clinicas-grid" },
+  { nombre: "Guanacaste", slug: "guanacaste", href: "/provincia/guanacaste/#clinicas-grid" },
+  { nombre: "Puntarenas", slug: "puntarenas", href: "/provincia/puntarenas/#clinicas-grid" },
+  { nombre: "Limón", slug: "limon", href: "/provincia/limon/#clinicas-grid" }
 ];
 
 const currentSlug = activeProvincia || "todas";
 ---
 
 <div class="w-full mb-6">
-  <div class="flex items-center justify-between gap-3 mb-3">
-    <h2 class="text-xs font-black text-brand-text-muted uppercase tracking-wider block font-['Outfit',sans-serif]">
-      Provincia
-    </h2>
-  </div>
-  
-  <nav class="flex items-center gap-2 overflow-x-auto pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Filtro de provincias">
+  <h2 class="text-xs font-bold text-brand-text-muted uppercase tracking-wider mb-2.5 font-['Outfit',sans-serif]">
+    Filtrar por provincia
+  </h2>
+
+  <nav class="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Filtro de provincias">
     {provincias.map((prov) => {
       const isActive = currentSlug === prov.slug;
       return (
         <a
           href={prov.href}
           id={`filter-prov-${prov.slug}`}
-          class={`inline-flex items-center gap-2 px-3.5 py-2 text-xs font-bold rounded-xl border whitespace-nowrap transition-all duration-300 group cursor-pointer ${
-            isActive
-              ? "bg-brand-primary text-white border-transparent shadow-lg shadow-brand-primary/20"
-              : "bg-brand-card-bg/55 backdrop-blur-md hover:bg-brand-primary/10 text-brand-text-muted hover:text-brand-text border-brand-card-border hover:border-brand-primary/30 hover:scale-[1.01]"
-          }`}
+          class={`filter-chip shrink-0 ${isActive ? "is-active" : ""}`}
+          aria-current={isActive ? "page" : undefined}
         >
-          <span class={`text-[9px] font-black px-1.5 py-0.5 rounded transition-colors duration-300 ${
-            isActive
-              ? "bg-white/20 text-white"
-              : "bg-brand-bg/60 text-brand-text-muted group-hover:text-brand-primary group-hover:bg-brand-primary/10"
-          }`}>
-            {prov.code}
-          </span>
           {prov.nombre}
         </a>
       );
     })}
   </nav>
 </div>
-
-<style>
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .scrollbar-none::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .scrollbar-none {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-</style>

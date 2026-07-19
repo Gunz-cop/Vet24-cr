@@ -1,169 +1,131 @@
 ---
 ---
 
-<div class="w-full mb-6 flex flex-col gap-3" aria-labelledby="filtros-rapidos-title">
-  <div class="rounded-2xl border border-brand-primary/25 bg-brand-primary/8 p-4 sm:p-5 shadow-lg shadow-brand-primary/10">
+<div class="contents" aria-labelledby="filtros-rapidos-title">
+  <!-- Emergency banner -->
+  <div class="mb-4 rounded-2xl border border-brand-danger-border bg-brand-danger-bg p-4 sm:p-5">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div class="flex flex-col gap-1">
-        <h2 class="text-base sm:text-lg font-black text-brand-text font-['Outfit',sans-serif]">
+        <h2 class="text-base sm:text-lg font-bold text-brand-text font-['Outfit',sans-serif]">
           ¿Es una emergencia?
         </h2>
         <p class="text-sm text-brand-text-muted">
-          Te mostramos la veterinaria abierta más cercana según tu ubicación.
+          Te llevamos directo a la veterinaria abierta más cercana a tu ubicación.
         </p>
       </div>
       <button
         type="button"
         data-sos-trigger
-        class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-brand-primary text-white text-sm font-extrabold hover:bg-brand-primary-hover transition-all shadow-lg shadow-brand-primary/25 active:scale-[0.98]"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-emergency text-white text-sm font-bold hover:bg-brand-emergency-hover transition-colors shadow-lg shadow-brand-emergency/20 cursor-pointer shrink-0"
         id="cta-sos-directorio"
       >
-        <span class="relative flex h-2.5 w-2.5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70"></span>
-          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        <span class="relative flex h-2 w-2">
+          <span class="animate-sos-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
         </span>
-        🚨 SOS EMERGENCIA
+        Buscar ayuda ahora
       </button>
     </div>
   </div>
 
-  <div class="flex flex-col gap-1">
-    <h2 id="filtros-rapidos-title" class="text-sm font-black uppercase tracking-wider text-brand-text-muted font-['Outfit',sans-serif]">
-      Encuentra atención ahora
-    </h2>
-  </div>
+  <!-- SOS Highlight section (shown when SOS mode is activated).
+       Lives ABOVE the sticky toolbar so the card is never covered by it. -->
+  <div id="sos-highlight-container" class="hidden mb-6 scroll-mt-24"></div>
 
-  <!-- Search Bar -->
-  <div class="relative group rounded-2xl bg-brand-card-bg/30 border border-brand-card-border/80 shadow-md focus-within:border-brand-primary/45 focus-within:ring-2 focus-within:ring-brand-primary/10 transition-all duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" 
-      class="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-brand-text-muted/60 pointer-events-none group-focus-within:text-brand-primary transition-colors">
-      <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-    </svg>
-    <input 
-      type="search" 
-      id="search-input" 
-      placeholder="Buscar por nombre, zona, cantón o palabra clave..."
-      autocomplete="off"
-      class="w-full pl-12 pr-10 py-3.5 bg-transparent text-brand-text placeholder-brand-text-muted/50 text-sm focus:outline-none focus:ring-0 transition-colors"
-    />
-    <button id="btn-clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-primary transition-colors cursor-pointer hidden" aria-label="Limpiar búsqueda">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  <!-- Search + filter toolbar (not sticky: it must never cover the clinic cards) -->
+  <div class="py-3 px-4 bg-brand-card-bg/60 border border-brand-card-border rounded-2xl mb-4 flex flex-col gap-3 transition-colors duration-200">
+    <h2 id="filtros-rapidos-title" class="sr-only">Buscar y filtrar veterinarias</h2>
+
+    <!-- Search Bar -->
+    <div class="relative rounded-xl bg-brand-card-bg border border-brand-card-border focus-within:border-brand-primary/60 focus-within:ring-2 focus-within:ring-brand-primary/15 transition-all">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-text-muted pointer-events-none">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
       </svg>
-    </button>
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Busca por nombre, zona o cantón…"
+        autocomplete="off"
+        aria-label="Buscar veterinarias por nombre, zona o cantón"
+        class="w-full pl-11 pr-10 py-3 bg-transparent text-brand-text placeholder-brand-text-muted/60 text-sm focus:outline-none"
+      />
+      <button id="btn-clear-search" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-brand-text-muted hover:text-brand-text transition-colors cursor-pointer hidden" aria-label="Limpiar búsqueda">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="flex items-center gap-2 overflow-x-auto scrollbar-none" role="group" aria-label="Filtros rápidos">
+      <button id="filter-quick-open" class="filter-chip shrink-0" aria-pressed="false">
+        <span class="h-2 w-2 rounded-full bg-brand-success"></span>
+        Abierto ahora
+      </button>
+
+      <button id="filter-quick-247" class="filter-chip filter-chip--emergency shrink-0" aria-pressed="false">
+        <span class="h-2 w-2 rounded-full bg-brand-emergency"></span>
+        Emergencias 24/7
+      </button>
+
+      <button id="btn-use-location" class="filter-chip shrink-0" title="Ordenar por cercanía a tu ubicación">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+        <span id="geo-btn-text">Cerca de mí</span>
+      </button>
+
+      <span class="h-5 w-px bg-brand-card-border shrink-0 mx-1" aria-hidden="true"></span>
+
+      <div class="flex items-center gap-2 shrink-0" id="animal-filters-container" role="group" aria-label="Filtrar por tipo de animal">
+        <button data-filter-animal="todos" class="filter-chip is-active shrink-0" aria-pressed="true">Todos</button>
+        <button data-filter-animal="domesticos" class="filter-chip shrink-0" aria-pressed="false">🐶🐱 Domésticos</button>
+        <button data-filter-animal="exoticos" class="filter-chip shrink-0" aria-pressed="false">🐢 Exóticos</button>
+        <button data-filter-animal="peces" class="filter-chip shrink-0" aria-pressed="false">🐠 Peces</button>
+        <button data-filter-animal="granja" class="filter-chip shrink-0" aria-pressed="false">🐴 Granja</button>
+      </div>
+    </div>
+
+    <!-- Results meta -->
+    <div class="flex items-center justify-between gap-3 text-sm">
+      <p class="text-brand-text-muted" aria-live="polite">
+        Mostrando <span id="results-count" class="font-bold text-brand-text">—</span> veterinarias
+      </p>
+      <button
+        id="reset-all-filters"
+        class="text-sm font-semibold text-brand-text-muted hover:text-brand-primary transition-colors cursor-pointer underline-offset-2 hover:underline"
+        title="Restablecer todos los filtros"
+      >
+        Restablecer filtros
+      </button>
+    </div>
   </div>
 
-  <!-- Filters row -->
-  <div class="p-3 sm:p-4 rounded-2xl bg-brand-card-bg/30 border border-brand-card-border/80 flex flex-col gap-3 shadow-md backdrop-blur-md transition-all duration-300">
-    <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3">
-      <!-- Status Toggles + Geolocation -->
-      <div class="grid grid-cols-2 sm:flex sm:items-center gap-2.5">
-        <span class="col-span-2 sm:col-span-1 text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] sm:mr-1">Estado:</span>
-        <button 
-          id="filter-quick-open" 
-          class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
-        >
-          <span class="h-2 w-2 rounded-full bg-brand-success"></span>
-          Abierto Ahora
-        </button>
-        
-        <button 
-          id="filter-quick-247" 
-          class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
-        >
-          <span class="h-2 w-2 rounded-full bg-brand-danger-text animate-pulse"></span>
-          24/7
-        </button>
- 
-        <button
-          id="btn-use-location"
-          class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
-          title="Ordenar por cercanía a tu ubicación"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-          </svg>
-          <span id="geo-btn-text">Ordenar por cercanía</span>
-        </button>
+  <!-- Enhanced empty state with fallback clinics -->
+  <div id="empty-state" class="hidden w-full">
+    <div class="text-center py-10 bg-brand-card-bg border border-dashed border-brand-card-border rounded-2xl p-8 mb-6">
+      <div class="text-4xl mb-3" aria-hidden="true">🔍</div>
+      <h3 class="text-base font-bold text-brand-text mb-1">No encontramos veterinarias con estos filtros</h3>
+      <p class="text-sm text-brand-text-muted max-w-md mx-auto">Prueba con otros filtros o amplía la búsqueda.</p>
+      <button id="reset-all-filters-empty" class="mt-4 px-4 py-2.5 text-sm font-bold rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover transition-colors cursor-pointer">
+        Restablecer filtros
+      </button>
+    </div>
 
-        <button
-          id="reset-all-filters"
-          class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-card-bg text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 duration-200"
-          title="Restablecer todos los filtros"
-        >
-          Restablecer
-        </button>
+    <!-- Nearby fallback section (shown when geolocation is active) -->
+    <div id="fallback-cercanas" class="hidden">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-warning-bg text-brand-warning-text border border-brand-warning-border">
+          ⚠️ Llama antes de salir
+        </span>
+        <span class="text-sm text-brand-text-muted">Las más cercanas a ti (aunque estén cerradas ahora)</span>
       </div>
-
-      <!-- Animal Types -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-1 xl:pb-0 scrollbar-none" id="animal-filters-container">
-        <span class="text-[10px] text-brand-text-muted font-extrabold uppercase tracking-wider font-['Outfit',sans-serif] mr-1 shrink-0">Especie:</span>
-        <button 
-          data-filter-animal="todos" 
-          class="px-4 py-2 text-xs font-black rounded-xl border border-transparent bg-brand-primary text-white shadow-lg shadow-brand-primary/25 transition-all cursor-pointer active:scale-95 shrink-0 duration-300"
-        >
-          Todos
-        </button>
-        <button 
-          data-filter-animal="domesticos" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
-        >
-          🐶🐱 Domésticos
-        </button>
-        <button 
-          data-filter-animal="exoticos" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
-        >
-          🐢 Exóticos
-        </button>
-        <button 
-          data-filter-animal="peces" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
-        >
-          🐠 Peces
-        </button>
-        <button 
-          data-filter-animal="granja" 
-          class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-card-border bg-brand-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all cursor-pointer active:scale-95 shrink-0 duration-200"
-        >
-          🐴 Granja
-        </button>
-      </div>
+      <div id="empty-state-fallback-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
   </div>
 </div>
-
-<!-- SOS Highlight section (shown when SOS mode is activated) -->
-<div id="sos-highlight-container" class="hidden mb-8 scroll-mt-24"></div>
-
-<!-- Enhanced empty state with fallback clinics -->
-<div id="empty-state" class="hidden w-full">
-  <div class="text-center py-10 bg-brand-card-bg/20 border border-dashed border-brand-card-border rounded-2xl p-8 mb-6">
-    <div class="text-4xl mb-3">🔍</div>
-    <h3 class="text-base font-semibold text-brand-text mb-1">No encontramos veterinarias con estos filtros</h3>
-    <p class="text-sm text-brand-text-muted max-w-md mx-auto">Prueba cambiando los filtros o amplía la búsqueda.</p>
-    <button id="reset-all-filters-empty" class="mt-4 px-4 py-2 text-xs font-bold rounded-lg bg-brand-primary/10 text-brand-primary border border-brand-primary/20 hover:bg-brand-primary/20 transition-colors cursor-pointer duration-200">
-      Restablecer filtros
-    </button>
-  </div>
-
-  <!-- Nearby fallback section (shown when geolocation is active) -->
-  <div id="fallback-cercanas" class="hidden">
-    <div class="flex items-center gap-2 mb-4">
-      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full bg-brand-secondary/10 text-brand-secondary border border-brand-secondary/20">
-        ⚠️ Llamar antes de salir
-      </span>
-      <span class="text-xs text-brand-text-muted">Las más cercanas a ti (aunque estén cerradas ahora)</span>
-    </div>
-    <div id="empty-state-fallback-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-  </div>
-</div>
-
-<style>
-  .scrollbar-none::-webkit-scrollbar { display: none; }
-  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
 
 <script>
   // ─── Haversine distance (km) ───────────────────────────────────────────
@@ -180,10 +142,10 @@
   // ─── SOS Helpers ───────────────────────────────────────────────────────
   function renderClosestSOSEmergency(lat: number, lng: number) {
     const cards = Array.from(document.querySelectorAll<HTMLElement>('#clinicas-grid article'));
-    
+
     let closestTierAB: HTMLElement | null = null;
     let minDistanceTierAB = Infinity;
-    
+
     let closestOverall: HTMLElement | null = null;
     let minDistanceOverall = Infinity;
 
@@ -193,10 +155,10 @@
       const cLat = parseFloat(card.getAttribute('data-latitude') || '0');
       const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
       const tier = card.getAttribute('data-tier') || '';
-      
+
       if (isOpen && cLat !== 0 && cLng !== 0) {
         const dist = haversineKm(lat, lng, cLat, cLng);
-        
+
         if (dist < minDistanceOverall) {
           minDistanceOverall = dist;
           closestOverall = card;
@@ -225,7 +187,7 @@
     } else if (closestOverall) {
       closestClinic = closestOverall;
       minDistance = minDistanceOverall;
-      const tier = closestClinic.getAttribute('data-tier') || '';
+      const tier = (closestOverall as HTMLElement).getAttribute('data-tier') || '';
       isPreferredTier = (tier === 'Tier A' || tier === 'Tier B');
     }
 
@@ -243,60 +205,51 @@
       const waze_url = el.getAttribute('data-waze-url') || '';
       const maps_url = el.getAttribute('data-maps-url') || '';
 
+      const wazeHref = waze_url || `https://waze.com/ul?q=${encodeURIComponent(nombre + ', ' + direccion)}`;
+      const mapsHref = maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nombre + ', ' + direccion)}`;
+
       sosContainer.innerHTML = `
-        <div class="relative overflow-hidden p-6 rounded-2xl border border-brand-primary/35 bg-brand-card-bg shadow-xl shadow-brand-primary/10 flex flex-col gap-4" id="sos-emergency-card">
-          <!-- Badge -->
-          <div class="flex flex-col items-start gap-1">
-            <span class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-black rounded-full bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white shadow-lg shadow-brand-primary/20">
-              🚨 ${isPreferredTier ? 'LA VETERINARIA ABIERTA 24/7 MÁS CERCANA' : 'LA VETERINARIA ABIERTA MÁS CERCANA (HORARIO REGULAR)'}
+        <div class="relative overflow-hidden p-6 rounded-2xl border-2 border-brand-emergency/50 bg-brand-card-bg shadow-xl shadow-brand-emergency/10 flex flex-col gap-4" id="sos-emergency-card">
+          <div class="flex flex-col items-start gap-2">
+            <span class="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-full bg-brand-emergency text-white">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-sos-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              ${isPreferredTier ? 'Veterinaria de emergencias abierta más cercana' : 'Veterinaria abierta más cercana (horario regular)'}
             </span>
-            <span class="text-xs font-black text-brand-primary uppercase tracking-wider mt-2">
-              A ${minDistance.toFixed(1)} KM DE TI
+            <span class="text-sm font-bold text-brand-emergency">
+              A ${minDistance.toFixed(1)} km de ti
             </span>
           </div>
 
-          <!-- Content -->
           <div class="flex flex-col gap-2">
-            <h3 class="text-2xl font-black text-brand-text capitalize font-['Outfit',sans-serif]">${nombre}</h3>
-            <p class="text-xs text-brand-text-muted capitalize font-semibold flex items-start gap-1">
-              <span>📍</span> <span>${zona} — <span class="font-normal text-brand-text-muted">${direccion}</span></span>
+            <h3 class="text-2xl font-bold text-brand-text capitalize font-['Outfit',sans-serif]">${nombre}</h3>
+            <p class="text-sm text-brand-text-muted capitalize flex items-start gap-1.5">
+              <span aria-hidden="true">📍</span> <span>${zona} — <span class="normal-case">${direccion}</span></span>
             </p>
-            <p class="text-xs text-brand-text font-semibold mb-1 flex items-center gap-1.5">
-              <span>🕒</span> <span><strong class="font-black text-brand-text">Horario de emergencias:</strong> ${horarioTexto}</span>
+            <p class="text-sm text-brand-text flex items-center gap-1.5">
+              <span aria-hidden="true">🕒</span> <span><strong>Horario:</strong> ${horarioTexto}</span>
             </p>
-            <p class="text-xs text-brand-text-muted font-medium leading-relaxed">${copyDiferenciador}</p>
+            <p class="text-sm text-brand-text-muted leading-relaxed">${copyDiferenciador}</p>
           </div>
 
-          <!-- Divider -->
-          <div class="border-t border-brand-card-border my-1"></div>
+          <div class="border-t border-brand-card-border"></div>
 
-          <!-- CTAs -->
           <div class="flex flex-col gap-3 w-full">
             ${telefono1 ? `
-              <a href="tel:+506${telefono1.replace(/\D/g,'')}" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-extrabold rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-center shadow-lg shadow-brand-primary/20" id="btn-sos-call">
-                📞 LLAMAR DE INMEDIATO
+              <a href="tel:+506${telefono1.replace(/\D/g,'')}" class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-bold rounded-xl bg-brand-emergency text-white hover:bg-brand-emergency-hover transition-colors text-center shadow-lg shadow-brand-emergency/20" id="btn-sos-call">
+                📞 Llamar de inmediato (${telefono1})
               </a>
             ` : ''}
-            
+
             <div class="grid grid-cols-2 gap-3 w-full">
-              ${waze_url ? `
-                <a href="${waze_url}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-bg border border-brand-card-border text-brand-text hover:border-brand-primary/35 hover:bg-brand-primary/10 transition-all active:scale-95 text-center">
-                  🚗 Waze
-                </a>
-              ` : `
-                <a href="https://waze.com/ul?q=${encodeURIComponent(nombre + ', ' + direccion)}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-bg border border-brand-card-border text-brand-text hover:border-brand-primary/35 hover:bg-brand-primary/10 transition-all active:scale-95 text-center">
-                  🚗 Waze
-                </a>
-              `}
-              ${maps_url ? `
-                <a href="${maps_url}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-bg border border-brand-card-border text-brand-text hover:border-brand-secondary/35 hover:bg-brand-secondary/10 transition-all active:scale-95 text-center">
-                  🗺️ Google Maps
-                </a>
-              ` : `
-                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nombre + ', ' + direccion)}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-bg border border-brand-card-border text-brand-text hover:border-brand-secondary/35 hover:bg-brand-secondary/10 transition-all active:scale-95 text-center">
-                  🗺️ Google Maps
-                </a>
-              `}
+              <a href="${wazeHref}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-surface border border-brand-card-border text-brand-text hover:border-brand-primary/45 transition-colors text-center">
+                🚗 Ir con Waze
+              </a>
+              <a href="${mapsHref}" target="_blank" rel="noopener" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-brand-surface border border-brand-card-border text-brand-text hover:border-brand-primary/45 transition-colors text-center">
+                🗺️ Google Maps
+              </a>
             </div>
           </div>
         </div>
@@ -311,11 +264,11 @@
   function showSOSSafetyNotice(message: string) {
     const sosContainer = document.getElementById('sos-highlight-container');
     if (!sosContainer) return;
-    
+
     sosContainer.innerHTML = `
-      <div class="relative overflow-hidden p-6 rounded-2xl border border-brand-primary/25 bg-brand-primary/5 shadow-xl flex flex-col gap-3">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-black rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 w-fit">
-          ⚠️ ATENCIÓN DE EMERGENCIA
+      <div class="relative overflow-hidden p-6 rounded-2xl border border-brand-danger-border bg-brand-danger-bg shadow-lg flex flex-col gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full bg-brand-emergency text-white w-fit">
+          ⚠️ Atención de emergencia
         </span>
         <p class="text-sm font-semibold text-brand-text">${message}</p>
       </div>
@@ -340,12 +293,13 @@
   function updateClinicsStatus() {
     const { day, hour } = getCostaRicaTime();
     const cards = document.querySelectorAll<HTMLElement>('#clinicas-grid article');
+    let openCount = 0;
 
     cards.forEach(card => {
       const is247 = card.getAttribute('data-247') === 'true';
       const schedule = card.getAttribute('data-schedule');
       const statusBadge = card.querySelector<HTMLElement>('[data-status-for]');
-      
+
       let isOpen = false;
 
       if (is247) {
@@ -357,8 +311,8 @@
           const [startHour, endHour] = hoursPart.split('-').map(Number);
           if (daysPart.includes('-')) {
             const [startDay, endDay] = daysPart.split('-').map(Number);
-            const isDayMatch = startDay <= endDay 
-              ? (day >= startDay && day <= endDay) 
+            const isDayMatch = startDay <= endDay
+              ? (day >= startDay && day <= endDay)
               : (day >= startDay || day <= endDay);
             if (isDayMatch) {
               isOpen = hour >= startHour && hour < endHour;
@@ -374,17 +328,21 @@
       }
 
       card.setAttribute('data-is-open', isOpen ? 'true' : 'false');
+      if (isOpen) openCount++;
 
       if (statusBadge) {
-        if (isOpen) {
-          statusBadge.textContent = '🟢 Abierto ahora';
-          statusBadge.className = 'status-indicator-badge text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit';
-        } else {
-          statusBadge.textContent = '🔴 Cerrado ahora';
-          statusBadge.className = 'status-indicator-badge text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-900 text-slate-500 border border-slate-800 w-fit';
-        }
+        statusBadge.classList.add('status-pill');
+        statusBadge.classList.toggle('is-open', isOpen);
+        statusBadge.classList.toggle('is-closed', !isOpen);
+        statusBadge.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
       }
     });
+
+    // Update the live "open now" counter in the hero, if present
+    const openNowEl = document.getElementById('open-now-count');
+    if (openNowEl) {
+      openNowEl.textContent = String(openCount);
+    }
   }
 
   // ─── State ─────────────────────────────────────────────────────────────
@@ -432,9 +390,15 @@
     if (!target) return;
 
     window.setTimeout(() => {
-      const top = target.getBoundingClientRect().top + window.scrollY - 88;
+      const top = target.getBoundingClientRect().top + window.scrollY - 90;
       window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
     }, 80);
+  }
+
+  function setChipActive(el: HTMLElement | null, active: boolean) {
+    if (!el) return;
+    el.classList.toggle('is-active', active);
+    el.setAttribute('aria-pressed', active ? 'true' : 'false');
   }
 
   // Helper to restore original order and reset proximity status
@@ -458,7 +422,7 @@
           const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
           if (cLat !== 0 || cLng !== 0) {
             const km = haversineKm(parseFloat(edgeLatAttr), parseFloat(edgeLngAttr), cLat, cLng);
-            distBadge.textContent = `📍 A ${km.toFixed(1)} km`;
+            distBadge.textContent = `A ${km.toFixed(1)} km`;
             distBadge.classList.remove('hidden');
           } else {
             distBadge.classList.add('hidden');
@@ -474,29 +438,28 @@
     // Reset state variables
     geoActive = false;
 
+    const geoBtn = document.getElementById('btn-use-location');
+    const geoBtnText = document.getElementById('geo-btn-text');
+
     if (edgeActive && edgeLatAttr && edgeLngAttr) {
       userLat = parseFloat(edgeLatAttr);
       userLng = parseFloat(edgeLngAttr);
       edgeGeoActive = true;
 
-      const geoBtn = document.getElementById('btn-use-location');
-      const geoBtnText = document.getElementById('geo-btn-text');
       const cityAttr = grid.getAttribute('data-edge-city');
       if (geoBtnText) geoBtnText.textContent = cityAttr ? 'Ubicación aproximada' : 'Cerca de tu zona';
       if (geoBtn) {
         geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-        geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+        geoBtn.classList.add('is-active');
       }
     } else {
       userLat = null;
       userLng = null;
       edgeGeoActive = false;
 
-      const geoBtn = document.getElementById('btn-use-location');
-      const geoBtnText = document.getElementById('geo-btn-text');
-      if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+      if (geoBtnText) geoBtnText.textContent = 'Cerca de mí';
       if (geoBtn) {
-        geoBtn.classList.remove('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10', 'opacity-60', 'pointer-events-none');
+        geoBtn.classList.remove('is-active', 'opacity-60', 'pointer-events-none');
       }
     }
 
@@ -566,10 +529,9 @@
         const nameNorm = nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const zoneNorm = zona.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const provinceNorm = card.getAttribute('data-provincia-text') || '';
-        const directionNorm = (card.querySelector('.line-clamp-2')?.textContent || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        const copyNorm = (card.querySelector('.line-clamp-3')?.textContent || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const directionNorm = (card.getAttribute('data-direccion') || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-        let match = nameNorm.includes(q) || zoneNorm.includes(q) || provinceNorm.includes(q);
+        let match = nameNorm.includes(q) || zoneNorm.includes(q) || provinceNorm.includes(q) || directionNorm.includes(q);
 
         // Tags/services matching
         if (q.includes("exotic") && atiendeExoticos) match = true;
@@ -596,9 +558,7 @@
       }
 
       // Sync map markers with filter state
-      const linkEl = card.querySelector('a[id^="clinica-link"]');
-      const hrefAttr = linkEl ? linkEl.getAttribute('href') : '';
-      const slug = hrefAttr ? hrefAttr.split('/').filter(Boolean).pop() : '';
+      const slug = card.getAttribute('data-slug') || '';
       const markers = (window as any).__vet24Markers;
       const map = (window as any).__vet24Map;
 
@@ -610,6 +570,12 @@
         }
       }
     });
+
+    // Live results count
+    const resultsCountEl = document.getElementById('results-count');
+    if (resultsCountEl) {
+      resultsCountEl.textContent = `${visibleCount} de ${cards.length}`;
+    }
 
     // Empty state handling
     if (emptyState) {
@@ -623,9 +589,9 @@
             .map(c => ({
               el: c,
               dist: haversineKm(userLat!, userLng!, parseFloat(c.getAttribute('data-latitude')!), parseFloat(c.getAttribute('data-longitude')!)),
-              nombre: c.getAttribute('data-nombre') || '',
+              nombre: c.getAttribute('data-original-nombre') || '',
               zone: c.getAttribute('data-zona-text') || '',
-              href: c.querySelector('a[id^="clinica-link"]')?.getAttribute('href') || '#',
+              href: `/clinica/${c.getAttribute('data-slug') || ''}/`,
               is247: c.getAttribute('data-247') === 'true',
             }))
             .sort((a, b) => a.dist - b.dist)
@@ -633,15 +599,15 @@
 
           if (cardsWithCoords.length > 0) {
             fallbackGrid.innerHTML = cardsWithCoords.map(({ dist, nombre, zone, href, is247 }) => `
-              <a href="${href}" class="flex flex-col gap-1.5 p-4 rounded-xl bg-brand-card-bg border border-brand-card-border hover:border-brand-primary/35 transition-all">
+              <a href="${href}" class="flex flex-col gap-1.5 p-4 rounded-xl bg-brand-card-bg border border-brand-card-border hover:border-brand-primary/40 transition-colors">
                 <div class="flex items-center gap-2 justify-between">
-                  <span class="text-xs font-bold text-brand-text capitalize">${nombre}</span>
-                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full ${is247 ? 'bg-brand-danger-bg text-brand-primary border border-brand-danger-border' : 'bg-brand-card-bg border border-brand-card-border text-brand-text-muted'}">
+                  <span class="text-sm font-bold text-brand-text">${nombre}</span>
+                  <span class="text-xs font-bold px-2 py-0.5 rounded-full ${is247 ? 'bg-brand-danger-bg text-brand-emergency border border-brand-danger-border' : 'bg-brand-surface border border-brand-card-border text-brand-text-muted'}">
                     ${is247 ? '24/7' : 'Horario regular'}
                   </span>
                 </div>
-                <span class="text-[10px] text-brand-text-muted capitalize">📍 ${zone}</span>
-                <span class="text-[10px] font-semibold text-brand-primary">🗺️ A ${dist.toFixed(1)} km de ti</span>
+                <span class="text-xs text-brand-text-muted capitalize">📍 ${zone}</span>
+                <span class="text-xs font-semibold text-brand-primary">A ${dist.toFixed(1)} km de ti</span>
               </a>
             `).join('');
             fallbackSection.classList.remove('hidden');
@@ -665,7 +631,8 @@
       }
       if (allCoords.length > 0) {
         const bounds = L.latLngBounds(allCoords);
-        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+        // animate:false — a stuck zoom transition would swallow later map moves.
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14, animate: false });
       }
     }
   }
@@ -685,10 +652,10 @@
       const userIcon = L.divIcon({
         html: `<div style="
           width:16px;height:16px;
-          background:#f43f5e;
+          background:var(--brand-secondary, #38bdf8);
           border:3px solid white;
           border-radius:50%;
-          box-shadow:0 0 0 4px rgba(244,63,94,0.3);
+          box-shadow:0 0 0 4px rgba(56,189,248,0.3);
           pointer-events: none;
         "></div>`,
         className: 'user-location-pin',
@@ -697,9 +664,9 @@
       });
       L.marker([lat, lng], { icon: userIcon })
         .addTo(map)
-        .bindPopup('<strong style="color:#f43f5e">📍 Tu ubicación</strong>')
+        .bindPopup('<strong>📍 Tu ubicación</strong>')
         .openPopup();
-      map.setView([lat, lng], 11, { animate: true });
+      map.setView([lat, lng], 11, { animate: false });
     }
   }
 
@@ -723,7 +690,7 @@
       const aLng = parseFloat(a.getAttribute('data-longitude') || '0');
       const bLat = parseFloat(b.getAttribute('data-latitude') || '0');
       const bLng = parseFloat(b.getAttribute('data-longitude') || '0');
-      
+
       const aDist = (aLat === 0 && aLng === 0) ? Infinity : haversineKm(lat, lng, aLat, aLng);
       const bDist = (bLat === 0 && bLng === 0) ? Infinity : haversineKm(lat, lng, bLat, bLng);
       return aDist - bDist;
@@ -740,10 +707,10 @@
       if (distBadge) {
         if (lat2 !== 0 || lng2 !== 0) {
           const km = haversineKm(lat, lng, lat2, lng2);
-          distBadge.textContent = `📍 A ${km.toFixed(1)} km`;
-          distBadge.classList.remove('hidden');
+          distBadge.textContent = `A ${km.toFixed(1)} km`;
+          distBadge.classList.remove('hidden', 'opacity-40');
         } else {
-          distBadge.textContent = '📍 Sin coordenadas';
+          distBadge.textContent = 'Sin coordenadas';
           distBadge.classList.remove('hidden');
           distBadge.classList.add('opacity-40');
         }
@@ -761,7 +728,7 @@
     const clearBtn = document.getElementById('btn-clear-search');
     const resetBtn = document.getElementById('reset-all-filters');
     const emptyResetBtn = document.getElementById('reset-all-filters-empty');
-    const animalFilters = document.querySelectorAll('[data-filter-animal]');
+    const animalFilters = document.querySelectorAll<HTMLElement>('[data-filter-animal]');
 
     // ── Search ──
     searchInput?.addEventListener('input', () => {
@@ -801,18 +768,10 @@
       if (searchInput) searchInput.value = '';
       if (clearBtn) clearBtn.classList.add('hidden');
 
-      filterOpenBtn?.classList.remove('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
-      filter247Btn?.classList.remove('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
+      setChipActive(filterOpenBtn, false);
+      setChipActive(filter247Btn, false);
 
-      animalFilters.forEach(b => {
-        b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-        b.classList.add('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
-      });
-      const todosBtn = document.querySelector<HTMLElement>('[data-filter-animal="todos"]');
-      if (todosBtn) {
-        todosBtn.classList.remove('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
-        todosBtn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-      }
+      animalFilters.forEach(b => setChipActive(b, b.getAttribute('data-filter-animal') === 'todos'));
 
       restoreDefaultSorting();
       applyAllFilters();
@@ -825,9 +784,7 @@
     // ── Open Now ──
     filterOpenBtn?.addEventListener('click', () => {
       filterOnlyOpen = !filterOnlyOpen;
-      filterOpenBtn.classList.toggle('bg-brand-success-bg');
-      filterOpenBtn.classList.toggle('text-brand-success');
-      filterOpenBtn.classList.toggle('border-brand-success-border');
+      setChipActive(filterOpenBtn, filterOnlyOpen);
       applyAllFilters();
       scrollToFirstVisibleResult();
       logInteraction({ filter_type: filterOnlyOpen ? 'filter_open_true' : 'filter_open_false' });
@@ -836,9 +793,7 @@
     // ── Solo 24/7 ──
     filter247Btn?.addEventListener('click', () => {
       filterOnly247 = !filterOnly247;
-      filter247Btn.classList.toggle('bg-brand-danger-bg');
-      filter247Btn.classList.toggle('text-brand-danger-text');
-      filter247Btn.classList.toggle('border-brand-danger-border');
+      setChipActive(filter247Btn, filterOnly247);
       applyAllFilters();
       scrollToFirstVisibleResult();
       logInteraction({ filter_type: filterOnly247 ? 'filter_247_true' : 'filter_247_false' });
@@ -869,9 +824,9 @@
           userLng = pos.coords.longitude;
           geoActive = true;
 
-          if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
+          if (geoBtnText) geoBtnText.textContent = 'Ordenado por cercanía';
           geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-          geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+          geoBtn.classList.add('is-active');
 
           sortByProximity(userLat, userLng);
           applyAllFilters();
@@ -880,24 +835,19 @@
         },
         (err) => {
           console.warn('Geolocation error:', err.message);
-          if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+          if (geoBtnText) geoBtnText.textContent = 'Cerca de mí';
           geoBtn.classList.remove('opacity-60', 'pointer-events-none');
           alert('No pudimos acceder a tu ubicación. Revisa los permisos del navegador.');
           logInteraction({ filter_type: 'geo_gps_error' });
         },
-        { timeout: 10000, maximumAge: 300000 }
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
       );
     });
 
     // ── Animal filters ──
     animalFilters.forEach(btn => {
       btn.addEventListener('click', () => {
-        animalFilters.forEach(b => {
-          b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-          b.classList.add('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
-        });
-        btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-        btn.classList.remove('bg-brand-card-bg', 'text-brand-text-muted', 'border-brand-card-border');
+        animalFilters.forEach(b => setChipActive(b, b === btn));
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
         scrollToFirstVisibleResult();
@@ -914,13 +864,8 @@
       filterOnlyOpen = true;
       filterOnly247 = false; // Permitimos cualquier clínica abierta, no solo 24/7, para atender emergencias diurnas localmente
 
-      if (filterOpenBtn) {
-        filterOpenBtn.classList.add('bg-brand-success-bg', 'text-brand-success', 'border-brand-success-border');
-      }
-      if (filter247Btn) {
-        // En SOS diurno no forzamos el filtro visual de 24/7
-        filter247Btn.classList.remove('bg-brand-danger-bg', 'text-brand-danger-text', 'border-brand-danger-border');
-      }
+      setChipActive(filterOpenBtn, true);
+      setChipActive(filter247Btn, false);
 
       const sosContainer = document.getElementById('sos-highlight-container');
       if (sosContainer) sosContainer.classList.add('hidden');
@@ -941,10 +886,10 @@
           userLng = pos.coords.longitude;
           geoActive = true;
 
-          if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
+          if (geoBtnText) geoBtnText.textContent = 'Ordenado por cercanía';
           if (geoBtn) {
             geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+            geoBtn.classList.add('is-active');
           }
 
           sortByProximity(userLat, userLng);
@@ -954,14 +899,16 @@
         },
         (err) => {
           console.warn('Geolocation error during SOS:', err.message);
-          if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+          if (geoBtnText) geoBtnText.textContent = 'Cerca de mí';
           if (geoBtn) geoBtn.classList.remove('opacity-60', 'pointer-events-none');
 
           applyAllFilters();
           showSOSSafetyNotice('No pudimos acceder a tu ubicación. Mostrando todas las clínicas abiertas en este momento:');
           inSOSFlow = false;
         },
-        { timeout: 10000, maximumAge: 300000 }
+        // SOS: exige GPS de alta precisión y posición fresca (máx. 30 s de caché);
+        // una posición vieja o aproximada puede sugerir la clínica equivocada.
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
       );
     };
 
@@ -982,7 +929,7 @@
 
   function init() {
     updateClinicsStatus();
-    
+
     // Store original order of clinic cards
     const grid = document.getElementById('clinicas-grid');
     if (grid) {
@@ -993,12 +940,12 @@
         const latAttr = grid.getAttribute('data-edge-lat');
         const lngAttr = grid.getAttribute('data-edge-lng');
         const cityAttr = grid.getAttribute('data-edge-city');
-        
+
         if (latAttr && lngAttr) {
           userLat = parseFloat(latAttr);
           userLng = parseFloat(lngAttr);
           edgeGeoActive = true;
-          
+
           // Update button text to show it is sorted by Edge IP location
           const geoBtnText = document.getElementById('geo-btn-text');
           const geoBtn = document.getElementById('btn-use-location');
@@ -1006,13 +953,21 @@
             geoBtnText.textContent = cityAttr ? 'Ubicación aproximada' : 'Cerca de tu zona';
           }
           if (geoBtn) {
-            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+            geoBtn.classList.add('is-active');
           }
         }
       }
     }
 
+    // Initialize the results counter
+    applyAllFilters();
+
     setupFilters();
+
+    // Refresh open/closed status every minute so long-lived tabs stay accurate
+    setInterval(() => {
+      updateClinicsStatus();
+    }, 60000);
 
     // Auto-locate if permission is already granted or on the home page (Todas las provincias)
     const isTodasProvincias = window.location.pathname === '/' || window.location.pathname === '/index.html' || !window.location.pathname.includes('/provincia/');
@@ -1031,16 +986,16 @@
             userLng = pos.coords.longitude;
             geoActive = true;
 
-            if (geoBtnText) geoBtnText.textContent = '📍 Ordenado por cercanía';
+            if (geoBtnText) geoBtnText.textContent = 'Ordenado por cercanía';
             geoBtn.classList.remove('opacity-60', 'pointer-events-none');
-            geoBtn.classList.add('text-brand-primary', 'border-brand-primary/25', 'bg-brand-primary/10');
+            geoBtn.classList.add('is-active');
 
             sortByProximity(userLat, userLng);
             applyAllFilters();
           },
           (err) => {
             console.warn('Auto-geolocation error:', err.message);
-            if (geoBtnText) geoBtnText.textContent = 'Ordenar por cercanía';
+            if (geoBtnText) geoBtnText.textContent = 'Cerca de mí';
             geoBtn.classList.remove('opacity-60', 'pointer-events-none');
           },
           { timeout: 10000, maximumAge: 300000 }

@@ -17,13 +17,13 @@ test.describe('Vet24 CR - Smoke Test Suite', () => {
     // Assert that the hero section title is visible and contains expected content
     const heroTitle = page.locator('#hero-title');
     await expect(heroTitle).toBeVisible();
-    await expect(heroTitle).toContainText('Emergencias 24/7');
+    await expect(heroTitle).toContainText('abierta ahora');
 
     // Assert that directory quick filters or listings container is present
     const directorySection = page.locator('#directorio');
     await expect(directorySection).toBeVisible();
 
     const directoryTitle = page.locator('#directorio-title');
-    await expect(directoryTitle).toHaveText('Clínicas Veterinarias Registradas');
+    await expect(directoryTitle).toHaveText('Directorio de veterinarias');
   });
 });

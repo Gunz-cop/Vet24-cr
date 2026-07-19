@@ -124,108 +124,86 @@ const schemaItemList = {
   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
 
   <!-- Hero Section -->
-  <section class="text-center py-16 md:py-24 relative overflow-hidden" aria-labelledby="hero-title" data-page-province="costa-rica">
-    <!-- Modern tech grid backdrop -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.04)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none -z-10"></div>
-    
-    <div class="relative z-10 max-w-3xl mx-auto px-4">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-black tracking-wider uppercase rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-6 animate-pulse">
-        Atención Médica 24 Horas
-      </span>
-      
-      <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-text mb-6 font-['Outfit',sans-serif] leading-[1.1]">
-        Veterinarias de Guardia y <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-brand-primary via-emerald-400 to-brand-primary bg-clip-text text-transparent drop-shadow-sm">Emergencias 24/7</span>
+  <section class="text-center py-10 md:py-16" aria-labelledby="hero-title" data-page-province="costa-rica">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-brand-text mb-4 font-['Outfit',sans-serif] leading-[1.15]">
+        Encuentra una veterinaria <span class="text-brand-primary">abierta ahora</span> en Costa Rica
       </h1>
-      
-      <p class="text-base sm:text-lg text-brand-text-muted mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-        Busca veterinarias abiertas ahora, clínicas de guardia y opciones 24/7 cerca de tu zona en Costa Rica.
+
+      <p class="text-base sm:text-lg text-brand-text-muted mb-8 max-w-2xl mx-auto leading-relaxed">
+        Emergencias 24/7, clínicas de guardia y consultas de todos los días. Llama, escribe por WhatsApp o abre la ruta en Waze en segundos.
       </p>
-      
-      <div class="flex flex-col sm:flex-row justify-center gap-3 text-sm font-semibold">
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
         <button
           type="button"
           data-sos-trigger
-          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-primary to-brand-primary-hover hover:brightness-110 text-white transition-all duration-300 shadow-lg shadow-brand-primary/30 hover:shadow-brand-primary/50 hover:scale-[1.03] active:scale-[0.97] font-extrabold"
+          class="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-brand-emergency hover:bg-brand-emergency-hover text-white text-base font-bold transition-colors shadow-lg shadow-brand-emergency/25 cursor-pointer"
           id="cta-sos-hero"
         >
           <span class="relative flex h-2.5 w-2.5">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70"></span>
+            <span class="animate-sos-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
           </span>
-          🚨 SOS EMERGENCIA
+          Es una emergencia
         </button>
-        <a href="#directorio" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-brand-card-border bg-brand-card-bg/45 hover:bg-brand-primary/10 hover:border-brand-primary/35 text-brand-text transition-all duration-300 active:scale-[0.97]" id="cta-directorio">
-          Ver Directorio
+        <a href="#directorio" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-brand-card-border bg-brand-card-bg hover:border-brand-primary/45 text-brand-text text-base font-bold transition-colors" id="cta-directorio">
+          Buscar en el directorio
         </a>
       </div>
 
-      <!-- Trust Stats Bar -->
-      <div class="mt-14 flex flex-wrap justify-center gap-4 sm:gap-8 relative z-10">
-        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-brand-secondary/30 transition-colors">
-          <span class="text-brand-secondary text-sm">🟢</span>
-          <span class="text-xs font-bold text-brand-text">79 Veterinarias</span>
-        </div>
-        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-brand-primary/30 transition-colors">
-          <span class="text-brand-primary text-sm">🚨</span>
-          <span class="text-xs font-bold text-brand-text">Guardia 24/7</span>
-        </div>
-        <div class="flex items-center gap-2 border border-brand-card-border/80 bg-brand-card-bg/40 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-sm shadow-black/10 hover:border-sky-400/30 transition-colors">
-          <span class="text-sky-400 text-sm">📍</span>
-          <span class="text-xs font-bold text-brand-text">GAM y Playas</span>
-        </div>
+      <!-- Live status line -->
+      <div class="mt-8 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-brand-text-muted">
+        <span class="inline-flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-brand-success"></span>
+          <span><strong class="text-brand-text font-bold" id="open-now-count">—</strong> abiertas en este momento</span>
+        </span>
+        <span class="inline-flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-brand-primary"></span>
+          <span><strong class="text-brand-text font-bold">{processedClinicas.length}</strong> veterinarias en todo el país</span>
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- Content Section -->
-  <section id="directorio" class="scroll-mt-20 py-8" aria-labelledby="directorio-title">
+  <!-- Directory Section -->
+  <section id="directorio" class="scroll-mt-20 py-6" aria-labelledby="directorio-title">
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6 transition-colors duration-200">
-      <div>
-        <h2 id="directorio-title" class="text-2xl md:text-3xl font-bold text-brand-text font-['Outfit',sans-serif]">
-          Clínicas Veterinarias Registradas
-        </h2>
-        <p class="text-sm text-brand-text-muted mt-1">
-          Mostrando clínicas verificadas y activas en el GAM y playas.
-        </p>
-      </div>
-      <div class="text-sm font-medium text-brand-text-muted">
-        Total: <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-md border border-brand-card-border transition-colors duration-200">{processedClinicas.length} clínicas</span>
-      </div>
+    <div class="mb-5">
+      <h2 id="directorio-title" class="text-2xl md:text-3xl font-bold text-brand-text font-['Outfit',sans-serif]">
+        Directorio de veterinarias
+      </h2>
+      <p class="text-sm sm:text-base text-brand-text-muted mt-1.5">
+        Usa la búsqueda y los filtros para encontrar la clínica que necesitas. Las abiertas ahora se marcan en verde.
+      </p>
     </div>
 
-    <!-- Primary filters -->
+    <!-- Primary filters (banner + sticky toolbar + SOS/empty states) -->
     <FiltrosDashboard />
 
     <!-- Province Filter Component -->
     <FiltrosProvincia />
 
-    <section class="mb-8 rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5 sm:p-6" aria-labelledby="zonas-title">
-      <div class="flex flex-col gap-2 mb-4">
-        <h2 id="zonas-title" class="text-sm font-black uppercase tracking-wider text-brand-text-muted font-['Outfit',sans-serif]">
-          Zonas con búsquedas urgentes
-        </h2>
-        <p class="text-sm text-brand-text-muted">
-          Accesos rápidos para encontrar veterinarias abiertas hoy, horarios y opciones de emergencia en cantones con demanda local.
-        </p>
-      </div>
-      <div class="flex flex-wrap gap-2">
+    <!-- Zone shortcuts: compact chip row so someone who knows their canton jumps straight there -->
+    <div class="w-full mb-6" aria-labelledby="zonas-title">
+      <h2 id="zonas-title" class="text-xs font-bold text-brand-text-muted uppercase tracking-wider mb-2.5 font-['Outfit',sans-serif]">
+        Ir a mi zona
+      </h2>
+      <nav class="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none" aria-label="Accesos directos por zona">
         {priorityZones.map((zone) => (
-          <a href={`/zona/${zone.slug}/`} class="inline-flex items-center gap-2 rounded-xl border border-brand-card-border bg-brand-bg/55 px-3.5 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/40 hover:bg-brand-primary/10 hover:text-brand-text">
-            <span class="text-brand-primary">#</span>
-            Veterinarias en {zone.nombre}
+          <a href={`/zona/${zone.slug}/`} class="filter-chip shrink-0">
+            {zone.nombre}
           </a>
         ))}
-      </div>
-    </section>
+      </nav>
+    </div>
 
     <!-- Interactive Map -->
     <MapaClinicas clinicas={mapData} />
 
     <!-- Clinics Grid -->
-    <div 
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-24" 
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 scroll-mt-24"
       id="clinicas-grid"
       data-edge-lat={edgeLat}
       data-edge-lng={edgeLng}
@@ -240,6 +218,25 @@ const schemaItemList = {
           : undefined;
         return <ClinicaCard clinica={clinica.data} distance={dist} />;
       })}
+    </div>
+  </section>
+
+  <!-- SEO zone shortcuts (after results so they never bury them) -->
+  <section class="mt-12 rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 sm:p-6" aria-labelledby="zonas-title">
+    <div class="flex flex-col gap-1.5 mb-4">
+      <h2 id="zonas-title" class="text-base font-bold text-brand-text font-['Outfit',sans-serif]">
+        Buscar por zona
+      </h2>
+      <p class="text-sm text-brand-text-muted">
+        Accesos directos a veterinarias por cantón: horarios, teléfonos y opciones de emergencia.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {priorityZones.map((zone) => (
+        <a href={`/zona/${zone.slug}/`} class="filter-chip">
+          Veterinarias en {zone.nombre}
+        </a>
+      ))}
     </div>
   </section>
 </BaseLayout>

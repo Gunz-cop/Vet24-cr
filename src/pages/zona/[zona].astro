@@ -127,27 +127,30 @@ const schemaFaq = {
   <section class="py-6 scroll-mt-20" aria-labelledby="zona-title" data-page-zone={selectedZone.slug}>
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 border-b border-brand-card-border pb-6">
       <div>
-        <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-primary-hover mb-2 transition-colors">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary hover:text-brand-primary-hover mb-2 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
           Volver al directorio
         </a>
-        <h1 id="zona-title" class="text-3xl md:text-4xl font-extrabold text-brand-text font-['Outfit',sans-serif] tracking-tight">
-          Veterinarias en <span class="bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary bg-clip-text text-transparent">{selectedZone.nombre}</span>
+        <h1 id="zona-title" class="text-3xl md:text-4xl font-bold text-brand-text font-['Outfit',sans-serif] tracking-tight">
+          Veterinarias en <span class="text-brand-primary">{selectedZone.nombre}</span>
         </h1>
-        <p class="text-sm text-brand-text-muted mt-2 max-w-3xl">
+        <p class="text-sm sm:text-base text-brand-text-muted mt-2 max-w-3xl">
           Consulta clínicas veterinarias abiertas hoy en {selectedZone.nombre}, teléfonos, WhatsApp y rutas. Las opciones 24/7 o verificadas se muestran con prioridad.
         </p>
       </div>
-      <div class="grid grid-cols-3 gap-2 text-center">
+      <div class="grid grid-cols-3 gap-2 text-center shrink-0">
         <div class="rounded-xl border border-brand-card-border bg-brand-card-bg px-3 py-2">
-          <span class="block text-lg font-black text-brand-text">{filteredClinicas.length}</span>
+          <span class="block text-lg font-bold text-brand-text">{filteredClinicas.length}</span>
           <span class="text-[10px] font-bold uppercase text-brand-text-muted">Clínicas</span>
         </div>
         <div class="rounded-xl border border-brand-card-border bg-brand-card-bg px-3 py-2">
-          <span class="block text-lg font-black text-brand-primary">{emergencyCount}</span>
+          <span class="block text-lg font-bold text-brand-emergency">{emergencyCount}</span>
           <span class="text-[10px] font-bold uppercase text-brand-text-muted">24/7</span>
         </div>
         <div class="rounded-xl border border-brand-card-border bg-brand-card-bg px-3 py-2">
-          <span class="block text-lg font-black text-brand-success">{verifiedCount}</span>
+          <span class="block text-lg font-bold text-brand-success">{verifiedCount}</span>
           <span class="text-[10px] font-bold uppercase text-brand-text-muted">Verificadas</span>
         </div>
       </div>
@@ -159,12 +162,12 @@ const schemaFaq = {
 
     <section class="mb-8 grid gap-3 md:grid-cols-2" aria-labelledby="faq-zona-title">
       <h2 id="faq-zona-title" class="sr-only">Preguntas frecuentes de veterinarias en {selectedZone.nombre}</h2>
-      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
-        <h3 class="text-sm font-black text-brand-text mb-2">¿Hay veterinarias abiertas hoy en {selectedZone.nombre}?</h3>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5">
+        <h3 class="text-sm font-bold text-brand-text mb-2">¿Hay veterinarias abiertas hoy en {selectedZone.nombre}?</h3>
         <p class="text-sm text-brand-text-muted">Sí. Revisa el horario de cada ficha y confirma por teléfono o WhatsApp antes de trasladarte.</p>
       </div>
-      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
-        <h3 class="text-sm font-black text-brand-text mb-2">¿Hay veterinarias 24 horas en {selectedZone.nombre}?</h3>
+      <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5">
+        <h3 class="text-sm font-bold text-brand-text mb-2">¿Hay veterinarias 24 horas en {selectedZone.nombre}?</h3>
         <p class="text-sm text-brand-text-muted">
           {emergencyCount > 0
             ? `Hay ${emergencyCount} opción u opciones marcadas como 24/7 en esta zona.`

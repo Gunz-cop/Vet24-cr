@@ -7,37 +7,31 @@ interface Props {
 const { categoriaHorario, class: className = "" } = Astro.props;
 
 let badgeStyles = "";
-let dotColor = "";
 let text = "";
 
 switch (categoriaHorario) {
   case "24/7 Emergencias":
-    badgeStyles = "bg-rose-500/10 text-rose-400 border-rose-500/25";
-    dotColor = "bg-rose-500";
+    badgeStyles = "bg-brand-danger-bg text-brand-emergency border-brand-danger-border";
     text = "Emergencias 24/7";
     break;
   case "Cierra después 21h":
-    badgeStyles = "bg-amber-500/10 text-amber-400 border-amber-500/25";
-    dotColor = "bg-amber-500";
-    text = "Cierra tarde (>9 PM)";
+    badgeStyles = "bg-brand-warning-bg text-brand-warning-text border-brand-warning-border";
+    text = "Cierra tarde (después de 9 p.m.)";
     break;
   case "Horario normal":
   default:
-    badgeStyles = "bg-slate-800/60 text-slate-400 border-slate-700/50";
-    dotColor = "bg-slate-500";
-    text = "Horario Normal";
+    badgeStyles = "bg-brand-surface text-brand-text-muted border-brand-card-border";
+    text = "Horario diurno";
     break;
 }
 ---
 
-<span class={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full border ${badgeStyles} ${className}`}>
-  {categoriaHorario === "24/7 Emergencias" ? (
+<span class={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-full border ${badgeStyles} ${className}`}>
+  {categoriaHorario === "24/7 Emergencias" && (
     <span class="relative flex h-2 w-2">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+      <span class="animate-sos-ping absolute inline-flex h-full w-full rounded-full bg-brand-emergency opacity-70"></span>
+      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-emergency"></span>
     </span>
-  ) : (
-    <span class={`h-1.5 w-1.5 rounded-full ${dotColor}`}></span>
   )}
   {text}
 </span>
