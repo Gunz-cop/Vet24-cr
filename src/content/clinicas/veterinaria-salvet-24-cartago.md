@@ -10,6 +10,9 @@ whatsapp: ""
 horarioTexto: "L-D 24h (Llamar para emergencias nocturnas)"
 categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
+hotelMascotas: true
+hotelVerificacion: "reportado"
+hotelFuente: "Búsqueda web - directorio local (registro previo; confirmar cupo)"
 atiendeExoticos: false
 cirugiaEmergencia: true
 atiendeGranja: false

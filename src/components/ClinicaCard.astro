@@ -18,6 +18,8 @@ interface Props {
     cirugiaEmergencia: boolean;
     atiendeGranja?: boolean;
     atiendePeces?: boolean;
+    hotelMascotas?: boolean;
+    hotelVerificacion?: "confirmado" | "reportado" | "no-confirmado";
     confidence_score?: "high" | "medium" | "low";
     record_status?: "VERIFIED" | "PARTIAL" | "REVIEW_REQUIRED" | "CANDIDATE_REMOVAL";
     emergency_tier?: "Tier A" | "Tier B" | "Tier C" | "Tier D";
@@ -111,6 +113,7 @@ if (clinica.emergencias24h) {
   data-exoticos={clinica.atiendeExoticos ? "true" : "false"}
   data-granja={clinica.atiendeGranja ? "true" : "false"}
   data-peces={clinica.atiendePeces ? "true" : "false"}
+  data-hotel={clinica.hotelMascotas ? "true" : "false"}
   data-schedule={scheduleAttr}
   data-province={clinica.provincia.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-").replace(/^-+|-+$/g, "")}
   data-tier={clinica.emergency_tier || "Tier C"}
@@ -181,7 +184,7 @@ if (clinica.emergencias24h) {
     </p>
 
     <!-- Special species (only exceptions worth flagging) -->
-    {(clinica.atiendeExoticos || clinica.atiendePeces || clinica.atiendeGranja) && (
+    {(clinica.atiendeExoticos || clinica.atiendePeces || clinica.atiendeGranja || clinica.hotelMascotas) && (
       <div class="flex flex-wrap items-center gap-1.5 mb-3">
         {clinica.atiendeExoticos && (
           <span class="inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-md bg-brand-surface text-brand-text-muted border border-brand-card-border" title="Atiende animales exóticos">
@@ -196,6 +199,11 @@ if (clinica.emergencias24h) {
         {clinica.atiendeGranja && (
           <span class="inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-md bg-brand-surface text-brand-text-muted border border-brand-card-border" title="Atiende animales de granja">
             🐴 Granja
+          </span>
+        )}
+        {clinica.hotelMascotas && (
+          <span class={`inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-md border ${clinica.hotelVerificacion === 'confirmado' ? 'bg-brand-success-bg text-brand-success border-brand-success-border' : 'bg-brand-warning-bg text-brand-warning-text border-brand-warning-border'}`} title={clinica.hotelVerificacion === 'confirmado' ? 'Hotel para mascotas confirmado en una fuente pública' : 'Servicio de hotel reportado; confirma cupo y condiciones'}>
+            🏨 {clinica.hotelVerificacion === 'confirmado' ? 'Hotel' : 'Hotel reportado'}
           </span>
         )}
       </div>

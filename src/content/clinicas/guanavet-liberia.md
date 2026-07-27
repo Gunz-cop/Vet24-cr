@@ -9,6 +9,9 @@ whatsapp: "8709-1612"
 horarioTexto: "Horario a confirmar (posiblemente cierra ~19:00)"
 categoriaHorario: "Horario normal"
 emergencias24h: false
+hotelMascotas: true
+hotelVerificacion: "reportado"
+hotelFuente: "https://infoguia.co.cr/is.asp?ciud=56&clte=10016109&emp=guanavet-liberia"
 atiendeExoticos: false
 cirugiaEmergencia: false
 atiendeGranja: true

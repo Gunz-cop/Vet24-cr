@@ -10,6 +10,9 @@ whatsapp: "8817-0000"
 horarioTexto: "Consultar horario | Emergencias: 8817-0000"
 categoriaHorario: "Horario normal"
 emergencias24h: false
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "https://veterinariaganagro.com/servicios/"
 atiendeExoticos: false
 cirugiaEmergencia: true
 atiendeGranja: true

@@ -10,6 +10,9 @@ whatsapp: ""
 horarioTexto: "L-D 7am-7pm"
 categoriaHorario: "Horario normal"
 emergencias24h: false
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "https://www.instagram.com/cmvhlaisla/"
 atiendeExoticos: false
 cirugiaEmergencia: false
 atiendeGranja: false

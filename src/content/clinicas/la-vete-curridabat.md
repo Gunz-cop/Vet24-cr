@@ -9,6 +9,9 @@ whatsapp: "8800-9575"
 horarioTexto: "L-S 8am-8pm | D 8am-7pm | Emergencias 24/7"
 categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
+hotelMascotas: true
+hotelVerificacion: "reportado"
+hotelFuente: "https://lavete.com/pages/nosotros"
 atiendeExoticos: true
 cirugiaEmergencia: true
 web: "lavete.com"

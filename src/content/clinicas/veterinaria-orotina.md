@@ -10,6 +10,9 @@ whatsapp: "6212-3225"
 horarioTexto: "Martes-Domingo con cita previa | Lunes cerrado"
 categoriaHorario: "Horario normal"
 emergencias24h: false
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "https://www.veterinariaorotina.com/"
 atiendeExoticos: false
 cirugiaEmergencia: true
 atiendeGranja: false

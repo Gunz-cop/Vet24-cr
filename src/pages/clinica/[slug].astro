@@ -30,6 +30,9 @@ const {
   categoriaHorario,
   emergencias24h,
   atiendeExoticos,
+  hotelMascotas = false,
+  hotelVerificacion = "no-confirmado",
+  hotelFuente = "",
   cirugiaEmergencia,
   web,
   facebook,
@@ -338,14 +341,24 @@ const schemaFaq = {
         "text": `${nombre} reporta este horario: ${horarioTexto}. Recomendamos confirmar por teléfono o WhatsApp antes de trasladarte.`
       }
     },
-    {
-      "@type": "Question",
-      "name": `¿${nombre} atiende emergencias 24 horas en ${zona}?`,
+      {
+        "@type": "Question",
+        "name": `¿${nombre} atiende emergencias 24 horas en ${zona}?`,
       "acceptedAnswer": {
         "@type": "Answer",
         "text": emergencias24h
           ? `${nombre} aparece marcado con emergencias 24/7 en ${zona}, ${provincia}.`
           : `${nombre} no aparece como emergencia 24/7 confirmada. Para urgencias nocturnas, revisa clínicas marcadas como 24/7 en Vet24 Costa Rica.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿${nombre} ofrece hotel para mascotas?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": hotelMascotas
+          ? `${nombre} tiene servicio de hotel, hospedaje o guardería reportado en una fuente pública. Confirma cupo, especies aceptadas y condiciones antes de reservar.`
+          : `${nombre} no tiene servicio de hotel para mascotas confirmado en la información pública revisada.`
       }
     }
   ]
@@ -416,7 +429,7 @@ const schemaFaq = {
           </div>
         </header>
 
-        <section class="grid grid-cols-1 sm:grid-cols-3 gap-3" aria-labelledby="seo-quick-facts-title">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-labelledby="seo-quick-facts-title">
           <h2 id="seo-quick-facts-title" class="sr-only">Datos rápidos de {nombre}</h2>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
             <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-text-muted">Horario</span>
@@ -440,6 +453,12 @@ const schemaFaq = {
             <a href={zoneCanonical} class="mt-1 inline-flex text-sm font-bold text-brand-primary hover:text-brand-primary-hover">
               Veterinarias en {zona}
             </a>
+          </div>
+          <div class={`rounded-2xl border p-4 ${hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'border-brand-success-border bg-brand-success-bg/40' : 'border-brand-warning-border bg-brand-warning-bg/40') : 'border-brand-card-border bg-brand-card-bg/45'}`}>
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-text-muted">Hotel para mascotas</span>
+            <p class={`mt-1 text-sm font-bold ${hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'text-brand-success' : 'text-brand-warning-text') : 'text-brand-text-muted'}`}>
+              {hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'Sí, confirmado' : 'Reportado; confirmar') : 'No confirmado'}
+            </p>
           </div>
         </section>
 
@@ -639,7 +658,7 @@ const schemaFaq = {
             Servicios y Especialidades
           </h2>
           
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class={`p-4 rounded-xl border flex flex-col justify-between transition-all duration-200 ${
               emergencias24h ? "bg-brand-danger-bg border-brand-danger-border text-brand-danger-text" : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
             }`}>
@@ -686,6 +705,27 @@ const schemaFaq = {
                   <span class="text-brand-text-muted/60">No Disponible</span>
                 )}
               </div>
+            </div>
+
+            <div class={`p-4 rounded-xl border flex flex-col justify-between transition-all duration-200 ${
+              hotelMascotas ? (hotelVerificacion === 'confirmado' ? "bg-brand-success-bg border-brand-success-border text-brand-success" : "bg-brand-warning-bg border-brand-warning-border text-brand-warning-text") : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
+            }`}>
+              <span class="text-xs font-semibold uppercase tracking-wider mb-2">Hotel / hospedaje</span>
+              <div class="flex items-center gap-1.5 font-bold text-sm">
+                {hotelMascotas ? (
+                  <span class={hotelVerificacion === 'confirmado' ? 'text-brand-success flex items-center gap-1' : 'text-brand-warning-text flex items-center gap-1'}>
+                    <span class={`h-2 w-2 rounded-full ${hotelVerificacion === 'confirmado' ? 'bg-brand-success' : 'bg-brand-secondary'}`}></span>
+                    {hotelVerificacion === 'confirmado' ? 'Sí Disponible' : 'Reportado; confirmar'}
+                  </span>
+                ) : (
+                  <span class="text-brand-text-muted/60">No Confirmado</span>
+                )}
+              </div>
+              {hotelMascotas && hotelFuente && (
+                <a href={hotelFuente.startsWith('http') ? hotelFuente : undefined} target={hotelFuente.startsWith('http') ? '_blank' : undefined} rel={hotelFuente.startsWith('http') ? 'noopener noreferrer' : undefined} class="mt-2 text-[11px] underline underline-offset-2 opacity-80 hover:opacity-100">
+                  Ver fuente
+                </a>
+              )}
             </div>
           </div>
         </section>

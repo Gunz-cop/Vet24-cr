@@ -9,6 +9,9 @@ whatsapp: ""
 horarioTexto: "Emergencias 24/7"
 categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "https://ivdsa.com/hospedaje/"
 atiendeExoticos: true
 cirugiaEmergencia: true
 atiendeGranja: true

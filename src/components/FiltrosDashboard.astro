@@ -86,6 +86,10 @@
         <button data-filter-animal="peces" class="filter-chip shrink-0" aria-pressed="false">🐠 Peces</button>
         <button data-filter-animal="granja" class="filter-chip shrink-0" aria-pressed="false">🐴 Granja</button>
       </div>
+
+      <button id="filter-hotel" class="filter-chip shrink-0" aria-pressed="false" title="Mostrar veterinarias con hotel, hospedaje o guardería para mascotas">
+        🏨 Hotel para mascotas
+      </button>
     </div>
 
     <!-- Results meta -->
@@ -353,6 +357,7 @@
   let searchQuery = '';
   let filterOnlyOpen = false;
   let filterOnly247 = false;
+  let filterOnlyHotel = false;
   let activeAnimal = 'todos';
   let inSOSFlow = false;
   let originalCardsOrder: HTMLElement[] = [];
@@ -494,6 +499,7 @@
       const atiendeExoticos = card.getAttribute('data-exoticos') === 'true';
       const atiendeGranja = card.getAttribute('data-granja') === 'true';
       const atiendePeces = card.getAttribute('data-peces') === 'true';
+      const ofreceHotel = card.getAttribute('data-hotel') === 'true';
       const confidence = card.getAttribute('data-confidence');
       const status = card.getAttribute('data-record-status');
       const emergencyVerified = card.getAttribute('data-emergency-verified') === 'true';
@@ -519,6 +525,7 @@
 
       if (filterOnlyOpen && !isOpen) show = false;
       if (filterOnly247 && !is247) show = false;
+      if (filterOnlyHotel && !ofreceHotel) show = false;
       if (activeAnimal === 'exoticos' && !atiendeExoticos) show = false;
       if (activeAnimal === 'granja' && !atiendeGranja) show = false;
       if (activeAnimal === 'peces' && !atiendePeces) show = false;
@@ -537,6 +544,7 @@
         if (q.includes("exotic") && atiendeExoticos) match = true;
         if (q.includes("granja") && atiendeGranja) match = true;
         if (q.includes("pece") && atiendePeces) match = true;
+        if ((q.includes("hotel") || q.includes("hosped") || q.includes("guarder")) && ofreceHotel) match = true;
         if ((q.includes("domes") || q.includes("perro") || q.includes("gato")) && true) match = true;
 
         if (!match) {
@@ -722,6 +730,7 @@
   function setupFilters() {
     const filterOpenBtn = document.getElementById('filter-quick-open');
     const filter247Btn = document.getElementById('filter-quick-247');
+    const hotelBtn = document.getElementById('filter-hotel');
     const geoBtn = document.getElementById('btn-use-location');
     const geoBtnText = document.getElementById('geo-btn-text');
     const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
@@ -763,6 +772,7 @@
     const handleReset = () => {
       filterOnlyOpen = false;
       filterOnly247 = false;
+      filterOnlyHotel = false;
       activeAnimal = 'todos';
       searchQuery = '';
       if (searchInput) searchInput.value = '';
@@ -770,6 +780,7 @@
 
       setChipActive(filterOpenBtn, false);
       setChipActive(filter247Btn, false);
+      setChipActive(hotelBtn, false);
 
       animalFilters.forEach(b => setChipActive(b, b.getAttribute('data-filter-animal') === 'todos'));
 
@@ -797,6 +808,15 @@
       applyAllFilters();
       scrollToFirstVisibleResult();
       logInteraction({ filter_type: filterOnly247 ? 'filter_247_true' : 'filter_247_false' });
+    });
+
+    // ── Hotel para mascotas ──
+    hotelBtn?.addEventListener('click', () => {
+      filterOnlyHotel = !filterOnlyHotel;
+      setChipActive(hotelBtn, filterOnlyHotel);
+      applyAllFilters();
+      scrollToFirstVisibleResult();
+      logInteraction({ filter_type: filterOnlyHotel ? 'filter_hotel_true' : 'filter_hotel_false' });
     });
 
     // ── Geolocation ──

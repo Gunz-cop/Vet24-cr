@@ -9,6 +9,9 @@ whatsapp: "8800-9575"
 horarioTexto: "L-S 10am-9pm | D 10am-8pm"
 categoriaHorario: "Cierra después 21h"
 emergencias24h: false
+hotelMascotas: true
+hotelVerificacion: "reportado"
+hotelFuente: "https://lavete.com/pages/nosotros"
 atiendeExoticos: true
 cirugiaEmergencia: false
 web: "lavete.com"

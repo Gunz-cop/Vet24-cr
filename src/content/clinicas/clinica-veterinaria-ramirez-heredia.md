@@ -9,6 +9,9 @@ whatsapp: ""
 horarioTexto: "Emergencias 24/7"
 categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
+hotelMascotas: true
+hotelVerificacion: "reportado"
+hotelFuente: "https://www.govserv.org/CR/San-Rafael/100698679984936/Cl%C3%ADnica-Veterinaria-Ram%C3%ADrez"
 atiendeExoticos: true
 cirugiaEmergencia: true
 web: "veteramirez.com"

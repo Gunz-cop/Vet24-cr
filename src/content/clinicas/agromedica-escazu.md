@@ -9,6 +9,9 @@ whatsapp: ""
 horarioTexto: "L-D 8am-8pm | Emergencias 24/7 perros y gatos"
 categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "https://servicios.escazu.go.cr/empresas/hospital-veterinario-agromedica"
 atiendeExoticos: true
 cirugiaEmergencia: true
 web: "hospitalveterinario.cr"
