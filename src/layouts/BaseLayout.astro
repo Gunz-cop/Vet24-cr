@@ -26,6 +26,14 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- AdSense: carga asíncrona para no bloquear el renderizado inicial -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5094917394495886"
+      crossorigin="anonymous"
+      is:inline
+    ></script>
+
     <!-- SEO Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="description" content={metaDesc} />
