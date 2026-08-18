@@ -5,6 +5,7 @@ import ClinicaCard from '../../components/ClinicaCard.astro';
 import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
 import FiltrosProvincia from '../../components/FiltrosProvincia.astro';
 import MapaClinicas from '../../components/MapaClinicas.astro';
+import AdBanner from '../../components/AdBanner.astro';
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug, getPriorityZoneBySlug, priorityZones } from '../../lib/zones';
 
@@ -155,6 +156,8 @@ const schemaFaq = {
         </div>
       </div>
     </div>
+
+    <AdBanner size="320x50" />
 
     <FiltrosDashboard />
 

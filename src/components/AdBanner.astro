@@ -1,0 +1,103 @@
+---
+interface Props {
+  size: '320x50' | '300x250';
+}
+
+const { size } = Astro.props;
+
+const placements = {
+  '320x50': {
+    key: 'c468d9237e8489ebbb269a2556be5ef5',
+    width: 320,
+    height: 50,
+  },
+  '300x250': {
+    key: '9f543d5e07590c9c54c84b4f72a81fbf',
+    width: 300,
+    height: 250,
+  },
+} as const;
+
+const placement = placements[size];
+---
+
+<div
+  class={`ad-banner ad-banner--${size}`}
+  role="region"
+  aria-label="Publicidad"
+  data-ad-size={size}
+>
+  <span class="ad-banner__label" aria-hidden="true">PUBLICIDAD</span>
+  <div
+    class="ad-banner__slot"
+    style={`width: ${placement.width}px; min-height: ${placement.height}px;`}
+  >
+    {size === '320x50' ? (
+      <>
+        <script is:inline>
+          (() => {
+            const slot = document.currentScript?.parentElement;
+            window.__vet24AdsterraQueue = (window.__vet24AdsterraQueue || Promise.resolve()).then(() => new Promise((resolve) => {
+              window.atOptions = {
+                key: 'c468d9237e8489ebbb269a2556be5ef5',
+                format: 'iframe',
+                height: 50,
+                width: 320,
+                params: {}
+              };
+              if (!slot) {
+                resolve();
+                return;
+              }
+              const script = document.createElement('script');
+              script.src = 'https://www.highperformanceformat.com/c468d9237e8489ebbb269a2556be5ef5/invoke.js';
+              script.async = true;
+              let timeoutId;
+              const done = () => {
+                window.clearTimeout(timeoutId);
+                resolve();
+              };
+              script.onload = done;
+              script.onerror = done;
+              timeoutId = window.setTimeout(done, 8000);
+              slot.appendChild(script);
+            }));
+          })();
+        </script>
+      </>
+    ) : (
+      <>
+        <script is:inline>
+          (() => {
+            const slot = document.currentScript?.parentElement;
+            window.__vet24AdsterraQueue = (window.__vet24AdsterraQueue || Promise.resolve()).then(() => new Promise((resolve) => {
+              window.atOptions = {
+                key: '9f543d5e07590c9c54c84b4f72a81fbf',
+                format: 'iframe',
+                height: 250,
+                width: 300,
+                params: {}
+              };
+              if (!slot) {
+                resolve();
+                return;
+              }
+              const script = document.createElement('script');
+              script.src = 'https://www.highperformanceformat.com/9f543d5e07590c9c54c84b4f72a81fbf/invoke.js';
+              script.async = true;
+              let timeoutId;
+              const done = () => {
+                window.clearTimeout(timeoutId);
+                resolve();
+              };
+              script.onload = done;
+              script.onerror = done;
+              timeoutId = window.setTimeout(done, 8000);
+              slot.appendChild(script);
+            }));
+          })();
+        </script>
+      </>
+    )}
+  </div>
+</div>

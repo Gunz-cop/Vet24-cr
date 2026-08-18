@@ -7,6 +7,7 @@ import FiltrosProvincia from '../components/FiltrosProvincia.astro';
 import ClinicaCard from '../components/ClinicaCard.astro';
 import FiltrosDashboard from '../components/FiltrosDashboard.astro';
 import MapaClinicas from '../components/MapaClinicas.astro';
+import AdBanner from '../components/AdBanner.astro';
 import { absoluteUrl, canonicalUrl } from '../lib/seo';
 import { priorityZones } from '../lib/zones';
 
@@ -163,6 +164,8 @@ const schemaItemList = {
           <span><strong class="text-brand-text font-bold">{processedClinicas.length}</strong> veterinarias en todo el país</span>
         </span>
       </div>
+
+      <AdBanner size="320x50" />
     </div>
   </section>
 
