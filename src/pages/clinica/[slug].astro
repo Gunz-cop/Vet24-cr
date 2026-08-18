@@ -5,6 +5,7 @@ import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCache from '../../linkzip-cache.json';
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
+import AdBanner from '../../components/AdBanner.astro';
 
 export async function getStaticPaths() {
   const allClinicas = await getCollection('clinicas');
@@ -527,6 +528,8 @@ const schemaFaq = {
           </a>
         </div>
 
+        <AdBanner size="320x50" />
+
         <section class="grid gap-3 md:grid-cols-2" aria-labelledby="faq-clinica-title">
           <h2 id="faq-clinica-title" class="sr-only">Preguntas frecuentes sobre {nombre}</h2>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/35 p-5">
@@ -650,6 +653,8 @@ const schemaFaq = {
             </div>
           )}
         </section>
+
+        <AdBanner size="300x250" />
 
 
         <!-- Services & Specs -->
