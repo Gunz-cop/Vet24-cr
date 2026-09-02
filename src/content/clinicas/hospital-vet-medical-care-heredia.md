@@ -6,9 +6,9 @@ direccion: "De la esquina suroeste de la Escuela Rafael Moya, 25 m oeste, Edific
 telefono1: "2262-6826"
 telefono2: ""
 whatsapp: "8639-6793"
-horarioTexto: "L-D 9am-9pm jornada continua"
-categoriaHorario: "Cierra después 21h"
-emergencias24h: false
+horarioTexto: "24/7 todos los días"
+categoriaHorario: "24/7 Emergencias"
+emergencias24h: true
 atiendeExoticos: true
 cirugiaEmergencia: true
 web: "hospitalveterinariomedicalcare.com"
@@ -16,23 +16,23 @@ facebook: ""
 instagram: ""
 slug: "hospital-vet-medical-care-heredia"
 estado: "verificado"
-copyDiferenciador: "Horario continuo hasta las 9pm todos los días. Cirugía, laboratorio, internamiento y parqueo privado. Abrió en 2021."
+copyDiferenciador: "Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio. Internamiento, cirugía, laboratorio y parqueo privado. Cuenta con hotel exclusivamente para gatos. Abrió en 2021."
 confidence_score: "high"
 record_status: "VERIFIED"
-emergency_tier: "Tier B"
-last_verified: ""
+emergency_tier: "Tier A"
+last_verified: "2026-09-01"
 phone_verified: false
 address_verified: false
-schedule_verified: false
+schedule_verified: true
 emergency_verified: true
 has_surgery: true
-has_hospitalization: false
-verification_source: ""
-overnight_doctor_present: false
+has_hospitalization: true
+verification_source: "Confirmación directa del establecimiento por correo electrónico"
+overnight_doctor_present: true
 latitude: 9.9997
 longitude: -84.1164
 waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20Medical%20Care%20Heredia%20centro%20Heredia%20Costa%20Rica&navigate=yes"
 maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20Medical%20Care%20Heredia%20centro%20Heredia%20Costa%20Rica"
 ---
 
-Horario continuo hasta las 9pm todos los días. Cirugía, laboratorio, internamiento y parqueo privado. Abrió en 2021.
+Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio. Internamiento, cirugía, laboratorio y parqueo privado. Cuenta con hotel exclusivamente para gatos. Abrió en 2021.

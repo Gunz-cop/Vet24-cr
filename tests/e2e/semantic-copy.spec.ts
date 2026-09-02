@@ -18,7 +18,7 @@ const AFIRMACIONES_PROHIBIDAS = [
 ];
 
 // Fichas representativas de cada combinación de estados.
-const FICHA_INCIDENTE = '/clinica/hospital-vet-medical-care-heredia/';   // Tier B, casi todo false, VERIFIED sin evidencia
+const FICHA_INCIDENTE = '/clinica/hems-una-heredia/';                    // Tier B, casi todo false, VERIFIED sin evidencia
 const FICHA_SIN_CAPACIDADES = '/clinica/atlantic-vet-guapiles/';          // Tier C, todos los booleanos en false
 const FICHA_CONFIRMADA = '/clinica/la-vete-escazu/';                      // Tier A, todo confirmado + fecha y fuente
 const FICHA_SIN_EVIDENCIA = '/clinica/agromedica-escazu/';                // Tier A confirmado, sin fecha ni fuente
