@@ -13,6 +13,14 @@
  * Solo `true` sostiene una afirmación positiva, porque es el único valor que
  * alguien registró de forma deliberada.
  *
+ * OJO para la fase siguiente: `true` significa «la ficha lo afirma», NO
+ * «verificado». No hay evidencia por atributo: `phone_verified`,
+ * `address_verified` y `schedule_verified` cubren datos de contacto, no
+ * capacidades clínicas. Una ficha puede declarar `has_hospitalization: true`
+ * sin que nadie lo haya confirmado con la clínica. El modelo de evidencia debe
+ * separar «afirmado» de «verificado, por este método, en esta fecha» en vez de
+ * heredar la equivalencia implícita de este parche.
+ *
  * Esto es un parche de presentación. El rediseño del modelo de evidencia y la
  * migración de las fichas van en fases posteriores.
  */
