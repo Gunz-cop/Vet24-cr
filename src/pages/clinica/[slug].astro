@@ -6,6 +6,16 @@ import linkzipCache from '../../linkzip-cache.json';
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
 import AdBanner from '../../components/AdBanner.astro';
+import {
+  overnightDoctorStatus,
+  hospitalizationStatus,
+  emergency247Status,
+  petHotelStatus,
+  capabilityStatus,
+  recordStatusBadge,
+  reviewEvidenceBadge,
+  lastReviewLabel,
+} from '../../lib/capabilityStatus';
 
 export async function getStaticPaths() {
   const allClinicas = await getCollection('clinicas');
@@ -58,6 +68,30 @@ const {
   waze_url = "",
   maps_url = ""
 } = clinica.data;
+
+// Hotfix semántico: `false` en estos campos NO demuestra ausencia del servicio,
+// solo que no está confirmado. Ver src/lib/capabilityStatus.ts.
+const overnightStatus = overnightDoctorStatus(overnight_doctor_present);
+const hospitalizationState = hospitalizationStatus(has_hospitalization);
+const emergency247Fact = emergency247Status(emergencias24h, 'Confirmada en esta ficha');
+const emergency247Service = emergency247Status(emergencias24h);
+const hotelFact = petHotelStatus(hotelMascotas, hotelVerificacion);
+const hotelService = petHotelStatus(hotelMascotas, hotelVerificacion, 'Sí Disponible');
+const exoticsStatus = capabilityStatus(atiendeExoticos, 'SÍ Atiende');
+const emergencySurgeryStatus = capabilityStatus(cirugiaEmergencia, 'SÍ Disponible');
+
+// Auditoría: `record_status` por sí solo no prueba una llamada de verificación.
+const verificationInput = {
+  record_status,
+  last_verified,
+  verification_source,
+  phone_verified,
+  address_verified,
+  schedule_verified,
+};
+const statusBadge = recordStatusBadge(record_status);
+const evidenceBadge = reviewEvidenceBadge(verificationInput);
+const lastReview = lastReviewLabel(verificationInput);
 
 // Clean phone numbers for href links
 const cleanPhone = (num: string) => num.replace(/\D/g, '');
@@ -397,22 +431,17 @@ const schemaFaq = {
             >
               Verificando horario...
             </span>
-            {record_status === 'VERIFIED' ? (
-              <span class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-brand-success-bg text-brand-success border border-brand-success-border shadow-sm shadow-emerald-950/20" title="Información auditada por llamada de prueba">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5">
-                  <path fill-rule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-7.446-3.998a.75.75 0 1 1 1.086-1.032l2.5 2.625a.75.75 0 0 1-.035 1.066l-3.5 3.25a.75.75 0 0 1-1.086-1.033l2.94-2.73-1.905-2.001Z" clip-rule="evenodd" />
-                </svg>
-                Guardia Auditada
-              </span>
-            ) : record_status === 'REVIEW_REQUIRED' ? (
-              <span class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-brand-warning-bg text-brand-warning-text border border-brand-warning-border">
-                ⚠️ Pendiente de Auditoría
-              </span>
-            ) : (
-              <span class="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-brand-card-bg/80 text-brand-text-muted border border-brand-card-border">
-                Información Parcial
-              </span>
-            )}
+            <span
+              class={`inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full border ${
+                statusBadge.tone === 'warning'
+                  ? 'bg-brand-warning-bg text-brand-warning-text border-brand-warning-border'
+                  : 'bg-brand-card-bg/80 text-brand-text-muted border-brand-card-border'
+              }`}
+              title={statusBadge.title}
+              data-audit="record-status"
+            >
+              {statusBadge.label}
+            </span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl font-bold text-brand-text mb-3 font-['Outfit',sans-serif] tracking-tight relative z-10" id="clinica-name">
@@ -445,8 +474,12 @@ const schemaFaq = {
           </div>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
             <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-text-muted">Emergencia 24/7</span>
-            <p class={`mt-1 text-sm font-bold ${emergencias24h ? 'text-brand-emergency' : 'text-brand-text'}`}>
-              {emergencias24h ? 'Confirmada en esta ficha' : 'No confirmada como 24/7'}
+            <p
+              class={`mt-1 text-sm font-bold ${emergency247Fact.confirmed ? 'text-brand-emergency' : 'text-brand-text-muted'}`}
+              title={emergency247Fact.title}
+              data-capability="emergency-247"
+            >
+              {emergency247Fact.label}
             </p>
           </div>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
@@ -457,8 +490,12 @@ const schemaFaq = {
           </div>
           <div class={`rounded-2xl border p-4 ${hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'border-brand-success-border bg-brand-success-bg/40' : 'border-brand-warning-border bg-brand-warning-bg/40') : 'border-brand-card-border bg-brand-card-bg/45'}`}>
             <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-text-muted">Hotel para mascotas</span>
-            <p class={`mt-1 text-sm font-bold ${hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'text-brand-success' : 'text-brand-warning-text') : 'text-brand-text-muted'}`}>
-              {hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'Sí, confirmado' : 'Reportado; confirmar') : 'No confirmado'}
+            <p
+              class={`mt-1 text-sm font-bold ${hotelFact.tone === 'positive' ? 'text-brand-success' : (hotelFact.tone === 'warning' ? 'text-brand-warning-text' : 'text-brand-text-muted')}`}
+              title={hotelFact.title}
+              data-capability="pet-hotel"
+            >
+              {hotelFact.label}
             </p>
           </div>
         </section>
@@ -469,7 +506,7 @@ const schemaFaq = {
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
             <div>
-              <h3 class="text-sm font-bold text-brand-warning-text">Clínica con horario regular (no es 24/7)</h3>
+              <h3 class="text-sm font-bold text-brand-warning-text">Sin servicio 24/7 confirmado</h3>
               <p class="text-sm text-brand-text-muted mt-1 leading-relaxed">
                 Esta veterinaria <strong>no cuenta con servicio de emergencia confirmado las 24 horas</strong>. Si tienes una emergencia nocturna, busca clínicas marcadas como <strong class="text-brand-emergency">24/7</strong> en el directorio.
               </p>
@@ -556,22 +593,24 @@ const schemaFaq = {
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-brand-success">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                 </svg>
-                Confiabilidad del Registro
+                Revisión del Registro
               </h2>
               <p class="text-xs text-brand-text-muted mt-0.5">
-                Nivel de confiabilidad y verificación operativa bajo situaciones de estrés.
+                Metadatos de revisión registrados en esta ficha. No sustituyen una confirmación directa con la clínica.
               </p>
             </div>
             
             <div class="flex items-center gap-2">
-              <span class={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${
-                confidence_score === 'high' ? 'bg-brand-success-bg border-brand-success-border text-brand-success' :
-                confidence_score === 'medium' ? 'bg-brand-warning-bg border-brand-warning-border text-brand-warning-text' :
-                'bg-brand-danger-bg border-brand-danger-border text-brand-danger-text'
-              }`}>
-                {confidence_score === 'high' ? 'Alta Confiabilidad 🟢' :
-                 confidence_score === 'medium' ? 'Media Confiabilidad 🟡' :
-                 'Baja Confiabilidad 🔴'}
+              <span
+                class={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${
+                  evidenceBadge.tone === 'warning'
+                    ? 'bg-brand-warning-bg border-brand-warning-border text-brand-warning-text'
+                    : 'bg-brand-card-bg border-brand-card-border text-brand-text-muted'
+                }`}
+                title={evidenceBadge.title}
+                data-audit="review-evidence"
+              >
+                {evidenceBadge.label}
               </span>
             </div>
           </div>
@@ -593,17 +632,17 @@ const schemaFaq = {
             <!-- Overnight Doctor Present -->
             <div class="p-4 rounded-xl bg-brand-bg/50 border border-brand-card-border flex flex-col justify-between transition-colors duration-200">
               <span class="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">Médico Físico Permanente en Sitio</span>
-              <span class="text-sm font-bold mt-1 flex items-center gap-1.5">
-                {overnight_doctor_present ? (
+              <span class="text-sm font-bold mt-1 flex items-center gap-1.5" title={overnightStatus.title} data-capability="overnight-doctor">
+                {overnightStatus.confirmed ? (
                   <span class="text-brand-success flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
                     </svg>
-                    Confirmado Permanente
+                    {overnightStatus.label}
                   </span>
                 ) : (
                   <span class="text-brand-text-muted flex items-center gap-1 font-medium">
-                    🚫 No confirmado / Solo llamado
+                    {overnightStatus.label}
                   </span>
                 )}
               </span>
@@ -612,17 +651,17 @@ const schemaFaq = {
             <!-- Hospitalization -->
             <div class="p-4 rounded-xl bg-brand-bg/50 border border-brand-card-border flex flex-col justify-between transition-colors duration-200">
               <span class="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">Facilidad de Hospitalización</span>
-              <span class="text-sm font-bold mt-1 flex items-center gap-1.5">
-                {has_hospitalization ? (
+              <span class="text-sm font-bold mt-1 flex items-center gap-1.5" title={hospitalizationState.title} data-capability="hospitalization">
+                {hospitalizationState.confirmed ? (
                   <span class="text-brand-success flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
                     </svg>
-                    Disponible
+                    {hospitalizationState.label}
                   </span>
                 ) : (
                   <span class="text-brand-text-muted flex items-center gap-1 font-medium">
-                    🚫 No disponible / No confirmado
+                    {hospitalizationState.label}
                   </span>
                 )}
               </span>
@@ -630,13 +669,13 @@ const schemaFaq = {
 
             <!-- Last Audit Date -->
             <div class="p-4 rounded-xl bg-brand-bg/50 border border-brand-card-border flex flex-col justify-between transition-colors duration-200">
-              <span class="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">Última Auditoría Operativa</span>
-              <span class="text-sm font-bold text-brand-text mt-1 flex items-center gap-1">
-                {last_verified ? (
-                  <span>📅 {last_verified} ({verification_source || 'Llamada directa'})</span>
-                ) : (
-                  <span class="text-brand-warning-text">⚠️ Pendiente de validar</span>
-                )}
+              <span class="text-[10px] text-brand-text-muted font-bold uppercase tracking-wider">Última Revisión de Datos</span>
+              <span
+                class={`text-sm font-bold mt-1 flex items-center gap-1 ${lastReview.tone === 'warning' ? 'text-brand-warning-text' : 'text-brand-text'}`}
+                title={lastReview.title}
+                data-audit="last-review"
+              >
+                {lastReview.label}
               </span>
             </div>
           </div>
@@ -644,7 +683,7 @@ const schemaFaq = {
           <!-- Verification Notes -->
           {verification_notes.length > 0 && (
             <div class="mt-2 p-4 rounded-xl bg-brand-danger-bg/50 border border-brand-danger-border transition-colors duration-200">
-              <span class="block text-[10px] text-brand-danger-text font-bold uppercase tracking-wider mb-2">Notas de Auditoría Médica:</span>
+              <span class="block text-[10px] text-brand-danger-text font-bold uppercase tracking-wider mb-2">Notas de revisión:</span>
               <ul class="list-disc list-inside text-xs text-brand-text-muted flex flex-col gap-1.5">
                 {verification_notes.map((note) => (
                   <li>{note}</li>
@@ -668,14 +707,14 @@ const schemaFaq = {
               emergencias24h ? "bg-brand-danger-bg border-brand-danger-border text-brand-danger-text" : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
             }`}>
               <span class="text-xs font-semibold uppercase tracking-wider mb-2">Emergencias 24/7</span>
-              <div class="flex items-center gap-1.5 font-bold text-sm">
-                {emergencias24h ? (
+              <div class="flex items-center gap-1.5 font-bold text-sm" title={emergency247Service.title} data-capability="emergency-247">
+                {emergency247Service.confirmed ? (
                   <span class="text-brand-danger-text flex items-center gap-1">
                     <span class="h-2 w-2 rounded-full bg-brand-primary"></span>
-                    SÍ Disponible
+                    {emergency247Service.label}
                   </span>
                 ) : (
-                  <span class="text-brand-text-muted/60">No Disponible</span>
+                  <span class="text-brand-text-muted/60">{emergency247Service.label}</span>
                 )}
               </div>
             </div>
@@ -684,14 +723,14 @@ const schemaFaq = {
               atiendeExoticos ? "bg-brand-success-bg border-brand-success-border text-brand-success" : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
             }`}>
               <span class="text-xs font-semibold uppercase tracking-wider mb-2">Animales Exóticos</span>
-              <div class="flex items-center gap-1.5 font-bold text-sm">
-                {atiendeExoticos ? (
+              <div class="flex items-center gap-1.5 font-bold text-sm" title={exoticsStatus.title} data-capability="exotics">
+                {exoticsStatus.confirmed ? (
                   <span class="text-brand-success flex items-center gap-1">
                     <span class="h-2 w-2 rounded-full bg-brand-success"></span>
-                    SÍ Atiende
+                    {exoticsStatus.label}
                   </span>
                 ) : (
-                  <span class="text-brand-text-muted/60">No Atiende</span>
+                  <span class="text-brand-text-muted/60">{exoticsStatus.label}</span>
                 )}
               </div>
             </div>
@@ -700,14 +739,14 @@ const schemaFaq = {
               cirugiaEmergencia ? "bg-brand-warning-bg border-brand-warning-border text-brand-warning-text" : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
             }`}>
               <span class="text-xs font-semibold uppercase tracking-wider mb-2">Cirugía Urgencia</span>
-              <div class="flex items-center gap-1.5 font-bold text-sm">
-                {cirugiaEmergencia ? (
+              <div class="flex items-center gap-1.5 font-bold text-sm" title={emergencySurgeryStatus.title} data-capability="emergency-surgery">
+                {emergencySurgeryStatus.confirmed ? (
                   <span class="text-brand-warning-text flex items-center gap-1">
                     <span class="h-2 w-2 rounded-full bg-brand-secondary"></span>
-                    SÍ Disponible
+                    {emergencySurgeryStatus.label}
                   </span>
                 ) : (
-                  <span class="text-brand-text-muted/60">No Disponible</span>
+                  <span class="text-brand-text-muted/60">{emergencySurgeryStatus.label}</span>
                 )}
               </div>
             </div>
@@ -716,14 +755,14 @@ const schemaFaq = {
               hotelMascotas ? (hotelVerificacion === 'confirmado' ? "bg-brand-success-bg border-brand-success-border text-brand-success" : "bg-brand-warning-bg border-brand-warning-border text-brand-warning-text") : "bg-brand-bg/50 border-brand-card-border text-brand-text-muted"
             }`}>
               <span class="text-xs font-semibold uppercase tracking-wider mb-2">Hotel / hospedaje</span>
-              <div class="flex items-center gap-1.5 font-bold text-sm">
-                {hotelMascotas ? (
-                  <span class={hotelVerificacion === 'confirmado' ? 'text-brand-success flex items-center gap-1' : 'text-brand-warning-text flex items-center gap-1'}>
-                    <span class={`h-2 w-2 rounded-full ${hotelVerificacion === 'confirmado' ? 'bg-brand-success' : 'bg-brand-secondary'}`}></span>
-                    {hotelVerificacion === 'confirmado' ? 'Sí Disponible' : 'Reportado; confirmar'}
+              <div class="flex items-center gap-1.5 font-bold text-sm" title={hotelService.title} data-capability="pet-hotel">
+                {hotelService.confirmed ? (
+                  <span class={hotelService.tone === 'positive' ? 'text-brand-success flex items-center gap-1' : 'text-brand-warning-text flex items-center gap-1'}>
+                    <span class={`h-2 w-2 rounded-full ${hotelService.tone === 'positive' ? 'bg-brand-success' : 'bg-brand-secondary'}`}></span>
+                    {hotelService.label}
                   </span>
                 ) : (
-                  <span class="text-brand-text-muted/60">No Confirmado</span>
+                  <span class="text-brand-text-muted/60">{hotelService.label}</span>
                 )}
               </div>
               {hotelMascotas && hotelFuente && (
