@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "node scripts/shorten-links.js && astro build",
+    "test:unit": "node --test tests/unit/*.test.ts",
     "shorten": "node scripts/shorten-links.js",
     "preview": "astro preview",
     "indexing": "node scripts/google-indexing.js",
