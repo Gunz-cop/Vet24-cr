@@ -1,4 +1,5 @@
-﻿---id: 14
+---
+id: 14
 nombre: "Hospital Veterinario Medical Care"
 provincia: "Heredia"
 zona: "Heredia centro"
@@ -11,23 +12,34 @@ categoriaHorario: "24/7 Emergencias"
 emergencias24h: true
 atiendeExoticos: true
 cirugiaEmergencia: true
-web: "hospitalveterinariomedicalcare.com"
-facebook: ""
-instagram: ""
+atiendeGranja: false
+atiendePeces: false
+hotelMascotas: true
+hotelVerificacion: "confirmado"
+hotelFuente: "Confirmación directa del establecimiento por llamada telefónica - hotel exclusivo para gatos, requiere reserva previa"
+web: ""
+facebook: "https://www.facebook.com/share/1J68nb12zZ/?mibextid=wwXIfr"
+instagram: "https://www.instagram.com/hosp.vet.medical.care?utm_source=qr"
 slug: "hospital-vet-medical-care-heredia"
 estado: "verificado"
-copyDiferenciador: "Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio. Internamiento, cirugía, laboratorio y parqueo privado. Cuenta con hotel exclusivamente para gatos. Abrió en 2021."
+copyDiferenciador: "Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio toda la noche. Internamiento, cirugía de emergencia, laboratorio propio (también sirve como laboratorio externo para colegas) y parqueo privado. Atiende pequeños mamíferos exóticos (conejos, ratas, cuilo, hámster, erizos) y cuenta con hotel exclusivamente para gatos con reserva previa. Abrió en 2021."
 confidence_score: "high"
 record_status: "VERIFIED"
 emergency_tier: "Tier A"
-last_verified: "2026-09-01"
-phone_verified: false
+last_verified: "2026-09-04"
+phone_verified: true
 address_verified: false
 schedule_verified: true
 emergency_verified: true
 has_surgery: true
 has_hospitalization: true
-verification_source: "Confirmación directa del establecimiento por correo electrónico"
+verification_notes:
+  - "Confirmado por llamada telefónica: laboratorio propio y sirve como laboratorio externo para otros colegas."
+  - "Atiende exóticos: pequeños mamíferos (conejos, ratas, cuilo, hámster, erizos)."
+  - "No atiende animales de granja ni peces."
+  - "Hotel exclusivo para gatos, requiere reserva previa."
+  - "No tienen sitio web propio (no fue rentable); atención por Facebook e Instagram."
+verification_source: "Confirmación directa del establecimiento por correo electrónico y llamada telefónica"
 overnight_doctor_present: true
 latitude: 9.9997
 longitude: -84.1164
@@ -35,4 +47,4 @@ waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20Medical%20Care%20Hered
 maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20Medical%20Care%20Heredia%20centro%20Heredia%20Costa%20Rica"
 ---
 
-Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio. Internamiento, cirugía, laboratorio y parqueo privado. Cuenta con hotel exclusivamente para gatos. Abrió en 2021.
+Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio toda la noche. Internamiento, cirugía de emergencia, laboratorio propio (también sirve como laboratorio externo para colegas) y parqueo privado. Atiende pequeños mamíferos exóticos (conejos, ratas, cuilo, hámster, erizos) y cuenta con hotel exclusivamente para gatos con reserva previa. Abrió en 2021.
