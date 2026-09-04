@@ -32,6 +32,13 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
 
     {EZOIC_ENABLED && (
       <>
+        <!-- CMP de Ezoic (Gatekeeper Consent). Debe ir ANTES de sa.min.js y sin
+             async: sa.min.js sólo consume window.__tcfapi, no lo define, así que
+             si el CMP no está listo antes, los vendors se cargan sin consentimiento.
+             data-cfasync evita que Rocket Loader de Cloudflare los difiera. -->
+        <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false" is:inline></script>
+        <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false" is:inline></script>
+
         <!-- Ezoic: integración JavaScript (la única compatible con hosting en
              Cloudflare Workers; la de nameservers rompería las rutas del Worker). -->
         <script async src="https://www.ezojs.com/ezoic/sa.min.js" is:inline></script>
