@@ -7,7 +7,6 @@ import FiltrosProvincia from '../components/FiltrosProvincia.astro';
 import ClinicaCard from '../components/ClinicaCard.astro';
 import FiltrosDashboard from '../components/FiltrosDashboard.astro';
 import MapaClinicas from '../components/MapaClinicas.astro';
-import AdBanner from '../components/AdBanner.astro';
 import { absoluteUrl, canonicalUrl } from '../lib/seo';
 import { priorityZones } from '../lib/zones';
 
@@ -120,7 +119,9 @@ const schemaItemList = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc} canonicalUrl={canonical}>
+<!-- ads={false}: la home es la página a la que se llega con una emergencia. Sin
+     publicidad y sin scripts de terceros; se prioriza que cargue y se lea. -->
+<BaseLayout title={pageTitle} description={pageDesc} canonicalUrl={canonical} ads={false}>
   <!-- Inject Directory Schema Markup -->
   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
 
@@ -165,7 +166,6 @@ const schemaItemList = {
         </span>
       </div>
 
-      <AdBanner slot="home-inline" size="320x100" />
     </div>
   </section>
 

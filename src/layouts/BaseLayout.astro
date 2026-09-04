@@ -10,9 +10,15 @@ interface Props {
   description?: string;
   canonicalUrl?: string;
   image?: string;
+  /**
+   * Si la página lleva publicidad. En false no se carga el CMP, ni el script
+   * de Ezoic, ni el enlace de consentimiento: la página queda sin terceros.
+   */
+  ads?: boolean;
 }
 
-const { title, description, canonicalUrl, image } = Astro.props;
+const { title, description, canonicalUrl, image, ads = true } = Astro.props;
+const mostrarAnuncios = EZOIC_ENABLED && ads;
 const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
 const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
@@ -30,7 +36,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-    {EZOIC_ENABLED && (
+    {mostrarAnuncios && (
       <>
         <!-- CMP de Ezoic (Gatekeeper Consent). Debe ir ANTES de sa.min.js y sin
              async: sa.min.js sólo consume window.__tcfapi, no lo define, así que
@@ -182,7 +188,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
             <a href="/terminos/" class="hover:text-brand-text transition-colors">Términos</a>
             <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
             <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
-{EZOIC_ENABLED && (
+{mostrarAnuncios && (
               <>
                 {/* Sólo se revela si el CMP dice que el RGPD aplica a este visitante.
                     Fuera del EEE y el Reino Unido el CMP se autodesactiva y el panel
@@ -317,7 +323,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
         }).catch(() => {});
       }, { capture: true });
     </script>
-    {EZOIC_ENABLED && (
+    {mostrarAnuncios && (
       <script is:inline>
         // Una sola llamada con todos los placeholders presentes en la página.
         (() => {
