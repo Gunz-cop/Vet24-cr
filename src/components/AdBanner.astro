@@ -4,15 +4,20 @@ import { EZOIC_ENABLED, EZOIC_PLACEHOLDERS, type AdSlot } from '../config/ads';
 interface Props {
   /** Posición concreta dentro del sitio; mapea a un placeholder de Ezoic. */
   slot: AdSlot;
-  /** Tamaño reservado, para evitar layout shift mientras carga el anuncio. */
-  size: '320x50' | '300x250';
+  /**
+   * Tamaño reservado, para evitar layout shift mientras carga el anuncio.
+   * Es el MAYOR de la categoría de tamaños del placeholder en Ezoic, no el
+   * menor: Ezoic elige dentro de la categoría, y reservar de menos provocaría
+   * un salto justo cuando alguien va a tocar un teléfono.
+   */
+  size: '320x100' | '336x280';
 }
 
 const { slot, size } = Astro.props;
 
 const dimensions = {
-  '320x50': { width: 320, height: 50 },
-  '300x250': { width: 300, height: 250 },
+  '320x100': { width: 320, height: 100 },
+  '336x280': { width: 336, height: 280 },
 } as const;
 
 const { width, height } = dimensions[size];
@@ -31,7 +36,7 @@ const active = EZOIC_ENABLED && placeholderId !== null;
     <span class="ad-banner__label" aria-hidden="true">PUBLICIDAD</span>
     <div
       class="ad-banner__slot"
-      style={`width: ${width}px; min-height: ${height}px;`}
+      style={`max-width: ${width}px; min-height: ${height}px; margin-inline: auto;`}
     >
       <div id={`ezoic-pub-ad-placeholder-${placeholderId}`}></div>
       <script is:inline define:vars={{ placeholderId }}>
