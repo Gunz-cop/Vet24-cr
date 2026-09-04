@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
+// Al activar Ezoic, AdSense se conecta como fuente de demanda desde el panel
+// de Ezoic y su script deja de ser necesario en este head.
 import { EZOIC_ENABLED } from '../config/ads';
 
 interface Props {
@@ -27,9 +29,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- AdSense: carga asíncrona para no bloquear el renderizado inicial.
-         Al activar Ezoic, AdSense se conecta como fuente de demanda desde su
-         panel y este script deja de ser necesario aquí. -->
+    <!-- AdSense: carga asíncrona para no bloquear el renderizado inicial. -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5094917394495886"
