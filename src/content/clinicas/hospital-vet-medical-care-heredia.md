@@ -39,7 +39,6 @@ verification_notes:
   - "Especies atendidas: pequeños animales de compañía - perros, gatos, conejos, erizos, hámsters, cuilos y otros."
   - "No atiende animales de granja ni peces."
   - "Hotel exclusivo para gatos, requiere reserva previa."
-  - "No tienen sitio web propio (no fue rentable); atención por Facebook e Instagram."
   - "Dirección confirmada: Heredia centro, 25 m oeste de la Escuela Moya Murillo, contiguo a la sucursal del INS."
 verification_source: "Confirmación directa del establecimiento por correo electrónico y llamada telefónica"
 overnight_doctor_present: true
