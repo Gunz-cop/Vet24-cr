@@ -208,12 +208,12 @@ html:not(.light) .leaflet-container {
   margin-inline: auto;
 }
 
-.ad-banner--320x50 .ad-banner__slot {
-  min-height: 50px;
+.ad-banner--320x100 .ad-banner__slot {
+  min-height: 100px;
 }
 
-.ad-banner--300x250 .ad-banner__slot {
-  min-height: 250px;
+.ad-banner--336x280 .ad-banner__slot {
+  min-height: 280px;
 }
 
 @media (prefers-reduced-motion: reduce) {

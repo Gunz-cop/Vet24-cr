@@ -32,3 +32,6 @@ test-results/
 
 # Credentials
 service-account.json
+
+# Claude Code: aprobaciones locales de MCP, no se comparten
+.claude/settings.local.json

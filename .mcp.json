@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ezoic-setup": {
+      "type": "http",
+      "url": "https://setup-agent.ezoic.com/mcp"
+    }
+  }
+}

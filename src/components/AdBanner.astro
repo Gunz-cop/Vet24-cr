@@ -1,103 +1,49 @@
 ---
+import { EZOIC_ENABLED, EZOIC_PLACEHOLDERS, type AdSlot } from '../config/ads';
+
 interface Props {
-  size: '320x50' | '300x250';
+  /** Posición concreta dentro del sitio; mapea a un placeholder de Ezoic. */
+  slot: AdSlot;
+  /**
+   * Tamaño reservado, para evitar layout shift mientras carga el anuncio.
+   * Es el MAYOR de la categoría de tamaños del placeholder en Ezoic, no el
+   * menor: Ezoic elige dentro de la categoría, y reservar de menos provocaría
+   * un salto justo cuando alguien va a tocar un teléfono.
+   */
+  size: '320x100' | '336x280';
 }
 
-const { size } = Astro.props;
+const { slot, size } = Astro.props;
 
-const placements = {
-  '320x50': {
-    key: 'c468d9237e8489ebbb269a2556be5ef5',
-    width: 320,
-    height: 50,
-  },
-  '300x250': {
-    key: '9f543d5e07590c9c54c84b4f72a81fbf',
-    width: 300,
-    height: 250,
-  },
+const dimensions = {
+  '320x100': { width: 320, height: 100 },
+  '336x280': { width: 336, height: 280 },
 } as const;
 
-const placement = placements[size];
+const { width, height } = dimensions[size];
+const placeholderId = EZOIC_PLACEHOLDERS[slot];
+const active = EZOIC_ENABLED && placeholderId !== null;
 ---
 
-<div
-  class={`ad-banner ad-banner--${size}`}
-  role="region"
-  aria-label="Publicidad"
-  data-ad-size={size}
->
-  <span class="ad-banner__label" aria-hidden="true">PUBLICIDAD</span>
+{active && (
   <div
-    class="ad-banner__slot"
-    style={`width: ${placement.width}px; min-height: ${placement.height}px;`}
+    class={`ad-banner ad-banner--${size}`}
+    role="region"
+    aria-label="Publicidad"
+    data-ad-size={size}
+    data-ad-slot={slot}
   >
-    {size === '320x50' ? (
-      <>
-        <script is:inline>
-          (() => {
-            const slot = document.currentScript?.parentElement;
-            window.__vet24AdsterraQueue = (window.__vet24AdsterraQueue || Promise.resolve()).then(() => new Promise((resolve) => {
-              window.atOptions = {
-                key: 'c468d9237e8489ebbb269a2556be5ef5',
-                format: 'iframe',
-                height: 50,
-                width: 320,
-                params: {}
-              };
-              if (!slot) {
-                resolve();
-                return;
-              }
-              const script = document.createElement('script');
-              script.src = 'https://www.highperformanceformat.com/c468d9237e8489ebbb269a2556be5ef5/invoke.js';
-              script.async = true;
-              let timeoutId;
-              const done = () => {
-                window.clearTimeout(timeoutId);
-                resolve();
-              };
-              script.onload = done;
-              script.onerror = done;
-              timeoutId = window.setTimeout(done, 8000);
-              slot.appendChild(script);
-            }));
-          })();
-        </script>
-      </>
-    ) : (
-      <>
-        <script is:inline>
-          (() => {
-            const slot = document.currentScript?.parentElement;
-            window.__vet24AdsterraQueue = (window.__vet24AdsterraQueue || Promise.resolve()).then(() => new Promise((resolve) => {
-              window.atOptions = {
-                key: '9f543d5e07590c9c54c84b4f72a81fbf',
-                format: 'iframe',
-                height: 250,
-                width: 300,
-                params: {}
-              };
-              if (!slot) {
-                resolve();
-                return;
-              }
-              const script = document.createElement('script');
-              script.src = 'https://www.highperformanceformat.com/9f543d5e07590c9c54c84b4f72a81fbf/invoke.js';
-              script.async = true;
-              let timeoutId;
-              const done = () => {
-                window.clearTimeout(timeoutId);
-                resolve();
-              };
-              script.onload = done;
-              script.onerror = done;
-              timeoutId = window.setTimeout(done, 8000);
-              slot.appendChild(script);
-            }));
-          })();
-        </script>
-      </>
-    )}
+    <span class="ad-banner__label" aria-hidden="true">PUBLICIDAD</span>
+    <div
+      class="ad-banner__slot"
+      style={`max-width: ${width}px; min-height: ${height}px; margin-inline: auto;`}
+    >
+      <div id={`ezoic-pub-ad-placeholder-${placeholderId}`}></div>
+      <script is:inline define:vars={{ placeholderId }}>
+        // Se acumulan los IDs presentes en la página; BaseLayout hace una sola
+        // llamada a showAds() al final del body con todos ellos.
+        (window.__vet24EzoicIds = window.__vet24EzoicIds || []).push(placeholderId);
+      </script>
+    </div>
   </div>
-</div>
+)}

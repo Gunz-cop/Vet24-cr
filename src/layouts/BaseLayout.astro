@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
 import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
+// AdSense (ca-pub-5094917394495886) ya no se carga aquí: con Ezoic activo entra
+// como fuente de demanda desde el panel de Ezoic, vía header bidding.
+import { EZOIC_ENABLED } from '../config/ads';
 
 interface Props {
   title: string;
@@ -26,13 +29,18 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- AdSense: carga asíncrona para no bloquear el renderizado inicial -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5094917394495886"
-      crossorigin="anonymous"
-      is:inline
-    ></script>
+
+    {EZOIC_ENABLED && (
+      <>
+        <!-- Ezoic: integración JavaScript (la única compatible con hosting en
+             Cloudflare Workers; la de nameservers rompería las rutas del Worker). -->
+        <script async src="https://www.ezojs.com/ezoic/sa.min.js" is:inline></script>
+        <script is:inline>
+          window.ezstandalone = window.ezstandalone || {};
+          ezstandalone.cmd = ezstandalone.cmd || [];
+        </script>
+      </>
+    )}
 
     <!-- SEO Meta Tags -->
     <title>{fullTitle}</title>
@@ -265,5 +273,17 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
         }).catch(() => {});
       }, { capture: true });
     </script>
+    {EZOIC_ENABLED && (
+      <script is:inline>
+        // Una sola llamada con todos los placeholders presentes en la página.
+        (() => {
+          const ids = window.__vet24EzoicIds || [];
+          if (!ids.length) return;
+          window.ezstandalone = window.ezstandalone || {};
+          ezstandalone.cmd = ezstandalone.cmd || [];
+          ezstandalone.cmd.push(() => ezstandalone.showAds(...ids));
+        })();
+      </script>
+    )}
   </body>
 </html>
