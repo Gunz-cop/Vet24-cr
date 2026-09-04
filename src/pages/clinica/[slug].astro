@@ -5,6 +5,7 @@ import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCache from '../../linkzip-cache.json';
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
+import { buildClinicMetaDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
 import {
   overnightDoctorStatus,
@@ -299,13 +300,24 @@ const clinicCanonical = canonicalUrl(`/clinica/${clinica.data.slug}/`);
 const provinceCanonical = absoluteUrl(`/provincia/${getProvinceSlug(provincia)}/`);
 const zoneCanonical = absoluteUrl(`/zona/${getClinicZoneSlug(zona)}/`);
 
+const pageTitle = nombre;
+
+// Hotfix SEO: la metadata NO puede depender del estado operativo (horario,
+// abierto/cerrado, 24/7, promesas de atención inmediata). Ese copy sobrevive
+// en cachés e índices después de que la ficha se corrige. Ver
+// src/lib/metaDescription.ts. El horario sigue visible en la página y en
+// `openingHoursSpecification` del JSON-LD.
+const pageDesc = buildClinicMetaDescription(clinica.data);
+
 // JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "VeterinaryCare"],
   "@id": clinicCanonical,
   "name": nombre,
-  "description": copyDiferenciador,
+  // Misma regla que la meta description: el JSON-LD también alimenta snippets,
+  // así que su `description` usa datos estables, no copy operativo.
+  "description": pageDesc,
   "image": schemaImage,
   "url": clinicCanonical,
   "telephone": telefono1 || whatsapp || "",
@@ -357,12 +369,6 @@ const schemaBreadcrumbs = {
   ]
 };
 
-const pageTitle = nombre;
-
-// Generate highly optimized meta description based on clinic emergency tier
-const pageDesc = emergencias24h
-  ? `¿Urgencia veterinaria? Contacta a ${nombre} en ${zona}, ${provincia}. Servicio de emergencias veterinarias 24/7. 📞 Llama ahora al ${telefono1 || whatsapp}. Atendemos de inmediato.`
-  : `Horarios, teléfono y dirección de ${nombre} en ${zona}, ${provincia}. Encuentra servicios veterinarios y de consulta general para tu mascota en Costa Rica.`;
 
 const schemaFaq = {
   "@context": "https://schema.org",
