@@ -125,13 +125,11 @@ export function buildLocation(zona: string, provincia: string): string {
 const MAX_LENGTH = 165;
 
 /**
- * Construye la meta description de una ficha con datos estables.
- *
- * Formato: «{nombre} en {zona}, {provincia}. {servicios}. Consulta dirección,
- * teléfonos y servicios en Vet24.» El bloque de servicios es lo que evita que
- * las 112 fichas compartan una plantilla intercambiable.
+ * Selecciona los servicios estables que describen a la clínica (máx. 4):
+ * hasta 3 clínicos más al menos un rasgo diferenciador, para que las 112
+ * fichas no compartan una plantilla intercambiable.
  */
-export function buildClinicMetaDescription(data: ClinicMetaInput): string {
+function selectServices(data: ClinicMetaInput): string[] {
   const copy = normalize(data.copyDiferenciador ?? "");
   const core = pickServices(CORE_SERVICES, copy, data);
   const diff = pickServices(DIFFERENTIATOR_SERVICES, copy, data);
@@ -142,31 +140,56 @@ export function buildClinicMetaDescription(data: ClinicMetaInput): string {
     if (generic > -1) diff.splice(generic, 1);
   }
 
-  const selected = [...core.slice(0, 3), ...diff.slice(0, Math.max(1, 4 - Math.min(core.length, 3)))].slice(0, 4);
+  return [...core.slice(0, 3), ...diff.slice(0, Math.max(1, 4 - Math.min(core.length, 3)))].slice(0, 4);
+}
 
-  const location = buildLocation(data.zona, data.provincia);
-  const head = `${data.nombre} en ${location}.`;
-  const services = selected.length > 0 ? ` ${capitalize(joinEs(selected))}.` : "";
-  const tail = selected.length > 0
-    ? " Consulta dirección y contacto en Vet24."
-    : " Consulta dirección, teléfonos y datos de contacto en Vet24.";
+const CTA_WITH_SERVICES = " Consulta dirección y contacto en Vet24.";
+const CTA_WITHOUT_SERVICES = " Consulta dirección, teléfonos y datos de contacto en Vet24.";
 
-  let description = `${head}${services}${tail}`;
+/**
+ * Construye la meta description de una ficha con datos estables.
+ *
+ * Formato: «{nombre} en {zona}, {provincia}. {servicios}. Consulta dirección
+ * y contacto en Vet24.»
+ */
+export function buildClinicMetaDescription(data: ClinicMetaInput): string {
+  const selected = selectServices(data);
+  const head = `${data.nombre} en ${buildLocation(data.zona, data.provincia)}.`;
+
+  const compose = (services: string[]) =>
+    `${head}${services.length ? ` ${capitalize(joinEs(services))}.` : ""}${
+      services.length ? CTA_WITH_SERVICES : CTA_WITHOUT_SERVICES
+    }`;
+
+  let list = selected;
+  let description = compose(list);
 
   // Recorta servicios hasta caber en el largo útil de un snippet.
-  for (let count = selected.length; description.length > MAX_LENGTH && count > 0; count--) {
-    const trimmed = selected.slice(0, count - 1);
-    description = `${head}${trimmed.length ? ` ${capitalize(joinEs(trimmed))}.` : ""}${
-      trimmed.length ? " Consulta dirección y contacto en Vet24." : " Consulta dirección, teléfonos y datos de contacto en Vet24."
-    }`;
+  while (description.length > MAX_LENGTH && list.length > 0) {
+    list = list.slice(0, -1);
+    description = compose(list);
   }
 
   // Red de seguridad: si un dato de la ficha introdujera copy volátil (por
   // ejemplo un nombre comercial con horario), se cae a la versión mínima en
   // lugar de publicar una promesa que puede quedar obsoleta.
-  if (findVolatileMetadata(services).length > 0) {
-    description = `${head} Consulta dirección, teléfonos y datos de contacto en Vet24.`;
+  if (findVolatileMetadata(description.slice(head.length)).length > 0) {
+    description = `${head}${CTA_WITHOUT_SERVICES}`;
   }
 
   return description;
+}
+
+/**
+ * Descripción de la entidad para el JSON-LD `LocalBusiness` / `VeterinaryCare`.
+ *
+ * Misma base estable que la meta description, pero sin el CTA de Vet24: aquí se
+ * describe a la clínica, no se invita a navegar el directorio.
+ */
+export function buildClinicEntityDescription(data: ClinicMetaInput): string {
+  const selected = selectServices(data);
+  const head = `${data.nombre} en ${buildLocation(data.zona, data.provincia)}.`;
+  const services = selected.length > 0 ? ` ${capitalize(joinEs(selected))}.` : "";
+
+  return findVolatileMetadata(services).length > 0 ? head : `${head}${services}`;
 }

@@ -5,7 +5,7 @@ import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCache from '../../linkzip-cache.json';
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
-import { buildClinicMetaDescription } from '../../lib/metaDescription';
+import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
 import {
   overnightDoctorStatus,
@@ -308,6 +308,7 @@ const pageTitle = nombre;
 // src/lib/metaDescription.ts. El horario sigue visible en la página y en
 // `openingHoursSpecification` del JSON-LD.
 const pageDesc = buildClinicMetaDescription(clinica.data);
+const entityDesc = buildClinicEntityDescription(clinica.data);
 
 // JSON-LD Schema Markup (Highly optimized for Local SEO)
 const schemaMarkup = {
@@ -316,8 +317,9 @@ const schemaMarkup = {
   "@id": clinicCanonical,
   "name": nombre,
   // Misma regla que la meta description: el JSON-LD también alimenta snippets,
-  // así que su `description` usa datos estables, no copy operativo.
-  "description": pageDesc,
+  // así que su `description` usa datos estables, no copy operativo. Sin el CTA
+  // de Vet24, porque aquí se describe la entidad, no la página del directorio.
+  "description": entityDesc,
   "image": schemaImage,
   "url": clinicCanonical,
   "telephone": telefono1 || whatsapp || "",
@@ -376,10 +378,14 @@ const schemaFaq = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": `¿Cuál es el horario de ${nombre}?`,
+      "name": `¿Cómo confirmo el horario de ${nombre}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `${nombre} reporta este horario: ${horarioTexto}. Recomendamos confirmar por teléfono o WhatsApp antes de trasladarte.`
+        // El horario NO se repite aquí: la FAQ estructurada es otra fuente desde
+        // la que un buscador puede reconstruir un snippet viejo cuando la clínica
+        // cambia de horario. El dato sigue visible en la ficha y en
+        // `openingHoursSpecification`, que sí se actualizan con la página.
+        "text": `El horario vigente de ${nombre} está publicado en su ficha de Vet24. Recomendamos confirmarlo por teléfono o WhatsApp antes de trasladarte.`
       }
     },
       {

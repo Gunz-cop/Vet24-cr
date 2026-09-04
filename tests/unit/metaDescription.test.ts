@@ -5,6 +5,7 @@ import { join } from 'node:path';
 
 import {
   buildClinicMetaDescription,
+  buildClinicEntityDescription,
   findVolatileMetadata,
   VOLATILE_METADATA_PATTERNS,
 } from '../../src/lib/metaDescription.ts';
@@ -128,5 +129,45 @@ describe('regresión — Hospital Veterinario Medical Care', () => {
     assert.ok(desc.includes('Hospital Veterinario Medical Care'));
     assert.ok(desc.includes('Heredia centro'));
     assert.ok(/cirugía|internamiento|laboratorio|gatos/i.test(desc), desc);
+  });
+});
+
+describe('buildClinicEntityDescription — JSON-LD de la entidad', () => {
+  test('describe la clínica sin el CTA de Vet24 y sin datos volátiles', () => {
+    for (const file of clinicFiles) {
+      const data = readClinic(file) as any;
+      const entity = buildClinicEntityDescription(data);
+      assert.ok(!/Vet24/.test(entity), `${file} incluye CTA del directorio: ${entity}`);
+      assert.deepEqual(findVolatileMetadata(entity), [], `${file}: ${entity}`);
+      assert.ok(entity.startsWith(data.nombre), entity);
+    }
+  });
+
+  test('Medical Care queda descrito por sus servicios estables', () => {
+    const entity = buildClinicEntityDescription(readClinic('hospital-vet-medical-care-heredia.md') as any);
+    assert.equal(
+      entity,
+      'Hospital Veterinario Medical Care en Heredia centro. Cirugía, internamiento, laboratorio y hotel exclusivo para gatos.'
+    );
+  });
+});
+
+describe('structured data de la ficha', () => {
+  const page = readFileSync('src/pages/clinica/[slug].astro', 'utf8');
+  const faqBlock = page.slice(page.indexOf('const schemaFaq'), page.indexOf('---', page.indexOf('const schemaFaq')));
+
+  test('la FAQ estructurada no repite el horario declarado', () => {
+    assert.ok(!faqBlock.includes('${horarioTexto}'), 'schemaFaq no debe interpolar horarioTexto');
+    // El horario declarado (horas, rangos, jornada continua) no puede quedar
+    // congelado en la FAQ. Las respuestas sobre capacidad 24/7 sí se mantienen:
+    // son el dato factual de la ficha, no copy de horario.
+    for (const { name, pattern } of VOLATILE_METADATA_PATTERNS) {
+      if (['disponibilidad 24/7', '24 horas', 'guardia / nocturno', 'horario', 'estado de apertura'].includes(name)) continue;
+      assert.ok(!pattern.test(faqBlock), `schemaFaq contiene copy volátil (${name})`);
+    }
+  });
+
+  test('openingHoursSpecification sigue presente como dato factual', () => {
+    assert.ok(page.includes('"openingHoursSpecification": getOpeningHoursSpec()'));
   });
 });
