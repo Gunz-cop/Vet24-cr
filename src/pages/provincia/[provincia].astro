@@ -75,7 +75,10 @@ const mapData = sortedClinicas.map(c => ({
 // 7,21% de CTR); "emergencias" es como lo describimos nosotros. Misma
 // plantilla que las páginas de zona, que convierten 2-3 veces mejor.
 const pageTitle = `Veterinarias en ${nombreProvincia}: abiertas hoy y 24 horas`;
-const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atención nocturna en la provincia de ${nombreProvincia}, Costa Rica.`;
+// Misma estructura que las páginas de zona: "abiertas hoy" al principio, donde
+// coincide con la consulta y Google puede resaltarlo, y acciones concretas en
+// lugar de "atención nocturna", que nadie busca.
+const pageDesc = `Encuentra veterinarias abiertas hoy en la provincia de ${nombreProvincia}. Horarios, teléfonos, WhatsApp, Waze y emergencias 24/7 verificadas.`;
 const canonical = canonicalUrl(`/provincia/${slugProvincia}/`);
 const provinceZoneLinks = priorityZones
   .map(zone => {
