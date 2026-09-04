@@ -84,7 +84,11 @@ if (edgeGeoActive && edgeLat !== null && edgeLng !== null) {
 }
 
 // Title & SEO info
-const pageTitle = "Veterinarias Abiertas Hoy, Cerca de Mí y 24 Horas en Costa Rica";
+// El layout añade " | Vet24 Costa Rica", así que aquí se omite el país: si no,
+// "Costa Rica" saldría dos veces en el mismo título. Total 45 caracteres, frente
+// a los 82 anteriores, que se cortaban en móvil (92% del tráfico) antes incluso
+// de llegar a la marca.
+const pageTitle = "Veterinarias abiertas ahora";
 const pageDesc = "Encuentra veterinarias abiertas hoy, de guardia y 24 horas cerca de ti en Costa Rica. Llama, escribe por WhatsApp o abre la ruta en Waze.";
 const canonical = canonicalUrl("/");
 

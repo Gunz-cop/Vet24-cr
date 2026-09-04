@@ -71,7 +71,10 @@ const mapData = sortedClinicas.map(c => ({
   confidence_score: c.data.confidence_score,
 }));
 
-const pageTitle = `Veterinarias de Emergencias en ${nombreProvincia}`;
+// "abiertas" es como lo busca la gente ("veterinarias en heredia abiertas",
+// 7,21% de CTR); "emergencias" es como lo describimos nosotros. Misma
+// plantilla que las páginas de zona, que convierten 2-3 veces mejor.
+const pageTitle = `Veterinarias en ${nombreProvincia}: abiertas hoy y 24 horas`;
 const pageDesc = `Encuentra clínicas veterinarias de emergencias 24/7 y atención nocturna en la provincia de ${nombreProvincia}, Costa Rica.`;
 const canonical = canonicalUrl(`/provincia/${slugProvincia}/`);
 const provinceZoneLinks = priorityZones
