@@ -6,7 +6,7 @@ test.describe('Vet24 CR - Smoke Test Suite', () => {
     await page.goto('/');
 
     // Assert that the page title contains expected site identity
-    await expect(page).toHaveTitle(/Veterinarias Abiertas Hoy/);
+    await expect(page).toHaveTitle(/Veterinarias abiertas ahora/);
     await expect(page).toHaveTitle(/Vet24 Costa Rica/);
 
     // Assert that navigation logo is present and visible
