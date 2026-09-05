@@ -9,6 +9,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://vet24cr.com', // Reemplazar con el dominio final una vez adquirido
   trailingSlash: 'always',
+  output: 'static',
   adapter: cloudflare(),
   integrations: [sitemap()],
   server: {
