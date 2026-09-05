@@ -2,7 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BadgeHorario from '../../components/BadgeHorario.astro';
-import linkzipCache from '../../linkzip-cache.json';
+import linkzipCacheData from '../../linkzip-cache.json';
+const linkzipCache: Record<string, string> = linkzipCacheData;
 import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
 import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
@@ -1228,7 +1229,14 @@ const schemaFaq = {
     const slug = window.location.pathname.split('/').filter(Boolean).pop();
     if (slug) {
       fetch(`/api/status-override?slug=${slug}`)
-        .then(res => res.json())
+        .then(res => res.json() as Promise<{
+          success?: boolean;
+          override?: {
+            is_temporarily_closed?: boolean;
+            override_status_text?: string;
+            override_schedule_text?: string;
+          };
+        }>)
         .then(data => {
           if (data.success && data.override) {
             const override = data.override;

@@ -22,13 +22,13 @@ test.describe('Tier 4: Real-World Application Scenarios', () => {
     // 5. Verify that the closest 24/7 clinic is visible
     const visibleCards = page.locator('#clinicas-grid article:not(.hidden)');
     await expect(visibleCards.first()).toBeVisible();
-    await expect(visibleCards.first()).toContainText(/Ramírez/i);
+    await expect(visibleCards.first()).toContainText(/Hospital Veterinario Medical Care/i);
 
     // 6. Go to details page
     await visibleCards.first().locator('a[id^="clinica-link-"]').click();
 
     // 7. Verify details page has title and call button
-    await expect(page.locator('#clinica-name')).toContainText(/Ramírez/i);
+    await expect(page.locator('#clinica-name')).toContainText(/Hospital Veterinario Medical Care/i);
     await expect(page.locator('#btn-quick-call')).toBeVisible();
   });
 

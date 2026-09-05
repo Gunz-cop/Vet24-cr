@@ -1,0 +1,1256 @@
+{
+  "routes": [
+    "/",
+    "/acerca/",
+    "/cookies/",
+    "/privacidad/",
+    "/terminos/",
+    "/clinica/veterinaria-bagaces-bagaces/",
+    "/clinica/dr-jara-veterinaria-pacayas/",
+    "/clinica/pets-plus-gravilias-desamparados/",
+    "/provincia/heredia/",
+    "/provincia/guanacaste/",
+    "/provincia/san-jose/",
+    "/zona/san-pablo-heredia/",
+    "/zona/siquirres/",
+    "/zona/guapiles/"
+  ],
+  "profiles": [
+    {
+      "width": 1280,
+      "theme": "light"
+    },
+    {
+      "width": 1280,
+      "theme": "dark"
+    },
+    {
+      "width": 390,
+      "theme": "light"
+    },
+    {
+      "width": 390,
+      "theme": "dark"
+    }
+  ],
+  "visual": [
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/",
+      "control": {
+        "pixels": 0,
+        "total": 23636480,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 23636480,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/acerca/",
+      "control": {
+        "pixels": 0,
+        "total": 2432000,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2432000,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/cookies/",
+      "control": {
+        "pixels": 0,
+        "total": 2393600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2393600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/privacidad/",
+      "control": {
+        "pixels": 0,
+        "total": 3060480,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3060480,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/terminos/",
+      "control": {
+        "pixels": 0,
+        "total": 2099200,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2099200,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/clinica/veterinaria-bagaces-bagaces/",
+      "control": {
+        "pixels": 0,
+        "total": 3502080,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3502080,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/clinica/dr-jara-veterinaria-pacayas/",
+      "control": {
+        "pixels": 0,
+        "total": 3612160,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3612160,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/clinica/pets-plus-gravilias-desamparados/",
+      "control": {
+        "pixels": 0,
+        "total": 3641600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3641600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/provincia/heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 4552960,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 4552960,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/provincia/guanacaste/",
+      "control": {
+        "pixels": 0,
+        "total": 5469440,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 5469440,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/provincia/san-jose/",
+      "control": {
+        "pixels": 0,
+        "total": 5675520,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 5675520,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/zona/san-pablo-heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 2759680,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2759680,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/zona/siquirres/",
+      "control": {
+        "pixels": 0,
+        "total": 2716160,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2716160,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "route": "/zona/guapiles/",
+      "control": {
+        "pixels": 0,
+        "total": 3223040,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3223040,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/",
+      "control": {
+        "pixels": 0,
+        "total": 23636480,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 23636480,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/acerca/",
+      "control": {
+        "pixels": 0,
+        "total": 2432000,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2432000,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/cookies/",
+      "control": {
+        "pixels": 0,
+        "total": 2393600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2393600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/privacidad/",
+      "control": {
+        "pixels": 0,
+        "total": 3060480,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3060480,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/terminos/",
+      "control": {
+        "pixels": 0,
+        "total": 2099200,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2099200,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/clinica/veterinaria-bagaces-bagaces/",
+      "control": {
+        "pixels": 0,
+        "total": 3502080,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3502080,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/clinica/dr-jara-veterinaria-pacayas/",
+      "control": {
+        "pixels": 0,
+        "total": 3612160,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3612160,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/clinica/pets-plus-gravilias-desamparados/",
+      "control": {
+        "pixels": 0,
+        "total": 3641600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3641600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/provincia/heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 4552960,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 4552960,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/provincia/guanacaste/",
+      "control": {
+        "pixels": 0,
+        "total": 5469440,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 5469440,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/provincia/san-jose/",
+      "control": {
+        "pixels": 0,
+        "total": 5675520,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 5675520,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/zona/san-pablo-heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 2759680,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2759680,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/zona/siquirres/",
+      "control": {
+        "pixels": 0,
+        "total": 2716160,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2716160,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "route": "/zona/guapiles/",
+      "control": {
+        "pixels": 0,
+        "total": 3223040,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3223040,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/",
+      "control": {
+        "pixels": 0,
+        "total": 19295250,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 19295250,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/acerca/",
+      "control": {
+        "pixels": 0,
+        "total": 1177020,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1177020,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/cookies/",
+      "control": {
+        "pixels": 0,
+        "total": 1220700,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1220700,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/privacidad/",
+      "control": {
+        "pixels": 0,
+        "total": 1568580,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1568580,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/terminos/",
+      "control": {
+        "pixels": 0,
+        "total": 978120,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 978120,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/clinica/veterinaria-bagaces-bagaces/",
+      "control": {
+        "pixels": 0,
+        "total": 1731600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1731600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/clinica/dr-jara-veterinaria-pacayas/",
+      "control": {
+        "pixels": 0,
+        "total": 1817010,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1817010,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/clinica/pets-plus-gravilias-desamparados/",
+      "control": {
+        "pixels": 0,
+        "total": 1903590,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1903590,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/provincia/heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 2749110,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2749110,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/provincia/guanacaste/",
+      "control": {
+        "pixels": 0,
+        "total": 3333330,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3333330,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/provincia/san-jose/",
+      "control": {
+        "pixels": 0,
+        "total": 3772080,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3772080,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/zona/san-pablo-heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 920010,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 920010,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/zona/siquirres/",
+      "control": {
+        "pixels": 0,
+        "total": 1031940,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1031940,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "route": "/zona/guapiles/",
+      "control": {
+        "pixels": 0,
+        "total": 1650870,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1650870,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/",
+      "control": {
+        "pixels": 0,
+        "total": 19295250,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 19295250,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/acerca/",
+      "control": {
+        "pixels": 0,
+        "total": 1177020,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1177020,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/cookies/",
+      "control": {
+        "pixels": 0,
+        "total": 1220700,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1220700,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/privacidad/",
+      "control": {
+        "pixels": 0,
+        "total": 1568580,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1568580,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/terminos/",
+      "control": {
+        "pixels": 0,
+        "total": 978120,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 978120,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/clinica/veterinaria-bagaces-bagaces/",
+      "control": {
+        "pixels": 0,
+        "total": 1731600,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1731600,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/clinica/dr-jara-veterinaria-pacayas/",
+      "control": {
+        "pixels": 0,
+        "total": 1817010,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1817010,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/clinica/pets-plus-gravilias-desamparados/",
+      "control": {
+        "pixels": 0,
+        "total": 1903590,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1903590,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/provincia/heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 2749110,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 2749110,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/provincia/guanacaste/",
+      "control": {
+        "pixels": 0,
+        "total": 3333330,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3333330,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/provincia/san-jose/",
+      "control": {
+        "pixels": 0,
+        "total": 3772080,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 3772080,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/zona/san-pablo-heredia/",
+      "control": {
+        "pixels": 0,
+        "total": 920010,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 920010,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/zona/siquirres/",
+      "control": {
+        "pixels": 0,
+        "total": 1031940,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1031940,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "route": "/zona/guapiles/",
+      "control": {
+        "pixels": 0,
+        "total": 1650870,
+        "different": false
+      },
+      "actual": {
+        "pixels": 0,
+        "total": 1650870,
+        "different": false
+      },
+      "errors": [],
+      "conclusive": true
+    }
+  ],
+  "interaction": [
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "light"
+      },
+      "base": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "next": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "equal": true
+    },
+    {
+      "profile": {
+        "width": 1280,
+        "theme": "dark"
+      },
+      "base": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth light",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "next": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth light",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "equal": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "light"
+      },
+      "base": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "next": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "equal": true
+    },
+    {
+      "profile": {
+        "width": 390,
+        "theme": "dark"
+      },
+      "base": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth light",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "next": {
+        "initial": 112,
+        "search": 13,
+        "empty": 0,
+        "reset": 112,
+        "emergency": 21,
+        "exotics": 19,
+        "nearest": "la-vete-mall-oxigeno",
+        "toggledTheme": "scroll-smooth light",
+        "reportOpened": true,
+        "reportClosed": true,
+        "errors": []
+      },
+      "equal": true
+    }
+  ],
+  "remoteFailures": [],
+  "limitations": [
+    "Static build servers do not execute Worker endpoints; local API responses mocked for UI only.",
+    "Map tiles replaced with transparent images; other external resources fetched once and replayed.",
+    "Chromium only; no Safari or real email delivery.",
+    "Ezoic/CMP external scripts suppressed; their availability and behavior are excluded from comparison."
+  ],
+  "excludedExternal": [
+    "https://cmp.gatekeeperconsent.com/min.js",
+    "https://the.gatekeeperconsent.com/cmp.min.js",
+    "https://www.ezojs.com/ezoic/sa.min.js"
+  ],
+  "remoteResources": [
+    "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+    "https://fonts.gstatic.com/s/plusjakartasans/v12/LDIoaomQNQcsA88c7O9yZ4KMCoOg4Ko20yw.woff2",
+    "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2",
+    "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css",
+    "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
+  ],
+  "pass": true
+}

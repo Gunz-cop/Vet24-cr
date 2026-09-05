@@ -21,7 +21,7 @@ const jsonResponse = (body: Record<string, unknown>, status = 200) => {
 
 export async function POST({ request }: APIContext) {
   try {
-    const body = await request.json();
+    const body = await request.json() as Record<string, string>;
     const clinic = body.clinic || "Sin clínica indicada";
     const reason = body.reason || "Sin motivo indicado";
     const description = body.description || "Sin descripción";
