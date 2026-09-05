@@ -295,7 +295,9 @@
 
   // ─── Status update ─────────────────────────────────────────────────────
   function updateClinicsStatus() {
-    const { day, hour } = getCostaRicaTime();
+    const { day, hour: currentHour, minute } = getCostaRicaTime();
+    // Fractional hour so schedules with half hours (e.g. 8:30am-6:30pm) are exact
+    const hour = currentHour + minute / 60;
     const cards = document.querySelectorAll<HTMLElement>('#clinicas-grid article');
     let openCount = 0;
 
