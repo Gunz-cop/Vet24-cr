@@ -1,0 +1,470 @@
+{
+  "checkedAt": "2026-09-05T19:46:04.453Z",
+  "result": "PASS",
+  "businessDecisionD1": "pending_owner_response",
+  "criteriaCount": 15,
+  "criteria": {
+    "AR1-01": {
+      "refs": [
+        "N1",
+        "D1"
+      ],
+      "text": "- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente una directiva `Content-Signal` con los tres valores aprobados en D1, dentro del bloque comodín."
+    },
+    "AR1-02": {
+      "refs": [
+        "N2",
+        "N9"
+      ],
+      "text": "- [ ] **AR1-02** [N2, N9] Se archiva un escaneo completo antes de modificar la subfase. Después del despliegue, el escaneo completo definido en «Verificación común» devuelve `robotsTxt=pass`, `sitemap=pass`, `robotsTxtAiRules=pass` y `contentSignals=pass`; se archiva el JSON íntegro, fecha, commit desplegado y estados de todos los checks, sin convertir la salida 0 del script en una prueba de éxito."
+    },
+    "AR1-03": {
+      "refs": [
+        "N8",
+        "N10",
+        "D6"
+      ],
+      "text": "- [ ] **AR1-03** [N8, N10, D6] La verificación común pasa; `git diff --name-only <BASE>...HEAD` solo contiene archivos de la lista de propiedad AR1. Una sesión distinta documenta la comprobación HTTP en `docs/agent-readiness/evidencia/ar1/`, sin cambios de producto fuera de robots."
+    },
+    "AR2-01": {
+      "refs": [
+        "N3",
+        "N4",
+        "N5",
+        "D2",
+        "D3"
+      ],
+      "text": "- [ ] **AR2-01** [N3, N4, N5, D2, D3] Después de `npm run build:no-shorten`, `node scripts/verification/agent-catalog.mjs` sale 0 y falla si falta un artefacto: verifica el contrato «Datos para agentes», unicidad de slug, igualdad del conjunto de fichas con las rutas HTML de clínicas del mismo build y URLs canónicas existentes; no usa un conteo fijo ni excluye fichas por `estado` que el HTML sí publica."
+    },
+    "AR2-02": {
+      "refs": [
+        "N4",
+        "N5",
+        "D3"
+      ],
+      "text": "- [ ] **AR2-02** [N4, N5, D3] `npm test` cubre datos de prueba con booleano falso, booleano verdadero sin evidencia, fecha/fuente vacías, coordenadas 0/0 y servicio limitado por especie. Confirma `openNow: null`, zona horaria `America/Costa_Rica`, ausencia de fecha editorial inventada, estados conservadores de capacidades y conservación de `copyDiferenciador`, `bodyMarkdown` y `verification_notes`; el caso real de Medical Care conserva «hotel exclusivamente para gatos» sin inferir hotel general."
+    },
+    "AR2-03": {
+      "refs": [
+        "N1",
+        "N6",
+        "D2",
+        "D4"
+      ],
+      "text": "- [ ] **AR2-03** [N1, N6, D2, D4] GET y HEAD a `/api/catalog.json`, `/api/openapi.json`, `/llms.txt`, `/api/readme.md`, `/auth.md` y `/.well-known/api-catalog` cumplen los códigos y MIME de la tabla de rutas, sin barra final añadida; HEAD no lleva cuerpo. El OpenAPI 3.1 describe exclusivamente GET del catálogo público, sin autenticación ni filtros de servidor; el catálogo RFC 9727 enlaza únicamente ese servicio y documentación que responde 200."
+    },
+    "AR2-04": {
+      "refs": [
+        "N1",
+        "N6",
+        "N8",
+        "D4"
+      ],
+      "text": "- [ ] **AR2-04** [N1, N6, N8, D4] `curl.exe -sS -D - -o NUL https://vet24cr.com/` y la misma comprobación sobre `/clinica/hems-una-heredia/` muestran las cuatro relaciones `Link` del contrato; todos sus destinos responden 200. Hay un solo bloque global `/*` en `public/_headers`, CORS comodín solo en los recursos públicos nuevos indicados, y el SSR de portada recibe las cabeceras mediante la integración runtime."
+    },
+    "AR2-05": {
+      "refs": [
+        "N6",
+        "N8",
+        "D5"
+      ],
+      "text": "- [ ] **AR2-05** [N6, N8, D5] `curl.exe -sS -D - -o NUL https://vet24cr.com/sitemap.xml` devuelve 301 con destino `https://vet24cr.com/sitemap-index.xml` o su ruta relativa equivalente; el destino devuelve XML 200. Las URLs canónicas HTML, contenido/SEO y miembros de los sitemaps existentes permanecen iguales; los recursos de agentes no se añaden al sitemap."
+    },
+    "AR2-06": {
+      "refs": [
+        "N2",
+        "N9",
+        "N10",
+        "D6",
+        "D7"
+      ],
+      "text": "- [ ] **AR2-06** [N2, N9, N10, D6, D7] Se archiva un escaneo completo antes de modificar la subfase. La verificación común y el verificador de artefactos tras build pasan en CI y en sesión independiente; el escaneo completo conserva los cuatro pass de AR1 y añade `linkHeaders=pass` y `apiCatalog=pass`. Se comprueba `/auth.md` anónimo, sin OAuth ficticio, y se archiva el resultado real de `authMd` aunque falle; el diff cumple propiedad AR2 y la evidencia queda en `docs/agent-readiness/evidencia/ar2/`."
+    },
+    "AR3-01": {
+      "refs": [
+        "N3",
+        "N4",
+        "N5",
+        "N7",
+        "D2",
+        "D3"
+      ],
+      "text": "- [ ] **AR3-01** [N3, N4, N5, N7, D2, D3] Después de build, `node scripts/verification/agent-markdown.mjs` sale 0, sin skips: hay espejo para portada, las siete provincias, las zonas de `priorityZones` y todas las fichas del catálogo. Comprueba la correspondencia de rutas del contrato, reutilización del catálogo de AR2, cuerpo editorial y advertencias sin pérdida, sin mirrors legales/404/blog ni afirmación de apertura en tiempo real."
+    },
+    "AR3-02": {
+      "refs": [
+        "N7",
+        "D4"
+      ],
+      "text": "- [ ] **AR3-02** [N7, D4] En producción, GET con `Accept: text/markdown` sobre cada URL HTML con espejo devuelve 200 y `Content-Type: text/markdown`; GET sin Accept, con Accept de navegador o con `text/markdown;q=0` conserva HTML. Ambas representaciones llevan `Vary: Accept` sin borrar otros valores, los empates favorecen HTML y HEAD aplica la misma selección sin cuerpo."
+    },
+    "AR3-03": {
+      "refs": [
+        "N6",
+        "N7",
+        "N8"
+      ],
+      "text": "- [ ] **AR3-03** [N6, N7, N8] Cada URL directa `/md/**.md` devuelve 200, `text/markdown`, CORS público y `X-Robots-Tag: noindex`; la URL HTML negociada conserva su canonical y no hereda ese noindex. Ningún espejo aparece en los sitemaps. La prueba alterna peticiones HTML/Markdown en el mismo URL, exige `Cache-Control: private, no-store` en ambas representaciones negociables y ausencia de uso de Cache API, y verifica que ninguna caché mezcle representaciones."
+    },
+    "AR3-04": {
+      "refs": [
+        "N7",
+        "N8",
+        "D4"
+      ],
+      "text": "- [ ] **AR3-04** [N7, N8, D4] `npm test` y `node scripts/verification/agent-markdown.mjs` verifican cobertura de `run_worker_first`, con `/` exacta y las tres familias HTML, y ausencia de captura general de `/api/`. Un espejo ausente o con fetch fallido conserva el HTML y su status por el adaptador; POST ajeno a esta capa conserva método y cuerpo sin consumirlos. `/api/report-incorrect/` mantiene su comportamiento previo en pruebas locales con efectos externos aislados."
+    },
+    "AR3-05": {
+      "refs": [
+        "N2",
+        "N8",
+        "N9",
+        "N10",
+        "D6"
+      ],
+      "text": "- [ ] **AR3-05** [N2, N8, N9, N10, D6] Se archiva un escaneo completo antes de modificar la subfase. La verificación común y las pruebas nuevas tras build pasan en CI y por sesión distinta. El escaneo completo conserva los seis pass de AR2 y añade `markdownNegotiation=pass`; se guardan JSON, cabeceras, inventario completo de mirrors y comparativa antes/después, con diff limitado a propiedad AR3, en `docs/agent-readiness/evidencia/ar3/`."
+    },
+    "AR3-06": {
+      "refs": [
+        "N1",
+        "N4",
+        "N5",
+        "N9",
+        "D7",
+        "D8"
+      ],
+      "text": "- [ ] **AR3-06** [N1, N4, N5, N9, D7, D8] Tras desplegar, se archivan respuestas íntegras de al menos tres IAs con infraestructuras de búsqueda distintas, respondiendo cada una a las dos consultas del protocolo de auditoría. Cada hallazgo se contrasta por HTTP, distinguiendo fallo del sitio, limitación de herramienta y deuda de datos; no se declara cierre con fallos introducidos sin resolver ni se promete citación. El informe enumera todos los checks no pasados con su clasificación y conserva capas 4/5 y DNS-AID como decisiones no autorizadas, sin publicar sus endpoints."
+    }
+  },
+  "coverage": {
+    "N1": [
+      "AR1-01",
+      "AR2-03",
+      "AR2-04",
+      "AR3-06"
+    ],
+    "D1": [
+      "AR1-01"
+    ],
+    "N2": [
+      "AR1-02",
+      "AR2-06",
+      "AR3-05"
+    ],
+    "N9": [
+      "AR1-02",
+      "AR2-06",
+      "AR3-05",
+      "AR3-06"
+    ],
+    "N8": [
+      "AR1-03",
+      "AR2-04",
+      "AR2-05",
+      "AR3-03",
+      "AR3-04",
+      "AR3-05"
+    ],
+    "N10": [
+      "AR1-03",
+      "AR2-06",
+      "AR3-05"
+    ],
+    "D6": [
+      "AR1-03",
+      "AR2-06",
+      "AR3-05"
+    ],
+    "N3": [
+      "AR2-01",
+      "AR3-01"
+    ],
+    "N4": [
+      "AR2-01",
+      "AR2-02",
+      "AR3-01",
+      "AR3-06"
+    ],
+    "N5": [
+      "AR2-01",
+      "AR2-02",
+      "AR3-01",
+      "AR3-06"
+    ],
+    "D2": [
+      "AR2-01",
+      "AR2-03",
+      "AR3-01"
+    ],
+    "D3": [
+      "AR2-01",
+      "AR2-02",
+      "AR3-01"
+    ],
+    "N6": [
+      "AR2-03",
+      "AR2-04",
+      "AR2-05",
+      "AR3-03"
+    ],
+    "D4": [
+      "AR2-03",
+      "AR2-04",
+      "AR3-02",
+      "AR3-04"
+    ],
+    "D5": [
+      "AR2-05"
+    ],
+    "D7": [
+      "AR2-06",
+      "AR3-06"
+    ],
+    "N7": [
+      "AR3-01",
+      "AR3-02",
+      "AR3-03",
+      "AR3-04"
+    ],
+    "D8": [
+      "AR3-06"
+    ]
+  },
+  "issues": {
+    "AR1": {
+      "criteria": [
+        "AR1-01",
+        "AR1-02",
+        "AR1-03"
+      ],
+      "file": "issues/ar1.md"
+    },
+    "AR2": {
+      "criteria": [
+        "AR2-01",
+        "AR2-02",
+        "AR2-03",
+        "AR2-04",
+        "AR2-05",
+        "AR2-06"
+      ],
+      "file": "issues/ar2.md"
+    },
+    "AR3": {
+      "criteria": [
+        "AR3-01",
+        "AR3-02",
+        "AR3-03",
+        "AR3-04",
+        "AR3-05",
+        "AR3-06"
+      ],
+      "file": "issues/ar3.md"
+    }
+  },
+  "ownership": {
+    "AR1": [
+      "public/robots.txt",
+      "tests/unit/agent-content-signal.test.ts",
+      "docs/agent-readiness/evidencia/ar1/**"
+    ],
+    "AR2": [
+      "src/lib/agent-content.ts",
+      "src/lib/agent-discovery.ts",
+      "src/pages/api/catalog.json.ts",
+      "src/pages/api/openapi.json.ts",
+      "src/pages/llms.txt.ts",
+      "public/api/readme.md",
+      "public/auth.md",
+      "public/.well-known/api-catalog",
+      "public/_headers",
+      "public/_redirects",
+      "src/middleware.ts",
+      "tests/unit/agent-catalog.test.ts",
+      "tests/unit/agent-discovery.test.ts",
+      "tests/e2e/agent-discovery.spec.ts",
+      "scripts/verification/agent-catalog.mjs",
+      ".github/workflows/ci.yml",
+      "astro.config.mjs",
+      "docs/agent-readiness/evidencia/ar2/**"
+    ],
+    "AR3": [
+      "src/lib/agent-markdown.ts",
+      "src/lib/agent-http.ts",
+      "src/worker.ts",
+      "src/pages/md/[...path].ts",
+      "public/_headers",
+      "wrangler.toml",
+      "worker-configuration.d.ts",
+      "tests/unit/agent-markdown.test.ts",
+      "tests/unit/agent-routing.test.ts",
+      "tests/e2e/agent-markdown.spec.ts",
+      "scripts/verification/agent-markdown.mjs",
+      ".github/workflows/ci.yml",
+      "astro.config.mjs",
+      "docs/agent-readiness/evidencia/ar3/**"
+    ]
+  },
+  "sharedAR2AR3": [
+    "public/_headers",
+    ".github/workflows/ci.yml",
+    "astro.config.mjs"
+  ],
+  "terms": {
+    "README.md": {
+      "Content-Signal": 3,
+      "/llms.txt": 6,
+      "/api/catalog.json": 5,
+      "/api/openapi.json": 5,
+      "/api/readme.md": 5,
+      "/auth.md": 7,
+      "/.well-known/api-catalog": 5,
+      "/md/index.md": 1,
+      "/md/clinica/<slug>.md": 1,
+      "/md/provincia/<provincia>.md": 1,
+      "/md/zona/<zona>.md": 1,
+      "run_worker_first": 2,
+      "openNow": 4,
+      "America/Costa_Rica": 3,
+      "Cache-Control: private, no-store": 2
+    },
+    "fase-1-content-signal.md": {
+      "Content-Signal": 3,
+      "/llms.txt": 0,
+      "/api/catalog.json": 0,
+      "/api/openapi.json": 0,
+      "/api/readme.md": 0,
+      "/auth.md": 0,
+      "/.well-known/api-catalog": 0,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 0,
+      "openNow": 0,
+      "America/Costa_Rica": 0,
+      "Cache-Control: private, no-store": 0
+    },
+    "fase-2-catalogo-descubrimiento.md": {
+      "Content-Signal": 0,
+      "/llms.txt": 3,
+      "/api/catalog.json": 4,
+      "/api/openapi.json": 3,
+      "/api/readme.md": 3,
+      "/auth.md": 4,
+      "/.well-known/api-catalog": 4,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 0,
+      "openNow": 3,
+      "America/Costa_Rica": 1,
+      "Cache-Control: private, no-store": 0
+    },
+    "fase-3-markdown-validacion.md": {
+      "Content-Signal": 0,
+      "/llms.txt": 0,
+      "/api/catalog.json": 0,
+      "/api/openapi.json": 0,
+      "/api/readme.md": 0,
+      "/auth.md": 0,
+      "/.well-known/api-catalog": 0,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 3,
+      "openNow": 0,
+      "America/Costa_Rica": 0,
+      "Cache-Control: private, no-store": 2
+    },
+    "issues/ar1.md": {
+      "Content-Signal": 2,
+      "/llms.txt": 0,
+      "/api/catalog.json": 0,
+      "/api/openapi.json": 0,
+      "/api/readme.md": 0,
+      "/auth.md": 0,
+      "/.well-known/api-catalog": 0,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 0,
+      "openNow": 0,
+      "America/Costa_Rica": 0,
+      "Cache-Control: private, no-store": 0
+    },
+    "issues/ar2.md": {
+      "Content-Signal": 0,
+      "/llms.txt": 2,
+      "/api/catalog.json": 2,
+      "/api/openapi.json": 2,
+      "/api/readme.md": 2,
+      "/auth.md": 3,
+      "/.well-known/api-catalog": 2,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 0,
+      "openNow": 1,
+      "America/Costa_Rica": 1,
+      "Cache-Control: private, no-store": 0
+    },
+    "issues/ar3.md": {
+      "Content-Signal": 0,
+      "/llms.txt": 0,
+      "/api/catalog.json": 0,
+      "/api/openapi.json": 0,
+      "/api/readme.md": 0,
+      "/auth.md": 0,
+      "/.well-known/api-catalog": 0,
+      "/md/index.md": 0,
+      "/md/clinica/<slug>.md": 0,
+      "/md/provincia/<provincia>.md": 0,
+      "/md/zona/<zona>.md": 0,
+      "run_worker_first": 1,
+      "openNow": 0,
+      "America/Costa_Rica": 0,
+      "Cache-Control: private, no-store": 1
+    }
+  },
+  "scans": {
+    "scan-script-21.json": {
+      "scannedAt": "2026-09-05T19:29:37.065Z",
+      "level": 1,
+      "total": 22,
+      "counts": {
+        "pass": 3,
+        "fail": 13,
+        "neutral": 6
+      },
+      "excluded": [
+        "ap2"
+      ]
+    },
+    "scan-completo-22.json": {
+      "scannedAt": "2026-09-05T19:29:43.890Z",
+      "level": 1,
+      "total": 22,
+      "counts": {
+        "pass": 3,
+        "fail": 13,
+        "neutral": 6
+      },
+      "excluded": []
+    }
+  },
+  "sha256": {
+    "README.md": "cb5243c274866535a75f85a5cad75b82bd0d477b4ee1be13aceffdda8adf47a7",
+    "fase-1-content-signal.md": "6a47f9c5b37d0bb7de7417d09c527a2b3ee538351bafa7d1c268e1a8b6b8f971",
+    "fase-2-catalogo-descubrimiento.md": "1195f98f374ffbf72e981f3d8b95c28eaa1fb6068cb96db6d70c04bacdd86049",
+    "fase-3-markdown-validacion.md": "c9cc081d2bb0fa3ee33e95f314a690e3777bbbd6518cc125ebd60e6a139a40ed",
+    "issues/ar1.md": "643421894eca55b4ca98cc708814b1489b4f04b48ebb28f653c4bd8e53cf9ffd",
+    "issues/ar2.md": "b22b56be415e4ce5db52c3d6b2d46096a286b2ec40fe2ce65c98676ff45cbd12",
+    "issues/ar3.md": "5e9381010eddf539c2d5e61d2f9f51762a66344be9c6e26b9d8b5bd363dd0dfb"
+  },
+  "defects": []
+}
