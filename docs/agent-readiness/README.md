@@ -136,9 +136,9 @@ Cabecera `Link` desde AR2 en portada y HTML de clínicas/provincias/zonas: `</.w
 
 | ID | Fase | Spec | Issue | Depende de | Estimación de trabajo, no compromiso |
 |---|---|---|---|---|---|
-| AR1 | Política de rastreo | [fase-1-content-signal.md](fase-1-content-signal.md) | ver [índice](issues/README.md) | PR #11 y D1 | 1–2 h, incluida verificación |
-| AR2 | Catálogo público y descubrimiento | [fase-2-catalogo-descubrimiento.md](fase-2-catalogo-descubrimiento.md) | ver [índice](issues/README.md) | AR1 | 1–2 días |
-| AR3 | Markdown y validación de agentes | [fase-3-markdown-validacion.md](fase-3-markdown-validacion.md) | ver [índice](issues/README.md) | AR2 | 1–2 días + disponibilidad de auditorías |
+| AR1 | Política de rastreo | [fase-1-content-signal.md](fase-1-content-signal.md) | [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12) | PR #11 y D1 | 1–2 h, incluida verificación |
+| AR2 | Catálogo público y descubrimiento | [fase-2-catalogo-descubrimiento.md](fase-2-catalogo-descubrimiento.md) | [#13](https://github.com/Gunz-cop/Vet24-cr/issues/13) | AR1 | 1–2 días |
+| AR3 | Markdown y validación de agentes | [fase-3-markdown-validacion.md](fase-3-markdown-validacion.md) | [#15](https://github.com/Gunz-cop/Vet24-cr/issues/15) | AR2 | 1–2 días + disponibilidad de auditorías |
 
 AR1 separa una política corta y desplegable. No juntar capas 1+2 por rutina: aquí llms necesita antes un adaptador de datos conservador y Markdown requiere integrar SSR/Assets. AR2 reúne base de capa 3 y descubrimiento de capa 1; AR3 añade capa 2 sobre esa base.
 

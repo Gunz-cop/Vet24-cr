@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-05T19:48:15.981Z",
+  "result": "PASS",
+  "comparison": "Full body; CRLF normalized to LF only",
+  "issues": [
+    {
+      "number": 12,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/12",
+      "title": "AR1 — Política de rastreo",
+      "file": "issues/ar1.md",
+      "fullBodyEqual": true,
+      "sha256": "8064b2163759390cb5eab3b105934fdbf4b15250ee2b7c6eb77a27b2ddcbe182"
+    },
+    {
+      "number": 13,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/13",
+      "title": "AR2 — Catálogo público y descubrimiento",
+      "file": "issues/ar2.md",
+      "fullBodyEqual": true,
+      "sha256": "5f30bcc3c390045855d2fa06cd73a1e53e204b19417f8a7ac73b08f698c7d509"
+    },
+    {
+      "number": 15,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/15",
+      "title": "AR3 — Markdown y validación de agentes",
+      "file": "issues/ar3.md",
+      "fullBodyEqual": true,
+      "sha256": "c104b234f5d215fa68ce83fc9f00118257b3854c18bc5518f8d957b53083f85c"
+    }
+  ]
+}

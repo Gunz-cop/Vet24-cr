@@ -9,6 +9,8 @@ El README manda. Leer ambos completos, además de las referencias primarias y sk
 
 ## Dependencia y entrega
 
+**Bloqueado por D1:** falta la elección del propietario sobre entrenamiento de IA; no ejecutar mientras esté pendiente.
+
 PR #11 fusionado; decisión D1 confirmada por el propietario. Crear rama de ejecución desde el SHA de main que cumpla esa entrada; registrar BASE. Una sesión implementa y otra verifica; el issue cierra después de las comprobaciones productivas, no al terminar el build. El flujo futuro de revisión/integración se rige por la spec. Esta creación del issue no implementa ni despliega.
 
 ## Alcance

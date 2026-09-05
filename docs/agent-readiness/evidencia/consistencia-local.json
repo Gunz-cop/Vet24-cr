@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-05T19:46:04.453Z",
+  "checkedAt": "2026-09-05T19:48:17.026Z",
   "result": "PASS",
   "businessDecisionD1": "pending_owner_response",
   "criteriaCount": 15,
@@ -458,13 +458,13 @@
     }
   },
   "sha256": {
-    "README.md": "cb5243c274866535a75f85a5cad75b82bd0d477b4ee1be13aceffdda8adf47a7",
+    "README.md": "c82303225dc5fe38606e13f32c9bd49d9377ef5738460d1d010441c3265b16ab",
     "fase-1-content-signal.md": "6a47f9c5b37d0bb7de7417d09c527a2b3ee538351bafa7d1c268e1a8b6b8f971",
     "fase-2-catalogo-descubrimiento.md": "1195f98f374ffbf72e981f3d8b95c28eaa1fb6068cb96db6d70c04bacdd86049",
     "fase-3-markdown-validacion.md": "c9cc081d2bb0fa3ee33e95f314a690e3777bbbd6518cc125ebd60e6a139a40ed",
-    "issues/ar1.md": "643421894eca55b4ca98cc708814b1489b4f04b48ebb28f653c4bd8e53cf9ffd",
-    "issues/ar2.md": "b22b56be415e4ce5db52c3d6b2d46096a286b2ec40fe2ce65c98676ff45cbd12",
-    "issues/ar3.md": "5e9381010eddf539c2d5e61d2f9f51762a66344be9c6e26b9d8b5bd363dd0dfb"
+    "issues/ar1.md": "8064b2163759390cb5eab3b105934fdbf4b15250ee2b7c6eb77a27b2ddcbe182",
+    "issues/ar2.md": "5f30bcc3c390045855d2fa06cd73a1e53e204b19417f8a7ac73b08f698c7d509",
+    "issues/ar3.md": "c104b234f5d215fa68ce83fc9f00118257b3854c18bc5518f8d957b53083f85c"
   },
   "defects": []
 }

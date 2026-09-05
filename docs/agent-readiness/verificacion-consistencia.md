@@ -85,7 +85,9 @@ git diff --name-only c5e9a6886aae23a6ddaf16774b5916111dca3e91...HEAD
 
 El grep usa distinción de mayúsculas; las menciones a protocolos fuera de alcance no se confunden con rutas autorizadas. No se exige que un término aparezca en una fase que no lo implementa, sino que toda aparición del recurso conserve su nombre exacto. Se verifican además los slugs de los nombres de archivo en enlaces/allowlists.
 
-La comparación de GitHub se registra tras crear los issues en evidencia/consistencia-github.json, comparando **cuerpo completo**, no solo casillas, contra los Markdown locales. Las URLs y números definitivos quedan en issues/README.md. El estado de implementación vive en GitHub, no en una tabla de progreso duplicada.
+**Resultado local: PASS**, 15 casillas, 18 referencias N/D cubiertas, cero diferencias de aceptación o propiedad. Se repitió la lectura README → issue AR1 → issue AR2 → issue AR3 después de las correcciones; no aparecieron nuevas contradicciones técnicas. La comprobación de whitespace también pasó después de eliminar líneas vacías sobrantes al final de los documentos.
+
+**Resultado remoto: PASS**, comprobado el 2026-09-05T19:48:15.981Z en [consistencia-github.json](evidencia/consistencia-github.json): cuerpos completos de [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12), [#13](https://github.com/Gunz-cop/Vet24-cr/issues/13) y [#15](https://github.com/Gunz-cop/Vet24-cr/issues/15) idénticos a los Markdown locales, normalizando únicamente CRLF a LF. [github-issues.json](evidencia/github-issues.json) conserva las respuestas leídas, no solo una declaración de éxito. Las URLs definitivas están en [issues/README.md](issues/README.md). El estado de implementación vive en GitHub, no en una tabla de progreso duplicada.
 
 ## Límite de cierre
 
