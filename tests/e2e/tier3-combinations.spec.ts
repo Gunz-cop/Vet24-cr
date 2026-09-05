@@ -181,8 +181,14 @@ test.describe('Tier 3: Cross-Feature Combinations', () => {
     });
 
     expect(center).not.toBeNull();
-    // Cartago is around lat 9.86-9.9, lng -83.96
-    expect(center!.lat).toBeCloseTo(9.9, 1);
-    expect(center!.lng).toBeCloseTo(-83.96, 1);
+    // The viewport must contain every current clinic, including those outside
+    // Cartago city. A hard-coded city center becomes stale as the directory grows.
+    const allClinicsInView = await page.evaluate(() => {
+      const bounds = (window as any).__vet24Map.getBounds();
+      return [...document.querySelectorAll<HTMLElement>('#clinicas-grid article')]
+        .filter(card => Number(card.dataset.latitude) && Number(card.dataset.longitude))
+        .every(card => bounds.contains([Number(card.dataset.latitude), Number(card.dataset.longitude)]));
+    });
+    expect(allClinicsInView).toBe(true);
   });
 });
