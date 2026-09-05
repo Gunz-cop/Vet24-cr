@@ -1,0 +1,14 @@
+/
+/acerca/
+/cookies/
+/privacidad/
+/terminos/
+/clinica/veterinaria-bagaces-bagaces/
+/clinica/dr-jara-veterinaria-pacayas/
+/clinica/pets-plus-gravilias-desamparados/
+/provincia/heredia/
+/provincia/guanacaste/
+/provincia/san-jose/
+/zona/san-pablo-heredia/
+/zona/siquirres/
+/zona/guapiles/
