@@ -55,13 +55,14 @@ const normalizeHours = (text: string) => {
 };
 
 const hourTo24 = (value: string) => {
-  const match = value.match(/^(\d{1,2})(am|pm)$/);
+  const match = value.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)$/);
   if (!match) return null;
   let hour = Number(match[1]);
-  const period = match[2];
+  const minutes = match[2] ? Number(match[2]) : 0;
+  const period = match[3];
   if (period === 'pm' && hour < 12) hour += 12;
   if (period === 'am' && hour === 12) hour = 0;
-  return hour;
+  return hour + minutes / 60;
 };
 
 const rangeToSchedule = (days: string, start: string, end: string) => {
@@ -87,12 +88,12 @@ if (clinica.emergencias24h) {
   } else {
     const rules: string[] = [];
     const dayPatterns = [
-      { pattern: /l-d(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-0" },
-      { pattern: /l-s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-6" },
-      { pattern: /l-v(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "1-5" },
-      { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6-0" },
-      { pattern: /d(?:yferiados)?(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "0" },
-      { pattern: /s(\d{1,2}(?:am|pm))-(\d{1,2}(?:am|pm))/, days: "6" },
+      { pattern: /l-d(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-0" },
+      { pattern: /l-s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-6" },
+      { pattern: /l-v(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-5" },
+      { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6-0" },
+      { pattern: /d(?:yferiados)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "0" },
+      { pattern: /s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6" },
     ];
 
     for (const { pattern, days } of dayPatterns) {
