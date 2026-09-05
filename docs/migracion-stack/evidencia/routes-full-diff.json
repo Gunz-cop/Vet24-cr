@@ -1,0 +1,194 @@
+[
+  {
+    "InputObject": "client/_astro/_slug_.astro_astro_type_script_index_0_lang.Dq_GAqGI.js",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "client/_astro/BaseLayout.JfdhMgie.css",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "client/_astro/FiltrosDashboard.astro_astro_type_script_index_0_lang.B0PUnwvi.js",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "client/_astro/index.BEI0uKF8.css",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "client/_astro/MapaClinicas.astro_astro_type_script_index_0_lang.CS_3IVYW.js",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite-shm",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/a590acd76969f996ec6e4b599c3c09f58c283a76f2d61392b5d3046caf557602.sqlite-wal",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/metadata.sqlite",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/metadata.sqlite-shm",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/.wrangler/state/v3/observability/miniflare-wobs-trace-store/metadata.sqlite-wal",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/_astro_data-layer-content_BGd15P-Q.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/_virtual_astro_server-island-manifest_q0HM18kM.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/_virtual_astro_session-driver_TyipGO2P.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/ads_CzRKR4aF.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/assets_B_eihMNp.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/compiler_FRwLxqFo.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/consts_BPqL0Mo4.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/content-assets_DUKddbio.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/entrypoints_BKrh10O3.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/image-binding-transform_DL9A82Sa.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/image-service-workerd_C470WeJn.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/image-transform-endpoint_C_7p4uD0.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/index_C4-s3iq-.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/index_DCVynas1.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/noop-entrypoint_BYLrzUxc.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/parse_CXJJxHTF.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/rolldown-runtime_D7vh-g_o.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/sequence_DVwVL_t8.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "server/chunks/static-image-collection_OjCJuEEO.mjs",
+    "SideIndicator": "=>"
+  },
+  {
+    "InputObject": "client/_astro/_slug_.astro_astro_type_script_index_0_lang.D2dA8PTt.js",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "client/_astro/BaseLayout.BSpMOWAs.css",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "client/_astro/FiltrosDashboard.astro_astro_type_script_index_0_lang.DJZ33F_C.js",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "client/_astro/index.BGWQpiZW.css",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "client/_astro/MapaClinicas.astro_astro_type_script_index_0_lang.Du6gYvIV.js",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/_astro_data-layer-content_DLsxy-lJ.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/_virtual_astro_server-island-manifest_CFl7y3Qj.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/_virtual_astro_session-driver_Csu6PJY6.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/ads_yb_903k9.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/consts_DkA7OjKT.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/content-assets_CL5hQMHo.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/image-service-workerd_CzQTkO2F.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/image-transform-endpoint_BHXEwkHz.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/index_BrS3LtLb.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/index_CECIPexR.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/noop-entrypoint_DsBX4kaI.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/sequence_B86jXXEj.mjs",
+    "SideIndicator": "<="
+  },
+  {
+    "InputObject": "server/chunks/worker-entry_BC3oDCkk.mjs",
+    "SideIndicator": "<="
+  }
+]
