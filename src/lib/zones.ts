@@ -17,7 +17,7 @@ const aliasToZone = new Map<string, PriorityZone>();
 for (const zone of priorityZones) {
   aliasToZone.set(zone.slug, zone);
   aliasToZone.set(normalizeSlug(zone.nombre), zone);
-  for (const alias of zone.aliases || []) {
+  for (const alias of ('aliases' in zone ? zone.aliases : [])) {
     aliasToZone.set(alias, zone);
   }
 }
@@ -35,4 +35,3 @@ export function getClinicZoneName(zona: string): string {
   const normalized = normalizeSlug(zona);
   return aliasToZone.get(normalized)?.nombre || zona;
 }
-

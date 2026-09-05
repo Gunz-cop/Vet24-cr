@@ -1,0 +1,35 @@
+name: Stack verification
+
+on:
+  push:
+    branches: [main, stack/astro-7]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build:no-shorten
+      - run: npm run types:worker
+      - run: git diff --exit-code -- worker-configuration.d.ts
+      - run: npm run check
+      - run: npm test
+      - run: npm run deploy:dry-run
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

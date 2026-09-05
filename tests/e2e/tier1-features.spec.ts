@@ -36,8 +36,10 @@ test.describe('Tier 1: Feature Coverage', () => {
               altitudeAccuracy: null,
               heading: null,
               speed: null,
+              toJSON() { return { ...this }; },
             },
             timestamp: Date.now(),
+            toJSON() { return { coords: this.coords.toJSON(), timestamp: this.timestamp }; },
           });
         };
       });
@@ -382,7 +384,7 @@ test.describe('Tier 1: Feature Coverage', () => {
         const fixedTime = new Date('2026-06-22T01:08:00.000Z');
         const RealDate = Date;
         class MockDate extends RealDate {
-          constructor(...args: ConstructorParameters<typeof Date>) {
+          constructor(...args: [] | ConstructorParameters<typeof Date>) {
             if (args.length === 0) {
               super(fixedTime.getTime());
             } else {

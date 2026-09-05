@@ -8,6 +8,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "node scripts/shorten-links.js && astro build",
+    "build:no-shorten": "astro build",
+    "check": "astro check && tsc --noEmit",
+    "test": "npm run test:unit",
+    "test:e2e": "playwright test",
+    "types:worker": "wrangler types --env-file .env.ci --strict-vars=false",
+    "deploy:dry-run": "wrangler deploy --dry-run --env-file .env.ci",
     "test:unit": "node --test tests/unit/*.test.ts",
     "shorten": "node scripts/shorten-links.js",
     "preview": "astro preview",
@@ -23,6 +29,10 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.60.0"
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^26.4.1",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.100.0"
   }
 }
