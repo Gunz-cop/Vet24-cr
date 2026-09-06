@@ -1,0 +1,9 @@
+{
+  "anchor": "https://vet24cr.com/api/catalog.json",
+  "service-desc": [
+    { "href": "https://vet24cr.com/api/openapi.json" }
+  ],
+  "service-doc": [
+    { "href": "https://vet24cr.com/api/readme.md" }
+  ]
+}

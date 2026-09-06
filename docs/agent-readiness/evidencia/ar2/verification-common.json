@@ -1,0 +1,21 @@
+{
+  "baseSha": "06cab06db0e3ffca2f5b314276af5dda4b831db7",
+  "branch": "ar2/catalog-discovery",
+  "commands": {
+    "npm ci": { "exitCode": 0 },
+    "npm run build:no-shorten": { "exitCode": 0, "note": "Wrangler emitió una advertencia de certificado al consultar Request.cf; el build terminó correctamente." },
+    "node scripts/verification/agent-catalog.mjs": { "exitCode": 0, "clinics": 112, "clinicHtmlRoutes": 112 },
+    "npm run types:worker": { "exitCode": 0 },
+    "git diff --exit-code -- worker-configuration.d.ts": { "exitCode": 0 },
+    "npm run check": { "exitCode": 0, "errors": 0, "warnings": 0, "hints": 73 },
+    "npm test": { "exitCode": 0, "passed": 41 },
+    "npm run deploy:dry-run": { "exitCode": 0 },
+    "npm run test:e2e": { "exitCode": 1, "note": "La ejecución paralela local con 8 workers saturó el preview y produjo 17 timeouts; no se acepta como resultado funcional." },
+    "npx playwright test --workers=1": { "exitCode": 0, "passed": 77, "skipped": 11, "note": "Corrida serial equivalente al modo CI; los 11 skips son históricos." },
+    "npx playwright test tests/e2e/agent-discovery.spec.ts --workers=1": { "exitCode": 0, "passed": 5 },
+    "git diff --check": { "exitCode": 0 },
+    "allowlist": { "exitCode": 0 }
+  },
+  "preDeployScan": "scan-pre-deploy.json",
+  "productionVerification": "Pendiente de sesión verificadora distinta y de despliegue; esta sesión no fusiona ni cierra AR2."
+}
