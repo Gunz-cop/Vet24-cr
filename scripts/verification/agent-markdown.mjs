@@ -82,7 +82,7 @@ async function verifyBuild() {
   for (const path of expectedPaths) check(!sitemapText.includes(path), `sitemap: contiene mirror ${path}`);
 
   for (const route of expected) {
-    const file = join(client, route.mirrorPath.replace(/^\//, "").replaceAll("/", "\\"));
+    const file = join(client, route.mirrorPath.replace(/^\//, ""));
     let content = "";
     try {
       content = await readFile(file, "utf8");
