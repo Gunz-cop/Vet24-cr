@@ -4,6 +4,8 @@
 
 Base confirmada: PR [#11](https://github.com/Gunz-cop/Vet24-cr/pull/11), merge `c5e9a6886aae23a6ddaf16774b5916111dca3e91`, en `origin/main`. Astro 7.2.10, adaptador Cloudflare 14.2.6 y Tailwind 4.3.3 según lock/config revisados. Esta entrega contiene documentación e issues; ninguna capa está implementada por esta sesión.
 
+Durante la publicación, otra sesión fusionó [PR #14](https://github.com/Gunz-cop/Vet24-cr/pull/14), `9b660fb1d71123688c0f11e8d648cc1453eb8c0c`, corrigiendo Gocha y el parser de medias horas. Se revisó su diff: no cambia colección, rutas ni contrato de agentes. La rama documental conserva su base c5e9a68; las futuras implementaciones parten del main vigente y conservan esa corrección. La medición archivada sigue siendo la observación fechada original, no una certificación del despliegue de #14.
+
 ## Por qué y línea base real
 
 El usuario de un agente necesita localizar clínicas por provincia/zona, leer teléfonos, distinguir emergencias reportadas de verificadas y confirmar el horario antes de viajar. Un catálogo de APIs de terceros no resuelve ese trabajo. Sí lo hace exponer las mismas fichas públicas en JSON y texto limpio, con sus limitaciones.

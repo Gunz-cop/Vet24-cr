@@ -91,4 +91,6 @@ El grep usa distinción de mayúsculas; las menciones a protocolos fuera de alca
 
 ## Límite de cierre
 
+Control concurrente final: main avanzó por PR #14 a 9b660fb mientras esta sesión publicaba documentación. Se leyó el diff completo de sus cuatro archivos (Gocha, ClinicaCard, FiltrosDashboard y página de clínica). Cambia horario/fuente/fecha y parser de minutos; no el esquema, las rutas ni las obligaciones de estos issues. N3 conserva los nuevos valores al construir desde main y N5 sigue prohibiendo inferir disponibilidad real. No se integró ni se revirtió código ajeno en esta rama documental. Se repitió la verificación mecánica tras anotar el cambio; las casillas y cuerpos de issues permanecen iguales.
+
 La coherencia técnica no resuelve D1. Mientras no llegue la elección del negocio, no se escribe una directiva elegida por el asistente ni se declara cerrada esta decisión. Al responder el propietario, el coordinador debe actualizar D1 y la condición de entrada, repetir esta lectura/verificación y sincronizar cualquier cuerpo de issue que cambie.
