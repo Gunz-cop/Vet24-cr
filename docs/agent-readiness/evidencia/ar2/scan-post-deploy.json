@@ -1,7 +1,7 @@
 {
   "url": "https://vet24cr.com",
   "targetUrl": "https://vet24cr.com",
-  "scannedAt": "2026-09-06T07:44:51.424Z",
+  "scannedAt": "2026-09-06T07:59:55.124Z",
   "level": 2,
   "levelName": "Bot-Aware",
   "checks": {
@@ -23,7 +23,7 @@
               "headers": {
                 "content-type": "text/plain",
                 "content-length": "125",
-                "cf-ray": "a36bd9ad2f7a7df0-SJO"
+                "cf-ray": "a36befbe4d497df0-SJO"
               },
               "bodyPreview": "User-agent: *\nAllow: /\nContent-Signal: search=yes, ai-input=yes, ai-train=no\n\nSitemap: https://vet24cr.com/sitemap-index.xml\n"
             },
@@ -81,7 +81,7 @@
               "headers": {
                 "content-type": "application/xml",
                 "content-length": "182",
-                "cf-ray": "a36bd9ad5f857df0-SJO"
+                "cf-ray": "a36befbe7d547df0-SJO"
               }
             },
             "finding": {
@@ -98,7 +98,7 @@
             }
           }
         ],
-        "durationMs": 8
+        "durationMs": 9
       },
       "linkHeaders": {
         "status": "pass",
@@ -138,7 +138,7 @@
               "headers": {
                 "content-type": "text/html",
                 "link": "</.well-known/api-catalog>; rel=\"api-catalog\", </api/openapi.json>; rel=\"service-desc\", </api/readme.md>; rel=\"service-doc\", </llms.txt>; rel=\"describedby\"",
-                "cf-ray": "a36bd9adafa97df0-SJO"
+                "cf-ray": "a36befbecd737df0-SJO"
               }
             },
             "finding": {
@@ -171,7 +171,7 @@
             }
           }
         ],
-        "durationMs": 67
+        "durationMs": 65
       },
       "dnsAid": {
         "status": "fail",
@@ -213,7 +213,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -236,7 +236,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -259,7 +259,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_a2a._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_a2a._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -282,7 +282,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_a2a._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_a2a._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -305,7 +305,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_mcp._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_mcp._agents.vet24cr.com\",\"type\":64}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -328,7 +328,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_mcp._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_mcp._agents.vet24cr.com\",\"type\":65}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -351,7 +351,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":16}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_index._agents.vet24cr.com\",\"type\":16}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -375,7 +375,7 @@
             }
           }
         ],
-        "durationMs": 2
+        "durationMs": 1
       }
     },
     "contentAccessibility": {
@@ -406,7 +406,7 @@
               "statusText": "OK",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9b9be776978-MIA"
+                "cf-ray": "a36befcb5bdde308-MIA"
               }
             }
           },
@@ -419,7 +419,7 @@
             }
           }
         ],
-        "durationMs": 616
+        "durationMs": 529
       }
     },
     "botAccessControl": {
@@ -459,7 +459,7 @@
               "headers": {
                 "content-type": "text/plain",
                 "content-length": "125",
-                "cf-ray": "a36bd9ad2f7a7df0-SJO"
+                "cf-ray": "a36befbe4d497df0-SJO"
               },
               "bodyPreview": "User-agent: *\nAllow: /\nContent-Signal: search=yes, ai-input=yes, ai-train=no\n\nSitemap: https://vet24cr.com/sitemap-index.xml\n"
             },
@@ -516,7 +516,7 @@
               "headers": {
                 "content-type": "text/plain",
                 "content-length": "125",
-                "cf-ray": "a36bd9ad2f7a7df0-SJO"
+                "cf-ray": "a36befbe4d497df0-SJO"
               },
               "bodyPreview": "User-agent: *\nAllow: /\nContent-Signal: search=yes, ai-input=yes, ai-train=no\n\nSitemap: https://vet24cr.com/sitemap-index.xml\n"
             },
@@ -560,7 +560,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f887df0-SJO"
+                "cf-ray": "a36befbe7d537df0-SJO"
               }
             },
             "finding": {
@@ -577,13 +577,20 @@
             }
           }
         ],
-        "durationMs": 6
+        "durationMs": 8
       }
     },
     "discovery": {
       "apiCatalog": {
-        "status": "fail",
-        "message": "API Catalog is missing required \"linkset\" array (RFC 9264)",
+        "status": "pass",
+        "message": "API Catalog found with 1 API listed",
+        "details": {
+          "apiCount": 1,
+          "linksetEntries": 1,
+          "hasItems": false,
+          "hasNestedCatalogs": false,
+          "correctContentType": true
+        },
         "evidence": [
           {
             "action": "fetch",
@@ -600,10 +607,10 @@
               "statusText": "OK",
               "headers": {
                 "content-type": "application/linkset+json; charset=utf-8",
-                "content-length": "211",
-                "cf-ray": "a36bd9ad8f9c7df0-SJO"
+                "content-length": "270",
+                "cf-ray": "a36befbead687df0-SJO"
               },
-              "bodyPreview": "{\"anchor\":\"https://vet24cr.com/api/catalog.json\",\"service-desc\":[{\"href\":\"https://vet24cr.com/api/openapi.json\"}],\"service-doc\":[{\"href\":\"https://vet24cr.com/api/readme.md\"}]}"
+              "bodyPreview": "{\"linkset\":[{\"anchor\":\"https://vet24cr.com/api/catalog.json\",\"service-desc\":[{\"href\":\"https://vet24cr.com/api/openapi.json\"}],\"service-doc\":[{\"href\":\"https://vet24cr.com/api/readme.md\"}]}]}"
             },
             "finding": {
               "outcome": "positive",
@@ -614,20 +621,28 @@
             "action": "validate",
             "label": "Validate Linkset structure",
             "finding": {
-              "outcome": "negative",
-              "summary": "Missing required \"linkset\" array (RFC 9264)"
+              "outcome": "positive",
+              "summary": "Found \"linkset\" array with 1 entries"
+            }
+          },
+          {
+            "action": "validate",
+            "label": "Analyze linkset entries",
+            "finding": {
+              "outcome": "positive",
+              "summary": "1 API listed, correct content-type"
             }
           },
           {
             "action": "conclude",
             "label": "Conclusion",
             "finding": {
-              "outcome": "negative",
-              "summary": "API Catalog is missing required \"linkset\" array (RFC 9264)"
+              "outcome": "positive",
+              "summary": "API Catalog found with 1 API listed"
             }
           }
         ],
-        "durationMs": 39
+        "durationMs": 36
       },
       "oauthDiscovery": {
         "status": "fail",
@@ -645,7 +660,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f867df0-SJO"
+                "cf-ray": "a36befbe7d567df0-SJO"
               }
             },
             "finding": {
@@ -665,7 +680,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f8a7df0-SJO"
+                "cf-ray": "a36befbe7d577df0-SJO"
               }
             },
             "finding": {
@@ -700,7 +715,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f8c7df0-SJO"
+                "cf-ray": "a36befbe7d587df0-SJO"
               }
             },
             "finding": {
@@ -721,7 +736,7 @@
               "headers": {
                 "content-type": "text/html",
                 "link": "</.well-known/api-catalog>; rel=\"api-catalog\", </api/openapi.json>; rel=\"service-desc\", </api/readme.md>; rel=\"service-doc\", </llms.txt>; rel=\"describedby\"",
-                "cf-ray": "a36bd9ad5f947df0-SJO"
+                "cf-ray": "a36befbe8d597df0-SJO"
               }
             },
             "finding": {
@@ -760,7 +775,7 @@
               "headers": {
                 "content-type": "text/markdown; charset=utf-8",
                 "content-length": "454",
-                "cf-ray": "a36bd9ad5f957df0-SJO"
+                "cf-ray": "a36befbe8d5a7df0-SJO"
               },
               "bodyPreview": "# auth.md\n\nEl catálogo público de Vet24-cr es anónimo y de solo lectura. No requiere registro, API key, OAuth ni credenciales:\n\n- `GET https://vet24cr.com/api/catalog.json` devuelve el catálogo público.\n- No hay filtros ni paginación HTTP.\n- El endpoint no concede permisos para escribir, editar o reportar datos.\n\nLos horarios y capacidades son datos registrados con límites explícitos; confirma la atención por teléfono antes de trasladarte.\n"
             },
@@ -804,7 +819,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f967df0-SJO"
+                "cf-ray": "a36befbe8d5b7df0-SJO"
               }
             },
             "finding": {
@@ -824,7 +839,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad6f977df0-SJO"
+                "cf-ray": "a36befbe8d5c7df0-SJO"
               }
             },
             "finding": {
@@ -844,7 +859,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad6f987df0-SJO"
+                "cf-ray": "a36befbe8d5d7df0-SJO"
               }
             },
             "finding": {
@@ -861,7 +876,7 @@
             }
           }
         ],
-        "durationMs": 34
+        "durationMs": 32
       },
       "a2aAgentCard": {
         "status": "fail",
@@ -879,7 +894,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad6f997df0-SJO"
+                "cf-ray": "a36befbe8d5e7df0-SJO"
               }
             },
             "finding": {
@@ -896,7 +911,7 @@
             }
           }
         ],
-        "durationMs": 35
+        "durationMs": 34
       },
       "agentSkills": {
         "status": "fail",
@@ -914,7 +929,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad6f9b7df0-SJO"
+                "cf-ray": "a36befbe9d5f7df0-SJO"
               }
             },
             "finding": {
@@ -934,7 +949,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9adafaa7df0-SJO"
+                "cf-ray": "a36befbecd747df0-SJO"
               }
             },
             "finding": {
@@ -951,7 +966,7 @@
             }
           }
         ],
-        "durationMs": 67
+        "durationMs": 66
       },
       "webMcp": {
         "status": "fail",
@@ -994,7 +1009,7 @@
             }
           }
         ],
-        "durationMs": 3992
+        "durationMs": 3733
       },
       "ard": {
         "status": "fail",
@@ -1031,7 +1046,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad5f847df0-SJO"
+                "cf-ray": "a36befbe7d557df0-SJO"
               }
             },
             "finding": {
@@ -1055,7 +1070,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_catalog._agents.vet24cr.com\",\"type\":16}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_catalog._agents.vet24cr.com\",\"type\":16}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -1078,7 +1093,7 @@
               "headers": {
                 "content-type": "application/dns-json"
               },
-              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_search._agents.vet24cr.com\",\"type\":33}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1381,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
+              "bodyPreview": "{\"Status\":3,\"TC\":false,\"RD\":true,\"RA\":true,\"AD\":false,\"CD\":false,\"Question\":[{\"name\":\"_search._agents.vet24cr.com\",\"type\":33}],\"Authority\":[{\"name\":\"vet24cr.com\",\"type\":6,\"TTL\":1549,\"data\":\"eric.ns.cloudflare.com. dns.cloudflare.com. 2414029628 10000 2400 604800 1800\"}]}"
             },
             "finding": {
               "outcome": "neutral",
@@ -1098,7 +1113,7 @@
           "discoveryMechanisms": [],
           "searchEndpoints": []
         },
-        "durationMs": 11
+        "durationMs": 8
       }
     },
     "commerce": {
@@ -1119,7 +1134,7 @@
               "headers": {
                 "content-type": "text/html",
                 "link": "</.well-known/api-catalog>; rel=\"api-catalog\", </api/openapi.json>; rel=\"service-desc\", </api/readme.md>; rel=\"service-doc\", </llms.txt>; rel=\"describedby\"",
-                "cf-ray": "a36bd9ad8f9f7df0-SJO"
+                "cf-ray": "a36befbead6c7df0-SJO"
               }
             },
             "finding": {
@@ -1139,7 +1154,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9adafab7df0-SJO"
+                "cf-ray": "a36befbecd757df0-SJO"
               }
             },
             "finding": {
@@ -1159,7 +1174,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9adafad7df0-SJO"
+                "cf-ray": "a36befbecd767df0-SJO"
               }
             },
             "finding": {
@@ -1179,7 +1194,7 @@
               "statusText": "OK",
               "headers": {
                 "content-type": "application/json",
-                "cf-ray": "a36bd9ad8f9e7df0-SJO"
+                "cf-ray": "a36befbead6b7df0-SJO"
               }
             }
           },
@@ -1204,7 +1219,7 @@
             }
           }
         ],
-        "durationMs": 774
+        "durationMs": 819
       },
       "mpp": {
         "status": "neutral",
@@ -1222,7 +1237,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad8fa27df0-SJO"
+                "cf-ray": "a36befbebd717df0-SJO"
               }
             },
             "finding": {
@@ -1239,7 +1254,7 @@
             }
           }
         ],
-        "durationMs": 49
+        "durationMs": 46
       },
       "ucp": {
         "status": "neutral",
@@ -1257,7 +1272,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad8f9d7df0-SJO"
+                "cf-ray": "a36befbead6a7df0-SJO"
               }
             },
             "finding": {
@@ -1274,7 +1289,7 @@
             }
           }
         ],
-        "durationMs": 37
+        "durationMs": 45
       },
       "acp": {
         "status": "neutral",
@@ -1292,7 +1307,7 @@
               "statusText": "Not Found",
               "headers": {
                 "content-type": "text/html",
-                "cf-ray": "a36bd9ad9fa37df0-SJO"
+                "cf-ray": "a36befbecd727df0-SJO"
               }
             },
             "finding": {
