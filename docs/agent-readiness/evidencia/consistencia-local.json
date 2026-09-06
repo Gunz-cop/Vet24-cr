@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-05T19:48:17.026Z",
+  "checkedAt": "2026-09-06T00:28:53.633Z",
   "result": "PASS",
   "businessDecisionD1": "pending_owner_response",
   "criteriaCount": 15,
@@ -458,7 +458,7 @@
     }
   },
   "sha256": {
-    "README.md": "c82303225dc5fe38606e13f32c9bd49d9377ef5738460d1d010441c3265b16ab",
+    "README.md": "5391ef3083faad7c63b122da1ddcd08c3987bfefe3e11e8410a06cf2c39b45c3",
     "fase-1-content-signal.md": "6a47f9c5b37d0bb7de7417d09c527a2b3ee538351bafa7d1c268e1a8b6b8f971",
     "fase-2-catalogo-descubrimiento.md": "1195f98f374ffbf72e981f3d8b95c28eaa1fb6068cb96db6d70c04bacdd86049",
     "fase-3-markdown-validacion.md": "c9cc081d2bb0fa3ee33e95f314a690e3777bbbd6518cc125ebd60e6a139a40ed",
