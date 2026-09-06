@@ -1,0 +1,8 @@
+{
+  "phase": "AR3",
+  "baseSha": "07e7839",
+  "baseBranch": "ar2/verification-evidence",
+  "productionScan": "scan-pre-deploy.json",
+  "scannedAt": "2026-09-06T07:59:55.124Z",
+  "note": "Escaneo completo productivo archivado desde la verificación post-fix de AR2 antes de modificar AR3. La repetición directa desde este entorno fue bloqueada por EACCES al conectar a isitagentready.com; no se simula una nueva salida. El checkout parte de la predecesora AR2 verificada y no se modifica ningún endpoint productivo en esta sesión."
+}
