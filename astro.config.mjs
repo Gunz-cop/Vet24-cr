@@ -12,7 +12,7 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare(),
   integrations: [sitemap({
-    filter: (page) => !/[\\/]?(api|auth\.md|llms\.txt|\.well-known)([/.]|$)/.test(new URL(page).pathname),
+    filter: (page) => !/[\\/]?(api|auth\.md|llms\.txt|\.well-known|md)([/.]|$)/.test(new URL(page).pathname),
   })],
   server: {
     // Respect the PORT env var (e.g. from tooling) but keep 4321 as default

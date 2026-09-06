@@ -36,3 +36,8 @@
 
 /zona/*
   Link: </.well-known/api-catalog>; rel="api-catalog", </api/openapi.json>; rel="service-desc", </api/readme.md>; rel="service-doc", </llms.txt>; rel="describedby"
+
+/md/*
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
