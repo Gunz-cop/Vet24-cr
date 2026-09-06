@@ -33,9 +33,10 @@ test.describe('AR2 — descubrimiento y catálogo público', () => {
     expect(catalog.clinics.every((clinic: { openNow: null }) => clinic.openNow === null)).toBe(true);
 
     const linkset = await (await request.get('/.well-known/api-catalog')).json();
-    expect(linkset.anchor).toBe('https://vet24cr.com/api/catalog.json');
-    expect(linkset['service-desc']).toEqual([{ href: 'https://vet24cr.com/api/openapi.json' }]);
-    expect(linkset['service-doc']).toEqual([{ href: 'https://vet24cr.com/api/readme.md' }]);
+    expect(linkset.linkset).toHaveLength(1);
+    expect(linkset.linkset[0].anchor).toBe('https://vet24cr.com/api/catalog.json');
+    expect(linkset.linkset[0]['service-desc']).toEqual([{ href: 'https://vet24cr.com/api/openapi.json' }]);
+    expect(linkset.linkset[0]['service-doc']).toEqual([{ href: 'https://vet24cr.com/api/readme.md' }]);
   });
 
   test('OpenAPI solo expone el GET público del catálogo', async ({ request }) => {
