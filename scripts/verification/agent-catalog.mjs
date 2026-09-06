@@ -74,12 +74,15 @@ if (openapi) {
 }
 
 if (linkset) {
-  if (linkset.anchor !== "https://vet24cr.com/api/catalog.json") errors.push("API Catalog anchor mismatch");
-  const desc = linkset["service-desc"]?.map((item) => item.href) ?? [];
-  const docs = linkset["service-doc"]?.map((item) => item.href) ?? [];
+  if (!Array.isArray(linkset.linkset) || linkset.linkset.length !== 1) errors.push("API Catalog linkset must contain exactly one entry");
+  const entry = linkset.linkset?.[0] ?? {};
+  if (entry.anchor !== "https://vet24cr.com/api/catalog.json") errors.push("API Catalog anchor mismatch");
+  const desc = entry["service-desc"]?.map((item) => item.href) ?? [];
+  const docs = entry["service-doc"]?.map((item) => item.href) ?? [];
   if (desc.length !== 1 || desc[0] !== "https://vet24cr.com/api/openapi.json") errors.push("API Catalog service-desc mismatch");
   if (docs.length !== 1 || docs[0] !== "https://vet24cr.com/api/readme.md") errors.push("API Catalog service-doc mismatch");
-  if (Object.keys(linkset).some((key) => !["anchor", "service-desc", "service-doc"].includes(key))) errors.push("API Catalog contains unexpected relation");
+  if (Object.keys(linkset).some((key) => key !== "linkset")) errors.push("API Catalog contains unexpected top-level member");
+  if (Object.keys(entry).some((key) => !["anchor", "service-desc", "service-doc"].includes(key))) errors.push("API Catalog contains unexpected relation");
 }
 
 if (llmsText && (!llmsText.startsWith("# Vet24-cr") || !llmsText.includes("/api/catalog.json") || !llmsText.includes("/api/readme.md"))) errors.push("llms.txt is missing required discovery links");
