@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-06T04:58:38.1413386Z",
+  "url": "https://vet24cr.com/robots.txt",
+  "status": 200,
+  "contentType": "Content-Type: text/plain",
+  "required": {
+    "Content-Signal in wildcard block": true,
+    "Content-Signal once": true,
+    "Sitemap": true,
+    "User-agent: *": true,
+    "Allow: /": true
+  },
+  "body": "User-agent: *\nAllow: /\nContent-Signal: search=yes, ai-input=yes, ai-train=no\n\nSitemap: https://vet24cr.com/sitemap-index.xml\n"
+}
