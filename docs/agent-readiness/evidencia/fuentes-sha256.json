@@ -1,0 +1,38 @@
+[
+  {
+    "file": ".claude/skills/agent-readiness/SKILL.md",
+    "sha256": "451505BF561045755D6AE27407B7C131F04BE7D8103A43A564B095B81DBC8107"
+  },
+  {
+    "file": ".claude/skills/agent-readiness/references/comprobaciones.md",
+    "sha256": "C11BCDD1FA0815AABE8823D26E2F3FF02DAD1B7A0875403F63E845320F45B57F"
+  },
+  {
+    "file": ".claude/skills/agent-readiness/references/implementacion.md",
+    "sha256": "ACBAE58B648A928D8EE1D7FD20A7A0470D11F0F56A70967CA0AEEDC9C53DF45B"
+  },
+  {
+    "file": ".claude/skills/agent-readiness/references/auditoria-cruzada.md",
+    "sha256": "0B93288ED2BCF42DBF52F8614F337167545E28E9BE99AD322253A76BF2E7589F"
+  },
+  {
+    "file": "C:/Users/grcx1/OneDrive/Documentos/Proyectos/DescargasIA/docs/agent-readiness.md",
+    "sha256": "389542AE2B21012A2EA0F4DF59C3FC37308265373DDB47E72446C87DE19680F8"
+  },
+  {
+    "file": "C:/Users/grcx1/OneDrive/Documentos/Proyectos/DescargasIA/docs/hito-agent-readiness.md",
+    "sha256": "93CC3D5B792A541D82998DA4B3873912916DCC5C95B43D11FEAFDBE349AAF592"
+  },
+  {
+    "file": "C:/Users/grcx1/OneDrive/Documentos/Proyectos/DescargasIA/docs/BRIEF-IMPLEMENTACION.md",
+    "sha256": "FF5AAF02C737A001297D33DF710E8072DF8DA3957CF6984FF81F1F131C47E2F1"
+  },
+  {
+    "file": "C:/Users/grcx1/OneDrive/Documentos/Proyectos/CuidaTuPerroViejo/docs/migracion-stack/README.md",
+    "sha256": "DC7D09E41D2E59E977D6AC74792BE41EDB11E6FDF6445C00F8139BCF9CB2D6E5"
+  },
+  {
+    "file": "C:/Users/grcx1/OneDrive/Documentos/Proyectos/CuidaTuPerroViejo/docs/migracion-stack/fase-2-astro-5.md",
+    "sha256": "4789CCE68BF63E14162408730F76D32DC343535AD0EA598F526DAA3C3A69DA9B"
+  }
+]
