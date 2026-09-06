@@ -1,0 +1,7 @@
+{
+  "phase": "AR2",
+  "baseSha": "06cab06db0e3ffca2f5b314276af5dda4b831db7",
+  "branch": "ar2/catalog-discovery",
+  "preDeployScan": "scan-pre-deploy.json",
+  "note": "La línea base se tomó contra producción aún en AR1 antes del despliegue de AR2; por una omisión de coordinación se archivó después de iniciar la implementación local, pero antes de cualquier despliegue de esta rama. No se presenta como verificación post-despliegue."
+}
