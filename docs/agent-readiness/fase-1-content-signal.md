@@ -12,7 +12,7 @@ Publicar la política elegida por el negocio en el robots existente, sin alterar
 
 ## Instrucciones
 
-1. Leer README y D1. Si sigue pendiente, informar en el issue y no escribir una política provisional.
+1. Leer README y D1, aprobada por el propietario el 2026-09-05: `Content-Signal: search=yes, ai-input=yes, ai-train=no`. Implementar esos valores sin reabrir la decisión de negocio.
 2. Añadir una sola línea Content-Signal al bloque comodín existente. No crear reglas individuales para bots que ya cubre el comodín.
 3. Añadir una prueba del archivo que compruebe los valores de D1, pertenencia al bloque y conservación del sitemap.
 4. Ejecutar verificación común, revisión independiente y escaneo completo tras el despliegue del flujo habitual. Registrar todos los estados, no solo el nuevo pass.
@@ -33,7 +33,7 @@ Todos los demás archivos están protegidos. Aplican las restricciones por archi
 
 ## Criterios de aceptación
 
-- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente una directiva `Content-Signal` con los tres valores aprobados en D1, dentro del bloque comodín.
+- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente la directiva `Content-Signal: search=yes, ai-input=yes, ai-train=no` aprobada en D1, una sola vez y dentro del bloque comodín.
 
 - [ ] **AR1-02** [N2, N9] Se archiva un escaneo completo antes de modificar la subfase. Después del despliegue, el escaneo completo definido en «Verificación común» devuelve `robotsTxt=pass`, `sitemap=pass`, `robotsTxtAiRules=pass` y `contentSignals=pass`; se archiva el JSON íntegro, fecha, commit desplegado y estados de todos los checks, sin convertir la salida 0 del script en una prueba de éxito.
 

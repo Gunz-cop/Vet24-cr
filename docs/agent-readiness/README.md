@@ -68,7 +68,7 @@ La matriz de la skill recomienda evaluar API, skills y protocolos para directori
 
 | ID | Decisión | Motivo / cobertura |
 |---|---|---|
-| D1 | **Pendiente de respuesta del propietario**: valores de entrenamiento para Content-Signal. AR1 no es ejecutable hasta registrar aquí su elección. | La skill exige confirmación del negocio; no se hereda la elección de FuenteAI. AR1-01 |
+| D1 | **Aprobada por el propietario el 2026-09-05:** `Content-Signal: search=yes, ai-input=yes, ai-train=no`. Permitir búsqueda y uso como fuente de respuestas; no permitir entrenamiento de IA. | Confirmación expresa: «ok, bots de busqueda sí, entrenamiento no». Se cierra D1 y se habilita la entrada de AR1. AR1-01 |
 | D2 | AR2 publica catálogo estático completo y OpenAPI de lectura; llms es índice breve generado. AR3 consume el mismo adaptador. Sin `/llms-full.txt`. | Un catálogo de este tamaño puede filtrarse en el cliente; no necesita motor de búsqueda, estado ni otro documento completo duplicado. AR2-01/03, AR3-01 |
 | D3 | Contrato conservador de datos descrito abajo, sin parser de “abierta ahora”. | Horarios libres y evidencia desigual; la proyección no repara el modelo clínico ni el issue #5. AR2-02, AR3-01/06 |
 | D4 | Mantener adaptador 14.2.6; integración mínima para cabeceras SSR en AR2 y envoltura del handler oficial en AR3. No copiar el Worker independiente de FuenteAI ni activar Markdown externo en el panel. | Necesitamos mirrors reproducibles y conservar portada dinámica; `_headers` no cubre respuestas SSR. AR2-03/04, AR3-02/04 |
@@ -144,7 +144,7 @@ Cabecera `Link` desde AR2 en portada y HTML de clínicas/provincias/zonas: `</.w
 
 AR1 separa una política corta y desplegable. No juntar capas 1+2 por rutina: aquí llms necesita antes un adaptador de datos conservador y Markdown requiere integrar SSR/Assets. AR2 reúne base de capa 3 y descubrimiento de capa 1; AR3 añade capa 2 sobre esa base.
 
-**No hay paralelismo de implementación autorizado.** AR1 podría escribirse sin AR2, pero se cierra primero por tamaño y política pendiente. AR2 y AR3 comparten contratos y archivos: iniciarlas a la vez crea retrabajo aunque algunos archivos sean distintos.
+**No hay paralelismo de implementación autorizado.** AR1 podría escribirse sin AR2, pero se cierra primero por su tamaño y por fijar la política de rastreo antes del resto. AR2 y AR3 comparten contratos y archivos: iniciarlas a la vez crea retrabajo aunque algunos archivos sean distintos.
 
 | Par | Resolución verificable |
 |---|---|
@@ -238,7 +238,7 @@ Los bloques siguientes son la fuente exacta de las casillas de fases e issues. C
 
 ### AR1
 
-- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente una directiva `Content-Signal` con los tres valores aprobados en D1, dentro del bloque comodín.
+- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente la directiva `Content-Signal: search=yes, ai-input=yes, ai-train=no` aprobada en D1, una sola vez y dentro del bloque comodín.
 
 - [ ] **AR1-02** [N2, N9] Se archiva un escaneo completo antes de modificar la subfase. Después del despliegue, el escaneo completo definido en «Verificación común» devuelve `robotsTxt=pass`, `sitemap=pass`, `robotsTxtAiRules=pass` y `contentSignals=pass`; se archiva el JSON íntegro, fecha, commit desplegado y estados de todos los checks, sin convertir la salida 0 del script en una prueba de éxito.
 

@@ -9,7 +9,7 @@ El README manda. Leer ambos completos, además de las referencias primarias y sk
 
 ## Dependencia y entrega
 
-**Bloqueado por D1:** falta la elección del propietario sobre entrenamiento de IA; no ejecutar mientras esté pendiente.
+**D1 resuelta el 2026-09-05:** el propietario aprobó `Content-Signal: search=yes, ai-input=yes, ai-train=no`. El bloqueo de negocio queda levantado; AR1 puede tomarse respetando el contrato de entrada.
 
 PR #11 fusionado; decisión D1 confirmada por el propietario. Crear rama de ejecución desde el SHA de main que cumpla esa entrada; registrar BASE. Una sesión implementa y otra verifica; el issue cierra después de las comprobaciones productivas, no al terminar el build. El flujo futuro de revisión/integración se rige por la spec. Esta creación del issue no implementa ni despliega.
 
@@ -27,7 +27,7 @@ Todo lo no listado está protegido. Restricciones parciales de archivos y traspa
 
 ## Criterios de aceptación
 
-- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente una directiva `Content-Signal` con los tres valores aprobados en D1, dentro del bloque comodín.
+- [ ] **AR1-01** [N1, D1] `curl.exe -fsS https://vet24cr.com/robots.txt` devuelve 200, conserva `User-agent: *`, `Allow: /` y `Sitemap: https://vet24cr.com/sitemap-index.xml`; contiene exactamente la directiva `Content-Signal: search=yes, ai-input=yes, ai-train=no` aprobada en D1, una sola vez y dentro del bloque comodín.
 
 - [ ] **AR1-02** [N2, N9] Se archiva un escaneo completo antes de modificar la subfase. Después del despliegue, el escaneo completo definido en «Verificación común» devuelve `robotsTxt=pass`, `sitemap=pass`, `robotsTxtAiRules=pass` y `contentSignals=pass`; se archiva el JSON íntegro, fecha, commit desplegado y estados de todos los checks, sin convertir la salida 0 del script en una prueba de éxito.
 

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-05T19:48:15.981Z",
+  "checkedAt": "2026-09-06T00:43:58.916Z",
   "result": "PASS",
   "comparison": "Full body; CRLF normalized to LF only",
   "issues": [
@@ -9,7 +9,7 @@
       "title": "AR1 — Política de rastreo",
       "file": "issues/ar1.md",
       "fullBodyEqual": true,
-      "sha256": "8064b2163759390cb5eab3b105934fdbf4b15250ee2b7c6eb77a27b2ddcbe182"
+      "sha256": "fe0121f5ec286906cabddf050e153c0950780b7f7d9fec82e4939e17bf65ef41"
     },
     {
       "number": 13,

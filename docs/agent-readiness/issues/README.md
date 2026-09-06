@@ -4,7 +4,7 @@ Los cuerpos locales son la fuente publicada en GitHub y se mantienen sincronizad
 
 | Subfase | Cuerpo | GitHub | Entrada |
 |---|---|---|---|
-| AR1 — Política de rastreo | [ar1.md](ar1.md) | [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12) | D1 resuelta |
+| AR1 — Política de rastreo | [ar1.md](ar1.md) | [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12) | D1 aprobada el 2026-09-05; PR #11 fusionado |
 | AR2 — Catálogo público y descubrimiento | [ar2.md](ar2.md) | [#13](https://github.com/Gunz-cop/Vet24-cr/issues/13) | AR1 fusionada y verificada |
 | AR3 — Markdown y validación de agentes | [ar3.md](ar3.md) | [#15](https://github.com/Gunz-cop/Vet24-cr/issues/15) | AR2 fusionada y verificada |
 

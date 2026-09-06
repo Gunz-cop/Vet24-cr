@@ -4,7 +4,7 @@
 
 Se revisan README, las tres specs de fase y los tres cuerpos de issues, contra las fuentes y la línea base real. Esta auditoría es de documentación: no certifica las implementaciones futuras.
 
-La decisión D1 de Content-Signal sigue pendiente del propietario. Es un bloqueo de negocio explícito, no un criterio satisfecho. AR1 y por dependencia AR2/AR3 no deben arrancar hasta cerrarla. Las capas 4/5 siguen como decisiones reservadas por encargo del usuario. No se presenta el plan completo como listo para ejecución mientras D1 esté abierta.
+D1 quedó aprobada por el propietario el 2026-09-05: `Content-Signal: search=yes, ai-input=yes, ai-train=no`. Se levanta el bloqueo de negocio de AR1; AR2/AR3 conservan sus dependencias de implementación. Las capas 4/5 siguen como decisiones reservadas por encargo del usuario. La aprobación de la política no significa que AR1 esté implementada.
 
 ## Pasada adversarial efectivamente realizada
 
@@ -44,7 +44,7 @@ La fuente de las 15 casillas está en README. Cada casilla es idéntica en READM
 | N8 | AR1-03, AR2-04/05, AR3-03/04/05 |
 | N9 | AR1-02, AR2-06, AR3-05/06; verificador AR1 además en AR1-03 |
 | N10 | AR1-03, AR2-06, AR3-05 |
-| D1 | AR1-01; pendiente de elección del propietario, no se marca aceptada |
+| D1 | AR1-01; política aprobada por el propietario e idéntica en README, fase e issue |
 | D2 | AR2-01/03, AR3-01 |
 | D3 | AR2-01/02, AR3-01 |
 | D4 | AR2-03/04, AR3-02/04 |
@@ -87,10 +87,10 @@ El grep usa distinción de mayúsculas; las menciones a protocolos fuera de alca
 
 **Resultado local: PASS**, 15 casillas, 18 referencias N/D cubiertas, cero diferencias de aceptación o propiedad. Se repitió la lectura README → issue AR1 → issue AR2 → issue AR3 después de las correcciones; no aparecieron nuevas contradicciones técnicas. La comprobación de whitespace también pasó después de eliminar líneas vacías sobrantes al final de los documentos.
 
-**Resultado remoto: PASS**, comprobado el 2026-09-05T19:48:15.981Z en [consistencia-github.json](evidencia/consistencia-github.json): cuerpos completos de [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12), [#13](https://github.com/Gunz-cop/Vet24-cr/issues/13) y [#15](https://github.com/Gunz-cop/Vet24-cr/issues/15) idénticos a los Markdown locales, normalizando únicamente CRLF a LF. [github-issues.json](evidencia/github-issues.json) conserva las respuestas leídas, no solo una declaración de éxito. Las URLs definitivas están en [issues/README.md](issues/README.md). El estado de implementación vive en GitHub, no en una tabla de progreso duplicada.
+**Resultado remoto: PASS**, comprobado el 2026-09-06T00:43:58.916Z en [consistencia-github.json](evidencia/consistencia-github.json): cuerpos completos de [#12](https://github.com/Gunz-cop/Vet24-cr/issues/12), [#13](https://github.com/Gunz-cop/Vet24-cr/issues/13) y [#15](https://github.com/Gunz-cop/Vet24-cr/issues/15) idénticos a los Markdown locales, normalizando únicamente CRLF a LF. [github-issues.json](evidencia/github-issues.json) conserva las respuestas leídas, no solo una declaración de éxito. Las URLs definitivas están en [issues/README.md](issues/README.md). El estado de implementación vive en GitHub, no en una tabla de progreso duplicada.
 
 ## Límite de cierre
 
 Control concurrente final: main avanzó por PR #14 a 9b660fb mientras esta sesión publicaba documentación. Se leyó el diff completo de sus cuatro archivos (Gocha, ClinicaCard, FiltrosDashboard y página de clínica). Cambia horario/fuente/fecha y parser de minutos; no el esquema, las rutas ni las obligaciones de estos issues. N3 conserva los nuevos valores al construir desde main y N5 sigue prohibiendo inferir disponibilidad real. No se integró ni se revirtió código ajeno en esta rama documental. Se repitió la verificación mecánica tras anotar el cambio; las casillas y cuerpos de issues permanecen iguales.
 
-La coherencia técnica no resuelve D1. Mientras no llegue la elección del negocio, no se escribe una directiva elegida por el asistente ni se declara cerrada esta decisión. Al responder el propietario, el coordinador debe actualizar D1 y la condición de entrada, repetir esta lectura/verificación y sincronizar cualquier cuerpo de issue que cambie.
+Actualización del 2026-09-05: el propietario respondió «ok, bots de busqueda sí, entrenamiento no». Se cerró D1, se sustituyó el bloqueo del issue AR1 y se fijó la directiva literal en AR1-01 en las tres superficies. Se releyeron README y los issues, se repitieron las comprobaciones de criterios, propiedad, referencias y términos, y se volvió a comparar el cuerpo completo de los tres issues con GitHub. Los JSON de evidencia contienen la comprobación más reciente. No se modificó robots.txt ni se ejecutó ninguna fase.
