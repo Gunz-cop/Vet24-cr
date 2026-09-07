@@ -1,5 +1,5 @@
 COMMAND=node scripts/verification/blog.mjs
-SHA=9192a4b3694ca6c6a087100179fcc61cd42adfbb
+SHA=ece6fbe06b151f6940c96528a05cdaebc17b59df
 CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr
 PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4321
 PREVIEW_URL=http://127.0.0.1:4321

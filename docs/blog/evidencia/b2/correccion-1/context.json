@@ -1,0 +1,10 @@
+{
+  "baseSha": "b9d7db74d85f99ab580c7bc0d03dd51c13744f71",
+  "previousCandidate": "cb2b32b27486ed5c3425e4cfd49c2f5ee62c46b6",
+  "productSha": "9192a4b3694ca6c6a087100179fcc61cd42adfbb",
+  "scope": "Corrección de los dos hallazgos, misma subfase B2, sin reiniciar ni sobrescribir BASE",
+  "e2eProductSha": "ece6fbe06b151f6940c96528a05cdaebc17b59df",
+  "e2eNote": "Única diferencia posterior: mensaje del comando de preview en blog.mjs. Aplicación y tests idénticos.",
+  "fixture": "fixture.diff",
+  "geometryReference": "../base-loaded-geometry.json"
+}

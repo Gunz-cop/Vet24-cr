@@ -1,0 +1,594 @@
+COMMAND=git diff b9d7db74d85f99ab580c7bc0d03dd51c13744f71...HEAD -- src scripts tests docs/seo
+SHA=9192a4b3694ca6c6a087100179fcc61cd42adfbb
+STDOUT:
+diff --git a/docs/seo/enlazado-interno.md b/docs/seo/enlazado-interno.md
+new file mode 100644
+index 0000000..c15e186
+--- /dev/null
++++ b/docs/seo/enlazado-interno.md
+@@ -0,0 +1,35 @@
++# Enlazado interno del blog
++
++Fuente única: `src/data/internal-links.ts`. Claves `pilar/slug`; sin relaciones en frontmatter. `PILAR_NAMES` reexporta los nombres de B1, cuyo archivo propietario no cambia.
++
++| Familia | Identidad y validación | URL |
++|---|---|---|
++| Clínica | `data.slug`, nunca `entry.id` | `/clinica/{slug}/` |
++| Zona | `priorityZones[].slug`, sin aliases y con artefacto | `/zona/{zona}/` |
++| Provincia | mapa de la página actual y artefacto | `/provincia/{provincia}/` |
++| Artículo | `pilar/slug` publicado y artefacto | `/blog/{pilar}/{slug}/` |
++
++El piloto tiene tres clínicas (HEMS, Hospital Vet Medical Care, Gocha), dos zonas (San Pablo de Heredia, Guápiles) y dos provincias (Heredia, Limón). La relación cruzada a atención 24h por zona queda inactiva hasta que exista y esté publicado ese artículo. Sólo el piloto existe en la colección; los otros cuatro temas se crean en B4.
++
++`directoryLinks` filtra publicados. `relatedGuides` invierte las mismas listas de clínica/zona; no hay listas inversas manuales ni bloque inverso de provincia. `crossPillarLinks` exige extremos publicados y pilares distintos. Una lista vacía no produce markup. En clínica el bloque sigue al contenedor completo detalle/contacto; en zona sigue a la sección de filtros/mapa/listado.
++
++`node scripts/verification/blog.mjs` requiere build y preview local (`npm run preview`, `PLAYWRIGHT_BASE_URL` opcional). Inspecciona `dist/client` y `dist/server` por separado. Valida familia, identidad, URL completa, artefacto, catálogo e inversos; resuelve href internos y fragmentos y clasifica externos/tel/mailto aparte. La portada SSR se valida contra manifiesto generado y respuesta HTTP/canonical local. Extrae zonas/provincias de las fuentes actuales además de exigir artefactos.
++
++Los borradores no producen rutas, enlaces ni sitemap en `dist/client`. Las ocurrencias en `dist/server` se reportan separadamente; sólo el marcador preparatorio heredado está permitido por §4. Un borrador editorial distinto del marcador identificado en el bundle provoca fallo.
++
++Los unitarios cubren mutaciones de identidad, familia, publicación, URL y destino/inverso eliminado. El E2E activa contactos con Enter y navegación interceptada, registra ausencias y recorre Tab. La comparación local usa `B2_BASE_GEOMETRY=docs/blog/evidencia/b2/base-loaded-geometry.json`; `B2_PUBLISHED_FIXTURE=1` exige bloques activos en fixture aislada; `B2_EVIDENCE_DIR` guarda medidas y capturas. E2E ordinario exige ausencia en el candidato borrador.
++
++## Reproducción del verificador manual
++
++Después de `npm run build:no-shorten`, iniciar desde el mismo checkout:
++
++```sh
++npm run preview -- --host 127.0.0.1 --port 4321
++node scripts/verification/blog.mjs
++```
++
++El preview es una precondición para comprobar la portada SSR y sus fragmentos. El log de ejecución debe incluir la salida del comando de preview, además del SHA y de la salida del verificador. `PLAYWRIGHT_BASE_URL` permite indicar otro puerto; se registra el URL usado en la salida. Sin servidor, el control falla con `PREVIEW_UNAVAILABLE`, el comando que debe ejecutarse y la causa de conexión. No se emiten falsos errores de fragmento derivados de no haber recibido la portada. El resultado sigue siendo fallo; no se omite la compuerta SSR.
++
++Los nombres de las anclas se obtienen de `data.nombre` de clínicas, `priorityZones[].nombre` de zonas y `data.provincia` de las fichas, asociada mediante la normalización existente. Las identidades/URLs de provincia siguen contrastándose con la página que las genera. No se transforman slugs en texto visible. Un nombre ausente bloquea la relación activa. La fixture y el verificador contrastan las etiquetas renderizadas con esos nombres reales.
++
++El informe de `dist/server` normaliza sus rutas a `/`; el número de archivos se informa sin exigir un conteo específico de Windows o Linux.
+diff --git a/scripts/verification/blog.mjs b/scripts/verification/blog.mjs
+index c82b0ed..55431de 100644
+--- a/scripts/verification/blog.mjs
++++ b/scripts/verification/blog.mjs
+@@ -2,6 +2,8 @@
+ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
+ import { join, relative, resolve } from 'node:path';
+ 
++import { assertTypedLink, assertInverse, directoryLinks, directoryNames, relatedGuides, crossPillarLinks } from '../../src/lib/blog-links.ts';
++
+ const root = resolve(import.meta.dirname, '../..');
+ const client = join(root, 'dist/client');
+ const pilotPath = 'blog/guias-por-especie/urgencias-en-perros/index.html';
+@@ -29,18 +31,129 @@ for (const path of ['blog/index.html', 'blog/guias-por-especie/index.html', 'blo
+   if (file && !readFileSync(file, 'utf8').includes(`rel="canonical" href="${expectedCanonical}"`)) errors.push(`canonical incorrecto en ${path}`);
+ }
+ 
+-if (files.some((file) => relative(client, file).replaceAll('\\', '/') === pilotPath)) errors.push('el borrador generó HTML de artículo');
+-if (html.includes(pilotUrl)) errors.push('el borrador aparece como enlace o URL en HTML');
+-if (/"@type":"Article"/.test(html) && html.includes('urgencias-en-perros')) errors.push('el borrador aparece como JSON-LD Article');
+-if (sitemap.includes(pilotUrl)) errors.push('el borrador aparece en sitemap');
++const fixturePublished = /^estado: ["']?publicado/m.test(readFileSync(join(root, 'src/content/blog/urgencias-en-perros.md'), 'utf8'));
++if (!fixturePublished && files.some((file) => relative(client, file).replaceAll('\\', '/') === pilotPath)) errors.push('el borrador generó HTML de artículo');
++if (!fixturePublished && html.includes(pilotUrl)) errors.push('el borrador aparece como enlace o URL en HTML');
++if (!fixturePublished && /"@type":"Article"/.test(html) && html.includes('urgencias-en-perros')) errors.push('el borrador aparece como JSON-LD Article');
++if (!fixturePublished && sitemap.includes(pilotUrl)) errors.push('el borrador aparece en sitemap');
+ for (const expected of ['https://vet24cr.com/blog/', 'https://vet24cr.com/blog/guias-por-especie/', 'https://vet24cr.com/blog/costos-y-acceso/']) {
+   if (!sitemap.includes(`<loc>${expected}</loc>`)) errors.push(`sitemap no contiene ${expected}`);
+ }
+ 
++// Inspect the public assets and Worker bundle separately (plan §4).
++const serverFiles = walk(join(root, 'dist/server'));
++if (!serverFiles.length) errors.push('dist/server ausente');
++const serverOccurrences = serverFiles.filter(f => /\.(?:mjs|js|json)$/.test(f) && readFileSync(f,'utf8').includes('urgencias-en-perros')).map(f => relative(root,f).replaceAll('\\', '/')).sort();
++console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pilotOccurrences:serverOccurrences,policy:'Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4'}));
++console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePublished}));
++
++const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
++const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
++ const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title')}};
++});
++const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
++const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
++const provinces=[...readFileSync(join(root,'src/pages/provincia/[provincia].astro'),'utf8').split('return provincesMap')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
++const generatedPaths=new Set(htmlFiles.map(f=>'/'+relative(client,f).replaceAll('\\','/').replace(/index\.html$/,'')));
++const inventory={clinics,canonicalZones,generatedPaths,articles};
++const zones = [...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/nombre: "([^"]+)", slug: "([^"]+)"/g)].map(m => ({ nombre: m[1], slug: m[2] }));
++const names = directoryNames(clinics, zones);
++const readPage=path=>readFileSync(join(client,path,'index.html'),'utf8');
++const anchorPattern=/<a\b([^>]*)>([\s\S]*?)<\/a>/g;
++const attr=(attrs,name)=>attrs.match(new RegExp('(?:^|\\s)'+name+'="([^"]*)"'))?.[1];
++const blocks=content=>[...content.matchAll(/<section\b[^>]*data-blog-links[^>]*>[\s\S]*?<\/section>/g)].map(m=>m[0]).join('');
++const hrefs=content=>[...content.matchAll(anchorPattern)].map(m=>attr(m[1],'href')).filter(Boolean);
++const classifications={internal:0,external:0,protocol:0};
++// The home page is SSR. Verify its generated manifest and its local preview response.
++let homeHtml = null;
++const previewUrl = new URL('/', process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4321').href;
++const previewAddress = new URL(previewUrl);
++const previewCommand = `npm run preview -- --host ${previewAddress.hostname} --port ${previewAddress.port || (previewAddress.protocol === 'https:' ? '443' : '80')}`;
++console.log(JSON.stringify({ check: 'SSR preview prerequisite', url: previewUrl, command: previewCommand, override: 'PLAYWRIGHT_BASE_URL' }));
++const manifestSource = serverFiles.filter(f=>f.endsWith('.mjs')).map(f=>readFileSync(f,'utf8')).find(s=>s.includes('deserializeManifest({'));
++const manifestJson = manifestSource?.match(/deserializeManifest\((\{.*\})\);/);
++const homeRoute = manifestJson && JSON.parse(manifestJson[1]).routes.some(r=>r.routeData.route==='/' && !r.routeData.prerender);
++if (homeRoute) {
++  try {
++    const response = await fetch(previewUrl, { signal: AbortSignal.timeout(10000) });
++    const body = await response.text();
++    if (response.status !== 200 || !body.includes('rel="canonical" href="https://vet24cr.com/"')) {
++      errors.push('SSR /: HTTP/canonical inválido en preview ' + previewUrl);
++    } else homeHtml = body;
++  } catch (error) {
++    errors.push('PREVIEW_UNAVAILABLE: no se pudo verificar SSR / en ' + previewUrl
++      + '. Ejecutá "' + previewCommand + '" desde este checkout después del build, y repetí "node scripts/verification/blog.mjs".'
++      + ' Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: ' + error.message);
++  }
++} else errors.push('SSR / ausente del manifest generado en dist/server');
++function inspectLinks(content,source){
++ for(const match of content.matchAll(anchorPattern)) {
++  const href=attr(match[1],'href');if(!href)continue;
++  if(/^(tel:|mailto:)/.test(href)){classifications.protocol++;continue;}
++  const url=new URL(href,'https://vet24cr.com'+source);
++  if(url.origin!=='https://vet24cr.com'){classifications.external++;continue;}
++  classifications.internal++;
++  const destination=join(client,url.pathname,url.pathname.endsWith('/')?'index.html':'');
++  if(url.pathname!=='/'&&!existsSync(destination)){errors.push('Destino no generado: '+source+' → '+href);continue;}
++  // A missing SSR prerequisite already blocks the run; do not invent missing-fragment errors.
++  if (url.pathname === '/' && homeHtml === null) continue;
++  const targetHtml=url.pathname==='/'?homeHtml:readFileSync(destination,'utf8');
++  if (destination.endsWith('.html') || url.pathname === '/') {
++    const canonicalTag = targetHtml.match(/<link\b[^>]*rel="canonical"[^>]*>/)?.[0];
++    if (canonicalTag && attr(canonicalTag, 'href') !== url.origin + url.pathname) errors.push('Destino no canónico: ' + href);
++  }
++  if(url.hash && ![...targetHtml.matchAll(/id="([^"]+)"/g)].some(m=>m[1]===decodeURIComponent(url.hash.slice(1)))) errors.push('Fragmento ausente: '+href);
++  const route = url.pathname.match(/^\/(clinica|zona|provincia)\/([^/]+)\/$/)
++    ?? url.pathname.match(/^\/(blog)\/([^/]+\/[^/]+)\/$/);
++  const family=attr(match[1],'data-link-family') ?? (route?.[1] === 'blog' ? 'articulo' : route?.[1]);
++  if(family)try{
++   const identity=attr(match[1],'data-link-identity') ?? route?.[2];
++   if(family==='provincia'&&!provinces.includes(identity))throw new Error('Provincia no generada por página actual: '+identity);
++   const target={family,identity,href:url.pathname,label:''};
++   assertTypedLink(target,inventory);
++   if (attr(match[1],'data-link-family') && href !== url.pathname) throw new Error('URL tipada no canónica: '+href);
++   if (/^\/blog\/[^/]+\/[^/]+\/$/.test(source)) assertInverse(source,target,hrefs(blocks(targetHtml)));
++  }catch(e){errors.push(e.message);}
++ }
++}
++for(const f of htmlFiles){
++ const path='/'+relative(client,f).replaceAll('\\','/').replace(/index\.html$/,'');
++ const content=readFileSync(f,'utf8');
++ if(path.startsWith('/blog/'))inspectLinks(content,path);else if(blocks(content))inspectLinks(blocks(content),path);
++}
++for(const article of articles){
++ const source='/blog/'+article.data.pilar+'/'+article.data.slug+'/';
++ if(article.data.estado!=='publicado'){
++  const marker='Este artículo está en preparación editorial y no debe publicarse hasta completar investigación, auditoría independiente, política editorial y aprobación humana.';
++  if(article.body!==marker && serverFiles.some(f=>/\.(mjs|js|json)$/.test(f)&&readFileSync(f,'utf8').includes(article.data.slug)))errors.push('dist/server: borrador editorial serializado: '+source);
++  if(generatedPaths.has(source)||hrefs(html).some(h=>new URL(h,'https://vet24cr.com').pathname===source)||sitemap.includes(source))errors.push('Borrador público en dist/client: '+source);
++  continue;
++ }
++ if(!generatedPaths.has(source)){errors.push('Artículo publicado ausente: '+source);continue;}
++ const outgoing=hrefs(blocks(readPage(source)));
++ for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{
++  assertTypedLink(target,inventory);
++  if(target.family==='provincia'&&!provinces.includes(target.identity))throw new Error('Provincia inválida');
++  if(!outgoing.includes(target.href))throw new Error('Arista ausente: '+source+' → '+target.href);
++  const anchor = [...blocks(readPage(source)).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
++  const label = anchor?.[2].replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").trim();
++  if (label !== target.label) throw new Error('Ancla incorrecta: ' + target.href + '; esperado: ' + target.label + '; recibido: ' + label);
++  assertInverse(source,target,hrefs(blocks(readPage(target.href))));
++ }catch(e){errors.push(e.message);}
++}
++// Every inverse block must equal the relationships derived from the catalog.
++for(const f of htmlFiles){
++ const path='/'+relative(client,f).replaceAll('\\','/').replace(/index\.html$/,'');
++ const match=path.match(/^\/(clinica|zona)\/([^/]+)\/$/);if(!match)continue;
++ const actual=hrefs(blocks(readFileSync(f,'utf8'))).sort();
++ const expected=relatedGuides(match[1],match[2],articles).map(l=>l.href).sort();
++ if(JSON.stringify(actual)!==JSON.stringify(expected))errors.push('Bloque inverso divergente: '+path);
++}
++console.log(JSON.stringify({directory:'dist/client',classifications,articles:articles.length,published:articles.filter(a=>a.data.estado==='publicado').length}));
+ if (errors.length) {
+   console.error(`blog: ${errors.length} fallo(s)`);
+   for (const error of errors) console.error(`- ${error}`);
+   process.exitCode = 1;
+ } else {
+-  console.log(`blog: OK (${htmlFiles.length} HTML; borrador ausente de HTML, enlaces, Article y sitemap)`);
++  console.log(`blog: OK (${htmlFiles.length} HTML; dist/client: política de publicación y enlaces verificada)`);
+ }
+diff --git a/src/components/GuiasRelacionadas.astro b/src/components/GuiasRelacionadas.astro
+new file mode 100644
+index 0000000..0e1be0f
+--- /dev/null
++++ b/src/components/GuiasRelacionadas.astro
+@@ -0,0 +1,13 @@
++---
++import type { TypedLink } from '../lib/blog-links';
++interface Props { links: TypedLink[]; title?: string }
++const { links, title = 'Guías relacionadas' } = Astro.props;
++---
++{links.length > 0 && (
++  <section data-blog-links aria-label={title} class="mt-8 rounded-2xl border border-brand-card-border bg-brand-card-bg p-6">
++    <h2 class="text-xl font-bold text-brand-text mb-4">{title}</h2>
++    <ul class="space-y-3">
++      {links.map(link => <li><a data-link-family={link.family} data-link-identity={link.identity} href={link.href} class="text-brand-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4">{link.label}</a></li>)}
++    </ul>
++  </section>
++)}
+diff --git a/src/data/internal-links.ts b/src/data/internal-links.ts
+new file mode 100644
+index 0000000..1e2174d
+--- /dev/null
++++ b/src/data/internal-links.ts
+@@ -0,0 +1,22 @@
++import type { BlogPillar } from '../lib/blog.ts';
++// B1 conserva la propiedad de los nombres; reexportar evita una segunda copia.
++export { PILAR_NAMES } from '../lib/blog.ts';
++
++export type ArticleIdentity = `${BlogPillar}/${string}`;
++export type Relations = Partial<Record<ArticleIdentity, readonly string[]>>;
++
++export const ARTICULO_A_CLINICAS: Relations = {
++  'guias-por-especie/urgencias-en-perros': [
++    'hems-una-heredia', 'hospital-vet-medical-care-heredia', 'veterinaria-gocha-santo-domingo',
++  ],
++};
++export const ARTICULO_A_ZONAS: Relations = {
++  'guias-por-especie/urgencias-en-perros': ['san-pablo-heredia', 'guapiles'],
++};
++export const ARTICULO_A_PROVINCIAS: Relations = {
++  'guias-por-especie/urgencias-en-perros': ['heredia', 'limon'],
++};
++// Se activan cuando ambos artículos estén publicados. No crean contenido seed.
++export const CROSS_PILLAR_LINKS: Partial<Record<ArticleIdentity, readonly ArticleIdentity[]>> = {
++  'guias-por-especie/urgencias-en-perros': ['costos-y-acceso/atencion-veterinaria-24h-por-zona'],
++};
+diff --git a/src/lib/blog-links.ts b/src/lib/blog-links.ts
+new file mode 100644
+index 0000000..af49788
+--- /dev/null
++++ b/src/lib/blog-links.ts
+@@ -0,0 +1,72 @@
++import {
++  ARTICULO_A_CLINICAS, ARTICULO_A_ZONAS, ARTICULO_A_PROVINCIAS, CROSS_PILLAR_LINKS,
++  type ArticleIdentity,
++} from '../data/internal-links.ts';
++import { normalizeSlug } from './seo.ts';
++
++export type LinkFamily = 'clinica' | 'zona' | 'provincia' | 'articulo';
++export interface ArticleRecord { data: { pilar: string; slug: string; estado: string; title: string } }
++export interface TypedLink { family: LinkFamily; identity: string; href: string; label: string }
++export interface LinkInventory {
++  clinics: readonly { id: string; data: { slug: string } }[];
++  canonicalZones: readonly string[];
++  generatedPaths: ReadonlySet<string>;
++  articles: readonly ArticleRecord[];
++}
++
++export const articleIdentity = (entry: ArticleRecord): ArticleIdentity => `${entry.data.pilar}/${entry.data.slug}` as ArticleIdentity;
++export const linkPath = (family: LinkFamily, identity: string): string => `/${family === 'articulo' ? 'blog' : family}/${identity}/`;
++export function assertTypedLink(link: TypedLink, inventory: LinkInventory): void {
++  const { family, identity, href } = link;
++  let valid = false;
++  switch (family) {
++    case 'clinica': valid = inventory.clinics.some(c => c.data.slug === identity); break;
++    case 'zona': valid = inventory.canonicalZones.includes(identity); break;
++    case 'provincia': valid = inventory.generatedPaths.has(`/provincia/${identity}/`); break;
++    case 'articulo': valid = inventory.articles.some(a => a.data.estado === 'publicado' && articleIdentity(a) === identity); break;
++    default: throw new Error(`Familia inválida: ${family}`);
++  }
++  if (!valid || href !== linkPath(family, identity) || !inventory.generatedPaths.has(href)) {
++    throw new Error(`Destino inválido ${family}:${identity} (${href})`);
++  }
++}
++
++const catalogs = { clinica: ARTICULO_A_CLINICAS, zona: ARTICULO_A_ZONAS, provincia: ARTICULO_A_PROVINCIAS };
++export type DirectoryNames = Record<keyof typeof catalogs, ReadonlyMap<string, string>>;
++
++export function directoryNames(
++  clinics: readonly { data: { slug: string; nombre: string; provincia: string } }[],
++  zones: readonly { slug: string; nombre: string }[],
++): DirectoryNames {
++  return {
++    clinica: new Map(clinics.map(c => [c.data.slug, c.data.nombre])),
++    zona: new Map(zones.map(z => [z.slug, z.nombre])),
++    provincia: new Map(clinics.map(c => [normalizeSlug(c.data.provincia), c.data.provincia])),
++  };
++}
++
++export function directoryLinks(entry: ArticleRecord, names: DirectoryNames): TypedLink[] {
++  if (entry.data.estado !== 'publicado') return [];
++  return (Object.keys(catalogs) as (keyof typeof catalogs)[]).flatMap(family =>
++    (catalogs[family][articleIdentity(entry)] ?? []).map(identity => {
++      const label = names[family].get(identity);
++      if (!label?.trim()) throw new Error(`Nombre de destino ausente: ${family}:${identity}`);
++      return { family, identity, href: linkPath(family, identity), label };
++    }));
++}
++export function relatedGuides(family: 'clinica' | 'zona', identity: string, articles: readonly ArticleRecord[]): TypedLink[] {
++  return articles.filter(a => a.data.estado === 'publicado' && catalogs[family][articleIdentity(a)]?.includes(identity))
++    .map(a => ({ family: 'articulo', identity: articleIdentity(a), href: linkPath('articulo', articleIdentity(a)), label: a.data.title }));
++}
++export function crossPillarLinks(entry: ArticleRecord, articles: readonly ArticleRecord[]): TypedLink[] {
++  if (entry.data.estado !== 'publicado') return [];
++  const targets = CROSS_PILLAR_LINKS[articleIdentity(entry)] ?? [];
++  return articles.filter(a => a.data.estado === 'publicado' && a.data.pilar !== entry.data.pilar && targets.includes(articleIdentity(a)))
++    .map(a => ({ family: 'articulo', identity: articleIdentity(a), href: linkPath('articulo', articleIdentity(a)), label: a.data.title }));
++}
++
++export function assertInverse(source: string, target: TypedLink, inverseHrefs: readonly string[]): void {
++  if ((target.family === 'clinica' || target.family === 'zona') && !inverseHrefs.includes(source)) {
++    throw new Error(`Inverso ausente: ${target.href} → ${source}`);
++  }
++}
+diff --git a/src/pages/blog/[pilar]/[slug].astro b/src/pages/blog/[pilar]/[slug].astro
+index 8079fca..42c171a 100644
+--- a/src/pages/blog/[pilar]/[slug].astro
++++ b/src/pages/blog/[pilar]/[slug].astro
+@@ -1,5 +1,8 @@
+ ---
+-import { render, type CollectionEntry } from 'astro:content';
++import { getCollection, render, type CollectionEntry } from 'astro:content';
++import GuiasRelacionadas from '../../../components/GuiasRelacionadas.astro';
++import { directoryLinks, directoryNames, crossPillarLinks } from '../../../lib/blog-links';
++import { priorityZones } from '../../../lib/zones';
+ import BlogLayout from '../../../layouts/BlogLayout.astro';
+ import { getPublishedBlogEntries } from '../../../lib/blog';
+ export async function getStaticPaths() {
+@@ -7,5 +10,6 @@ export async function getStaticPaths() {
+ }
+ const { entry } = Astro.props as { entry: CollectionEntry<'blog'> };
+ const { Content } = await render(entry);
++const names = directoryNames(await getCollection('clinicas'), priorityZones);
+ ---
+-<BlogLayout entry={entry}><Content /></BlogLayout>
++<BlogLayout entry={entry}><Content /><GuiasRelacionadas title="Clínicas y zonas del directorio" links={directoryLinks(entry, names)} /><GuiasRelacionadas links={crossPillarLinks(entry, await getPublishedBlogEntries())} /></BlogLayout>
+diff --git a/src/pages/clinica/[slug].astro b/src/pages/clinica/[slug].astro
+index 1658bf3..2d9d612 100644
+--- a/src/pages/clinica/[slug].astro
++++ b/src/pages/clinica/[slug].astro
+@@ -1,5 +1,8 @@
+ ---
+ import { getCollection, render } from 'astro:content';
++import GuiasRelacionadas from '../../components/GuiasRelacionadas.astro';
++import { relatedGuides } from '../../lib/blog-links';
++import { getPublishedBlogEntries } from '../../lib/blog';
+ import BaseLayout from '../../layouts/BaseLayout.astro';
+ import BadgeHorario from '../../components/BadgeHorario.astro';
+ import linkzipCacheData from '../../linkzip-cache.json';
+@@ -927,6 +930,7 @@ const schemaFaq = {
+         </div>
+       </div>
+     </div>
++    <GuiasRelacionadas links={relatedGuides('clinica', clinica.data.slug, await getPublishedBlogEntries())} />
+   </div>
+ 
+   <!-- Report Modal -->
+diff --git a/src/pages/zona/[zona].astro b/src/pages/zona/[zona].astro
+index 13d3d64..06b7147 100644
+--- a/src/pages/zona/[zona].astro
++++ b/src/pages/zona/[zona].astro
+@@ -1,5 +1,8 @@
+ ---
+ import { getCollection } from 'astro:content';
++import GuiasRelacionadas from '../../components/GuiasRelacionadas.astro';
++import { relatedGuides } from '../../lib/blog-links';
++import { getPublishedBlogEntries } from '../../lib/blog';
+ import BaseLayout from '../../layouts/BaseLayout.astro';
+ import ClinicaCard from '../../components/ClinicaCard.astro';
+ import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
+@@ -194,4 +197,5 @@ const schemaFaq = {
+       </div>
+     )}
+   </section>
++  <GuiasRelacionadas links={relatedGuides('zona', selectedZone.slug, await getPublishedBlogEntries())} />
+ </BaseLayout>
+diff --git a/tests/e2e/blog-emergency-layout.spec.ts b/tests/e2e/blog-emergency-layout.spec.ts
+new file mode 100644
+index 0000000..6200dfe
+--- /dev/null
++++ b/tests/e2e/blog-emergency-layout.spec.ts
+@@ -0,0 +1,113 @@
++import { test, expect } from '../../playwright.config';
++import { readFileSync, writeFileSync } from 'node:fs';
++
++const paths = ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/'];
++const contacts = ['#btn-quick-call', '#btn-quick-wa', '#btn-call-sidebar-1', '#btn-call-sidebar-2', '#btn-wa-sidebar'];
++const selectors = ['[aria-labelledby="seo-quick-facts-title"]', '#clinic-schedule-text', '#warning-diurnal-alert', ...contacts, '#clinicas-grid', '#search-input', '#filter-quick-open', '#filter-quick-247', '#btn-use-location', '#animal-filters-container', '#filter-hotel', '#results-count'];
++for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia ${path} ${width}`, async ({ page }, testInfo) => {
++  await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
++  await page.clock.install({ time: new Date('2026-09-07T18:00:00Z') });
++  await page.route('**/*', route => {
++    const host = new URL(route.request().url()).hostname;
++    return ['localhost', '127.0.0.1', 'fonts.googleapis.com', 'fonts.gstatic.com'].includes(host) ? route.continue() : route.abort();
++  });
++  await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
++  await page.goto(path);
++  await page.evaluate(async () => {
++    await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
++    await document.fonts.ready;
++    scrollTo({ top: 0, left: 0, behavior: 'instant' });
++  });
++  const measurements = await page.evaluate(selectors => selectors.map(selector => {
++    const e = document.querySelector(selector);
++    if (!e) return { selector, present: false };
++    const r = e.getBoundingClientRect();
++    return { selector, present: true, text: e.textContent?.trim(), href: e.getAttribute('href'), rect: { x: r.x, y: r.y, width: r.width, height: r.height }, aboveFold: r.bottom > 0 && r.y < innerHeight, visible: !!e.getClientRects().length };
++  }), selectors);
++  if (process.env.B2_BASE_GEOMETRY) {
++    const base = JSON.parse(readFileSync(process.env.B2_BASE_GEOMETRY, 'utf8')).find((r: { path: string; width: number }) => r.path === path && r.width === width);
++    expect(base, 'referencia BASE obligatoria para esta ruta/viewport').toBeTruthy();
++    for (const actual of measurements) {
++      const previous = base.measurements.find((m: { selector: string }) => m.selector === actual.selector);
++      expect(actual.present, actual.selector).toBe(previous.present);
++      if (actual.present && actual.rect) {
++        expect(actual.text, actual.selector).toBe(previous.text);
++        expect(actual.href, actual.selector).toBe(previous.href);
++        expect(actual.visible, actual.selector).toBe(previous.visible);
++        if (previous.aboveFold) expect(actual.aboveFold, actual.selector).toBe(true);
++        for (const axis of ['x', 'y', 'width', 'height'] as const) expect(Math.abs(actual.rect[axis] - previous.rect[axis]), `${actual.selector}.${axis}`).toBeLessThanOrEqual(1);
++      }
++    }
++  }
++  const block = page.locator('[data-blog-links]');
++  const active = process.env.B2_PUBLISHED_FIXTURE === '1';
++  await expect(block).toHaveCount(active ? 1 : 0);
++  if (active) {
++    expect(await block.evaluate(el => {
++      const previous = el.previousElementSibling;
++      const complete = location.pathname.startsWith('/clinica/') ? previous?.contains(document.querySelector('#btn-call-sidebar-1')) : previous?.contains(document.querySelector('#clinicas-grid'));
++      return !!complete && el.getBoundingClientRect().top >= previous!.getBoundingClientRect().bottom;
++    })).toBe(true);
++  }
++  await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
++  expect(await page.evaluate(() => scrollY)).toBe(0);
++  const screenshot = testInfo.outputPath('emergency.png');
++  await page.screenshot({ path: screenshot, fullPage: true });
++  await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
++  if (process.env.B2_EVIDENCE_DIR) {
++    const name = path.split('/').filter(Boolean).join('-') + '-' + width;
++    await page.screenshot({ path: process.env.B2_EVIDENCE_DIR + '/' + name + '.png', fullPage: true });
++  }
++  // Prevent native external navigation before keyboard activation; no call or message is sent.
++  await page.evaluate(() => {
++    (window as any).__b2Destinations = [];
++    document.addEventListener('click', e => {
++      const a = (e.target as Element).closest('a');
++      if (a && /^(tel:|https:\/\/(wa.me|api.whatsapp.com))/.test(a.href)) {
++        e.preventDefault();
++        (window as any).__b2Destinations.push(a.getAttribute('href'));
++      }
++    }, true);
++  });
++  const keyboard = [];
++  for (const selector of contacts) {
++    const control = page.locator(selector);
++    if (!await control.count()) { keyboard.push({ selector, present: false }); continue; }
++    await control.focus();
++    await expect(control).toBeFocused();
++    const href = await control.getAttribute('href');
++    expect(href).toMatch(/^(tel:|https:\/\/(wa.me|api.whatsapp.com))/);
++    await page.keyboard.press('Enter');
++    expect(await page.evaluate(() => (window as any).__b2Destinations.at(-1))).toBe(href);
++    keyboard.push({ selector, present: true, href });
++  }
++  if (path.includes('hems-una')) {
++    await expect(page.locator('#btn-quick-wa, #btn-wa-sidebar')).toHaveCount(0);
++  }
++  // Actual Tab traversal, retaining relative order of the existing contact controls.
++  await page.evaluate(() => { (document.activeElement as HTMLElement)?.blur(); document.body.tabIndex = -1; document.body.focus(); });
++  const focusOrder: string[] = [];
++  for (let i = 0; i < 120; i++) {
++    await page.keyboard.press('Tab');
++    const id = await page.evaluate(() => document.activeElement?.id || '');
++    if (contacts.includes('#' + id) && !focusOrder.includes(id)) focusOrder.push(id);
++  }
++  expect(focusOrder).toEqual(keyboard.filter(k => k.present).map(k => k.selector.slice(1)));
++  if (path.startsWith('/zona/')) {
++    const search = page.locator('#search-input');
++    await search.fill('zzzz-b2-sin-resultados');
++    await expect(page.locator('#results-count')).toContainText('0');
++    await search.fill('');
++    const filter = page.locator('#filter-quick-247');
++    await filter.focus(); await page.keyboard.press('Enter');
++    await expect(filter).toHaveAttribute('aria-pressed', 'true');
++    await page.keyboard.press('Enter');
++    await expect(filter).toHaveAttribute('aria-pressed', 'false');
++  }
++  const record = { path, width, measurements, keyboard, focusOrder };
++  await testInfo.attach('geometry-keyboard', { body: JSON.stringify(record, null, 2), contentType: 'application/json' });
++  if (process.env.B2_EVIDENCE_DIR) {
++    const name = `${path.split('/').filter(Boolean).join('-')}-${width}`;
++    writeFileSync(`${process.env.B2_EVIDENCE_DIR}/${name}.json`, JSON.stringify(record, null, 2));
++  }
++});
+diff --git a/tests/e2e/blog.spec.ts b/tests/e2e/blog.spec.ts
+index 38f9f91..be6d9ae 100644
+--- a/tests/e2e/blog.spec.ts
++++ b/tests/e2e/blog.spec.ts
+@@ -31,3 +31,11 @@ test.describe('blog B1', () => {
+     }
+   });
+ });
++
++test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
++  for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
++    await page.goto(path);
++    await expect(page.locator('[data-blog-links]')).toHaveCount(0);
++    await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
++  }
++});
+diff --git a/tests/unit/blog-links.test.ts b/tests/unit/blog-links.test.ts
+new file mode 100644
+index 0000000..db6710a
+--- /dev/null
++++ b/tests/unit/blog-links.test.ts
+@@ -0,0 +1,70 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { assertTypedLink, assertInverse, directoryLinks, directoryNames, relatedGuides, crossPillarLinks, linkPath, type LinkInventory, type TypedLink } from '../../src/lib/blog-links.ts';
++
++const article = { data: { pilar: 'guias-por-especie', slug: 'urgencias-en-perros', estado: 'publicado', title: 'Fixture' } };
++const names = directoryNames([
++  { data: { slug: 'hems-una-heredia', nombre: 'HEMS', provincia: 'Heredia' } },
++  { data: { slug: 'hospital-vet-medical-care-heredia', nombre: 'Hospital Veterinario Medical Care', provincia: 'Heredia' } },
++  { data: { slug: 'veterinaria-gocha-santo-domingo', nombre: 'Veterinaria Gocha', provincia: 'Limón' } },
++], [{ slug: 'san-pablo-heredia', nombre: 'San Pablo de Heredia' }, { slug: 'guapiles', nombre: 'Guápiles' }]);
++const identity = 'guias-por-especie/urgencias-en-perros';
++const source = `/blog/${identity}/`;
++const inventory: LinkInventory = {
++  clinics: [{ id: 'filename-different', data: { slug: 'hems-una-heredia' } }],
++  canonicalZones: ['san-pablo-heredia'],
++  generatedPaths: new Set([source, '/clinica/hems-una-heredia/', '/zona/san-pablo-heredia/', '/provincia/heredia/']),
++  articles: [article],
++};
++const link = (family: TypedLink['family'], identity: string): TypedLink => ({ family, identity, href: linkPath(family, identity), label: identity });
++test('positivos: identidad, familia y URL completa de las cuatro familias', () => {
++  for (const target of [link('clinica','hems-una-heredia'),link('zona','san-pablo-heredia'),link('provincia','heredia'),link('articulo',identity)]) assert.doesNotThrow(()=>assertTypedLink(target,inventory));
++});
++const negatives: [string, TypedLink, LinkInventory][] = [
++  ['clínica inexistente',link('clinica','inexistente'),inventory],
++  ['entry.id no es data.slug',link('clinica','filename-different'),{...inventory,generatedPaths:new Set([...inventory.generatedPaths,'/clinica/filename-different/'])}],
++  ['alias de zona aunque tenga artefacto',link('zona','san-pablo-de-heredia'),{...inventory,generatedPaths:new Set([...inventory.generatedPaths,'/zona/san-pablo-de-heredia/'])}],
++  ['zona canónica no generada',link('zona','san-pablo-heredia'),{...inventory,generatedPaths:new Set([source])}],
++  ['provincia inexistente',link('provincia','inexistente'),inventory],
++  ['artículo inexistente',link('articulo','guias-por-especie/inexistente'),inventory],
++  ['artículo borrador aunque exista HTML',link('articulo',identity),{...inventory,articles:[{data:{...article.data,estado:'borrador'}}]}],
++  ['pilar incorrecto',link('articulo','costos-y-acceso/urgencias-en-perros'),inventory],
++  ['slug válido en familia equivocada',link('clinica','heredia'),inventory],
++  ['URL completa incorrecta',{...link('clinica','hems-una-heredia'),href:'/zona/hems-una-heredia/'},inventory],
++  ['destino eliminado',link('clinica','hems-una-heredia'),{...inventory,generatedPaths:new Set([source])}],
++];
++for(const [name,target,context] of negatives) test(`mutación rechazada: ${name}`,()=>{
++  assert.throws(()=>assertTypedLink(target,context),/Destino inválido/);
++});
++test('inverso ausente rompe; inverso derivado pasa',()=>{
++  const target=link('clinica','hems-una-heredia');
++  assert.throws(()=>assertInverse(source,target,[]),/Inverso ausente/);
++  assert.doesNotThrow(()=>assertInverse(source,target,relatedGuides('clinica',target.identity,[article]).map(l=>l.href)));
++});
++test('catálogo poblado: borrador no activa ninguno de los sentidos',()=>{
++  const draft={data:{...article.data,estado:'borrador'}};
++  assert.deepEqual(directoryLinks(draft, names),[]);
++  assert.deepEqual(relatedGuides('clinica','hems-una-heredia',[draft]),[]);
++  assert.deepEqual(relatedGuides('zona','guapiles',[draft]),[]);
++  assert.deepEqual(crossPillarLinks(draft,[article]),[]);
++});
++test('cada clínica y zona del piloto tiene inverso desde la misma fuente',()=>{
++  for(const target of directoryLinks(article, names)) {
++    if(target.family==='clinica'||target.family==='zona') assertInverse(source,target,relatedGuides(target.family,target.identity,[article]).map(l=>l.href));
++  }
++});
++test('cross pillar sólo activa destinos existentes publicados del otro pilar',()=>{
++  const other={data:{...article.data,pilar:'costos-y-acceso',slug:'atencion-veterinaria-24h-por-zona'}};
++  assert.equal(crossPillarLinks(article,[other]).length,1);
++  assert.deepEqual(crossPillarLinks(article,[{data:{...other.data,estado:'borrador'}}]),[]);
++  assert.deepEqual(crossPillarLinks(article,[]),[]);
++});
++
++test('anclas conservan nombres reales, mayúsculas y tildes de cada familia', () => {
++  assert.deepEqual(directoryLinks(article, names).map(l => l.label), ['HEMS', 'Hospital Veterinario Medical Care', 'Veterinaria Gocha', 'San Pablo de Heredia', 'Guápiles', 'Heredia', 'Limón']);
++});
++test('nombre ausente falla en vez de fabricar una etiqueta desde el slug', () => {
++  for (const family of ['clinica', 'zona', 'provincia'] as const) {
++    assert.throws(() => directoryLinks(article, { ...names, [family]: new Map() }), /Nombre de destino ausente/);
++  }
++});
+
+STDERR:
+
+EXIT_CODE=0

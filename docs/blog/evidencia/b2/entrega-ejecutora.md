@@ -50,3 +50,7 @@ Cada log o pareja command/stdout/stderr identifica comando, SHA y código. El pr
 - Los 11 skips E2E históricos siguen **no verificados**. No se añadieron skips.
 - No están disponibles `subscribe_pr_activity` ni `ScheduleWakeup`; no se simula seguimiento por eventos. El workflow sólo arranca con PR o push a main/stack/astro-7. Se prepara PR borrador para CI; el estado remoto se reporta separado y no sustituye auditoría independiente.
 - Esta es evidencia de ejecución propia, no el informe ni `blog-verificadora.log` de una verificadora independiente. B2 no queda cerrada por este documento.
+
+## Revisión posterior
+
+Los dos hallazgos de la coordinadora se atienden en [correccion-1/README.md](correccion-1/README.md), con nuevos logs y fixture. Esa entrega sustituye los resultados de etiquetas y reproducción del verificador de este informe inicial; conserva la evidencia anterior.

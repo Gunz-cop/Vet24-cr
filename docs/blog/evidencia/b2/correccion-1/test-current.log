@@ -1,0 +1,129 @@
+COMMAND=npm test
+SHA=9192a4b3694ca6c6a087100179fcc61cd42adfbb
+CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr
+PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4321
+PREVIEW_URL=http://127.0.0.1:4321
+STDOUT:
+
+> veterinarias-cr@0.0.1 test
+> npm run test:unit
+
+
+> veterinarias-cr@0.0.1 test:unit
+> node --test tests/unit/*.test.ts
+
+✔ proyecta límites conservadores y conserva texto/metadata (3.1449ms)
+✔ mantiene la restricción real del hotel exclusivo para gatos (1.3883ms)
+✔ ordena el catálogo por slug sin filtrar estado (24.0606ms)
+✔ robots.txt conserva rastreo y sitemap (1.5899ms)
+✔ robots.txt declara Content-Signal una sola vez dentro del bloque comodín (0.7145ms)
+✔ expone las cuatro relaciones exactas en HTML de descubrimiento (1.948ms)
+✔ mapea solo URLs HTML canónicas a mirrors Markdown (3.1158ms)
+✔ genera portada, provincias, zonas y fichas desde el catálogo (2.472ms)
+✔ conserva cuerpo, warnings, evidencia y límites de disponibilidad (0.7637ms)
+✔ run_worker_first cubre solo las familias HTML contractuales (4.4961ms)
+✔ negocia Markdown solo con preferencia explícita y q válida (1.0112ms)
+✔ añade Vary y no-store a HTML y Markdown sin borrar Vary existente (49.474ms)
+✔ HEAD sigue la representación seleccionada sin cuerpo (1.2162ms)
+✔ mirror ausente o fallido conserva la respuesta oficial y su status (1.5491ms)
+✔ POST ajeno no se negocia ni se consume (2.9796ms)
+✔ positivos: identidad, familia y URL completa de las cuatro familias (3.2558ms)
+✔ mutación rechazada: clínica inexistente (1.1979ms)
+✔ mutación rechazada: entry.id no es data.slug (0.3212ms)
+✔ mutación rechazada: alias de zona aunque tenga artefacto (0.3658ms)
+✔ mutación rechazada: zona canónica no generada (0.3448ms)
+✔ mutación rechazada: provincia inexistente (0.2839ms)
+✔ mutación rechazada: artículo inexistente (0.2811ms)
+✔ mutación rechazada: artículo borrador aunque exista HTML (0.2754ms)
+✔ mutación rechazada: pilar incorrecto (0.343ms)
+✔ mutación rechazada: slug válido en familia equivocada (0.5592ms)
+✔ mutación rechazada: URL completa incorrecta (0.3219ms)
+✔ mutación rechazada: destino eliminado (0.3105ms)
+✔ inverso ausente rompe; inverso derivado pasa (0.6843ms)
+✔ catálogo poblado: borrador no activa ninguno de los sentidos (2.0175ms)
+✔ cada clínica y zona del piloto tiene inverso desde la misma fuente (0.6378ms)
+✔ cross pillar sólo activa destinos existentes publicados del otro pilar (0.5649ms)
+✔ anclas conservan nombres reales, mayúsculas y tildes de cada familia (0.6523ms)
+✔ nombre ausente falla en vez de fabricar una etiqueta desde el slug (0.6112ms)
+▶ publicación de blog
+  ✔ rutas canónicas tienen barra final (1.6843ms)
+  ✔ solo estado publicado es público (0.3917ms)
+  ✔ el piloto versionado permanece borrador (1.2443ms)
+✔ publicación de blog (5.7376ms)
+▶ schema de blog
+  ✔ acepta borrador sin fecha y aplica borrador por defecto (4.6333ms)
+  ✔ publicado exige datePublished ISO (3.168ms)
+  ✔ strictObject rechaza campos desconocidos y límites inválidos (1.7595ms)
+✔ schema de blog (11.3528ms)
+▶ defensa del sitemap
+  ✔ lee el literal real y exige igualdad exacta (3.0211ms)
+  ✔ reproduce la tabla contractual de §2 (0.6444ms)
+  ✔ acepta piloto y rechaza rapi (1.2007ms)
+✔ defensa del sitemap (6.6103ms)
+▶ overnight_doctor_present
+  ✔ false no produce "Solo llamado" ni ausencia de médico (1.4508ms)
+  ✔ undefined (campo ausente) se trata igual que no confirmado (1.4083ms)
+  ✔ true sigue afirmando la presencia permanente (0.2672ms)
+✔ overnight_doctor_present (4.9111ms)
+▶ has_hospitalization
+  ✔ false no produce "No disponible" (0.3163ms)
+  ✔ true sigue mostrando el servicio como disponible (0.198ms)
+✔ has_hospitalization (0.7804ms)
+▶ emergencias24h
+  ✔ false no se presenta como ausencia confirmada del servicio (0.5144ms)
+  ✔ el copy de "no confirmado" es idéntico en todas las vistas (0.333ms)
+  ✔ true conserva cada copy positivo de su vista (0.3829ms)
+✔ emergencias24h (1.6656ms)
+▶ hotelMascotas
+  ✔ false se mantiene neutral y no infiere que no ofrecen hotel (0.4417ms)
+  ✔ true + hotelVerificacion respeta el estado explícito ya existente (0.408ms)
+✔ hotelMascotas (1.1023ms)
+▶ capabilityStatus (regla general)
+  ✔ cualquier booleano ambiguo en false cae en "No confirmado" (0.255ms)
+  ✔ solo true sostiene la afirmación positiva (0.1668ms)
+✔ capabilityStatus (regla general) (0.5871ms)
+▶ badges de verificación
+  ✔ una ficha sin fuente/fecha/verificaciones no afirma auditoría por llamada (1.0516ms)
+  ✔ record_status VERIFIED por sí solo ya no muestra "Guardia Auditada" (0.2178ms)
+  ✔ ningún record_status muestra un sello de confiabilidad (0.2265ms)
+  ✔ REVIEW_REQUIRED conserva la advertencia (0.346ms)
+  ✔ sin metadatos la ficha se marca como revisión sin documentar (0.1265ms)
+  ✔ con fecha + fuente + verificación puntual sí se reconoce la revisión (0.1189ms)
+  ✔ fecha + fuente sin ninguna verificación puntual no basta (0.1215ms)
+  ✔ una fuente en blanco no se rellena con "Llamada directa" (0.215ms)
+  ✔ sin fecha se avisa explícitamente en lugar de inventar una auditoría (0.1353ms)
+  ✔ con evidencia se muestra fecha y fuente reales (0.1297ms)
+  ✔ espacios en blanco no cuentan como evidencia (0.1469ms)
+✔ badges de verificación (3.2574ms)
+▶ buildClinicMetaDescription — sin datos operativos volátiles
+  ✔ el dataset completo genera metadata sin horarios ni disponibilidad (55.9169ms)
+  ✔ las descripciones no son una plantilla intercambiable entre fichas (35.8064ms)
+  ✔ nunca se construye a partir de horarioTexto (0.3506ms)
+  ✔ copy operativo en copyDiferenciador no llega a la metadata (0.3145ms)
+  ✔ la ausencia de datos no se convierte en afirmación negativa (0.3948ms)
+  ✔ findVolatileMetadata detecta el copy prohibido (0.391ms)
+✔ buildClinicMetaDescription — sin datos operativos volátiles (95.3459ms)
+▶ regresión — Hospital Veterinario Medical Care
+  ✔ no contiene el snippet viejo ni disponibilidad operativa (0.296ms)
+  ✔ sigue siendo específica de Medical Care (0.2998ms)
+✔ regresión — Hospital Veterinario Medical Care (0.8895ms)
+▶ buildClinicEntityDescription — JSON-LD de la entidad
+  ✔ describe la clínica sin el CTA de Vet24 y sin datos volátiles (34.3952ms)
+  ✔ Medical Care queda descrito por sus servicios estables (0.7912ms)
+✔ buildClinicEntityDescription — JSON-LD de la entidad (35.424ms)
+▶ structured data de la ficha
+  ✔ la FAQ estructurada no repite el horario declarado (0.3032ms)
+  ✔ openingHoursSpecification sigue presente como dato factual (0.1504ms)
+✔ structured data de la ficha (0.5818ms)
+ℹ tests 77
+ℹ suites 13
+ℹ pass 77
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 740.9985
+
+STDERR:
+
+EXIT_CODE=0

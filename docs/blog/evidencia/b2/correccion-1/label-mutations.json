@@ -1,0 +1,29 @@
+[
+  {
+    "family": "clinica",
+    "label": "HEMS",
+    "mutation": "hems una heredia",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist/server/chunks/_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":283,\"fixturePublished\":true}\n{\"check\":\"SSR preview prerequisite\",\"url\":\"http://127.0.0.1:4322/\",\"command\":\"npm run preview -- --host 127.0.0.1 --port 4322\",\"override\":\"PLAYWRIGHT_BASE_URL\"}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":63,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 1 fallo(s)\n- Ancla incorrecta: /clinica/hems-una-heredia/; esperado: HEMS; recibido: hems una heredia\n"
+  },
+  {
+    "family": "zona",
+    "label": "San Pablo de Heredia",
+    "mutation": "san pablo heredia",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist/server/chunks/_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":283,\"fixturePublished\":true}\n{\"check\":\"SSR preview prerequisite\",\"url\":\"http://127.0.0.1:4322/\",\"command\":\"npm run preview -- --host 127.0.0.1 --port 4322\",\"override\":\"PLAYWRIGHT_BASE_URL\"}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":63,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 1 fallo(s)\n- Ancla incorrecta: /zona/san-pablo-heredia/; esperado: San Pablo de Heredia; recibido: san pablo heredia\n"
+  },
+  {
+    "family": "provincia",
+    "label": "Limón",
+    "mutation": "limon",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist/server/chunks/_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":283,\"fixturePublished\":true}\n{\"check\":\"SSR preview prerequisite\",\"url\":\"http://127.0.0.1:4322/\",\"command\":\"npm run preview -- --host 127.0.0.1 --port 4322\",\"override\":\"PLAYWRIGHT_BASE_URL\"}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":63,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 1 fallo(s)\n- Ancla incorrecta: /provincia/limon/; esperado: Limón; recibido: limon\n"
+  }
+]

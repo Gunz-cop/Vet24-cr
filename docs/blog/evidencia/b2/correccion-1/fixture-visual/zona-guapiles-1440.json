@@ -1,0 +1,173 @@
+{
+  "path": "/zona/guapiles/",
+  "width": 1440,
+  "measurements": [
+    {
+      "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+      "present": false
+    },
+    {
+      "selector": "#clinic-schedule-text",
+      "present": false
+    },
+    {
+      "selector": "#warning-diurnal-alert",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-call",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    },
+    {
+      "selector": "#clinicas-grid",
+      "present": true,
+      "text": "Abierto ahoraAsistencia Veterinaria S.A.Asistencia Veterinaria S.A.Guápiles, LimónGuápiles Centro, LimónL-S 8am-6pmConsulta veterinaria, cirugías programadas y farmacia veterinaria en el cantón de Pococí.Llamar🚗 WazeVer detallesCompartirAbierto ahoraAtlantic VetAtlantic VetGuápiles, LimónGuápiles Centro, Pococí, LimónL-S 8am-6pmAtención médica integral, farmacia y venta de alimento para pequeñas especies en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Dr. CárdenasClinica Veterinaria Dr. CardenasGuápiles, LimónCalle 8, Guápiles CentroL-S 8am-7pmAtención veterinaria dedicada y cirugías generales en calle 8, Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Pet Shop TauroClinica Veterinaria Pet Shop TauroGuápiles, Limón200 m oeste del cementerio de GuápilesL-S 8am-6pmConsulta veterinaria general, vacunas y amplia tienda de accesorios en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraColono Agropecuario GuápilesColono Agropecuario GuapilesGuápiles, LimónA un costado de Colono Construcción, GuápilesL-S 8am-6pmConsultorio veterinario, farmacia completa y alimentos para mascotas y ganado en Guápiles.Llamar🚗 WazeVer detallesCompartirAbierto ahoraClínica Veterinaria MuriClinica Veterinaria MuriGuápiles, Limón75 metros norte del Banco Popular, GuápilesL-S 9am-6pmClínica veterinaria en Guápiles centro, cerca del Banco Popular, con WhatsApp publicado para citas y consultas.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+      "href": null,
+      "rect": {
+        "x": 112,
+        "y": 1394.578125,
+        "width": 1216,
+        "height": 769.5
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#search-input",
+      "present": true,
+      "text": "",
+      "href": null,
+      "rect": {
+        "x": 130,
+        "y": 555.390625,
+        "width": 1180,
+        "height": 44
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-quick-open",
+      "present": true,
+      "text": "Abierto ahora",
+      "href": null,
+      "rect": {
+        "x": 129,
+        "y": 612.390625,
+        "width": 130.609375,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-quick-247",
+      "present": true,
+      "text": "Emergencias 24/7",
+      "href": null,
+      "rect": {
+        "x": 267.609375,
+        "y": 612.390625,
+        "width": 158.71875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-use-location",
+      "present": true,
+      "text": "Cerca de mí",
+      "href": null,
+      "rect": {
+        "x": 434.328125,
+        "y": 612.390625,
+        "width": 125.171875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#animal-filters-container",
+      "present": true,
+      "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+      "href": null,
+      "rect": {
+        "x": 584.5,
+        "y": 612.390625,
+        "width": 532.875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-hotel",
+      "present": true,
+      "text": "🏨 Hotel para mascotas",
+      "href": null,
+      "rect": {
+        "x": 1125.375,
+        "y": 612.390625,
+        "width": 179.828125,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#results-count",
+      "present": true,
+      "text": "6 de 6",
+      "href": null,
+      "rect": {
+        "x": 204.09375,
+        "y": 664.484375,
+        "width": 39.828125,
+        "height": 18
+      },
+      "aboveFold": true,
+      "visible": true
+    }
+  ],
+  "keyboard": [
+    {
+      "selector": "#btn-quick-call",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    }
+  ],
+  "focusOrder": []
+}

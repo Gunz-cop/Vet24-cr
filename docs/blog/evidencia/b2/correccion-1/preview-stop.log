@@ -1,0 +1,11 @@
+COMMAND=npx astro preview stop
+SHA=ece6fbe06b151f6940c96528a05cdaebc17b59df
+CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr
+PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4321
+PREVIEW_URL=http://127.0.0.1:4321
+STDOUT:
+{"message":"Stopped preview server (pid 33356).","label":"SKIP_FORMAT","level":"info"}
+
+STDERR:
+
+EXIT_CODE=0

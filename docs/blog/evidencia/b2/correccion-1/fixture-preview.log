@@ -1,0 +1,15 @@
+COMMAND=npm run preview -- --host 127.0.0.1 --port 4322
+SHA=ece6fbe06b151f6940c96528a05cdaebc17b59df
+CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\vete-b2-fixture
+PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4322
+PREVIEW_URL=http://127.0.0.1:4322
+STDOUT:
+
+> veterinarias-cr@0.0.1 preview
+> astro preview --host 127.0.0.1 --port 4322
+
+{"message":"Preview server running at http://127.0.0.1:4322 (pid 4696)\n  Stop:   astro preview stop\n  Status: astro preview status\n  Logs:   astro preview logs","label":"SKIP_FORMAT","level":"info"}
+
+STDERR:
+
+EXIT_CODE=0
