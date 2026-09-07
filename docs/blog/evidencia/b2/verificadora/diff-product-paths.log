@@ -1,0 +1,11 @@
+docs/seo/enlazado-interno.md
+scripts/verification/blog.mjs
+src/components/GuiasRelacionadas.astro
+src/data/internal-links.ts
+src/lib/blog-links.ts
+src/pages/blog/[pilar]/[slug].astro
+src/pages/clinica/[slug].astro
+src/pages/zona/[zona].astro
+tests/e2e/blog-emergency-layout.spec.ts
+tests/e2e/blog.spec.ts
+tests/unit/blog-links.test.ts

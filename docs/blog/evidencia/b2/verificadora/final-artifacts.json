@@ -1,0 +1,18 @@
+{
+  "candidate": "d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1",
+  "fixture": "removed",
+  "directories": [
+    {
+      "directory": "dist/client",
+      "files": 0,
+      "matches": []
+    },
+    {
+      "directory": "dist/server",
+      "files": 1,
+      "matches": [
+        "dist/server\\chunks\\_astro_data-layer-content_B8HoNDU5.mjs"
+      ]
+    }
+  ]
+}

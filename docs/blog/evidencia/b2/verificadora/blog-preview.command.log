@@ -1,0 +1,4 @@
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+COMMAND node scripts/verification/blog.mjs
+PLAYWRIGHT_BASE_URL http://127.0.0.1:4321
+EXIT_CODE 0

@@ -1,0 +1,22 @@
+
+Running 10 tests using 2 workers
+
+
+
+
+
+
+
+
+
+[1A[2K[1/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[2/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[3/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[4/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K[5/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[6/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K[7/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K[8/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+[1A[2K[9/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+[1A[2K[10/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+[1A[2K  10 passed (20.4s)

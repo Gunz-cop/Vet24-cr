@@ -1,0 +1,58 @@
+[
+  {
+    "family": "clinica",
+    "identity": "hems-una-heredia",
+    "sourceFile": "src/content/clinicas\\hems-una-heredia.md",
+    "expected": "HEMS",
+    "rendered": "HEMS",
+    "matches": true
+  },
+  {
+    "family": "clinica",
+    "identity": "hospital-vet-medical-care-heredia",
+    "sourceFile": "src/content/clinicas\\hospital-vet-medical-care-heredia.md",
+    "expected": "Hospital Veterinario Medical Care",
+    "rendered": "Hospital Veterinario Medical Care",
+    "matches": true
+  },
+  {
+    "family": "clinica",
+    "identity": "veterinaria-gocha-santo-domingo",
+    "sourceFile": "src/content/clinicas\\veterinaria-gocha-santo-domingo.md",
+    "expected": "Veterinaria Gocha",
+    "rendered": "Veterinaria Gocha",
+    "matches": true
+  },
+  {
+    "family": "zona",
+    "identity": "san-pablo-heredia",
+    "sourceFile": "src/lib/zones.ts",
+    "expected": "San Pablo de Heredia",
+    "rendered": "San Pablo de Heredia",
+    "matches": true
+  },
+  {
+    "family": "zona",
+    "identity": "guapiles",
+    "sourceFile": "src/lib/zones.ts",
+    "expected": "Guápiles",
+    "rendered": "Guápiles",
+    "matches": true
+  },
+  {
+    "family": "provincia",
+    "identity": "heredia",
+    "sourceFile": "C:\\Users\\grcx1\\OneDrive\\Documentos\\Proyectos\\vete\\veterinarias-cr\\src\\pages\\provincia\\[provincia].astro",
+    "expected": "Heredia",
+    "rendered": "Heredia",
+    "matches": true
+  },
+  {
+    "family": "provincia",
+    "identity": "limon",
+    "sourceFile": "C:\\Users\\grcx1\\OneDrive\\Documentos\\Proyectos\\vete\\veterinarias-cr\\src\\pages\\provincia\\[provincia].astro",
+    "expected": "Limón",
+    "rendered": "Limón",
+    "matches": true
+  }
+]

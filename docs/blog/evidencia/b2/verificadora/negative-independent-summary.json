@@ -1,0 +1,74 @@
+[
+  {
+    "case": "clínica inexistente",
+    "id": "missingClinic",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "entry.id en vez de data.slug",
+    "id": "entryId",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "alias de zona no canónico",
+    "id": "zoneAlias",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "zona canónica no generada",
+    "id": "zoneNotGenerated",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "provincia inexistente",
+    "id": "missingProvince",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "artículo inexistente",
+    "id": "missingArticle",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "artículo borrador",
+    "id": "draftArticle",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "pilar incorrecto",
+    "id": "wrongPillar",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "slug válido en familia equivocada",
+    "id": "wrongFamily",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "URL completa incorrecta",
+    "id": "wrongUrl",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "destino eliminado",
+    "id": "deletedDestination",
+    "exitCode": 1,
+    "expected": "rejection"
+  },
+  {
+    "case": "inverso ausente",
+    "id": "missingInverse",
+    "exitCode": 1,
+    "expected": "rejection"
+  }
+]

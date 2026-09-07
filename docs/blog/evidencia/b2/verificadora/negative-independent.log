@@ -1,0 +1,64 @@
+candidate=d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+command=node --input-type=module-typescript -e <inline mutation fixture>
+All cases are expected to reject and returned exit code 1.
+
+CASE clínica inexistente [missingClinic] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido clinica:inexistente (/clinica/inexistente/)
+---
+CASE entry.id en vez de data.slug [entryId] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido clinica:filename-different (/clinica/filename-different/)
+---
+CASE alias de zona no canónico [zoneAlias] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido zona:san-pablo-de-heredia (/zona/san-pablo-de-heredia/)
+---
+CASE zona canónica no generada [zoneNotGenerated] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido zona:san-pablo-heredia (/zona/san-pablo-heredia/)
+---
+CASE provincia inexistente [missingProvince] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido provincia:inexistente (/provincia/inexistente/)
+---
+CASE artículo inexistente [missingArticle] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido articulo:guias-por-especie/inexistente (/blog/guias-por-especie/inexistente/)
+---
+CASE artículo borrador [draftArticle] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido articulo:guias-por-especie/urgencias-en-perros (/blog/guias-por-especie/urgencias-en-perros/)
+---
+CASE pilar incorrecto [wrongPillar] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido articulo:costos-y-acceso/urgencias-en-perros (/blog/costos-y-acceso/urgencias-en-perros/)
+---
+CASE slug válido en familia equivocada [wrongFamily] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido clinica:heredia (/clinica/heredia/)
+---
+CASE URL completa incorrecta [wrongUrl] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido clinica:hems-una-heredia (/zona/hems-una-heredia/)
+---
+CASE destino eliminado [deletedDestination] EXIT_CODE=1
+STDOUT:
+STDERR:
+Destino inválido clinica:hems-una-heredia (/clinica/hems-una-heredia/)
+---
+CASE inverso ausente [missingInverse] EXIT_CODE=1
+STDOUT:
+STDERR:
+Inverso ausente: /clinica/hems-una-heredia/ → /blog/guias-por-especie/urgencias-en-perros/
+---
