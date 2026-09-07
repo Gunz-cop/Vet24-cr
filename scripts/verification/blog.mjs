@@ -67,7 +67,8 @@ const classifications={internal:0,external:0,protocol:0};
 // The home page is SSR. Verify its generated manifest and its local preview response.
 let homeHtml = null;
 const previewUrl = new URL('/', process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4321').href;
-const previewCommand = 'npm run preview -- --host 127.0.0.1 --port 4321';
+const previewAddress = new URL(previewUrl);
+const previewCommand = `npm run preview -- --host ${previewAddress.hostname} --port ${previewAddress.port || (previewAddress.protocol === 'https:' ? '443' : '80')}`;
 console.log(JSON.stringify({ check: 'SSR preview prerequisite', url: previewUrl, command: previewCommand, override: 'PLAYWRIGHT_BASE_URL' }));
 const manifestSource = serverFiles.filter(f=>f.endsWith('.mjs')).map(f=>readFileSync(f,'utf8')).find(s=>s.includes('deserializeManifest({'));
 const manifestJson = manifestSource?.match(/deserializeManifest\((\{.*\})\);/);
