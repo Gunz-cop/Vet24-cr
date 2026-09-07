@@ -1,0 +1,112 @@
+{
+  "base": "b9d7db74d85f99ab580c7bc0d03dd51c13744f71",
+  "candidate": "d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1",
+  "clinics": {
+    "base": 112,
+    "candidate": 112,
+    "identical": true
+  },
+  "provinces": {
+    "base": 7,
+    "candidate": 7,
+    "identical": true,
+    "baseSlugs": [
+      "san-jose",
+      "heredia",
+      "alajuela",
+      "cartago",
+      "guanacaste",
+      "puntarenas",
+      "limon"
+    ],
+    "candidateSlugs": [
+      "san-jose",
+      "heredia",
+      "alajuela",
+      "cartago",
+      "guanacaste",
+      "puntarenas",
+      "limon"
+    ]
+  },
+  "zones": {
+    "base": 7,
+    "candidate": 7,
+    "identical": true,
+    "baseSlugs": [
+      "guapiles",
+      "san-pablo-heredia",
+      "grecia",
+      "nicoya",
+      "san-ramon",
+      "curridabat",
+      "siquirres"
+    ],
+    "candidateSlugs": [
+      "guapiles",
+      "san-pablo-heredia",
+      "grecia",
+      "nicoya",
+      "san-ramon",
+      "curridabat",
+      "siquirres"
+    ]
+  },
+  "blogRoutes": {
+    "base": [
+      "src/pages/blog/[pilar]/[slug].astro",
+      "src/pages/blog/[pilar]/index.astro",
+      "src/pages/blog/index.astro"
+    ],
+    "candidate": [
+      "src/pages/blog/[pilar]/[slug].astro",
+      "src/pages/blog/[pilar]/index.astro",
+      "src/pages/blog/index.astro"
+    ],
+    "identical": true
+  },
+  "catalogMirrorsSourceHashes": [
+    {
+      "path": "src/pages/api/catalog.json.ts",
+      "baseBlob": "cf42c867aeb9fcfe2d1e67e5af0768a75061bab9",
+      "candidateBlob": "cf42c867aeb9fcfe2d1e67e5af0768a75061bab9",
+      "identical": true
+    },
+    {
+      "path": "src/pages/api/openapi.json.ts",
+      "baseBlob": "b91f756017207a99a3463ed96ec70f0ca1bd93ff",
+      "candidateBlob": "b91f756017207a99a3463ed96ec70f0ca1bd93ff",
+      "identical": true
+    },
+    {
+      "path": "src/pages/llms.txt.ts",
+      "baseBlob": "49e747ab2d12e65ccbb207d246b85976575aeff1",
+      "candidateBlob": "49e747ab2d12e65ccbb207d246b85976575aeff1",
+      "identical": true
+    },
+    {
+      "path": "src/lib/agent-markdown.ts",
+      "baseBlob": "f58f47f7f0012689cf5f3d88321a080cb6799ba8",
+      "candidateBlob": "f58f47f7f0012689cf5f3d88321a080cb6799ba8",
+      "identical": true
+    },
+    {
+      "path": "src/lib/agent-http.ts",
+      "baseBlob": "1576b87ba225e1342cfb7139eb58afdde4e7e999",
+      "candidateBlob": "1576b87ba225e1342cfb7139eb58afdde4e7e999",
+      "identical": true
+    },
+    {
+      "path": "src/lib/agent-discovery.ts",
+      "baseBlob": "257f39d1c248c5813c5abbb6b1b92a40636ab671",
+      "candidateBlob": "257f39d1c248c5813c5abbb6b1b92a40636ab671",
+      "identical": true
+    },
+    {
+      "path": "src/lib/agent-content.ts",
+      "baseBlob": "1f005e637e08f9c3621d7e9bc0ab1edbdba87dc0",
+      "candidateBlob": "1f005e637e08f9c3621d7e9bc0ab1edbdba87dc0",
+      "identical": true
+    }
+  ]
+}

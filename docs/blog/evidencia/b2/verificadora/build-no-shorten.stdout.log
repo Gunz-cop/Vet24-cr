@@ -1,0 +1,15 @@
+
+> veterinarias-cr@0.0.1 build:no-shorten
+> astro build
+
+14:11:21 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+14:11:21 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+14:11:22 [content] Syncing content
+14:11:22 [content] Synced content
+14:11:22 [types] Generated 694ms
+14:11:22 [build] output: "static"
+14:11:22 [build] mode: "server"
+14:11:22 [build] directory: C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\
+14:11:22 [build] adapter: @astrojs/cloudflare
+14:11:22 [build] Collecting build info...
+14:11:22 [build] ✓ Completed in 781ms.

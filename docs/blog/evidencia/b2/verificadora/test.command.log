@@ -1,0 +1,3 @@
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+COMMAND npm test
+EXIT_CODE 0

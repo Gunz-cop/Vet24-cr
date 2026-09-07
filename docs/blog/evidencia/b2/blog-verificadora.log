@@ -1,0 +1,80 @@
+CANDIDATE SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+BASE b9d7db74d85f99ab580c7bc0d03dd51c13744f71
+
+
+===== SIN PREVIEW / candidato limpio =====
+COMMAND RECORD
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+FIXTURE removed
+COMMAND node scripts/verification/blog.mjs
+NO_PREVIEW=true
+EXPECTED_EXIT_CODE 1 (SSR prerequisite)
+EXIT_CODE 1
+
+STDOUT
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_B8HoNDU5.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":282,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":37,"external":0,"protocol":0},"articles":1,"published":0}
+
+STDERR
+blog: 1 fallo(s)
+- PREVIEW_UNAVAILABLE: no se pudo verificar SSR / en http://127.0.0.1:4321/. Ejecutá "npm run preview -- --host 127.0.0.1 --port 4321" desde este checkout después del build, y repetí "node scripts/verification/blog.mjs". Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: fetch failed
+
+
+===== CON PREVIEW / candidato limpio =====
+COMMAND RECORD
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+FIXTURE removed
+COMMAND node scripts/verification/blog.mjs
+PLAYWRIGHT_BASE_URL http://127.0.0.1:4321
+PREVIEW_RUNNING=true
+EXIT_CODE 0
+
+STDOUT
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_B8HoNDU5.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":282,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":37,"external":0,"protocol":0},"articles":1,"published":0}
+blog: OK (133 HTML; dist/client: política de publicación y enlaces verificada)
+
+STDERR
+(vacío)
+
+===== CON PREVIEW / fixture publicada =====
+COMMAND RECORD
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+FIXTURE published
+COMMAND node scripts/verification/blog.mjs
+PLAYWRIGHT_BASE_URL http://127.0.0.1:4321
+EXIT_CODE 0
+
+STDOUT
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_C9_wbHnm.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":283,"fixturePublished":true}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":63,"external":0,"protocol":0},"articles":1,"published":1}
+blog: OK (134 HTML; dist/client: política de publicación y enlaces verificada)
+
+STDERR
+(vacío)
+
+===== MUTACIÓN DE ETIQUETA / fixture publicada =====
+COMMAND RECORD
+SHA d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1
+FIXTURE published
+MUTATION generated dist/client article label HEMS -> HEMS MUTADO
+COMMAND node scripts/verification/blog.mjs
+PLAYWRIGHT_BASE_URL http://127.0.0.1:4321
+EXPECTED_FAIL true
+EXIT_CODE 1
+
+STDOUT
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_C9_wbHnm.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":283,"fixturePublished":true}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":63,"external":0,"protocol":0},"articles":1,"published":1}
+
+STDERR
+blog: 1 fallo(s)
+- Ancla incorrecta: /clinica/hems-una-heredia/; esperado: HEMS; recibido: HEMS MUTADO

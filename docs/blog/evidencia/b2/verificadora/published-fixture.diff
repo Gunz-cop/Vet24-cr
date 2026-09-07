@@ -1,0 +1,14 @@
+diff --git a/src/content/blog/urgencias-en-perros.md b/src/content/blog/urgencias-en-perros.md
+index 09477ec..e0b18c1 100644
+--- a/src/content/blog/urgencias-en-perros.md
++++ b/src/content/blog/urgencias-en-perros.md
+@@ -4,7 +4,8 @@ seoTitle: "Urgencias en perros: señales y atención"
+ metaDescription: "Guía en preparación sobre señales de urgencia en perros y cómo buscar atención veterinaria en Costa Rica."
+ pilar: "guias-por-especie"
+ slug: "urgencias-en-perros"
+-estado: "borrador"
++estado: "publicado"
++datePublished: "2026-09-07"
+ autor: "Equipo editorial Vet24 Costa Rica"
+ ---
+ 

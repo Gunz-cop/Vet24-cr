@@ -1,0 +1,5 @@
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_B8HoNDU5.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":282,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":37,"external":0,"protocol":0},"articles":1,"published":0}
+blog: OK (133 HTML; dist/client: política de publicación y enlaces verificada)

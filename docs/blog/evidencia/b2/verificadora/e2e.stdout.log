@@ -1,0 +1,9 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test --workers=2 --reporter=line
+
+
+
+Error: Process from config.webServer exited early.
+
+[1A[2K
