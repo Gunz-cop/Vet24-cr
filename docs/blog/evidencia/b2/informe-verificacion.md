@@ -2,7 +2,7 @@
 
 Fecha: 2026-09-07  
 Rama de evidencia: `codex/blog-b2-verificacion-independiente`  
-SHA de evidencia: `66645e1` (se actualizará tras el amend final si cambia)  
+SHA de evidencia: el SHA exacto de `HEAD` queda reportado en el cierre de esta sesión; la evidencia está en esta rama y en este commit.  
 Candidato auditado: `d1ce4c1cbfb18dbdfd5b327b06b11c3c821118c1`  
 BASE: `b9d7db74d85f99ab580c7bc0d03dd51c13744f71`
 
