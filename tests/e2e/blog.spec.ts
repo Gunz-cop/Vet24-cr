@@ -31,3 +31,11 @@ test.describe('blog B1', () => {
     }
   });
 });
+
+test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
+  for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+    await page.goto(path);
+    await expect(page.locator('[data-blog-links]')).toHaveCount(0);
+    await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
+  }
+});

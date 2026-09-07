@@ -1,0 +1,5 @@
+COMMAND=npm run build:no-shorten
+SHA=b9d7db74d85f99ab580c7bc0d03dd51c13744f71
+STDOUT=base-build.stdout.log
+STDERR=base-build.stderr.log
+EXIT_CODE=0
