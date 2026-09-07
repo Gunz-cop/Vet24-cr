@@ -83,12 +83,21 @@ function inspectLinks(content,source){
   const destination=join(client,url.pathname,url.pathname.endsWith('/')?'index.html':'');
   if(url.pathname!=='/'&&!existsSync(destination)){errors.push('Destino no generado: '+source+' → '+href);continue;}
   const targetHtml=url.pathname==='/'?homeHtml:readFileSync(destination,'utf8');
+  if (destination.endsWith('.html') || url.pathname === '/') {
+    const canonicalTag = targetHtml.match(/<link\b[^>]*rel="canonical"[^>]*>/)?.[0];
+    if (canonicalTag && attr(canonicalTag, 'href') !== url.origin + url.pathname) errors.push('Destino no canónico: ' + href);
+  }
   if(url.hash && ![...targetHtml.matchAll(/id="([^"]+)"/g)].some(m=>m[1]===decodeURIComponent(url.hash.slice(1)))) errors.push('Fragmento ausente: '+href);
-  const family=attr(match[1],'data-link-family');
+  const route = url.pathname.match(/^\/(clinica|zona|provincia)\/([^/]+)\/$/)
+    ?? url.pathname.match(/^\/(blog)\/([^/]+\/[^/]+)\/$/);
+  const family=attr(match[1],'data-link-family') ?? (route?.[1] === 'blog' ? 'articulo' : route?.[1]);
   if(family)try{
-   const identity=attr(match[1],'data-link-identity');
+   const identity=attr(match[1],'data-link-identity') ?? route?.[2];
    if(family==='provincia'&&!provinces.includes(identity))throw new Error('Provincia no generada por página actual: '+identity);
-   assertTypedLink({family,identity,href,label:''},inventory);
+   const target={family,identity,href:url.pathname,label:''};
+   assertTypedLink(target,inventory);
+   if (attr(match[1],'data-link-family') && href !== url.pathname) throw new Error('URL tipada no canónica: '+href);
+   if (/^\/blog\/[^/]+\/[^/]+\/$/.test(source)) assertInverse(source,target,hrefs(blocks(targetHtml)));
   }catch(e){errors.push(e.message);}
  }
 }
