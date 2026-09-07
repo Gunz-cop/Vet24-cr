@@ -1,0 +1,216 @@
+{
+  "base": "base-geometry.json",
+  "candidate": "candidate-geometry.json",
+  "comparisons": [
+    {
+      "path": "/",
+      "width": 390,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/",
+      "width": 390,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/",
+      "width": 1440,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/guias-por-especie/",
+      "width": 390,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/guias-por-especie/",
+      "width": 1440,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/costos-y-acceso/",
+      "width": 390,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    },
+    {
+      "path": "/blog/costos-y-acceso/",
+      "width": 1440,
+      "scrollWidthDelta": 0,
+      "linksEqual": true,
+      "delta": {
+        "nav": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "footer": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      }
+    }
+  ],
+  "maxDelta": 0,
+  "allExistingLinksEqual": true
+}\n
