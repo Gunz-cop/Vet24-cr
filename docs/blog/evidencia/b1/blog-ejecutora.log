@@ -1,0 +1,7 @@
+ROLE=B1 ejecutora
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+COMMAND=node scripts/verification/blog.mjs
+STDOUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+STDERR=
+EXIT_CODE=0
