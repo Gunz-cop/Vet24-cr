@@ -138,3 +138,42 @@ También retirada la atribución no sustentada a AdSense sobre dateModified: pla
 
 - R1 (Media): plan §7 distingue comandos de sesión de pasos CI y asigna ejecución manual obligatoria de blog.mjs a ejecutora/verificadora, con registros y condición de bloqueo; esta hoja E2 conserva la distinción.
 - R2 (Baja): plan §2 y esta hoja B2/G corrigen la ubicación del filter a astro.config.mjs:15, comprobada mediante numeración del archivo real. No se cambió el config.
+
+## I. Corrección de propiedad: enlace de navegación al blog
+
+Hallazgo detectado **después** de fusionar B1, durante la verificación de por qué el blog no era
+visible en producción. No es un defecto de la ejecutora de B1: entregó exactamente su allowlist.
+Es un hueco del plan que la auditoría previa tampoco detectó.
+
+Observación reproducible, sobre `main` en `3edb6bcca050b110a491723846ec6f3a1ebed65b`:
+
+```bash
+grep -rn 'href="/blog' src/ --include='*.astro' | grep -v 'src/pages/blog/'
+# única coincidencia: src/components/BlogBreadcrumbs.astro
+```
+
+`BlogBreadcrumbs.astro` sólo se renderiza dentro de páginas de blog, de modo que `/blog/` no es
+alcanzable navegando desde ninguna otra parte del sitio.
+
+Comprobación en producción, 2026-09-07, hecha por la sesión coordinadora:
+
+| Ruta | HTTP |
+|---|---|
+| `/` | 200 |
+| `/blog/` | 200 |
+| `/blog/guias-por-especie/` | 200 |
+| `/blog/costos-y-acceso/` | 200 |
+| `/blog/guias-por-especie/urgencias-en-perros/` | 404 (borrador, correcto) |
+
+El sitemap publicado contiene las tres rutas de blog y cero ocurrencias del borrador. La home no
+devuelve ninguna coincidencia de `href="/blog`.
+
+**Corrección aplicada al plan:** `src/layouts/BaseLayout.astro` pasa a ser propietario en B3 también
+de la entrada de navegación, condicionada a que exista al menos un artículo publicado, con criterio
+de aceptación probado por ambos lados de la condición. Ver plan §5/B3, §6, §7 y §8.
+
+**Corrección de un límite mal declarado.** La sección E3 y las instrucciones dadas a sesiones previas
+afirmaron que no se podía alcanzar producción desde el entorno de trabajo. Esa afirmación se dio por
+supuesta a partir de la advertencia genérica del plan sobre proxy, sin comprobarla. Al probarla,
+producción respondió 200. Ninguna sesión debe declarar producción inalcanzable sin haberlo intentado
+y mostrado la salida real del intento.

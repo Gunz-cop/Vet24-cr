@@ -1,7 +1,7 @@
 # Fase 3 — Blog editorial de Vet24-cr
 
 Estado: **aprobado por el usuario, condicionado a las correcciones documentales de los nueve hallazgos; implementación no iniciada**.
-Última revisión: **2026-09-07**.
+Última revisión: **2026-09-07** (corrección de propiedad: enlace de navegación al blog).
 Rama documental: `claude/vet24-cr-phase-3-blog-wos6bp`.
 Base documental comprobada: `3eed5bd598b8bb04eb9eb3923487449c08e2de70`.
 
@@ -140,7 +140,9 @@ Aceptación:
 
 ### B3 — Política editorial y atribución
 
-Publica política, enlace desde footer y registro verificable de autoría; el piloto sigue borrador.
+Publica política, enlace desde footer, entrada de navegación al blog y registro verificable de autoría; el piloto sigue borrador.
+
+**Propiedad del enlace de navegación.** Hasta esta corrección ninguna subfase tenía asignado el enlace de navegación hacia `/blog/`, de modo que las rutas quedaron alcanzables sólo por sitemap y por URL directa. B3 lo asume porque ya es propietaria de `BaseLayout.astro`. La entrada se **renderiza únicamente cuando existe al menos un artículo publicado**: enlazar desde la navegación un índice vacío perjudica al lector y a la revisión publicitaria, y durante B3 todos los artículos siguen en borrador. En la práctica la entrada aparece recién con el primer artículo de B4, sin necesidad de un cambio de código adicional.
 
 Aceptación:
 
@@ -148,6 +150,7 @@ Aceptación:
 - Política distingue proceso previsto de trabajos ya realizados. Describe brief, redacción asistida, auditoría independiente y aprobación humana; prohíbe presentar auditoría IA como revisión veterinaria o afirmar comité inexistente.
 - `docs/blog/autoria.md` registra nombre público, URL de perfil o evidencia de identidad confirmada por el usuario, rol real (redacción/edición/responsabilidad), aprobación de atribución y artículos/commits a los que aplica. No se versionan documentos de identidad privados. Cada autor visible y JSON-LD coincide con ese registro; nombre sin evidencia o atribución ficticia bloquea publicación.
 - Para revisadoPor, si aparece, hay credencial verificable y constancia de revisión del candidato; sin ambas se omite. Una persona real no se convierte automáticamente en autora ni revisora por aprobar un merge.
+- La entrada de navegación al blog está implementada y condicionada: con cero artículos publicados no se renderiza en ninguna página, y con al menos uno enlaza a `/blog/` con su barra final. Se demuestra con una prueba por cada lado de la condición y con una fixture publicada; no se acepta la condición comprobada en un solo sentido. El enlace es `<a href>` normal, rastreable y enfocable por teclado, y no altera geometría ni orden de foco del resto de la navegación según las tolerancias de §5/B2.
 - Capturas de política y autoría de fixture; la política se despliega y verifica antes de publicar el piloto.
 
 ### B4 — Cinco artículos, incluido piloto
@@ -184,7 +187,7 @@ C = creación inicial, M = modificación, C→M = creación y mantenimiento dent
 | src/pages/clinica/[slug].astro; src/pages/zona/[zona].astro | M B2, solo bloque y conexión de guías; datos previos intactos |
 | docs/seo/enlazado-interno.md | C B2 → M B4 para inventario final |
 | src/pages/politica-editorial.astro; src/components/BlogAuthor.astro; docs/blog/autoria.md | C B3 → M B4 para registros reales del seed |
-| src/layouts/BaseLayout.astro | M B3, solo enlace de política en footer |
+| src/layouts/BaseLayout.astro | M B3, solo enlace de política en footer y entrada de navegación al blog condicionada a artículos publicados |
 | src/content/blog/{urgencias-en-gatos,atencion-veterinaria-para-exoticos,costo-emergencia-veterinaria-nocturna,atencion-veterinaria-24h-por-zona}.md | C→M B4; conjunto enumerado de cuatro archivos, no glob libre |
 | briefings/briefing-{urgencias-en-gatos,atencion-veterinaria-para-exoticos,costo-emergencia-veterinaria-nocturna,atencion-veterinaria-24h-por-zona}.md | C→M B4; mismo conjunto enumerado |
 | tests/unit/blog-schema.test.ts; tests/unit/blog-publication.test.ts; tests/unit/blog-sitemap.test.ts | C→M B1 |
@@ -229,7 +232,7 @@ No `npm run build`: el acortador hace red y escribe datos. CI existente debe con
 
 ### Descubrimiento y conservación AR
 
-El blog se descubre mediante HTML, enlaces y sitemap. No se añade a llms, catálogo de clínicas o mirrors; no se anuncia negociación Markdown de blog. Una futura ampliación de llms requiere tarea AR2 separada y autorización, no es condición implícita de esta fase.
+El blog se descubre mediante HTML, enlaces y sitemap. Estado real hasta que B3 despliegue la entrada de navegación y B4 publique el primer artículo: el descubrimiento es sólo por sitemap y URL directa, sin ningún enlace entrante desde el resto del sitio. Es una limitación conocida y aceptada de este tramo, no un supuesto cumplido; ninguna subfase puede declararla resuelta antes de que esa entrada exista y se verifique. No se añade a llms, catálogo de clínicas o mirrors; no se anuncia negociación Markdown de blog. Una futura ampliación de llms requiere tarea AR2 separada y autorización, no es condición implícita de esta fase.
 
 Después de cada despliegue, verificadora distinta del ejecutor archiva en `docs/blog/evidencia/bN/`:
 
@@ -258,3 +261,4 @@ El issue se cierra manualmente tras evidencia y todos los PRs asociados fusionad
 | Regresión AR tras deploy | HTTP completo, SHA desplegado y escaneo comparado §7 |
 | Pilares insuficientes | Emergencias distribuida en seed; gate documental antes de artículo 6 |
 | Publicidad sin IDs | Dos claves null y ningún ID ficticio en showAds |
+| Blog sin enlaces entrantes | Entrada de navegación con dueño en B3, condicionada a artículos publicados y probada por ambos lados |
