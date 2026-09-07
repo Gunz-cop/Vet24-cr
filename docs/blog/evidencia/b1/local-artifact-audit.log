@@ -1,0 +1,31 @@
+ROLE=B1 verificadora independiente
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+DATE=2026-09-07
+
+COMMAND=rg -l -i urgencias-en-perros dist/client
+STDOUT=
+STDERR=
+EXIT_CODE=0
+CLIENT_PILOT_SCAN=PASS
+
+COMMAND=rg -l -i urgencias-en-perros dist
+STDOUT:
+dist/server/chunks/_astro_data-layer-content_B8HoNDU5.mjs
+EXIT_CODE=0
+
+COMMAND=rg -n -i -o '.{0,120}urgencias-en-perros.{0,220}' dist/server/chunks/_astro_data-layer-content_B8HoNDU5.mjs
+STDOUT (excerpt):
+var _astro_data_layer_content_default = JSON.parse("...blog...urgencias-en-perros...src/content/blog/urgencias-en-perros.md...Este artículo está en preparación editorial y no debe publicarse...
+EXIT_CODE=0
+
+CONCLUSION=El slug no aparece en HTML/enlaces/Article/sitemap de dist/client ni en la respuesta productiva escaneada. Sí aparece en un chunk de dist/server, que el verificador blog.mjs no inspecciona. Esta auditoría no demostró que ese chunk sea una ruta pública; queda como hallazgo de artefacto y como límite de la afirmación estricta “ningún artefacto”.
+
+COMMAND=Get-Content dist/server/wrangler.json; inspect generated worker assets
+STDOUT:
+main=entry.mjs
+assets.directory=../client
+no_bundle=true
+entry.mjs and server chunks exist under dist/server
+EXIT_CODE=0
+
+CONCLUSION_REFINED=dist/server es parte del worker generado y el chunk contiene el piloto serializado. No se demostró una ruta pública para ese contenido, pero tampoco se puede afirmar que el piloto esté ausente del artefacto desplegable.

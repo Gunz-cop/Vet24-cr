@@ -1,0 +1,45 @@
+COMMAND=git diff --name-status 89a365b8c374cdbf9912a07425ed68e34a496464...dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+STDOUT:
+A	briefings/briefing-urgencias-en-perros.md
+A	docs/blog/evidencia/b1/articulo-fixture-desktop.png
+A	docs/blog/evidencia/b1/articulo-fixture-mobile.png
+A	docs/blog/evidencia/b1/base-agent-scan.json
+A	docs/blog/evidencia/b1/base-build.log
+A	docs/blog/evidencia/b1/base-catalog.json
+A	docs/blog/evidencia/b1/base-mirrors.json
+A	docs/blog/evidencia/b1/base-sitemap.txt
+A	docs/blog/evidencia/b1/base.json
+A	docs/blog/evidencia/b1/blog-desktop.png
+A	docs/blog/evidencia/b1/blog-mobile.png
+A	docs/blog/evidencia/b1/candidate-agent-scan.json
+A	docs/blog/evidencia/b1/candidate-build.log
+A	docs/blog/evidencia/b1/candidate-catalog.json
+A	docs/blog/evidencia/b1/candidate-mirrors.json
+A	docs/blog/evidencia/b1/candidate-sitemap.txt
+A	docs/blog/evidencia/b1/fixture-publicada-build.log
+A	docs/blog/evidencia/b1/fixture-publicada.diff
+A	docs/blog/evidencia/b1/fixture-rapi-build.log
+A	docs/blog/evidencia/b1/fixture-rapi.diff
+A	docs/blog/evidencia/b1/teclado.json
+A	docs/blog/evidencia/b1/verification-commands.log
+A	docs/blog/evidencia/b1/visual-dom.json
+A	scripts/verification/blog.mjs
+A	src/components/BlogBreadcrumbs.astro
+A	src/components/BlogCard.astro
+M	src/config/ads.ts
+M	src/content.config.ts
+A	src/content/blog/urgencias-en-perros.md
+A	src/layouts/BlogLayout.astro
+A	src/lib/blog-sitemap.ts
+A	src/lib/blog.ts
+A	src/pages/blog/[pilar]/[slug].astro
+A	src/pages/blog/[pilar]/index.astro
+A	src/pages/blog/index.astro
+A	tests/e2e/blog.spec.ts
+A	tests/unit/blog-publication.test.ts
+A	tests/unit/blog-schema.test.ts
+A	tests/unit/blog-sitemap.test.ts
+STDERR:
+EXIT_CODE=0

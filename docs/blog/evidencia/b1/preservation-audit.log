@@ -1,0 +1,22 @@
+ROLE=B1 verificadora independiente
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+DATE=2026-09-07
+
+COMMAND=compare base-catalog.json vs candidate-catalog.json
+STDOUT=catalog base.count=1 candidate.count=1 base.aggregateSha256=4ef99c0baf215e146a0fa9740c73a885ec8fc6748bcf732563bf6dee1df40f28 candidate.aggregateSha256=4ef99c0baf215e146a0fa9740c73a885ec8fc6748bcf732563bf6dee1df40f28 equal=True
+EXIT_CODE=0
+
+COMMAND=compare base-mirrors.json vs candidate-mirrors.json
+STDOUT=mirrors base.count=1 candidate.count=1 base.aggregateSha256=ad20ffc903c71e91b774f548ec6a1abdc5a02b5036ff6db594d39a73f6bd92af candidate.aggregateSha256=ad20ffc903c71e91b774f548ec6a1abdc5a02b5036ff6db594d39a73f6bd92af equal=True
+EXIT_CODE=0
+
+COMMAND=parse candidate-sitemap.txt
+STDOUT=URL_COUNT=134 CLINIC_URLS=112 PROVINCE_URLS=7 ZONE_URLS=7 BLOG_URLS=3
+EXIT_CODE=0
+
+CONCLUSION=No se observó cambio semántico en los inventarios agregados de catálogo o mirrors. BASE y candidato conservan 112 clínicas, 7 provincias y 7 zonas; candidato añade las 3 URLs HTML de blog previstas.
+
+COMMAND=compare canonical JSON hash of local candidate dist/client/api/catalog.json clinic array vs GET https://vet24cr.com/api/catalog.json
+STDOUT=local_clinics=112 production_clinics=112 clinic_data_sha_local=127bc44714b425f426790730478ba888449b5c1fcb2383f696d0f4c3045c7673 clinic_data_sha_production=127bc44714b425f426790730478ba888449b5c1fcb2383f696d0f4c3045c7673 equal=True
+EXIT_CODE=0

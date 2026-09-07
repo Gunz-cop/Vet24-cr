@@ -1,0 +1,15 @@
+ROLE=B1 verificadora independiente
+DOMAIN=https://vet24cr.com
+DATE=2026-09-07
+
+COMMAND=curl.exe -sS https://vet24cr.com/sitemap-index.xml
+STDOUT:
+<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://vet24cr.com/sitemap-0.xml</loc></sitemap></sitemapindex>
+STDERR=
+EXIT_CODE=0
+
+COMMAND=PowerShell parse of curl.exe -sS https://vet24cr.com/sitemap-0.xml, extracting every <loc>
+STDOUT:
+URL_COUNT=134 CLINIC_URLS=112 PROVINCE_URLS=7 ZONE_URLS=7 BLOG_URLS=3 PILOT_MATCH=
+EXIT_CODE=0
+

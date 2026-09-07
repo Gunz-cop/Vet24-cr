@@ -1,0 +1,24 @@
+ROLE=B1 verificadora independiente
+DATE=2026-09-07
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+
+COMMAND=Chromium/Playwright Tab traversal over /blog/ at 390x844 and 1440x900, 12 tabs each
+STDOUT:
+390x844: tabs 5=Inicio, 6=Blog, 7=Guías por especie, 8=Costos y acceso; #nav-directory display=none; no hidden focus
+1440x900: tabs 3=#nav-home, 4=#nav-directory, 5=theme, 6=Emergencia; all visible
+EXIT_CODE=0
+
+COMMAND=temporary fixture publication + npm run build:no-shorten + Chromium/Playwright traversal of /blog/guias-por-especie/urgencias-en-perros/
+STDOUT:
+390x844: tabs 5=Inicio, 6=Blog, 7=Guías por especie, 8=Directorio footer; #nav-directory display=none; all visible
+1440x900: tabs 3=#nav-home, 4=#nav-directory, 5=theme, 6=Emergencia; all visible
+fixture response status=200
+EXIT_CODE=0
+
+COMMAND=restore fixture to estado=borrador and remove temporary datePublished; rebuild candidate
+STDOUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+STDERR=build warning: unable to verify first certificate while fetching Request.cf; build continued
+EXIT_CODE=0
+
+RECTIFICATION=La medición anterior que declaró foco invisible fue errónea. teclado.json queda corroborado; se elimina ese bloqueo del veredicto.
+

@@ -1,0 +1,8 @@
+ROLE=B1 verificadora independiente
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+EXECUTED_PRODUCT_CHECKOUT=b3de9ed945176ef78df733962d952844fddfdd0e (HEAD de evidencia; product code equivalence to candidate verified separately)
+COMMAND=node scripts/verification/blog.mjs
+STDOUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+STDERR=
+EXIT_CODE=0

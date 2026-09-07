@@ -1,0 +1,24 @@
+ROLE=B1 verificadora independiente
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+EVIDENCE_HEAD=b3de9ed945176ef78df733962d952844fddfdd0e
+
+COMMAND=git diff --name-only 89a365b8c374cdbf9912a07425ed68e34a496464...dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28 + comparación contra base.json.allowedFiles
+STDOUT:
+PATH_COUNT=39
+OUTSIDE_ALLOWLIST_COUNT=0
+OUTSIDE_ALLOWLIST=
+EXIT_CODE=0
+
+COMMAND=git diff --name-status dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28...HEAD
+STDOUT:
+A docs/blog/evidencia/b1/blog-ejecutora.log
+EXIT_CODE=0
+
+COMMAND=git diff --exit-code -- src astro tests briefings scripts
+STDOUT=
+STDERR=
+EXIT_CODE=0
+
+CONCLUSION=El diff candidato no contiene archivos fuera de la allowlist. El HEAD de evidencia posterior al candidato agrega únicamente blog-ejecutora.log; los registros de esta sesión también están bajo docs/blog/evidencia/b1/ y no son producto.
+

@@ -1,0 +1,886 @@
+COMMAND=git diff 89a365b8c374cdbf9912a07425ed68e34a496464...dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+STDOUT_BEGIN
+diff --git a/briefings/briefing-urgencias-en-perros.md b/briefings/briefing-urgencias-en-perros.md
+new file mode 100644
+index 0000000..cb9d7e1
+--- /dev/null
++++ b/briefings/briefing-urgencias-en-perros.md
+@@ -0,0 +1,10 @@
++# Briefing: urgencias en perros
++
++- Estado: borrador previo a redacción.
++- Pilar: `guias-por-especie`.
++- Slug contractual: `urgencias-en-perros`.
++- Objetivo: orientar sobre reconocimiento de señales y búsqueda de atención, sin diagnosticar ni sustituir consulta veterinaria.
++- Límites: no afirmar disponibilidad actual de clínicas, no inventar tiempos, cifras, tratamientos ni pronósticos; confirmar cada afirmación clínica con fuentes elegibles antes de publicar.
++- Fuentes: reunir al menos seis fuentes distintas según §5/B4; registrar URL profunda, título, institución/autor, fecha disponible, fecha de consulta y pasaje localizado.
++- Destinos internos previstos: se definirán en B2 mediante la fuente única tipada; no incluir relaciones en frontmatter.
++- Gate de publicación: política y autoría de B3, matriz afirmación→fuente→pasaje→H2, auditoría independiente APROBADA sobre el SHA candidato, cero bloqueantes y autorización humana.
+diff --git a/docs/blog/evidencia/b1/articulo-fixture-desktop.png b/docs/blog/evidencia/b1/articulo-fixture-desktop.png
+new file mode 100644
+index 0000000..7f6854c
+Binary files /dev/null and b/docs/blog/evidencia/b1/articulo-fixture-desktop.png differ
+diff --git a/docs/blog/evidencia/b1/articulo-fixture-mobile.png b/docs/blog/evidencia/b1/articulo-fixture-mobile.png
+new file mode 100644
+index 0000000..0cda069
+Binary files /dev/null and b/docs/blog/evidencia/b1/articulo-fixture-mobile.png differ
+diff --git a/docs/blog/evidencia/b1/base-agent-scan.json b/docs/blog/evidencia/b1/base-agent-scan.json
+new file mode 100644
+index 0000000..b3c788c
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base-agent-scan.json
+@@ -0,0 +1,6 @@
++{
++  "baseSha": "89a365b8c374cdbf9912a07425ed68e34a496464",
++  "status": "not_verified",
++  "reason": "No hay script local ni acceso configurado al servicio externo que produce el escaneo completo de 22 identificadores. No se simuló el resultado.",
++  "expectedChecks": ["robotsTxt", "sitemap", "linkHeaders", "dnsAid", "markdownNegotiation", "robotsTxtAiRules", "contentSignals", "webBotAuth", "apiCatalog", "oauthDiscovery", "oauthProtectedResource", "authMd", "mcpServerCard", "a2aAgentCard", "agentSkills", "webMcp", "ard", "x402", "mpp", "ucp", "acp", "ap2"]
++}
+diff --git a/docs/blog/evidencia/b1/base-build.log b/docs/blog/evidencia/b1/base-build.log
+new file mode 100644
+index 0000000..3da31fc
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base-build.log
+@@ -0,0 +1,7 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++COMMAND=npm run build:no-shorten
++RESULT=Build complete
++AR2_CATALOG=OK (112 clinics, 112 HTML routes)
++AR3_MARKDOWN=OK (127 mirrors)
++WARNING=Unable to fetch Request.cf; unable to verify first certificate; build continued.
++EXIT_CODE=0
+diff --git a/docs/blog/evidencia/b1/base-catalog.json b/docs/blog/evidencia/b1/base-catalog.json
+new file mode 100644
+index 0000000..32b7efd
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base-catalog.json
+@@ -0,0 +1,7 @@
++{
++  "baseSha": "89a365b8c374cdbf9912a07425ed68e34a496464",
++  "files": 1,
++  "clinics": 112,
++  "aggregateSha256": "4ef99c0baf215e146a0fa9740c73a885ec8fc6748bcf732563bf6dee1df40f28",
++  "verification": "AR2 catalog artifacts valid (112 clinics, 112 HTML routes)"
++}
+diff --git a/docs/blog/evidencia/b1/base-mirrors.json b/docs/blog/evidencia/b1/base-mirrors.json
+new file mode 100644
+index 0000000..13630b0
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base-mirrors.json
+@@ -0,0 +1,6 @@
++{
++  "baseSha": "89a365b8c374cdbf9912a07425ed68e34a496464",
++  "files": 127,
++  "aggregateSha256": "ad20ffc903c71e91b774f548ec6a1abdc5a02b5036ff6db594d39a73f6bd92af",
++  "verification": "agent-markdown: OK (127 mirrors)"
++}
+diff --git a/docs/blog/evidencia/b1/base-sitemap.txt b/docs/blog/evidencia/b1/base-sitemap.txt
+new file mode 100644
+index 0000000..7e5341b
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base-sitemap.txt
+@@ -0,0 +1,8 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++URL_COUNT=131
++CLINIC_URLS=112
++PROVINCE_URLS=7
++ZONE_URLS=7
++BLOG_URLS=0
++SITEMAP_FILES=2
++AGGREGATE_SHA256=b08a6282272590bf9bce0684237df3110d0705a68626749f040b4fc3e7fcd599
+diff --git a/docs/blog/evidencia/b1/base.json b/docs/blog/evidencia/b1/base.json
+new file mode 100644
+index 0000000..eeeeb2f
+--- /dev/null
++++ b/docs/blog/evidencia/b1/base.json
+@@ -0,0 +1,57 @@
++{
++  "baseSha": "89a365b8c374cdbf9912a07425ed68e34a496464",
++  "predecessorSha": null,
++  "date": "2026-09-06",
++  "phase": "B1",
++  "owners": {
++    "productAndTests": "B1 ejecutora",
++    "executionEvidence": "B1 ejecutora",
++    "independentVerificationEvidence": "B1 verificadora independiente",
++    "baseAndClosureRecords": "coordinadora documental"
++  },
++  "allowedFiles": [
++    "src/content.config.ts",
++    "src/lib/blog.ts",
++    "src/lib/blog-sitemap.ts",
++    "src/pages/blog/index.astro",
++    "src/pages/blog/[pilar]/index.astro",
++    "src/pages/blog/[pilar]/[slug].astro",
++    "src/layouts/BlogLayout.astro",
++    "src/components/BlogCard.astro",
++    "src/components/BlogBreadcrumbs.astro",
++    "src/config/ads.ts",
++    "src/content/blog/urgencias-en-perros.md",
++    "briefings/briefing-urgencias-en-perros.md",
++    "tests/unit/blog-schema.test.ts",
++    "tests/unit/blog-publication.test.ts",
++    "tests/unit/blog-sitemap.test.ts",
++    "tests/e2e/blog.spec.ts",
++    "scripts/verification/blog.mjs",
++    "docs/blog/evidencia/b1/base.json",
++    "docs/blog/evidencia/b1/base-build.log",
++    "docs/blog/evidencia/b1/base-sitemap.txt",
++    "docs/blog/evidencia/b1/base-catalog.json",
++    "docs/blog/evidencia/b1/base-mirrors.json",
++    "docs/blog/evidencia/b1/base-agent-scan.json",
++    "docs/blog/evidencia/b1/fixture-rapi.diff",
++    "docs/blog/evidencia/b1/fixture-rapi-build.log",
++    "docs/blog/evidencia/b1/fixture-publicada.diff",
++    "docs/blog/evidencia/b1/fixture-publicada-build.log",
++    "docs/blog/evidencia/b1/blog-mobile.png",
++    "docs/blog/evidencia/b1/blog-desktop.png",
++    "docs/blog/evidencia/b1/articulo-fixture-mobile.png",
++    "docs/blog/evidencia/b1/articulo-fixture-desktop.png",
++    "docs/blog/evidencia/b1/visual-dom.json",
++    "docs/blog/evidencia/b1/teclado.json",
++    "docs/blog/evidencia/b1/candidate-build.log",
++    "docs/blog/evidencia/b1/candidate-sitemap.txt",
++    "docs/blog/evidencia/b1/candidate-catalog.json",
++    "docs/blog/evidencia/b1/candidate-mirrors.json",
++    "docs/blog/evidencia/b1/candidate-agent-scan.json",
++    "docs/blog/evidencia/b1/blog-ejecutora.log",
++    "docs/blog/evidencia/b1/blog-verificadora.log",
++    "docs/blog/evidencia/b1/verification-commands.log",
++    "docs/blog/evidencia/b1/diff-name-status.log",
++    "docs/blog/evidencia/b1/diff-full.patch"
++  ]
++}
+diff --git a/docs/blog/evidencia/b1/blog-desktop.png b/docs/blog/evidencia/b1/blog-desktop.png
+new file mode 100644
+index 0000000..5421525
+Binary files /dev/null and b/docs/blog/evidencia/b1/blog-desktop.png differ
+diff --git a/docs/blog/evidencia/b1/blog-mobile.png b/docs/blog/evidencia/b1/blog-mobile.png
+new file mode 100644
+index 0000000..dd0d875
+Binary files /dev/null and b/docs/blog/evidencia/b1/blog-mobile.png differ
+diff --git a/docs/blog/evidencia/b1/candidate-agent-scan.json b/docs/blog/evidencia/b1/candidate-agent-scan.json
+new file mode 100644
+index 0000000..9104dad
+--- /dev/null
++++ b/docs/blog/evidencia/b1/candidate-agent-scan.json
+@@ -0,0 +1,4 @@
++{
++  "status": "not_verified",
++  "reason": "El escaneo completo externo de 22 identificadores no está disponible en esta sesión. Los verificadores locales agent-catalog y agent-markdown pasaron; no equivalen al escaneo productivo."
++}
+diff --git a/docs/blog/evidencia/b1/candidate-build.log b/docs/blog/evidencia/b1/candidate-build.log
+new file mode 100644
+index 0000000..a9ee4aa
+--- /dev/null
++++ b/docs/blog/evidencia/b1/candidate-build.log
+@@ -0,0 +1,5 @@
++COMMAND=npm run build:no-shorten
++RESULT=Build complete; 133 HTML artifacts; blog index and two pillar indexes generated; pilot article not generated.
++WARNING=Unable to fetch Request.cf; unable to verify first certificate; build continued.
++EXIT_CODE=0
++PREVIOUS_OPERATIONAL_ATTEMPT=EXIT_CODE 1 EPERM because fixture preview held dist/client; preview stopped before successful candidate build.
+diff --git a/docs/blog/evidencia/b1/candidate-catalog.json b/docs/blog/evidencia/b1/candidate-catalog.json
+new file mode 100644
+index 0000000..5f0cd25
+--- /dev/null
++++ b/docs/blog/evidencia/b1/candidate-catalog.json
+@@ -0,0 +1,6 @@
++{
++  "files": 1,
++  "clinics": 112,
++  "aggregateSha256": "4ef99c0baf215e146a0fa9740c73a885ec8fc6748bcf732563bf6dee1df40f28",
++  "equalsBase": true
++}
+diff --git a/docs/blog/evidencia/b1/candidate-mirrors.json b/docs/blog/evidencia/b1/candidate-mirrors.json
+new file mode 100644
+index 0000000..da07162
+--- /dev/null
++++ b/docs/blog/evidencia/b1/candidate-mirrors.json
+@@ -0,0 +1,5 @@
++{
++  "files": 127,
++  "aggregateSha256": "ad20ffc903c71e91b774f548ec6a1abdc5a02b5036ff6db594d39a73f6bd92af",
++  "equalsBase": true
++}
+diff --git a/docs/blog/evidencia/b1/candidate-sitemap.txt b/docs/blog/evidencia/b1/candidate-sitemap.txt
+new file mode 100644
+index 0000000..b027ef0
+--- /dev/null
++++ b/docs/blog/evidencia/b1/candidate-sitemap.txt
+@@ -0,0 +1,11 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++URL_COUNT=134
++CLINIC_URLS=112
++PROVINCE_URLS=7
++ZONE_URLS=7
++BLOG_URLS=3
++ADDED=https://vet24cr.com/blog/
++ADDED=https://vet24cr.com/blog/costos-y-acceso/
++ADDED=https://vet24cr.com/blog/guias-por-especie/
++PILOT_PRESENT=false
++LOST_PREEXISTING_URLS=0
+diff --git a/docs/blog/evidencia/b1/fixture-publicada-build.log b/docs/blog/evidencia/b1/fixture-publicada-build.log
+new file mode 100644
+index 0000000..cbd7bb3
+--- /dev/null
++++ b/docs/blog/evidencia/b1/fixture-publicada-build.log
+@@ -0,0 +1,7 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++COMMAND=npm run build:no-shorten
++FIXTURE=urgencias-en-perros estado=publicado datePublished=2026-09-07
++RESULT=Build complete; route /blog/guias-por-especie/urgencias-en-perros/index.html generated.
++WARNING=Unable to fetch Request.cf; unable to verify first certificate; build continued.
++EXIT_CODE=0
++FIXTURE_REMOVED=true
+diff --git a/docs/blog/evidencia/b1/fixture-publicada.diff b/docs/blog/evidencia/b1/fixture-publicada.diff
+new file mode 100644
+index 0000000..4c9c4a1
+--- /dev/null
++++ b/docs/blog/evidencia/b1/fixture-publicada.diff
+@@ -0,0 +1,9 @@
++Fixture transitoria servida solo en preview local, retirada antes del candidato:
++
++--- a/src/content/blog/urgencias-en-perros.md
+++++ b/src/content/blog/urgencias-en-perros.md
++@@
++-estado: "borrador"
+++estado: "publicado"
++ autor: "Equipo editorial Vet24 Costa Rica"
+++datePublished: "2026-09-07"
+diff --git a/docs/blog/evidencia/b1/fixture-rapi-build.log b/docs/blog/evidencia/b1/fixture-rapi-build.log
+new file mode 100644
+index 0000000..764cc6e
+--- /dev/null
++++ b/docs/blog/evidencia/b1/fixture-rapi-build.log
+@@ -0,0 +1,12 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++COMMAND=npm run build:no-shorten
++FIXTURE=src/content/blog/urgencias-en-perros.md pilar=costos-y-acceso slug=rapi
++STDOUT_STDERR:
++> veterinarias-cr@0.0.1 build:no-shorten
++> astro build
++[content] Syncing content
++[InvalidContentEntryDataError] blog → rapi data does not match collection schema.
++slug: La ruta de blog /blog/costos-y-acceso/rapi/ queda excluida por el filtro sitemap vigente
++Location: src/content/blog/urgencias-en-perros.md:0:0
++EXIT_CODE=1
++FIXTURE_REMOVED=true
+diff --git a/docs/blog/evidencia/b1/fixture-rapi.diff b/docs/blog/evidencia/b1/fixture-rapi.diff
+new file mode 100644
+index 0000000..f02c3ef
+--- /dev/null
++++ b/docs/blog/evidencia/b1/fixture-rapi.diff
+@@ -0,0 +1,9 @@
++Fixture transitoria, nunca candidata a commit como producto:
++
++--- a/src/content/blog/urgencias-en-perros.md
+++++ b/src/content/blog/urgencias-en-perros.md
++@@
++-pilar: "guias-por-especie"
++-slug: "urgencias-en-perros"
+++pilar: "costos-y-acceso"
+++slug: "rapi"
+diff --git a/docs/blog/evidencia/b1/teclado.json b/docs/blog/evidencia/b1/teclado.json
+new file mode 100644
+index 0000000..50aec21
+--- /dev/null
++++ b/docs/blog/evidencia/b1/teclado.json
+@@ -0,0 +1,13 @@
++{
++  "routes": ["/blog/", "/blog/guias-por-especie/urgencias-en-perros/"],
++  "viewports": ["390x844", "1440x900"],
++  "tabsPerRouteAndViewport": 8,
++  "result": "pass",
++  "checks": {
++    "everyFocusedElementVisible": true,
++    "outlineStyle": "solid",
++    "outlineWidth": "2px"
++  },
++  "observedOrderPrefixMobile": ["Saltar al contenido", "Vet24 Costa Rica", "Alternar tema", "Emergencia", "Inicio", "Blog"],
++  "observedOrderPrefixDesktop": ["Saltar al contenido", "Vet24 Costa Rica", "Inicio", "Directorio", "Alternar tema", "Emergencia"]
++}
+diff --git a/docs/blog/evidencia/b1/verification-commands.log b/docs/blog/evidencia/b1/verification-commands.log
+new file mode 100644
+index 0000000..aa2d3b9
+--- /dev/null
++++ b/docs/blog/evidencia/b1/verification-commands.log
+@@ -0,0 +1,32 @@
++BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
++
++COMMAND=npm run check
++OUTPUT=Result (78 files): 0 errors, 0 warnings, 75 hints
++EXIT_CODE=0
++
++COMMAND=npm test
++OUTPUT=tests 59; suites 13; pass 59; fail 0; cancelled 0; skipped 0; todo 0
++EXIT_CODE=0
++
++COMMAND=npm run build:no-shorten
++OUTPUT=Build complete; sitemap-index.xml created
++EXIT_CODE=0
++
++COMMAND=node scripts/verification/blog.mjs
++OUTPUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
++EXIT_CODE=0
++
++COMMAND=node scripts/verification/agent-catalog.mjs
++OUTPUT=AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
++EXIT_CODE=0
++
++COMMAND=node scripts/verification/agent-markdown.mjs
++OUTPUT=agent-markdown: OK (127 mirrors)
++EXIT_CODE=0
++
++COMMAND=npm run test:e2e
++FIRST_ATTEMPT=EXIT_CODE 1; config webServer launcher exited early after daemonizing preview.
++SECOND_ATTEMPT=interrupted; 8 workers saturated local preview with ECONNRESET/timeouts.
++FINAL_COMMAND=npm run test:e2e -- --workers=1
++OUTPUT=11 skipped; 85 passed (1.7m). The 11 skips are pre-existing tests; no new skip was introduced.
++EXIT_CODE=0
+diff --git a/docs/blog/evidencia/b1/visual-dom.json b/docs/blog/evidencia/b1/visual-dom.json
+new file mode 100644
+index 0000000..8355a78
+--- /dev/null
++++ b/docs/blog/evidencia/b1/visual-dom.json
+@@ -0,0 +1,20 @@
++{
++  "fixture": "piloto publicado solo en preview local",
++  "networkIsolation": ["ezojs", "gatekeeperconsent", "googleapis", "gstatic"],
++  "measurements": [
++    { "route": "/blog/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
++    { "route": "/blog/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
++    { "route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
++    { "route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 }
++  ],
++  "structuredData": {
++    "types": ["Article", "BreadcrumbList"],
++    "url": "https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/",
++    "headlineMatchesVisible": true,
++    "authorMatchesVisible": true,
++    "datePublishedMatchesVisible": true,
++    "canonicalMatchesSchema": true,
++    "metaDescriptionMatchesSchema": true
++  },
++  "note": "El enlace skip oculto mide 1x1 en -1,-1 antes de foco y se excluye de visibleTextInsideViewport; al enfocarlo se vuelve visible."
++}
+diff --git a/scripts/verification/blog.mjs b/scripts/verification/blog.mjs
+new file mode 100644
+index 0000000..c82b0ed
+--- /dev/null
++++ b/scripts/verification/blog.mjs
+@@ -0,0 +1,46 @@
++#!/usr/bin/env node
++import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
++import { join, relative, resolve } from 'node:path';
++
++const root = resolve(import.meta.dirname, '../..');
++const client = join(root, 'dist/client');
++const pilotPath = 'blog/guias-por-especie/urgencias-en-perros/index.html';
++const pilotUrl = 'https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/';
++const errors = [];
++
++function walk(directory) {
++  if (!existsSync(directory)) return [];
++  return readdirSync(directory).flatMap((name) => {
++    const path = join(directory, name);
++    return statSync(path).isDirectory() ? walk(path) : [path];
++  });
++}
++
++const files = walk(client);
++const htmlFiles = files.filter((file) => file.endsWith('.html'));
++const sitemapFiles = files.filter((file) => /sitemap.*\.xml$/i.test(file));
++const html = htmlFiles.map((file) => readFileSync(file, 'utf8')).join('\n');
++const sitemap = sitemapFiles.map((file) => readFileSync(file, 'utf8')).join('\n');
++
++for (const path of ['blog/index.html', 'blog/guias-por-especie/index.html', 'blog/costos-y-acceso/index.html']) {
++  if (!files.some((file) => relative(client, file).replaceAll('\\', '/') === path)) errors.push(`falta artefacto ${path}`);
++  const expectedCanonical = `https://vet24cr.com/${path.replace(/index\.html$/, '')}`;
++  const file = files.find((item) => relative(client, item).replaceAll('\\', '/') === path);
++  if (file && !readFileSync(file, 'utf8').includes(`rel="canonical" href="${expectedCanonical}"`)) errors.push(`canonical incorrecto en ${path}`);
++}
++
++if (files.some((file) => relative(client, file).replaceAll('\\', '/') === pilotPath)) errors.push('el borrador generó HTML de artículo');
++if (html.includes(pilotUrl)) errors.push('el borrador aparece como enlace o URL en HTML');
++if (/"@type":"Article"/.test(html) && html.includes('urgencias-en-perros')) errors.push('el borrador aparece como JSON-LD Article');
++if (sitemap.includes(pilotUrl)) errors.push('el borrador aparece en sitemap');
++for (const expected of ['https://vet24cr.com/blog/', 'https://vet24cr.com/blog/guias-por-especie/', 'https://vet24cr.com/blog/costos-y-acceso/']) {
++  if (!sitemap.includes(`<loc>${expected}</loc>`)) errors.push(`sitemap no contiene ${expected}`);
++}
++
++if (errors.length) {
++  console.error(`blog: ${errors.length} fallo(s)`);
++  for (const error of errors) console.error(`- ${error}`);
++  process.exitCode = 1;
++} else {
++  console.log(`blog: OK (${htmlFiles.length} HTML; borrador ausente de HTML, enlaces, Article y sitemap)`);
++}
+diff --git a/src/components/BlogBreadcrumbs.astro b/src/components/BlogBreadcrumbs.astro
+new file mode 100644
+index 0000000..136fe52
+--- /dev/null
++++ b/src/components/BlogBreadcrumbs.astro
+@@ -0,0 +1,15 @@
++---
++import { PILAR_NAMES, blogPillarPath, type BlogPillar } from '../lib/blog';
++
++interface Props { pilar?: BlogPillar; title?: string }
++const { pilar, title } = Astro.props;
++---
++<nav aria-label="Migas de pan" class="mb-6 text-sm text-brand-text-muted">
++  <ol class="flex flex-wrap items-center gap-2">
++    <li><a class="hover:text-brand-primary" href="/">Inicio</a></li>
++    <li aria-hidden="true">/</li>
++    <li><a class="hover:text-brand-primary" href="/blog/">Blog</a></li>
++    {pilar && <><li aria-hidden="true">/</li><li><a class="hover:text-brand-primary" href={blogPillarPath(pilar)}>{PILAR_NAMES[pilar]}</a></li></>}
++    {title && <><li aria-hidden="true">/</li><li aria-current="page" class="text-brand-text">{title}</li></>}
++  </ol>
++</nav>
+diff --git a/src/components/BlogCard.astro b/src/components/BlogCard.astro
+new file mode 100644
+index 0000000..7ab23ab
+--- /dev/null
++++ b/src/components/BlogCard.astro
+@@ -0,0 +1,12 @@
++---
++import { PILAR_NAMES, blogArticlePath, type BlogEntry } from '../lib/blog';
++interface Props { entry: BlogEntry }
++const { entry } = Astro.props;
++const { title, metaDescription, pilar, slug, autor, datePublished } = entry.data;
++---
++<article class="h-full rounded-2xl border border-brand-card-border bg-brand-card-bg p-6 flex flex-col gap-3">
++  <p class="text-xs font-bold uppercase tracking-wider text-brand-primary">{PILAR_NAMES[pilar]}</p>
++  <h2 class="text-xl font-bold leading-tight"><a class="hover:text-brand-primary" href={blogArticlePath(pilar, slug)}>{title}</a></h2>
++  <p class="text-sm leading-relaxed text-brand-text-muted flex-grow">{metaDescription}</p>
++  <p class="text-xs text-brand-text-muted">Por {autor}{datePublished ? ` · ${datePublished}` : ''}</p>
++</article>
+diff --git a/src/config/ads.ts b/src/config/ads.ts
+index 40b4ce1..ceb8368 100644
+--- a/src/config/ads.ts
++++ b/src/config/ads.ts
+@@ -27,6 +27,8 @@ export const EZOIC_PLACEHOLDERS = {
+   'zona-inline': 117,
+   'clinica-inline': 118,
+   'clinica-sidebar': 119,
++  'blog-inline': null,
++  'blog-sidebar': null,
+ } as const satisfies Record<string, number | null>;
+ 
+ export type AdSlot = keyof typeof EZOIC_PLACEHOLDERS;
+diff --git a/src/content.config.ts b/src/content.config.ts
+index 0925604..568cffc 100644
+--- a/src/content.config.ts
++++ b/src/content.config.ts
+@@ -1,5 +1,10 @@
+ import { defineCollection, z } from 'astro:content';
+ import { glob } from 'astro/loaders';
++import { BLOG_PILLARS, blogPillarPath, blogSchema } from './lib/blog';
++import { assertBlogRouteAllowed, assertSitemapFilterIsSynchronized } from './lib/blog-sitemap';
++
++assertSitemapFilterIsSynchronized();
++for (const pilar of BLOG_PILLARS) assertBlogRouteAllowed(blogPillarPath(pilar));
+ 
+ const clinicas = defineCollection({
+   // Load Markdown files from src/content/clinicas/
+@@ -50,4 +55,9 @@ const clinicas = defineCollection({
+   })
+ });
+ 
+-export const collections = { clinicas };
++const blog = defineCollection({
++  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/blog' }),
++  schema: blogSchema,
++});
++
++export const collections = { clinicas, blog };
+diff --git a/src/content/blog/urgencias-en-perros.md b/src/content/blog/urgencias-en-perros.md
+new file mode 100644
+index 0000000..09477ec
+--- /dev/null
++++ b/src/content/blog/urgencias-en-perros.md
+@@ -0,0 +1,11 @@
++---
++title: "Urgencias en perros: cómo reconocerlas y buscar atención"
++seoTitle: "Urgencias en perros: señales y atención"
++metaDescription: "Guía en preparación sobre señales de urgencia en perros y cómo buscar atención veterinaria en Costa Rica."
++pilar: "guias-por-especie"
++slug: "urgencias-en-perros"
++estado: "borrador"
++autor: "Equipo editorial Vet24 Costa Rica"
++---
++
++Este artículo está en preparación editorial y no debe publicarse hasta completar investigación, auditoría independiente, política editorial y aprobación humana.
+diff --git a/src/layouts/BlogLayout.astro b/src/layouts/BlogLayout.astro
+new file mode 100644
+index 0000000..6d06202
+--- /dev/null
++++ b/src/layouts/BlogLayout.astro
+@@ -0,0 +1,51 @@
++---
++import BaseLayout from './BaseLayout.astro';
++import AdBanner from '../components/AdBanner.astro';
++import BlogBreadcrumbs from '../components/BlogBreadcrumbs.astro';
++import { blogArticlePath, blogPillarPath, PILAR_NAMES, type BlogEntry } from '../lib/blog';
++
++interface Props { entry: BlogEntry }
++const { entry } = Astro.props;
++const { title, seoTitle, metaDescription, pilar, slug, autor, datePublished, dateModified } = entry.data;
++const canonical = new URL(blogArticlePath(pilar, slug), 'https://vet24cr.com').href;
++const breadcrumbs = {
++  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
++  itemListElement: [
++    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://vet24cr.com/' },
++    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://vet24cr.com/blog/' },
++    { '@type': 'ListItem', position: 3, name: PILAR_NAMES[pilar], item: new URL(blogPillarPath(pilar), 'https://vet24cr.com').href },
++    { '@type': 'ListItem', position: 4, name: title, item: canonical },
++  ],
++};
++const article = {
++  '@context': 'https://schema.org', '@type': 'Article', headline: title,
++  description: metaDescription, url: canonical, mainEntityOfPage: canonical,
++  author: { '@type': 'Person', name: autor }, datePublished,
++  ...(dateModified ? { dateModified } : {}),
++};
++---
++<BaseLayout title={seoTitle} description={metaDescription} canonicalUrl={canonical}>
++  <script type="application/ld+json" set:html={JSON.stringify(article)} />
++  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
++  <div class="max-w-6xl mx-auto">
++    <BlogBreadcrumbs pilar={pilar} title={title} />
++    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_336px]">
++      <article class="min-w-0 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
++        <p class="text-sm font-bold text-brand-primary mb-3">{PILAR_NAMES[pilar]}</p>
++        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight break-words">{title}</h1>
++        <p class="mt-4 text-sm text-brand-text-muted">Por <span data-blog-author>{autor}</span> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
++        {dateModified && <p class="mt-1 text-xs text-brand-text-muted">Actualizado: <time datetime={dateModified} data-date-modified>{dateModified}</time></p>}
++        <AdBanner slot="blog-inline" size="320x100" />
++        <div class="blog-prose mt-8 leading-8 text-brand-text-muted"><slot /></div>
++      </article>
++      <aside aria-label="Contenido complementario" class="min-w-0"><AdBanner slot="blog-sidebar" size="336x280" /></aside>
++    </div>
++  </div>
++</BaseLayout>
++
++<style>
++  .blog-prose :global(h2) { margin: 2rem 0 .75rem; color: var(--brand-text); font-size: 1.5rem; font-weight: 700; }
++  .blog-prose :global(p) { margin: 1rem 0; }
++  .blog-prose :global(a) { color: var(--brand-primary); text-decoration: underline; }
++  .blog-prose :global(ul), .blog-prose :global(ol) { margin: 1rem 0; padding-left: 1.5rem; }
++</style>
+diff --git a/src/lib/blog-sitemap.ts b/src/lib/blog-sitemap.ts
+new file mode 100644
+index 0000000..4911a3b
+--- /dev/null
++++ b/src/lib/blog-sitemap.ts
+@@ -0,0 +1,34 @@
++import { readFileSync } from 'node:fs';
++import { resolve } from 'node:path';
++
++export const SITEMAP_FILTER_PATTERN = String.raw`[\\/]?(api|auth\.md|llms\.txt|\.well-known|md)([/.]|$)`;
++
++export function extractSitemapFilterPattern(source: string): string {
++  const match = source.match(/filter\s*:\s*\([^)]*\)\s*=>\s*!\/(.+)\/\.test/s);
++  if (!match) throw new Error('No se pudo extraer el regex real de astro.config.mjs');
++  return match[1];
++}
++
++export function readConfiguredSitemapFilterPattern(configPath = resolve('astro.config.mjs')): string {
++  return extractSitemapFilterPattern(readFileSync(configPath, 'utf8'));
++}
++
++export function assertSitemapFilterIsSynchronized(configPath = resolve('astro.config.mjs')): RegExp {
++  const configured = readConfiguredSitemapFilterPattern(configPath);
++  if (configured !== SITEMAP_FILTER_PATTERN) {
++    throw new Error(`Filtro sitemap desincronizado: config=${configured} comprobacion=${SITEMAP_FILTER_PATTERN}`);
++  }
++  return new RegExp(configured);
++}
++
++export function assertBlogRouteAllowed(pathname: string, configPath = resolve('astro.config.mjs')): void {
++  const filter = assertSitemapFilterIsSynchronized(configPath);
++  assertBlogRouteAllowedByPattern(pathname, filter);
++}
++
++export function assertBlogRouteAllowedByPattern(pathname: string, filter = new RegExp(SITEMAP_FILTER_PATTERN)): void {
++  const normalized = new URL(pathname, 'https://vet24cr.com').pathname;
++  if (filter.test(normalized)) {
++    throw new Error(`La ruta de blog ${normalized} queda excluida por el filtro sitemap vigente`);
++  }
++}
+diff --git a/src/lib/blog.ts b/src/lib/blog.ts
+new file mode 100644
+index 0000000..e8fe262
+--- /dev/null
++++ b/src/lib/blog.ts
+@@ -0,0 +1,66 @@
++import type { CollectionEntry } from 'astro:content';
++import { z } from 'astro/zod';
++import { assertBlogRouteAllowedByPattern } from './blog-sitemap.ts';
++
++export const BLOG_PILLARS = ['guias-por-especie', 'costos-y-acceso'] as const;
++export type BlogPillar = (typeof BLOG_PILLARS)[number];
++export type BlogEntry = CollectionEntry<'blog'>;
++
++export const PILAR_NAMES: Record<BlogPillar, string> = {
++  'guias-por-especie': 'Guías por especie',
++  'costos-y-acceso': 'Costos y acceso',
++};
++
++const isoDate = z.iso.date('Debe ser una fecha ISO YYYY-MM-DD válida');
++
++export const blogSchema = z.strictObject({
++  title: z.string().trim().min(1),
++  seoTitle: z.string().trim().min(1),
++  metaDescription: z.string().trim().min(1).max(160),
++  pilar: z.enum(BLOG_PILLARS),
++  slug: z.string().trim().min(1).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug no canónico'),
++  estado: z.enum(['borrador', 'publicado']).default('borrador'),
++  autor: z.string().trim().min(1),
++  datePublished: isoDate.optional(),
++  dateModified: isoDate.optional(),
++  revisadoPor: z.string().trim().min(1).optional(),
++}).superRefine((data, ctx) => {
++  if (data.estado === 'publicado' && !data.datePublished) {
++    ctx.addIssue({ code: 'custom', path: ['datePublished'], message: 'datePublished es obligatorio para contenido publicado' });
++  }
++  try {
++    assertBlogRouteAllowedByPattern(blogArticlePath(data.pilar, data.slug));
++  } catch (error) {
++    ctx.addIssue({ code: 'custom', path: ['slug'], message: error instanceof Error ? error.message : String(error) });
++  }
++});
++
++export function blogPillarPath(pilar: BlogPillar): string {
++  return `/blog/${pilar}/`;
++}
++
++export function blogArticlePath(pilar: BlogPillar, slug: string): string {
++  return `${blogPillarPath(pilar)}${slug}/`;
++}
++
++export function isPublished(entry: BlogEntry): boolean {
++  return entry.data.estado === 'publicado';
++}
++
++export async function getBlogEntries(): Promise<BlogEntry[]> {
++  const { getCollection } = await import('astro:content');
++  const entries = await getCollection('blog');
++  const identities = new Set<string>();
++  for (const entry of entries) {
++    const identity = blogArticlePath(entry.data.pilar, entry.data.slug);
++    if (identities.has(identity)) throw new Error(`URL de blog duplicada: ${identity}`);
++    identities.add(identity);
++  }
++  return entries;
++}
++
++export async function getPublishedBlogEntries(pilar?: BlogPillar): Promise<BlogEntry[]> {
++  return (await getBlogEntries())
++    .filter((entry) => isPublished(entry) && (!pilar || entry.data.pilar === pilar))
++    .sort((a, b) => (b.data.datePublished ?? '').localeCompare(a.data.datePublished ?? ''));
++}
+diff --git a/src/pages/blog/[pilar]/[slug].astro b/src/pages/blog/[pilar]/[slug].astro
+new file mode 100644
+index 0000000..8079fca
+--- /dev/null
++++ b/src/pages/blog/[pilar]/[slug].astro
+@@ -0,0 +1,11 @@
++---
++import { render, type CollectionEntry } from 'astro:content';
++import BlogLayout from '../../../layouts/BlogLayout.astro';
++import { getPublishedBlogEntries } from '../../../lib/blog';
++export async function getStaticPaths() {
++  return (await getPublishedBlogEntries()).map((entry) => ({ params: { pilar: entry.data.pilar, slug: entry.data.slug }, props: { entry } }));
++}
++const { entry } = Astro.props as { entry: CollectionEntry<'blog'> };
++const { Content } = await render(entry);
++---
++<BlogLayout entry={entry}><Content /></BlogLayout>
+diff --git a/src/pages/blog/[pilar]/index.astro b/src/pages/blog/[pilar]/index.astro
+new file mode 100644
+index 0000000..b00218a
+--- /dev/null
++++ b/src/pages/blog/[pilar]/index.astro
+@@ -0,0 +1,14 @@
++---
++import BaseLayout from '../../../layouts/BaseLayout.astro';
++import BlogCard from '../../../components/BlogCard.astro';
++import BlogBreadcrumbs from '../../../components/BlogBreadcrumbs.astro';
++import { BLOG_PILLARS, PILAR_NAMES, getPublishedBlogEntries, type BlogPillar } from '../../../lib/blog';
++export function getStaticPaths() { return BLOG_PILLARS.map((pilar) => ({ params: { pilar }, props: { pilar } })); }
++const { pilar } = Astro.props as { pilar: BlogPillar };
++const entries = await getPublishedBlogEntries(pilar);
++const name = PILAR_NAMES[pilar];
++---
++<BaseLayout title={name} description={`Artículos de ${name.toLowerCase()} del blog veterinario de Vet24 Costa Rica.`} canonicalUrl={`https://vet24cr.com/blog/${pilar}/`}>
++  <div class="max-w-6xl mx-auto"><BlogBreadcrumbs pilar={pilar} /><header class="mb-10"><h1 class="text-4xl sm:text-5xl font-extrabold">{name}</h1></header>
++  {entries.length ? <section aria-label="Artículos publicados" class="grid md:grid-cols-2 gap-6">{entries.map((entry) => <BlogCard entry={entry} />)}</section> : <p data-empty-pillar class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-6 text-brand-text-muted">Todavía no hay artículos publicados en este pilar.</p>}</div>
++</BaseLayout>
+diff --git a/src/pages/blog/index.astro b/src/pages/blog/index.astro
+new file mode 100644
+index 0000000..7d26f2d
+--- /dev/null
++++ b/src/pages/blog/index.astro
+@@ -0,0 +1,17 @@
++---
++import BaseLayout from '../../layouts/BaseLayout.astro';
++import BlogCard from '../../components/BlogCard.astro';
++import BlogBreadcrumbs from '../../components/BlogBreadcrumbs.astro';
++import { BLOG_PILLARS, PILAR_NAMES, blogPillarPath, getPublishedBlogEntries } from '../../lib/blog';
++const entries = await getPublishedBlogEntries();
++---
++<BaseLayout title="Blog veterinario" description="Guías informativas sobre cuidado, urgencias, costos y acceso a atención veterinaria en Costa Rica." canonicalUrl="https://vet24cr.com/blog/">
++  <div class="max-w-6xl mx-auto">
++    <BlogBreadcrumbs />
++    <header class="max-w-3xl mb-10"><h1 class="text-4xl sm:text-5xl font-extrabold">Blog veterinario</h1><p class="mt-4 text-brand-text-muted leading-relaxed">Información práctica para orientarte y encontrar atención veterinaria. No sustituye una consulta profesional.</p></header>
++    <nav aria-label="Pilares del blog" class="grid sm:grid-cols-2 gap-4 mb-12">
++      {BLOG_PILLARS.map((pilar) => <a class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 font-bold hover:border-brand-primary" href={blogPillarPath(pilar)}>{PILAR_NAMES[pilar]}</a>)}
++    </nav>
++    {entries.length ? <section aria-label="Artículos publicados" class="grid md:grid-cols-2 gap-6">{entries.map((entry) => <BlogCard entry={entry} />)}</section> : <p data-empty-blog class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-6 text-brand-text-muted">Estamos preparando las primeras guías. Mientras tanto, podés consultar el directorio de veterinarias.</p>}
++  </div>
++</BaseLayout>
+diff --git a/tests/e2e/blog.spec.ts b/tests/e2e/blog.spec.ts
+new file mode 100644
+index 0000000..38f9f91
+--- /dev/null
++++ b/tests/e2e/blog.spec.ts
+@@ -0,0 +1,33 @@
++import { test, expect } from '../../playwright.config';
++
++const pilotPath = '/blog/guias-por-especie/urgencias-en-perros/';
++
++test.describe('blog B1', () => {
++  for (const path of ['/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/']) {
++    test(`${path} existe y tiene canonical con barra final`, async ({ page }) => {
++      await page.goto(path);
++      await expect(page.locator('h1')).toBeVisible();
++      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://vet24cr.com${path}`);
++      await expect(page.locator('body')).not.toContainText('Urgencias en perros: cómo reconocerlas');
++    });
++  }
++
++  test('el piloto borrador da 404 y no está enlazado', async ({ page, request }) => {
++    expect((await request.get(pilotPath)).status()).toBe(404);
++    await page.goto('/blog/');
++    await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
++    await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
++  });
++
++  test('sin scroll horizontal y foco visible en ambos viewports', async ({ page }) => {
++    for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
++      await page.setViewportSize(viewport);
++      await page.goto('/blog/');
++      expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
++      await page.keyboard.press('Tab');
++      const focused = page.locator(':focus');
++      await expect(focused).toBeVisible();
++      expect(await focused.evaluate((el) => getComputedStyle(el).outlineStyle !== 'none')).toBe(true);
++    }
++  });
++});
+diff --git a/tests/unit/blog-publication.test.ts b/tests/unit/blog-publication.test.ts
+new file mode 100644
+index 0000000..ec51bbe
+--- /dev/null
++++ b/tests/unit/blog-publication.test.ts
+@@ -0,0 +1,22 @@
++import { describe, test } from 'node:test';
++import assert from 'node:assert/strict';
++import { readFileSync } from 'node:fs';
++import { blogArticlePath, blogPillarPath, isPublished } from '../../src/lib/blog.ts';
++
++describe('publicación de blog', () => {
++  test('rutas canónicas tienen barra final', () => {
++    assert.equal(blogPillarPath('guias-por-especie'), '/blog/guias-por-especie/');
++    assert.equal(blogArticlePath('costos-y-acceso', 'ejemplo'), '/blog/costos-y-acceso/ejemplo/');
++  });
++
++  test('solo estado publicado es público', () => {
++    assert.equal(isPublished({ data: { estado: 'borrador' } } as never), false);
++    assert.equal(isPublished({ data: { estado: 'publicado' } } as never), true);
++  });
++
++  test('el piloto versionado permanece borrador', () => {
++    const source = readFileSync('src/content/blog/urgencias-en-perros.md', 'utf8');
++    assert.match(source, /^estado: "borrador"$/m);
++    assert.doesNotMatch(source, /^datePublished:/m);
++  });
++});
+diff --git a/tests/unit/blog-schema.test.ts b/tests/unit/blog-schema.test.ts
+new file mode 100644
+index 0000000..bc2a9fe
+--- /dev/null
++++ b/tests/unit/blog-schema.test.ts
+@@ -0,0 +1,29 @@
++import { describe, test } from 'node:test';
++import assert from 'node:assert/strict';
++import { blogSchema } from '../../src/lib/blog.ts';
++
++const validDraft = {
++  title: 'Urgencias en perros', seoTitle: 'Urgencias en perros',
++  metaDescription: 'Descripción válida.', pilar: 'guias-por-especie',
++  slug: 'urgencias-en-perros', estado: 'borrador', autor: 'Equipo editorial',
++};
++
++describe('schema de blog', () => {
++  test('acepta borrador sin fecha y aplica borrador por defecto', () => {
++    assert.equal(blogSchema.parse({ ...validDraft, estado: undefined }).estado, 'borrador');
++  });
++
++  test('publicado exige datePublished ISO', () => {
++    assert.throws(() => blogSchema.parse({ ...validDraft, estado: 'publicado' }));
++    assert.equal(blogSchema.parse({ ...validDraft, estado: 'publicado', datePublished: '2026-09-07' }).datePublished, '2026-09-07');
++    assert.throws(() => blogSchema.parse({ ...validDraft, dateModified: '7/9/2026' }));
++    assert.throws(() => blogSchema.parse({ ...validDraft, dateModified: '2026-99-99' }));
++  });
++
++  test('strictObject rechaza campos desconocidos y límites inválidos', () => {
++    assert.throws(() => blogSchema.parse({ ...validDraft, extra: true }));
++    assert.throws(() => blogSchema.parse({ ...validDraft, title: '' }));
++    assert.throws(() => blogSchema.parse({ ...validDraft, metaDescription: 'x'.repeat(161) }));
++    assert.throws(() => blogSchema.parse({ ...validDraft, pilar: 'emergencias' }));
++  });
++});
+diff --git a/tests/unit/blog-sitemap.test.ts b/tests/unit/blog-sitemap.test.ts
+new file mode 100644
+index 0000000..c4826ff
+--- /dev/null
++++ b/tests/unit/blog-sitemap.test.ts
+@@ -0,0 +1,31 @@
++import { describe, test } from 'node:test';
++import assert from 'node:assert/strict';
++import { readFileSync } from 'node:fs';
++import { SITEMAP_FILTER_PATTERN, assertBlogRouteAllowed, extractSitemapFilterPattern } from '../../src/lib/blog-sitemap.ts';
++
++const cases = [
++  ['/blog/', false], ['/blog/guias-por-especie/', false], ['/blog/guias-por-especie/x/', false],
++  ['/blog/mdcuidados/', false], ['/blog/md/', true], ['/blog/costos-y-acceso/mdguia/', false],
++  ['/blog/costos-y-acceso/rapi/', true], ['/md/index.md', true], ['/api/catalog.json', true],
++  ['/auth.md', true], ['/llms.txt', true], ['/.well-known/api-catalog', true],
++] as const;
++
++describe('defensa del sitemap', () => {
++  test('lee el literal real y exige igualdad exacta', () => {
++    const source = readFileSync('astro.config.mjs', 'utf8');
++    assert.equal(extractSitemapFilterPattern(source), SITEMAP_FILTER_PATTERN);
++    assert.throws(() => extractSitemapFilterPattern('export default {}'), /No se pudo extraer/);
++  });
++
++  test('reproduce la tabla contractual de §2', () => {
++    const actual = new RegExp(SITEMAP_FILTER_PATTERN);
++    for (const [path, excluded] of cases) {
++      assert.equal(actual.test(new URL(path, 'https://vet24cr.com').pathname), excluded, path);
++    }
++  });
++
++  test('acepta piloto y rechaza rapi', () => {
++    assert.doesNotThrow(() => assertBlogRouteAllowed('/blog/guias-por-especie/urgencias-en-perros/'));
++    assert.throws(() => assertBlogRouteAllowed('/blog/costos-y-acceso/rapi/'), /excluida/);
++  });
++});
+STDOUT_END
+STDERR=
+EXIT_CODE=0

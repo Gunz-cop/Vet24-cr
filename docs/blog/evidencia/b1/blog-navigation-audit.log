@@ -1,0 +1,19 @@
+ROLE=B1 verificadora independiente
+DATE=2026-09-07
+
+COMMAND=rg -n 'href="/blog/"' src docs
+STDOUT:
+src/components/BlogBreadcrumbs.astro:11:    <li><a class="hover:text-brand-primary" href="/blog/">Blog</a></li>
+docs/blog/evidencia/b1/diff-full.patch:437:+    <li><a class="hover:text-brand-primary" href="/blog/">Blog</a></li>
+EXIT_CODE=0
+
+COMMAND=rg -n '/blog/' src/layouts src/pages src/components
+STDOUT:
+src/layouts/BlogLayout.astro:15:JSON-LD BreadcrumbList item
+src/components/BlogBreadcrumbs.astro:11:visible Blog breadcrumb href
+src/pages/blog/index.astro:8:blog index canonical
+src/pages/blog/[pilar]/index.astro:11:pilar index canonical
+EXIT_CODE=0
+
+FINDING=No se encontró un enlace de navegación entrante al blog desde la navegación compartida del sitio. BlogBreadcrumbs.astro solo se renderiza en páginas del blog; por tanto /blog/ no es alcanzable navegando desde una ficha/provincia/zona o la portada.
+

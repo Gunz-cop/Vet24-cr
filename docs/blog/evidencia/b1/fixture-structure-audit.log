@@ -1,0 +1,31 @@
+ROLE=B1 verificadora independiente
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+DATE=2026-09-07
+
+SETUP=Se publicó temporalmente el frontmatter de urgencias-en-perros.md solo en la copia de trabajo, se construyó y se inspeccionó; luego se restauró estado=borrador, se eliminó datePublished temporal y se reconstruyó.
+
+COMMAND=regex/HTML parse of dist/client/blog/guias-por-especie/urgencias-en-perros/index.html
+STDOUT:
+articleExists=true
+structuredTypes=["Article","BreadcrumbList"]
+visibleHeadline=Urgencias en perros: cómo reconocerlas y buscar atención
+visibleAuthor=Equipo editorial Vet24 Costa Rica
+visibleDate=2026-09-07
+canonical=https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/
+articleUrlMatchesCanonical=true
+headlineMatchesVisible=true
+authorMatchesVisible=true
+dateMatchesVisible=true
+descriptionMatchesMeta=true
+EXIT_CODE=0
+
+COMMAND=git diff --exit-code -- src/content/blog/urgencias-en-perros.md astro.config.mjs
+STDOUT=
+STDERR=
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/blog.mjs (after restoration)
+STDOUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+STDERR=
+EXIT_CODE=0
+

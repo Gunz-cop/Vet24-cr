@@ -1,0 +1,44 @@
+{
+  "comparisonType": "informativa; no es una comparación exacta contra BASE B1",
+  "baseArtifact": {
+    "file": "docs/blog/evidencia/b1/base-agent-scan.json",
+    "scannedAt": null,
+    "result": "not verified",
+    "reason": "La ejecutora declaró que no pudo obtener el escáner externo."
+  },
+  "availableHistoricalScan": {
+    "file": "docs/agent-readiness/evidencia/scan-completo-22.json",
+    "scannedAt": "2026-09-05T19:29:43.890Z"
+  },
+  "productionScan": {
+    "file": "production-agent-scan.json",
+    "scannedAt": "2026-09-07T06:03:42.945Z",
+    "count": 22
+  },
+  "checks": [
+    {"id":"robotsTxt","historical":"pass","production":"pass","changed":false},
+    {"id":"sitemap","historical":"pass","production":"pass","changed":false},
+    {"id":"linkHeaders","historical":"fail","production":"pass","changed":true},
+    {"id":"dnsAid","historical":"fail","production":"fail","changed":false},
+    {"id":"markdownNegotiation","historical":"fail","production":"pass","changed":true},
+    {"id":"robotsTxtAiRules","historical":"pass","production":"pass","changed":false},
+    {"id":"contentSignals","historical":"fail","production":"pass","changed":true},
+    {"id":"webBotAuth","historical":"neutral","production":"neutral","changed":false},
+    {"id":"apiCatalog","historical":"fail","production":"pass","changed":true},
+    {"id":"oauthDiscovery","historical":"fail","production":"fail","changed":false},
+    {"id":"oauthProtectedResource","historical":"fail","production":"fail","changed":false},
+    {"id":"authMd","historical":"fail","production":"fail","changed":false},
+    {"id":"mcpServerCard","historical":"fail","production":"fail","changed":false},
+    {"id":"a2aAgentCard","historical":"fail","production":"fail","changed":false},
+    {"id":"agentSkills","historical":"fail","production":"fail","changed":false},
+    {"id":"webMcp","historical":"fail","production":"fail","changed":false},
+    {"id":"ard","historical":"fail","production":"fail","changed":false},
+    {"id":"x402","historical":"neutral","production":"neutral","changed":false},
+    {"id":"mpp","historical":"neutral","production":"neutral","changed":false},
+    {"id":"ucp","historical":"neutral","production":"neutral","changed":false},
+    {"id":"acp","historical":"neutral","production":"neutral","changed":false},
+    {"id":"ap2","historical":"neutral","production":"neutral","changed":false}
+  ],
+  "conclusion": "No se observa regresión frente al escaneo histórico disponible. No se puede atribuir ni probar el cambio contra BASE B1 porque el artefacto BASE requerido no contiene un escaneo ejecutado."
+}
+

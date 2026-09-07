@@ -1,0 +1,16 @@
+ROLE=B1 verificadora independiente
+DATE=2026-09-07
+REPO=Gunz-cop/Vet24-cr
+
+COMMAND=git status --short --ignored docs/blog/evidencia/b1
+STDOUT=Los registros nuevos de esta sesión aparecen como ?? bajo docs/blog/evidencia/b1/; no están en el índice ni en un commit.
+EXIT_CODE=0
+
+COMMAND=git for-each-ref + git ls-tree -r --name-only sobre refs locales/remotas, buscando informe-verificacion.md, blog-verificadora.log, diff-full.patch, production-agent-scan* y visual-verification*
+STDOUT:
+REF_COUNT=36
+FOUND_TARGET_EVIDENCE_COUNT=0
+EXIT_CODE=0
+
+CONCLUSION=La evidencia existe físicamente en este checkout, pero no está versionada en ninguna de las 36 referencias locales/remotas inspeccionadas. Por el contrato de §7, esto impide tratarla como registro durable de cierre. No se creó commit, PR ni merge sin autorización explícita.
+
