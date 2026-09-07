@@ -177,3 +177,53 @@ afirmaron que no se podía alcanzar producción desde el entorno de trabajo. Esa
 supuesta a partir de la advertencia genérica del plan sobre proxy, sin comprobarla. Al probarla,
 producción respondió 200. Ninguna sesión debe declarar producción inalcanzable sin haberlo intentado
 y mostrado la salida real del intento.
+
+## J. Frontera de artefactos, línea base del escaneo y evidencia versionada
+
+Correcciones nacidas de la verificación independiente de B1 (rama `b1/blog-infraestructura`, commit de
+evidencia `7d148cb`). La verificadora emitió **NO ACEPTADA** con cuatro bloqueos; dos se retiraron y dos
+motivan las enmiendas de abajo.
+
+### Bloqueos retirados
+
+| Bloqueo | Desenlace |
+|---|---|
+| Foco invisible en `#nav-directory` a 390×844 | **Falso.** La propia verificadora se rectificó y la coordinadora lo midió por separado con Chromium: `#nav-directory` tiene `display:none` bajo 768px y no entra al orden de Tab; el octavo Tab enfoca un elemento visible. `teclado.json` queda corroborado, no contradicho. El error probable fue confundir viewports: a 1440×900 sí es visible y sí es parada de Tab. Además `BaseLayout.astro` está intacto desde la BASE, así que no sería de B1 aunque fuera cierto. |
+| Falta de navegación entrante al blog | **Obsoleto.** Ya resuelto en `main` `52ed4db`, con dueño en B3. |
+
+### Enmienda 1 — frontera de artefactos
+
+Observación reproducible sobre el build del candidato:
+
+```bash
+grep -rl 'urgencias-en-perros' dist/client/   # vacío
+grep -rl 'urgencias-en-perros' dist/server/   # chunks/_astro_data-layer-content_*.mjs
+python3 -c "import json;print(json.load(open('dist/server/wrangler.json'))['assets'])"
+# {'directory': '../client', 'binding': 'ASSETS', 'run_worker_first': [...]}
+```
+
+`assets.directory` apunta a `../client`: sólo esa carpeta se sirve como estático. El chunk vive dentro del
+script del worker. El borrador **viaja en el bundle desplegado pero no es recuperable públicamente** —
+confirmado en producción: 404 en la ruta del borrador y cero ocurrencias en el HTML de `/blog/`.
+
+No es incumplimiento de B1: el criterio escrito no cubría el bundle y el contenido es un marcador de
+preparación. Sí es un criterio incompleto, corregido en plan §4 y §5/B1, con regla dura desde B4.
+
+### Enmienda 2 — la línea base del escaneo es inobtenible a posteriori
+
+`base-agent-scan.json` declara `not_verified`. Ese hueco **no se puede rellenar**: la BASE era un estado pasado
+de producción y producción sirve un único estado a la vez. Exigir la comparación exacta bloquearía B1 de forma
+permanente, que no es un criterio, es un punto muerto.
+
+El plan §7.4 pasa a: ejecutar y archivar el escaneo base como **precondición bloqueante** de cada subfase;
+condición de cierre reformulada como «ningún `pass` previo se convierte en `fail` o `neutral`» en vez de
+igualdad literal; y una excepción explícita, autorizada por el usuario, para una base ya inobtenible, rotulando
+la comparación como informativa y registrando por qué faltó.
+
+### Enmienda 3 — evidencia versionada
+
+Instrucción del usuario del 2026-09-07, incorporada al plan §7. La evidencia de la verificadora existió durante
+horas sólo en un disco local: no era legible por la coordinadora ni auditable por terceros. La causa fue un
+encargo mal escrito por la coordinadora, que pidió escribir los registros pero nunca commitearlos ni empujarlos.
+Desde ahora, todo encargo debe pedirlo de forma explícita, y un veredicto sin evidencia en el repositorio no
+cierra ninguna subfase.

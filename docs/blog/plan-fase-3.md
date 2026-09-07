@@ -1,7 +1,7 @@
 # Fase 3 — Blog editorial de Vet24-cr
 
 Estado: **aprobado por el usuario, condicionado a las correcciones documentales de los nueve hallazgos; implementación no iniciada**.
-Última revisión: **2026-09-07** (corrección de propiedad: enlace de navegación al blog).
+Última revisión: **2026-09-07** (correcciones: enlace de navegación; frontera de artefactos y borradores; línea base del escaneo; evidencia versionada).
 Rama documental: `claude/vet24-cr-phase-3-blog-wos6bp`.
 Base documental comprobada: `3eed5bd598b8bb04eb9eb3923487449c08e2de70`.
 
@@ -89,6 +89,32 @@ Se elige **piloto borrador excluido del build público hasta B4**, porque permit
 
 Para capturas de B1 se publica temporalmente el piloto únicamente en un checkout de prueba aislado, servido localmente: se archiva diff de esa fixture y capturas etiquetadas como prueba, nunca se commitea ni despliega el cambio de estado. Luego se reconstruye el candidato sin esa modificación y se comprueba la ausencia del piloto. B4 levanta el bloqueo solo tras cumplir el contrato editorial completo de §5/B4 y B3 desplegada/verificada.
 
+### Frontera de artefactos: qué se sirve y qué se empaqueta
+
+Hallazgo de la verificación independiente de B1, resuelto aquí porque el criterio original era incompleto.
+
+El adaptador de Cloudflare produce dos salidas. `dist/server/wrangler.json` declara
+`assets.directory = ../client`, de modo que **sólo `dist/client` se sirve como estático**; `dist/server` es el
+script del worker. En consecuencia un borrador se serializa en el chunk del content layer de `dist/server`
+(`_astro_data-layer-content_*.mjs`) y **viaja dentro del bundle desplegado**, aunque no sea recuperable por
+ninguna URL: comprobado en producción con 404 en la ruta del borrador y cero ocurrencias en el HTML de `/blog/`.
+
+Reglas que se derivan:
+
+1. Toda afirmación de ausencia declara el directorio inspeccionado. «Ausente de todo artefacto» sin decir dónde
+   se buscó no es una afirmación verificable.
+2. `scripts/verification/blog.mjs` se amplía **en B2** para inspeccionar `dist/client` y `dist/server` por
+   separado y reportar cada uno. Ampliar el control no es motivo para relajar la política.
+3. Para B1 este empaquetado **no es incumplimiento**: el borrador es un marcador de preparación editorial, no es
+   servible, y el criterio escrito no lo cubría.
+4. **Regla dura desde B4**: ningún borrador con contenido editorial real se serializa en un artefacto de
+   distribución. Cuando existan artículos sin publicar ni auditar, el bundle deja de ser un lugar aceptable para
+   su texto. La subfase que introduzca el primer borrador de contenido real demuestra su ausencia en ambos
+   directorios antes de fusionar; si el generador no permite excluirlo, el borrador no se versiona en la
+   colección hasta estar listo para publicarse.
+
+Nunca se altera la configuración del filtro ni del adaptador para ocultar un borrador en vez de excluirlo.
+
 ### Enlaces tipados y fuente única
 
 El catálogo contiene `PILAR_NAMES`, `ARTICULO_A_CLINICAS`, `ARTICULO_A_ZONAS`, `ARTICULO_A_PROVINCIAS` y `CROSS_PILLAR_LINKS`. Claves de artículo identificadas por pilar/slug; las relaciones inversas se derivan del mismo catálogo, nunca se mantienen a mano.
@@ -120,7 +146,7 @@ Aceptación:
 
 - `npm run check`, `npm run test:unit`, `npm run build:no-shorten` salen 0.
 - Test unitario del filtro real cubre la tabla de §2. Una fixture con slug rapi provoca salida no cero de `build:no-shorten`; el piloto válido permite salida 0. Se archivan ambas salidas y se retira la fixture antes del build candidato. No se modifica config para superar la prueba.
-- Ambos índices de pilar y /blog/ existen con canonical de barra final; no hay piloto borrador en HTML de artículo, enlaces, JSON-LD Article ni sitemap. Su URL devuelve 404 y el verificador falla si aparece.
+- Ambos índices de pilar y /blog/ existen con canonical de barra final; no hay piloto borrador en HTML de artículo, enlaces, JSON-LD Article ni sitemap. Su URL devuelve 404 y el verificador falla si aparece. **La comprobación se hace sobre `dist/client` y `dist/server`, nombrando en qué directorio se buscó**: no se acepta una afirmación de ausencia que sólo haya inspeccionado la salida cliente.
 - La fixture local publicada genera la ruta, autor, un Article y BreadcrumbList parseables con URL/autor/fechas iguales al contenido visible. Canonical y metaDescription coinciden con schema. Se conserva evidencia de la fixture y de su retirada.
 - Capturas de /blog/ y fixture publicada a 390×844 y 1440×900. Aprobación visual: cero scroll horizontal, cajas de título/texto dentro del ancho del viewport, ningún solapamiento de texto con anuncios/navegación, enlaces enfocables con indicador visible. Se archivan medidas DOM y recorrido de teclado, además de PNG.
 - Sitemap: ninguna URL preexistente de clínica/provincia/zona perdida; conjunto añadido igual al esperado para el estado actual. Inventario y contenido de mirrors y catálogo sin cambios semánticos respecto de BASE. Diff limitado a allowlist B1.
@@ -194,7 +220,7 @@ C = creación inicial, M = modificación, C→M = creación y mantenimiento dent
 | tests/unit/blog-links.test.ts | C B2 → M B4 para cobertura seed |
 | tests/e2e/blog.spec.ts | C B1 → M B2 → M B3 → M B4, criterios respectivos |
 | tests/e2e/blog-emergency-layout.spec.ts | C B2 → M B4 para comprobación final |
-| scripts/verification/blog.mjs | C B1 → M B2 → M B3 → M B4, artefactos y condiciones respectivas |
+| scripts/verification/blog.mjs | C B1 → M B2 (amplía inspección a dist/client y dist/server) → M B3 → M B4, artefactos y condiciones respectivas |
 | docs/blog/evidencia/b1/** | C→M B1: bases, fixtures, auditoría técnica, resultados y cierre |
 | docs/blog/evidencia/b2/** | C→M B2: misma responsabilidad |
 | docs/blog/evidencia/b3/** | C→M B3: misma responsabilidad |
@@ -204,7 +230,7 @@ La subfase posee producto/tests; su verificadora independiente posee la evidenci
 
 El traspaso de una fila compartida ocurre solo después de merge autorizado y cierre productivo de la predecesora; se registra SHA de entrega y receptor en la base siguiente. No autoriza trabajo paralelo.
 
-Antes de editar cada subfase, crear `docs/blog/evidencia/bN/base.json` con `baseSha` completo e inmutable igual al main remoto inicial, SHA de predecesora, inventario concreto de archivos permitidos, responsables y fecha. B1–B4 **no están iniciadas**: no se inventan sus futuros SHA; registrarlos es precondición bloqueante. La base documental actual no se reutiliza automáticamente como base futura. Si main cambia, se registra una nueva ejecución/base conservando la evidencia anterior y se repite verificación; nunca se sobrescribe la base para ocultar cambios.
+Antes de editar cada subfase, ejecutar y archivar el escaneo base de §7.4 y crear `docs/blog/evidencia/bN/base.json` con `baseSha` completo e inmutable igual al main remoto inicial, SHA de predecesora, inventario concreto de archivos permitidos, responsables y fecha. B1–B4 **no están iniciadas**: no se inventan sus futuros SHA; registrarlos es precondición bloqueante. La base documental actual no se reutiliza automáticamente como base futura. Si main cambia, se registra una nueva ejecución/base conservando la evidencia anterior y se repite verificación; nunca se sobrescribe la base para ocultar cambios.
 
 Revisión obligatoria: `git diff --name-status <BASE_SHA>...HEAD` y diff completo contra esa base; adicionalmente diff contra main vigente. Cualquier ruta fuera de allowlist bloquea, incluso si es nueva. La coordinadora debe modificar y aprobar el alcance antes de habilitar un archivo faltante, nunca por decisión silenciosa del implementador.
 
@@ -226,6 +252,8 @@ git diff --name-status <BASE_SHA>...HEAD
 git diff <BASE_SHA>...HEAD
 ```
 
+**La evidencia no existe hasta estar versionada y empujada.** Cualquier registro producido en una máquina local —informe, log, captura, diff— se commitea y se empuja a una rama del repositorio antes de reportar el trabajo como entregado. Una ruta de disco local no es un entregable: no la puede leer la coordinadora, no la puede auditar un tercero y desaparece con la sesión. Un veredicto cuya evidencia no esté en el repositorio no cierra ninguna subfase. Todo encargo a una sesión debe pedirlo explícitamente.
+
 El workflow actual no ejecuta `scripts/verification/blog.mjs`: es un control **manual obligatorio**. La sesión ejecutora lo corre después del build del candidato y la verificadora independiente lo repite sobre ese mismo candidato. Cada una archiva comando, SHA, salida estándar, salida de error y código de salida en `docs/blog/evidencia/bN/blog-ejecutora.log` y `blog-verificadora.log`, respectivamente. Salida no cero o cualquiera de esos registros ausente bloquea aceptación y cierre aunque CI esté verde. La coordinadora comprueba ambos registros. No se modifica ci.yml para incorporarlo. Los nuevos tests unitarios sí quedan cubiertos por `npm test`, los specs E2E por `test:e2e` y la defensa del sitemap por `build:no-shorten`; eso no sustituye la ejecución manual de blog.mjs.
 
 No `npm run build`: el acortador hace red y escribe datos. CI existente debe concluir success en el HEAD final y conservar controles (incluido dry-run/tipos/E2E); no modificar workflow ni aceptar skips nuevos. Registrar skips históricos como no verificados, no pass. La coordinadora comprueba run y conclusión del candidato, mergeability y diff; el resumen de otra IA no es evidencia.
@@ -239,10 +267,29 @@ Después de cada despliegue, verificadora distinta del ejecutor archiva en `docs
 1. Registro de Workers Builds/deployment con ID, resultado y SHA de origen igual al merge autorizado, dominio/fecha y comprobación HTTP de una ruta afectada. Un SHA local o CI verde no prueba qué commit sirve producción. Si no se puede obtener esa correspondencia, el cierre queda pendiente.
 2. GET/HEAD, status, MIME, cuerpo/cabeceras de `/api/catalog.json`, `/api/openapi.json`, `/llms.txt`, `/api/readme.md`, `/auth.md`, `/.well-known/api-catalog`; destinos 200 y HEAD sin cuerpo. `/sitemap.xml` conserva 301 a `/sitemap-index.xml`, XML 200 y conjunto esperado. Catálogo, llms e inventario/contenido de mirrors conservan datos de BASE.
 3. En todas las rutas HTML con espejo del inventario BASE: Accept markdown devuelve Markdown; Accept navegador y markdown;q=0 conservan HTML; HEAD selecciona igual sin cuerpo. Vary: Accept y private,no-store permanecen; noindex solo en mirror directo, cuyo MIME/CORS/noindex se conserva. Relaciones Link de descubrimiento conservadas y destinos 200. Blog permanece HTML sin anunciar espejo.
-4. Escaneo completo antes/después mediante script AR existente en modo lectura, mismos 22 identificadores: robotsTxt,sitemap,linkHeaders,dnsAid,markdownNegotiation,robotsTxtAiRules,contentSignals,webBotAuth,apiCatalog,oauthDiscovery,oauthProtectedResource,authMd,mcpServerCard,a2aAgentCard,agentSkills,webMcp,ard,x402,mpp,ucp,acp,ap2. Archivar JSON íntegro y comparación por check, no solo nivel; si el servicio cambia lista, documentar cobertura y bloquear cierre hasta resolver comparabilidad. No reducir perfil.
+4. Escaneo completo de los mismos 22 identificadores mediante script AR existente en modo lectura:
+   robotsTxt,sitemap,linkHeaders,dnsAid,markdownNegotiation,robotsTxtAiRules,contentSignals,webBotAuth,apiCatalog,oauthDiscovery,oauthProtectedResource,authMd,mcpServerCard,a2aAgentCard,agentSkills,webMcp,ard,x402,mpp,ucp,acp,ap2.
+   Se archiva el JSON íntegro y una comparación por identificador, no sólo el nivel. Si el servicio cambia la
+   lista, documentar cobertura y bloquear cierre hasta resolver comparabilidad. No reducir perfil.
+
+   **La comparación se hace contra la línea base ejecutada de la subfase.** Esa base sólo existe si se ejecutó
+   *antes* de tocar código: producción sirve un único estado a la vez y un estado pasado no se puede escanear
+   retroactivamente. Por eso ejecutar y archivar el escaneo base es **precondición bloqueante** de cada subfase,
+   junto con `base.json`, y no una tarea que se pueda recuperar al final.
+
+   **Regla de cierre, ejecutable:** la condición es que **ningún identificador que estuviera en `pass` pase a
+   `fail` o `neutral`**, no una igualdad literal de todos los valores. Una mejora de `fail` a `pass` no bloquea;
+   se documenta.
+
+   **Excepción por base inobtenible.** Cuando la base de una subfase no se ejecutó a tiempo y ya no puede
+   obtenerse, no se finge ni se sustituye en silencio: se archiva el escaneo productivo íntegro, se compara
+   contra el escaneo AR archivado más reciente identificándolo por archivo y fecha, y se rotula explícitamente
+   como comparación informativa, no contractual. El cierre bajo esta excepción requiere autorización del usuario
+   y deja registrado por qué faltó la base, para que no se repita. La excepción no se invoca por comodidad: si la
+   base es obtenible, se obtiene.
 5. URLs nuevas previstas responden con estado/canonical esperado; borradores siguen 404; capturas/medidas y controles de emergencia exigidos por la subfase pasan. Auditoría independiente identifica candidato y evidencia productiva.
 
-Bloquean cierre: despliegue sin SHA demostrado; error nuevo HTTP/MIME/cabeceras/negociación; pérdida/cambio no autorizado de catálogo o mirror; ruta publicada fuera del sitemap; borrador accesible; regresión de un pass o descenso del nivel respecto de base; controles de aceptación fallidos; evidencia ausente o auditoría desfavorable. Estados fail/neutral heredados se comparan y documentan, nunca se convierten en pass. Sin red o panel, dejar explícitamente pendiente la verificación; no simular resultados ni cerrar issue.
+Bloquean cierre: base de escaneo no ejecutada a tiempo sin la excepción autorizada de §7.4; despliegue sin SHA demostrado; error nuevo HTTP/MIME/cabeceras/negociación; pérdida/cambio no autorizado de catálogo o mirror; ruta publicada fuera del sitemap; borrador accesible; regresión de un pass o descenso del nivel respecto de base; controles de aceptación fallidos; evidencia ausente o auditoría desfavorable. Estados fail/neutral heredados se comparan y documentan, nunca se convierten en pass. Sin red o panel, dejar explícitamente pendiente la verificación; no simular resultados ni cerrar issue.
 
 Seguimiento de PRs por evento, no por sondeo: usar subscribe_pr_activity y ScheduleWakeup cuando estén disponibles; si no, registrar la limitación y coordinar el aviso de cierre sin simular esas herramientas.
 
