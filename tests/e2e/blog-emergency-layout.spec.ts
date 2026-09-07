@@ -49,6 +49,15 @@ for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia $
       return !!complete && el.getBoundingClientRect().top >= previous!.getBoundingClientRect().bottom;
     })).toBe(true);
   }
+  await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+  const screenshot = testInfo.outputPath('emergency.png');
+  await page.screenshot({ path: screenshot, fullPage: true });
+  await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
+  if (process.env.B2_EVIDENCE_DIR) {
+    const name = path.split('/').filter(Boolean).join('-') + '-' + width;
+    await page.screenshot({ path: process.env.B2_EVIDENCE_DIR + '/' + name + '.png', fullPage: true });
+  }
   // Prevent native external navigation before keyboard activation; no call or message is sent.
   await page.evaluate(() => {
     (window as any).__b2Destinations = [];
@@ -95,16 +104,10 @@ for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia $
     await page.keyboard.press('Enter');
     await expect(filter).toHaveAttribute('aria-pressed', 'false');
   }
-  await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
-  expect(await page.evaluate(() => scrollY)).toBe(0);
-  const screenshot = testInfo.outputPath('emergency.png');
-  await page.screenshot({ path: screenshot, fullPage: true });
-  await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
   const record = { path, width, measurements, keyboard, focusOrder };
   await testInfo.attach('geometry-keyboard', { body: JSON.stringify(record, null, 2), contentType: 'application/json' });
   if (process.env.B2_EVIDENCE_DIR) {
     const name = `${path.split('/').filter(Boolean).join('-')}-${width}`;
     writeFileSync(`${process.env.B2_EVIDENCE_DIR}/${name}.json`, JSON.stringify(record, null, 2));
-    await page.screenshot({ path: `${process.env.B2_EVIDENCE_DIR}/${name}.png`, fullPage: true });
   }
 });
