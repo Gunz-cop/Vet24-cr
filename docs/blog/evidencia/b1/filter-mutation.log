@@ -1,0 +1,33 @@
+ROLE=B1 verificadora independiente
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+
+COMMAND=apply_patch temporal sobre astro.config.mjs
+MUTATION=se cambió el literal del filtro de [\"src/**/*.md\"] a [\"src/**/*.mdx\"]
+RESTORE=se revirtió inmediatamente con apply_patch; no quedó cambio en astro.config.mjs
+
+COMMAND=node --test tests/unit/blog-sitemap.test.ts
+STDOUT:
+▶ defensa del sitemap
+  ✖ lee el literal real y exige igualdad exacta entre config y helper
+  ✔ reproduce la tabla contractual de §2 y mantiene fuera otros .md
+  ✖ acepta piloto y rechaza rapi mediante build:no-shorten
+✖ defensa del sitemap
+ℹ tests 3
+ℹ suites 1
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+STDERR:
+AssertionError [ERR_ASSERTION]: Se esperaba el filtro real ["src/**/*.md"], pero se leyó ["src/**/*.mdx"]
+AssertionError [ERR_ASSERTION]: Filtro sitemap desincronizado
+EXIT_CODE=1
+
+COMMAND=git diff --exit-code -- astro.config.mjs
+STDOUT=
+STDERR=
+EXIT_CODE=0
+MUTATION_RESULT=PASS (la prueba falla ante divergencia real y la copia fue restaurada)
+

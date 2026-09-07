@@ -1,0 +1,38 @@
+{
+  "session": "verificadora independiente B1",
+  "baseSha": "89a365b8c374cdbf9912a07425ed68e34a496464",
+  "candidateSha": "dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28",
+  "screenshotsInspected": [
+    "blog-mobile.png",
+    "blog-desktop.png",
+    "articulo-fixture-mobile.png",
+    "articulo-fixture-desktop.png"
+  ],
+  "measurements": [
+    {"route": "/blog/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "textBoxesInsideViewport": true, "navigationOverlaps": 0},
+    {"route": "/blog/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "textBoxesInsideViewport": true, "navigationOverlaps": 0},
+    {"route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "textBoxesInsideViewport": true, "navigationOverlaps": 0},
+    {"route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "textBoxesInsideViewport": true, "navigationOverlaps": 0}
+  ],
+  "structuredDataFixture": {
+    "route": "/blog/guias-por-especie/urgencias-en-perros/",
+    "types": ["Article", "BreadcrumbList"],
+    "canonical": "https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/",
+    "visibleHeadline": "Urgencias en perros: cómo reconocerlas y buscar atención",
+    "schemaHeadlineMatchesVisible": true,
+    "visibleAuthor": "Equipo editorial Vet24 Costa Rica",
+    "schemaAuthorMatchesVisible": true,
+    "visibleDate": "2026-09-07",
+    "schemaDateMatchesVisible": true,
+    "metaDescriptionMatchesSchema": true
+  },
+  "keyboardTraversal": {
+    "tabsAttemptedPerRouteAndViewport": 8,
+    "blog-390x844": {"allFocusedElementsVisible": true, "outline": "solid 2px"},
+    "blog-1440x900": {"allFocusedElementsVisible": true, "outline": "solid 2px"},
+    "article-1440x900": {"allFocusedElementsVisible": true, "outline": "solid 2px"},
+    "article-390x844": {"allFocusedElementsVisible": true, "outline": "solid 2px", "observedOrderPrefix": ["Saltar al contenido", "Vet24 Costa Rica", "Alternar tema", "Emergencia", "Inicio", "Blog", "Guías por especie", "Directorio"]}
+  },
+  "verdict": "PASS",
+  "note": "La reproducción con Chromium excluye correctamente #nav-directory en móvil porque display:none; a desktop sí es visible y enfocable. La evidencia teclado.json queda corroborada."
+}

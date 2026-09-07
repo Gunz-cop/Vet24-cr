@@ -1,0 +1,58 @@
+ROLE=B1 verificadora independiente
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+CANDIDATE_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+DATE=2026-09-07
+
+COMMAND=npm run check
+STDOUT=Result (78 files): 0 errors, 0 warnings, 75 hints
+STDERR=
+EXIT_CODE=0
+
+COMMAND=npm run test:unit
+STDOUT=tests 59; suites 13; pass 59; fail 0; cancelled 0; skipped 0; todo 0
+STDERR=
+EXIT_CODE=0
+
+COMMAND=npm run build:no-shorten
+STDOUT=Build complete; sitemap-index.xml created; 133 HTML routes prerendered
+STDERR=Unable to fetch the Request.cf object; unable to verify first certificate; build continued with fallback placeholder
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/blog.mjs
+STDOUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+STDERR=
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/agent-catalog.mjs
+STDOUT=✓ AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+STDERR=
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/agent-markdown.mjs
+STDOUT=agent-markdown: OK (127 mirrors)
+STDERR=
+EXIT_CODE=0
+
+COMMAND=npm run test:e2e -- --workers=1
+STDOUT=
+STDERR=Error: Process from config.webServer exited early.
+EXIT_CODE=1
+NOTE=La configuración intentó arrancar un preview ya daemonizado y el proceso lanzador terminó; no se convirtió en pass.
+
+COMMAND=npm run preview -- --host 127.0.0.1 --port 4321
+STDOUT=preview already running
+STDERR=
+EXIT_CODE=0
+
+COMMAND=npm run test:e2e -- --workers=1
+STDOUT=96 tests; 11 skipped; 85 passed (1.7m)
+STDERR=
+EXIT_CODE=0
+NOTE=Los 11 skips son históricos/preexistentes según el inventario; no se observó un skip nuevo en B1.
+
+COMMAND=NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/verification/agent-markdown.mjs --base-url https://vet24cr.com
+STDOUT=agent-markdown: OK (127 mirrors + HTTP https://vet24cr.com)
+STDERR=Warning: Setting NODE_TLS_REJECT_UNAUTHORIZED=0 makes TLS connections insecure
+EXIT_CODE=0
+NOTE=Se usó curl.exe para los controles HTTPS porque fetch de Node no validó el certificado local; la advertencia TLS queda registrada y no se trató como resultado de producción.
+

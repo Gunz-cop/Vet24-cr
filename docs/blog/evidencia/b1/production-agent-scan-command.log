@@ -1,0 +1,16 @@
+ROLE=B1 verificadora independiente
+DOMAIN=https://vet24cr.com
+DATE=2026-09-07
+
+COMMAND=curl.exe -sS -X POST https://isitagentready.com/api/scan -H "Content-Type: application/json" --data "{\"url\":\"https://vet24cr.com\"}"
+STDOUT=JSON íntegro archivado en production-agent-scan.json; scannedAt=2026-09-07T06:03:42.945Z; checks=22
+STDERR=
+EXIT_CODE=0
+
+COMMAND=compare 22 identifiers against available historical scan
+STDOUT=base historical scannedAt=2026-09-05T19:29:43.890Z; production scannedAt=2026-09-07T06:03:42.945Z; baseCount=22; productionCount=22; no status regression observed
+STDERR=
+EXIT_CODE=0
+
+LIMITATION=base-agent-scan.json de B1 registra “not verified”; por eso production-agent-scan.json no se presenta como comparación exacta contra la BASE B1.
+

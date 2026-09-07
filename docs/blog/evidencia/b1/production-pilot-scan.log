@@ -1,0 +1,21 @@
+ROLE=B1 verificadora independiente
+DOMAIN=https://vet24cr.com
+DATE=2026-09-07
+
+COMMAND=for each route, curl.exe -sS https://vet24cr.com{route}; count case-insensitive literal urgencias-en-perros in the complete response body
+STDOUT:
+ / bytes=878816 pilot_matches=0 curl_exit=0
+ /blog/ bytes=13508 pilot_matches=0 curl_exit=0
+ /blog/guias-por-especie/ bytes=12981 pilot_matches=0 curl_exit=0
+ /blog/costos-y-acceso/ bytes=12949 pilot_matches=0 curl_exit=0
+ /sitemap-index.xml bytes=182 pilot_matches=0 curl_exit=0
+ /sitemap-0.xml bytes=10701 pilot_matches=0 curl_exit=0
+ /llms.txt bytes=11186 pilot_matches=0 curl_exit=0
+ /api/catalog.json bytes=292140 pilot_matches=0 curl_exit=0
+ /api/openapi.json bytes=5333 pilot_matches=0 curl_exit=0
+ /api/readme.md bytes=2248 pilot_matches=0 curl_exit=0
+ /auth.md bytes=453 pilot_matches=0 curl_exit=0
+ /.well-known/api-catalog bytes=269 pilot_matches=0 curl_exit=0
+PILOT_SCAN=PASS
+EXIT_CODE=0
+

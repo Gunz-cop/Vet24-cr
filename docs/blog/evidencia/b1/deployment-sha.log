@@ -1,0 +1,35 @@
+ROLE=B1 verificadora independiente
+REPO=Gunz-cop/Vet24-cr
+DEPLOYED_MERGE_SHA=3edb6bcca050b110a491723846ec6f3a1ebed65b
+DOMAIN=https://vet24cr.com
+DATE=2026-09-07
+
+COMMAND=GET https://api.github.com/repos/Gunz-cop/Vet24-cr/commits/3edb6bcca050b110a491723846ec6f3a1ebed65b
+STDOUT:
+commit.sha=3edb6bcca050b110a491723846ec6f3a1ebed65b
+parents=89a365b8c374cdbf9912a07425ed68e34a496464,b3de9ed945176ef78df733962d952844fddfdd0e
+commit.message=Merge pull request #25 from Gunz-cop/b1/blog-infraestructura
+EXIT_CODE=0
+
+COMMAND=GET https://api.github.com/repos/Gunz-cop/Vet24-cr/commits/3edb6bcca050b110a491723846ec6f3a1ebed65b/check-runs
+STDOUT:
+Workers Builds: vet24-cr | head_sha=3edb6bcca050b110a491723846ec6f3a1ebed65b | status=completed | conclusion=success
+build_id=587418b3-31df-49dc-827b-3aadee59b6ca
+version_id=900fffbb-5ae2-437c-9aa6-809d7bf871a2
+details=https://dash.cloudflare.com/972ab3666747a93c084965dd4585d4cc/workers/services/view/vet24-cr/production/builds/587418b3-31df-49dc-827b-3aadee59b6ca
+verify | head_sha=3edb6bcca050b110a491723846ec6f3a1ebed65b | status=completed | conclusion=success
+actions_run=34087689122
+EXIT_CODE=0
+
+COMMAND=GET https://api.github.com/repos/Gunz-cop/Vet24-cr/deployments?sha=3edb6bcca050b110a491723846ec6f3a1ebed65b
+STDOUT=[]
+github.deployments.count=0
+EXIT_CODE=0
+
+COMMAND=curl.exe -sS -o NUL -w "%{http_code} %{content_type}" https://vet24cr.com/blog/
+STDOUT=200 text/html
+STDERR=
+EXIT_CODE=0
+
+CONCLUSION=La asociación disponible de Workers Builds vincula explícitamente head_sha=3edb6bc con el build de producción de Cloudflare y /blog/ responde 200. No existe un objeto deployment en GitHub; se deja anotado, no simulado, como limitación del registro. No se obtuvo una cabecera HTTP pública que exponga el SHA servido, por lo que la correspondencia se demuestra por el registro de Workers Builds, no por el cuerpo de la respuesta.
+

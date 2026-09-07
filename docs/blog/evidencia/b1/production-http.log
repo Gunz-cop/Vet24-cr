@@ -1,0 +1,47 @@
+ROLE=B1 verificadora independiente
+CANDIDATE_PRODUCT_SHA=dc2581ab444ffbeebbc0bcd2ccc373da23ac2f28
+DEPLOYED_MERGE_SHA=3edb6bcca050b110a491723846ec6f3a1ebed65b
+DOMAIN=https://vet24cr.com
+DATE=2026-09-07
+
+COMMAND=curl.exe -sS -o NUL -w "GET ... status=%{http_code} mime=%{content_type} bytes=%{size_download} redirect=%{redirect_url}" https://vet24cr.com{route}
+COMMAND=curl.exe -sS -I -o NUL -w "HEAD ... status=%{http_code} mime=%{content_type} bytes=%{size_download}" https://vet24cr.com{route}
+STDOUT:
+GET /api/catalog.json status=200 mime=application/json; charset=utf-8 bytes=292140 redirect=
+HEAD /api/catalog.json status=200 mime=application/json; charset=utf-8 bytes=0
+GET /api/openapi.json status=200 mime=application/json; charset=utf-8 bytes=5333 redirect=
+HEAD /api/openapi.json status=200 mime=application/json; charset=utf-8 bytes=0
+GET /llms.txt status=200 mime=text/plain; charset=utf-8 bytes=11187 redirect=
+HEAD /llms.txt status=200 mime=text/plain; charset=utf-8 bytes=0
+GET /api/readme.md status=200 mime=text/markdown; charset=utf-8 bytes=2249 redirect=
+HEAD /api/readme.md status=200 mime=text/markdown; charset=utf-8 bytes=0
+GET /auth.md status=200 mime=text/markdown; charset=utf-8 bytes=454 redirect=
+HEAD /auth.md status=200 mime=text/markdown; charset=utf-8 bytes=0
+GET /.well-known/api-catalog status=200 mime=application/linkset+json; charset=utf-8 bytes=270 redirect=
+HEAD /.well-known/api-catalog status=200 mime=application/linkset+json; charset=utf-8 bytes=0
+GET /sitemap.xml status=301 mime= bytes=0 redirect=https://vet24cr.com/sitemap-index.xml
+HEAD /sitemap.xml status=301 mime= bytes=0
+GET /sitemap-index.xml status=200 mime=application/xml bytes=182 redirect=
+HEAD /sitemap-index.xml status=200 mime=application/xml bytes=0
+GET /blog/ status=200 mime=text/html bytes=13508 redirect=
+HEAD /blog/ status=200 mime=text/html bytes=0
+GET /blog/guias-por-especie/ status=200 mime=text/html bytes=12981 redirect=
+HEAD /blog/guias-por-especie/ status=200 mime=text/html bytes=0
+GET /blog/costos-y-acceso/ status=200 mime=text/html bytes=12949 redirect=
+HEAD /blog/costos-y-acceso/ status=200 mime=text/html bytes=0
+GET /blog/guias-por-especie/urgencias-en-perros/ status=404 mime=text/html bytes=4337 redirect=
+HEAD /blog/guias-por-especie/urgencias-en-perros/ status=404 mime=text/html bytes=0
+EXIT_CODE=0 for every curl invocation
+
+HEADER COMMAND=curl.exe -sS -D - -o NUL ... and curl.exe -sS -I ...
+HEADER OUTPUT (representative and repeated on GET/HEAD):
+/api/catalog.json: HTTP/1.1 200 OK; Content-Type: application/json; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "06b41636057a228596f0220ac19c163c"
+/api/openapi.json: HTTP/1.1 200 OK; Content-Type: application/json; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "0620edc2565465f2c7247836e74cd8d6"
+/llms.txt: HTTP/1.1 200 OK; Content-Type: text/plain; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "04b2372410e8d28d1ca75087ee87096a"
+/api/readme.md: HTTP/1.1 200 OK; Content-Type: text/markdown; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "21f2535b5fa7fda6ecc1c83a21a43af0"
+/auth.md: HTTP/1.1 200 OK; Content-Type: text/markdown; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "c94d958d649dcbeaa47ad6e12971e43c"
+/.well-known/api-catalog: HTTP/1.1 200 OK; Content-Type: application/linkset+json; charset=utf-8; Cache-Control: public, max-age=0, must-revalidate; Access-Control-Allow-Origin: *; ETag: "4b066ed85c22b8cf3aa9c84655e036ab"
+/sitemap-index.xml: HTTP/1.1 200 OK; Content-Type: application/xml; Cache-Control: public, max-age=0, must-revalidate
+/blog/: HTTP/1.1 200 OK; Content-Type: text/html; Cache-Control: public, max-age=0, must-revalidate
+HEAD body bytes were 0 in all cases.
+
