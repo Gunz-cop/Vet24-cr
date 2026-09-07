@@ -1,0 +1,3 @@
+BASE_CHECKOUT npm run test:e2e
+EXIT_CODE=1
+SHA=6ec4497ec926aece6da9fc8070adc8a3136c20e7

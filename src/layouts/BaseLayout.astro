@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
+import { getPublishedBlogEntries } from '../lib/blog';
 // AdSense (ca-pub-5094917394495886) ya no se carga aquí: con Ezoic activo entra
 // como fuente de demanda desde el panel de Ezoic, vía header bidding.
 import { EZOIC_ENABLED } from '../config/ads';
@@ -23,6 +24,7 @@ const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
 const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
 const canonical = canonicalUrl || buildCanonicalUrl(Astro.url.pathname);
+const hasPublishedBlog = (await getPublishedBlogEntries()).length > 0;
 
 // Resolve absolute URL for the Open Graph image
 const shareImage = image || "/images/og-share-default.png";
@@ -132,6 +134,11 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
           <a href="/#directorio" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-directory">
             Directorio
           </a>
+          {hasPublishedBlog && (
+            <a href="/blog/" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-blog">
+              Blog
+            </a>
+          )}
 
           <!-- Theme Switcher Button -->
           <button
@@ -188,6 +195,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
             <a href="/terminos/" class="hover:text-brand-text transition-colors">Términos</a>
             <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
             <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
+            <a href="/politica-editorial/" class="hover:text-brand-text transition-colors">Política editorial</a>
 {mostrarAnuncios && (
               <>
                 {/* Sólo se revela si el CMP dice que el RGPD aplica a este visitante.

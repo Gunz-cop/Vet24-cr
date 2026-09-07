@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Política editorial"
+  description="Cómo se preparan, auditan y aprueban los contenidos editoriales de Vet24 Costa Rica."
+  canonicalUrl="https://vet24cr.com/politica-editorial/"
+>
+  <article class="max-w-3xl mx-auto rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
+    <p class="text-sm font-bold text-brand-primary mb-3">Transparencia editorial</p>
+    <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Política editorial</h1>
+
+    <div class="blog-prose mt-8 leading-8 text-brand-text-muted">
+      <p>Vet24 Costa Rica es un directorio informativo para ayudar a ubicar atención veterinaria en Costa Rica. Los horarios, servicios y disponibilidad pueden cambiar; confirmá la información con la clínica antes de trasladarte. El contenido editorial no sustituye una consulta profesional.</p>
+
+      <h2>Cómo trabajamos</h2>
+      <p>El proceso previsto para cada guía es: brief con el alcance y las fuentes; redacción asistida por herramientas de inteligencia artificial; auditoría editorial por una sesión independiente; y aprobación humana antes de publicar. La asistencia de IA no constituye experiencia profesional ni reemplaza la verificación de los datos.</p>
+
+      <h2>Qué se ha hecho en esta etapa</h2>
+      <p>En esta etapa se implementaron la ruta de esta política, el registro de atribución, la presentación de autoría en las plantillas y los controles para mantener los borradores fuera de las rutas públicas. El piloto continúa en borrador mientras se completa la investigación, la auditoría independiente, la atribución verificable y la aprobación humana. No se presenta ese trabajo como una revisión veterinaria.</p>
+
+      <h2>Revisión y límites</h2>
+      <p>Una auditoría editorial de IA comprueba estructura, enlaces, coherencia documental y cumplimiento de los criterios del proyecto; no es una revisión veterinaria profesional. Solo se mostraría una persona como revisora veterinaria si existieran una credencial verificable y constancia de revisión del texto concreto. No afirmamos la existencia de un comité que no participa en este proceso.</p>
+
+      <h2>Correcciones y actualización</h2>
+      <p>Si detectás un dato incorrecto o desactualizado, podés informarlo por los canales de contacto del sitio. Registramos los cambios editoriales relevantes y no rellenamos con suposiciones los campos que no estén confirmados.</p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-prose :global(h2) { margin: 2rem 0 .75rem; color: var(--brand-text); font-size: 1.5rem; font-weight: 700; }
+  .blog-prose :global(p) { margin: 1rem 0; }
+</style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import AdBanner from '../components/AdBanner.astro';
+import BlogAuthor from '../components/BlogAuthor.astro';
 import BlogBreadcrumbs from '../components/BlogBreadcrumbs.astro';
 import { blogArticlePath, blogPillarPath, PILAR_NAMES, type BlogEntry } from '../lib/blog';
 
@@ -33,7 +34,7 @@ const article = {
       <article class="min-w-0 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
         <p class="text-sm font-bold text-brand-primary mb-3">{PILAR_NAMES[pilar]}</p>
         <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight break-words">{title}</h1>
-        <p class="mt-4 text-sm text-brand-text-muted">Por <span data-blog-author>{autor}</span> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
+        <p class="mt-4 text-sm text-brand-text-muted">Por <BlogAuthor name={autor} /> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
         {dateModified && <p class="mt-1 text-xs text-brand-text-muted">Actualizado: <time datetime={dateModified} data-date-modified>{dateModified}</time></p>}
         <AdBanner slot="blog-inline" size="320x100" />
         <div class="blog-prose mt-8 leading-8 text-brand-text-muted"><slot /></div>

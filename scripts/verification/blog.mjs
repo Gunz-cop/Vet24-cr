@@ -8,6 +8,8 @@ const root = resolve(import.meta.dirname, '../..');
 const client = join(root, 'dist/client');
 const pilotPath = 'blog/guias-por-especie/urgencias-en-perros/index.html';
 const pilotUrl = 'https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/';
+const policyPath = 'politica-editorial/index.html';
+const policyUrl = 'https://vet24cr.com/politica-editorial/';
 const errors = [];
 
 function walk(directory) {
@@ -31,6 +33,11 @@ for (const path of ['blog/index.html', 'blog/guias-por-especie/index.html', 'blo
   if (file && !readFileSync(file, 'utf8').includes(`rel="canonical" href="${expectedCanonical}"`)) errors.push(`canonical incorrecto en ${path}`);
 }
 
+const policyFile = files.find((file) => relative(client, file).replaceAll('\\', '/') === policyPath);
+if (!policyFile) errors.push(`falta artefacto ${policyPath}`);
+else if (!readFileSync(policyFile, 'utf8').includes(`rel="canonical" href="${policyUrl}"`)) errors.push('canonical incorrecto en política editorial');
+if (!html.includes('href="/politica-editorial/"')) errors.push('footer sin enlace a política editorial');
+
 const fixturePublished = /^estado: ["']?publicado/m.test(readFileSync(join(root, 'src/content/blog/urgencias-en-perros.md'), 'utf8'));
 if (!fixturePublished && files.some((file) => relative(client, file).replaceAll('\\', '/') === pilotPath)) errors.push('el borrador generó HTML de artículo');
 if (!fixturePublished && html.includes(pilotUrl)) errors.push('el borrador aparece como enlace o URL en HTML');
@@ -49,7 +56,7 @@ console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePu
 
 const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
 const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
- const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title')}};
+ const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor')}};
 });
 const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
 const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
@@ -86,6 +93,9 @@ if (homeRoute) {
       + ' Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: ' + error.message);
   }
 } else errors.push('SSR / ausente del manifest generado en dist/server');
+const navigationHasBlog = html.includes('id="nav-blog"') || (homeHtml && homeHtml.includes('id="nav-blog"'));
+if (fixturePublished && !navigationHasBlog) errors.push('hay un artículo publicado pero falta la entrada de navegación al blog');
+if (!fixturePublished && navigationHasBlog) errors.push('la navegación al blog aparece sin artículos publicados');
 function inspectLinks(content,source){
  for(const match of content.matchAll(anchorPattern)) {
   const href=attr(match[1],'href');if(!href)continue;
@@ -130,12 +140,21 @@ for(const article of articles){
   continue;
  }
  if(!generatedPaths.has(source)){errors.push('Artículo publicado ausente: '+source);continue;}
- const outgoing=hrefs(blocks(readPage(source)));
+ const articleHtml = readPage(source);
+ const authorMatch = articleHtml.match(/data-blog-author[^>]*>([^<]+)</);
+ const articleJsonLd = [...articleHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+  .map((match) => { try { return JSON.parse(match[1]); } catch { return null; } })
+  .find((value) => value?.['@type'] === 'Article');
+ if (!authorMatch || authorMatch[1].trim() !== article.data.autor) errors.push('autor visible no coincide con frontmatter: ' + source);
+ if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
+ const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
+ if (/Estado:\s*\*\*pendiente/i.test(authorship)) errors.push('artículo publicado sin registro verificable de autoría: ' + source);
+ const outgoing=hrefs(blocks(articleHtml));
  for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{
   assertTypedLink(target,inventory);
   if(target.family==='provincia'&&!provinces.includes(target.identity))throw new Error('Provincia inválida');
   if(!outgoing.includes(target.href))throw new Error('Arista ausente: '+source+' → '+target.href);
-  const anchor = [...blocks(readPage(source)).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
+  const anchor = [...blocks(articleHtml).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
   const label = anchor?.[2].replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").trim();
   if (label !== target.label) throw new Error('Ancla incorrecta: ' + target.href + '; esperado: ' + target.label + '; recibido: ' + label);
   assertInverse(source,target,hrefs(blocks(readPage(target.href))));

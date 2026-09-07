@@ -1,0 +1,11 @@
+(node:26440) [DEP0147] DeprecationWarning: In future versions of Node.js, fs.rmdir(path, { recursive: true }) will be removed. Use fs.rm(path, { recursive: true }) instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+EPERM, Permission denied: \\?\C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\client '\\?\C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\client'
+  Location:
+    C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\node_modules\astro\dist\core\fs\index.js:79:8
+  Stack trace:
+    at Object.rmdirSync (node:fs:1184:22)
+    at emptyDir (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/fs/index.js:34:9)
+    at AstroBuilder.build (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/build/index.js:160:11)
+    at async build (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/build/index.js:50:3)
+    at async runCommand (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/cli/index.js:192:7)
