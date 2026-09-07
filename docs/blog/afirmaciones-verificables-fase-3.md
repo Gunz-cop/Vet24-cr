@@ -34,7 +34,7 @@ Cada fila es una hipótesis que otra sesión debe comprobar. Distinguir código 
 
 ### B2: observación real y reproducción
 
-Ubicación de deuda: `astro.config.mjs:16`, filter de sitemap. El patrón no tiene anclaje inicial; el separador inicial es opcional. Coincidencias internas como api/ al final de rapi/ excluyen la URL. mdcuidados no dispara la coincidencia, pero md/ sí.
+Ubicación de deuda: `astro.config.mjs:15`, filter de sitemap. El patrón no tiene anclaje inicial; el separador inicial es opcional. Coincidencias internas como api/ al final de rapi/ excluyen la URL. mdcuidados no dispara la coincidencia, pero md/ sí.
 
 Ejecutar desde la raíz del repo mediante `node -e` o stdin de Node, sin editar el config:
 
@@ -101,7 +101,7 @@ Si el clon falla por red, marcar las filas no verificadas en esa nueva auditorí
 ## E. Límites de la verificación de esta entrega
 
 1. No se implementó blog, borrador/publicación, schema, rutas, componentes ni tests. Sus criterios son obligaciones futuras, no resultados ya verdes.
-2. No se corrieron build/check/tests de aplicación para una corrección solo documental. Sí se ejecutó el regex real en Node y las comprobaciones Git; sus salidas se entregan con el commit.
+2. `scripts/verification/blog.mjs` no lo ejecuta CI: el plan §7 exige ejecución manual por ejecutora y verificadora independiente, con SHA, salida y código archivados en `docs/blog/evidencia/bN/blog-ejecutora.log` y `blog-verificadora.log`; faltas o fallos bloquean aceptación/cierre. No se corrieron build/check/tests de aplicación para una corrección solo documental. Sí se ejecutó el regex real en Node y las comprobaciones Git; sus salidas se entregan con el commit.
 3. No se verificó producción, deployment actual ni escaneo de agentes en esta corrección. Nivel 4 y despliegue automático son contexto proporcionado por el usuario; §7 exige evidencia futura del SHA realmente servido.
 4. No se verificó el panel de Ezoic ni IDs disponibles.
 5. No hay validación de volumen de búsqueda, competencia, exactitud de los futuros artículos, tarifas o identidad/revisión de autores. Los temas seed son encargos de investigación, no recomendaciones clínicas verificadas.
@@ -122,7 +122,7 @@ Esta tabla registra cambios documentales, no implementación ni una autoaprobaci
 
 | Hallazgo aceptado | Corrección en plan | Corrección en esta hoja / evidencia exigible |
 |---|---|---|
-| 1 Alta: sitemap | §2 tabla real, deuda config:16, default defensivo; §5/B1 fallo de build | B2 código/salida real; E distingue prueba presente de test futuro |
+| 1 Alta: sitemap | §2 tabla real, deuda config:15, default defensivo; §5/B1 fallo de build | B2 código/salida real; E distingue prueba presente de test futuro |
 | 2 Alta: allowlist | §6 matriz exhaustiva, C/M, responsables, traspasos y BASE por subfase | B3 exige cruce completo, incluidos nuevos; A1 diferencia main remoto/local |
 | 3 Alta: piloto | §3 cinco incluidos; §4 borrador, fixture aislada; §5/B4 gate | F2/F5 recogen bloqueo y publicación solo tras controles completos |
 | 4 Alta: subjetividad/veredicto | §5 umbrales visuales, autoría, fuentes y APROBADO del SHA con cero bloqueantes | D5 y F2 enumeran evidencia/condiciones |
@@ -133,3 +133,8 @@ Esta tabla registra cambios documentales, no implementación ni una autoaprobaci
 | 9 Alta: aprobación | Encabezado y §1 fecha/condición/alcance, merge solo caso por caso | Encabezado y E7 con misma trazabilidad |
 
 También retirada la atribución no sustentada a AdSense sobre dateModified: plan §4 y D3 de esta hoja fundamentan la decisión únicamente en veracidad editorial.
+
+## H. Ajustes posteriores a la revisión de b201b5f
+
+- R1 (Media): plan §7 distingue comandos de sesión de pasos CI y asigna ejecución manual obligatoria de blog.mjs a ejecutora/verificadora, con registros y condición de bloqueo; esta hoja E2 conserva la distinción.
+- R2 (Baja): plan §2 y esta hoja B2/G corrigen la ubicación del filter a astro.config.mjs:15, comprobada mediante numeración del archivo real. No se cambió el config.

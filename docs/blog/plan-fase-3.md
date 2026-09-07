@@ -21,7 +21,7 @@ Fuera: schema y contenido de clinicas; dependencias y stack (Astro 7.2.10, Cloud
 
 ### Default sitemap y deuda heredada
 
-Se conserva el filtro de `astro.config.mjs:16`, propiedad AR2/AR3 con traspaso serial. La autorización AR existente se limita a excluir recursos técnicos nuevos: no autoriza aquí reparar este regex.
+Se conserva el filtro de `astro.config.mjs:15`, propiedad AR2/AR3 con traspaso serial. La autorización AR existente se limita a excluir recursos técnicos nuevos: no autoriza aquí reparar este regex.
 
 ```js
 /[\\/]?(api|auth\.md|llms\.txt|\.well-known|md)([/.]|$)/
@@ -209,7 +209,7 @@ Revisión obligatoria: `git diff --name-status <BASE_SHA>...HEAD` y diff complet
 
 Antes del primer cambio de cada subfase: registrar BASE, construir base sin acortador y archivar sitemap, catálogo, mirrors, geometría aplicable y escaneo completo productivo. No confundir salida 0 con checks aprobados.
 
-Comandos futuros, separados, con salida/código archivados:
+Comandos futuros de verificación de la sesión, separados, con salida/código archivados. Esta lista no describe los pasos del workflow de CI:
 
 ```bash
 npm run check
@@ -222,6 +222,8 @@ npm run test:e2e
 git diff --name-status <BASE_SHA>...HEAD
 git diff <BASE_SHA>...HEAD
 ```
+
+El workflow actual no ejecuta `scripts/verification/blog.mjs`: es un control **manual obligatorio**. La sesión ejecutora lo corre después del build del candidato y la verificadora independiente lo repite sobre ese mismo candidato. Cada una archiva comando, SHA, salida estándar, salida de error y código de salida en `docs/blog/evidencia/bN/blog-ejecutora.log` y `blog-verificadora.log`, respectivamente. Salida no cero o cualquiera de esos registros ausente bloquea aceptación y cierre aunque CI esté verde. La coordinadora comprueba ambos registros. No se modifica ci.yml para incorporarlo. Los nuevos tests unitarios sí quedan cubiertos por `npm test`, los specs E2E por `test:e2e` y la defensa del sitemap por `build:no-shorten`; eso no sustituye la ejecución manual de blog.mjs.
 
 No `npm run build`: el acortador hace red y escribe datos. CI existente debe concluir success en el HEAD final y conservar controles (incluido dry-run/tipos/E2E); no modificar workflow ni aceptar skips nuevos. Registrar skips históricos como no verificados, no pass. La coordinadora comprueba run y conclusión del candidato, mergeability y diff; el resumen de otra IA no es evidencia.
 
