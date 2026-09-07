@@ -16,7 +16,7 @@ for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia $
   await page.evaluate(async () => {
     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
     await document.fonts.ready;
-    scrollTo(0, 0);
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
   });
   const measurements = await page.evaluate(selectors => selectors.map(selector => {
     const e = document.querySelector(selector);
@@ -95,7 +95,8 @@ for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia $
     await page.keyboard.press('Enter');
     await expect(filter).toHaveAttribute('aria-pressed', 'false');
   }
-  await page.evaluate(() => scrollTo(0, 0));
+  await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+  expect(await page.evaluate(() => scrollY)).toBe(0);
   const screenshot = testInfo.outputPath('emergency.png');
   await page.screenshot({ path: screenshot, fullPage: true });
   await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
