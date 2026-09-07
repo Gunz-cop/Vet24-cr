@@ -1,0 +1,150 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test
+
+
+Running 109 tests using 8 workers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[1/109] [chromium] › tests\e2e\agent-discovery.spec.ts:13:3 › AR2 — descubrimiento y catálogo público › GET y HEAD entregan los seis recursos técnicos sin barra final
+
+
+[1A[2K[2/109] [chromium] › tests\e2e\agent-discovery.spec.ts:27:3 › AR2 — descubrimiento y catálogo público › el catálogo y el API Catalog describen recursos reales
+
+
+[1A[2K[3/109] [chromium] › tests\e2e\agent-discovery.spec.ts:42:3 › AR2 — descubrimiento y catálogo público › OpenAPI solo expone el GET público del catálogo
+[1A[2K[4/109] [chromium] › tests\e2e\agent-discovery.spec.ts:52:3 › AR2 — descubrimiento y catálogo público › portada y ficha exponen las cuatro relaciones Link
+[1A[2K[5/109] [chromium] › tests\e2e\agent-markdown.spec.ts:46:3 › AR3 — mirrors Markdown y negociación › HEAD mantiene selección, cabeceras y cuerpo vacío
+[1A[2K[6/109] [chromium] › tests\e2e\agent-discovery.spec.ts:70:3 › AR2 — descubrimiento y catálogo público › el alias de sitemap redirige al índice generado
+[1A[2K[7/109] [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché
+[1A[2K[8/109] [chromium] › tests\e2e\agent-markdown.spec.ts:62:3 › AR3 — mirrors Markdown y negociación › preserva normalización canónica y Link de descubrimiento
+[1A[2K[9/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[10/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[11/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[12/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K[13/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[14/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K[15/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K[16/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+[1A[2K[17/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+[1A[2K[18/109] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+[1A[2K[19/109] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/ existe y tiene canonical con barra final
+[1A[2K[20/109] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/guias-por-especie/ existe y tiene canonical con barra final
+[1A[2K[21/109] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/costos-y-acceso/ existe y tiene canonical con barra final
+[1A[2K[22/109] [chromium] › tests\e2e\blog.spec.ts:15:3 › blog B1 › el piloto borrador da 404 y no está enlazado
+[1A[2K[23/109] [chromium] › tests\e2e\blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports
+[1A[2K[24/109] [chromium] › tests\e2e\blog.spec.ts:35:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[25/109] [chromium] › tests\e2e\blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados
+[1A[2K[26/109] [chromium] › tests\e2e\blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador
+[1A[2K[27/109] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/hems-una-heredia/
+[1A[2K[28/109] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/atlantic-vet-guapiles/
+[1A[2K[29/109] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/agromedica-escazu/
+[1A[2K[30/109] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/aruma-centro-veterinario-upala/
+[1A[2K[31/109] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/la-vete-escazu/
+[1A[2K[32/109] [chromium] › tests\e2e\semantic-copy.spec.ts:38:3 › Hotfix semántico: false se presenta como "no confirmado" › overnight_doctor_present=false no produce "Solo llamado"
+[1A[2K[33/109] [chromium] › tests\e2e\semantic-copy.spec.ts:43:3 › Hotfix semántico: false se presenta como "no confirmado" › has_hospitalization=false no produce "No disponible"
+[1A[2K[34/109] [chromium] › tests\e2e\semantic-copy.spec.ts:48:3 › Hotfix semántico: false se presenta como "no confirmado" › emergencias24h=false usa el mismo copy neutral en toda la ficha
+[1A[2K[35/109] [chromium] › tests\e2e\semantic-copy.spec.ts:57:3 › Hotfix semántico: false se presenta como "no confirmado" › hotelMascotas=false se mantiene neutral
+[1A[2K[36/109] [chromium] › tests\e2e\semantic-copy.spec.ts:64:3 › Hotfix semántico: false se presenta como "no confirmado" › los estados positivos confirmados siguen mostrándose
+[1A[2K[37/109] [chromium] › tests\e2e\semantic-copy.spec.ts:74:3 › Hotfix semántico: badges de verificación › record_status VERIFIED sin evidencia no afirma auditoría por llamada
+[1A[2K[38/109] [chromium] › tests\e2e\semantic-copy.spec.ts:81:3 › Hotfix semántico: badges de verificación › una fuente vacía no se rellena con "Llamada directa"
+[1A[2K[39/109] [chromium] › tests\e2e\semantic-copy.spec.ts:86:3 › Hotfix semántico: badges de verificación › con fecha y fuente reales se muestran tal cual
+[1A[2K[40/109] [chromium] › tests\e2e\semantic-copy.spec.ts:92:3 › Hotfix semántico: badges de verificación › REVIEW_REQUIRED conserva la advertencia
+[1A[2K[41/109] [chromium] › tests\e2e\semantic-copy.spec.ts:99:3 › Hotfix semántico: el Tier no cambia › las etiquetas de Tier se mantienen
+[1A[2K[42/109] [chromium] › tests\e2e\semantic-copy.spec.ts:108:3 › Hotfix semántico: otras vistas › la página de zona no etiqueta las fichas como "Verificadas"
+[1A[2K[43/109] [chromium] › tests\e2e\semantic-copy.spec.ts:114:3 › Hotfix semántico: otras vistas › las cards del directorio no afirman ausencia de servicios
+[1A[2K[44/109] [chromium] › tests\e2e\smoke.spec.ts:4:3 › Vet24 CR - Smoke Test Suite › should load the homepage and display the main sections and elements
+[1A[2K[45/109] [chromium] › tests\e2e\tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button
+[1A[2K[46/109] [chromium] › tests\e2e\tier1-features.spec.ts:53:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 2. should sort clinics by proximity with user location set to San José coordinates
+[1A[2K[47/109] [chromium] › tests\e2e\tier1-features.spec.ts:87:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 3. should calculate distances in kilometers and display them on distance badges
+[1A[2K[48/109] [chromium] › tests\e2e\tier1-features.spec.ts:102:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 4. should format distance badge text as A X.X km
+[1A[2K[49/109] [chromium] › tests\e2e\tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change
+[1A[2K[50/109] [chromium] › tests\e2e\tier1-features.spec.ts:140:5 › Tier 1: Feature Coverage › Interactive Map › 6. should render the Leaflet map container on the main page
+[1A[2K[51/109] [chromium] › tests\e2e\tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating
+[1A[2K[52/109] [chromium] › tests\e2e\tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map
+[1A[2K[53/109] [chromium] › tests\e2e\tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map
+[1A[2K[54/109] [chromium] › tests\e2e\tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup
+[1A[2K[55/109] [chromium] › tests\e2e\tier1-features.spec.ts:196:5 › Tier 1: Feature Coverage › Predictive Text Search › 11. should filter clinics grid by name
+[1A[2K[56/109] [chromium] › tests\e2e\tier1-features.spec.ts:209:5 › Tier 1: Feature Coverage › Predictive Text Search › 12. should filter clinics grid by canton
+[1A[2K[57/109] [chromium] › tests\e2e\tier1-features.spec.ts:223:5 › Tier 1: Feature Coverage › Predictive Text Search › 13. should filter clinics grid by zone
+[1A[2K[58/109] [chromium] › tests\e2e\tier1-features.spec.ts:236:5 › Tier 1: Feature Coverage › Predictive Text Search › 14. should filter clinics grid by service/tag (e.g. exóticos)
+[1A[2K[59/109] [chromium] › tests\e2e\tier1-features.spec.ts:249:5 › Tier 1: Feature Coverage › Predictive Text Search › 15. should clear search and restore all clinics when clicking reset/clear search button
+[1A[2K[60/109] [chromium] › tests\e2e\tier1-features.spec.ts:263:5 › Tier 1: Feature Coverage › Empty State Fallback › 16. should display empty state container when 0 matches found
+[1A[2K[61/109] [chromium] › tests\e2e\tier1-features.spec.ts:268:5 › Tier 1: Feature Coverage › Empty State Fallback › 17. should show visible empty state warning messages
+[1A[2K[62/109] [chromium] › tests\e2e\tier1-features.spec.ts:273:5 › Tier 1: Feature Coverage › Empty State Fallback › 18. should list closest verified clinics in empty state fallback list when geolocation is active
+[1A[2K[63/109] [chromium] › tests\e2e\tier1-features.spec.ts:285:5 › Tier 1: Feature Coverage › Empty State Fallback › 19. should display empty state when filter combinations result in 0 matches
+[1A[2K[64/109] [chromium] › tests\e2e\tier1-features.spec.ts:293:5 › Tier 1: Feature Coverage › Empty State Fallback › 20. should restore clinics list when clearing search inputs or resetting filters
+[1A[2K[65/109] [chromium] › tests\e2e\tier1-features.spec.ts:307:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 21. should show report incorrect data button on clinic detail page
+[1A[2K[66/109] [chromium] › tests\e2e\tier1-features.spec.ts:312:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 22. should open report incorrect data modal when clicking report button
+[1A[2K[67/109] [chromium] › tests\e2e\tier1-features.spec.ts:318:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 23. should show validation error when submitting empty description in form
+[1A[2K[68/109] [chromium] › tests\e2e\tier1-features.spec.ts:329:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 24. should show success message after mock submitting report form with POST request intercepted
+[1A[2K[69/109] [chromium] › tests\e2e\tier1-features.spec.ts:354:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 25. should hide report modal when clicking close button
+[1A[2K[70/109] [chromium] › tests\e2e\tier1-features.spec.ts:365:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61. should activate SOS flow on homepage when clicking SOS button
+[1A[2K[71/109] [chromium] › tests\e2e\tier1-features.spec.ts:382:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow
+[1A[2K[72/109] [chromium] › tests\e2e\tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page
+[1A[2K[73/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:9:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 26. should handle geolocation permission denied gracefully without crashing
+[1A[2K[74/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:26:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 27. should handle geolocation timeout gracefully
+[1A[2K[75/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo)
+[1A[2K[76/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic
+[1A[2K[77/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption
+[1A[2K[78/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully
+[1A[2K[79/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:120:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 32. should handle clinics with missing or zero coordinates by displaying sin coordenadas and excluding from map
+[1A[2K[80/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:136:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 33. should handle Leaflet load failure gracefully
+[1A[2K[81/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number
+[1A[2K[82/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:188:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 35. should toggle map visibility when clicking toggle map button
+[1A[2K[83/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:198:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 36. should normalize accents and handle special characters in search input
+[1A[2K[84/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:209:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 37. should handle extremely long search queries without crashing
+[1A[2K[85/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:214:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 38. should trim leading and trailing whitespaces from search input
+[1A[2K[86/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:220:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 39. should perform case-insensitive search matching
+[1A[2K[87/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:226:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 40. should escape HTML and script tags in search input safely (prevent XSS)
+[1A[2K[88/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:237:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 41. should restore all clinics when clicking reset all filters button in empty state
+[1A[2K[89/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:246:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 42. should display empty state when all clinics are closed under open now filter
+[1A[2K[90/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:258:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 43. should hide low-confidence and review-required clinics when status filters are active
+[1A[2K[91/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:273:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 44. should hide empty state immediately when search query is cleared
+[1A[2K[92/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements
+[1A[2K[93/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:288:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 46. should show validation errors when submitting empty report form
+[1A[2K[94/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:296:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 47. should show validation error when contact phone has invalid format
+[1A[2K[95/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:306:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 48. should submit successfully when description has extremely long text
+[1A[2K[96/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:317:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 49. should preserve or reset form fields when modal is closed and reopened
+[1A[2K[97/109] [chromium] › tests\e2e\tier2-boundaries.spec.ts:327:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 50. should disable submit button during submission to prevent duplicate reports
+[1A[2K[98/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order
+[1A[2K[99/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input
+[1A[2K[100/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:59:3 › Tier 3: Cross-Feature Combinations › 53. should support combining open now status, 24/7 filter, species filter, and text search concurrently
+[1A[2K[101/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:80:3 › Tier 3: Cross-Feature Combinations › 54. should show closest closed clinics in fallback grid when geolocation is active and search yields zero open clinics
+[1A[2K[102/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active
+[1A[2K[103/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied
+[1A[2K[104/109] [chromium] › tests\e2e\tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics
+[1A[2K[105/109] [chromium] › tests\e2e\tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency
+[1A[2K[106/109] [chromium] › tests\e2e\tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José
+[1A[2K[107/109] [chromium] › tests\e2e\tier4-workloads.spec.ts:60:8 › Tier 4: Real-World Application Scenarios › 58. should execute scenario: user reporting incorrect schedule data on details page
+[1A[2K[108/109] [chromium] › tests\e2e\tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation
+[1A[2K[109/109] [chromium] › tests\e2e\tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets
+[1A[2K  11 skipped
+  98 passed (46.7s)

@@ -1,0 +1,176 @@
+[
+  {
+    "width": 390,
+    "record": {
+      "links": [
+        {
+          "text": "Directorio",
+          "href": "/#directorio",
+          "x": 16,
+          "y": 49656.4375,
+          "width": 66.78125,
+          "height": 20
+        },
+        {
+          "text": "Acerca de",
+          "href": "/acerca/",
+          "x": 106.78125,
+          "y": 49656.4375,
+          "width": 67.1875,
+          "height": 20
+        },
+        {
+          "text": "Términos",
+          "href": "/terminos/",
+          "x": 197.96875,
+          "y": 49656.4375,
+          "width": 59.78125,
+          "height": 20
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacidad/",
+          "x": 281.75,
+          "y": 49656.4375,
+          "width": 70.203125,
+          "height": 20
+        },
+        {
+          "text": "Cookies",
+          "href": "/cookies/",
+          "x": 16,
+          "y": 49688.4375,
+          "width": 55.75,
+          "height": 20
+        },
+        {
+          "text": "Política editorial",
+          "href": "/politica-editorial/",
+          "x": 95.75,
+          "y": 49688.4375,
+          "width": 105.8125,
+          "height": 20
+        }
+      ],
+      "focus": [
+        {
+          "href": "/#directorio",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/acerca/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/terminos/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/privacidad/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/cookies/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/politica-editorial/",
+          "focused": true,
+          "outline": "solid"
+        }
+      ]
+    }
+  },
+  {
+    "width": 1440,
+    "record": {
+      "links": [
+        {
+          "text": "Directorio",
+          "href": "/#directorio",
+          "x": 782.484375,
+          "y": 18338.84375,
+          "width": 66.78125,
+          "height": 20
+        },
+        {
+          "text": "Acerca de",
+          "href": "/acerca/",
+          "x": 873.265625,
+          "y": 18338.84375,
+          "width": 67.1875,
+          "height": 20
+        },
+        {
+          "text": "Términos",
+          "href": "/terminos/",
+          "x": 964.453125,
+          "y": 18338.84375,
+          "width": 59.78125,
+          "height": 20
+        },
+        {
+          "text": "Privacidad",
+          "href": "/privacidad/",
+          "x": 1048.234375,
+          "y": 18338.84375,
+          "width": 70.203125,
+          "height": 20
+        },
+        {
+          "text": "Cookies",
+          "href": "/cookies/",
+          "x": 1142.4375,
+          "y": 18338.84375,
+          "width": 55.75,
+          "height": 20
+        },
+        {
+          "text": "Política editorial",
+          "href": "/politica-editorial/",
+          "x": 1222.1875,
+          "y": 18338.84375,
+          "width": 105.8125,
+          "height": 20
+        }
+      ],
+      "focus": [
+        {
+          "href": "/#directorio",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/acerca/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/terminos/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/privacidad/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/cookies/",
+          "focused": true,
+          "outline": "solid"
+        },
+        {
+          "href": "/politica-editorial/",
+          "focused": true,
+          "outline": "solid"
+        }
+      ]
+    }
+  }
+]\n
