@@ -196,6 +196,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
             <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
             <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
             <a href="/politica-editorial/" class="hover:text-brand-text transition-colors">Política editorial</a>
+            {hasPublishedBlog && <a href="/blog/" class="hover:text-brand-text transition-colors">Blog</a>}
 {mostrarAnuncios && (
               <>
                 {/* Sólo se revela si el CMP dice que el RGPD aplica a este visitante.

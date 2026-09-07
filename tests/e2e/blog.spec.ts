@@ -43,21 +43,31 @@ test('B3: política editorial publicada y enlazada desde el footer', async ({ pa
 });
 
 if (process.env.B3_PUBLISHED_FIXTURE !== '1') {
-  test('B3: la navegación no muestra Blog sin artículos publicados', async ({ page }) => {
-    for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/', '/politica-editorial/']) {
-      await page.goto(path);
-      await expect(page.locator('#nav-blog')).toHaveCount(0);
+  test('B3: ninguna navegación muestra Blog sin artículos publicados', async ({ page }) => {
+    for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      await page.setViewportSize(viewport);
+      for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/', '/politica-editorial/']) {
+        await page.goto(path);
+        await expect(page.locator('#nav-blog')).toHaveCount(0);
+        await expect(page.locator('footer a[href="/blog/"]')).toHaveCount(0);
+      }
     }
   });
 } else {
-  test('B3 fixture publicada: la navegación muestra un enlace rastreable a /blog/', async ({ page }) => {
-    for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/politica-editorial/']) {
-      await page.goto(path);
-      const link = page.locator('#nav-blog');
-      await expect(link).toHaveCount(1);
-      await expect(link).toHaveAttribute('href', '/blog/');
-      await link.focus();
-      await expect(link).toBeFocused();
+  test('B3 fixture publicada: header y footer enlazan /blog/ también a 390px', async ({ page }) => {
+    for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      await page.setViewportSize(viewport);
+      for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/politica-editorial/']) {
+        await page.goto(path);
+        const headerLink = page.locator('#nav-blog');
+        const footerLink = page.locator('footer a[href="/blog/"]');
+        await expect(headerLink).toHaveCount(1);
+        await expect(headerLink).toHaveAttribute('href', '/blog/');
+        await expect(footerLink).toHaveCount(1);
+        await expect(footerLink).toHaveAttribute('href', '/blog/');
+        await footerLink.focus();
+        await expect(footerLink).toBeFocused();
+      }
     }
   });
 }
