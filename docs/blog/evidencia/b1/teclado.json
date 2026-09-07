@@ -1,0 +1,13 @@
+{
+  "routes": ["/blog/", "/blog/guias-por-especie/urgencias-en-perros/"],
+  "viewports": ["390x844", "1440x900"],
+  "tabsPerRouteAndViewport": 8,
+  "result": "pass",
+  "checks": {
+    "everyFocusedElementVisible": true,
+    "outlineStyle": "solid",
+    "outlineWidth": "2px"
+  },
+  "observedOrderPrefixMobile": ["Saltar al contenido", "Vet24 Costa Rica", "Alternar tema", "Emergencia", "Inicio", "Blog"],
+  "observedOrderPrefixDesktop": ["Saltar al contenido", "Vet24 Costa Rica", "Inicio", "Directorio", "Alternar tema", "Emergencia"]
+}

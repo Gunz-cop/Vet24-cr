@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import BlogBreadcrumbs from '../../../components/BlogBreadcrumbs.astro';
+import { BLOG_PILLARS, PILAR_NAMES, getPublishedBlogEntries, type BlogPillar } from '../../../lib/blog';
+export function getStaticPaths() { return BLOG_PILLARS.map((pilar) => ({ params: { pilar }, props: { pilar } })); }
+const { pilar } = Astro.props as { pilar: BlogPillar };
+const entries = await getPublishedBlogEntries(pilar);
+const name = PILAR_NAMES[pilar];
+---
+<BaseLayout title={name} description={`Artículos de ${name.toLowerCase()} del blog veterinario de Vet24 Costa Rica.`} canonicalUrl={`https://vet24cr.com/blog/${pilar}/`}>
+  <div class="max-w-6xl mx-auto"><BlogBreadcrumbs pilar={pilar} /><header class="mb-10"><h1 class="text-4xl sm:text-5xl font-extrabold">{name}</h1></header>
+  {entries.length ? <section aria-label="Artículos publicados" class="grid md:grid-cols-2 gap-6">{entries.map((entry) => <BlogCard entry={entry} />)}</section> : <p data-empty-pillar class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-6 text-brand-text-muted">Todavía no hay artículos publicados en este pilar.</p>}</div>
+</BaseLayout>

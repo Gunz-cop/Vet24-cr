@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import BlogBreadcrumbs from '../../components/BlogBreadcrumbs.astro';
+import { BLOG_PILLARS, PILAR_NAMES, blogPillarPath, getPublishedBlogEntries } from '../../lib/blog';
+const entries = await getPublishedBlogEntries();
+---
+<BaseLayout title="Blog veterinario" description="Guías informativas sobre cuidado, urgencias, costos y acceso a atención veterinaria en Costa Rica." canonicalUrl="https://vet24cr.com/blog/">
+  <div class="max-w-6xl mx-auto">
+    <BlogBreadcrumbs />
+    <header class="max-w-3xl mb-10"><h1 class="text-4xl sm:text-5xl font-extrabold">Blog veterinario</h1><p class="mt-4 text-brand-text-muted leading-relaxed">Información práctica para orientarte y encontrar atención veterinaria. No sustituye una consulta profesional.</p></header>
+    <nav aria-label="Pilares del blog" class="grid sm:grid-cols-2 gap-4 mb-12">
+      {BLOG_PILLARS.map((pilar) => <a class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 font-bold hover:border-brand-primary" href={blogPillarPath(pilar)}>{PILAR_NAMES[pilar]}</a>)}
+    </nav>
+    {entries.length ? <section aria-label="Artículos publicados" class="grid md:grid-cols-2 gap-6">{entries.map((entry) => <BlogCard entry={entry} />)}</section> : <p data-empty-blog class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-6 text-brand-text-muted">Estamos preparando las primeras guías. Mientras tanto, podés consultar el directorio de veterinarias.</p>}
+  </div>
+</BaseLayout>

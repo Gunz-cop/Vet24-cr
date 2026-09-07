@@ -1,0 +1,11 @@
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+URL_COUNT=134
+CLINIC_URLS=112
+PROVINCE_URLS=7
+ZONE_URLS=7
+BLOG_URLS=3
+ADDED=https://vet24cr.com/blog/
+ADDED=https://vet24cr.com/blog/costos-y-acceso/
+ADDED=https://vet24cr.com/blog/guias-por-especie/
+PILOT_PRESENT=false
+LOST_PREEXISTING_URLS=0

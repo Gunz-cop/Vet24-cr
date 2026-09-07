@@ -1,5 +1,10 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { BLOG_PILLARS, blogPillarPath, blogSchema } from './lib/blog';
+import { assertBlogRouteAllowed, assertSitemapFilterIsSynchronized } from './lib/blog-sitemap';
+
+assertSitemapFilterIsSynchronized();
+for (const pilar of BLOG_PILLARS) assertBlogRouteAllowed(blogPillarPath(pilar));
 
 const clinicas = defineCollection({
   // Load Markdown files from src/content/clinicas/
@@ -50,4 +55,9 @@ const clinicas = defineCollection({
   })
 });
 
-export const collections = { clinicas };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.md', base: './src/content/blog' }),
+  schema: blogSchema,
+});
+
+export const collections = { clinicas, blog };

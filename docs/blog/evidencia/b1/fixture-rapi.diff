@@ -1,0 +1,9 @@
+Fixture transitoria, nunca candidata a commit como producto:
+
+--- a/src/content/blog/urgencias-en-perros.md
++++ b/src/content/blog/urgencias-en-perros.md
+@@
+-pilar: "guias-por-especie"
+-slug: "urgencias-en-perros"
++pilar: "costos-y-acceso"
++slug: "rapi"

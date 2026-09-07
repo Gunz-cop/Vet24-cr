@@ -1,0 +1,51 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AdBanner from '../components/AdBanner.astro';
+import BlogBreadcrumbs from '../components/BlogBreadcrumbs.astro';
+import { blogArticlePath, blogPillarPath, PILAR_NAMES, type BlogEntry } from '../lib/blog';
+
+interface Props { entry: BlogEntry }
+const { entry } = Astro.props;
+const { title, seoTitle, metaDescription, pilar, slug, autor, datePublished, dateModified } = entry.data;
+const canonical = new URL(blogArticlePath(pilar, slug), 'https://vet24cr.com').href;
+const breadcrumbs = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://vet24cr.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://vet24cr.com/blog/' },
+    { '@type': 'ListItem', position: 3, name: PILAR_NAMES[pilar], item: new URL(blogPillarPath(pilar), 'https://vet24cr.com').href },
+    { '@type': 'ListItem', position: 4, name: title, item: canonical },
+  ],
+};
+const article = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: title,
+  description: metaDescription, url: canonical, mainEntityOfPage: canonical,
+  author: { '@type': 'Person', name: autor }, datePublished,
+  ...(dateModified ? { dateModified } : {}),
+};
+---
+<BaseLayout title={seoTitle} description={metaDescription} canonicalUrl={canonical}>
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+  <div class="max-w-6xl mx-auto">
+    <BlogBreadcrumbs pilar={pilar} title={title} />
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_336px]">
+      <article class="min-w-0 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
+        <p class="text-sm font-bold text-brand-primary mb-3">{PILAR_NAMES[pilar]}</p>
+        <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight break-words">{title}</h1>
+        <p class="mt-4 text-sm text-brand-text-muted">Por <span data-blog-author>{autor}</span> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
+        {dateModified && <p class="mt-1 text-xs text-brand-text-muted">Actualizado: <time datetime={dateModified} data-date-modified>{dateModified}</time></p>}
+        <AdBanner slot="blog-inline" size="320x100" />
+        <div class="blog-prose mt-8 leading-8 text-brand-text-muted"><slot /></div>
+      </article>
+      <aside aria-label="Contenido complementario" class="min-w-0"><AdBanner slot="blog-sidebar" size="336x280" /></aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-prose :global(h2) { margin: 2rem 0 .75rem; color: var(--brand-text); font-size: 1.5rem; font-weight: 700; }
+  .blog-prose :global(p) { margin: 1rem 0; }
+  .blog-prose :global(a) { color: var(--brand-primary); text-decoration: underline; }
+  .blog-prose :global(ul), .blog-prose :global(ol) { margin: 1rem 0; padding-left: 1.5rem; }
+</style>

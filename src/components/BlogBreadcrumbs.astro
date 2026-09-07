@@ -1,0 +1,15 @@
+---
+import { PILAR_NAMES, blogPillarPath, type BlogPillar } from '../lib/blog';
+
+interface Props { pilar?: BlogPillar; title?: string }
+const { pilar, title } = Astro.props;
+---
+<nav aria-label="Migas de pan" class="mb-6 text-sm text-brand-text-muted">
+  <ol class="flex flex-wrap items-center gap-2">
+    <li><a class="hover:text-brand-primary" href="/">Inicio</a></li>
+    <li aria-hidden="true">/</li>
+    <li><a class="hover:text-brand-primary" href="/blog/">Blog</a></li>
+    {pilar && <><li aria-hidden="true">/</li><li><a class="hover:text-brand-primary" href={blogPillarPath(pilar)}>{PILAR_NAMES[pilar]}</a></li></>}
+    {title && <><li aria-hidden="true">/</li><li aria-current="page" class="text-brand-text">{title}</li></>}
+  </ol>
+</nav>

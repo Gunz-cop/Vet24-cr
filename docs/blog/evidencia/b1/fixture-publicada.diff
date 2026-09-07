@@ -1,0 +1,9 @@
+Fixture transitoria servida solo en preview local, retirada antes del candidato:
+
+--- a/src/content/blog/urgencias-en-perros.md
++++ b/src/content/blog/urgencias-en-perros.md
+@@
+-estado: "borrador"
++estado: "publicado"
+ autor: "Equipo editorial Vet24 Costa Rica"
++datePublished: "2026-09-07"

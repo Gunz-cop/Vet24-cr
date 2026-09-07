@@ -1,0 +1,12 @@
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+COMMAND=npm run build:no-shorten
+FIXTURE=src/content/blog/urgencias-en-perros.md pilar=costos-y-acceso slug=rapi
+STDOUT_STDERR:
+> veterinarias-cr@0.0.1 build:no-shorten
+> astro build
+[content] Syncing content
+[InvalidContentEntryDataError] blog → rapi data does not match collection schema.
+slug: La ruta de blog /blog/costos-y-acceso/rapi/ queda excluida por el filtro sitemap vigente
+Location: src/content/blog/urgencias-en-perros.md:0:0
+EXIT_CODE=1
+FIXTURE_REMOVED=true
