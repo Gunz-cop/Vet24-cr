@@ -1,7 +1,8 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 import GuiasRelacionadas from '../../../components/GuiasRelacionadas.astro';
-import { directoryLinks, crossPillarLinks } from '../../../lib/blog-links';
+import { directoryLinks, directoryNames, crossPillarLinks } from '../../../lib/blog-links';
+import { priorityZones } from '../../../lib/zones';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
 import { getPublishedBlogEntries } from '../../../lib/blog';
 export async function getStaticPaths() {
@@ -9,5 +10,6 @@ export async function getStaticPaths() {
 }
 const { entry } = Astro.props as { entry: CollectionEntry<'blog'> };
 const { Content } = await render(entry);
+const names = directoryNames(await getCollection('clinicas'), priorityZones);
 ---
-<BlogLayout entry={entry}><Content /><GuiasRelacionadas title="Clínicas y zonas del directorio" links={directoryLinks(entry)} /><GuiasRelacionadas links={crossPillarLinks(entry, await getPublishedBlogEntries())} /></BlogLayout>
+<BlogLayout entry={entry}><Content /><GuiasRelacionadas title="Clínicas y zonas del directorio" links={directoryLinks(entry, names)} /><GuiasRelacionadas links={crossPillarLinks(entry, await getPublishedBlogEntries())} /></BlogLayout>

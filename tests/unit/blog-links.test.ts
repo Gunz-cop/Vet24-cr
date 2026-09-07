@@ -1,8 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { assertTypedLink, assertInverse, directoryLinks, relatedGuides, crossPillarLinks, linkPath, type LinkInventory, type TypedLink } from '../../src/lib/blog-links.ts';
+import { assertTypedLink, assertInverse, directoryLinks, directoryNames, relatedGuides, crossPillarLinks, linkPath, type LinkInventory, type TypedLink } from '../../src/lib/blog-links.ts';
 
 const article = { data: { pilar: 'guias-por-especie', slug: 'urgencias-en-perros', estado: 'publicado', title: 'Fixture' } };
+const names = directoryNames([
+  { data: { slug: 'hems-una-heredia', nombre: 'HEMS', provincia: 'Heredia' } },
+  { data: { slug: 'hospital-vet-medical-care-heredia', nombre: 'Hospital Veterinario Medical Care', provincia: 'Heredia' } },
+  { data: { slug: 'veterinaria-gocha-santo-domingo', nombre: 'Veterinaria Gocha', provincia: 'Limón' } },
+], [{ slug: 'san-pablo-heredia', nombre: 'San Pablo de Heredia' }, { slug: 'guapiles', nombre: 'Guápiles' }]);
 const identity = 'guias-por-especie/urgencias-en-perros';
 const source = `/blog/${identity}/`;
 const inventory: LinkInventory = {
@@ -38,13 +43,13 @@ test('inverso ausente rompe; inverso derivado pasa',()=>{
 });
 test('catálogo poblado: borrador no activa ninguno de los sentidos',()=>{
   const draft={data:{...article.data,estado:'borrador'}};
-  assert.deepEqual(directoryLinks(draft),[]);
+  assert.deepEqual(directoryLinks(draft, names),[]);
   assert.deepEqual(relatedGuides('clinica','hems-una-heredia',[draft]),[]);
   assert.deepEqual(relatedGuides('zona','guapiles',[draft]),[]);
   assert.deepEqual(crossPillarLinks(draft,[article]),[]);
 });
 test('cada clínica y zona del piloto tiene inverso desde la misma fuente',()=>{
-  for(const target of directoryLinks(article)) {
+  for(const target of directoryLinks(article, names)) {
     if(target.family==='clinica'||target.family==='zona') assertInverse(source,target,relatedGuides(target.family,target.identity,[article]).map(l=>l.href));
   }
 });
@@ -53,4 +58,13 @@ test('cross pillar sólo activa destinos existentes publicados del otro pilar',(
   assert.equal(crossPillarLinks(article,[other]).length,1);
   assert.deepEqual(crossPillarLinks(article,[{data:{...other.data,estado:'borrador'}}]),[]);
   assert.deepEqual(crossPillarLinks(article,[]),[]);
+});
+
+test('anclas conservan nombres reales, mayúsculas y tildes de cada familia', () => {
+  assert.deepEqual(directoryLinks(article, names).map(l => l.label), ['HEMS', 'Hospital Veterinario Medical Care', 'Veterinaria Gocha', 'San Pablo de Heredia', 'Guápiles', 'Heredia', 'Limón']);
+});
+test('nombre ausente falla en vez de fabricar una etiqueta desde el slug', () => {
+  for (const family of ['clinica', 'zona', 'provincia'] as const) {
+    assert.throws(() => directoryLinks(article, { ...names, [family]: new Map() }), /Nombre de destino ausente/);
+  }
 });

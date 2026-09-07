@@ -2,6 +2,7 @@ import {
   ARTICULO_A_CLINICAS, ARTICULO_A_ZONAS, ARTICULO_A_PROVINCIAS, CROSS_PILLAR_LINKS,
   type ArticleIdentity,
 } from '../data/internal-links.ts';
+import { normalizeSlug } from './seo.ts';
 
 export type LinkFamily = 'clinica' | 'zona' | 'provincia' | 'articulo';
 export interface ArticleRecord { data: { pilar: string; slug: string; estado: string; title: string } }
@@ -31,12 +32,27 @@ export function assertTypedLink(link: TypedLink, inventory: LinkInventory): void
 }
 
 const catalogs = { clinica: ARTICULO_A_CLINICAS, zona: ARTICULO_A_ZONAS, provincia: ARTICULO_A_PROVINCIAS };
-export function directoryLinks(entry: ArticleRecord): TypedLink[] {
+export type DirectoryNames = Record<keyof typeof catalogs, ReadonlyMap<string, string>>;
+
+export function directoryNames(
+  clinics: readonly { data: { slug: string; nombre: string; provincia: string } }[],
+  zones: readonly { slug: string; nombre: string }[],
+): DirectoryNames {
+  return {
+    clinica: new Map(clinics.map(c => [c.data.slug, c.data.nombre])),
+    zona: new Map(zones.map(z => [z.slug, z.nombre])),
+    provincia: new Map(clinics.map(c => [normalizeSlug(c.data.provincia), c.data.provincia])),
+  };
+}
+
+export function directoryLinks(entry: ArticleRecord, names: DirectoryNames): TypedLink[] {
   if (entry.data.estado !== 'publicado') return [];
   return (Object.keys(catalogs) as (keyof typeof catalogs)[]).flatMap(family =>
-    (catalogs[family][articleIdentity(entry)] ?? []).map(identity => ({
-      family, identity, href: linkPath(family, identity), label: identity.replaceAll('-', ' '),
-    })));
+    (catalogs[family][articleIdentity(entry)] ?? []).map(identity => {
+      const label = names[family].get(identity);
+      if (!label?.trim()) throw new Error(`Nombre de destino ausente: ${family}:${identity}`);
+      return { family, identity, href: linkPath(family, identity), label };
+    }));
 }
 export function relatedGuides(family: 'clinica' | 'zona', identity: string, articles: readonly ArticleRecord[]): TypedLink[] {
   return articles.filter(a => a.data.estado === 'publicado' && catalogs[family][articleIdentity(a)]?.includes(identity))

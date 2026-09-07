@@ -2,7 +2,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 
-import { assertTypedLink, assertInverse, directoryLinks, relatedGuides, crossPillarLinks } from '../../src/lib/blog-links.ts';
+import { assertTypedLink, assertInverse, directoryLinks, directoryNames, relatedGuides, crossPillarLinks } from '../../src/lib/blog-links.ts';
 
 const root = resolve(import.meta.dirname, '../..');
 const client = join(root, 'dist/client');
@@ -43,7 +43,7 @@ for (const expected of ['https://vet24cr.com/blog/', 'https://vet24cr.com/blog/g
 // Inspect the public assets and Worker bundle separately (plan §4).
 const serverFiles = walk(join(root, 'dist/server'));
 if (!serverFiles.length) errors.push('dist/server ausente');
-const serverOccurrences = serverFiles.filter(f => /\.(?:mjs|js|json)$/.test(f) && readFileSync(f,'utf8').includes('urgencias-en-perros')).map(f => relative(root,f));
+const serverOccurrences = serverFiles.filter(f => /\.(?:mjs|js|json)$/.test(f) && readFileSync(f,'utf8').includes('urgencias-en-perros')).map(f => relative(root,f).replaceAll('\\', '/')).sort();
 console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pilotOccurrences:serverOccurrences,policy:'Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4'}));
 console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePublished}));
 
@@ -51,11 +51,13 @@ const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^
 const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
  const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title')}};
 });
-const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug')}}));
+const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
 const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
 const provinces=[...readFileSync(join(root,'src/pages/provincia/[provincia].astro'),'utf8').split('return provincesMap')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
 const generatedPaths=new Set(htmlFiles.map(f=>'/'+relative(client,f).replaceAll('\\','/').replace(/index\.html$/,'')));
 const inventory={clinics,canonicalZones,generatedPaths,articles};
+const zones = [...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/nombre: "([^"]+)", slug: "([^"]+)"/g)].map(m => ({ nombre: m[1], slug: m[2] }));
+const names = directoryNames(clinics, zones);
 const readPage=path=>readFileSync(join(client,path,'index.html'),'utf8');
 const anchorPattern=/<a\b([^>]*)>([\s\S]*?)<\/a>/g;
 const attr=(attrs,name)=>attrs.match(new RegExp('(?:^|\\s)'+name+'="([^"]*)"'))?.[1];
@@ -63,15 +65,25 @@ const blocks=content=>[...content.matchAll(/<section\b[^>]*data-blog-links[^>]*>
 const hrefs=content=>[...content.matchAll(anchorPattern)].map(m=>attr(m[1],'href')).filter(Boolean);
 const classifications={internal:0,external:0,protocol:0};
 // The home page is SSR. Verify its generated manifest and its local preview response.
-let homeHtml = '';
+let homeHtml = null;
+const previewUrl = new URL('/', process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4321').href;
+const previewCommand = 'npm run preview -- --host 127.0.0.1 --port 4321';
+console.log(JSON.stringify({ check: 'SSR preview prerequisite', url: previewUrl, command: previewCommand, override: 'PLAYWRIGHT_BASE_URL' }));
 const manifestSource = serverFiles.filter(f=>f.endsWith('.mjs')).map(f=>readFileSync(f,'utf8')).find(s=>s.includes('deserializeManifest({'));
 const manifestJson = manifestSource?.match(/deserializeManifest\((\{.*\})\);/);
 const homeRoute = manifestJson && JSON.parse(manifestJson[1]).routes.some(r=>r.routeData.route==='/' && !r.routeData.prerender);
 if (homeRoute) {
- try { const response=await fetch((process.env.PLAYWRIGHT_BASE_URL||'http://127.0.0.1:4321')+'/');
-  homeHtml=await response.text();
-  if(response.status!==200||!homeHtml.includes('rel="canonical" href="https://vet24cr.com/"'))errors.push('SSR /: HTTP/canonical inválido');
- }catch(e){errors.push('SSR / necesita preview local: '+e.message);}
+  try {
+    const response = await fetch(previewUrl, { signal: AbortSignal.timeout(10000) });
+    const body = await response.text();
+    if (response.status !== 200 || !body.includes('rel="canonical" href="https://vet24cr.com/"')) {
+      errors.push('SSR /: HTTP/canonical inválido en preview ' + previewUrl);
+    } else homeHtml = body;
+  } catch (error) {
+    errors.push('PREVIEW_UNAVAILABLE: no se pudo verificar SSR / en ' + previewUrl
+      + '. Ejecutá "' + previewCommand + '" desde este checkout después del build, y repetí "node scripts/verification/blog.mjs".'
+      + ' Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: ' + error.message);
+  }
 } else errors.push('SSR / ausente del manifest generado en dist/server');
 function inspectLinks(content,source){
  for(const match of content.matchAll(anchorPattern)) {
@@ -82,6 +94,8 @@ function inspectLinks(content,source){
   classifications.internal++;
   const destination=join(client,url.pathname,url.pathname.endsWith('/')?'index.html':'');
   if(url.pathname!=='/'&&!existsSync(destination)){errors.push('Destino no generado: '+source+' → '+href);continue;}
+  // A missing SSR prerequisite already blocks the run; do not invent missing-fragment errors.
+  if (url.pathname === '/' && homeHtml === null) continue;
   const targetHtml=url.pathname==='/'?homeHtml:readFileSync(destination,'utf8');
   if (destination.endsWith('.html') || url.pathname === '/') {
     const canonicalTag = targetHtml.match(/<link\b[^>]*rel="canonical"[^>]*>/)?.[0];
@@ -116,10 +130,13 @@ for(const article of articles){
  }
  if(!generatedPaths.has(source)){errors.push('Artículo publicado ausente: '+source);continue;}
  const outgoing=hrefs(blocks(readPage(source)));
- for(const target of [...directoryLinks(article),...crossPillarLinks(article,articles)])try{
+ for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{
   assertTypedLink(target,inventory);
   if(target.family==='provincia'&&!provinces.includes(target.identity))throw new Error('Provincia inválida');
   if(!outgoing.includes(target.href))throw new Error('Arista ausente: '+source+' → '+target.href);
+  const anchor = [...blocks(readPage(source)).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
+  const label = anchor?.[2].replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").trim();
+  if (label !== target.label) throw new Error('Ancla incorrecta: ' + target.href + '; esperado: ' + target.label + '; recibido: ' + label);
   assertInverse(source,target,hrefs(blocks(readPage(target.href))));
  }catch(e){errors.push(e.message);}
 }
