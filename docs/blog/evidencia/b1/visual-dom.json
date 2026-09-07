@@ -1,0 +1,20 @@
+{
+  "fixture": "piloto publicado solo en preview local",
+  "networkIsolation": ["ezojs", "gatekeeperconsent", "googleapis", "gstatic"],
+  "measurements": [
+    { "route": "/blog/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
+    { "route": "/blog/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
+    { "route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "390x844", "scrollWidth": 390, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 },
+    { "route": "/blog/guias-por-especie/urgencias-en-perros/", "viewport": "1440x900", "scrollWidth": 1440, "horizontalScroll": false, "visibleTextInsideViewport": true, "overlapsNavigation": 0 }
+  ],
+  "structuredData": {
+    "types": ["Article", "BreadcrumbList"],
+    "url": "https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/",
+    "headlineMatchesVisible": true,
+    "authorMatchesVisible": true,
+    "datePublishedMatchesVisible": true,
+    "canonicalMatchesSchema": true,
+    "metaDescriptionMatchesSchema": true
+  },
+  "note": "El enlace skip oculto mide 1x1 en -1,-1 antes de foco y se excluye de visibleTextInsideViewport; al enfocarlo se vuelve visible."
+}

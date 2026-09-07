@@ -1,0 +1,5 @@
+COMMAND=npm run build:no-shorten
+RESULT=Build complete; 133 HTML artifacts; blog index and two pillar indexes generated; pilot article not generated.
+WARNING=Unable to fetch Request.cf; unable to verify first certificate; build continued.
+EXIT_CODE=0
+PREVIOUS_OPERATIONAL_ATTEMPT=EXIT_CODE 1 EPERM because fixture preview held dist/client; preview stopped before successful candidate build.

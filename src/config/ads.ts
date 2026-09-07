@@ -27,6 +27,8 @@ export const EZOIC_PLACEHOLDERS = {
   'zona-inline': 117,
   'clinica-inline': 118,
   'clinica-sidebar': 119,
+  'blog-inline': null,
+  'blog-sidebar': null,
 } as const satisfies Record<string, number | null>;
 
 export type AdSlot = keyof typeof EZOIC_PLACEHOLDERS;

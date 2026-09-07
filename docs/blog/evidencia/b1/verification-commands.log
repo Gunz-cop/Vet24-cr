@@ -1,0 +1,32 @@
+BASE_SHA=89a365b8c374cdbf9912a07425ed68e34a496464
+
+COMMAND=npm run check
+OUTPUT=Result (78 files): 0 errors, 0 warnings, 75 hints
+EXIT_CODE=0
+
+COMMAND=npm test
+OUTPUT=tests 59; suites 13; pass 59; fail 0; cancelled 0; skipped 0; todo 0
+EXIT_CODE=0
+
+COMMAND=npm run build:no-shorten
+OUTPUT=Build complete; sitemap-index.xml created
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/blog.mjs
+OUTPUT=blog: OK (133 HTML; borrador ausente de HTML, enlaces, Article y sitemap)
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/agent-catalog.mjs
+OUTPUT=AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+EXIT_CODE=0
+
+COMMAND=node scripts/verification/agent-markdown.mjs
+OUTPUT=agent-markdown: OK (127 mirrors)
+EXIT_CODE=0
+
+COMMAND=npm run test:e2e
+FIRST_ATTEMPT=EXIT_CODE 1; config webServer launcher exited early after daemonizing preview.
+SECOND_ATTEMPT=interrupted; 8 workers saturated local preview with ECONNRESET/timeouts.
+FINAL_COMMAND=npm run test:e2e -- --workers=1
+OUTPUT=11 skipped; 85 passed (1.7m). The 11 skips are pre-existing tests; no new skip was introduced.
+EXIT_CODE=0
