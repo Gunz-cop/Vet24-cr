@@ -1,0 +1,5 @@
+COMMAND=node scripts/verification/blog.mjs
+PRODUCT_SHA=43a09a5a36c8c59fe27615825b20c52b1e1f13e1
+STDOUT=fixture-final-blog.stdout.log
+STDERR=fixture-final-blog.stderr.log
+exitCode=0

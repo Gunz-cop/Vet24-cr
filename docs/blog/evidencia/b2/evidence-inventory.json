@@ -1,0 +1,1054 @@
+[
+  {
+    "path": "docs/blog/evidencia/b2/agent-catalog-candidate.log",
+    "sha256": "4296122d22167f5119b49ffa40a8b6663bf75be6666d16901bf1e25e99f60c36"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-catalog-final.log",
+    "sha256": "8360c365e229cbf2b25e11eec07bcce65ff3ef9e08b4368d9495b126dc4078d9"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-catalog-reviewed.log",
+    "sha256": "0f65e6be47588bf6ef1bd5684b5c8ff09ea6c9cfca099ccc235abb749c54d674"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-catalog.log",
+    "sha256": "3ebb98ff969b542da5272bae33a4333ce30c318aa0934ddf54bad1d74c931fa7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-markdown-candidate.log",
+    "sha256": "ab99652eb7fcfc7531b6fdc4b866df38ec66d5d5d0c16e10171797176c62d460"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-markdown-final.log",
+    "sha256": "e05a8d401e2a60e17a71295f25d0d4d638ae8196a12692f637cdd48c2248b018"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-markdown-reviewed.log",
+    "sha256": "9947fde8cb5931dcdbb23275c9622e3fa7901cf9fc23087a2fc4acae294f5acb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/agent-markdown.log",
+    "sha256": "f2a22ab1ead617ae763ffda90d0e545caf32f3833bf9a3564a098d9a21d3b0cb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/artifact-conservation.json",
+    "sha256": "b2ab7158bbc47d93e47355c16235d83fb4cc00cbe331f2d7524557ee1b4c07cd"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/artifact-mutations-final.json",
+    "sha256": "b49f9e09dd99c04e5bbc2ed8346aa7d61df7d1796c4199b958023425c17ea3c1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/artifact-mutations.json",
+    "sha256": "c1f40258e3b92ece00a04c6763ab81707ea81065cf5bebb7d9b62387993283ae"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-agent-scan-command.log",
+    "sha256": "b0f4942bd535193338a83eabc97087b3658637c4491479e69e8f91a2d5ee559b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-agent-scan.json",
+    "sha256": "e1f27d8763320be74efd0d73c9ae36d7b6787d771f483307ee0bf26f86f6a99c"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-agent-scan.stderr.log",
+    "sha256": "549bc7ef042d1bc45426d9e2ebe950a63ea9fd831c4912e35a1be421af9915a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-artifacts.json",
+    "sha256": "117bfd6daf27c28c3069422f6a35a245e1a7475217273898ab0934828a605694"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-build-command.log",
+    "sha256": "e24d28b3dd369de3dfc1be206976c6fbdb4a79133abe3ae5b1d75f944bc4c2de"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-build.stderr.log",
+    "sha256": "262fd61c7c44e032e6a331ba987cbfe3e4b1c794240eb10d28cd015c3276ded7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-build.stdout.log",
+    "sha256": "a80419a087eb8b2e7c029d72810f0e94a717eb1a77ee8269185f5dabb5b1ce8c"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-hems-una-heredia-1440.png",
+    "sha256": "594542214f5b74196a3e247c79ead76b7dee1d72e4fba236f3b539eda1485070"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-hems-una-heredia-390.png",
+    "sha256": "ddd43059d3a481ed6770ed496670c87a25075ad329385cd3d8b27b9b0803c60f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "03e4139f7e464dbcfc1a7bcd5d0da5b627579267806c4a312ee27849759442b3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "69b83dd4e241cd3e89b782d39f2c7b935afe00b49a9a97dad490f706061b834d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "370b71bf326b160aed46db45143780b91a3104c681bde90aefdbc02ee14a912f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "31d3baab8917605a43df4ffd20b7dc49e4709dfd85d314d50a1505c5c7f457fd"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-hems-una-heredia-1440.png",
+    "sha256": "483cdec31b0568b48115d4305a60a1c4ad65c641629faf26242dec5b6377e063"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-hems-una-heredia-390.png",
+    "sha256": "f6764a4f1ea74b7a0b8a8ad105d7f5fbca819eef2e316c73d2c87cd46f7e5c90"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "f6d8d0d3e95858ecabb41c712dfa786b1c6ee10584bb1f1670f2cbda886b0c9b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "5352609909ab6c34d8e136a36f0e41298776ee405367d1a124a0bae9715042a4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "e462717f1cad0b71092329d13d44233cfa257a392e12e418584a10ca273dae2c"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "95beaa9023de2d7e39bd5ead6989d18a2b90606304f534db11da56c115d2a71b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-geometry.json",
+    "sha256": "c66fb7e310ee390b2f42bd100c3b5984a76e80f4a0ae6ebf5201dd9d6a8b503d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-zona-guapiles-1440.png",
+    "sha256": "0e6474bd23a64e636ccd33265c02b53b5d0151f39af81d53261ee393e7d2fb4e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-zona-guapiles-390.png",
+    "sha256": "d08cc5c8ab254a8e27187d969ea657ab36d4aa1ecf5d3f46bc49e5287962db72"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-zona-san-pablo-heredia-1440.png",
+    "sha256": "fc3dff2df2124d9529f211e0c9a3cc55500803b6c03b418cc09f6db19a75e7a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-fonts-zona-san-pablo-heredia-390.png",
+    "sha256": "e8aeba5336541c7916dbab386eaf402661a26f96bc3174f250185c2c7718a9e8"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-geometry.json",
+    "sha256": "3b7c08324b43264382d6e51c4dcc6b27b2a35c27731b245232cf462838183ea7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-hems-una-heredia-1440.png",
+    "sha256": "483cdec31b0568b48115d4305a60a1c4ad65c641629faf26242dec5b6377e063"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-hems-una-heredia-390.png",
+    "sha256": "d9b09345541b87c7e5279c18d126666f625efe94fceafef8ead280bca8a1b332"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "f6d8d0d3e95858ecabb41c712dfa786b1c6ee10584bb1f1670f2cbda886b0c9b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "53a257eee50c29a95f7ab99c1150cdedd0b5188cb6c84d39eb68ae3a7ef2bf3e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "aad8d56d350a4629988501a7855b32abb2cb38b4b62f8bc0bcea470b511cc209"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "b60b303ddf632abb1813f80b4630cdb9e031fc5014af98dc4f27381e95311c5b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-geometry.json",
+    "sha256": "3570c452337c194dfe2b2337d8ebe64b39987984dbbd339db0a4ed0ad9cc08d3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-zona-guapiles-1440.png",
+    "sha256": "0e6474bd23a64e636ccd33265c02b53b5d0151f39af81d53261ee393e7d2fb4e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-zona-guapiles-390.png",
+    "sha256": "d08cc5c8ab254a8e27187d969ea657ab36d4aa1ecf5d3f46bc49e5287962db72"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-zona-san-pablo-heredia-1440.png",
+    "sha256": "b7b8fcde021f926b8a46e89bf88fae8fb1d57cb39fd6cf0fef9e6c800a22836b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-loaded-zona-san-pablo-heredia-390.png",
+    "sha256": "93daae0046209fe86262705186d3754359f02b1266c91ae8ee3d32a80bc14e08"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-scan-coverage.json",
+    "sha256": "b9933c100b5f0506a48dee86dcd2353610e5e7e33d9fa19fe83ae6f316366afa"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-build-command.log",
+    "sha256": "ce97a505c93f93917612239204a56bc12f0b58e8644295ec685397a61d1a7ccd"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-build.stderr.log",
+    "sha256": "c101769c919733158ce400b32655046d54da7f89bb4190b05f37a29edd43cfe0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-build.stdout.log",
+    "sha256": "9f7257d4a92f2b386ba7c3ed02d8b4047b03596148774266eb52e12944484291"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-e2e-command.log",
+    "sha256": "72862cfa4651b609b2c6b23a44b753381048116ccc4c67ddbc1552779ed98299"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-e2e.stderr.log",
+    "sha256": "af01f3defd01a24ade9f9e2c82bddc1f645f9bd585dcc1df9ddd19f76a7039ab"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-e2e.stdout.log",
+    "sha256": "b628e156279edfea8d81a76af1bdbfe343fb839f8afad50766d3892ec4a8542a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "829d6a862de7a8b116abd4f06a267403bf4c3205aa312ec1f80000f021717f51"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "2beffad625a608c30480340e758e7859e127e9b308ecbb9459bfd3988d61fa26"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "2ecbd285c5c2ae1c5db0996a495162a853a26b053a262d8b7aaafc5d1a69969e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "2e01f01cf56b43b1b8add14b830abf86d4ecb0ae790091a65cb32593a03fac62"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "74f4b27c0c48bd381d0654db1639cb91e26e0cff0305c90b4676df43895cbfbb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "dd2e61326e2ef38cf797a5b767a65391fc4aed88b6c53f4651ebd8519a0dd0d9"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-guapiles-1440.png",
+    "sha256": "da61c83b3ee670b643b6032767f3fcc6ec8867346510132d5a5b70a47dd4c9fb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-guapiles-390.png",
+    "sha256": "f16f10dc50f63beab0cc5977b33b96e9fa4f1493c432eac28ff3102d30a2bdd7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "e774383f5acdb7786e3f3adbd0ac8dadd357129907eb67f3c14b458c52e9a389"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-supplement-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "062ff64726a6ba3bac4b92ecccad24fd8047246e257ba296b9ec8cc04e8f5140"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-zona-guapiles-1440.png",
+    "sha256": "0e6749fb18951236daa41de2650dd6381bb2309da060db4f0435dd96f63d2e14"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-zona-guapiles-390.png",
+    "sha256": "d973f679c5e9b8349293a81e5e726d4c8d2482848e09840f409c7e8cddf46aba"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-zona-san-pablo-heredia-1440.png",
+    "sha256": "2530382dec02eb4173ff6be15c1bd03192aec1429095072b95313c14941421b9"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base-zona-san-pablo-heredia-390.png",
+    "sha256": "e1b1e3b0b34c11dee0afb9b676bbf67e5345544762781c994c95a8012f44b9e8"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/base.json",
+    "sha256": "ed62929064d9e26779744a96910218f430b6673d4988f9d2224a3ec74edd3860"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/blog-ejecutora.log",
+    "sha256": "f06af1b4e0d1bd4c6b45f8aadcc9dee32b237799f5f223258860de7c4d5aaddb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/blog-initial.log",
+    "sha256": "b5bda872deda2d8a18679219323f1f4bee58a3c390c42d2bfc4e727c129d0e80"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/build-final.log",
+    "sha256": "48c5714ebf02ff050da5e3eb211b18897214c280663928c6645bf75f79ff1a20"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/build-product-equivalence.log",
+    "sha256": "12391a0292c5759cee84dffd81174a0520ea14f57ab454e6f561313654d0a313"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/build-retry-command.log",
+    "sha256": "f4544a5258d52c42edb535adf512be4be3808436994e1d9443a09b0caa8288ca"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/build-retry.stderr.log",
+    "sha256": "262fd61c7c44e032e6a331ba987cbfe3e4b1c794240eb10d28cd015c3276ded7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/build-retry.stdout.log",
+    "sha256": "cf6c9220fab55eac2763371708959d7c08425f7ef2a21d327f61ecb239416e8f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-build-command.log",
+    "sha256": "c7f9cde8e34337cd2fb1f2de779192e782cc047e2701a5823a58da333d598f45"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-build.stderr.log",
+    "sha256": "262fd61c7c44e032e6a331ba987cbfe3e4b1c794240eb10d28cd015c3276ded7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-build.stdout.log",
+    "sha256": "361c925db2067c6bcaff410b1e28e77e4ee531d4c6e43e0f52b60c3d3c2e3baa"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "2a4dcd3cc65757f425f0141ecb6bf5e9304ff085377a41f3d915b4a889fae10a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "fd39384535890a5457c884117f412fe0f493039e4726fa53d07f987769788c4e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "5e6e85cd7a555b3ceb1086f54b1e45a7d08709cd48afa2a7284b7060b4dedb84"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "442003212a0489003c1010233e29f94a04249344637bea94683d20e9b2b2e17b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "100380c4621da6f7a916b75b5fadb18557ece15100a02f556a4c1d6990a5252f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "f3b74d839dd312eb71a16f4bcd44a398353de5e9191cf1f09087648e52a7b937"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-guapiles-1440.png",
+    "sha256": "8ae9e56199c37bf456667fba39b002df6d7d85497ab86e743cc0ed0cfd431e2b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-guapiles-390.png",
+    "sha256": "bdf4a7f540ce10d872d212572140fe2e7779741998ae17710c4ca70a231ec0f2"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "5958bbb82971bc011c06cfe65f31db2d820050f490ac2eb075fea76fd92bf1fa"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-final-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "771372e98da3551da1b873414b2c6cd0200f69ecac2c50961efc88b938c91c9f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "688970b3c44342ab62eee1e0a1f29940bb3d0a979e6ebcd637ccda25e15a512f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "f8d388b5147321e066f7f447e7291a2df937c666df523bec3dd9b92d99fff890"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "7c3bdd04aa79392bf94703dce7f9fe95b8c246b2b154014f27053be706243bc1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "bf56f70393f166ec2ec089f1a19d66633c32b4966d77fa4dffc9cf6fc1b8f8ce"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "9cbe3e4d90de4a78c7afdbd486a4ceed401b6aa4a424528ce2b06a40c7944bc4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "346db5abc5c64be60422b6d4cb2aa057b32d9ca92c712f57fb7ece4aa7d9f113"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-guapiles-1440.png",
+    "sha256": "ac185ba3c1735181c956d71b0e6e52772d95a87d9cbbb7412b92fc1bfdefde1d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-guapiles-390.png",
+    "sha256": "f8fc6cf34ff02090b8b932a4dfb1c5410f2469a23dd85ac2c40b50433cfdd44d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "bef3832ec929ac43936b50b0512301caa560ace15b773576a47696f71885a43c"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-reviewed-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "061c44d1096200fc5cffd428b402bff2f11b9175fb65656af10056f7d3444b36"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "cb78e9a960977ae2cbcb3c577e7e625b1fbda9adecba16e3c337899a12cf7703"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "842aacd91aba2fb30dad8b5984f96f22d088c709d790baf76a7b4b1172051a45"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "7d3e45b5649380b89dfe8016cb199a7b64b900d6db7945fc2ba17f146140362a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "21d2bd68ddd96b8ff6cc102bf0b9ed5b32226b7d3486d24ac00fe9bdf754d14c"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "2f59a7e1d7b45e9d4468bd3db55b6c83ec41f7969ca2ecd7bd62da0eb332abd0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "e4f1bd40f2d7b0db8e586f6bdbe2a66985f709075fa7f2db311a70e92905a078"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-guapiles-1440.png",
+    "sha256": "db9a674dca2ca1117cd349cdba4905315d8187312187e4f2b743bbdb938d81b7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-guapiles-390.png",
+    "sha256": "bc9dca40e619fa02ed4e03134d8e9f1068d3006b3a53be24c997c9103328b664"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "100b70bee4fa1f43f86c49fc0248c6511696b994ac6ee61eba4f129031e2155b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/candidate-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "17674054207e3993b4a703d6fa1d6fa022a90a6ef78dd7cbbcf6e67af67dd492"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-final.log",
+    "sha256": "b0f5b85a2517f42ab1b052608f896be2ba125a8a4742b163dbbfe0a7ce3e8184"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-initial.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-initial.stdout.log",
+    "sha256": "2eb7470470e1bb75254efccbb06a6ca142f791fe28115309b6af8438a60b7fbb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-reviewed.log",
+    "sha256": "ef61cc4de3eece341318743b51799b16396b22871298ec7766569ef73f6fec78"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-second-command.log",
+    "sha256": "e05222033cd2c7b46b6fad5ec87b44b62f844dbb6f004476498f71d0e3c9875b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-second.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check-second.stdout.log",
+    "sha256": "65602e6a79cbdbd82fd87ae308cd850a746eb270cef44d0044847dad44295fb1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/check.log",
+    "sha256": "4eef3562538a62c97ebb9927692d94f836e9550faad2f3e69179eb19ef945060"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-command.log",
+    "sha256": "555e448f4320e0e80e171d4dfb4434eed9e9f990f5332bc377fba3d5237efed4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-final-command.log",
+    "sha256": "e05222033cd2c7b46b6fad5ec87b44b62f844dbb6f004476498f71d0e3c9875b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-final.stderr.log",
+    "sha256": "92ed24dd30e2f6bcd20d1e7ea6f1f155be6632f9973a92174bd360618cebc3a3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-final.stdout.log",
+    "sha256": "df039e74a33ab9e0cc61b59b1dba40e0da1ba7bbfb32319b9ec9ea433502087a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-localhost-command.log",
+    "sha256": "aaec2891f6ce422247462fedd1fc7dd8520e2f0de81a4992a17a928a767373b1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-localhost.stderr.log",
+    "sha256": "1b4fa168c37a646ba1e9b52f7c4e1c01d8bbb81ee3563c60b9d046756fadd30d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-localhost.stdout.log",
+    "sha256": "307d910e5ebce21083757484dab613f676ba020b854e459f985f0b5eaef88082"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-reviewed-command.log",
+    "sha256": "0d4e7d08ab4dceb13d9ba94d36f33db073e3e41e604efbc78406b2cf650f7f4b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-reviewed.stderr.log",
+    "sha256": "899e6da5e6f82bedc231f9dcfe71d7b030d184b53eaf30fd79b4d58a0c5a7d0e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e-reviewed.stdout.log",
+    "sha256": "50029a0510f379907d24b1ca3e3ed7dd3cd1e38d59c585cb30c2c95e940f312f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e.stderr.log",
+    "sha256": "445aaafa012635cb9c4004e954fc63aab95918f7e8c387bd4c443ed3b4040840"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/e2e.stdout.log",
+    "sha256": "80aa5c35dff148cf39caad0e354e7551272780a1c800a205cb7b6629dd43c606"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/entrega-ejecutora.md",
+    "sha256": "7c69f8275be8b575e07a3039ca14a4dbe65fc4fdc45db0549b84f83bc0bc26f5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/execution-context.json",
+    "sha256": "382b8c6ae2b4e784fbc8710dc01115227f376f82eb7f876a693ab97a2d9fdfac"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-article-1440.png",
+    "sha256": "efb2622a8c59fe0aac3f039a84a84c89d3cf4e31c8111e6ce9ccf91886f1460f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-article-390.png",
+    "sha256": "3d0276b8037782a2fc078703f20e395f5996adc37067eb68295f39955d0efde0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-article-links.json",
+    "sha256": "12f1315c4b7e9cfbaec0b199bcdf996f868963c3b32df1fb26cd2ebb07fb56a0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-blog-command.log",
+    "sha256": "a467bd35a060e0e3c3672961b378f13130071de3f85fcaf953c5921c0f2297b0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-blog.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-blog.stdout.log",
+    "sha256": "70762f3ec27d0ff8ccd27cd0c565c9c827abeabaa13e02b5729295017f546d1f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-build-command.log",
+    "sha256": "938b93863db692f7270849bf97b182789acac424161a4694d90fb6fe4b766a77"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-build.stderr.log",
+    "sha256": "c101769c919733158ce400b32655046d54da7f89bb4190b05f37a29edd43cfe0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-build.stdout.log",
+    "sha256": "da5a233790e465437bde247e0f713087f13f89acccf7284bb60228dcb33fbeab"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-e2e-command.log",
+    "sha256": "2177d506c7eec521a94e5c2d0fe93bf1f0785142f2e40a3513958a267fae26d0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-e2e.stderr.log",
+    "sha256": "18f073a0e131774d7560d4a5aa8c0ff2ad40bd5d460cf99337ce601f1b38cbf0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-e2e.stdout.log",
+    "sha256": "e987dbfdb07a07c1861f151327da196a66dde6fc851d47c7e22d8ad2c65642ad"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-blog-command.log",
+    "sha256": "79afa048c332de2fa61a7cb234e551c9e9588e34c4da42efcadc30e1faeb0530"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-blog.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-blog.stdout.log",
+    "sha256": "70762f3ec27d0ff8ccd27cd0c565c9c827abeabaa13e02b5729295017f546d1f"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-build-command.log",
+    "sha256": "84de2d29bd5544d2d6ca550d4517e212ae52ab3828c07d88d8cede4ffd3dec2a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-build.stderr.log",
+    "sha256": "c101769c919733158ce400b32655046d54da7f89bb4190b05f37a29edd43cfe0"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-build.stdout.log",
+    "sha256": "df0a84be266b6b628f5111cb5d1849eff039f026d67e69b6a7c46924b94c2ed7"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-e2e-command.log",
+    "sha256": "cd97d1ac7c97dc0236f7b111dd29bb0195bf55bf73a58410bee5a6513f2b6f82"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-e2e.stderr.log",
+    "sha256": "80fbc087101b4413f738d0311dfabbf20d4acfb63955329f96b9370440b5f4d4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-e2e.stdout.log",
+    "sha256": "33a2c1e42ce8dcfd99760da155fe7f41cac8ea81ac5e52bead6e1102f96858ab"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-removed.diff",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "54016686a918d77d931fe340b7a581717fafc289cf1653a3d3e06e7edcefddc6"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "f8f1eb2f7ce24b485f223d91f5966066d4901a12f1e81dd7dff3459da77efdc4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "c275277da814df05a73ddddfa73ffa4fc63b4199a0277c4aac5bf8b449fa7f4a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "fd7f0dfeb2db52a97574a6c45953e1bb095e74778f81a62b0808c13c42cbd14e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "e5a3493a89a1b94e601b67a33d1f5d9fb45fb0a87ccb922965da9c1ac9cd1c0a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-guapiles-1440.png",
+    "sha256": "a4c62f93b2534dbf6e986e3d4e8cc20eee62fa0c1daa9774b401f7883bedd5da"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-guapiles-390.png",
+    "sha256": "69e9d4353f65177e7e04ca3081c9c8c9da5ebd1692006d6a44bd7d7cc1fabf59"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-final-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "697d43d829faa17548ecc4b58ed0facacb650955ff04442295f28b4b3772f112"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-removed.diff",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-e2e-command.log",
+    "sha256": "64d7ba8b7edfcbc5250ff60571cffa3c04ca82e65f78940a75010073bcdc7bf8"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-e2e.stderr.log",
+    "sha256": "e8555d814e90a1e77f7d7be5cf5062484c608bf4aecefa69288834dbc6b9f862"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-e2e.stdout.log",
+    "sha256": "bab86b2c6a557cb2b9c6c401144104070d39e68574e6ece1eb8b32477ca70c21"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "72807eac6479ccca0dea8a71313c3a1bc2501df346858b5da8783467f9ed7043"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "5e8363496d1f3a4220773afc668aaac4860d60f2d661aac4f1ffde5a3dc12b34"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "a44ff3303f31e91547e653cf67229171a5805e6f56cdda79d1976492cd143891"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "d14073dc4fbf7a2eb3fbe98635e556ce736f6da2f66d0c8c3e0e4c1bbf3f54f3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "b6719c4ad0f9252eba6d32191508c99c112ed51acce6b8c60674e8e43bace609"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "ea6e15596d05e8fab79011d178afe0d9495c46849f75bbec1e368d727015c895"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-guapiles-1440.png",
+    "sha256": "57ec7f113068afa4192905de354fcafe27abf927bcff46e4eae319c508441e63"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-guapiles-390.png",
+    "sha256": "1df68b7e1678267c01be2c85a3607cb1829edbe36dc690e3db88f41a2e794729"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "78c75c382819482b0aea16113817e774d329c33eb1eebf0749cc713f88b0ff99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-reviewed-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "6075fc9d738ab501f0660920215b4333f1abd39deb9bd5b381487e85adfcfd8e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hems-una-heredia-1440.json",
+    "sha256": "91e379db9633513a0d038e65b3236bb6640c8ab66c6232f21d0a1cf7398eda10"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hems-una-heredia-1440.png",
+    "sha256": "1be795c18a44e8690f2c250f324dff04527a1e53f26f1175137c6fddc9068678"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hems-una-heredia-390.json",
+    "sha256": "79aeaae1a5564953a0c42a9042f5d43296f7df7296da5a4545c477080f47053e"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hems-una-heredia-390.png",
+    "sha256": "5e506950206e426dfe70bfb41f32fb702d0e9f4eba65d6379d0ff1f4622fee30"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hospital-vet-medical-care-heredia-1440.json",
+    "sha256": "96910d7da9fd098968e823d5fe4d4e7335db2f8e3b11ba23956e976fdc901dc3"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hospital-vet-medical-care-heredia-1440.png",
+    "sha256": "ca8754bacdc2cbeabc3c829b57c2ee6668378c2a408b8a563d8958cd340e6a39"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hospital-vet-medical-care-heredia-390.json",
+    "sha256": "ea03ce69ba6fd29cb7c099a84cdc5049f75f5ea55d896b40d6d695b89fbf6c86"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-hospital-vet-medical-care-heredia-390.png",
+    "sha256": "3ec96d7dd1a2d12c758cb5ee05e28c3b9808e5c266fa4bb475e2e7ca72f78a33"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "sha256": "8322e1d78ba7f176bc2b937ad8cbd3e28d514f1b6b9f4848295463b60585aa7a"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-veterinaria-gocha-santo-domingo-1440.png",
+    "sha256": "2eefc79519dd1470ad119cde097095bf30e83bd46aac08e3d244941cb17c70ae"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-veterinaria-gocha-santo-domingo-390.json",
+    "sha256": "41702396c3920c62534ec6f14caa545367de3a81001ad742f1413a05c7f57d99"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/clinica-veterinaria-gocha-santo-domingo-390.png",
+    "sha256": "56623eb8faf63c1b838906ad39c91d78d9c1825a6d77614d75eb06e87d81e246"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-guapiles-1440.json",
+    "sha256": "4fd4dc0780e7595cd4905052c67ba674695ff1c910e0f004a7312bf2c2d3a9a1"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-guapiles-1440.png",
+    "sha256": "7418d67ccb580b207280c9388c4a04da4ae2f534f7c2c19ee9ca8bf66fe272e4"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-guapiles-390.json",
+    "sha256": "692ab24e4a65c3c033398cd36e8aa5548148cf0e54d8734d4bbca9be7a5de0db"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-guapiles-390.png",
+    "sha256": "b8ad9f4f3b4175030ee59c4531ba56ce4cd0cea69be8ccacf510608dde072d5d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-san-pablo-heredia-1440.json",
+    "sha256": "18f8059b6338282774b8490ae71ebc8cd5186a8ee12a8fdb5abc37adceb58cfb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-san-pablo-heredia-1440.png",
+    "sha256": "cd255b7b8b3fd26bfb0adf94fef609dea303041b83583ab0f5ebc36188305515"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-san-pablo-heredia-390.json",
+    "sha256": "98ac6bde7fad02807064e5ce7d35a7a202129b7004556850d812654128203fc5"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/fixture-visual/zona-san-pablo-heredia-390.png",
+    "sha256": "cb8754ad5ad6c6817d192f8f1108226c6fdffc65288feba20efa11e62343ee09"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/geometry-focus-comparison.json",
+    "sha256": "ac62d3fcca603146d1d09753ac6bf279f8430150f3c1d86d2530ad28f7441abb"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/geometry-reviewed-comparison.json",
+    "sha256": "58bbd9003e5689435faf5581cb6c3486b68fae780fc373f8ba3642083fd29578"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/negative-process-results.json",
+    "sha256": "461b1d70f9f7756432d2230b5413b7f558fa219fcbadd486ed66c47c0330d1ee"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/published-fixture.diff",
+    "sha256": "7e9f0478a5487e8726564bb4ba0f51b0775bdc3db4742d8f23f407f2a55f5252"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/test-final.log",
+    "sha256": "03d351352162f5c81a270433f8e7f2d9e7701ae57765232d3dc1c47404123b58"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/test-reviewed.log",
+    "sha256": "b81c6f20e08cf05352683dacf0b04249490e33e9aab6e6ff4e54ba7b5d6a12c6"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/test.log",
+    "sha256": "ecbe14e8b189378b8fc8037577bdb669fa5c1f51e5e52d1d4d527008a8f9e02d"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/unit-initial-command.log",
+    "sha256": "e05222033cd2c7b46b6fad5ec87b44b62f844dbb6f004476498f71d0e3c9875b"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/unit-initial.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/blog/evidencia/b2/unit-initial.stdout.log",
+    "sha256": "76a4125f0978ac68c8b5de48a473ebdd1602e4f4103eea4164439d5a7ee71ed9"
+  }
+]

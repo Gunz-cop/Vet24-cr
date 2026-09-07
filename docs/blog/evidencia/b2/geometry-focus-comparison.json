@@ -1,0 +1,122 @@
+[
+  {
+    "file": "clinica-hems-una-heredia-1440.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hems-una-heredia-1440.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hems-una-heredia-390.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hems-una-heredia-390.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hospital-vet-medical-care-heredia-1440.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hospital-vet-medical-care-heredia-1440.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hospital-vet-medical-care-heredia-390.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-hospital-vet-medical-care-heredia-390.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-veterinaria-gocha-santo-domingo-1440.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-veterinaria-gocha-santo-domingo-390.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "clinica-veterinaria-gocha-santo-domingo-390.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-guapiles-1440.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-guapiles-1440.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-guapiles-390.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-guapiles-390.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-san-pablo-heredia-1440.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-san-pablo-heredia-1440.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-san-pablo-heredia-390.json",
+    "stage": "fixture-visual",
+    "differences": [],
+    "pass": true
+  },
+  {
+    "file": "zona-san-pablo-heredia-390.json",
+    "stage": "candidate-visual",
+    "differences": [],
+    "pass": true
+  }
+]

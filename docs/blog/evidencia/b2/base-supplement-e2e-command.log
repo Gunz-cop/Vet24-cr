@@ -1,0 +1,5 @@
+COMMAND=npx playwright test tests/e2e/blog-emergency-layout.spec.ts --workers=1 --reporter=line --output=../vete-b2-fixture/test-results-b2-base
+PRODUCT_SHA=b9d7db74d85f99ab580c7bc0d03dd51c13744f71
+STDOUT=base-supplement-e2e.stdout.log
+STDERR=base-supplement-e2e.stderr.log
+exitCode=0

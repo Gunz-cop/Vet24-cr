@@ -1,0 +1,8 @@
+COMMAND=node scripts/verification/agent-markdown.mjs
+SHA=dbadf5aecccbe64b6b38c13d5bb359b75d96fd75
+STDOUT:
+agent-markdown: OK (127 mirrors)
+
+STDERR:
+
+EXIT_CODE=0

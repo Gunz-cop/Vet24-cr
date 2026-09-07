@@ -1,0 +1,5 @@
+COMMAND=npm run test:e2e -- --workers=2 --reporter=line
+PRODUCT_SHA=dbadf5aecccbe64b6b38c13d5bb359b75d96fd75
+STDOUT=e2e.stdout.log
+STDERR=e2e.stderr.log
+exitCode=1

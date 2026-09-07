@@ -1,0 +1,8 @@
+COMMAND=node scripts/verification/agent-catalog.mjs
+SHA=34ef2035a44c5ba2d5116106a7143dc133d86228
+STDOUT:
+✓ AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+
+STDERR:
+
+EXIT_CODE=0

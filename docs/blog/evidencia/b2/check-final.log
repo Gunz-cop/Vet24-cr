@@ -1,0 +1,387 @@
+COMMAND=npm run check
+SHA=43a09a5a36c8c59fe27615825b20c52b1e1f13e1
+STDOUT:
+
+> veterinarias-cr@0.0.1 check
+> astro check && tsc --noEmit
+
+04:52:43 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+04:52:43 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+04:52:43 [vite] Re-optimizing dependencies because vite config has changed
+04:52:43 [vite] Re-optimizing dependencies because vite config has changed
+04:52:45 [content] Syncing content
+04:52:45 [content] Content config changed
+04:52:45 [content] Clearing content store
+04:52:45 [content] Synced content
+04:52:45 [types] Generated 2.36s
+04:52:45 [check] Getting diagnostics for Astro files in C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr...
+[96mscripts/google-indexing.js[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'path' is declared but its value is never read.
+
+[7m2[0m import path from 'path';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mscripts/verification/agent-catalog.mjs[0m:[93m29[0m:[93m33[0m - [93mwarning[0m[90m ts(6133): [0m'label' is declared but its value is never read.
+
+[7m29[0m function readArtifact(pathname, label = pathname) {
+[7m  [0m [93m                                ~~~~~[0m
+
+[96mscripts/verification/verify-browser.mjs[0m:[93m5[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'createHash' is declared but its value is never read.
+
+[7m5[0m import { createHash } from 'node:crypto';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/content.config.ts[0m:[93m54[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m54[0m     copyDiferenciador: z.string(),
+[7m  [0m [93m                       ~[0m
+[96msrc/content.config.ts[0m:[93m53[0m:[93m13[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m53[0m     estado: z.enum(["pendiente", "publicado", "verificado", "inactivo"]),
+[7m  [0m [93m            ~[0m
+[96msrc/content.config.ts[0m:[93m52[0m:[93m11[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m52[0m     slug: z.string(),
+[7m  [0m [93m          ~[0m
+[96msrc/content.config.ts[0m:[93m51[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m51[0m     instagram: z.string().optional().default(""),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m50[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m50[0m     facebook: z.string().optional().default(""),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m49[0m:[93m10[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m49[0m     web: z.string().optional().default(""),
+[7m  [0m [93m         ~[0m
+[96msrc/content.config.ts[0m:[93m48[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m48[0m     maps_url: z.string().optional().default(""),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m47[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m47[0m     waze_url: z.string().optional().default(""),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m46[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m46[0m     longitude: z.number().optional().default(0),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m45[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m45[0m     latitude: z.number().optional().default(0),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m44[0m:[93m26[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m44[0m     verification_source: z.string().optional().default(""),
+[7m  [0m [93m                         ~[0m
+[96msrc/content.config.ts[0m:[93m43[0m:[93m33[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m43[0m     verification_notes: z.array(z.string()).optional().default([]),
+[7m  [0m [93m                                ~[0m
+[96msrc/content.config.ts[0m:[93m43[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m43[0m     verification_notes: z.array(z.string()).optional().default([]),
+[7m  [0m [93m                        ~[0m
+[96msrc/content.config.ts[0m:[93m42[0m:[93m32[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m42[0m     accepts_emergency_walkins: z.boolean().optional().default(false),
+[7m  [0m [93m                               ~[0m
+[96msrc/content.config.ts[0m:[93m41[0m:[93m31[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m41[0m     overnight_doctor_present: z.boolean().optional().default(false),
+[7m  [0m [93m                              ~[0m
+[96msrc/content.config.ts[0m:[93m40[0m:[93m26[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m40[0m     has_hospitalization: z.boolean().optional().default(false),
+[7m  [0m [93m                         ~[0m
+[96msrc/content.config.ts[0m:[93m39[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m39[0m     has_surgery: z.boolean().optional().default(false),
+[7m  [0m [93m                 ~[0m
+[96msrc/content.config.ts[0m:[93m38[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m38[0m     emergency_verified: z.boolean().optional().default(false),
+[7m  [0m [93m                        ~[0m
+[96msrc/content.config.ts[0m:[93m37[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m37[0m     schedule_verified: z.boolean().optional().default(false),
+[7m  [0m [93m                       ~[0m
+[96msrc/content.config.ts[0m:[93m36[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m36[0m     address_verified: z.boolean().optional().default(false),
+[7m  [0m [93m                      ~[0m
+[96msrc/content.config.ts[0m:[93m35[0m:[93m21[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m35[0m     phone_verified: z.boolean().optional().default(false),
+[7m  [0m [93m                    ~[0m
+[96msrc/content.config.ts[0m:[93m34[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m34[0m     last_verified: z.string().optional().default(""),
+[7m  [0m [93m                   ~[0m
+[96msrc/content.config.ts[0m:[93m33[0m:[93m21[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m33[0m     emergency_tier: z.enum(["Tier A", "Tier B", "Tier C", "Tier D"]).optional().default("Tier C"),
+[7m  [0m [93m                    ~[0m
+[96msrc/content.config.ts[0m:[93m32[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m32[0m     record_status: z.enum(["VERIFIED", "PARTIAL", "REVIEW_REQUIRED", "CANDIDATE_REMOVAL"]).optional().default("PARTIAL"),
+[7m  [0m [93m                   ~[0m
+[96msrc/content.config.ts[0m:[93m31[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m31[0m     confidence_score: z.enum(["high", "medium", "low"]).optional().default("medium"),
+[7m  [0m [93m                      ~[0m
+[96msrc/content.config.ts[0m:[93m30[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m30[0m     hotelFuente: z.string().optional().default(""),
+[7m  [0m [93m                 ~[0m
+[96msrc/content.config.ts[0m:[93m29[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m29[0m     hotelVerificacion: z.enum(["confirmado", "reportado", "no-confirmado"]).optional().default("no-confirmado"),
+[7m  [0m [93m                       ~[0m
+[96msrc/content.config.ts[0m:[93m28[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m28[0m     hotelMascotas: z.boolean().optional().default(false),
+[7m  [0m [93m                   ~[0m
+[96msrc/content.config.ts[0m:[93m27[0m:[93m19[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m27[0m     atiendePeces: z.boolean().optional().default(false),
+[7m  [0m [93m                  ~[0m
+[96msrc/content.config.ts[0m:[93m26[0m:[93m20[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m26[0m     atiendeGranja: z.boolean().optional().default(false),
+[7m  [0m [93m                   ~[0m
+[96msrc/content.config.ts[0m:[93m25[0m:[93m24[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m25[0m     cirugiaEmergencia: z.boolean(),
+[7m  [0m [93m                       ~[0m
+[96msrc/content.config.ts[0m:[93m24[0m:[93m22[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m24[0m     atiendeExoticos: z.boolean(),
+[7m  [0m [93m                     ~[0m
+[96msrc/content.config.ts[0m:[93m23[0m:[93m21[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m23[0m     emergencias24h: z.boolean(),
+[7m  [0m [93m                    ~[0m
+[96msrc/content.config.ts[0m:[93m22[0m:[93m23[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m22[0m     categoriaHorario: z.enum(["24/7 Emergencias", "Cierra después 21h", "Horario normal"]),
+[7m  [0m [93m                      ~[0m
+[96msrc/content.config.ts[0m:[93m21[0m:[93m19[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m21[0m     horarioTexto: z.string(),
+[7m  [0m [93m                  ~[0m
+[96msrc/content.config.ts[0m:[93m20[0m:[93m15[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m20[0m     whatsapp: z.string().optional().default(""),
+[7m  [0m [93m              ~[0m
+[96msrc/content.config.ts[0m:[93m19[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m19[0m     telefono2: z.string().optional().default(""),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m18[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m18[0m     telefono1: z.string().optional().default(""),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m17[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m17[0m     direccion: z.string(),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m16[0m:[93m11[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m16[0m     zona: z.string(),
+[7m  [0m [93m          ~[0m
+[96msrc/content.config.ts[0m:[93m15[0m:[93m16[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m15[0m     provincia: z.string(),
+[7m  [0m [93m               ~[0m
+[96msrc/content.config.ts[0m:[93m14[0m:[93m13[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m14[0m     nombre: z.string(),
+[7m  [0m [93m            ~[0m
+[96msrc/content.config.ts[0m:[93m13[0m:[93m30[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m13[0m     id: z.union([z.number(), z.string()]),
+[7m  [0m [93m                             ~[0m
+[96msrc/content.config.ts[0m:[93m13[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m13[0m     id: z.union([z.number(), z.string()]),
+[7m  [0m [93m                 ~[0m
+[96msrc/content.config.ts[0m:[93m13[0m:[93m9[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m13[0m     id: z.union([z.number(), z.string()]),
+[7m  [0m [93m        ~[0m
+[96msrc/content.config.ts[0m:[93m12[0m:[93m11[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m12[0m   schema: z.object({
+[7m  [0m [93m          ~[0m
+[96msrc/content.config.ts[0m:[93m1[0m:[93m28[0m - [93mwarning[0m[90m ts(6385): [0m'z' is deprecated.
+
+[7m1[0m import { defineCollection, z } from 'astro:content';
+[7m [0m [93m                           ~[0m
+
+[96msrc/components/MapaClinicas.astro[0m:[93m64[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m64[0m <script type="application/json" id="clinicas-map-data" set:html={clinicasJson}></script>
+[7m  [0m [93m        ~~~~[0m
+
+[96msrc/layouts/BlogLayout.astro[0m:[93m29[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m29[0m   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+[7m  [0m [93m          ~~~~[0m
+[96msrc/layouts/BlogLayout.astro[0m:[93m28[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m28[0m   <script type="application/ld+json" set:html={JSON.stringify(article)} />
+[7m  [0m [93m          ~~~~[0m
+
+[96msrc/lib/metaDescription.ts[0m:[93m96[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'c' is declared but its value is never read.
+
+[7m96[0m   { label: "peces ornamentales", match: (c, d) => d.atiendePeces === true },
+[7m  [0m [93m                                         ~[0m
+[96msrc/lib/metaDescription.ts[0m:[93m95[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'c' is declared but its value is never read.
+
+[7m95[0m   { label: "animales de granja", match: (c, d) => d.atiendeGranja === true },
+[7m  [0m [93m                                         ~[0m
+[96msrc/lib/metaDescription.ts[0m:[93m94[0m:[93m44[0m - [93mwarning[0m[90m ts(6133): [0m'c' is declared but its value is never read.
+
+[7m94[0m   { label: "atención de exóticos", match: (c, d) => d.atiendeExoticos === true },
+[7m  [0m [93m                                           ~[0m
+[96msrc/lib/metaDescription.ts[0m:[93m93[0m:[93m43[0m - [93mwarning[0m[90m ts(6133): [0m'c' is declared but its value is never read.
+
+[7m93[0m   { label: "hotel para mascotas", match: (c, d) => hasHotel(d) },
+[7m  [0m [93m                                          ~[0m
+
+[96msrc/pages/index.astro[0m:[93m130[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m130[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
+[7m   [0m [93m          ~~~~[0m
+
+[96msrc/pages/clinica/[slug].astro[0m:[93m68[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'accepts_emergency_walkins' is declared but its value is never read.
+
+[7m68[0m   accepts_emergency_walkins = false,
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m65[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'has_surgery' is declared but its value is never read.
+
+[7m65[0m   has_surgery = false,
+[7m  [0m [93m  ~~~~~~~~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m64[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'emergency_verified' is declared but its value is never read.
+
+[7m64[0m   emergency_verified = false,
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m57[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'confidence_score' is declared but its value is never read.
+
+[7m57[0m   confidence_score = "medium",
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m56[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'copyDiferenciador' is declared but its value is never read.
+
+[7m56[0m   copyDiferenciador,
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m424[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m424[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m423[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m423[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/clinica/[slug].astro[0m:[93m422[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m422[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
+[7m   [0m [93m          ~~~~[0m
+
+[96msrc/pages/provincia/[provincia].astro[0m:[93m129[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m129[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/provincia/[provincia].astro[0m:[93m128[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m128[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
+[7m   [0m [93m          ~~~~[0m
+
+[96msrc/pages/zona/[zona].astro[0m:[93m129[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m129[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/zona/[zona].astro[0m:[93m128[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m128[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
+[7m   [0m [93m          ~~~~[0m
+[96msrc/pages/zona/[zona].astro[0m:[93m127[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m127[0m   <script type="application/ld+json" set:html={JSON.stringify(schemaItemList)} />
+[7m   [0m [93m          ~~~~[0m
+
+[96mtests/e2e/tier1-features.spec.ts[0m:[93m27[0m:[93m77[0m - [93mwarning[0m[90m ts(6133): [0m'options' is declared but its value is never read.
+
+[7m27[0m         navigator.geolocation.getCurrentPosition = function(success, error, options) {
+[7m  [0m [93m                                                                            ~~~~~~~[0m
+[96mtests/e2e/tier1-features.spec.ts[0m:[93m27[0m:[93m70[0m - [93mwarning[0m[90m ts(6133): [0m'error' is declared but its value is never read.
+
+[7m27[0m         navigator.geolocation.getCurrentPosition = function(success, error, options) {
+[7m  [0m [93m                                                                     ~~~~~[0m
+[96mtests/e2e/tier1-features.spec.ts[0m:[93m26[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'original' is declared but its value is never read.
+
+[7m26[0m         const original = navigator.geolocation.getCurrentPosition;
+[7m  [0m [93m              ~~~~~~~~[0m
+
+[96mtests/e2e/tier2-boundaries.spec.ts[0m:[93m29[0m:[93m61[0m - [93mwarning[0m[90m ts(6133): [0m'success' is declared but its value is never read.
+
+[7m29[0m         navigator.geolocation.getCurrentPosition = function(success, error) {
+[7m  [0m [93m                                                            ~~~~~~~[0m
+
+Result (83 files): 
+- 0 errors
+- 0 warnings
+- 75 hints
+
+
+STDERR:
+
+EXIT_CODE=0

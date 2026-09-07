@@ -1,0 +1,79 @@
+[
+  {
+    "case": "clínica inexistente",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido clinica:inexistente (/clinica/inexistente/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "entry.id no es data.slug",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido clinica:filename-different (/clinica/filename-different/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "alias de zona aunque tenga artefacto",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido zona:san-pablo-de-heredia (/zona/san-pablo-de-heredia/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "zona canónica no generada",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido zona:san-pablo-heredia (/zona/san-pablo-heredia/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "provincia inexistente",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido provincia:inexistente (/provincia/inexistente/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "artículo inexistente",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido articulo:guias-por-especie/inexistente (/blog/guias-por-especie/inexistente/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "artículo borrador aunque exista HTML",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido articulo:guias-por-especie/urgencias-en-perros (/blog/guias-por-especie/urgencias-en-perros/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "pilar incorrecto",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido articulo:costos-y-acceso/urgencias-en-perros (/blog/costos-y-acceso/urgencias-en-perros/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "slug válido en familia equivocada",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido clinica:heredia (/clinica/heredia/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "URL completa incorrecta",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido clinica:hems-una-heredia (/zona/hems-una-heredia/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  },
+  {
+    "case": "destino eliminado",
+    "command": "node --input-type=module-typescript -e <fixture basada en tests/unit/blog-links.test.ts>",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29\r\n    throw new Error(`Destino inválido ${family}:${identity} (${href})`);\r\n          ^\r\n\r\nError: Destino inválido clinica:hems-una-heredia (/clinica/hems-una-heredia/)\r\n    at assertTypedLink (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/src/lib/blog-links.ts:29:11)\r\n    at [eval]:27:1\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:254:26)\r\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:251:20)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.11.1\r\n"
+  }
+]

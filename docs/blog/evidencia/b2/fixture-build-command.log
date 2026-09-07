@@ -1,0 +1,5 @@
+COMMAND=npm run build:no-shorten
+PRODUCT_SHA=dbadf5aecccbe64b6b38c13d5bb359b75d96fd75
+STDOUT=fixture-build.stdout.log
+STDERR=fixture-build.stderr.log
+exitCode=0
