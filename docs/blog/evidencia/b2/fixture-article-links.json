@@ -1,0 +1,84 @@
+[
+  {
+    "width": 390,
+    "links": [
+      {
+        "href": "/clinica/hems-una-heredia/",
+        "family": "clinica",
+        "text": "hems una heredia"
+      },
+      {
+        "href": "/clinica/hospital-vet-medical-care-heredia/",
+        "family": "clinica",
+        "text": "hospital vet medical care heredia"
+      },
+      {
+        "href": "/clinica/veterinaria-gocha-santo-domingo/",
+        "family": "clinica",
+        "text": "veterinaria gocha santo domingo"
+      },
+      {
+        "href": "/zona/san-pablo-heredia/",
+        "family": "zona",
+        "text": "san pablo heredia"
+      },
+      {
+        "href": "/zona/guapiles/",
+        "family": "zona",
+        "text": "guapiles"
+      },
+      {
+        "href": "/provincia/heredia/",
+        "family": "provincia",
+        "text": "heredia"
+      },
+      {
+        "href": "/provincia/limon/",
+        "family": "provincia",
+        "text": "limon"
+      }
+    ],
+    "status": 200
+  },
+  {
+    "width": 1440,
+    "links": [
+      {
+        "href": "/clinica/hems-una-heredia/",
+        "family": "clinica",
+        "text": "hems una heredia"
+      },
+      {
+        "href": "/clinica/hospital-vet-medical-care-heredia/",
+        "family": "clinica",
+        "text": "hospital vet medical care heredia"
+      },
+      {
+        "href": "/clinica/veterinaria-gocha-santo-domingo/",
+        "family": "clinica",
+        "text": "veterinaria gocha santo domingo"
+      },
+      {
+        "href": "/zona/san-pablo-heredia/",
+        "family": "zona",
+        "text": "san pablo heredia"
+      },
+      {
+        "href": "/zona/guapiles/",
+        "family": "zona",
+        "text": "guapiles"
+      },
+      {
+        "href": "/provincia/heredia/",
+        "family": "provincia",
+        "text": "heredia"
+      },
+      {
+        "href": "/provincia/limon/",
+        "family": "provincia",
+        "text": "limon"
+      }
+    ],
+    "status": 200
+  }
+]

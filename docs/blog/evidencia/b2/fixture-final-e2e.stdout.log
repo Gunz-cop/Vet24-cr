@@ -1,0 +1,67 @@
+
+Running 10 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[2/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[3/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[4/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K  1) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m324[39m
+
+       97 |   }
+       98 |   await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+    >  99 |   expect(await page.evaluate(() => scrollY)).toBe(0);
+          |                                              ^
+      100 |   const screenshot = testInfo.outputPath('emergency.png');
+      101 |   await page.screenshot({ path: screenshot, fullPage: true });
+      102 |   await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\tests\e2e\blog-emergency-layout.spec.ts:99:46
+
+    Error Context: ..\vete-b2-fixture\test-results-b2-final\blog-emergency-layout-B2-e-c53ea--zona-san-pablo-heredia-390-chromium\error-context.md
+
+
+
+
+
+
+[1A[2K[5/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[6/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K  2) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m81[39m
+
+       97 |   }
+       98 |   await page.evaluate(() => scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+    >  99 |   expect(await page.evaluate(() => scrollY)).toBe(0);
+          |                                              ^
+      100 |   const screenshot = testInfo.outputPath('emergency.png');
+      101 |   await page.screenshot({ path: screenshot, fullPage: true });
+      102 |   await testInfo.attach('emergency', { path: screenshot, contentType: 'image/png' });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\tests\e2e\blog-emergency-layout.spec.ts:99:46
+
+    Error Context: ..\vete-b2-fixture\test-results-b2-final\blog-emergency-layout-B2-e-36be4-inica-hems-una-heredia-1440-chromium\error-context.md
+
+
+
+
+
+
+[1A[2K[7/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K[8/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+[1A[2K[9/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+[1A[2K[10/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+[1A[2K  2 failed
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440 
+  8 passed (30.1s)

@@ -1,0 +1,29 @@
+{
+  "browser": "Playwright Chromium 1.60.0 bundled browser",
+  "baseSha": "b9d7db74d85f99ab580c7bc0d03dd51c13744f71",
+  "productSha": "43a09a5a36c8c59fe27615825b20c52b1e1f13e1",
+  "baseGeometry": "base-loaded-geometry.json",
+  "baseSupplement": "base-supplement-visual",
+  "fixture": "published-fixture.diff",
+  "clock": "2026-09-07T18:00:00Z",
+  "locale": "es-CR",
+  "timezone": "America/Costa_Rica",
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "network": "B2 geometry: localhost + Google Fonts allowed; all other external requests aborted; status override fixed to null",
+  "fonts": "document.fonts.load Outfit 600 and Plus Jakarta Sans 400, then document.fonts.ready",
+  "scroll": 0,
+  "fixtureOrigin": "http://127.0.0.1:4322",
+  "candidateOrigin": "http://127.0.0.1:4321",
+  "fullE2EOrigin": "http://localhost:4321",
+  "initialFullE2E": "7 failures due to origin-specific geolocation permission; retained; corrected localhost run 96 pass / 11 inherited skipped",
+  "finalE2ECommitContext": "Started at dbadf5a with final verifier working-tree change; completed at 43a09a5. Only scripts/verification/blog.mjs differs between those commits; app/tests identical."
+}

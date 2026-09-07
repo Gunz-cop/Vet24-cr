@@ -1,0 +1,118 @@
+{
+  "baseSha": "b9d7db74d85f99ab580c7bc0d03dd51c13744f71",
+  "scannedAt": "2026-09-07T10:32:10.412Z",
+  "count": 22,
+  "level": 4,
+  "checks": [
+    {
+      "id": "robotsTxt",
+      "group": "discoverability",
+      "status": "pass"
+    },
+    {
+      "id": "sitemap",
+      "group": "discoverability",
+      "status": "pass"
+    },
+    {
+      "id": "linkHeaders",
+      "group": "discoverability",
+      "status": "pass"
+    },
+    {
+      "id": "dnsAid",
+      "group": "discoverability",
+      "status": "fail"
+    },
+    {
+      "id": "markdownNegotiation",
+      "group": "contentAccessibility",
+      "status": "pass"
+    },
+    {
+      "id": "robotsTxtAiRules",
+      "group": "botAccessControl",
+      "status": "pass"
+    },
+    {
+      "id": "contentSignals",
+      "group": "botAccessControl",
+      "status": "pass"
+    },
+    {
+      "id": "webBotAuth",
+      "group": "botAccessControl",
+      "status": "neutral"
+    },
+    {
+      "id": "apiCatalog",
+      "group": "discovery",
+      "status": "pass"
+    },
+    {
+      "id": "oauthDiscovery",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "oauthProtectedResource",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "authMd",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "mcpServerCard",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "a2aAgentCard",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "agentSkills",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "webMcp",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "ard",
+      "group": "discovery",
+      "status": "fail"
+    },
+    {
+      "id": "x402",
+      "group": "commerce",
+      "status": "neutral"
+    },
+    {
+      "id": "mpp",
+      "group": "commerce",
+      "status": "neutral"
+    },
+    {
+      "id": "ucp",
+      "group": "commerce",
+      "status": "neutral"
+    },
+    {
+      "id": "acp",
+      "group": "commerce",
+      "status": "neutral"
+    },
+    {
+      "id": "ap2",
+      "group": "commerce",
+      "status": "neutral"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+COMMAND=npx playwright test tests/e2e/blog-emergency-layout.spec.ts --workers=1 --reporter=line
+PRODUCT_SHA=dbadf5aecccbe64b6b38c13d5bb359b75d96fd75
+STDOUT=fixture-e2e.stdout.log
+STDERR=fixture-e2e.stderr.log
+exitCode=0

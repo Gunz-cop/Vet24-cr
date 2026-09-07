@@ -1,0 +1,11 @@
+COMMAND=node scripts/verification/blog.mjs
+SHA=dbadf5aecccbe64b6b38c13d5bb359b75d96fd75
+STDOUT:
+{"directory":"dist/server","files":23,"pilotOccurrences":["dist\\server\\chunks\\_astro_data-layer-content_B8HoNDU5.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":282,"fixturePublished":false}
+{"directory":"dist/client","classifications":{"internal":37,"external":0,"protocol":0},"articles":1,"published":0}
+blog: OK (133 HTML; dist/client: política de publicación y enlaces verificada)
+
+STDERR:
+
+EXIT_CODE=0

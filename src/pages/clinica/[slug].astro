@@ -1,5 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
+import GuiasRelacionadas from '../../components/GuiasRelacionadas.astro';
+import { relatedGuides } from '../../lib/blog-links';
+import { getPublishedBlogEntries } from '../../lib/blog';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCacheData from '../../linkzip-cache.json';
@@ -927,6 +930,7 @@ const schemaFaq = {
         </div>
       </div>
     </div>
+    <GuiasRelacionadas links={relatedGuides('clinica', clinica.data.slug, await getPublishedBlogEntries())} />
   </div>
 
   <!-- Report Modal -->

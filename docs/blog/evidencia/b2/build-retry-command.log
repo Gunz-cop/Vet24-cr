@@ -1,0 +1,6 @@
+COMMAND=npm run build:no-shorten
+CANDIDATE_SHA=34ef2035a44c5ba2d5116106a7143dc133d86228
+Build de 43a09a5; src/scripts idénticos al candidato actual.
+STDOUT=build-retry.stdout.log
+STDERR=build-retry.stderr.log
+exitCode=0

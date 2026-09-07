@@ -1,0 +1,173 @@
+{
+  "path": "/zona/san-pablo-heredia/",
+  "width": 390,
+  "measurements": [
+    {
+      "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+      "present": false
+    },
+    {
+      "selector": "#clinic-schedule-text",
+      "present": false
+    },
+    {
+      "selector": "#warning-diurnal-alert",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-call",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    },
+    {
+      "selector": "#clinicas-grid",
+      "present": true,
+      "text": "Abierto ahoraLa Vete San PabloLa Vete San PabloSan Pablo de Heredia, HerediaTaller SYS 300 m oeste, San Pablo de HerediaL-S 8am-8pm | D 8am-7pm🐢 Exóticos🏨 Hotel reportadoSucursal en el corazón de San Pablo. Amplio horario para citas de rutina y pet shop completo.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+      "href": null,
+      "rect": {
+        "x": 16,
+        "y": 1467.578125,
+        "width": 358,
+        "height": 429.5
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#search-input",
+      "present": true,
+      "text": "",
+      "href": null,
+      "rect": {
+        "x": 34,
+        "y": 777.390625,
+        "width": 322,
+        "height": 44
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-quick-open",
+      "present": true,
+      "text": "Abierto ahora",
+      "href": null,
+      "rect": {
+        "x": 33,
+        "y": 834.390625,
+        "width": 130.609375,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-quick-247",
+      "present": true,
+      "text": "Emergencias 24/7",
+      "href": null,
+      "rect": {
+        "x": 171.609375,
+        "y": 834.390625,
+        "width": 158.71875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-use-location",
+      "present": true,
+      "text": "Cerca de mí",
+      "href": null,
+      "rect": {
+        "x": 338.328125,
+        "y": 834.390625,
+        "width": 125.171875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#animal-filters-container",
+      "present": true,
+      "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+      "href": null,
+      "rect": {
+        "x": 488.5,
+        "y": 834.390625,
+        "width": 532.875,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#filter-hotel",
+      "present": true,
+      "text": "🏨 Hotel para mascotas",
+      "href": null,
+      "rect": {
+        "x": 1029.375,
+        "y": 834.390625,
+        "width": 179.828125,
+        "height": 39.09375
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#results-count",
+      "present": true,
+      "text": "1 de 1",
+      "href": null,
+      "rect": {
+        "x": 108.09375,
+        "y": 886.484375,
+        "width": 34.25,
+        "height": 18
+      },
+      "aboveFold": false,
+      "visible": true
+    }
+  ],
+  "keyboard": [
+    {
+      "selector": "#btn-quick-call",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    }
+  ],
+  "focusOrder": []
+}

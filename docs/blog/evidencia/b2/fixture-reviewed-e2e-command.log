@@ -1,0 +1,6 @@
+COMMAND=npx playwright test tests/e2e/blog-emergency-layout.spec.ts --workers=1 --reporter=line --output=../vete-b2-fixture/test-results-b2-reviewed
+CANDIDATE_SHA=34ef2035a44c5ba2d5116106a7143dc133d86228
+PLAYWRIGHT_BASE_URL=http://127.0.0.1:4322; B2_PUBLISHED_FIXTURE=1; B2_BASE_GEOMETRY=docs/blog/evidencia/b2/base-loaded-geometry.json
+STDOUT=fixture-reviewed-e2e.stdout.log
+STDERR=fixture-reviewed-e2e.stderr.log
+exitCode=0

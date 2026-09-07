@@ -1,5 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
+import GuiasRelacionadas from '../../components/GuiasRelacionadas.astro';
+import { relatedGuides } from '../../lib/blog-links';
+import { getPublishedBlogEntries } from '../../lib/blog';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ClinicaCard from '../../components/ClinicaCard.astro';
 import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
@@ -194,4 +197,5 @@ const schemaFaq = {
       </div>
     )}
   </section>
+  <GuiasRelacionadas links={relatedGuides('zona', selectedZone.slug, await getPublishedBlogEntries())} />
 </BaseLayout>

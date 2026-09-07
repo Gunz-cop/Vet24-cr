@@ -1,0 +1,160 @@
+{
+  "path": "/clinica/hems-una-heredia/",
+  "width": 390,
+  "measurements": [
+    {
+      "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+      "present": true,
+      "text": "Datos rápidos de HEMSHorarioAbierto ahoraL-V 9am-7pm | S-D solo emergencias 10am-5pmEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Heredia (UNA)Hotel para mascotasNo confirmado",
+      "href": null,
+      "rect": {
+        "x": 16,
+        "y": 409.5,
+        "width": 358,
+        "height": 388
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#clinic-schedule-text",
+      "present": true,
+      "text": "L-V 9am-7pm | S-D solo emergencias 10am-5pm",
+      "href": null,
+      "rect": {
+        "x": 66.609375,
+        "y": 3843.53125,
+        "width": 254.125,
+        "height": 38
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#warning-diurnal-alert",
+      "present": true,
+      "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+      "href": null,
+      "rect": {
+        "x": 16,
+        "y": 821.5,
+        "width": 358,
+        "height": 171.75
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "text": "Llamar ahora2260-9234",
+      "href": "tel:+50622609234",
+      "rect": {
+        "x": 16,
+        "y": 1017.25,
+        "width": 173,
+        "height": 116
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "text": "Llamar principal (2260-9234)",
+      "href": "tel:+50622609234",
+      "rect": {
+        "x": 42,
+        "y": 3543.53125,
+        "width": 306,
+        "height": 48
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": true,
+      "text": "Llamar secundario (2261-1775)",
+      "href": "tel:+50622611775",
+      "rect": {
+        "x": 42,
+        "y": 3603.53125,
+        "width": 306,
+        "height": 50
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    },
+    {
+      "selector": "#clinicas-grid",
+      "present": false
+    },
+    {
+      "selector": "#search-input",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-open",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-247",
+      "present": false
+    },
+    {
+      "selector": "#btn-use-location",
+      "present": false
+    },
+    {
+      "selector": "#animal-filters-container",
+      "present": false
+    },
+    {
+      "selector": "#filter-hotel",
+      "present": false
+    },
+    {
+      "selector": "#results-count",
+      "present": false
+    }
+  ],
+  "keyboard": [
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "href": "tel:+50622609234"
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": false
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "href": "tel:+50622609234"
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": true,
+      "href": "tel:+50622611775"
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": false
+    }
+  ],
+  "focusOrder": [
+    "btn-quick-call",
+    "btn-call-sidebar-1",
+    "btn-call-sidebar-2"
+  ]
+}

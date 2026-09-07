@@ -1,0 +1,26 @@
+[
+  {
+    "name": "deleted-destination",
+    "sha": "43a09a5a36c8c59fe27615825b20c52b1e1f13e1",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist\\\\server\\\\chunks\\\\_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":282,\"fixturePublished\":true}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":62,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 2 fallo(s)\n- Destino no generado: /blog/guias-por-especie/urgencias-en-perros/ → /clinica/hems-una-heredia/\n- Destino inválido clinica:hems-una-heredia (/clinica/hems-una-heredia/)\n"
+  },
+  {
+    "name": "missing-inverse",
+    "sha": "43a09a5a36c8c59fe27615825b20c52b1e1f13e1",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist\\\\server\\\\chunks\\\\_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":283,\"fixturePublished\":true}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":62,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 3 fallo(s)\n- Inverso ausente: /clinica/hems-una-heredia/ → /blog/guias-por-especie/urgencias-en-perros/\n- Inverso ausente: /clinica/hems-una-heredia/ → /blog/guias-por-especie/urgencias-en-perros/\n- Bloque inverso divergente: /clinica/hems-una-heredia/\n"
+  },
+  {
+    "name": "missing-fragment",
+    "sha": "43a09a5a36c8c59fe27615825b20c52b1e1f13e1",
+    "command": "node scripts/verification/blog.mjs",
+    "exitCode": 1,
+    "stdout": "{\"directory\":\"dist/server\",\"files\":22,\"pilotOccurrences\":[\"dist\\\\server\\\\chunks\\\\_astro_data-layer-content_Byu_ZXsd.mjs\"],\"policy\":\"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4\"}\n{\"directory\":\"dist/client\",\"files\":283,\"fixturePublished\":true}\n{\"directory\":\"dist/client\",\"classifications\":{\"internal\":63,\"external\":0,\"protocol\":0},\"articles\":1,\"published\":1}\n",
+    "stderr": "blog: 5 fallo(s)\n- Inverso ausente: /clinica/hems-una-heredia/ → /blog/guias-por-especie/urgencias-en-perros/\n- Fragmento ausente: /blog/guias-por-especie/urgencias-en-perros/#fragmento-inexistente\n- URL tipada no canónica: /blog/guias-por-especie/urgencias-en-perros/#fragmento-inexistente\n- Inverso ausente: /clinica/hems-una-heredia/ → /blog/guias-por-especie/urgencias-en-perros/\n- Bloque inverso divergente: /clinica/hems-una-heredia/\n"
+  }
+]

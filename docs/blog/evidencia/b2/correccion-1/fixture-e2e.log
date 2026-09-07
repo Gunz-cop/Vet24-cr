@@ -1,0 +1,32 @@
+COMMAND=npx playwright test tests/e2e/blog-emergency-layout.spec.ts --workers=1 --reporter=line --output=../vete-b2-fixture/test-results-correction
+SHA=9192a4b3694ca6c6a087100179fcc61cd42adfbb
+CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr
+PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4322
+PREVIEW_URL=http://127.0.0.1:4322
+STDOUT:
+
+Running 10 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[2/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[3/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[4/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K[5/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[6/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K[7/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K[8/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+[1A[2K[9/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+[1A[2K[10/10] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+[1A[2K  10 passed (24.7s)
+
+STDERR:
+[1A[2K(node:33052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1A[2K(node:33052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+EXIT_CODE=0

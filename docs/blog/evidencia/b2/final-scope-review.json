@@ -1,0 +1,19 @@
+{
+  "baseSha": "b9d7db74d85f99ab580c7bc0d03dd51c13744f71",
+  "reviewedSha": "3d39172aa0ddba138e56987b5f1b3a8319fac73d",
+  "files": 276,
+  "product": [
+    "docs/seo/enlazado-interno.md",
+    "scripts/verification/blog.mjs",
+    "src/components/GuiasRelacionadas.astro",
+    "src/data/internal-links.ts",
+    "src/lib/blog-links.ts",
+    "src/pages/blog/[pilar]/[slug].astro",
+    "src/pages/clinica/[slug].astro",
+    "src/pages/zona/[zona].astro",
+    "tests/e2e/blog-emergency-layout.spec.ts",
+    "tests/e2e/blog.spec.ts",
+    "tests/unit/blog-links.test.ts"
+  ],
+  "outside": []
+}

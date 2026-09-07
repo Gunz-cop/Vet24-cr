@@ -1,0 +1,11 @@
+COMMAND=node scripts/verification/agent-catalog.mjs
+SHA=9192a4b3694ca6c6a087100179fcc61cd42adfbb
+CWD=C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr
+PREVIEW_COMMAND=npm run preview -- --host 127.0.0.1 --port 4321
+PREVIEW_URL=http://127.0.0.1:4321
+STDOUT:
+✓ AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+
+STDERR:
+
+EXIT_CODE=0

@@ -1,0 +1,33 @@
+COMMAND=npm run build:no-shorten
+SHA=43a09a5a36c8c59fe27615825b20c52b1e1f13e1
+STDOUT:
+
+> veterinarias-cr@0.0.1 build:no-shorten
+> astro build
+
+04:53:04 [@astrojs/cloudflare] Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+04:53:04 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+04:53:05 [content] Syncing content
+04:53:05 [content] Synced content
+04:53:05 [types] Generated 995ms
+04:53:05 [build] output: "static"
+04:53:05 [build] mode: "server"
+04:53:05 [build] directory: C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\
+04:53:05 [build] adapter: @astrojs/cloudflare
+04:53:05 [build] Collecting build info...
+04:53:05 [build] ✓ Completed in 1.10s.
+
+STDERR:
+(node:26588) [DEP0147] DeprecationWarning: In future versions of Node.js, fs.rmdir(path, { recursive: true }) will be removed. Use fs.rm(path, { recursive: true }) instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+EPERM, Permission denied: \\?\C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\client '\\?\C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\dist\client'
+  Location:
+    C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\veterinarias-cr\node_modules\astro\dist\core\fs\index.js:79:8
+  Stack trace:
+    at Object.rmdirSync (node:fs:1184:22)
+    at emptyDir (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/fs/index.js:34:9)
+    at AstroBuilder.build (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/build/index.js:160:11)
+    at async build (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/core/build/index.js:50:3)
+    at async runCommand (file:///C:/Users/grcx1/OneDrive/Documentos/Proyectos/vete/veterinarias-cr/node_modules/astro/dist/cli/index.js:192:7)
+
+EXIT_CODE=1
