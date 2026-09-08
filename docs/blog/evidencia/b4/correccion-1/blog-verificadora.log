@@ -1,0 +1,117 @@
+VERIFICADORA=B4_CORRECCION_1
+FECHA=2026-09-08
+AUDITED_SHA=13a74591098343438973ab7e85e00e3dcf263621
+REJECTED_PREDECESSOR=dab96fd36d7056d9700642ba4afa51cbfe79111b
+BASE_SHA=f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0
+BRANCH_AUDITED=origin/codex/blog-b4-seed
+SIGNATURE=Equipo de Vet24cr
+
+[identity]
+COMMAND=git rev-parse origin/codex/blog-b4-seed
+STDOUT=13a74591098343438973ab7e85e00e3dcf263621
+STDERR=
+EXIT=0
+
+COMMAND=git merge-base --is-ancestor dab96fd36d7056d9700642ba4afa51cbfe79111b 13a74591098343438973ab7e85e00e3dcf263621
+STDOUT=
+STDERR=
+EXIT=0
+
+[sources]
+COMMAND=curl.exe -L --max-redirs 10 --max-time 45 -A Mozilla/5.0 <replacement URL>
+STDOUT=ASPCA 200; University of Illinois 200; Merck Veterinary Manual 200; University of Florida Veterinary Hospitals 200
+STDERR=
+EXIT=0
+PASSAGES=ASPCA Gather the Evidence + immediate professional contact + no action/substance before professional advice; Illinois Choose a Knowledgeable Veterinarian; Merck species identification and clinically relevant husbandry data including enclosure, temperature, humidity, lighting and diet; UF estimate after examination, emergency admission deposit and payment options.
+
+[negative-fixtures]
+COMMAND=node scripts/verification/blog.mjs with docs/blog/evidencia/b4/fixture-ejecutable.mjs
+STDOUT=normal inventory diagnostics
+STDERR=blog: 1 fallo; evidencia B4 contiene código ejecutable
+EXIT=1
+
+COMMAND=node scripts/verification/blog.mjs with retired ChoosingaVet_2016.pdf URL temporarily restored in E2
+STDOUT=normal inventory diagnostics
+STDERR=blog: 4 fallos; fuente retirada, fuente sin cita, briefing desalineado y matriz desalineada
+EXIT=1
+
+RESTORATION=Both fixtures removed/reverted; git status clean; clean blog verifier rerun exit 0.
+
+[section-7]
+COMMAND=npm ci
+STDOUT=335 packages installed; 0 vulnerabilities
+STDERR=
+EXIT=0
+
+COMMAND=npm run check
+STDOUT=85 files; 0 errors; 0 warnings; 75 hints
+STDERR=
+EXIT=0
+
+COMMAND=npm run test:unit
+STDOUT=78 tests; 13 suites; 78 pass; 0 fail; 0 skipped
+STDERR=
+EXIT=0
+
+COMMAND=npm run build:no-shorten
+STDOUT=Build complete; sitemap-index.xml created
+STDERR=Request.cf TLS lookup failed and used documented fallback
+EXIT=0
+
+COMMAND=node scripts/verification/blog.mjs
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321
+STDOUT=5 articles; 5 published; 139 HTML; 199 internal links; 36 external links; blog OK
+STDERR=
+EXIT=0
+
+COMMAND=node scripts/verification/agent-catalog.mjs
+STDOUT=AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+STDERR=
+EXIT=0
+
+COMMAND=node scripts/verification/agent-markdown.mjs
+STDOUT=agent-markdown OK (127 mirrors)
+STDERR=
+EXIT=0
+
+COMMAND=npm run test:e2e -- --workers=1
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321
+STDOUT=110 discovered; 99 passed; 11 historical skips; 0 failed; duration 2.7m
+STDERR=NO_COLOR/FORCE_COLOR warnings only
+EXIT=0
+
+COMMAND=npx playwright test tests/e2e/blog.spec.ts tests/e2e/blog-emergency-layout.spec.ts --workers=1
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321
+STDOUT=19 passed; 0 failed; duration 35.0s
+STDERR=NO_COLOR/FORCE_COLOR warnings only
+EXIT=0
+
+COMMAND=git diff --name-status f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0...HEAD
+STDOUT=187 changed paths reviewed against section 6 allowlist
+STDERR=
+EXIT=0
+
+COMMAND=git diff f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0...HEAD
+STDOUT=25511-line full diff reviewed
+STDERR=
+EXIT=0
+
+[artifact-summary]
+ARTICLE_COUNT=5
+PUBLISHED_COUNT=5
+DRAFT_COUNT=0
+EXECUTABLE_EVIDENCE_COUNT=0
+SITEMAP_ARTICLES=5/5
+CANONICAL_ARTICLES=5/5
+ARTICLE_JSON_LD=5/5
+AUTHOR_TYPE=Organization
+AUTHOR_NAME=Equipo de Vet24cr
+
+[verdict]
+OPEN_BLOCKING_FINDINGS=0
+EDITORIAL_TECHNICAL_VERDICT=APROBADO
+OVERALL_B4_STATUS=NO_CERRADA; pendiente autorización humana, merge, deployment con SHA demostrado y verificación productiva completa de §7
+MERGE_PERFORMED=NO
+DEPLOYMENT_PERFORMED=NO
+
+FIRMA=Equipo de Vet24cr
