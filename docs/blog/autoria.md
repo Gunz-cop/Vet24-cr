@@ -11,7 +11,7 @@ La atribución se aplica al contenido del blog cuando llegue a publicarse. La in
 ## Cobertura concreta
 
 - Artículo: `src/content/blog/urgencias-en-perros.md`, actualmente en estado `borrador`.
-- Commit de cobertura: el commit de cierre de B3 posterior a `bdf6312` en esta rama.
+- Commit de cobertura: `5abc4dc` (cierre de B3).
 - Alcance del commit: firma pública, registro de atribución, JSON-LD y pruebas de coherencia.
 - No hay artículos publicados cubiertos por esta atribución en el estado actual.
 
