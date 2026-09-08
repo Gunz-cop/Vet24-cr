@@ -4,6 +4,8 @@ Estado: **confirmado para la firma pública**.
 
 Firma pública: **Equipo de Vet24cr**.
 
+Tipo de autor en JSON-LD: **Organization**.
+
 Esta firma identifica el proyecto y no representa una empresa, una entidad constituida ni un equipo profesional. El contenido lo prepara un programador independiente con apoyo de herramientas de inteligencia artificial.
 
 La atribución se aplica al contenido del blog cuando llegue a publicarse. La instrucción del usuario en esta solicitud confirma el nombre y autoriza su uso como firma pública; no equivale a una revisión veterinaria profesional ni a la aprobación del contenido clínico.

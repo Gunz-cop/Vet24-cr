@@ -1,25 +1,9 @@
-# Briefing: costo de una emergencia veterinaria nocturna
+# Matriz: costo de una emergencia veterinaria nocturna
 
-- Estado: investigado, previo a redacción final.
-- Pilar: `costos-y-acceso`.
-- Slug: `costo-emergencia-veterinaria-nocturna`.
-- Intención: explicar componentes variables del cobro y cómo pedir un estimado; no publicar rangos ni tarifas no verificadas para Costa Rica.
-- Destinos internos previstos: clínicas `medical-pets-cartago`, `hospital-vet-santamaria-alajuela`, `pets-plus-san-antonio-belen`; provincias `cartago`, `alajuela`, `heredia`; cruce con `guias-por-especie/urgencias-en-perros`.
-- Fecha de consulta: 2026-09-08.
+Artículo: `costos-y-acceso/costo-emergencia-veterinaria-nocturna`
+Fecha de consulta: 2026-09-08
 
-## Fuentes elegibles
-
-| ID | URL profunda | Título | Autor o institución | Fecha disponible |
-|---|---|---|---|---|
-| C1 | https://www.vet.cornell.edu/hospitals/frequently-asked-questions | Frequently Asked Questions — Financial Information | Cornell University College of Veterinary Medicine | sin fecha visible |
-| C2 | https://www.vetmed.ucdavis.edu/node/3496 | Emergency and Critical Care Service — Emergency Room | UC Davis School of Veterinary Medicine | 2026-08 |
-| C3 | https://vetmed.tamu.edu/news/pet-talk/the-price-of-pet-care-understanding-your-veterinary-bills/ | The Price of Pet Care: Understanding Your Veterinary Bills | Texas A&M Veterinary Medicine & Biomedical Sciences | 2025 |
-| C4 | https://hospitalveterinariosantamaria.com/terminos-y-condiciones/ | Términos y condiciones — precios y pagos | Hospital Veterinario Santamaría | actualización 2026-06-09 |
-| C5 | https://petsmas.com/hospital/nuestros-servicios/ | Nuestros servicios — emergencias | Hospital PETS+ San Antonio | sin fecha visible |
-| C6 | https://www.medicalpetscr.com/servicios | Servicios — emergencias 24 horas | Medical Pets CR | sin fecha visible |
-| C7 | https://hospitals.vetmed.ufl.edu/pay/ | Financial Services | University of Florida Veterinary Hospitals | sin fecha visible |
-
-## Matriz de afirmaciones
+## Matriz afirmación → fuente → pasaje → H2
 
 | Afirmación prevista | Fuente | Pasaje localizado | H2 previsto |
 |---|---|---|---|
@@ -30,7 +14,3 @@
 | PETS+ declara que cirugía de urgencia y diagnóstico pueden formar parte del manejo, según el caso. | C5 | secciones Emergencias, Cirugía, Laboratorio e imágenes. | Qué puede integrar la cuenta |
 | Medical Pets declara emergencias, imágenes, laboratorio e internamiento como servicios distintos. | C6 | lista de servicios. | Qué puede integrar la cuenta |
 | Los hospitales pueden exigir depósito, ofrecer medios de pago distintos y calcular el estimado solo después del examen; conviene confirmar la política aplicable antes de salir. | C7 | sección “Financial Services” y bloques “Payment Option”. | Antes de salir |
-
-## Contrato de publicación
-
-No usar cifras extranjeras como precios locales ni inventar recargo nocturno. Explicar que la prioridad clínica no debe retrasarse por esperar una cotización cuando hay riesgo vital. Firma exacta y sin revisor.

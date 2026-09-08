@@ -11,7 +11,7 @@ const pilotUrl = 'https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros
 const policyPath = 'politica-editorial/index.html';
 const policyUrl = 'https://vet24cr.com/politica-editorial/';
 const errors = [];
-const retiredSourceUrls = new Set([
+const disallowedSourceUrls = new Set([
   'https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf',
   'https://ebusiness.avma.org/files/productdownloads/SelectReptile-En.pdf',
   'https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf',
@@ -60,9 +60,12 @@ console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pil
 console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePublished}));
 
 const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
+const normalizeLines = (source) => source.replaceAll('\r\n', '\n').trim();
 const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
 const publicAuthor = authorship.match(/^Firma pública:\s*\*\*(.+?)\*\*/m)?.[1]?.trim();
+const publicAuthorType = authorship.match(/^Tipo de autor en JSON-LD:\s*\*\*(.+?)\*\*/m)?.[1]?.trim();
 if (!publicAuthor) errors.push('registro de atribución sin firma pública verificable');
+if (!publicAuthorType) errors.push('registro de atribución sin tipo JSON-LD verificable');
 const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
  const content=readFileSync(f,'utf8');return {content,body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor'),datePublished:field(content,'datePublished'),revisadoPor:field(content,'revisadoPor')}};
 });
@@ -78,7 +81,7 @@ for (const article of articles) {
  const identity = `${article.data.pilar}/${article.data.slug}`;
  if (!expectedSeed.has(identity)) errors.push(`artículo fuera del seed B4: ${identity}`);
  if (article.data.estado !== 'publicado') errors.push(`artículo seed no publicado: ${identity}`);
- if (article.data.autor !== 'Equipo de Vet24cr') errors.push(`autor B4 incorrecto: ${identity}`);
+ if (article.data.autor !== publicAuthor) errors.push(`autor B4 no coincide con el registro de atribución: ${identity}`);
  if (!article.data.datePublished) errors.push(`datePublished ausente: ${identity}`);
  if (article.data.revisadoPor) errors.push(`revisadoPor no autorizado en B4: ${identity}`);
  if (!/no sustituye|no diagnostica|no sustituir/i.test(article.body)) errors.push(`límite clínico ausente: ${identity}`);
@@ -87,15 +90,24 @@ for (const article of articles) {
  const briefing = readFileSync(briefingPath, 'utf8');
  const sourceUrls = [...new Set([...briefing.matchAll(/\|\s*(https:\/\/[^\s|]+)\s*\|/g)].map(m => m[1]))];
  if (sourceUrls.length < 6) errors.push(`menos de seis fuentes distintas en briefing: ${identity}`);
- for (const url of sourceUrls) if (retiredSourceUrls.has(url)) errors.push(`fuente retirada por inaccesible: ${identity} → ${url}`);
+ for (const url of disallowedSourceUrls) {
+  if (briefing.includes(url) || article.body.includes(url)) errors.push(`fuente no admitida por auditoría B4: ${identity} → ${url}`);
+ }
  for (const url of sourceUrls) if (!article.body.includes(`](${url})`)) errors.push(`fuente sin cita en artículo: ${identity} → ${url}`);
- const matrixRows = briefing.split(/\r?\n/).filter(line => /^\|[^|]+\|\s*[A-Z]\d+\s*\|/.test(line));
+ const briefingMatrix = briefing.match(/## Matriz de afirmaciones\s*\r?\n\r?\n([\s\S]*?)(?:\r?\n\r?\n## |$)/)?.[1]?.trim();
+ const matrixRows = briefingMatrix?.split(/\r?\n/).filter(line => /^\|[^|]+\|\s*[A-Z]\d+\s*\|/.test(line)) ?? [];
  if (matrixRows.length < 6) errors.push(`matriz con menos de seis afirmaciones: ${identity}`);
  if (!briefing.includes('2026-09-08')) errors.push(`fecha de consulta ausente en briefing: ${identity}`);
  const archivedBriefing = join(root, 'docs/blog/evidencia/b4/briefings', `briefing-${article.data.slug}.md`);
  const archivedMatrix = join(root, 'docs/blog/evidencia/b4/matrices', `matriz-${article.data.slug}.md`);
  if (!existsSync(archivedBriefing) || readFileSync(archivedBriefing, 'utf8') !== briefing) errors.push(`copia de briefing desalineada: ${identity}`);
- if (!existsSync(archivedMatrix) || readFileSync(archivedMatrix, 'utf8') !== briefing) errors.push(`matriz archivada desalineada: ${identity}`);
+ if (!existsSync(archivedMatrix)) errors.push(`matriz archivada ausente: ${identity}`);
+ else {
+  const matrix = readFileSync(archivedMatrix, 'utf8');
+  const archivedTable = matrix.match(/## Matriz afirmación → fuente → pasaje → H2\s*\r?\n\r?\n([\s\S]*)$/)?.[1]?.trim();
+  if (!archivedTable || normalizeLines(archivedTable) !== normalizeLines(briefingMatrix ?? '')) errors.push(`matriz archivada desalineada: ${identity}`);
+  if (!matrix.includes(`Artículo: \`${identity}\``)) errors.push(`matriz sin identidad de artículo: ${identity}`);
+ }
 }
 const executableEvidence = walk(join(root, 'docs/blog/evidencia/b4')).filter(file => /\.(?:mjs|cjs|js|ts)$/i.test(file));
 if (executableEvidence.length) errors.push(`evidencia B4 contiene código ejecutable: ${executableEvidence.map(file => relative(root, file)).join(', ')}`);
@@ -187,7 +199,8 @@ for(const article of articles){
   .map((match) => { try { return JSON.parse(match[1]); } catch { return null; } })
   .find((value) => value?.['@type'] === 'Article');
  if (!authorMatch || authorMatch[1].trim() !== article.data.autor) errors.push('autor visible no coincide con frontmatter: ' + source);
- if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
+  if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
+  if (!articleJsonLd || articleJsonLd.author?.['@type'] !== publicAuthorType) errors.push('tipo de autor JSON-LD no coincide con el registro: ' + source);
  if (article.data.autor !== publicAuthor) errors.push('autor no coincide con la firma pública registrada: ' + source);
  if (/Estado:\s*\*\*pendiente/i.test(authorship)) errors.push('artículo publicado sin registro verificable de autoría: ' + source);
  const outgoing=hrefs(blocks(articleHtml));
