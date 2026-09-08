@@ -1,0 +1,4 @@
+COMMAND=PLAYWRIGHT_BASE_URL=http://127.0.0.1:4321 B2_EVIDENCE_DIR=<base-emergency-layout> npx playwright test tests/e2e/blog-emergency-layout.spec.ts
+BASE_SHA=f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0
+EXIT_CODE=0
+RESULT=10 passed

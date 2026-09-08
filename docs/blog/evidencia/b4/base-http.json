@@ -1,0 +1,186 @@
+{
+  "capturedAt": "2026-09-08T18:37:51.1866478Z",
+  "baseSha": "f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0",
+  "records": [
+    {
+      "path": "/api/catalog.json",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 292140
+    },
+    {
+      "path": "/api/catalog.json",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/api/openapi.json",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 5333
+    },
+    {
+      "path": "/api/openapi.json",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/llms.txt",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 11187
+    },
+    {
+      "path": "/llms.txt",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/api/readme.md",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 2249
+    },
+    {
+      "path": "/api/readme.md",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/auth.md",
+      "method": "GET",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 454
+    },
+    {
+      "path": "/auth.md",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/.well-known/api-catalog",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/linkset+json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 917
+    },
+    {
+      "path": "/.well-known/api-catalog",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/linkset+json; charset=utf-8",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/sitemap.xml",
+      "method": "GET",
+      "status": 301,
+      "contentType": "",
+      "location": "/sitemap-index.xml",
+      "vary": "",
+      "cacheControl": "",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/sitemap.xml",
+      "method": "HEAD",
+      "status": 301,
+      "contentType": "",
+      "location": "/sitemap-index.xml",
+      "vary": "",
+      "cacheControl": "",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "method": "GET",
+      "status": 200,
+      "contentType": "application/xml",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 182
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "method": "HEAD",
+      "status": 200,
+      "contentType": "application/xml",
+      "location": "",
+      "vary": "",
+      "cacheControl": "public, must-revalidate, max-age=0",
+      "bodyBytes": 0
+    },
+    {
+      "path": "/blog/guias-por-especie/urgencias-en-perros/",
+      "method": "GET",
+      "status": 404,
+      "contentType": "text/html",
+      "location": "",
+      "vary": "",
+      "cacheControl": "",
+      "bodyBytes": 4704
+    },
+    {
+      "path": "/blog/guias-por-especie/urgencias-en-perros/",
+      "method": "HEAD",
+      "status": 404,
+      "contentType": "text/html",
+      "location": "",
+      "vary": "",
+      "cacheControl": "",
+      "bodyBytes": 0
+    }
+  ]
+}

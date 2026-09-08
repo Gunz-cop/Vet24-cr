@@ -51,7 +51,7 @@ for (const expected of ['https://vet24cr.com/blog/', 'https://vet24cr.com/blog/g
 const serverFiles = walk(join(root, 'dist/server'));
 if (!serverFiles.length) errors.push('dist/server ausente');
 const serverOccurrences = serverFiles.filter(f => /\.(?:mjs|js|json)$/.test(f) && readFileSync(f,'utf8').includes('urgencias-en-perros')).map(f => relative(root,f).replaceAll('\\', '/')).sort();
-console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pilotOccurrences:serverOccurrences,policy:'Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4'}));
+console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pilotOccurrences:serverOccurrences,policy:'B4: los cinco artículos están publicados; ningún borrador editorial puede serializarse'}));
 console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePublished}));
 
 const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
@@ -59,8 +59,34 @@ const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
 const publicAuthor = authorship.match(/^Firma pública:\s*\*\*(.+?)\*\*/m)?.[1]?.trim();
 if (!publicAuthor) errors.push('registro de atribución sin firma pública verificable');
 const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
- const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor')}};
+ const content=readFileSync(f,'utf8');return {content,body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor'),datePublished:field(content,'datePublished'),revisadoPor:field(content,'revisadoPor')}};
 });
+const expectedSeed = new Set([
+  'guias-por-especie/urgencias-en-perros',
+  'guias-por-especie/urgencias-en-gatos',
+  'guias-por-especie/atencion-veterinaria-para-exoticos',
+  'costos-y-acceso/costo-emergencia-veterinaria-nocturna',
+  'costos-y-acceso/atencion-veterinaria-24h-por-zona',
+]);
+if (articles.length !== expectedSeed.size) errors.push(`B4 exige exactamente cinco artículos; encontrados: ${articles.length}`);
+for (const article of articles) {
+ const identity = `${article.data.pilar}/${article.data.slug}`;
+ if (!expectedSeed.has(identity)) errors.push(`artículo fuera del seed B4: ${identity}`);
+ if (article.data.estado !== 'publicado') errors.push(`artículo seed no publicado: ${identity}`);
+ if (article.data.autor !== 'Equipo de Vet24cr') errors.push(`autor B4 incorrecto: ${identity}`);
+ if (!article.data.datePublished) errors.push(`datePublished ausente: ${identity}`);
+ if (article.data.revisadoPor) errors.push(`revisadoPor no autorizado en B4: ${identity}`);
+ if (!/no sustituye|no diagnostica|no sustituir/i.test(article.body)) errors.push(`límite clínico ausente: ${identity}`);
+ const briefingPath = join(root, 'briefings', `briefing-${article.data.slug}.md`);
+ if (!existsSync(briefingPath)) { errors.push(`briefing ausente: ${identity}`); continue; }
+ const briefing = readFileSync(briefingPath, 'utf8');
+ const sourceUrls = [...new Set([...briefing.matchAll(/\|\s*(https:\/\/[^\s|]+)\s*\|/g)].map(m => m[1]))];
+ if (sourceUrls.length < 6) errors.push(`menos de seis fuentes distintas en briefing: ${identity}`);
+ for (const url of sourceUrls) if (!article.body.includes(`](${url})`)) errors.push(`fuente sin cita en artículo: ${identity} → ${url}`);
+ const matrixRows = briefing.split(/\r?\n/).filter(line => /^\|[^|]+\|\s*[A-Z]\d+\s*\|/.test(line));
+ if (matrixRows.length < 6) errors.push(`matriz con menos de seis afirmaciones: ${identity}`);
+ if (!briefing.includes('2026-09-08')) errors.push(`fecha de consulta ausente en briefing: ${identity}`);
+}
 const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
 const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
 const provinces=[...readFileSync(join(root,'src/pages/provincia/[provincia].astro'),'utf8').split('return provincesMap')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);

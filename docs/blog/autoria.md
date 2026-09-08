@@ -10,10 +10,10 @@ La atribución se aplica al contenido del blog cuando llegue a publicarse. La in
 
 ## Cobertura concreta
 
-- Artículo: `src/content/blog/urgencias-en-perros.md`, actualmente en estado `borrador`.
-- Commit de cobertura: `5abc4dc` (cierre de B3).
-- Alcance del commit: firma pública, registro de atribución, JSON-LD y pruebas de coherencia.
-- No hay artículos publicados cubiertos por esta atribución en el estado actual.
+- Artículos: `urgencias-en-perros`, `urgencias-en-gatos`, `atencion-veterinaria-para-exoticos`, `costo-emergencia-veterinaria-nocturna` y `atencion-veterinaria-24h-por-zona`.
+- Commit inicial de cobertura: `5abc4dc` (cierre de B3).
+- Ampliación B4: los cinco artículos seed del plan, en el candidato editorial que será identificado por el informe de cierre.
+- Alcance: firma pública, registro de atribución, presentación visible y JSON-LD `Organization`.
 
 ## Revisión veterinaria
 
@@ -21,4 +21,4 @@ La atribución se aplica al contenido del blog cuando llegue a publicarse. La in
 
 ## Alcance actual
 
-El artículo versionado continúa en estado `borrador`, por lo que todavía no publica autoría visible ni JSON-LD de artículo. La firma ya está definida; la publicación del artículo sigue requiriendo investigación, verificación de fuentes y aprobación del texto concreto.
+Los cinco artículos seed están preparados como publicados en la rama candidata B4. La publicación efectiva sigue bloqueada hasta una auditoría independiente favorable del SHA candidato y la autorización humana del HEAD exacto; este registro no declara esa aprobación.

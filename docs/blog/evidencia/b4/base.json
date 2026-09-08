@@ -1,0 +1,51 @@
+{
+  "baseSha": "f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0",
+  "predecessorSha": "3d03ecc0da65f2127a66b7935baa39e1bdd2d6b5",
+  "briefingCommitSha": "2326234836119e05920a99b6db234b7dee1ffaf8",
+  "date": "2026-09-08T18:15:48.366Z",
+  "branch": "codex/blog-b4-seed",
+  "responsible": {
+    "execution": "sesión ejecutora B4",
+    "signature": "Equipo de Vet24cr",
+    "independentVerification": "pendiente en otra sesión"
+  },
+  "allowedFiles": [
+    "src/content/blog/urgencias-en-perros.md",
+    "src/content/blog/urgencias-en-gatos.md",
+    "src/content/blog/atencion-veterinaria-para-exoticos.md",
+    "src/content/blog/costo-emergencia-veterinaria-nocturna.md",
+    "src/content/blog/atencion-veterinaria-24h-por-zona.md",
+    "briefings/briefing-urgencias-en-perros.md",
+    "briefings/briefing-urgencias-en-gatos.md",
+    "briefings/briefing-atencion-veterinaria-para-exoticos.md",
+    "briefings/briefing-costo-emergencia-veterinaria-nocturna.md",
+    "briefings/briefing-atencion-veterinaria-24h-por-zona.md",
+    "src/data/internal-links.ts",
+    "docs/seo/enlazado-interno.md",
+    "docs/blog/autoria.md",
+    "src/pages/politica-editorial.astro",
+    "tests/unit/blog-publication.test.ts",
+    "tests/unit/blog-links.test.ts",
+    "tests/unit/blog-schema.test.ts",
+    "tests/e2e/blog.spec.ts",
+    "tests/e2e/blog-emergency-layout.spec.ts",
+    "scripts/verification/blog.mjs",
+    "docs/blog/evidencia/b4/**"
+  ],
+  "status": "base-captured-before-product-edits",
+  "scan": {
+    "file": "base-agent-scan.json",
+    "coverageFile": "base-scan-coverage.json",
+    "count": 22,
+    "level": 4,
+    "processExitCode": -1073740791,
+    "jsonValid": true,
+    "note": "El escáner produjo JSON íntegro y luego terminó con el fallo nativo histórico de libuv en Windows."
+  },
+  "snapshots": {
+    "sitemap": "base-sitemap.json",
+    "catalogMirrors": "base-catalog-mirrors.json",
+    "http": "base-http.json",
+    "emergencyLayout": "base-emergency-layout.json"
+  }
+}
