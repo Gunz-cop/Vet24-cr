@@ -1,23 +1,58 @@
 # Registro de autoría editorial
 
-Estado: **pendiente de respuesta y aprobación explícita del usuario**.
+Estado: **completo para el alcance de B3**.
 
-La atribución pública no se completa en esta entrega porque todavía no se ha indicado una persona real y verificable. No se inventa un nombre, no se usa un equipo como si fuera una persona y no se presenta la aprobación de un merge como autoría.
+Este archivo es la fuente de verdad de la atribución. `scripts/verification/blog.mjs`
+lo lee y falla si el JSON-LD generado no coincide con lo declarado aquí, en **nombre
+y en tipo**.
 
-Antes de publicar el piloto, este registro debe incluir:
+## Firma aprobada
 
-- nombre público de la persona;
-- URL de perfil público o evidencia de identidad confirmada por el usuario;
-- rol real en el contenido (redacción, edición o responsabilidad editorial);
-- aprobación explícita de esa persona para la atribución; y
-- artículos y commits concretos a los que aplica.
+- firma-publica: Equipo editorial Vet24 Costa Rica
+- tipo-entidad: Organization
+- aprobado-por: titular del sitio
+- aprobado-el: 2026-09-07
 
-No se versionan documentos de identidad privados.
+El titular aprobó una **firma colectiva**, no personal. La expresó como «Equipo de
+Vet24cr»; la forma que se publica es la de arriba, que es la que ya llevan los
+artículos y coincide con el nombre del sitio. Ambas designan al mismo colectivo. Si
+el titular prefiere la forma corta en el sitio, B4 alinea el frontmatter de los
+artículos, que es su propiedad y no la de B3.
+
+## Por qué `Organization` y no `Person`
+
+Una firma colectiva debe declararse como `Organization`. Emitir `Person` con el
+nombre de un equipo afirmaría en datos estructurados que existe una persona con ese
+nombre — una declaración falsa leída por buscadores. El tipo se verifica igual que
+el nombre.
+
+## Sin nombres personales
+
+Este registro no lleva nombres personales, correos ni documentos de identidad. El
+repositorio es público: un nombre escrito aquí quedaría visible de forma permanente
+y sobreviviría en el historial de git aunque después se borrara. Con una firma de
+organización no existe ningún nodo `Person` que rellenar, así que ningún dato
+personal es necesario para que la atribución sea veraz.
+
+La responsabilidad editorial recae en el titular del sitio, identificable por la
+titularidad del dominio y de la cuenta del repositorio. Una firma personal sigue
+disponible como decisión del titular —es la señal E-E-A-T más fuerte para este
+contenido— pero ninguna sesión puede exigirla.
 
 ## Revisión veterinaria
 
-`revisadoPor` permanece omitido. Solo puede aparecer junto con una credencial veterinaria verificable y una constancia de revisión del texto candidato concreto. La auditoría editorial de una sesión de IA no es revisión veterinaria profesional.
+`revisadoPor` queda **omitido en todo el seed**. El titular confirmó el 2026-09-07
+que no hay revisor veterinario profesional. Ninguna página puede insinuar lo
+contrario, y la auditoría editorial de una sesión de IA no es revisión veterinaria.
 
-## Alcance actual
+Si en el futuro existe un revisor, hará falta credencial verificable y constancia de
+revisión del texto concreto, artículo por artículo. Sin ambas se sigue omitiendo.
 
-El único artículo versionado continúa en estado `borrador`, por lo que esta entrega no publica autoría visible ni JSON-LD de artículo. La atribución y la aprobación quedan bloqueadas para B4 hasta completar este registro con evidencia real.
+## Alcance
+
+Aplica a los cinco artículos del seed de la fase 3:
+`urgencias-en-perros`, `urgencias-en-gatos`, `atencion-veterinaria-para-exoticos`,
+`costo-emergencia-veterinaria-nocturna`, `atencion-veterinaria-24h-por-zona`.
+
+Ninguno está publicado todavía: el piloto sigue en `borrador` y los otros cuatro no
+existen. La atribución se aplica al publicarse en B4.

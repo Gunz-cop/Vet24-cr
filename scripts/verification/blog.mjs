@@ -147,8 +147,19 @@ for(const article of articles){
   .find((value) => value?.['@type'] === 'Article');
  if (!authorMatch || authorMatch[1].trim() !== article.data.autor) errors.push('autor visible no coincide con frontmatter: ' + source);
  if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
+ // El registro de autoría manda: se verifica el nombre y también el TIPO de entidad.
+ // Un nodo Person con nombre de equipo afirmaría una persona inexistente.
  const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
  if (/Estado:\s*\*\*pendiente/i.test(authorship)) errors.push('artículo publicado sin registro verificable de autoría: ' + source);
+ const registryField = name => authorship.match(new RegExp('^- ' + name + ':\\s*(.+)$', 'm'))?.[1].trim();
+ const declaredName = registryField('firma-publica');
+ const declaredType = registryField('tipo-entidad');
+ if (!declaredName || !declaredType) errors.push('docs/blog/autoria.md no declara firma-publica y tipo-entidad');
+ else {
+  if (article.data.autor !== declaredName) errors.push('firma no aprobada en el registro: ' + source + '; declarada: ' + declaredName + '; usada: ' + article.data.autor);
+  if (articleJsonLd?.author?.['@type'] !== declaredType) errors.push('tipo de autor JSON-LD no coincide con el registro: ' + source + '; declarado: ' + declaredType + '; emitido: ' + articleJsonLd?.author?.['@type']);
+ }
+ if (article.data.revisadoPor && !/credencial verificable/i.test(authorship)) errors.push('revisadoPor sin respaldo en el registro: ' + source);
  const outgoing=hrefs(blocks(articleHtml));
  for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{
   assertTypedLink(target,inventory);

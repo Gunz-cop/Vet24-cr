@@ -21,7 +21,9 @@ const breadcrumbs = {
 const article = {
   '@context': 'https://schema.org', '@type': 'Article', headline: title,
   description: metaDescription, url: canonical, mainEntityOfPage: canonical,
-  author: { '@type': 'Person', name: autor }, datePublished,
+  // Firma colectiva: docs/blog/autoria.md declara Organization. Un nodo Person con
+  // nombre de equipo afirmaria una persona inexistente. blog.mjs verifica ambos.
+  author: { '@type': 'Organization', name: autor }, datePublished,
   ...(dateModified ? { dateModified } : {}),
 };
 ---
