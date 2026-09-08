@@ -40,7 +40,7 @@ for (const width of [390, 1440]) for (const path of paths) test(`B2 emergencia $
     }
   }
   const block = page.locator('[data-blog-links]');
-  const active = process.env.B2_PUBLISHED_FIXTURE === '1';
+  const active = true;
   await expect(block).toHaveCount(active ? 1 : 0);
   if (active) {
     expect(await block.evaluate(el => {

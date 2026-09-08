@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { assertTypedLink, assertInverse, directoryLinks, directoryNames, relatedGuides, crossPillarLinks, linkPath, type LinkInventory, type TypedLink } from '../../src/lib/blog-links.ts';
+import { ARTICULO_A_CLINICAS, ARTICULO_A_ZONAS, ARTICULO_A_PROVINCIAS, type ArticleIdentity } from '../../src/data/internal-links.ts';
 
 const article = { data: { pilar: 'guias-por-especie', slug: 'urgencias-en-perros', estado: 'publicado', title: 'Fixture' } };
 const names = directoryNames([
@@ -66,5 +67,25 @@ test('anclas conservan nombres reales, mayúsculas y tildes de cada familia', ()
 test('nombre ausente falla en vez de fabricar una etiqueta desde el slug', () => {
   for (const family of ['clinica', 'zona', 'provincia'] as const) {
     assert.throws(() => directoryLinks(article, { ...names, [family]: new Map() }), /Nombre de destino ausente/);
+  }
+});
+
+test('el catálogo B4 cubre exactamente los cinco artículos seed', () => {
+  const expected: ArticleIdentity[] = [
+    'guias-por-especie/urgencias-en-perros',
+    'guias-por-especie/urgencias-en-gatos',
+    'guias-por-especie/atencion-veterinaria-para-exoticos',
+    'costos-y-acceso/costo-emergencia-veterinaria-nocturna',
+    'costos-y-acceso/atencion-veterinaria-24h-por-zona',
+  ];
+  const actual = new Set([
+    ...Object.keys(ARTICULO_A_CLINICAS),
+    ...Object.keys(ARTICULO_A_ZONAS),
+    ...Object.keys(ARTICULO_A_PROVINCIAS),
+  ]);
+  assert.deepEqual([...actual].sort(), expected.sort());
+  for (const id of expected) {
+    assert.ok((ARTICULO_A_CLINICAS[id] ?? []).length > 0, `${id} sin clínica`);
+    assert.ok((ARTICULO_A_PROVINCIAS[id] ?? []).length > 0, `${id} sin provincia`);
   }
 });

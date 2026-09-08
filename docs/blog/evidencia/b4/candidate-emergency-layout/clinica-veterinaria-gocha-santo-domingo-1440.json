@@ -1,0 +1,184 @@
+{
+  "path": "/clinica/veterinaria-gocha-santo-domingo/",
+  "width": 1440,
+  "measurements": [
+    {
+      "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+      "present": true,
+      "text": "Datos rápidos de Veterinaria GochaHorarioAbierto ahoraL-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfonoEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Santo Domingo de HerediaHotel para mascotasNo confirmado",
+      "href": null,
+      "rect": {
+        "x": 208,
+        "y": 400,
+        "width": 672,
+        "height": 211
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#clinic-schedule-text",
+      "present": true,
+      "text": "L-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfono",
+      "href": null,
+      "rect": {
+        "x": 957.28125,
+        "y": 709.5,
+        "width": 240.640625,
+        "height": 38
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#warning-diurnal-alert",
+      "present": true,
+      "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+      "href": null,
+      "rect": {
+        "x": 208,
+        "y": 635,
+        "width": 672,
+        "height": 111.5
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "text": "Llamar ahora4000-2795",
+      "href": "tel:+50640002795",
+      "rect": {
+        "x": 208,
+        "y": 770.5,
+        "width": 159,
+        "height": 118
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": true,
+      "text": "WhatsAppEnviar mensaje",
+      "href": "https://wa.me/50689646632",
+      "rect": {
+        "x": 379,
+        "y": 770.5,
+        "width": 159,
+        "height": 118
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "text": "Llamar principal (4000-2795)",
+      "href": "tel:+50640002795",
+      "rect": {
+        "x": 946,
+        "y": 299.5,
+        "width": 252,
+        "height": 68
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": true,
+      "text": "Llamar secundario (2244-8726)",
+      "href": "tel:+50622448726",
+      "rect": {
+        "x": 946,
+        "y": 379.5,
+        "width": 252,
+        "height": 50
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": true,
+      "text": "Enviar WhatsApp (8964-6632)",
+      "href": "https://wa.me/50689646632",
+      "rect": {
+        "x": 946,
+        "y": 441.5,
+        "width": 252,
+        "height": 70
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#clinicas-grid",
+      "present": false
+    },
+    {
+      "selector": "#search-input",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-open",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-247",
+      "present": false
+    },
+    {
+      "selector": "#btn-use-location",
+      "present": false
+    },
+    {
+      "selector": "#animal-filters-container",
+      "present": false
+    },
+    {
+      "selector": "#filter-hotel",
+      "present": false
+    },
+    {
+      "selector": "#results-count",
+      "present": false
+    }
+  ],
+  "keyboard": [
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "href": "tel:+50640002795"
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": true,
+      "href": "https://wa.me/50689646632"
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "href": "tel:+50640002795"
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": true,
+      "href": "tel:+50622448726"
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": true,
+      "href": "https://wa.me/50689646632"
+    }
+  ],
+  "focusOrder": [
+    "btn-quick-call",
+    "btn-quick-wa",
+    "btn-call-sidebar-1",
+    "btn-call-sidebar-2",
+    "btn-wa-sidebar"
+  ]
+}

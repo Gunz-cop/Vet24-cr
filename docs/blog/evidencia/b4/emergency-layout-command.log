@@ -1,0 +1,1 @@
+$env:BLOG_BASE_GEOMETRY=docs/blog/evidencia/b4/base-emergency-layout.json; npx playwright test tests/e2e/blog-emergency-layout.spec.ts --workers=1 --timeout=120000
