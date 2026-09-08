@@ -29,7 +29,7 @@ Esconderse más, dejar de saltar, cambiar la postura, reaccionar al contacto o a
 
 ## Traslado seguro
 
-Llamá antes cuando sea posible y describí respiración, estado de conciencia, uso del arenero, vómitos, exposición a tóxicos y tiempo de evolución. Para una posible intoxicación, conservá el envase y no induzcás el vómito ni des medicamentos sin indicación profesional ([AVMA, guía de primeros auxilios, 2025](https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf)).
+Llamá antes cuando sea posible y describí respiración, estado de conciencia, uso del arenero, vómitos, exposición a tóxicos y tiempo de evolución. Para una posible intoxicación, conservá el empaque o material y consultá a un profesional veterinario antes de tomar medidas o darle cualquier sustancia ([ASPCA, 20 de marzo de 2019](https://www.aspca.org/news/what-do-if-your-pet-poisoned)).
 
 Usá una transportadora firme, con una toalla en el fondo. Evitá perseguir al gato o comprimirle el pecho. Confirmá por teléfono que el centro atiende gatos y que puede recibir el caso; no asumás que “24 horas” significa cupo inmediato.
 

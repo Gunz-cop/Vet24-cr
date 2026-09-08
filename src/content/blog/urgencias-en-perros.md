@@ -23,7 +23,7 @@ Un abdomen que se agranda de forma repentina, sobre todo si el perro intenta vom
 
 Llamá mientras organizás el traslado, siempre que eso no lo retrase. Indicá qué ocurrió, hace cuánto, cuáles señales ves, qué enfermedades o medicamentos tiene el perro y qué sustancia pudo ingerir. El Manual Veterinario Merck explica que esa llamada permite recibir instrucciones de primeros auxilios y ayuda a que el centro se prepare ([Merck Veterinary Manual, revisión diciembre de 2025](https://www.merckvetmanual.com/special-pet-topics/emergencies/what-to-do-in-a-dog-or-cat-emergency)).
 
-Tené a mano el nombre y concentración de cualquier medicamento o químico, el envase y, si es seguro, una muestra del material masticado o vomitado. La guía de primeros auxilios de la AVMA recomienda llevar esa información y llamar de inmediato ante una posible intoxicación ([AVMA, 2025](https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf)).
+Tené a mano el nombre y concentración de cualquier medicamento o químico, el empaque y, si es seguro, una muestra del material masticado o vomitado. El Centro de Control de Envenenamiento Animal de ASPCA recomienda reunir empaques, pastillas o material que ayude a identificar lo ingerido y contactar de inmediato a un profesional veterinario ([ASPCA, 20 de marzo de 2019](https://www.aspca.org/news/what-do-if-your-pet-poisoned)).
 
 ## Qué no hacer
 

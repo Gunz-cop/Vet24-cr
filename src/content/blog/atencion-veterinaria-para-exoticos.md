@@ -15,13 +15,13 @@ datePublished: "2026-09-08"
 
 No basta preguntar si una clínica “atiende exóticos”. Decí la especie exacta —por ejemplo, conejo, cobaya, hurón, ave o reptil— y el motivo de consulta. Un servicio universitario de exóticos puede atender aves, mamíferos, reptiles y anfibios y aun así excluir primates, felinos exóticos o serpientes venenosas; la capacidad no es uniforme ([Cornell University College of Veterinary Medicine, sin fecha visible](https://www.vet.cornell.edu/hospitals/services/exotic-pets-service)).
 
-La AVMA recomienda preguntar expresamente si la persona veterinaria puede y está dispuesta a atender la mascota no tradicional, además de consultar el manejo de emergencias fuera de horario ([AVMA, Choosing a Veterinarian, 2016](https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf)).
+La Universidad de Illinois recomienda ubicar con anticipación una persona veterinaria familiarizada con la especie, antes de que ocurra una situación que requiera atención ([University of Illinois College of Veterinary Medicine, 24 de marzo de 2017](https://vetmed.illinois.edu/pet-health-columns/pain-exotic-pets/)). Al llamar, preguntá también cómo manejan emergencias fuera de horario.
 
 ## Qué confirmar por teléfono
 
 Antes de trasladarte, consultá si reciben esa especie y ese tipo de caso hoy; si hay personal con experiencia y equipo adecuado; si requieren cita o referencia; y qué historial, fotografías del hábitat, dieta, temperatura o medicamentos debés llevar.
 
-Un establecimiento puede declarar atención a reptiles y aves, pero la cita sigue sujeta a disponibilidad. Hospital Veterinario Santamaría, por ejemplo, publica atención de exóticos y recomienda confirmar por teléfono antes del traslado en emergencias ([Hospital Veterinario Santamaría, actualización 9 de junio de 2026](https://hospitalveterinariosantamaria.com/terminos-y-condiciones/)). Esa declaración respalda únicamente lo que ese establecimiento informa.
+Un establecimiento puede declarar atención a mascotas exóticas, pero la cita sigue sujeta a disponibilidad y esa categoría no confirma especies concretas. Hospital Veterinario Santamaría, por ejemplo, publica atención de exóticos y recomienda confirmar por teléfono antes del traslado en emergencias ([Hospital Veterinario Santamaría, actualización 9 de junio de 2026](https://hospitalveterinariosantamaria.com/terminos-y-condiciones/)). Esa declaración respalda únicamente lo que ese establecimiento informa.
 
 ## Cuándo no esperar
 
@@ -33,8 +33,8 @@ En cualquier especie, dificultad respiratoria, sangrado, trauma, convulsiones, p
 
 El contenedor debe ser seguro y adecuado a la especie. BSAVA recomienda perchas estables para aves y suficiente cama y heno para pequeños mamíferos; el objetivo es reducir estrés y prevenir lesiones durante el viaje ([BSAVA, 2024](https://www.bsava.com/article/why-and-how-to-run-an-exotic-friendly-practice/)). No improvisés calor directo ni cambios bruscos de temperatura.
 
-Para reptiles, anotá especie, temperatura y humedad del recinto, iluminación, dieta y última muda. La AVMA recalca que cada especie de reptil tiene necesidades particulares y que los controles veterinarios siguen siendo importantes ([AVMA, Selecting a Reptile, 2013](https://ebusiness.avma.org/files/productdownloads/SelectReptile-En.pdf)).
+Para reptiles, anotá especie, temperatura y humedad del recinto, iluminación, dieta y última muda. El Manual Veterinario de Merck explica que la identificación de la especie es esencial y que el manejo veterinario debe recopilar datos clínicamente relevantes del recinto y la alimentación ([Divers y Comolli, Manual Veterinario de Merck, revisión julio de 2025](https://www.merckvetmanual.com/exotic-and-laboratory-animals/reptiles/management-and-husbandry-of-reptiles)).
 
 ## Fuentes consultadas
 
-Fuentes consultadas el 8 de setiembre de 2026: Cornell University College of Veterinary Medicine, AVMA, BSAVA, Royal Veterinary College y Hospital Veterinario Santamaría.
+Fuentes consultadas el 8 de setiembre de 2026: Cornell University College of Veterinary Medicine, University of Illinois College of Veterinary Medicine, Manual Veterinario de Merck, BSAVA, Royal Veterinary College y Hospital Veterinario Santamaría.

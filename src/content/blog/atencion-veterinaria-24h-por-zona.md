@@ -29,7 +29,7 @@ Hospital PETS+ publica que su sede de San Antonio de Belén está abierta 24/7 y
 
 ## Cartago
 
-Medical Pets publica una sede abierta 24 horas en Cartago en su página de contacto. Hospital VitalVet declara servicio de emergencias 24/7 en El Tejar y publica teléfono, WhatsApp y ubicación ([Hospital VitalVet, 2026](https://www.hospitalvitalvet.com/contacto-veterinaria-cartago/)).
+Medical Pets publica una sede abierta 24 horas en Cartago en su página de contacto ([Medical Pets CR, sin fecha visible](https://www.medicalpetscr.com/contacto)). Hospital VitalVet declara servicio de emergencias 24/7 en El Tejar y publica teléfono, WhatsApp y ubicación ([Hospital VitalVet, 2026](https://www.hospitalvitalvet.com/contacto-veterinaria-cartago/)).
 
 La palabra “24/7” no responde por sí sola si hay atención presencial, llamada previa, cupo, cirugía, internamiento o experiencia con una especie concreta. Confirmá cada capacidad por separado.
 

@@ -17,7 +17,7 @@
 | C4 | https://hospitalveterinariosantamaria.com/terminos-y-condiciones/ | Términos y condiciones — precios y pagos | Hospital Veterinario Santamaría | actualización 2026-06-09 |
 | C5 | https://petsmas.com/hospital/nuestros-servicios/ | Nuestros servicios — emergencias | Hospital PETS+ San Antonio | sin fecha visible |
 | C6 | https://www.medicalpetscr.com/servicios | Servicios — emergencias 24 horas | Medical Pets CR | sin fecha visible |
-| C7 | https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf | Choosing a Veterinarian | American Veterinary Medical Association | 2016 |
+| C7 | https://hospitals.vetmed.ufl.edu/pay/ | Financial Services | University of Florida Veterinary Hospitals | sin fecha visible |
 
 ## Matriz de afirmaciones
 
@@ -29,7 +29,7 @@
 | Un establecimiento costarricense indica que informa precios directamente y que varían según condición y procedimientos. | C4 | sección 7 “Precios y pagos”. | Cómo pedir un estimado útil |
 | PETS+ declara que cirugía de urgencia y diagnóstico pueden formar parte del manejo, según el caso. | C5 | secciones Emergencias, Cirugía, Laboratorio e imágenes. | Qué puede integrar la cuenta |
 | Medical Pets declara emergencias, imágenes, laboratorio e internamiento como servicios distintos. | C6 | lista de servicios. | Qué puede integrar la cuenta |
-| Conviene preguntar métodos de pago, financiamiento y manejo fuera de horario. | C7 | listas “Fees and payment” y “Emergency care”. | Antes de salir |
+| Los hospitales pueden exigir depósito, ofrecer medios de pago distintos y calcular el estimado solo después del examen; conviene confirmar la política aplicable antes de salir. | C7 | sección “Financial Services” y bloques “Payment Option”. | Antes de salir |
 
 ## Contrato de publicación
 

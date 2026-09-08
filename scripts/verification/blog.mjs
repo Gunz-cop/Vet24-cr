@@ -11,6 +11,11 @@ const pilotUrl = 'https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros
 const policyPath = 'politica-editorial/index.html';
 const policyUrl = 'https://vet24cr.com/politica-editorial/';
 const errors = [];
+const retiredSourceUrls = new Set([
+  'https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf',
+  'https://ebusiness.avma.org/files/productdownloads/SelectReptile-En.pdf',
+  'https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf',
+]);
 
 function walk(directory) {
   if (!existsSync(directory)) return [];
@@ -82,11 +87,18 @@ for (const article of articles) {
  const briefing = readFileSync(briefingPath, 'utf8');
  const sourceUrls = [...new Set([...briefing.matchAll(/\|\s*(https:\/\/[^\s|]+)\s*\|/g)].map(m => m[1]))];
  if (sourceUrls.length < 6) errors.push(`menos de seis fuentes distintas en briefing: ${identity}`);
+ for (const url of sourceUrls) if (retiredSourceUrls.has(url)) errors.push(`fuente retirada por inaccesible: ${identity} → ${url}`);
  for (const url of sourceUrls) if (!article.body.includes(`](${url})`)) errors.push(`fuente sin cita en artículo: ${identity} → ${url}`);
  const matrixRows = briefing.split(/\r?\n/).filter(line => /^\|[^|]+\|\s*[A-Z]\d+\s*\|/.test(line));
  if (matrixRows.length < 6) errors.push(`matriz con menos de seis afirmaciones: ${identity}`);
  if (!briefing.includes('2026-09-08')) errors.push(`fecha de consulta ausente en briefing: ${identity}`);
+ const archivedBriefing = join(root, 'docs/blog/evidencia/b4/briefings', `briefing-${article.data.slug}.md`);
+ const archivedMatrix = join(root, 'docs/blog/evidencia/b4/matrices', `matriz-${article.data.slug}.md`);
+ if (!existsSync(archivedBriefing) || readFileSync(archivedBriefing, 'utf8') !== briefing) errors.push(`copia de briefing desalineada: ${identity}`);
+ if (!existsSync(archivedMatrix) || readFileSync(archivedMatrix, 'utf8') !== briefing) errors.push(`matriz archivada desalineada: ${identity}`);
 }
+const executableEvidence = walk(join(root, 'docs/blog/evidencia/b4')).filter(file => /\.(?:mjs|cjs|js|ts)$/i.test(file));
+if (executableEvidence.length) errors.push(`evidencia B4 contiene código ejecutable: ${executableEvidence.map(file => relative(root, file)).join(', ')}`);
 const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
 const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
 const provinces=[...readFileSync(join(root,'src/pages/provincia/[provincia].astro'),'utf8').split('return provincesMap')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);

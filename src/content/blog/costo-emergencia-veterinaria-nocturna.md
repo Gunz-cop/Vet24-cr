@@ -33,10 +33,10 @@ Hospital Veterinario Santamaría indica que sus precios se informan directamente
 
 ## Antes de salir
 
-Al llamar, describí las señales y confirmá si reciben el caso, dónde ingresar y qué medios de pago aceptan. La lista de la AVMA para escoger veterinaria sugiere preguntar por pagos, financiamiento y manejo de llamadas de emergencia dentro y fuera de horario ([AVMA, Choosing a Veterinarian, 2016](https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf)).
+Al llamar, describí las señales y confirmá si reciben el caso, dónde ingresar, si solicitan un depósito y qué medios de pago aceptan. University of Florida Veterinary Hospitals explica que el estimado solo puede calcularse después del examen y publica depósitos y opciones de pago propios; esa política ilustra qué conviene preguntar, pero no describe precios ni condiciones de Costa Rica ([University of Florida Veterinary Hospitals, sin fecha visible](https://hospitals.vetmed.ufl.edu/pay/)).
 
 Si hay dificultad respiratoria, colapso, convulsiones, sangrado importante, trauma o una posible intoxicación, no retrasés la atención esperando comparar cotizaciones completas. Pedí que te expliquen qué es imprescindible para estabilizar y qué decisiones pueden tomarse después.
 
 ## Fuentes consultadas
 
-Fuentes consultadas el 8 de setiembre de 2026: Cornell, UC Davis, Texas A&M, AVMA y páginas oficiales de Hospital PETS+, Medical Pets y Hospital Veterinario Santamaría.
+Fuentes consultadas el 8 de setiembre de 2026: Cornell, UC Davis, Texas A&M, University of Florida y páginas oficiales de Hospital PETS+, Medical Pets y Hospital Veterinario Santamaría.

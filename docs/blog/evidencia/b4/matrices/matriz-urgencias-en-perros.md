@@ -18,7 +18,7 @@
 | P4 | https://www.merckvetmanual.com/special-pet-topics/poisoning/general-treatment-of-poisoning | General Treatment of Poisoning | Steve M. Ensley, DVM, PhD; Merck Veterinary Manual | actualización 2024-09 |
 | P5 | https://www.vet.cornell.edu/hospitals/services/emergency-and-critical-care-0 | Emergency and Critical Care | Cornell University Hospital for Animals | sin fecha visible |
 | P6 | https://www.aaha.org/resources/understanding-canine-bloat-gdv-a-medical-emergency/ | Understanding Canine Bloat (GDV): A Medical Emergency | American Animal Hospital Association | 2025 |
-| P7 | https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf | Pet First Aid | American Veterinary Medical Association | 2025 |
+| P7 | https://www.aspca.org/news/what-do-if-your-pet-poisoned | What to Do if Your Pet Is Poisoned | ASPCA Animal Poison Control Center | 2019-03-20 |
 
 ## Matriz de afirmaciones
 
@@ -29,7 +29,7 @@
 | Arcadas sin producir vómito con abdomen distendido ameritan atención inmediata. | P6 | sección de señales de GDV y acción inmediata. | Señales para salir ya |
 | Conviene llamar antes y describir lo ocurrido para que la clínica se prepare. | P3 | introducción “Emergency care often starts with your phone call”. | Qué decir al llamar |
 | No se debe inducir el vómito sin instrucción profesional. | P4 | sección “General Treatment”: contraindicaciones y riesgo de aspiración. | Qué no hacer |
-| En intoxicaciones se debe conservar el envase o material para identificar el producto. | P7 | bloque “If your pet has been poisoned”. | Qué llevar |
+| En intoxicaciones se debe conservar el empaque, pastillas o material para identificar el producto y contactar de inmediato a un profesional veterinario. | P7 | secciones “Gather the Evidence” y “Call APCC or Your Local Veterinarian Immediately”. | Qué llevar |
 | En triage se priorizan los problemas que amenazan la vida. | P5 | lista “Emergency Critical Care Emergent Conditions” y descripción del triage. | Qué esperar al llegar |
 
 ## Contrato de publicación

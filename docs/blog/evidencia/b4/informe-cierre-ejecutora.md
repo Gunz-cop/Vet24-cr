@@ -1,5 +1,7 @@
 # Informe de cierre de la ejecutora B4
 
+> **Sustituido tras auditoría independiente.** El SHA `dab96fd36d7056d9700642ba4afa51cbfe79111b` fue rechazado. En particular, el `pass` histórico de `verify-sources.mjs` solo comprobaba cantidad de URLs y no disponibilidad; no debe interpretarse como validación de fuentes. La corrección y sus resultados están en `correccion-1/`.
+
 Fecha: 2026-09-08  
 BASE contractual: `f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0`  
 Commit previo de briefings: `2326234836119e05920a99b6db234b7dee1ffaf8`  

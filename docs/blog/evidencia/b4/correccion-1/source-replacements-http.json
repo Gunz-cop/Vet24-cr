@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-09-08T21:04:25.2099213Z",
+  "userAgent": "Mozilla/5.0",
+  "maxRedirects": 10,
+  "requirements": "Cada fuente sustituta debe terminar en HTTP 2xx/3xx y curl exit 0",
+  "sources": [
+    {
+      "url": "https://www.aspca.org/news/what-do-if-your-pet-poisoned",
+      "httpStatus": 200,
+      "finalUrl": "https://www.aspca.org/news/what-do-if-your-pet-poisoned",
+      "bytes": 76498,
+      "exitCode": 0,
+      "pass": true
+    },
+    {
+      "url": "https://vetmed.illinois.edu/pet-health-columns/pain-exotic-pets/",
+      "httpStatus": 200,
+      "finalUrl": "https://vetmed.illinois.edu/pet-health-columns/pain-exotic-pets/",
+      "bytes": 78765,
+      "exitCode": 0,
+      "pass": true
+    },
+    {
+      "url": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/reptiles/management-and-husbandry-of-reptiles",
+      "httpStatus": 200,
+      "finalUrl": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/reptiles/management-and-husbandry-of-reptiles",
+      "bytes": 822757,
+      "exitCode": 0,
+      "pass": true
+    },
+    {
+      "url": "https://hospitals.vetmed.ufl.edu/pay/",
+      "httpStatus": 200,
+      "finalUrl": "https://hospitals.vetmed.ufl.edu/pay/",
+      "bytes": 102267,
+      "exitCode": 0,
+      "pass": true
+    }
+  ],
+  "pass": true
+}
