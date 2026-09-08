@@ -1,0 +1,12 @@
+diff --git a/docs/blog/autoria.md b/docs/blog/autoria.md
+index 84e8367..db267b1 100644
+--- a/docs/blog/autoria.md
++++ b/docs/blog/autoria.md
+@@ -1,6 +1,6 @@
+ # Registro de autoría editorial
+ 
+-Estado: **completo para el alcance de B3**.
++Estado: **pendiente de respuesta del usuario**.
+ 
+ Este archivo es la fuente de verdad de la atribución. `scripts/verification/blog.mjs`
+ lo lee y falla si el JSON-LD generado no coincide con lo declarado aquí, en **nombre

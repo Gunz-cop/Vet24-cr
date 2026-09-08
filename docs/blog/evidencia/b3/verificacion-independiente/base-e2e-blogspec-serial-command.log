@@ -1,0 +1,5 @@
+comando: npx playwright test tests/e2e/blog.spec.ts --workers=1 --reporter=list
+cwd: /home/user/base
+sha: 6ec4497ec926aece6da9fc8070adc8a3136c20e7
+fecha_utc: 2026-09-08T15:25:29Z
+exit_code: 1

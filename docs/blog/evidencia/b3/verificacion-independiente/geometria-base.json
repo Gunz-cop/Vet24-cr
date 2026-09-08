@@ -1,0 +1,230 @@
+{
+  "label": "base-6ec4497",
+  "base": "http://127.0.0.1:4322",
+  "results": [
+    {
+      "vp": "390x844",
+      "path": "/politica-editorial/",
+      "status": 404
+    },
+    {
+      "vp": "390x844",
+      "path": "/blog/",
+      "status": 200,
+      "items": {
+        "footer a[href=\"/#directorio\"]": {
+          "x": 16,
+          "y": 878.25,
+          "width": 59.91,
+          "height": 20
+        },
+        "footer a[href=\"/acerca/\"]": {
+          "x": 99.91,
+          "y": 878.25,
+          "width": 63.05,
+          "height": 20
+        },
+        "footer a[href=\"/terminos/\"]": {
+          "x": 186.95,
+          "y": 878.25,
+          "width": 58.36,
+          "height": 20
+        },
+        "footer a[href=\"/privacidad/\"]": {
+          "x": 269.31,
+          "y": 878.25,
+          "width": 65.38,
+          "height": 20
+        },
+        "footer a[href=\"/cookies/\"]": {
+          "x": 16,
+          "y": 910.25,
+          "width": 50.59,
+          "height": 20
+        },
+        "header #nav-directory": "hidden",
+        "a[href=\"#contenido\"]": {
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1
+        }
+      },
+      "footerOrder": [
+        "/#directorio",
+        "/acerca/",
+        "/terminos/",
+        "/privacidad/",
+        "/cookies/"
+      ]
+    },
+    {
+      "vp": "390x844",
+      "path": "/clinica/hems-una-heredia/",
+      "status": 200,
+      "items": {
+        "footer a[href=\"/#directorio\"]": {
+          "x": 16,
+          "y": 4388.03,
+          "width": 59.91,
+          "height": 20
+        },
+        "footer a[href=\"/acerca/\"]": {
+          "x": 99.91,
+          "y": 4388.03,
+          "width": 63.05,
+          "height": 20
+        },
+        "footer a[href=\"/terminos/\"]": {
+          "x": 186.95,
+          "y": 4388.03,
+          "width": 58.36,
+          "height": 20
+        },
+        "footer a[href=\"/privacidad/\"]": {
+          "x": 269.31,
+          "y": 4388.03,
+          "width": 65.38,
+          "height": 20
+        },
+        "footer a[href=\"/cookies/\"]": {
+          "x": 16,
+          "y": 4420.03,
+          "width": 50.59,
+          "height": 20
+        },
+        "header #nav-directory": "hidden",
+        "a[href=\"#contenido\"]": {
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1
+        }
+      },
+      "footerOrder": [
+        "/#directorio",
+        "/acerca/",
+        "/terminos/",
+        "/privacidad/",
+        "/cookies/"
+      ]
+    },
+    {
+      "vp": "1440x900",
+      "path": "/politica-editorial/",
+      "status": 404
+    },
+    {
+      "vp": "1440x900",
+      "path": "/blog/",
+      "status": 200,
+      "items": {
+        "footer a[href=\"/#directorio\"]": {
+          "x": 934.72,
+          "y": 690.75,
+          "width": 59.91,
+          "height": 20
+        },
+        "footer a[href=\"/acerca/\"]": {
+          "x": 1018.63,
+          "y": 690.75,
+          "width": 63.05,
+          "height": 20
+        },
+        "footer a[href=\"/terminos/\"]": {
+          "x": 1105.67,
+          "y": 690.75,
+          "width": 58.36,
+          "height": 20
+        },
+        "footer a[href=\"/privacidad/\"]": {
+          "x": 1188.03,
+          "y": 690.75,
+          "width": 65.38,
+          "height": 20
+        },
+        "footer a[href=\"/cookies/\"]": {
+          "x": 1277.41,
+          "y": 690.75,
+          "width": 50.59,
+          "height": 20
+        },
+        "header #nav-directory": {
+          "x": 1048.5,
+          "y": 18,
+          "width": 82.13,
+          "height": 28
+        },
+        "a[href=\"#contenido\"]": {
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1
+        }
+      },
+      "footerOrder": [
+        "/#directorio",
+        "/acerca/",
+        "/terminos/",
+        "/privacidad/",
+        "/cookies/"
+      ]
+    },
+    {
+      "vp": "1440x900",
+      "path": "/clinica/hems-una-heredia/",
+      "status": 200,
+      "items": {
+        "footer a[href=\"/#directorio\"]": {
+          "x": 934.72,
+          "y": 2471.78,
+          "width": 59.91,
+          "height": 20
+        },
+        "footer a[href=\"/acerca/\"]": {
+          "x": 1018.63,
+          "y": 2471.78,
+          "width": 63.05,
+          "height": 20
+        },
+        "footer a[href=\"/terminos/\"]": {
+          "x": 1105.67,
+          "y": 2471.78,
+          "width": 58.36,
+          "height": 20
+        },
+        "footer a[href=\"/privacidad/\"]": {
+          "x": 1188.03,
+          "y": 2471.78,
+          "width": 65.38,
+          "height": 20
+        },
+        "footer a[href=\"/cookies/\"]": {
+          "x": 1277.41,
+          "y": 2471.78,
+          "width": 50.59,
+          "height": 20
+        },
+        "header #nav-directory": {
+          "x": 1048.5,
+          "y": 18,
+          "width": 82.13,
+          "height": 28
+        },
+        "a[href=\"#contenido\"]": {
+          "x": -1,
+          "y": -1,
+          "width": 1,
+          "height": 1
+        }
+      },
+      "footerOrder": [
+        "/#directorio",
+        "/acerca/",
+        "/terminos/",
+        "/privacidad/",
+        "/cookies/"
+      ]
+    }
+  ]
+}

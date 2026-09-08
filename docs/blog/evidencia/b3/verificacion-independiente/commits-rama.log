@@ -1,0 +1,5 @@
+48e51ba4623aeaccd59baeaa5863d5bbd60c0778 2026-09-08 01:01:04 +0000 fix(blog): declare the collective byline as Organization, not Person
+bdf6312d6a8a5bae46ddcd6aae9f4abf6edbe51c 2026-09-07 15:58:28 -0600 docs(blog): archive mobile footer link correction
+c24493280627381913f0bc71b168e33b3b20e416 2026-09-07 15:57:32 -0600 fix(blog): expose conditional blog link in footer
+15d0c0d2ab8954f1516007b005ffa53c70167c07 2026-09-07 15:45:35 -0600 docs(blog): archive B3 verification and pending attribution
+d91333d6d4f42ff8503004e2e2548b4d20df4c68 2026-09-07 15:40:47 -0600 feat(blog): add editorial policy and conditional navigation

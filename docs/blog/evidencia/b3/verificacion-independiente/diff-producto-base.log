@@ -1,0 +1,259 @@
+diff --git a/scripts/verification/blog.mjs b/scripts/verification/blog.mjs
+index 55431de..8c6b0c0 100644
+--- a/scripts/verification/blog.mjs
++++ b/scripts/verification/blog.mjs
+@@ -8,6 +8,8 @@ const root = resolve(import.meta.dirname, '../..');
+ const client = join(root, 'dist/client');
+ const pilotPath = 'blog/guias-por-especie/urgencias-en-perros/index.html';
+ const pilotUrl = 'https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/';
++const policyPath = 'politica-editorial/index.html';
++const policyUrl = 'https://vet24cr.com/politica-editorial/';
+ const errors = [];
+ 
+ function walk(directory) {
+@@ -31,6 +33,11 @@ for (const path of ['blog/index.html', 'blog/guias-por-especie/index.html', 'blo
+   if (file && !readFileSync(file, 'utf8').includes(`rel="canonical" href="${expectedCanonical}"`)) errors.push(`canonical incorrecto en ${path}`);
+ }
+ 
++const policyFile = files.find((file) => relative(client, file).replaceAll('\\', '/') === policyPath);
++if (!policyFile) errors.push(`falta artefacto ${policyPath}`);
++else if (!readFileSync(policyFile, 'utf8').includes(`rel="canonical" href="${policyUrl}"`)) errors.push('canonical incorrecto en política editorial');
++if (!html.includes('href="/politica-editorial/"')) errors.push('footer sin enlace a política editorial');
++
+ const fixturePublished = /^estado: ["']?publicado/m.test(readFileSync(join(root, 'src/content/blog/urgencias-en-perros.md'), 'utf8'));
+ if (!fixturePublished && files.some((file) => relative(client, file).replaceAll('\\', '/') === pilotPath)) errors.push('el borrador generó HTML de artículo');
+ if (!fixturePublished && html.includes(pilotUrl)) errors.push('el borrador aparece como enlace o URL en HTML');
+@@ -49,7 +56,7 @@ console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePu
+ 
+ const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
+ const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
+- const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title')}};
++ const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor')}};
+ });
+ const clinics=walk(join(root,'src/content/clinicas')).filter(f=>f.endsWith('.md')).map(f=>({id:relative(join(root,'src/content/clinicas'),f).replace(/\.md$/,''),data:{slug:field(readFileSync(f,'utf8'),'slug'),nombre:field(readFileSync(f,'utf8'),'nombre'),provincia:field(readFileSync(f,'utf8'),'provincia')}}));
+ const canonicalZones=[...readFileSync(join(root,'src/lib/zones.ts'),'utf8').split('] as const')[0].matchAll(/slug: "([^"]+)"/g)].map(m=>m[1]);
+@@ -86,6 +93,9 @@ if (homeRoute) {
+       + ' Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: ' + error.message);
+   }
+ } else errors.push('SSR / ausente del manifest generado en dist/server');
++const navigationHasBlog = html.includes('id="nav-blog"') || (homeHtml && homeHtml.includes('id="nav-blog"'));
++if (fixturePublished && !navigationHasBlog) errors.push('hay un artículo publicado pero falta la entrada de navegación al blog');
++if (!fixturePublished && navigationHasBlog) errors.push('la navegación al blog aparece sin artículos publicados');
+ function inspectLinks(content,source){
+  for(const match of content.matchAll(anchorPattern)) {
+   const href=attr(match[1],'href');if(!href)continue;
+@@ -130,12 +140,32 @@ for(const article of articles){
+   continue;
+  }
+  if(!generatedPaths.has(source)){errors.push('Artículo publicado ausente: '+source);continue;}
+- const outgoing=hrefs(blocks(readPage(source)));
++ const articleHtml = readPage(source);
++ const authorMatch = articleHtml.match(/data-blog-author[^>]*>([^<]+)</);
++ const articleJsonLd = [...articleHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
++  .map((match) => { try { return JSON.parse(match[1]); } catch { return null; } })
++  .find((value) => value?.['@type'] === 'Article');
++ if (!authorMatch || authorMatch[1].trim() !== article.data.autor) errors.push('autor visible no coincide con frontmatter: ' + source);
++ if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
++ // El registro de autoría manda: se verifica el nombre y también el TIPO de entidad.
++ // Un nodo Person con nombre de equipo afirmaría una persona inexistente.
++ const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
++ if (/Estado:\s*\*\*pendiente/i.test(authorship)) errors.push('artículo publicado sin registro verificable de autoría: ' + source);
++ const registryField = name => authorship.match(new RegExp('^- ' + name + ':\\s*(.+)$', 'm'))?.[1].trim();
++ const declaredName = registryField('firma-publica');
++ const declaredType = registryField('tipo-entidad');
++ if (!declaredName || !declaredType) errors.push('docs/blog/autoria.md no declara firma-publica y tipo-entidad');
++ else {
++  if (article.data.autor !== declaredName) errors.push('firma no aprobada en el registro: ' + source + '; declarada: ' + declaredName + '; usada: ' + article.data.autor);
++  if (articleJsonLd?.author?.['@type'] !== declaredType) errors.push('tipo de autor JSON-LD no coincide con el registro: ' + source + '; declarado: ' + declaredType + '; emitido: ' + articleJsonLd?.author?.['@type']);
++ }
++ if (article.data.revisadoPor && !/credencial verificable/i.test(authorship)) errors.push('revisadoPor sin respaldo en el registro: ' + source);
++ const outgoing=hrefs(blocks(articleHtml));
+  for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{
+   assertTypedLink(target,inventory);
+   if(target.family==='provincia'&&!provinces.includes(target.identity))throw new Error('Provincia inválida');
+   if(!outgoing.includes(target.href))throw new Error('Arista ausente: '+source+' → '+target.href);
+-  const anchor = [...blocks(readPage(source)).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
++  const anchor = [...blocks(articleHtml).matchAll(anchorPattern)].find(m => attr(m[1], 'href') === target.href);
+   const label = anchor?.[2].replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'").trim();
+   if (label !== target.label) throw new Error('Ancla incorrecta: ' + target.href + '; esperado: ' + target.label + '; recibido: ' + label);
+   assertInverse(source,target,hrefs(blocks(readPage(target.href))));
+diff --git a/src/components/BlogAuthor.astro b/src/components/BlogAuthor.astro
+new file mode 100644
+index 0000000..42575ff
+--- /dev/null
++++ b/src/components/BlogAuthor.astro
+@@ -0,0 +1,9 @@
++---
++interface Props {
++  name: string;
++}
++
++const { name } = Astro.props;
++---
++
++<span data-blog-author>{name}</span>
+diff --git a/src/layouts/BaseLayout.astro b/src/layouts/BaseLayout.astro
+index c76494d..bc01902 100644
+--- a/src/layouts/BaseLayout.astro
++++ b/src/layouts/BaseLayout.astro
+@@ -1,6 +1,7 @@
+ ---
+ import '../styles/global.css';
+ import { canonicalUrl as buildCanonicalUrl } from '../lib/seo';
++import { getPublishedBlogEntries } from '../lib/blog';
+ // AdSense (ca-pub-5094917394495886) ya no se carga aquí: con Ezoic activo entra
+ // como fuente de demanda desde el panel de Ezoic, vía header bidding.
+ import { EZOIC_ENABLED } from '../config/ads';
+@@ -23,6 +24,7 @@ const siteName = "Vet24 Costa Rica";
+ const fullTitle = `${title} | ${siteName}`;
+ const metaDesc = description || "Directorio de clínicas veterinarias en Costa Rica con servicio de emergencias 24/7 y horarios nocturnos.";
+ const canonical = canonicalUrl || buildCanonicalUrl(Astro.url.pathname);
++const hasPublishedBlog = (await getPublishedBlogEntries()).length > 0;
+ 
+ // Resolve absolute URL for the Open Graph image
+ const shareImage = image || "/images/og-share-default.png";
+@@ -132,6 +134,11 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
+           <a href="/#directorio" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-directory">
+             Directorio
+           </a>
++          {hasPublishedBlog && (
++            <a href="/blog/" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-blog">
++              Blog
++            </a>
++          )}
+ 
+           <!-- Theme Switcher Button -->
+           <button
+@@ -188,6 +195,8 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
+             <a href="/terminos/" class="hover:text-brand-text transition-colors">Términos</a>
+             <a href="/privacidad/" class="hover:text-brand-text transition-colors">Privacidad</a>
+             <a href="/cookies/" class="hover:text-brand-text transition-colors">Cookies</a>
++            <a href="/politica-editorial/" class="hover:text-brand-text transition-colors">Política editorial</a>
++            {hasPublishedBlog && <a href="/blog/" class="hover:text-brand-text transition-colors">Blog</a>}
+ {mostrarAnuncios && (
+               <>
+                 {/* Sólo se revela si el CMP dice que el RGPD aplica a este visitante.
+diff --git a/src/layouts/BlogLayout.astro b/src/layouts/BlogLayout.astro
+index 6d06202..8ecc02b 100644
+--- a/src/layouts/BlogLayout.astro
++++ b/src/layouts/BlogLayout.astro
+@@ -1,6 +1,7 @@
+ ---
+ import BaseLayout from './BaseLayout.astro';
+ import AdBanner from '../components/AdBanner.astro';
++import BlogAuthor from '../components/BlogAuthor.astro';
+ import BlogBreadcrumbs from '../components/BlogBreadcrumbs.astro';
+ import { blogArticlePath, blogPillarPath, PILAR_NAMES, type BlogEntry } from '../lib/blog';
+ 
+@@ -20,7 +21,9 @@ const breadcrumbs = {
+ const article = {
+   '@context': 'https://schema.org', '@type': 'Article', headline: title,
+   description: metaDescription, url: canonical, mainEntityOfPage: canonical,
+-  author: { '@type': 'Person', name: autor }, datePublished,
++  // Firma colectiva: docs/blog/autoria.md declara Organization. Un nodo Person con
++  // nombre de equipo afirmaria una persona inexistente. blog.mjs verifica ambos.
++  author: { '@type': 'Organization', name: autor }, datePublished,
+   ...(dateModified ? { dateModified } : {}),
+ };
+ ---
+@@ -33,7 +36,7 @@ const article = {
+       <article class="min-w-0 rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
+         <p class="text-sm font-bold text-brand-primary mb-3">{PILAR_NAMES[pilar]}</p>
+         <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight break-words">{title}</h1>
+-        <p class="mt-4 text-sm text-brand-text-muted">Por <span data-blog-author>{autor}</span> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
++        <p class="mt-4 text-sm text-brand-text-muted">Por <BlogAuthor name={autor} /> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
+         {dateModified && <p class="mt-1 text-xs text-brand-text-muted">Actualizado: <time datetime={dateModified} data-date-modified>{dateModified}</time></p>}
+         <AdBanner slot="blog-inline" size="320x100" />
+         <div class="blog-prose mt-8 leading-8 text-brand-text-muted"><slot /></div>
+diff --git a/src/pages/politica-editorial.astro b/src/pages/politica-editorial.astro
+new file mode 100644
+index 0000000..94a77a6
+--- /dev/null
++++ b/src/pages/politica-editorial.astro
+@@ -0,0 +1,35 @@
++---
++import BaseLayout from '../layouts/BaseLayout.astro';
++---
++
++<BaseLayout
++  title="Política editorial"
++  description="Cómo se preparan, auditan y aprueban los contenidos editoriales de Vet24 Costa Rica."
++  canonicalUrl="https://vet24cr.com/politica-editorial/"
++>
++  <article class="max-w-3xl mx-auto rounded-3xl border border-brand-card-border bg-brand-card-bg/60 p-6 sm:p-10">
++    <p class="text-sm font-bold text-brand-primary mb-3">Transparencia editorial</p>
++    <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Política editorial</h1>
++
++    <div class="blog-prose mt-8 leading-8 text-brand-text-muted">
++      <p>Vet24 Costa Rica es un directorio informativo para ayudar a ubicar atención veterinaria en Costa Rica. Los horarios, servicios y disponibilidad pueden cambiar; confirmá la información con la clínica antes de trasladarte. El contenido editorial no sustituye una consulta profesional.</p>
++
++      <h2>Cómo trabajamos</h2>
++      <p>El proceso previsto para cada guía es: brief con el alcance y las fuentes; redacción asistida por herramientas de inteligencia artificial; auditoría editorial por una sesión independiente; y aprobación humana antes de publicar. La asistencia de IA no constituye experiencia profesional ni reemplaza la verificación de los datos.</p>
++
++      <h2>Qué se ha hecho en esta etapa</h2>
++      <p>En esta etapa se implementaron la ruta de esta política, el registro de atribución, la presentación de autoría en las plantillas y los controles para mantener los borradores fuera de las rutas públicas. El piloto continúa en borrador mientras se completa la investigación, la auditoría independiente, la atribución verificable y la aprobación humana. No se presenta ese trabajo como una revisión veterinaria.</p>
++
++      <h2>Revisión y límites</h2>
++      <p>Una auditoría editorial de IA comprueba estructura, enlaces, coherencia documental y cumplimiento de los criterios del proyecto; no es una revisión veterinaria profesional. Solo se mostraría una persona como revisora veterinaria si existieran una credencial verificable y constancia de revisión del texto concreto. No afirmamos la existencia de un comité que no participa en este proceso.</p>
++
++      <h2>Correcciones y actualización</h2>
++      <p>Si detectás un dato incorrecto o desactualizado, podés informarlo por los canales de contacto del sitio. Registramos los cambios editoriales relevantes y no rellenamos con suposiciones los campos que no estén confirmados.</p>
++    </div>
++  </article>
++</BaseLayout>
++
++<style>
++  .blog-prose :global(h2) { margin: 2rem 0 .75rem; color: var(--brand-text); font-size: 1.5rem; font-weight: 700; }
++  .blog-prose :global(p) { margin: 1rem 0; }
++</style>
+diff --git a/tests/e2e/blog.spec.ts b/tests/e2e/blog.spec.ts
+index be6d9ae..11c427b 100644
+--- a/tests/e2e/blog.spec.ts
++++ b/tests/e2e/blog.spec.ts
+@@ -32,6 +32,46 @@ test.describe('blog B1', () => {
+   });
+ });
+ 
++test('B3: política editorial publicada y enlazada desde el footer', async ({ page }) => {
++  await page.goto('/politica-editorial/');
++  await expect(page.locator('h1')).toHaveText('Política editorial');
++  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://vet24cr.com/politica-editorial/');
++  await expect(page.locator('footer a[href="/politica-editorial/"]')).toHaveCount(1);
++  await expect(page.locator('body')).toContainText('redacción asistida por herramientas de inteligencia artificial');
++  await expect(page.locator('body')).toContainText('no es una revisión veterinaria profesional');
++  await expect(page.locator('body')).not.toContainText('comité de revisión');
++});
++
++if (process.env.B3_PUBLISHED_FIXTURE !== '1') {
++  test('B3: ninguna navegación muestra Blog sin artículos publicados', async ({ page }) => {
++    for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
++      await page.setViewportSize(viewport);
++      for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/', '/politica-editorial/']) {
++        await page.goto(path);
++        await expect(page.locator('#nav-blog')).toHaveCount(0);
++        await expect(page.locator('footer a[href="/blog/"]')).toHaveCount(0);
++      }
++    }
++  });
++} else {
++  test('B3 fixture publicada: header y footer enlazan /blog/ también a 390px', async ({ page }) => {
++    for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
++      await page.setViewportSize(viewport);
++      for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/politica-editorial/']) {
++        await page.goto(path);
++        const headerLink = page.locator('#nav-blog');
++        const footerLink = page.locator('footer a[href="/blog/"]');
++        await expect(headerLink).toHaveCount(1);
++        await expect(headerLink).toHaveAttribute('href', '/blog/');
++        await expect(footerLink).toHaveCount(1);
++        await expect(footerLink).toHaveAttribute('href', '/blog/');
++        await footerLink.focus();
++        await expect(footerLink).toBeFocused();
++      }
++    }
++  });
++}
++
+ test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
+   for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+     await page.goto(path);

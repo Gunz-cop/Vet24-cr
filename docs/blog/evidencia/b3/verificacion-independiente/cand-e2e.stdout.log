@@ -1,0 +1,773 @@
+
+Running 109 tests using 2 workers
+
+  ✓    1 [chromium] › tests/e2e/agent-discovery.spec.ts:27:3 › AR2 — descubrimiento y catálogo público › el catálogo y el API Catalog describen recursos reales (84ms)
+  ✓    3 [chromium] › tests/e2e/agent-discovery.spec.ts:42:3 › AR2 — descubrimiento y catálogo público › OpenAPI solo expone el GET público del catálogo (63ms)
+  ✓    2 [chromium] › tests/e2e/agent-discovery.spec.ts:13:3 › AR2 — descubrimiento y catálogo público › GET y HEAD entregan los seis recursos técnicos sin barra final (378ms)
+  ✓    5 [chromium] › tests/e2e/agent-discovery.spec.ts:70:3 › AR2 — descubrimiento y catálogo público › el alias de sitemap redirige al índice generado (69ms)
+  ✓    4 [chromium] › tests/e2e/agent-discovery.spec.ts:52:3 › AR2 — descubrimiento y catálogo público › portada y ficha exponen las cuatro relaciones Link (241ms)
+  ✓    7 [chromium] › tests/e2e/agent-markdown.spec.ts:46:3 › AR3 — mirrors Markdown y negociación › HEAD mantiene selección, cabeceras y cuerpo vacío (261ms)
+  ✓    8 [chromium] › tests/e2e/agent-markdown.spec.ts:62:3 › AR3 — mirrors Markdown y negociación › preserva normalización canónica y Link de descubrimiento (90ms)
+  ✓    6 [chromium] › tests/e2e/agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché (5.6s)
+  ✓    9 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390 (14.3s)
+  ✓   10 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390 (14.4s)
+  ✓   11 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390 (14.1s)
+  ✓   12 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390 (13.9s)
+  ✓   13 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390 (13.9s)
+  ✓   14 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440 (14.6s)
+  ✓   15 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440 (14.3s)
+  ✓   16 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440 (14.6s)
+  ✓   17 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440 (14.1s)
+  ✓   18 [chromium] › tests/e2e/blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440 (14.1s)
+  ✓   19 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/ existe y tiene canonical con barra final (26.9s)
+  ✓   20 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/guias-por-especie/ existe y tiene canonical con barra final (25.9s)
+  ✓   21 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/costos-y-acceso/ existe y tiene canonical con barra final (25.7s)
+  ✓   22 [chromium] › tests/e2e/blog.spec.ts:15:3 › blog B1 › el piloto borrador da 404 y no está enlazado (25.9s)
+  ✓   24 [chromium] › tests/e2e/blog.spec.ts:35:1 › B3: política editorial publicada y enlazada desde el footer (25.5s)
+  ✘   23 [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports (35.0s)
+  ✘   25 [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados (30.0s)
+  ✘   26 [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador (35.0s)
+  ✓   27 [chromium] › tests/e2e/semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/hems-una-heredia/ (13.1s)
+  ✓   28 [chromium] › tests/e2e/semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/atlantic-vet-guapiles/ (13.1s)
+  ✓   29 [chromium] › tests/e2e/semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/agromedica-escazu/ (13.1s)
+  ✓   30 [chromium] › tests/e2e/semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/aruma-centro-veterinario-upala/ (13.3s)
+  ✓   31 [chromium] › tests/e2e/semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/la-vete-escazu/ (13.1s)
+  ✓   32 [chromium] › tests/e2e/semantic-copy.spec.ts:38:3 › Hotfix semántico: false se presenta como "no confirmado" › overnight_doctor_present=false no produce "Solo llamado" (13.1s)
+  ✓   33 [chromium] › tests/e2e/semantic-copy.spec.ts:43:3 › Hotfix semántico: false se presenta como "no confirmado" › has_hospitalization=false no produce "No disponible" (13.4s)
+  ✓   34 [chromium] › tests/e2e/semantic-copy.spec.ts:48:3 › Hotfix semántico: false se presenta como "no confirmado" › emergencias24h=false usa el mismo copy neutral en toda la ficha (13.1s)
+  ✓   35 [chromium] › tests/e2e/semantic-copy.spec.ts:57:3 › Hotfix semántico: false se presenta como "no confirmado" › hotelMascotas=false se mantiene neutral (13.1s)
+  ✓   36 [chromium] › tests/e2e/semantic-copy.spec.ts:64:3 › Hotfix semántico: false se presenta como "no confirmado" › los estados positivos confirmados siguen mostrándose (13.0s)
+  ✓   37 [chromium] › tests/e2e/semantic-copy.spec.ts:74:3 › Hotfix semántico: badges de verificación › record_status VERIFIED sin evidencia no afirma auditoría por llamada (13.0s)
+  ✓   38 [chromium] › tests/e2e/semantic-copy.spec.ts:81:3 › Hotfix semántico: badges de verificación › una fuente vacía no se rellena con "Llamada directa" (13.0s)
+  ✓   39 [chromium] › tests/e2e/semantic-copy.spec.ts:86:3 › Hotfix semántico: badges de verificación › con fecha y fuente reales se muestran tal cual (13.0s)
+  ✓   40 [chromium] › tests/e2e/semantic-copy.spec.ts:92:3 › Hotfix semántico: badges de verificación › REVIEW_REQUIRED conserva la advertencia (13.0s)
+  ✓   42 [chromium] › tests/e2e/semantic-copy.spec.ts:108:3 › Hotfix semántico: otras vistas › la página de zona no etiqueta las fichas como "Verificadas" (13.1s)
+  ✓   41 [chromium] › tests/e2e/semantic-copy.spec.ts:99:3 › Hotfix semántico: el Tier no cambia › las etiquetas de Tier se mantienen (25.9s)
+  ✓   43 [chromium] › tests/e2e/semantic-copy.spec.ts:114:3 › Hotfix semántico: otras vistas › las cards del directorio no afirman ausencia de servicios (13.7s)
+  ✓   44 [chromium] › tests/e2e/smoke.spec.ts:4:3 › Vet24 CR - Smoke Test Suite › should load the homepage and display the main sections and elements (13.5s)
+  ✓   46 [chromium] › tests/e2e/tier1-features.spec.ts:53:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 2. should sort clinics by proximity with user location set to San José coordinates (15.5s)
+  ✓   47 [chromium] › tests/e2e/tier1-features.spec.ts:87:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 3. should calculate distances in kilometers and display them on distance badges (13.4s)
+  ✘   45 [chromium] › tests/e2e/tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button (30.3s)
+  ✓   48 [chromium] › tests/e2e/tier1-features.spec.ts:102:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 4. should format distance badge text as A X.X km (13.3s)
+  ✓   50 [chromium] › tests/e2e/tier1-features.spec.ts:140:5 › Tier 1: Feature Coverage › Interactive Map › 6. should render the Leaflet map container on the main page (13.2s)
+  ✘   49 [chromium] › tests/e2e/tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change (26.2s)
+  ✘   51 [chromium] › tests/e2e/tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating (28.2s)
+  ✘   52 [chromium] › tests/e2e/tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map (27.9s)
+  ✘   53 [chromium] › tests/e2e/tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map (28.0s)
+  ✘   54 [chromium] › tests/e2e/tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup (28.1s)
+  ✓   55 [chromium] › tests/e2e/tier1-features.spec.ts:196:5 › Tier 1: Feature Coverage › Predictive Text Search › 11. should filter clinics grid by name (13.2s)
+  ✓   56 [chromium] › tests/e2e/tier1-features.spec.ts:209:5 › Tier 1: Feature Coverage › Predictive Text Search › 12. should filter clinics grid by canton (13.3s)
+  ✓   57 [chromium] › tests/e2e/tier1-features.spec.ts:223:5 › Tier 1: Feature Coverage › Predictive Text Search › 13. should filter clinics grid by zone (12.9s)
+  ✓   58 [chromium] › tests/e2e/tier1-features.spec.ts:236:5 › Tier 1: Feature Coverage › Predictive Text Search › 14. should filter clinics grid by service/tag (e.g. exóticos) (13.4s)
+  ✓   59 [chromium] › tests/e2e/tier1-features.spec.ts:249:5 › Tier 1: Feature Coverage › Predictive Text Search › 15. should clear search and restore all clinics when clicking reset/clear search button (13.7s)
+  ✓   60 [chromium] › tests/e2e/tier1-features.spec.ts:263:5 › Tier 1: Feature Coverage › Empty State Fallback › 16. should display empty state container when 0 matches found (13.1s)
+  ✓   61 [chromium] › tests/e2e/tier1-features.spec.ts:268:5 › Tier 1: Feature Coverage › Empty State Fallback › 17. should show visible empty state warning messages (13.3s)
+  ✓   62 [chromium] › tests/e2e/tier1-features.spec.ts:273:5 › Tier 1: Feature Coverage › Empty State Fallback › 18. should list closest verified clinics in empty state fallback list when geolocation is active (13.2s)
+  ✓   63 [chromium] › tests/e2e/tier1-features.spec.ts:285:5 › Tier 1: Feature Coverage › Empty State Fallback › 19. should display empty state when filter combinations result in 0 matches (13.4s)
+  -   65 [chromium] › tests/e2e/tier1-features.spec.ts:307:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 21. should show report incorrect data button on clinic detail page
+  -   66 [chromium] › tests/e2e/tier1-features.spec.ts:312:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 22. should open report incorrect data modal when clicking report button
+  -   67 [chromium] › tests/e2e/tier1-features.spec.ts:318:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 23. should show validation error when submitting empty description in form
+  -   68 [chromium] › tests/e2e/tier1-features.spec.ts:329:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 24. should show success message after mock submitting report form with POST request intercepted
+  -   69 [chromium] › tests/e2e/tier1-features.spec.ts:354:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 25. should hide report modal when clicking close button
+  ✓   64 [chromium] › tests/e2e/tier1-features.spec.ts:293:5 › Tier 1: Feature Coverage › Empty State Fallback › 20. should restore clinics list when clearing search inputs or resetting filters (14.9s)
+  ✓   70 [chromium] › tests/e2e/tier1-features.spec.ts:365:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61. should activate SOS flow on homepage when clicking SOS button (27.5s)
+  ✓   71 [chromium] › tests/e2e/tier1-features.spec.ts:382:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow (27.8s)
+  ✓   73 [chromium] › tests/e2e/tier2-boundaries.spec.ts:9:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 26. should handle geolocation permission denied gracefully without crashing (13.3s)
+  ✘   72 [chromium] › tests/e2e/tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page (35.0s)
+  ✓   74 [chromium] › tests/e2e/tier2-boundaries.spec.ts:26:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 27. should handle geolocation timeout gracefully (28.8s)
+  ✘   75 [chromium] › tests/e2e/tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo) (30.4s)
+  ✘   76 [chromium] › tests/e2e/tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic (30.3s)
+  ✘   77 [chromium] › tests/e2e/tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption (18.5s)
+  ✘   78 [chromium] › tests/e2e/tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully (18.1s)
+  ✓   79 [chromium] › tests/e2e/tier2-boundaries.spec.ts:120:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 32. should handle clinics with missing or zero coordinates by displaying sin coordenadas and excluding from map (13.4s)
+  ✓   80 [chromium] › tests/e2e/tier2-boundaries.spec.ts:136:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 33. should handle Leaflet load failure gracefully (26.0s)
+  ✘   81 [chromium] › tests/e2e/tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number (30.4s)
+  ✓   82 [chromium] › tests/e2e/tier2-boundaries.spec.ts:188:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 35. should toggle map visibility when clicking toggle map button (13.5s)
+  ✓   83 [chromium] › tests/e2e/tier2-boundaries.spec.ts:198:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 36. should normalize accents and handle special characters in search input (13.1s)
+  ✓   84 [chromium] › tests/e2e/tier2-boundaries.spec.ts:209:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 37. should handle extremely long search queries without crashing (13.1s)
+  ✓   85 [chromium] › tests/e2e/tier2-boundaries.spec.ts:214:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 38. should trim leading and trailing whitespaces from search input (14.6s)
+  ✓   86 [chromium] › tests/e2e/tier2-boundaries.spec.ts:220:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 39. should perform case-insensitive search matching (13.3s)
+  ✓   87 [chromium] › tests/e2e/tier2-boundaries.spec.ts:226:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 40. should escape HTML and script tags in search input safely (prevent XSS) (13.2s)
+  ✓   88 [chromium] › tests/e2e/tier2-boundaries.spec.ts:237:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 41. should restore all clinics when clicking reset all filters button in empty state (14.7s)
+  ✓   89 [chromium] › tests/e2e/tier2-boundaries.spec.ts:246:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 42. should display empty state when all clinics are closed under open now filter (14.3s)
+  ✓   90 [chromium] › tests/e2e/tier2-boundaries.spec.ts:258:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 43. should hide low-confidence and review-required clinics when status filters are active (13.3s)
+  ✓   91 [chromium] › tests/e2e/tier2-boundaries.spec.ts:273:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 44. should hide empty state immediately when search query is cleared (13.3s)
+  -   93 [chromium] › tests/e2e/tier2-boundaries.spec.ts:288:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 46. should show validation errors when submitting empty report form
+  -   94 [chromium] › tests/e2e/tier2-boundaries.spec.ts:296:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 47. should show validation error when contact phone has invalid format
+  -   95 [chromium] › tests/e2e/tier2-boundaries.spec.ts:306:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 48. should submit successfully when description has extremely long text
+  -   96 [chromium] › tests/e2e/tier2-boundaries.spec.ts:317:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 49. should preserve or reset form fields when modal is closed and reopened
+  -   97 [chromium] › tests/e2e/tier2-boundaries.spec.ts:327:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 50. should disable submit button during submission to prevent duplicate reports
+  ✘   98 [chromium] › tests/e2e/tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order (13.5s)
+  ✘   92 [chromium] › tests/e2e/tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements (30.1s)
+  ✘   99 [chromium] › tests/e2e/tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input (18.1s)
+  ✓  100 [chromium] › tests/e2e/tier3-combinations.spec.ts:59:3 › Tier 3: Cross-Feature Combinations › 53. should support combining open now status, 24/7 filter, species filter, and text search concurrently (16.0s)
+  ✓  101 [chromium] › tests/e2e/tier3-combinations.spec.ts:80:3 › Tier 3: Cross-Feature Combinations › 54. should show closest closed clinics in fallback grid when geolocation is active and search yields zero open clinics (13.5s)
+  ✘  102 [chromium] › tests/e2e/tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active (18.1s)
+  ✘  103 [chromium] › tests/e2e/tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied (18.1s)
+  ✘  105 [chromium] › tests/e2e/tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency (18.3s)
+  ✘  104 [chromium] › tests/e2e/tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics (30.1s)
+  -  107 [chromium] › tests/e2e/tier4-workloads.spec.ts:60:8 › Tier 4: Real-World Application Scenarios › 58. should execute scenario: user reporting incorrect schedule data on details page
+  ✘  106 [chromium] › tests/e2e/tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José (24.8s)
+  ✘  108 [chromium] › tests/e2e/tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation (24.4s)
+  ✘  109 [chromium] › tests/e2e/tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets (23.6s)
+
+
+  1) [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/blog/", waiting until "load"[22m
+
+
+      23 |     for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      24 |       await page.setViewportSize(viewport);
+    > 25 |       await page.goto('/blog/');
+         |                  ^
+      26 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      27 |       await page.keyboard.press('Tab');
+      28 |       const focused = page.locator(':focus');
+        at /home/user/cand/tests/e2e/blog.spec.ts:25:18
+
+    Error Context: test-results/blog-blog-B1-sin-scroll-ho-76fa3--visible-en-ambos-viewports-chromium/error-context.md
+
+  2) [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/blog/", waiting until "load"[22m
+
+
+      48 |       await page.setViewportSize(viewport);
+      49 |       for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/', '/politica-editorial/']) {
+    > 50 |         await page.goto(path);
+         |                    ^
+      51 |         await expect(page.locator('#nav-blog')).toHaveCount(0);
+      52 |         await expect(page.locator('footer a[href="/blog/"]')).toHaveCount(0);
+      53 |       }
+        at /home/user/cand/tests/e2e/blog.spec.ts:50:20
+
+    Error Context: test-results/blog-B3-ninguna-navegación-c5670-og-sin-artículos-publicados-chromium/error-context.md
+
+  3) [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/clinica/hospital-vet-medical-care-heredia/", waiting until "load"[22m
+
+
+      75 | test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
+      76 |   for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+    > 77 |     await page.goto(path);
+         |                ^
+      78 |     await expect(page.locator('[data-blog-links]')).toHaveCount(0);
+      79 |     await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
+      80 |   }
+        at /home/user/cand/tests/e2e/blog.spec.ts:77:16
+
+    Error Context: test-results/blog-B2-catálogo-inactivo--9cc5b-ntras-el-piloto-es-borrador-chromium/error-context.md
+
+  4) [chromium] › tests/e2e/tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#btn-use-location')[22m
+    [2m    - locator resolved to <button id="btn-use-location" class="filter-chip shrink-0 is-active" title="Ordenar por cercanía a tu ubicación">…</button>[22m
+    [2m  - attempting click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is not stable[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - element is outside of the viewport[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 20ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+    [2m    - element is visible, enabled and stable[22m
+    [2m    - scrolling into view if needed[22m
+    [2m    - done scrolling[22m
+    [2m    - element is outside of the viewport[22m
+    [2m  2 × retrying click action[22m
+    [2m      - waiting 100ms[22m
+    [2m      - waiting for element to be visible, enabled and stable[22m
+    [2m      - element is not stable[22m
+    [2m  - retrying click action[22m
+    [2m    - waiting 500ms[22m
+    [2m    - waiting for element to be visible, enabled and stable[22m
+
+
+      46 |
+      47 |       await page.goto('/');
+    > 48 |       await page.click('#btn-use-location');
+         |                  ^
+      49 |       
+      50 |       const called = await page.evaluate(() => (window as any).__geolocationCalled);
+      51 |       expect(called).toBe(true);
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:48:18
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-8bf83-ordenar-por-cercanía-button-chromium/error-context.md
+
+  5) [chromium] › tests/e2e/tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#geo-btn-text')
+    Expected pattern: [32m/Ordenado/[39m
+    Received string:  [31m"Cerca de mí"[39m
+    Timeout: 10000ms
+
+    Call log:
+    [2m  - Expect "toHaveText" with timeout 10000ms[22m
+    [2m  - waiting for locator('#geo-btn-text')[22m
+    [2m    24 × locator resolved to <span id="geo-btn-text">Cerca de mí</span>[22m
+    [2m       - unexpected value "Cerca de mí"[22m
+
+
+      125 |       } catch {
+      126 |         await page.click('#btn-use-location');
+    > 127 |         await expect(geoText).toHaveText(/Ordenado/, { timeout: 10000 });
+          |                               ^
+      128 |       }
+      129 |
+      130 |       // Wait for distances to be updated
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:127:31
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-21e50-hen-user-coordinates-change-chromium/error-context.md
+
+  6) [chromium] › tests/e2e/tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.user-location-pin')
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('.user-location-pin')[22m
+
+
+      149 |
+      150 |       const userPin = page.locator('.user-location-pin');
+    > 151 |       await expect(userPin).toBeVisible({ timeout: 15000 });
+          |                             ^
+      152 |     });
+      153 |
+      154 |     test('8. should display pins representing the clinics on the map', async ({ page }) => {
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:151:29
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-8e85d-n-the-map-after-geolocating-chromium/error-context.md
+
+  7) [chromium] › tests/e2e/tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 15000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    33 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      154 |     test('8. should display pins representing the clinics on the map', async ({ page }) => {
+      155 |       // Wait for Leaflet map loading overlay to disappear
+    > 156 |       await expect(page.locator('#mapa-loading')).toBeHidden({ timeout: 15000 });
+          |                                                   ^
+      157 |
+      158 |       // Count clinic pins/markers on the map
+      159 |       const markerCount = await page.locator('.leaflet-marker-icon').count();
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:156:51
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-084db-ting-the-clinics-on-the-map-chromium/error-context.md
+
+  8) [chromium] › tests/e2e/tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 15000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    33 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      162 |
+      163 |     test('9. should open popup when clicking a clinic pin on the map', async ({ page }) => {
+    > 164 |       await expect(page.locator('#mapa-loading')).toBeHidden({ timeout: 15000 });
+          |                                                   ^
+      165 |
+      166 |       // Click the first clinic pin
+      167 |       await page.locator('.leaflet-marker-icon').first().click({ force: true });
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:164:51
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-f7a4e-ing-a-clinic-pin-on-the-map-chromium/error-context.md
+
+  9) [chromium] › tests/e2e/tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 15000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    33 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      173 |
+      174 |     test('10. should display correct details and action buttons (CTAs) in map popup', async ({ page }) => {
+    > 175 |       await expect(page.locator('#mapa-loading')).toBeHidden({ timeout: 15000 });
+          |                                                   ^
+      176 |
+      177 |       // Click the first clinic pin
+      178 |       await page.locator('.leaflet-marker-icon').first().click({ force: true });
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:175:51
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-9dff5-n-buttons-CTAs-in-map-popup-chromium/error-context.md
+
+  10) [chromium] › tests/e2e/tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.waitForURL: Test timeout of 30000ms exceeded.
+
+      420 |
+      421 |       // Should redirect to homepage with ?sos=true
+    > 422 |       await page.waitForURL(url => url.searchParams.get('sos') === 'true', { timeout: 10000 });
+          |                  ^
+      423 |       const url = page.url();
+      424 |       expect(url).toContain('sos=true');
+      425 |     });
+        at /home/user/cand/tests/e2e/tier1-features.spec.ts:422:18
+
+    Error Context: test-results/tier1-features-Tier-1-Feat-d7d89--SOS-button-on-details-page-chromium/error-context.md
+
+  11) [chromium] › tests/e2e/tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo) 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#geo-btn-text')
+    Expected substring: [32m"Ordenado"[39m
+    Received string:    [31m"Cerca de mí"[39m
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#geo-btn-text')[22m
+    [2m    9 × locator resolved to <span id="geo-btn-text">Cerca de mí</span>[22m
+    [2m      - unexpected value "Cerca de mí"[22m
+
+
+      63 |       }
+      64 |
+    > 65 |       await expect(page.locator('#geo-btn-text')).toContainText('Ordenado');
+         |                                                   ^
+      66 |       await expect(page.locator('[data-distance-for]').first()).toBeVisible();
+      67 |       const badgeText = await page.locator('[data-distance-for]').first().textContent();
+      68 |       expect(badgeText).toContain('km');
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:65:51
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-063f7--extreme-coordinates-Tokyo--chromium/error-context.md
+
+  12) [chromium] › tests/e2e/tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#geo-btn-text')
+    Expected substring: [32m"Ordenado"[39m
+    Received string:    [31m"Cerca de mí"[39m
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#geo-btn-text')[22m
+    [2m    7 × locator resolved to <span id="geo-btn-text">Cerca de mí</span>[22m
+    [2m      - unexpected value "Cerca de mí"[22m
+
+
+      87 |       }
+      88 |
+    > 89 |       await expect(page.locator('#geo-btn-text')).toContainText('Ordenado');
+         |                                                   ^
+      90 |       const hemsCard = page.locator('#clinicas-grid article', { hasText: 'HEMS' });
+      91 |       const badge = hemsCard.locator('[data-distance-for]');
+      92 |       await expect(badge).toBeVisible();
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:89:51
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-52a81-act-coordinates-of-a-clinic-chromium/error-context.md
+
+  13) [chromium] › tests/e2e/tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    14 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      105 |       }
+      106 |
+    > 107 |       await expect(page.locator('#mapa-loading')).toBeHidden();
+          |                                                   ^
+      108 |       const markerCount = await page.locator('.leaflet-marker-icon').count();
+      109 |       expect(markerCount).toBeGreaterThan(0);
+      110 |     });
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:107:51
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-09b9b-te-markers-or-UI-corruption-chromium/error-context.md
+
+  14) [chromium] › tests/e2e/tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    14 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      113 |   test.describe('Map Edge Cases', () => {
+      114 |     test('31. should render and handle cluttered pins at close coordinates successfully', async ({ page }) => {
+    > 115 |       await expect(page.locator('#mapa-loading')).toBeHidden();
+          |                                                   ^
+      116 |       const markerCount = await page.locator('.leaflet-marker-icon').count();
+      117 |       expect(markerCount).toBeGreaterThan(5);
+      118 |     });
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:115:51
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-7adc9-se-coordinates-successfully-chromium/error-context.md
+
+  15) [chromium] › tests/e2e/tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    12 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      168 |       // Reload page to let script execute
+      169 |       await page.goto('/');
+    > 170 |       await expect(page.locator('#mapa-loading')).toBeHidden();
+          |                                                   ^
+      171 |
+      172 |       // Click the marker for the mocked clinic
+      173 |       await page.evaluate(() => {
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:170:51
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-4e55e--clinic-has-no-phone-number-chromium/error-context.md
+
+  16) [chromium] › tests/e2e/tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/clinica/hems-una-heredia/", waiting until "load"[22m
+
+
+      280 |
+      281 |     test('45. should verify details page does not render empty state elements', async ({ page }) => {
+    > 282 |       await page.goto('/clinica/hems-una-heredia/');
+          |                  ^
+      283 |       await expect(page.locator('#empty-state')).toBeHidden();
+      284 |     });
+      285 |   });
+        at /home/user/cand/tests/e2e/tier2-boundaries.spec.ts:282:18
+
+    Error Context: test-results/tier2-boundaries-Tier-2-Bo-d282f-render-empty-state-elements-chromium/error-context.md
+
+  17) [chromium] › tests/e2e/tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m57.30020661643401[39m
+    Received:    [31m166.7876440698025[39m
+
+      38 |     // Distances must be in ascending order
+      39 |     for (let i = 0; i < distances.length - 1; i++) {
+    > 40 |       expect(distances[i]).toBeLessThanOrEqual(distances[i + 1]);
+         |                            ^
+      41 |     }
+      42 |   });
+      43 |
+        at /home/user/cand/tests/e2e/tier3-combinations.spec.ts:40:28
+
+    Error Context: test-results/tier3-combinations-Tier-3--33868-e-and-preserve-sorted-order-chromium/error-context.md
+
+  18) [chromium] › tests/e2e/tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    14 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      43 |
+      44 |   test('52. should dynamically hide map markers of clinics filtered out by search input', async ({ page }) => {
+    > 45 |     await expect(page.locator('#mapa-loading')).toBeHidden();
+         |                                                 ^
+      46 |     const initialMarkerCount = await page.locator('.leaflet-marker-icon').count();
+      47 |
+      48 |     // Search for a specific clinic to filter out others
+        at /home/user/cand/tests/e2e/tier3-combinations.spec.ts:45:49
+
+    Error Context: test-results/tier3-combinations-Tier-3--736b2-iltered-out-by-search-input-chromium/error-context.md
+
+  19) [chromium] › tests/e2e/tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.leaflet-popup-content').filter({ hasText: 'Tu ubicación' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.leaflet-popup-content').filter({ hasText: 'Tu ubicación' })[22m
+
+
+      108 |
+      109 |     // Leaflet user location popup text should be visible
+    > 110 |     await expect(page.locator('.leaflet-popup-content', { hasText: 'Tu ubicación' })).toBeVisible();
+          |                                                                                       ^
+      111 |   });
+      112 |
+      113 |   test('56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied', async ({ page }) => {
+        at /home/user/cand/tests/e2e/tier3-combinations.spec.ts:110:87
+
+    Error Context: test-results/tier3-combinations-Tier-3--ca49f--when-geolocation-is-active-chromium/error-context.md
+
+  20) [chromium] › tests/e2e/tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    14 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      112 |
+      113 |   test('56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied', async ({ page }) => {
+    > 114 |     await expect(page.locator('#mapa-loading')).toBeHidden();
+          |                                                 ^
+      115 |
+      116 |     // Get the initial center of the map
+      117 |     const initialCenter = await page.evaluate(() => {
+        at /home/user/cand/tests/e2e/tier3-combinations.spec.ts:114:49
+
+    Error Context: test-results/tier3-combinations-Tier-3--a4ef6-en-search-filter-is-applied-chromium/error-context.md
+
+  21) [chromium] › tests/e2e/tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/provincia/cartago/", waiting until "load"[22m
+
+
+      155 |   test('57. should render interactive map on province-specific pages containing only that province\'s clinics', async ({ page }) => {
+      156 |     // Navigate to Cartago province page
+    > 157 |     await page.goto('/provincia/cartago/');
+          |                ^
+      158 |
+      159 |     // Map container should be visible
+      160 |     await expect(page.locator('#map-container')).toBeVisible();
+        at /home/user/cand/tests/e2e/tier3-combinations.spec.ts:157:16
+
+    Error Context: test-results/tier3-combinations-Tier-3--643ab-nly-that-province-s-clinics-chromium/error-context.md
+
+  22) [chromium] › tests/e2e/tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#clinicas-grid article:not(.hidden)').first()
+    Expected pattern: [32m/Hospital Veterinario Medical Care/i[39m
+    Received string:  [31m"Abierto ahoraA 3332.0 kmEmergencias 24/7Clínica Veterinaria RamírezClinica Veterinaria RamirezSan Rafael de Heredia, HerediaCostado Este C.C. Manolo (BAC), San Rafael de HerediaEmergencias 24/7🐢 Exóticos🏨 Hotel reportadoClínica con 15+ años de experiencia en Heredia. Especialistas en cardiología, ortopedia y oftalmología. Hotel de mascotas y servicio a domicilio.Llamar🚗 WazeVer detallesCompartir"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#clinicas-grid article:not(.hidden)').first()[22m
+    [2m    14 × locator resolved to <article data-247="true" data-hotel="true" data-peces="false" data-tier="Tier B" data-granja="false" data-schedule="24h" data-is-open="true" data-exoticos="true" data-confidence="high" data-province="heredia" data-latitude="10.01218" data-telefono="2237-4098" data-longitude="-84.09839" data-record-status="VERIFIED" data-provincia-text="heredia" data-emergency-verified="true" data-horario-texto="Emergencias 24/7" data-zona-text="san rafael de heredia" data-nombre="clinica veterinaria ramirez" data-slug=…>…</article>[22m
+    [2m       - unexpected value "Abierto ahoraA 3332.0 kmEmergencias 24/7Clínica Veterinaria RamírezClinica Veterinaria RamirezSan Rafael de Heredia, HerediaCostado Este C.C. Manolo (BAC), San Rafael de HerediaEmergencias 24/7🐢 Exóticos🏨 Hotel reportadoClínica con 15+ años de experiencia en Heredia. Especialistas en cardiología, ortopedia y oftalmología. Hotel de mascotas y servicio a domicilio.Llamar🚗 WazeVer detallesCompartir"[22m
+
+
+      23 |     const visibleCards = page.locator('#clinicas-grid article:not(.hidden)');
+      24 |     await expect(visibleCards.first()).toBeVisible();
+    > 25 |     await expect(visibleCards.first()).toContainText(/Hospital Veterinario Medical Care/i);
+         |                                        ^
+      26 |
+      27 |     // 6. Go to details page
+      28 |     await visibleCards.first().locator('a[id^="clinica-link-"]').click();
+        at /home/user/cand/tests/e2e/tier4-workloads.spec.ts:25:40
+
+    Error Context: test-results/tier4-workloads-Tier-4-Rea-cddc6-ate-night-surgery-emergency-chromium/error-context.md
+
+  23) [chromium] › tests/e2e/tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#clinica-name')
+    Expected substring: [32m"Petopia Hospital Veterinario"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#clinica-name')[22m
+
+
+      55 |
+      56 |     // 5. Verify detail page is loaded
+    > 57 |     await expect(page.locator('#clinica-name')).toContainText(firstCardName!.trim());
+         |                                                 ^
+      58 |   });
+      59 |
+      60 |   test.fixme('58. should execute scenario: user reporting incorrect schedule data on details page', async ({ page }) => {
+        at /home/user/cand/tests/e2e/tier4-workloads.spec.ts:57:49
+
+    Error Context: test-results/tier4-workloads-Tier-4-Rea-9e2c3-exotic-pet-care-in-San-José-chromium/error-context.md
+
+  24) [chromium] › tests/e2e/tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#clinica-name')
+    Expected substring: [32m"Hospital Veterinario Agromédica"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#clinica-name')[22m
+
+
+      109 |     // 5. Select clinic and view details page
+      110 |     await visibleCards.first().locator('a[id^="clinica-link-"]').click();
+    > 111 |     await expect(page.locator('#clinica-name')).toContainText(firstCardName!.trim());
+          |                                                 ^
+      112 |
+      113 |     // 6. Go back to directory
+      114 |     await page.click('#btn-back');
+        at /home/user/cand/tests/e2e/tier4-workloads.spec.ts:111:49
+
+    Error Context: test-results/tier4-workloads-Tier-4-Rea-83d38--after-refusing-geolocation-chromium/error-context.md
+
+  25) [chromium] › tests/e2e/tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#provincia-title')
+    Expected substring: [32m"San José"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#provincia-title')[22m
+
+
+      123 |     // 2. Select province filter (navigates to San José page)
+      124 |     await page.click('#filter-prov-san-jose');
+    > 125 |     await expect(page.locator('#provincia-title')).toContainText('San José');
+          |                                                    ^
+      126 |
+      127 |     // 3. Select animal type filter (Domésticos)
+      128 |     await page.click('[data-filter-animal="domesticos"]');
+        at /home/user/cand/tests/e2e/tier4-workloads.spec.ts:125:52
+
+    Error Context: test-results/tier4-workloads-Tier-4-Rea-14b1a-lter-combination-and-resets-chromium/error-context.md
+
+  25 failed
+    [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+    [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados 
+    [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+    [chromium] › tests/e2e/tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button 
+    [chromium] › tests/e2e/tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change 
+    [chromium] › tests/e2e/tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating 
+    [chromium] › tests/e2e/tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map 
+    [chromium] › tests/e2e/tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map 
+    [chromium] › tests/e2e/tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup 
+    [chromium] › tests/e2e/tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo) 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number 
+    [chromium] › tests/e2e/tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements 
+    [chromium] › tests/e2e/tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order 
+    [chromium] › tests/e2e/tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input 
+    [chromium] › tests/e2e/tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active 
+    [chromium] › tests/e2e/tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied 
+    [chromium] › tests/e2e/tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics 
+    [chromium] › tests/e2e/tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency 
+    [chromium] › tests/e2e/tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José 
+    [chromium] › tests/e2e/tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation 
+    [chromium] › tests/e2e/tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets 
+  11 skipped
+  73 passed (14.4m)

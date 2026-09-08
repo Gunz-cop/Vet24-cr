@@ -1,0 +1,78 @@
+
+Running 8 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/ existe y tiene canonical con barra final (25.6s)
+  ✓  2 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/guias-por-especie/ existe y tiene canonical con barra final (25.6s)
+  ✓  3 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/costos-y-acceso/ existe y tiene canonical con barra final (25.6s)
+  ✓  4 [chromium] › tests/e2e/blog.spec.ts:15:3 › blog B1 › el piloto borrador da 404 y no está enlazado (25.8s)
+  ✘  5 [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports (35.0s)
+  ✓  6 [chromium] › tests/e2e/blog.spec.ts:35:1 › B3: política editorial publicada y enlazada desde el footer (25.8s)
+  ✘  7 [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados (30.1s)
+  ✘  8 [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador (35.0s)
+
+
+  1) [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/blog/", waiting until "load"[22m
+
+
+      23 |     for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      24 |       await page.setViewportSize(viewport);
+    > 25 |       await page.goto('/blog/');
+         |                  ^
+      26 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      27 |       await page.keyboard.press('Tab');
+      28 |       const focused = page.locator(':focus');
+        at /home/user/cand/tests/e2e/blog.spec.ts:25:18
+
+    Error Context: test-results/blog-blog-B1-sin-scroll-ho-76fa3--visible-en-ambos-viewports-chromium/error-context.md
+
+  2) [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/blog/", waiting until "load"[22m
+
+
+      48 |       await page.setViewportSize(viewport);
+      49 |       for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/', '/politica-editorial/']) {
+    > 50 |         await page.goto(path);
+         |                    ^
+      51 |         await expect(page.locator('#nav-blog')).toHaveCount(0);
+      52 |         await expect(page.locator('footer a[href="/blog/"]')).toHaveCount(0);
+      53 |       }
+        at /home/user/cand/tests/e2e/blog.spec.ts:50:20
+
+    Error Context: test-results/blog-B3-ninguna-navegación-c5670-og-sin-artículos-publicados-chromium/error-context.md
+
+  3) [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4321/clinica/hospital-vet-medical-care-heredia/", waiting until "load"[22m
+
+
+      75 | test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
+      76 |   for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+    > 77 |     await page.goto(path);
+         |                ^
+      78 |     await expect(page.locator('[data-blog-links]')).toHaveCount(0);
+      79 |     await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
+      80 |   }
+        at /home/user/cand/tests/e2e/blog.spec.ts:77:16
+
+    Error Context: test-results/blog-B2-catálogo-inactivo--9cc5b-ntras-el-piloto-es-borrador-chromium/error-context.md
+
+  3 failed
+    [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+    [chromium] › tests/e2e/blog.spec.ts:46:3 › B3: ninguna navegación muestra Blog sin artículos publicados 
+    [chromium] › tests/e2e/blog.spec.ts:75:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+  5 passed (3.9m)

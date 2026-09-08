@@ -1,0 +1,571 @@
+
+> veterinarias-cr@0.0.1 test
+> npm run test:unit
+
+
+> veterinarias-cr@0.0.1 test:unit
+> node --test tests/unit/*.test.ts
+
+TAP version 13
+# Subtest: proyecta límites conservadores y conserva texto/metadata
+ok 1 - proyecta límites conservadores y conserva texto/metadata
+  ---
+  duration_ms: 3.314634
+  type: 'test'
+  ...
+# Subtest: mantiene la restricción real del hotel exclusivo para gatos
+ok 2 - mantiene la restricción real del hotel exclusivo para gatos
+  ---
+  duration_ms: 0.889447
+  type: 'test'
+  ...
+# Subtest: ordena el catálogo por slug sin filtrar estado
+ok 3 - ordena el catálogo por slug sin filtrar estado
+  ---
+  duration_ms: 10.591999
+  type: 'test'
+  ...
+# Subtest: robots.txt conserva rastreo y sitemap
+ok 4 - robots.txt conserva rastreo y sitemap
+  ---
+  duration_ms: 3.26236
+  type: 'test'
+  ...
+# Subtest: robots.txt declara Content-Signal una sola vez dentro del bloque comodín
+ok 5 - robots.txt declara Content-Signal una sola vez dentro del bloque comodín
+  ---
+  duration_ms: 0.47058
+  type: 'test'
+  ...
+# Subtest: expone las cuatro relaciones exactas en HTML de descubrimiento
+ok 6 - expone las cuatro relaciones exactas en HTML de descubrimiento
+  ---
+  duration_ms: 2.087784
+  type: 'test'
+  ...
+# Subtest: mapea solo URLs HTML canónicas a mirrors Markdown
+ok 7 - mapea solo URLs HTML canónicas a mirrors Markdown
+  ---
+  duration_ms: 2.506711
+  type: 'test'
+  ...
+# Subtest: genera portada, provincias, zonas y fichas desde el catálogo
+ok 8 - genera portada, provincias, zonas y fichas desde el catálogo
+  ---
+  duration_ms: 2.499288
+  type: 'test'
+  ...
+# Subtest: conserva cuerpo, warnings, evidencia y límites de disponibilidad
+ok 9 - conserva cuerpo, warnings, evidencia y límites de disponibilidad
+  ---
+  duration_ms: 0.6189
+  type: 'test'
+  ...
+# Subtest: run_worker_first cubre solo las familias HTML contractuales
+ok 10 - run_worker_first cubre solo las familias HTML contractuales
+  ---
+  duration_ms: 4.130903
+  type: 'test'
+  ...
+# Subtest: negocia Markdown solo con preferencia explícita y q válida
+ok 11 - negocia Markdown solo con preferencia explícita y q válida
+  ---
+  duration_ms: 0.766797
+  type: 'test'
+  ...
+# Subtest: añade Vary y no-store a HTML y Markdown sin borrar Vary existente
+ok 12 - añade Vary y no-store a HTML y Markdown sin borrar Vary existente
+  ---
+  duration_ms: 63.069682
+  type: 'test'
+  ...
+# Subtest: HEAD sigue la representación seleccionada sin cuerpo
+ok 13 - HEAD sigue la representación seleccionada sin cuerpo
+  ---
+  duration_ms: 0.983589
+  type: 'test'
+  ...
+# Subtest: mirror ausente o fallido conserva la respuesta oficial y su status
+ok 14 - mirror ausente o fallido conserva la respuesta oficial y su status
+  ---
+  duration_ms: 1.292739
+  type: 'test'
+  ...
+# Subtest: POST ajeno no se negocia ni se consume
+ok 15 - POST ajeno no se negocia ni se consume
+  ---
+  duration_ms: 1.170679
+  type: 'test'
+  ...
+# Subtest: positivos: identidad, familia y URL completa de las cuatro familias
+ok 16 - positivos: identidad, familia y URL completa de las cuatro familias
+  ---
+  duration_ms: 2.499775
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: clínica inexistente
+ok 17 - mutación rechazada: clínica inexistente
+  ---
+  duration_ms: 0.741709
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: entry.id no es data.slug
+ok 18 - mutación rechazada: entry.id no es data.slug
+  ---
+  duration_ms: 0.252571
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: alias de zona aunque tenga artefacto
+ok 19 - mutación rechazada: alias de zona aunque tenga artefacto
+  ---
+  duration_ms: 0.269091
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: zona canónica no generada
+ok 20 - mutación rechazada: zona canónica no generada
+  ---
+  duration_ms: 0.302788
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: provincia inexistente
+ok 21 - mutación rechazada: provincia inexistente
+  ---
+  duration_ms: 0.219238
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: artículo inexistente
+ok 22 - mutación rechazada: artículo inexistente
+  ---
+  duration_ms: 0.182446
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: artículo borrador aunque exista HTML
+ok 23 - mutación rechazada: artículo borrador aunque exista HTML
+  ---
+  duration_ms: 0.22014
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: pilar incorrecto
+ok 24 - mutación rechazada: pilar incorrecto
+  ---
+  duration_ms: 0.582319
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: slug válido en familia equivocada
+ok 25 - mutación rechazada: slug válido en familia equivocada
+  ---
+  duration_ms: 0.632901
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: URL completa incorrecta
+ok 26 - mutación rechazada: URL completa incorrecta
+  ---
+  duration_ms: 0.386302
+  type: 'test'
+  ...
+# Subtest: mutación rechazada: destino eliminado
+ok 27 - mutación rechazada: destino eliminado
+  ---
+  duration_ms: 0.165086
+  type: 'test'
+  ...
+# Subtest: inverso ausente rompe; inverso derivado pasa
+ok 28 - inverso ausente rompe; inverso derivado pasa
+  ---
+  duration_ms: 0.479415
+  type: 'test'
+  ...
+# Subtest: catálogo poblado: borrador no activa ninguno de los sentidos
+ok 29 - catálogo poblado: borrador no activa ninguno de los sentidos
+  ---
+  duration_ms: 2.16001
+  type: 'test'
+  ...
+# Subtest: cada clínica y zona del piloto tiene inverso desde la misma fuente
+ok 30 - cada clínica y zona del piloto tiene inverso desde la misma fuente
+  ---
+  duration_ms: 0.254239
+  type: 'test'
+  ...
+# Subtest: cross pillar sólo activa destinos existentes publicados del otro pilar
+ok 31 - cross pillar sólo activa destinos existentes publicados del otro pilar
+  ---
+  duration_ms: 0.206104
+  type: 'test'
+  ...
+# Subtest: anclas conservan nombres reales, mayúsculas y tildes de cada familia
+ok 32 - anclas conservan nombres reales, mayúsculas y tildes de cada familia
+  ---
+  duration_ms: 0.282641
+  type: 'test'
+  ...
+# Subtest: nombre ausente falla en vez de fabricar una etiqueta desde el slug
+ok 33 - nombre ausente falla en vez de fabricar una etiqueta desde el slug
+  ---
+  duration_ms: 0.282634
+  type: 'test'
+  ...
+# Subtest: publicación de blog
+    # Subtest: rutas canónicas tienen barra final
+    ok 1 - rutas canónicas tienen barra final
+      ---
+      duration_ms: 0.837744
+      type: 'test'
+      ...
+    # Subtest: solo estado publicado es público
+    ok 2 - solo estado publicado es público
+      ---
+      duration_ms: 0.228769
+      type: 'test'
+      ...
+    # Subtest: el piloto versionado permanece borrador
+    ok 3 - el piloto versionado permanece borrador
+      ---
+      duration_ms: 0.518488
+      type: 'test'
+      ...
+    1..3
+ok 34 - publicación de blog
+  ---
+  duration_ms: 2.799387
+  type: 'suite'
+  ...
+# Subtest: schema de blog
+    # Subtest: acepta borrador sin fecha y aplica borrador por defecto
+    ok 1 - acepta borrador sin fecha y aplica borrador por defecto
+      ---
+      duration_ms: 5.102352
+      type: 'test'
+      ...
+    # Subtest: publicado exige datePublished ISO
+    ok 2 - publicado exige datePublished ISO
+      ---
+      duration_ms: 2.83647
+      type: 'test'
+      ...
+    # Subtest: strictObject rechaza campos desconocidos y límites inválidos
+    ok 3 - strictObject rechaza campos desconocidos y límites inválidos
+      ---
+      duration_ms: 1.757143
+      type: 'test'
+      ...
+    1..3
+ok 35 - schema de blog
+  ---
+  duration_ms: 11.54432
+  type: 'suite'
+  ...
+# Subtest: defensa del sitemap
+    # Subtest: lee el literal real y exige igualdad exacta
+    ok 1 - lee el literal real y exige igualdad exacta
+      ---
+      duration_ms: 1.424697
+      type: 'test'
+      ...
+    # Subtest: reproduce la tabla contractual de §2
+    ok 2 - reproduce la tabla contractual de §2
+      ---
+      duration_ms: 0.563476
+      type: 'test'
+      ...
+    # Subtest: acepta piloto y rechaza rapi
+    ok 3 - acepta piloto y rechaza rapi
+      ---
+      duration_ms: 0.607598
+      type: 'test'
+      ...
+    1..3
+ok 36 - defensa del sitemap
+  ---
+  duration_ms: 3.916387
+  type: 'suite'
+  ...
+# Subtest: overnight_doctor_present
+    # Subtest: false no produce "Solo llamado" ni ausencia de médico
+    ok 1 - false no produce "Solo llamado" ni ausencia de médico
+      ---
+      duration_ms: 0.987144
+      type: 'test'
+      ...
+    # Subtest: undefined (campo ausente) se trata igual que no confirmado
+    ok 2 - undefined (campo ausente) se trata igual que no confirmado
+      ---
+      duration_ms: 1.585989
+      type: 'test'
+      ...
+    # Subtest: true sigue afirmando la presencia permanente
+    ok 3 - true sigue afirmando la presencia permanente
+      ---
+      duration_ms: 0.197525
+      type: 'test'
+      ...
+    1..3
+ok 37 - overnight_doctor_present
+  ---
+  duration_ms: 4.057543
+  type: 'suite'
+  ...
+# Subtest: has_hospitalization
+    # Subtest: false no produce "No disponible"
+    ok 1 - false no produce "No disponible"
+      ---
+      duration_ms: 0.321134
+      type: 'test'
+      ...
+    # Subtest: true sigue mostrando el servicio como disponible
+    ok 2 - true sigue mostrando el servicio como disponible
+      ---
+      duration_ms: 0.183507
+      type: 'test'
+      ...
+    1..2
+ok 38 - has_hospitalization
+  ---
+  duration_ms: 0.793155
+  type: 'suite'
+  ...
+# Subtest: emergencias24h
+    # Subtest: false no se presenta como ausencia confirmada del servicio
+    ok 1 - false no se presenta como ausencia confirmada del servicio
+      ---
+      duration_ms: 1.766227
+      type: 'test'
+      ...
+    # Subtest: el copy de "no confirmado" es idéntico en todas las vistas
+    ok 2 - el copy de "no confirmado" es idéntico en todas las vistas
+      ---
+      duration_ms: 0.372028
+      type: 'test'
+      ...
+    # Subtest: true conserva cada copy positivo de su vista
+    ok 3 - true conserva cada copy positivo de su vista
+      ---
+      duration_ms: 0.27971
+      type: 'test'
+      ...
+    1..3
+ok 39 - emergencias24h
+  ---
+  duration_ms: 2.770903
+  type: 'suite'
+  ...
+# Subtest: hotelMascotas
+    # Subtest: false se mantiene neutral y no infiere que no ofrecen hotel
+    ok 1 - false se mantiene neutral y no infiere que no ofrecen hotel
+      ---
+      duration_ms: 0.300442
+      type: 'test'
+      ...
+    # Subtest: true + hotelVerificacion respeta el estado explícito ya existente
+    ok 2 - true + hotelVerificacion respeta el estado explícito ya existente
+      ---
+      duration_ms: 0.268466
+      type: 'test'
+      ...
+    1..2
+ok 40 - hotelMascotas
+  ---
+  duration_ms: 0.711499
+  type: 'suite'
+  ...
+# Subtest: capabilityStatus (regla general)
+    # Subtest: cualquier booleano ambiguo en false cae en "No confirmado"
+    ok 1 - cualquier booleano ambiguo en false cae en "No confirmado"
+      ---
+      duration_ms: 0.196468
+      type: 'test'
+      ...
+    # Subtest: solo true sostiene la afirmación positiva
+    ok 2 - solo true sostiene la afirmación positiva
+      ---
+      duration_ms: 0.46638
+      type: 'test'
+      ...
+    1..2
+ok 41 - capabilityStatus (regla general)
+  ---
+  duration_ms: 0.996462
+  type: 'suite'
+  ...
+# Subtest: badges de verificación
+    # Subtest: una ficha sin fuente/fecha/verificaciones no afirma auditoría por llamada
+    ok 1 - una ficha sin fuente/fecha/verificaciones no afirma auditoría por llamada
+      ---
+      duration_ms: 0.590617
+      type: 'test'
+      ...
+    # Subtest: record_status VERIFIED por sí solo ya no muestra "Guardia Auditada"
+    ok 2 - record_status VERIFIED por sí solo ya no muestra "Guardia Auditada"
+      ---
+      duration_ms: 0.145646
+      type: 'test'
+      ...
+    # Subtest: ningún record_status muestra un sello de confiabilidad
+    ok 3 - ningún record_status muestra un sello de confiabilidad
+      ---
+      duration_ms: 0.210882
+      type: 'test'
+      ...
+    # Subtest: REVIEW_REQUIRED conserva la advertencia
+    ok 4 - REVIEW_REQUIRED conserva la advertencia
+      ---
+      duration_ms: 0.189198
+      type: 'test'
+      ...
+    # Subtest: sin metadatos la ficha se marca como revisión sin documentar
+    ok 5 - sin metadatos la ficha se marca como revisión sin documentar
+      ---
+      duration_ms: 0.102148
+      type: 'test'
+      ...
+    # Subtest: con fecha + fuente + verificación puntual sí se reconoce la revisión
+    ok 6 - con fecha + fuente + verificación puntual sí se reconoce la revisión
+      ---
+      duration_ms: 0.10231
+      type: 'test'
+      ...
+    # Subtest: fecha + fuente sin ninguna verificación puntual no basta
+    ok 7 - fecha + fuente sin ninguna verificación puntual no basta
+      ---
+      duration_ms: 0.11309
+      type: 'test'
+      ...
+    # Subtest: una fuente en blanco no se rellena con "Llamada directa"
+    ok 8 - una fuente en blanco no se rellena con "Llamada directa"
+      ---
+      duration_ms: 0.195387
+      type: 'test'
+      ...
+    # Subtest: sin fecha se avisa explícitamente en lugar de inventar una auditoría
+    ok 9 - sin fecha se avisa explícitamente en lugar de inventar una auditoría
+      ---
+      duration_ms: 0.122034
+      type: 'test'
+      ...
+    # Subtest: con evidencia se muestra fecha y fuente reales
+    ok 10 - con evidencia se muestra fecha y fuente reales
+      ---
+      duration_ms: 0.112767
+      type: 'test'
+      ...
+    # Subtest: espacios en blanco no cuentan como evidencia
+    ok 11 - espacios en blanco no cuentan como evidencia
+      ---
+      duration_ms: 0.123242
+      type: 'test'
+      ...
+    1..11
+ok 42 - badges de verificación
+  ---
+  duration_ms: 2.395973
+  type: 'suite'
+  ...
+# Subtest: buildClinicMetaDescription — sin datos operativos volátiles
+    # Subtest: el dataset completo genera metadata sin horarios ni disponibilidad
+    ok 1 - el dataset completo genera metadata sin horarios ni disponibilidad
+      ---
+      duration_ms: 19.57425
+      type: 'test'
+      ...
+    # Subtest: las descripciones no son una plantilla intercambiable entre fichas
+    ok 2 - las descripciones no son una plantilla intercambiable entre fichas
+      ---
+      duration_ms: 9.72246
+      type: 'test'
+      ...
+    # Subtest: nunca se construye a partir de horarioTexto
+    ok 3 - nunca se construye a partir de horarioTexto
+      ---
+      duration_ms: 0.334673
+      type: 'test'
+      ...
+    # Subtest: copy operativo en copyDiferenciador no llega a la metadata
+    ok 4 - copy operativo en copyDiferenciador no llega a la metadata
+      ---
+      duration_ms: 0.268936
+      type: 'test'
+      ...
+    # Subtest: la ausencia de datos no se convierte en afirmación negativa
+    ok 5 - la ausencia de datos no se convierte en afirmación negativa
+      ---
+      duration_ms: 0.310745
+      type: 'test'
+      ...
+    # Subtest: findVolatileMetadata detecta el copy prohibido
+    ok 6 - findVolatileMetadata detecta el copy prohibido
+      ---
+      duration_ms: 0.37956
+      type: 'test'
+      ...
+    1..6
+ok 43 - buildClinicMetaDescription — sin datos operativos volátiles
+  ---
+  duration_ms: 31.998571
+  type: 'suite'
+  ...
+# Subtest: regresión — Hospital Veterinario Medical Care
+    # Subtest: no contiene el snippet viejo ni disponibilidad operativa
+    ok 1 - no contiene el snippet viejo ni disponibilidad operativa
+      ---
+      duration_ms: 0.388967
+      type: 'test'
+      ...
+    # Subtest: sigue siendo específica de Medical Care
+    ok 2 - sigue siendo específica de Medical Care
+      ---
+      duration_ms: 0.632582
+      type: 'test'
+      ...
+    1..2
+ok 44 - regresión — Hospital Veterinario Medical Care
+  ---
+  duration_ms: 1.505507
+  type: 'suite'
+  ...
+# Subtest: buildClinicEntityDescription — JSON-LD de la entidad
+    # Subtest: describe la clínica sin el CTA de Vet24 y sin datos volátiles
+    ok 1 - describe la clínica sin el CTA de Vet24 y sin datos volátiles
+      ---
+      duration_ms: 9.168021
+      type: 'test'
+      ...
+    # Subtest: Medical Care queda descrito por sus servicios estables
+    ok 2 - Medical Care queda descrito por sus servicios estables
+      ---
+      duration_ms: 0.668259
+      type: 'test'
+      ...
+    1..2
+ok 45 - buildClinicEntityDescription — JSON-LD de la entidad
+  ---
+  duration_ms: 10.168047
+  type: 'suite'
+  ...
+# Subtest: structured data de la ficha
+    # Subtest: la FAQ estructurada no repite el horario declarado
+    ok 1 - la FAQ estructurada no repite el horario declarado
+      ---
+      duration_ms: 1.024578
+      type: 'test'
+      ...
+    # Subtest: openingHoursSpecification sigue presente como dato factual
+    ok 2 - openingHoursSpecification sigue presente como dato factual
+      ---
+      duration_ms: 0.106025
+      type: 'test'
+      ...
+    1..2
+ok 46 - structured data de la ficha
+  ---
+  duration_ms: 1.261876
+  type: 'suite'
+  ...
+1..46
+# tests 77
+# suites 13
+# pass 77
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 995.719845

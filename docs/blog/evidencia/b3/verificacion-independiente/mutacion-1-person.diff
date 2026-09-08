@@ -1,0 +1,13 @@
+diff --git a/src/layouts/BlogLayout.astro b/src/layouts/BlogLayout.astro
+index 8ecc02b..dd8ac1e 100644
+--- a/src/layouts/BlogLayout.astro
++++ b/src/layouts/BlogLayout.astro
+@@ -23,7 +23,7 @@ const article = {
+   description: metaDescription, url: canonical, mainEntityOfPage: canonical,
+   // Firma colectiva: docs/blog/autoria.md declara Organization. Un nodo Person con
+   // nombre de equipo afirmaria una persona inexistente. blog.mjs verifica ambos.
+-  author: { '@type': 'Organization', name: autor }, datePublished,
++  author: { '@type': 'Person', name: autor }, datePublished,
+   ...(dateModified ? { dateModified } : {}),
+ };
+ ---

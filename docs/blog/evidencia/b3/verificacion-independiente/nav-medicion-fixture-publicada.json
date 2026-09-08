@@ -1,0 +1,442 @@
+{
+  "label": "candidato-48e51ba-fixture-publicada",
+  "base": "http://127.0.0.1:4321",
+  "at": "2026-09-08T15:27:11.843Z",
+  "results": [
+    {
+      "viewport": "390x844",
+      "path": "/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": false,
+        "box": null,
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "none"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 213.421875,
+          "y": 50018.1875,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 90.59375,
+          "y": 50018.1875,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "390x844",
+      "path": "/blog/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": false,
+        "box": null,
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "none"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 213.421875,
+          "y": 1049.5,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 90.59375,
+          "y": 1049.5,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "390x844",
+      "path": "/blog/guias-por-especie/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": false,
+        "box": null,
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "none"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 213.421875,
+          "y": 799.5,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 90.59375,
+          "y": 799.5,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "390x844",
+      "path": "/blog/costos-y-acceso/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": false,
+        "box": null,
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "none"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 213.421875,
+          "y": 699,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 90.59375,
+          "y": 699,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "390x844",
+      "path": "/politica-editorial/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": false,
+        "box": null,
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "none"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 213.421875,
+          "y": 2237.75,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 90.59375,
+          "y": 2237.75,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "1440x900",
+      "path": "/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1083.515625,
+          "y": 18,
+          "width": 47.109375,
+          "height": 28
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1299.96875,
+          "y": 18364.34375,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1177.140625,
+          "y": 18364.34375,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "1440x900",
+      "path": "/blog/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1083.515625,
+          "y": 18,
+          "width": 47.109375,
+          "height": 28
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1299.96875,
+          "y": 719.5,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1177.140625,
+          "y": 719.5,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "1440x900",
+      "path": "/blog/guias-por-especie/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1083.515625,
+          "y": 18,
+          "width": 47.109375,
+          "height": 28
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1299.96875,
+          "y": 690.75,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1177.140625,
+          "y": 690.75,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "1440x900",
+      "path": "/blog/costos-y-acceso/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1083.515625,
+          "y": 18,
+          "width": 47.109375,
+          "height": 28
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1299.96875,
+          "y": 690.75,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1177.140625,
+          "y": 690.75,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    },
+    {
+      "viewport": "1440x900",
+      "path": "/politica-editorial/",
+      "status": 200,
+      "navBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1083.515625,
+          "y": 18,
+          "width": 47.109375,
+          "height": 28
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerBlog": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1299.96875,
+          "y": 1400,
+          "width": 28.03125,
+          "height": 20
+        },
+        "href": "/blog/",
+        "text": "Blog",
+        "display": "block"
+      },
+      "footerPolicy": {
+        "count": 1,
+        "visible": true,
+        "box": {
+          "x": 1177.140625,
+          "y": 1400,
+          "width": 98.828125,
+          "height": 20
+        },
+        "href": "/politica-editorial/",
+        "text": "Política editorial",
+        "display": "block"
+      },
+      "footerBlogFocused": true,
+      "horizontalScroll": false
+    }
+  ]
+}

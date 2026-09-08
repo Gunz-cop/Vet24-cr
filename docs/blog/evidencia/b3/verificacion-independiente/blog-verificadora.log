@@ -1,0 +1,76 @@
+# blog-verificadora.log — B3, verificación independiente
+Candidato: 48e51ba4623aeaccd59baeaa5863d5bbd60c0778
+BASE:      6ec4497ec926aece6da9fc8070adc8a3136c20e7
+main:      aab689eacc13524a3395289e53c0dd9aacf034c5
+Checkout:  /home/user/cand (git worktree del repo, npm ci limpio)
+
+==================================================================
+## cand-blog-no-preview
+comando: node scripts/verification/blog.mjs
+cwd: /home/user/cand
+sha: 48e51ba4623aeaccd59baeaa5863d5bbd60c0778
+fecha_utc: 2026-09-08T15:03:55Z
+exit_code: 1
+--- stdout ---
+{"directory":"dist/server","files":24,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_BNxdr4Tn.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":283,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":40,"external":0,"protocol":0},"articles":1,"published":0}
+--- stderr ---
+blog: 1 fallo(s)
+- PREVIEW_UNAVAILABLE: no se pudo verificar SSR / en http://127.0.0.1:4321/. Ejecutá "npm run preview -- --host 127.0.0.1 --port 4321" desde este checkout después del build, y repetí "node scripts/verification/blog.mjs". Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: fetch failed
+
+==================================================================
+## cand-blog-preview
+comando: node scripts/verification/blog.mjs
+cwd: /home/user/cand
+sha: 48e51ba4623aeaccd59baeaa5863d5bbd60c0778
+fecha_utc: 2026-09-08T15:04:23Z
+exit_code: 0
+--- stdout ---
+{"directory":"dist/server","files":24,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_BNxdr4Tn.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":283,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":40,"external":0,"protocol":0},"articles":1,"published":0}
+blog: OK (134 HTML; dist/client: política de publicación y enlaces verificada)
+--- stderr ---
+
+==================================================================
+## fixture-blog-preview
+comando: node scripts/verification/blog.mjs
+cwd: /home/user/cand
+sha: 48e51ba4623aeaccd59baeaa5863d5bbd60c0778
+fecha_utc: 2026-09-08T15:27:31Z
+exit_code: 0
+--- stdout ---
+{"directory":"dist/server","files":24,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_Ycaev6Ap.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":284,"fixturePublished":true}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":75,"external":0,"protocol":0},"articles":1,"published":1}
+blog: OK (135 HTML; dist/client: política de publicación y enlaces verificada)
+--- stderr ---
+
+==================================================================
+## post-mutaciones-blog-preview
+--- stdout ---
+{"directory":"dist/server","files":24,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_BNxdr4Tn.mjs"],"policy":"Marcador B1 permitido en bundle; contenido editorial borrador prohibido desde B4"}
+{"directory":"dist/client","files":283,"fixturePublished":false}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":40,"external":0,"protocol":0},"articles":1,"published":0}
+blog: OK (134 HTML; dist/client: política de publicación y enlaces verificada)
+--- stderr ---
+
+==================================================================
+## Mutaciones deliberadas (revertidas; diffs archivados junto a este log)
+--- mutacion-1-person --- (esperado: código 1)
+blog: 1 fallo(s)
+- tipo de autor JSON-LD no coincide con el registro: /blog/guias-por-especie/urgencias-en-perros/; declarado: Organization; emitido: Person
+--- mutacion-2-firma-no-aprobada --- (esperado: código 1)
+blog: 1 fallo(s)
+- firma no aprobada en el registro: /blog/guias-por-especie/urgencias-en-perros/; declarada: Equipo editorial Vet24 Costa Rica; usada: Dra. Persona Inventada
+--- mutacion-3-registro-person --- (esperado: código 1)
+blog: 1 fallo(s)
+- tipo de autor JSON-LD no coincide con el registro: /blog/guias-por-especie/urgencias-en-perros/; declarado: Person; emitido: Organization
+--- mutacion-4-registro-pendiente --- (esperado: código 1)
+blog: 1 fallo(s)
+- artículo publicado sin registro verificable de autoría: /blog/guias-por-especie/urgencias-en-perros/

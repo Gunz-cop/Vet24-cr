@@ -1,0 +1,55 @@
+
+Running 6 tests using 1 worker
+
+  ✓  1 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/ existe y tiene canonical con barra final (25.7s)
+  ✓  2 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/guias-por-especie/ existe y tiene canonical con barra final (25.6s)
+  ✓  3 [chromium] › tests/e2e/blog.spec.ts:7:5 › blog B1 › /blog/costos-y-acceso/ existe y tiene canonical con barra final (25.6s)
+  ✓  4 [chromium] › tests/e2e/blog.spec.ts:15:3 › blog B1 › el piloto borrador da 404 y no está enlazado (25.6s)
+  ✘  5 [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports (35.0s)
+  ✘  6 [chromium] › tests/e2e/blog.spec.ts:35:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador (35.0s)
+
+
+  1) [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4322/blog/", waiting until "load"[22m
+
+
+      23 |     for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      24 |       await page.setViewportSize(viewport);
+    > 25 |       await page.goto('/blog/');
+         |                  ^
+      26 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      27 |       await page.keyboard.press('Tab');
+      28 |       const focused = page.locator(':focus');
+        at /home/user/base/tests/e2e/blog.spec.ts:25:18
+
+    Error Context: test-results/blog-blog-B1-sin-scroll-ho-76fa3--visible-en-ambos-viewports-chromium/error-context.md
+
+  2) [chromium] › tests/e2e/blog.spec.ts:35:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://127.0.0.1:4322/clinica/hospital-vet-medical-care-heredia/", waiting until "load"[22m
+
+
+      35 | test('B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador', async ({ page }) => {
+      36 |   for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+    > 37 |     await page.goto(path);
+         |                ^
+      38 |     await expect(page.locator('[data-blog-links]')).toHaveCount(0);
+      39 |     await expect(page.locator(`a[href="${pilotPath}"]`)).toHaveCount(0);
+      40 |   }
+        at /home/user/base/tests/e2e/blog.spec.ts:37:16
+
+    Error Context: test-results/blog-B2-catálogo-inactivo--9cc5b-ntras-el-piloto-es-borrador-chromium/error-context.md
+
+  2 failed
+    [chromium] › tests/e2e/blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports 
+    [chromium] › tests/e2e/blog.spec.ts:35:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador 
+  4 passed (2.9m)

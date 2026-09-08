@@ -1,0 +1,4 @@
+merge-base(48e51ba, aab689e) = 6ec4497ec926aece6da9fc8070adc8a3136c20e7
+BASE declarada        = 6ec4497ec926aece6da9fc8070adc8a3136c20e7
+HEAD rama             = 48e51ba4623aeaccd59baeaa5863d5bbd60c0778
+main vigente          = aab689eacc13524a3395289e53c0dd9aacf034c5

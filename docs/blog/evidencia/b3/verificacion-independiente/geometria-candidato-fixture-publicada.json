@@ -1,0 +1,56 @@
+[
+  {
+    "vp": "390x844",
+    "navDirectorio": "hidden",
+    "navBlog": "hidden",
+    "btnQuickCall": null,
+    "btnQuickWa": null,
+    "footerOrder": [
+      "/#directorio",
+      "/acerca/",
+      "/terminos/",
+      "/privacidad/",
+      "/cookies/",
+      "/politica-editorial/",
+      "/blog/"
+    ],
+    "footerCookies": {
+      "x": 16,
+      "y": 4594.03,
+      "width": 50.59,
+      "height": 20
+    }
+  },
+  {
+    "vp": "1440x900",
+    "navDirectorio": {
+      "x": 985.39,
+      "y": 18,
+      "width": 82.13,
+      "height": 28
+    },
+    "navBlog": {
+      "x": 1083.52,
+      "y": 18,
+      "width": 47.11,
+      "height": 28
+    },
+    "btnQuickCall": null,
+    "btnQuickWa": null,
+    "footerOrder": [
+      "/#directorio",
+      "/acerca/",
+      "/terminos/",
+      "/privacidad/",
+      "/cookies/",
+      "/politica-editorial/",
+      "/blog/"
+    ],
+    "footerCookies": {
+      "x": 1102.55,
+      "y": 2621.78,
+      "width": 50.59,
+      "height": 20
+    }
+  }
+]
