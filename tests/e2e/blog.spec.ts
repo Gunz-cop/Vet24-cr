@@ -69,6 +69,12 @@ if (process.env.B3_PUBLISHED_FIXTURE !== '1') {
         await expect(footerLink).toBeFocused();
       }
     }
+    await page.goto(pilotPath);
+    await expect(page.locator('[data-blog-author]')).toHaveText('Equipo de Vet24cr');
+    const article = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+      scripts.map((script) => JSON.parse(script.textContent ?? '{}')).find((value) => value['@type'] === 'Article'),
+    );
+    expect(article.author).toEqual({ '@type': 'Organization', name: 'Equipo de Vet24cr' });
   });
 }
 

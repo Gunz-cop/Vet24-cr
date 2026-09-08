@@ -5,7 +5,7 @@ metaDescription: "Guía en preparación sobre señales de urgencia en perros y c
 pilar: "guias-por-especie"
 slug: "urgencias-en-perros"
 estado: "borrador"
-autor: "Equipo editorial Vet24 Costa Rica"
+autor: "Equipo de Vet24cr"
 ---
 
 Este artículo está en preparación editorial y no debe publicarse hasta completar investigación, auditoría independiente, política editorial y aprobación humana.

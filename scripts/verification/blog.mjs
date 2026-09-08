@@ -55,6 +55,9 @@ console.log(JSON.stringify({directory:'dist/server',files:serverFiles.length,pil
 console.log(JSON.stringify({directory:'dist/client',files:files.length,fixturePublished}));
 
 const field = (source, name) => source.match(new RegExp('^'+name+':\\s*["\']?([^"\'\\r\\n]+)', 'm'))?.[1]?.trim();
+const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
+const publicAuthor = authorship.match(/^Firma pública:\s*\*\*(.+?)\*\*/m)?.[1]?.trim();
+if (!publicAuthor) errors.push('registro de atribución sin firma pública verificable');
 const articles = walk(join(root,'src/content/blog')).filter(f=>f.endsWith('.md')).map(f=>{
  const content=readFileSync(f,'utf8');return {body:content.split(/^---\s*$/m).slice(2).join('---').trim(),data:{pilar:field(content,'pilar'),slug:field(content,'slug'),estado:field(content,'estado')??'borrador',title:field(content,'title'),autor:field(content,'autor')}};
 });
@@ -147,7 +150,7 @@ for(const article of articles){
   .find((value) => value?.['@type'] === 'Article');
  if (!authorMatch || authorMatch[1].trim() !== article.data.autor) errors.push('autor visible no coincide con frontmatter: ' + source);
  if (!articleJsonLd || articleJsonLd.author?.name !== article.data.autor) errors.push('autor JSON-LD no coincide con frontmatter: ' + source);
- const authorship = readFileSync(join(root, 'docs/blog/autoria.md'), 'utf8');
+ if (article.data.autor !== publicAuthor) errors.push('autor no coincide con la firma pública registrada: ' + source);
  if (/Estado:\s*\*\*pendiente/i.test(authorship)) errors.push('artículo publicado sin registro verificable de autoría: ' + source);
  const outgoing=hrefs(blocks(articleHtml));
  for(const target of [...directoryLinks(article, names),...crossPillarLinks(article,articles)])try{

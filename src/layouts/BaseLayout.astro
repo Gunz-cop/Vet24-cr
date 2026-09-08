@@ -127,7 +127,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
           </div>
         </a>
 
-        <nav class="flex items-center gap-2 sm:gap-4" aria-label="Navegación principal">
+        <nav class="relative flex items-center gap-2 sm:gap-4" aria-label="Navegación principal">
           <a href="/" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-home">
             Inicio
           </a>
@@ -135,7 +135,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
             Directorio
           </a>
           {hasPublishedBlog && (
-            <a href="/blog/" class="hidden md:inline-block text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-blog">
+            <a href="/blog/" class="hidden md:inline-block md:absolute md:right-full md:mr-2 text-sm font-semibold text-brand-text-muted hover:text-brand-text transition-colors px-2 py-1" id="nav-blog">
               Blog
             </a>
           )}
