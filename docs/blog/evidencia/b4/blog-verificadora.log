@@ -1,0 +1,115 @@
+VERIFICADORA=B4
+FECHA=2026-09-08
+AUDITED_SHA=dab96fd36d7056d9700642ba4afa51cbfe79111b
+BASE_SHA=f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0
+BRANCH_AUDITED=origin/codex/blog-b4-seed
+WORKTREE_MODE=clean-detached-then-evidence-only-branch
+SIGNATURE=Equipo de Vet24cr
+
+[identity]
+COMMAND=git rev-parse HEAD
+STDOUT=dab96fd36d7056d9700642ba4afa51cbfe79111b
+STDERR=
+EXIT=0
+
+COMMAND=git merge-base --is-ancestor f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0 dab96fd36d7056d9700642ba4afa51cbfe79111b
+STDOUT=
+STDERR=
+EXIT=0
+
+[dependencies]
+COMMAND=npm ci
+STDOUT=added 335 packages; audited 336 packages; 0 vulnerabilities
+STDERR=
+EXIT=0
+
+[section-7]
+COMMAND=npm run check
+STDOUT=Result (88 files): 0 errors, 0 warnings, 75 hints
+STDERR=
+EXIT=0
+
+COMMAND=npm run test:unit
+STDOUT=tests 78; suites 13; pass 78; fail 0; skipped 0
+STDERR=
+EXIT=0
+
+COMMAND=npm run build:no-shorten
+STDOUT=Build complete; sitemap-index.xml created; 139 HTML artifacts observed by blog verifier
+STDERR=Unable to fetch Request.cf; TLS certificate verification failed; documented fallback used
+EXIT=0
+
+COMMAND=node scripts/verification/blog.mjs
+ENV=PLAYWRIGHT_BASE_URL=http://127.0.0.1:4321 with isolated preview
+STDOUT=dist/server 24 files; five published articles; dist/client 288 files; 139 HTML; 199 internal links; 35 external links; blog OK
+STDERR=
+EXIT=0
+
+COMMAND=node scripts/verification/agent-catalog.mjs
+STDOUT=AR2 catalog artifacts valid (112 clinics, 112 HTML routes)
+STDERR=
+EXIT=0
+
+COMMAND=node scripts/verification/agent-markdown.mjs
+STDOUT=agent-markdown OK (127 mirrors)
+STDERR=
+EXIT=0
+
+COMMAND=npm run test:e2e
+ENV=PLAYWRIGHT_BASE_URL=http://127.0.0.1:4321; default parallelism
+STDOUT=44 passed; 55 failed; 11 skipped; failures dominated by preview navigation timeouts/connection saturation and included B4 specs
+STDERR=NO_COLOR/FORCE_COLOR warnings
+EXIT=1
+
+COMMAND=npm run test:e2e
+ENV=CI=1; PLAYWRIGHT_BASE_URL=http://127.0.0.1:4321
+STDOUT=Playwright did not start tests
+STDERR=Process from config.webServer exited early
+EXIT=1
+
+COMMAND=npm run test:e2e -- --workers=1
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321; background preview already healthy
+STDOUT=99 passed; 11 skipped; 0 failed; duration 2.7m
+STDERR=NO_COLOR/FORCE_COLOR warnings only
+EXIT=0
+
+COMMAND=npx playwright test tests/e2e/blog.spec.ts tests/e2e/blog-emergency-layout.spec.ts --workers=1
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321
+STDOUT=19 passed; 0 failed; duration 42.0s
+STDERR=NO_COLOR/FORCE_COLOR warnings only
+EXIT=0
+
+COMMAND=git diff --name-status f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0...HEAD
+STDOUT=156 changed paths; reviewed against section 6 allowlist
+STDERR=
+EXIT=0
+
+COMMAND=git diff f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0...HEAD
+STDOUT=24324-line full diff archived and reviewed in the verification workspace
+STDERR=
+EXIT=0
+
+[additional]
+COMMAND=node docs/blog/evidencia/b4/verify-artifacts.mjs
+ENV=PLAYWRIGHT_BASE_URL=http://localhost:4321
+STDOUT=5/5 articles: HTML, HTTP 200, sitemap, canonical, Article JSON-LD, author, datePublished and no draft marker pass
+STDERR=
+EXIT=0
+
+COMMAND=node --use-system-ca docs/blog/evidencia/b4/verify-sources.mjs
+STDOUT=Script emitted pass=true despite multiple reachable=false results and missing final status for AVMA endpoints
+STDERR=
+EXIT=0
+
+COMMAND=curl.exe -L --max-time 30 <three AVMA deep PDF URLs>
+STDOUT=all three endpoints returned self-referential HTTP 302 redirects until curl hit the 50-redirect limit
+STDERR=curl (47) Maximum (50) redirects followed
+EXIT=47
+
+[verdict]
+BLOCKING_FINDINGS=4
+VERDICT=RECHAZADO
+PRODUCTION_VERIFICATION=PENDIENTE; no merge or deployment was performed
+NOTE=A passing serial E2E rerun does not cure editorial-source contradictions or the evidence-format violation.
+
+FIRMA=Equipo de Vet24cr
