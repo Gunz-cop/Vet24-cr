@@ -1,0 +1,2 @@
+blog: 1 fallo(s)
+- PREVIEW_UNAVAILABLE: no se pudo verificar SSR / en http://127.0.0.1:4321/. Ejecutá "npm run preview -- --host 127.0.0.1 --port 4321" desde este checkout después del build, y repetí "node scripts/verification/blog.mjs". Para otro puerto, configurá PLAYWRIGHT_BASE_URL. Causa: fetch failed

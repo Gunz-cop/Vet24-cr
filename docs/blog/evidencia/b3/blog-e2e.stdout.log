@@ -1,0 +1,48 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test tests/e2e/blog.spec.ts
+
+
+Running 8 tests using 8 workers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[1/8] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/guias-por-especie/ existe y tiene canonical con barra final
+
+
+[1A[2K[2/8] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/ existe y tiene canonical con barra final
+
+
+[1A[2K[3/8] [chromium] › tests\e2e\blog.spec.ts:7:5 › blog B1 › /blog/costos-y-acceso/ existe y tiene canonical con barra final
+
+
+[1A[2K[4/8] [chromium] › tests\e2e\blog.spec.ts:15:3 › blog B1 › el piloto borrador da 404 y no está enlazado
+[1A[2K[5/8] [chromium] › tests\e2e\blog.spec.ts:35:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[6/8] [chromium] › tests\e2e\blog.spec.ts:46:3 › B3: la navegación no muestra Blog sin artículos publicados
+[1A[2K[7/8] [chromium] › tests\e2e\blog.spec.ts:22:3 › blog B1 › sin scroll horizontal y foco visible en ambos viewports
+[1A[2K[8/8] [chromium] › tests\e2e\blog.spec.ts:65:1 › B2: catálogo inactivo en fichas y zonas mientras el piloto es borrador
+[1A[2K  8 passed (14.7s)

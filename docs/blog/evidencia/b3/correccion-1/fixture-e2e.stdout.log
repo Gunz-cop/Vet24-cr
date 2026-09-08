@@ -1,0 +1,18 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test tests/e2e/blog.spec.ts -g B3
+
+
+Running 2 tests using 2 workers
+
+
+
+
+
+
+
+
+
+[1A[2K[1/2] [chromium] › tests\e2e\blog.spec.ts:35:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[2/2] [chromium] › tests\e2e\blog.spec.ts:57:3 › B3 fixture publicada: header y footer enlazan /blog/ también a 390px
+[1A[2K  2 passed (4.5s)

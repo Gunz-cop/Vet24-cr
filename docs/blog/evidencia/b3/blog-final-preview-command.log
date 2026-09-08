@@ -1,0 +1,3 @@
+node scripts/verification/blog.mjs (con preview, candidato d91333d)
+EXIT_CODE=0
+SHA=d91333d6d4f42ff8503004e2e2548b4d20df4c68

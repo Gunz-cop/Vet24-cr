@@ -1,0 +1,37 @@
+{
+  "baseSha": "6ec4497ec926aece6da9fc8070adc8a3136c20e7",
+  "predecessorSha": "078131dd8144181f1200751d31652c59c01ed40f",
+  "predecessorEvidenceSha": "91f857cc4ed74ab763eebfd88cc6505cc89d66b2",
+  "date": "2026-09-07T21:29:10.817Z",
+  "responsible": {
+    "coordination": "usuario/coordinación del proyecto",
+    "execution": "sesión ejecutora B3",
+    "independentVerification": "pendiente"
+  },
+  "allowedFiles": [
+    "src/pages/politica-editorial.astro",
+    "src/components/BlogAuthor.astro",
+    "docs/blog/autoria.md",
+    "src/layouts/BaseLayout.astro",
+    "src/layouts/BlogLayout.astro",
+    "tests/e2e/blog.spec.ts",
+    "scripts/verification/blog.mjs"
+  ],
+  "evidenceDirectory": "docs/blog/evidencia/b3",
+  "status": "base-captured-before-product-edits",
+  "scan": {
+    "file": "base-agent-scan.json",
+    "coverageFile": "base-scan-coverage.json",
+    "count": 22,
+    "processExitCode": -1073740791
+  },
+  "snapshots": {
+    "sitemap": "base-sitemap.json",
+    "catalogMirrors": "base-catalog-mirrors.json",
+    "geometry": "base-geometry.json"
+  },
+  "authorship": {
+    "status": "pendiente de respuesta del usuario",
+    "publicationBlocked": true
+  }
+}

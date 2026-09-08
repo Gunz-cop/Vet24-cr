@@ -1,0 +1,74 @@
+[
+  {
+    "path": "/",
+    "width": 390,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/",
+    "width": 1440,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/",
+    "width": 390,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/",
+    "width": 1440,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/guias-por-especie/",
+    "width": 390,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/guias-por-especie/",
+    "width": 1440,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/costos-y-acceso/",
+    "width": 390,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  },
+  {
+    "path": "/blog/costos-y-acceso/",
+    "width": 1440,
+    "active": {
+      "tag": "A",
+      "id": "",
+      "outline": "solid"
+    }
+  }
+]\n
