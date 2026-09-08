@@ -1,0 +1,5 @@
+{"directory":"dist/server","files":24,"pilotOccurrences":["dist/server/chunks/_astro_data-layer-content_DY_5LRW0.mjs"],"policy":"B4: los cinco artículos están publicados; ningún borrador editorial puede serializarse"}
+{"directory":"dist/client","files":288,"fixturePublished":true}
+{"check":"SSR preview prerequisite","url":"http://127.0.0.1:4321/","command":"npm run preview -- --host 127.0.0.1 --port 4321","override":"PLAYWRIGHT_BASE_URL"}
+{"directory":"dist/client","classifications":{"internal":199,"external":35,"protocol":0},"articles":5,"published":5}
+blog: OK (139 HTML; dist/client: política de publicación y enlaces verificada)

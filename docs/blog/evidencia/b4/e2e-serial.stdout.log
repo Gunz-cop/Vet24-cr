@@ -1,0 +1,48 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test --workers=1 --timeout=120000
+
+
+Running 110 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/110] [chromium] › tests\e2e\agent-discovery.spec.ts:13:3 › AR2 — descubrimiento y catálogo público › GET y HEAD entregan los seis recursos técnicos sin barra final
+[1A[2K[2/110] [chromium] › tests\e2e\agent-discovery.spec.ts:27:3 › AR2 — descubrimiento y catálogo público › el catálogo y el API Catalog describen recursos reales
+[1A[2K[3/110] [chromium] › tests\e2e\agent-discovery.spec.ts:42:3 › AR2 — descubrimiento y catálogo público › OpenAPI solo expone el GET público del catálogo
+[1A[2K[4/110] [chromium] › tests\e2e\agent-discovery.spec.ts:52:3 › AR2 — descubrimiento y catálogo público › portada y ficha exponen las cuatro relaciones Link
+[1A[2K[5/110] [chromium] › tests\e2e\agent-discovery.spec.ts:70:3 › AR2 — descubrimiento y catálogo público › el alias de sitemap redirige al índice generado
+[1A[2K[6/110] [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché
+[1A[2K  1) [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché 
+
+    Error: apiRequestContext.get: read ECONNRESET
+    Call log:
+    [2m  - → GET http://localhost:4321/md/clinica/agroveterinaria-el-colono-siquirres.md[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      35 |       expect(html.headers()['x-robots-tag'] ?? '', htmlPath).not.toMatch(/noindex/i);
+      36 |
+    > 37 |       const direct = await request.get(mirrorPath);
+         |                                    ^
+      38 |       expect(direct.status(), `directo ${mirrorPath}`).toBe(200);
+      39 |       expect(direct.headers()['content-type'], mirrorPath).toContain('text/markdown');
+      40 |       expect(direct.headers()['access-control-allow-origin'], mirrorPath).toBe('*');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\agent-markdown.spec.ts:37:36
+
+    Error Context: test-results\agent-markdown-AR3-—-mirro-982cc-egociadas-sin-mezclar-caché-chromium\error-context.md
+
+
+
+
+
+
+[1A[2K[7/110] [chromium] › tests\e2e\agent-markdown.spec.ts:46:3 › AR3 — mirrors Markdown y negociación › HEAD mantiene selección, cabeceras y cuerpo vacío
+[1A[2K[8/110] [chromium] › tests\e2e\agent-markdown.spec.ts:62:3 › AR3 — mirrors Markdown y negociación › preserva normalización canónica y Link de descubrimiento
+[1A[2K[9/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[10/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[11/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390

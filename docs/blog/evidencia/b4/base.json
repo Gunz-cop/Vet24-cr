@@ -2,6 +2,7 @@
   "baseSha": "f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0",
   "predecessorSha": "3d03ecc0da65f2127a66b7935baa39e1bdd2d6b5",
   "briefingCommitSha": "2326234836119e05920a99b6db234b7dee1ffaf8",
+  "editorialCandidateSha": "21e48c7852b2f672e11138cd6b46a0e854b3353c",
   "date": "2026-09-08T18:15:48.366Z",
   "branch": "codex/blog-b4-seed",
   "responsible": {
