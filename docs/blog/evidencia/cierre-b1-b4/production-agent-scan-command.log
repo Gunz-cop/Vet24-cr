@@ -1,0 +1,7 @@
+COMMAND=node --use-system-ca .claude/skills/agent-readiness/scripts/scan.mjs https://vet24cr.com --json --check robotsTxt,sitemap,linkHeaders,dnsAid,markdownNegotiation,robotsTxtAiRules,contentSignals,webBotAuth,apiCatalog,oauthDiscovery,oauthProtectedResource,authMd,mcpServerCard,a2aAgentCard,agentSkills,webMcp,ard,x402,mpp,ucp,acp,ap2
+MAIN_SHA=d26e3e9a890b7c09031b6efcd1534d08b5c0d55a
+SCANNED_AT=2026-09-09T16:33:26Z
+EXIT_CODE=0
+CHECK_COUNT=22
+LEVEL=4
+EJECUTADO_POR=sesion coordinadora
