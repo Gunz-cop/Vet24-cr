@@ -24,6 +24,23 @@ export const blogSchema = z.strictObject({
   datePublished: isoDate.optional(),
   dateModified: isoDate.optional(),
   revisadoPor: z.string().trim().min(1).optional(),
+  heroImage: z.object({
+    src: z.string().trim().regex(
+      /^\/images\/blog\/[a-z0-9-]+\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/,
+      'La imagen debe ser un asset local del blog',
+    ),
+    srcset: z.array(z.object({
+      src: z.string().trim().regex(
+        /^\/images\/blog\/[a-z0-9-]+\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/,
+        'La variante debe ser un asset local del blog',
+      ),
+      width: z.number().int().positive(),
+    })).min(1),
+    alt: z.string().trim().min(1).max(180),
+    caption: z.string().trim().min(1).max(240),
+    width: z.number().int().positive(),
+    height: z.number().int().positive(),
+  }).optional(),
 }).superRefine((data, ctx) => {
   if (data.estado === 'publicado' && !data.datePublished) {
     ctx.addIssue({ code: 'custom', path: ['datePublished'], message: 'datePublished es obligatorio para contenido publicado' });
