@@ -1,0 +1,8 @@
+# §7.2 endpoints AR — 2026-09-09T16:33:26Z
+/api/catalog.json GET=200|application/json; charset=utf-8 HEAD=200|bytes=0
+/api/openapi.json GET=200|application/json; charset=utf-8 HEAD=200|bytes=0
+/llms.txt GET=200|text/plain; charset=utf-8 HEAD=200|bytes=0
+/api/readme.md GET=200|text/markdown; charset=utf-8 HEAD=200|bytes=0
+/auth.md GET=200|text/markdown; charset=utf-8 HEAD=200|bytes=0
+/.well-known/api-catalog GET=200|application/linkset+json; charset=utf-8 HEAD=200|bytes=0
+/sitemap.xml sin-redireccion=301 -> https://vet24cr.com/sitemap-index.xml

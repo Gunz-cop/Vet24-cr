@@ -1,0 +1,17 @@
+
+Running 9 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/9] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/ existe y tiene canonical con barra final
+[1A[2K[2/9] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/guias-por-especie/ existe y tiene canonical con barra final
+[1A[2K[3/9] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/costos-y-acceso/ existe y tiene canonical con barra final
+[1A[2K[4/9] [chromium] › tests\e2e\blog.spec.ts:21:3 › blog B4 › los cinco artículos están publicados, enlazados y tienen Article válido
+[1A[2K[5/9] [chromium] › tests\e2e\blog.spec.ts:36:3 › blog B4 › sin scroll horizontal y foco visible en ambos viewports
+[1A[2K[6/9] [chromium] › tests\e2e\blog.spec.ts:48:3 › blog B4 › evidencia visual de los cinco artículos en móvil y escritorio
+[1A[2K[7/9] [chromium] › tests\e2e\blog.spec.ts:64:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[8/9] [chromium] › tests\e2e\blog.spec.ts:74:1 › B4: header y footer enlazan /blog/ con artículos publicados
+[1A[2K[9/9] [chromium] › tests\e2e\blog.spec.ts:91:1 › B4: catálogo activo genera enlaces inversos en fichas y zonas
+[1A[2K  9 passed (2.1m)

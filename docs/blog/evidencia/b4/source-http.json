@@ -1,0 +1,252 @@
+{
+  "checkedAt": "2026-09-08T19:03:16.410Z",
+  "note": "Los estados HTTP son una fotografía reproducible; bloqueos anti-bot o caídas posteriores no invalidan por sí solos la elegibilidad documental.",
+  "reports": [
+    {
+      "file": "briefing-atencion-veterinaria-24h-por-zona.md",
+      "distinctDeepUrls": 7,
+      "contractPass": true,
+      "checks": [
+        {
+          "url": "https://ivdsa.com/emergencias-2/",
+          "status": 200,
+          "finalUrl": "https://ivdsa.com/emergencias-2/",
+          "reachable": true
+        },
+        {
+          "url": "https://lavete.com/pages/contact",
+          "status": 200,
+          "finalUrl": "https://lavete.com/pages/contact",
+          "reachable": true
+        },
+        {
+          "url": "https://www.medicalpetscr.com/contacto",
+          "status": 200,
+          "finalUrl": "https://www.medicalpetscr.com/contacto",
+          "reachable": true
+        },
+        {
+          "url": "https://www.petopia.cr/",
+          "status": 200,
+          "finalUrl": "https://www.petopia.cr/",
+          "reachable": true
+        },
+        {
+          "url": "https://petsmas.com/hospital/contacto-hospital/",
+          "status": 200,
+          "finalUrl": "https://petsmas.com/hospital/contacto-hospital/",
+          "reachable": true
+        },
+        {
+          "url": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "status": 200,
+          "finalUrl": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "reachable": true
+        },
+        {
+          "url": "https://www.hospitalvitalvet.com/contacto-veterinaria-cartago/",
+          "status": 200,
+          "finalUrl": "https://www.hospitalvitalvet.com/contacto-veterinaria-cartago/",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "file": "briefing-atencion-veterinaria-para-exoticos.md",
+      "distinctDeepUrls": 7,
+      "contractPass": true,
+      "checks": [
+        {
+          "url": "https://www.vet.cornell.edu/hospitals/services/exotic-pets-service",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/hospitals/services/exotic-pets-service",
+          "reachable": true
+        },
+        {
+          "url": "https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf",
+          "status": 404,
+          "finalUrl": "https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf",
+          "reachable": false
+        },
+        {
+          "url": "https://www.bsava.com/article/why-and-how-to-run-an-exotic-friendly-practice/",
+          "status": 403,
+          "finalUrl": "https://www.bsava.com/article/why-and-how-to-run-an-exotic-friendly-practice/",
+          "reachable": false
+        },
+        {
+          "url": "https://www.vet.cornell.edu/about-us/news/20240621/pinpointing-elusive-sometimes-fatal-hairballs-rabbits",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/about-us/news/20240621/pinpointing-elusive-sometimes-fatal-hairballs-rabbits",
+          "reachable": true
+        },
+        {
+          "url": "https://www.rvc.ac.uk/small-animal-vet/general-practice/practice-services/routine-pet-healthcare/pet-dentistry/rabbit",
+          "status": 403,
+          "finalUrl": "https://www.rvc.ac.uk/small-animal-vet/general-practice/practice-services/routine-pet-healthcare/pet-dentistry/rabbit",
+          "reachable": false
+        },
+        {
+          "url": "https://ebusiness.avma.org/files/productdownloads/SelectReptile-En.pdf",
+          "status": 404,
+          "finalUrl": "https://ebusiness.avma.org/files/productdownloads/SelectReptile-En.pdf",
+          "reachable": false
+        },
+        {
+          "url": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "status": 200,
+          "finalUrl": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "file": "briefing-costo-emergencia-veterinaria-nocturna.md",
+      "distinctDeepUrls": 7,
+      "contractPass": true,
+      "checks": [
+        {
+          "url": "https://www.vet.cornell.edu/hospitals/frequently-asked-questions",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/hospitals/frequently-asked-questions",
+          "reachable": true
+        },
+        {
+          "url": "https://www.vetmed.ucdavis.edu/node/3496",
+          "status": 403,
+          "finalUrl": "https://www.vetmed.ucdavis.edu/node/3496",
+          "reachable": false
+        },
+        {
+          "url": "https://vetmed.tamu.edu/news/pet-talk/the-price-of-pet-care-understanding-your-veterinary-bills/",
+          "status": 200,
+          "finalUrl": "https://vetmed.tamu.edu/news/pet-talk/the-price-of-pet-care-understanding-your-veterinary-bills/",
+          "reachable": true
+        },
+        {
+          "url": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "status": 200,
+          "finalUrl": "https://hospitalveterinariosantamaria.com/terminos-y-condiciones/",
+          "reachable": true
+        },
+        {
+          "url": "https://petsmas.com/hospital/nuestros-servicios/",
+          "status": 200,
+          "finalUrl": "https://petsmas.com/hospital/nuestros-servicios/",
+          "reachable": true
+        },
+        {
+          "url": "https://www.medicalpetscr.com/servicios",
+          "status": 200,
+          "finalUrl": "https://www.medicalpetscr.com/servicios",
+          "reachable": true
+        },
+        {
+          "url": "https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf",
+          "status": 404,
+          "finalUrl": "https://ebusiness.avma.org/files/productdownloads/ChoosingaVet_2016.pdf",
+          "reachable": false
+        }
+      ]
+    },
+    {
+      "file": "briefing-urgencias-en-gatos.md",
+      "distinctDeepUrls": 7,
+      "contractPass": true,
+      "checks": [
+        {
+          "url": "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feline-lower-urinary-tract-disease",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/feline-lower-urinary-tract-disease",
+          "reachable": true
+        },
+        {
+          "url": "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/dyspnea-difficulty-breathing",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/dyspnea-difficulty-breathing",
+          "reachable": true
+        },
+        {
+          "url": "https://www.merckvetmanual.com/special-pet-topics/emergencies/evaluation-and-initial-treatment-of-dog-and-cat-emergencies",
+          "status": 200,
+          "finalUrl": "https://www.merckvetmanual.com/special-pet-topics/emergencies/evaluation-and-initial-treatment-of-dog-and-cat-emergencies",
+          "reachable": true
+        },
+        {
+          "url": "https://www.aaha.org/resources/help-is-this-a-pet-emergency/",
+          "status": 403,
+          "finalUrl": "https://www.aaha.org/resources/help-is-this-a-pet-emergency/",
+          "reachable": false
+        },
+        {
+          "url": "https://icatcare.org/resources/cat-carer-guide-urinary-tract-diseases.pdf",
+          "status": 200,
+          "finalUrl": "https://icatcare.org/resources/cat-carer-guide-urinary-tract-diseases.pdf",
+          "reachable": true
+        },
+        {
+          "url": "https://www.aaha.org/resources/recognizing-pain-in-cats/",
+          "status": 403,
+          "finalUrl": "https://www.aaha.org/resources/recognizing-pain-in-cats/",
+          "reachable": false
+        },
+        {
+          "url": "https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf",
+          "status": 200,
+          "finalUrl": "https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf",
+          "reachable": true
+        }
+      ]
+    },
+    {
+      "file": "briefing-urgencias-en-perros.md",
+      "distinctDeepUrls": 7,
+      "contractPass": true,
+      "checks": [
+        {
+          "url": "https://www.aaha.org/resources/help-is-this-a-pet-emergency/",
+          "status": 403,
+          "finalUrl": "https://www.aaha.org/resources/help-is-this-a-pet-emergency/",
+          "reachable": false
+        },
+        {
+          "url": "https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/recognizing-and-responding-canine-respiratory-distress",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-topics/recognizing-and-responding-canine-respiratory-distress",
+          "reachable": true
+        },
+        {
+          "url": "https://www.merckvetmanual.com/special-pet-topics/emergencies/what-to-do-in-a-dog-or-cat-emergency",
+          "status": 200,
+          "finalUrl": "https://www.merckvetmanual.com/special-pet-topics/emergencies/what-to-do-in-a-dog-or-cat-emergency",
+          "reachable": true
+        },
+        {
+          "url": "https://www.merckvetmanual.com/special-pet-topics/poisoning/general-treatment-of-poisoning",
+          "status": 200,
+          "finalUrl": "https://www.merckvetmanual.com/special-pet-topics/poisoning/general-treatment-of-poisoning",
+          "reachable": true
+        },
+        {
+          "url": "https://www.vet.cornell.edu/hospitals/services/emergency-and-critical-care-0",
+          "status": 200,
+          "finalUrl": "https://www.vet.cornell.edu/hospitals/services/emergency-and-critical-care-0",
+          "reachable": true
+        },
+        {
+          "url": "https://www.aaha.org/resources/understanding-canine-bloat-gdv-a-medical-emergency/",
+          "status": 403,
+          "finalUrl": "https://www.aaha.org/resources/understanding-canine-bloat-gdv-a-medical-emergency/",
+          "reachable": false
+        },
+        {
+          "url": "https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf",
+          "status": 200,
+          "finalUrl": "https://ebusiness.avma.org/files/ProductDownloads/mcm-client-brochures-pet-first-aid-2025.pdf",
+          "reachable": true
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

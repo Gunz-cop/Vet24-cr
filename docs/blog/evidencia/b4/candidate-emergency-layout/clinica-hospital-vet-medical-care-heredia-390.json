@@ -1,0 +1,162 @@
+{
+  "path": "/clinica/hospital-vet-medical-care-heredia/",
+  "width": 390,
+  "measurements": [
+    {
+      "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+      "present": true,
+      "text": "Datos rápidos de Hospital Veterinario Medical CareHorarioAbierto ahora24/7 todos los díasEmergencia 24/7Confirmada en esta fichaZonaVeterinarias en Heredia centroHotel para mascotasSí, confirmado",
+      "href": null,
+      "rect": {
+        "x": 16,
+        "y": 468.25,
+        "width": 358,
+        "height": 368
+      },
+      "aboveFold": true,
+      "visible": true
+    },
+    {
+      "selector": "#clinic-schedule-text",
+      "present": true,
+      "text": "24/7 todos los días",
+      "href": null,
+      "rect": {
+        "x": 69,
+        "y": 4360.78125,
+        "width": 126.9375,
+        "height": 18
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#warning-diurnal-alert",
+      "present": false
+    },
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "text": "Llamar ahora2262-6826",
+      "href": "tel:+50622626826",
+      "rect": {
+        "x": 16,
+        "y": 860.25,
+        "width": 173,
+        "height": 118
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": true,
+      "text": "WhatsAppEnviar mensaje",
+      "href": "https://wa.me/50686396793",
+      "rect": {
+        "x": 201,
+        "y": 860.25,
+        "width": 173,
+        "height": 118
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "text": "Llamar principal (2262-6826)",
+      "href": "tel:+50622626826",
+      "rect": {
+        "x": 42,
+        "y": 4060.78125,
+        "width": 306,
+        "height": 48
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": true,
+      "text": "Enviar WhatsApp (8639-6793)",
+      "href": "https://wa.me/50686396793",
+      "rect": {
+        "x": 42,
+        "y": 4120.78125,
+        "width": 306,
+        "height": 50
+      },
+      "aboveFold": false,
+      "visible": true
+    },
+    {
+      "selector": "#clinicas-grid",
+      "present": false
+    },
+    {
+      "selector": "#search-input",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-open",
+      "present": false
+    },
+    {
+      "selector": "#filter-quick-247",
+      "present": false
+    },
+    {
+      "selector": "#btn-use-location",
+      "present": false
+    },
+    {
+      "selector": "#animal-filters-container",
+      "present": false
+    },
+    {
+      "selector": "#filter-hotel",
+      "present": false
+    },
+    {
+      "selector": "#results-count",
+      "present": false
+    }
+  ],
+  "keyboard": [
+    {
+      "selector": "#btn-quick-call",
+      "present": true,
+      "href": "tel:+50622626826"
+    },
+    {
+      "selector": "#btn-quick-wa",
+      "present": true,
+      "href": "https://wa.me/50686396793"
+    },
+    {
+      "selector": "#btn-call-sidebar-1",
+      "present": true,
+      "href": "tel:+50622626826"
+    },
+    {
+      "selector": "#btn-call-sidebar-2",
+      "present": false
+    },
+    {
+      "selector": "#btn-wa-sidebar",
+      "present": true,
+      "href": "https://wa.me/50686396793"
+    }
+  ],
+  "focusOrder": [
+    "btn-quick-call",
+    "btn-quick-wa",
+    "btn-call-sidebar-1",
+    "btn-wa-sidebar"
+  ]
+}

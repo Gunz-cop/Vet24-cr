@@ -1,0 +1,25 @@
+# §7.3 negociación de contenido y §7.5 rutas — 2026-09-09T16:33:47Z
+## Espejo Markdown en ruta del inventario BASE (https://vet24cr.com/clinica/hems-una-heredia/)
+Accept: text/markdown          -> 200|text/markdown; charset=utf-8
+Accept: text/html              -> 200|text/html
+Accept: text/markdown;q=0      -> 200|text/html
+HEAD Accept: text/markdown     -> 200|text/markdown; charset=utf-8|bytes=0
+cabeceras: cache-control: private, no-store vary: Accept 
+## Blog permanece HTML, sin anunciar espejo
+blog Accept: text/markdown     -> 200|text/html
+## Canonical de rutas nuevas
+/blog/ -> https://vet24cr.com/blog/
+/blog/guias-por-especie/ -> https://vet24cr.com/blog/guias-por-especie/
+/blog/costos-y-acceso/ -> https://vet24cr.com/blog/costos-y-acceso/
+/blog/guias-por-especie/urgencias-en-perros/ -> https://vet24cr.com/blog/guias-por-especie/urgencias-en-perros/
+/blog/guias-por-especie/urgencias-en-gatos/ -> https://vet24cr.com/blog/guias-por-especie/urgencias-en-gatos/
+/blog/guias-por-especie/atencion-veterinaria-para-exoticos/ -> https://vet24cr.com/blog/guias-por-especie/atencion-veterinaria-para-exoticos/
+/blog/costos-y-acceso/costo-emergencia-veterinaria-nocturna/ -> https://vet24cr.com/blog/costos-y-acceso/costo-emergencia-veterinaria-nocturna/
+/blog/costos-y-acceso/atencion-veterinaria-24h-por-zona/ -> https://vet24cr.com/blog/costos-y-acceso/atencion-veterinaria-24h-por-zona/
+/politica-editorial/ -> https://vet24cr.com/politica-editorial/
+## Rutas inexistentes o de borrador
+/blog/md/ -> 404
+/blog/guias-por-especie/no-existe/ -> 404
+/blog/borrador/ -> 404
+## Sitemap
+total=140 clinicas=112 provincias=7 zonas=7 blog=8

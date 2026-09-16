@@ -1,0 +1,65 @@
+{
+  "baseSha": "f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0",
+  "generated": [
+    {
+      "path": "dist/client/api/catalog.json",
+      "sha256": "865291fc2721f5a6c6e37fc3c8fdd2e55f71c9b9108cba666992c18494fa2058",
+      "bytes": 292140
+    },
+    {
+      "path": "dist/client/api/openapi.json",
+      "sha256": "81bdc05419877c457bb5afa5400c464e2f633c2ad2194e6ec42445cfcce892fd",
+      "bytes": 5333
+    },
+    {
+      "path": "dist/client/api/readme.md",
+      "sha256": "faf058556819adac1b7b8a3f23522942caf0d5f1ff419ad42cbf43a609a50296",
+      "bytes": 2293
+    },
+    {
+      "path": "dist/client/llms.txt",
+      "sha256": "8b0d5322d913c46bba543bc718bc9f99a93cbdbe9622bb9088dd594562a564e2",
+      "bytes": 11187
+    },
+    {
+      "path": "dist/client/auth.md",
+      "sha256": "f3ecb33ff9d380992dcde8546982d6ea9babcc82911ae4eeb3ad14e9d84a0c57",
+      "bytes": 463
+    },
+    {
+      "path": "dist/client/.well-known/api-catalog",
+      "sha256": "93c788bd4471d2c755644b26486ce0bfd442642ab55ff6f0105733788bb7262b",
+      "bytes": 283
+    }
+  ],
+  "sourceBlobs": [
+    {
+      "path": "src/pages/api/catalog.json.ts",
+      "blob": "cf42c867aeb9fcfe2d1e67e5af0768a75061bab9"
+    },
+    {
+      "path": "src/pages/api/openapi.json.ts",
+      "blob": "b91f756017207a99a3463ed96ec70f0ca1bd93ff"
+    },
+    {
+      "path": "src/pages/llms.txt.ts",
+      "blob": "49e747ab2d12e65ccbb207d246b85976575aeff1"
+    },
+    {
+      "path": "src/lib/agent-markdown.ts",
+      "blob": "f58f47f7f0012689cf5f3d88321a080cb6799ba8"
+    },
+    {
+      "path": "src/lib/agent-http.ts",
+      "blob": "1576b87ba225e1342cfb7139eb58afdde4e7e999"
+    },
+    {
+      "path": "src/lib/agent-discovery.ts",
+      "blob": "257f39d1c248c5813c5abbb6b1b92a40636ab671"
+    },
+    {
+      "path": "src/lib/agent-content.ts",
+      "blob": "1f005e637e08f9c3621d7e9bc0ab1edbdba87dc0"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "baseSha": "f9f2eccff6d2acc494ccbc9f74b7fefeb7878ec0",
+  "scannedAt": "2026-09-08T18:17:23.198Z",
+  "level": 4,
+  "count": 22,
+  "checks": [
+    {
+      "id": "robotsTxt",
+      "status": "pass",
+      "message": "robots.txt exists with valid format"
+    },
+    {
+      "id": "sitemap",
+      "status": "pass",
+      "message": "sitemap.xml exists with valid structure"
+    },
+    {
+      "id": "linkHeaders",
+      "status": "pass",
+      "message": "Found agent-useful Link relations: api-catalog, service-desc, service-doc, describedby"
+    },
+    {
+      "id": "dnsAid",
+      "status": "fail",
+      "message": "DNS for AI Discovery (DNS-AID) well-known entrypoint records not found"
+    },
+    {
+      "id": "markdownNegotiation",
+      "status": "pass",
+      "message": "Site supports Markdown for Agents"
+    },
+    {
+      "id": "robotsTxtAiRules",
+      "status": "pass",
+      "message": "No AI-specific bot rules; wildcard rules apply to all crawlers including AI bots"
+    },
+    {
+      "id": "contentSignals",
+      "status": "pass",
+      "message": "Content Signals found in robots.txt"
+    },
+    {
+      "id": "webBotAuth",
+      "status": "neutral",
+      "message": "Web Bot Auth directory not found (informational only)"
+    },
+    {
+      "id": "apiCatalog",
+      "status": "pass",
+      "message": "API Catalog found with 1 API listed"
+    },
+    {
+      "id": "oauthDiscovery",
+      "status": "fail",
+      "message": "No OAuth/OIDC discovery metadata found"
+    },
+    {
+      "id": "oauthProtectedResource",
+      "status": "fail",
+      "message": "No OAuth Protected Resource Metadata found"
+    },
+    {
+      "id": "authMd",
+      "status": "fail",
+      "message": "auth.md exists but does not describe agent registration"
+    },
+    {
+      "id": "mcpServerCard",
+      "status": "fail",
+      "message": "MCP Server Card not found"
+    },
+    {
+      "id": "a2aAgentCard",
+      "status": "fail",
+      "message": "A2A Agent Card not found"
+    },
+    {
+      "id": "agentSkills",
+      "status": "fail",
+      "message": "Agent Skills index not found"
+    },
+    {
+      "id": "webMcp",
+      "status": "fail",
+      "message": "No WebMCP tools detected on page load"
+    },
+    {
+      "id": "ard",
+      "status": "fail",
+      "message": "ARD capability manifest not found"
+    },
+    {
+      "id": "x402",
+      "status": "neutral",
+      "message": "x402 payment protocol not detected (not a commerce site)"
+    },
+    {
+      "id": "mpp",
+      "status": "neutral",
+      "message": "MPP payment discovery not detected (not a commerce site)"
+    },
+    {
+      "id": "ucp",
+      "status": "neutral",
+      "message": "UCP profile not found (not a commerce site)"
+    },
+    {
+      "id": "acp",
+      "status": "neutral",
+      "message": "ACP discovery document not found (not a commerce site)"
+    },
+    {
+      "id": "ap2",
+      "status": "neutral",
+      "message": "AP2 not detected (no A2A Agent Card) (not a commerce site)"
+    }
+  ],
+  "processExitCode": -1073740791,
+  "jsonValid": true
+}

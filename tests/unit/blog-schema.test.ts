@@ -5,7 +5,7 @@ import { blogSchema } from '../../src/lib/blog.ts';
 const validDraft = {
   title: 'Urgencias en perros', seoTitle: 'Urgencias en perros',
   metaDescription: 'Descripción válida.', pilar: 'guias-por-especie',
-  slug: 'urgencias-en-perros', estado: 'borrador', autor: 'Equipo editorial',
+  slug: 'urgencias-en-perros', estado: 'borrador', autor: 'Equipo de Vet24cr',
 };
 
 describe('schema de blog', () => {

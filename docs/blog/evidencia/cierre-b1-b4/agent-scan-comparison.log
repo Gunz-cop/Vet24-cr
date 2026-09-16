@@ -1,0 +1,8 @@
+b1  ids=22  REGRESIONES=0  mejoras=7 [robotsTxt: undefined→pass; sitemap: undefined→pass; linkHeaders: undefined→pass; markdownNegotiation: undefined→pass; robotsTxtAiRules: undefined→pass; contentSignals: undefined→pass; apiCatalog: undefined→pass]
+b2  ids=22  REGRESIONES=0  mejoras=0
+b3  ids=22  REGRESIONES=0  mejoras=0
+b4  ids=22  REGRESIONES=0  mejoras=0
+
+estados en produccion hoy:
+{ pass: 7, fail: 9, neutral: 6 }
+no-pass: dnsAid=fail, webBotAuth=neutral, oauthDiscovery=fail, oauthProtectedResource=fail, authMd=fail, mcpServerCard=fail, a2aAgentCard=fail, agentSkills=fail, webMcp=fail, ard=fail, x402=neutral, mpp=neutral, ucp=neutral, acp=neutral, ap2=neutral

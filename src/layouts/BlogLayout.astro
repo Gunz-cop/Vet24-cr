@@ -7,8 +7,10 @@ import { blogArticlePath, blogPillarPath, PILAR_NAMES, type BlogEntry } from '..
 
 interface Props { entry: BlogEntry }
 const { entry } = Astro.props;
-const { title, seoTitle, metaDescription, pilar, slug, autor, datePublished, dateModified } = entry.data;
+const { title, seoTitle, metaDescription, pilar, slug, autor, datePublished, dateModified, heroImage } = entry.data;
 const canonical = new URL(blogArticlePath(pilar, slug), 'https://vet24cr.com').href;
+const heroImageUrl = heroImage ? new URL(heroImage.src, 'https://vet24cr.com').href : undefined;
+const heroSrcset = heroImage?.srcset.map(({ src, width }) => `${src} ${width}w`).join(', ');
 const breadcrumbs = {
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
@@ -22,10 +24,11 @@ const article = {
   '@context': 'https://schema.org', '@type': 'Article', headline: title,
   description: metaDescription, url: canonical, mainEntityOfPage: canonical,
   author: { '@type': 'Organization', name: autor }, datePublished,
+  ...(heroImageUrl ? { image: heroImageUrl } : {}),
   ...(dateModified ? { dateModified } : {}),
 };
 ---
-<BaseLayout title={seoTitle} description={metaDescription} canonicalUrl={canonical}>
+<BaseLayout title={seoTitle} description={metaDescription} canonicalUrl={canonical} image={heroImage?.src} imageAlt={heroImage?.alt}>
   <script type="application/ld+json" set:html={JSON.stringify(article)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
   <div class="max-w-6xl mx-auto">
@@ -37,12 +40,50 @@ const article = {
         <p class="mt-4 text-sm text-brand-text-muted">Por <BlogAuthor name={autor} /> · <time datetime={datePublished} data-date-published>{datePublished}</time></p>
         {dateModified && <p class="mt-1 text-xs text-brand-text-muted">Actualizado: <time datetime={dateModified} data-date-modified>{dateModified}</time></p>}
         <AdBanner slot="blog-inline" size="320x100" />
+        {heroImage && (
+          <figure class="mt-8 overflow-hidden rounded-2xl border border-brand-card-border bg-brand-card-bg">
+            <img
+              src={heroImage.src}
+              srcset={heroSrcset}
+              alt={heroImage.alt}
+              width={heroImage.width}
+              height={heroImage.height}
+              sizes="(max-width: 768px) 100vw, 960px"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class="h-auto w-full"
+            />
+            <figcaption class="px-4 py-3 text-xs leading-5 text-brand-text-muted">{heroImage.caption}</figcaption>
+          </figure>
+        )}
         <div class="blog-prose mt-8 leading-8 text-brand-text-muted"><slot /></div>
       </article>
       <aside aria-label="Contenido complementario" class="min-w-0"><AdBanner slot="blog-sidebar" size="336x280" /></aside>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const externalLinkSelector = '.blog-prose a[href^="http://"], .blog-prose a[href^="https://"]';
+  const siteHosts = new Set(['vet24cr.com', 'www.vet24cr.com']);
+
+  document.querySelectorAll<HTMLAnchorElement>(externalLinkSelector).forEach((link) => {
+    try {
+      const url = new URL(link.href, window.location.href);
+      if (!siteHosts.has(url.hostname.toLowerCase())) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const label = link.textContent?.trim();
+        if (label && !link.getAttribute('aria-label')) {
+          link.setAttribute('aria-label', `${label} (abre en una pestaña nueva)`);
+        }
+      }
+    } catch {
+      // Ignore malformed links so one source cannot break the article.
+    }
+  });
+</script>
 
 <style>
   .blog-prose :global(h2) { margin: 2rem 0 .75rem; color: var(--brand-text); font-size: 1.5rem; font-weight: 700; }

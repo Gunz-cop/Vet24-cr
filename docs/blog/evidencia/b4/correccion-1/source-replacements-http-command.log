@@ -1,0 +1,3 @@
+curl.exe -L --max-redirs 10 --max-time 30 -A "Mozilla/5.0" -sS -o <TEMP> -w "%{http_code}|%{url_effective}|%{size_download}" <URL>
+URLs: ASPCA What to Do if Your Pet Is Poisoned; University of Illinois Know Thy Species; Merck Management and Husbandry of Reptiles; University of Florida Financial Services.
+Exit global: 0. El JSON conserva status, URL final, bytes y exit individual.

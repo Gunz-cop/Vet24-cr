@@ -11,6 +11,7 @@ interface Props {
   description?: string;
   canonicalUrl?: string;
   image?: string;
+  imageAlt?: string;
   /**
    * Si la página lleva publicidad. En false no se carga el CMP, ni el script
    * de Ezoic, ni el enlace de consentimiento: la página queda sin terceros.
@@ -18,7 +19,7 @@ interface Props {
   ads?: boolean;
 }
 
-const { title, description, canonicalUrl, image, ads = true } = Astro.props;
+const { title, description, canonicalUrl, image, imageAlt, ads = true } = Astro.props;
 const mostrarAnuncios = EZOIC_ENABLED && ads;
 const siteName = "Vet24 Costa Rica";
 const fullTitle = `${title} | ${siteName}`;
@@ -68,6 +69,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={metaDesc} />
     <meta property="og:image" content={shareImageUrl} />
+    {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -75,6 +77,7 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={metaDesc} />
     <meta property="twitter:image" content={shareImageUrl} />
+    {imageAlt && <meta property="twitter:image:alt" content={imageAlt} />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />

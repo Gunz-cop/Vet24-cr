@@ -1,0 +1,143 @@
+{
+  "scope": "Producción vigente antes de despliegue; no demuestra el candidato local.",
+  "baseScannedAt": "2026-09-08T18:17:23.198Z",
+  "currentScannedAt": "2026-09-08T19:04:28.691Z",
+  "baseLevel": 4,
+  "currentLevel": 4,
+  "checkCount": 22,
+  "comparison": [
+    {
+      "id": "robotsTxt",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "sitemap",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "linkHeaders",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "dnsAid",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "markdownNegotiation",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "robotsTxtAiRules",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "contentSignals",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "webBotAuth",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    },
+    {
+      "id": "apiCatalog",
+      "base": "pass",
+      "current": "pass",
+      "regression": false
+    },
+    {
+      "id": "oauthDiscovery",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "oauthProtectedResource",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "authMd",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "mcpServerCard",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "a2aAgentCard",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "agentSkills",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "webMcp",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "ard",
+      "base": "fail",
+      "current": "fail",
+      "regression": false
+    },
+    {
+      "id": "x402",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    },
+    {
+      "id": "mpp",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    },
+    {
+      "id": "ucp",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    },
+    {
+      "id": "acp",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    },
+    {
+      "id": "ap2",
+      "base": "neutral",
+      "current": "neutral",
+      "regression": false
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,2565 @@
+
+> veterinarias-cr@0.0.1 test:e2e
+> playwright test
+
+
+Running 110 tests using 8 workers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[1/110] [chromium] › tests\e2e\agent-discovery.spec.ts:13:3 › AR2 — descubrimiento y catálogo público › GET y HEAD entregan los seis recursos técnicos sin barra final
+
+
+
+
+
+
+[1A[2K[2/110] [chromium] › tests\e2e\agent-discovery.spec.ts:27:3 › AR2 — descubrimiento y catálogo público › el catálogo y el API Catalog describen recursos reales
+[1A[2K[3/110] [chromium] › tests\e2e\agent-discovery.spec.ts:52:3 › AR2 — descubrimiento y catálogo público › portada y ficha exponen las cuatro relaciones Link
+[1A[2K[4/110] [chromium] › tests\e2e\agent-discovery.spec.ts:70:3 › AR2 — descubrimiento y catálogo público › el alias de sitemap redirige al índice generado
+
+
+[1A[2K[5/110] [chromium] › tests\e2e\agent-markdown.spec.ts:62:3 › AR3 — mirrors Markdown y negociación › preserva normalización canónica y Link de descubrimiento
+[1A[2K[6/110] [chromium] › tests\e2e\agent-discovery.spec.ts:42:3 › AR2 — descubrimiento y catálogo público › OpenAPI solo expone el GET público del catálogo
+[1A[2K[7/110] [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché
+[1A[2K[8/110] [chromium] › tests\e2e\agent-markdown.spec.ts:46:3 › AR3 — mirrors Markdown y negociación › HEAD mantiene selección, cabeceras y cuerpo vacío
+[1A[2K[9/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[10/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[11/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[12/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K[13/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[14/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K[15/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K  1) [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché 
+
+    Error: apiRequestContext.get: read ECONNRESET
+    Call log:
+    [2m  - → GET http://localhost:4321/md/provincia/cartago.md[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      35 |       expect(html.headers()['x-robots-tag'] ?? '', htmlPath).not.toMatch(/noindex/i);
+      36 |
+    > 37 |       const direct = await request.get(mirrorPath);
+         |                                    ^
+      38 |       expect(direct.status(), `directo ${mirrorPath}`).toBe(200);
+      39 |       expect(direct.headers()['content-type'], mirrorPath).toContain('text/markdown');
+      40 |       expect(direct.headers()['access-control-allow-origin'], mirrorPath).toBe('*');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\agent-markdown.spec.ts:37:36
+
+    Error Context: test-results\agent-markdown-AR3-—-mirro-982cc-egociadas-sin-mezclar-caché-chromium\error-context.md
+
+
+[1A[2K  2) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hospital-vet-medical-care-heredia/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-1d98e-et-medical-care-heredia-390-chromium\error-context.md
+
+
+[1A[2K  3) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/veterinaria-gocha-santo-domingo/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-dc121-ria-gocha-santo-domingo-390-chromium\error-context.md
+
+
+[1A[2K  4) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/zona/san-pablo-heredia/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-c53ea--zona-san-pablo-heredia-390-chromium\error-context.md
+
+
+[1A[2K  5) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390 ─
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/zona/guapiles/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-emergencia-zona-guapiles-390-chromium\error-context.md
+
+
+[1A[2K  6) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440 
+
+    [31mTest timeout of 30000ms exceeded while setting up "page".[39m
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+
+    Error Context: test-results\blog-emergency-layout-B2-e-5a2c0-t-medical-care-heredia-1440-chromium\error-context.md
+
+
+[1A[2K  7) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-36be4-inica-hems-una-heredia-1440-chromium\error-context.md
+
+
+[1A[2K  8) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-9d531-linica-hems-una-heredia-390-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[16/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+
+
+[1A[2K[17/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+
+
+
+
+[1A[2K[18/110] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+
+
+[1A[2K[19/110] [chromium] › tests\e2e\blog.spec.ts:21:3 › blog B4 › los cinco artículos están publicados, enlazados y tienen Article válido
+[1A[2K[20/110] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/ existe y tiene canonical con barra final
+[1A[2K[21/110] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/costos-y-acceso/ existe y tiene canonical con barra final
+[1A[2K[22/110] [chromium] › tests\e2e\blog.spec.ts:36:3 › blog B4 › sin scroll horizontal y foco visible en ambos viewports
+[1A[2K[23/110] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/guias-por-especie/ existe y tiene canonical con barra final
+[1A[2K  9) [chromium] › tests\e2e\blog.spec.ts:21:3 › blog B4 › los cinco artículos están publicados, enlazados y tienen Article válido 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.get: Request context disposed.
+    Call log:
+    [2m  - → GET http://localhost:4321/blog/guias-por-especie/urgencias-en-perros/[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.7778.96 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      21 |   test('los cinco artículos están publicados, enlazados y tienen Article válido', async ({ page, request }) => {
+      22 |     for (const path of articles) {
+    > 23 |       expect((await request.get(path)).status(), path).toBe(200);
+         |                             ^
+      24 |       await page.goto(path);
+      25 |       await expect(page.locator('[data-blog-author]')).toHaveText('Equipo de Vet24cr');
+      26 |       await expect(page.locator('time[data-date-published]')).toHaveAttribute('datetime', '2026-09-08');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:23:29
+
+    Error Context: test-results\blog-blog-B4-los-cinco-art-a0c07-dos-y-tienen-Article-válido-chromium\error-context.md
+
+
+[1A[2K  10) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/veterinaria-gocha-santo-domingo/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-7d15e-ia-gocha-santo-domingo-1440-chromium\error-context.md
+
+
+[1A[2K  11) [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/guias-por-especie/ existe y tiene canonical con barra final 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/blog/guias-por-especie/", waiting until "load"[22m
+
+
+      12 |   for (const path of ['/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/']) {
+      13 |     test(`${path} existe y tiene canonical con barra final`, async ({ page }) => {
+    > 14 |       await page.goto(path);
+         |                  ^
+      15 |       await expect(page.locator('h1')).toBeVisible();
+      16 |       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://vet24cr.com${path}`);
+      17 |       await expect(page.locator('body')).not.toContainText('en preparación editorial');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:14:18
+
+    Error Context: test-results\blog-blog-B4-blog-guias-po-9e0fb-e-canonical-con-barra-final-chromium\error-context.md
+
+
+[1A[2K  12) [chromium] › tests\e2e\blog.spec.ts:36:3 › blog B4 › sin scroll horizontal y foco visible en ambos viewports 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/blog/", waiting until "load"[22m
+
+
+      37 |     for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 900 }]) {
+      38 |       await page.setViewportSize(viewport);
+    > 39 |       await page.goto('/blog/');
+         |                  ^
+      40 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      41 |       await page.keyboard.press('Tab');
+      42 |       const focused = page.locator(':focus');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:39:18
+
+    Error Context: test-results\blog-blog-B4-sin-scroll-ho-f1270--visible-en-ambos-viewports-chromium\error-context.md
+
+
+[1A[2K  13) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/zona/san-pablo-heredia/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-e-32484-zona-san-pablo-heredia-1440-chromium\error-context.md
+
+
+[1A[2K  14) [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/ existe y tiene canonical con barra final 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/blog/", waiting until "load"[22m
+
+
+      12 |   for (const path of ['/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/']) {
+      13 |     test(`${path} existe y tiene canonical con barra final`, async ({ page }) => {
+    > 14 |       await page.goto(path);
+         |                  ^
+      15 |       await expect(page.locator('h1')).toBeVisible();
+      16 |       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://vet24cr.com${path}`);
+      17 |       await expect(page.locator('body')).not.toContainText('en preparación editorial');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:14:18
+
+    Error Context: test-results\blog-blog-B4-blog-existe-y-tiene-canonical-con-barra-final-chromium\error-context.md
+
+
+[1A[2K  15) [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/costos-y-acceso/ existe y tiene canonical con barra final 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/blog/costos-y-acceso/", waiting until "load"[22m
+
+
+      12 |   for (const path of ['/blog/', '/blog/guias-por-especie/', '/blog/costos-y-acceso/']) {
+      13 |     test(`${path} existe y tiene canonical con barra final`, async ({ page }) => {
+    > 14 |       await page.goto(path);
+         |                  ^
+      15 |       await expect(page.locator('h1')).toBeVisible();
+      16 |       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://vet24cr.com${path}`);
+      17 |       await expect(page.locator('body')).not.toContainText('en preparación editorial');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:14:18
+
+    Error Context: test-results\blog-blog-B4-blog-costos-y-a2e16-e-canonical-con-barra-final-chromium\error-context.md
+
+
+[1A[2K  16) [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/zona/guapiles/", waiting until "load"[22m
+
+
+      13 |   });
+      14 |   await page.route('**/api/status-override?*', r => r.fulfill({ json: { success: true, override: null } }));
+    > 15 |   await page.goto(path);
+         |              ^
+      16 |   await page.evaluate(async () => {
+      17 |     await Promise.all([document.fonts.load('600 16px Outfit'), document.fonts.load('400 16px "Plus Jakarta Sans"')]);
+      18 |     await document.fonts.ready;
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog-emergency-layout.spec.ts:15:14
+
+    Error Context: test-results\blog-emergency-layout-B2-emergencia-zona-guapiles-1440-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[24/110] [chromium] › tests\e2e\blog.spec.ts:48:3 › blog B4 › evidencia visual de los cinco artículos en móvil y escritorio
+
+
+
+
+
+
+[1A[2K[25/110] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/atlantic-vet-guapiles/
+[1A[2K[26/110] [chromium] › tests\e2e\blog.spec.ts:64:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[27/110] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/agromedica-escazu/
+[1A[2K[28/110] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/hems-una-heredia/
+[1A[2K[29/110] [chromium] › tests\e2e\blog.spec.ts:91:1 › B4: catálogo activo genera enlaces inversos en fichas y zonas
+[1A[2K[30/110] [chromium] › tests\e2e\blog.spec.ts:74:1 › B4: header y footer enlazan /blog/ con artículos publicados
+[1A[2K[31/110] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/aruma-centro-veterinario-upala/
+[1A[2K[32/110] [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/la-vete-escazu/
+[1A[2K  17) [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/la-vete-escazu/ 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/la-vete-escazu/", waiting until "domcontentloaded"[22m
+
+
+      28 |   for (const url of [FICHA_INCIDENTE, FICHA_SIN_CAPACIDADES, FICHA_SIN_EVIDENCIA, FICHA_EN_REVISION, FICHA_CONFIRMADA]) {
+      29 |     test(`ninguna afirmación no sustentada en ${url}`, async ({ page }) => {
+    > 30 |       await page.goto(url, { waitUntil: 'domcontentloaded' });
+         |                  ^
+      31 |       const body = page.locator('body');
+      32 |       for (const texto of AFIRMACIONES_PROHIBIDAS) {
+      33 |         await expect(body).not.toContainText(texto);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:30:18
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-03696--en-clinica-la-vete-escazu--chromium\error-context.md
+
+
+[1A[2K  18) [chromium] › tests\e2e\blog.spec.ts:74:1 › B4: header y footer enlazan /blog/ con artículos publicados 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      76 |       await page.setViewportSize(viewport);
+      77 |       for (const path of ['/', '/blog/', '/blog/guias-por-especie/', '/politica-editorial/']) {
+    > 78 |         await page.goto(path);
+         |                    ^
+      79 |         const headerLink = page.locator('#nav-blog');
+      80 |         const footerLink = page.locator('footer a[href="/blog/"]');
+      81 |         await expect(headerLink).toHaveCount(1);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:78:20
+
+    Error Context: test-results\blog-B4-header-y-footer-en-f2c12-og-con-artículos-publicados-chromium\error-context.md
+
+
+[1A[2K  19) [chromium] › tests\e2e\blog.spec.ts:91:1 › B4: catálogo activo genera enlaces inversos en fichas y zonas 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "load"[22m
+
+
+      91 | test('B4: catálogo activo genera enlaces inversos en fichas y zonas', async ({ page }) => {
+      92 |   for (const path of ['/clinica/hems-una-heredia/', '/clinica/hospital-vet-medical-care-heredia/', '/clinica/veterinaria-gocha-santo-domingo/', '/zona/san-pablo-heredia/', '/zona/guapiles/']) {
+    > 93 |     await page.goto(path);
+         |                ^
+      94 |     await expect(page.locator('[data-blog-links]')).toHaveCount(1);
+      95 |     await expect(page.locator('[data-blog-links] a').first()).toBeVisible();
+      96 |   }
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:93:16
+
+    Error Context: test-results\blog-B4-catálogo-activo-ge-505ab--inversos-en-fichas-y-zonas-chromium\error-context.md
+
+
+[1A[2K  20) [chromium] › tests\e2e\blog.spec.ts:64:1 › B3: política editorial publicada y enlazada desde el footer 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/politica-editorial/", waiting until "load"[22m
+
+
+      63 |
+      64 | test('B3: política editorial publicada y enlazada desde el footer', async ({ page }) => {
+    > 65 |   await page.goto('/politica-editorial/');
+         |              ^
+      66 |   await expect(page.locator('h1')).toHaveText('Política editorial');
+      67 |   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://vet24cr.com/politica-editorial/');
+      68 |   await expect(page.locator('footer a[href="/politica-editorial/"]')).toHaveCount(1);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:65:14
+
+    Error Context: test-results\blog-B3-política-editorial-cee31--y-enlazada-desde-el-footer-chromium\error-context.md
+
+
+[1A[2K  21) [chromium] › tests\e2e\blog.spec.ts:48:3 › blog B4 › evidencia visual de los cinco artículos en móvil y escritorio 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/blog/guias-por-especie/urgencias-en-perros/", waiting until "load"[22m
+
+
+      50 |       await page.setViewportSize(viewport);
+      51 |       for (const path of articles) {
+    > 52 |         await page.goto(path);
+         |                    ^
+      53 |         expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), `${path} ${viewport.width}`).toBe(true);
+      54 |         const slug = path.split('/').filter(Boolean).at(-1);
+      55 |         const screenshot = testInfo.outputPath(`${slug}-${viewport.width}.png`);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\blog.spec.ts:52:20
+
+    Error Context: test-results\blog-blog-B4-evidencia-vis-0a54a-culos-en-móvil-y-escritorio-chromium\error-context.md
+
+
+[1A[2K  22) [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/aruma-centro-veterinario-upala/ 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/aruma-centro-veterinario-upala/", waiting until "domcontentloaded"[22m
+
+
+      28 |   for (const url of [FICHA_INCIDENTE, FICHA_SIN_CAPACIDADES, FICHA_SIN_EVIDENCIA, FICHA_EN_REVISION, FICHA_CONFIRMADA]) {
+      29 |     test(`ninguna afirmación no sustentada en ${url}`, async ({ page }) => {
+    > 30 |       await page.goto(url, { waitUntil: 'domcontentloaded' });
+         |                  ^
+      31 |       const body = page.locator('body');
+      32 |       for (const texto of AFIRMACIONES_PROHIBIDAS) {
+      33 |         await expect(body).not.toContainText(texto);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:30:18
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-4f2c9-a-centro-veterinario-upala--chromium\error-context.md
+
+
+[1A[2K  23) [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/agromedica-escazu/ 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/agromedica-escazu/", waiting until "domcontentloaded"[22m
+
+
+      28 |   for (const url of [FICHA_INCIDENTE, FICHA_SIN_CAPACIDADES, FICHA_SIN_EVIDENCIA, FICHA_EN_REVISION, FICHA_CONFIRMADA]) {
+      29 |     test(`ninguna afirmación no sustentada en ${url}`, async ({ page }) => {
+    > 30 |       await page.goto(url, { waitUntil: 'domcontentloaded' });
+         |                  ^
+      31 |       const body = page.locator('body');
+      32 |       for (const texto of AFIRMACIONES_PROHIBIDAS) {
+      33 |         await expect(body).not.toContainText(texto);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:30:18
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-cadd0--clinica-agromedica-escazu--chromium\error-context.md
+
+
+[1A[2K  24) [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/hems-una-heredia/ 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "domcontentloaded"[22m
+
+
+      28 |   for (const url of [FICHA_INCIDENTE, FICHA_SIN_CAPACIDADES, FICHA_SIN_EVIDENCIA, FICHA_EN_REVISION, FICHA_CONFIRMADA]) {
+      29 |     test(`ninguna afirmación no sustentada en ${url}`, async ({ page }) => {
+    > 30 |       await page.goto(url, { waitUntil: 'domcontentloaded' });
+         |                  ^
+      31 |       const body = page.locator('body');
+      32 |       for (const texto of AFIRMACIONES_PROHIBIDAS) {
+      33 |         await expect(body).not.toContainText(texto);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:30:18
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-dcb1b-n-clinica-hems-una-heredia--chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[33/110] [chromium] › tests\e2e\semantic-copy.spec.ts:38:3 › Hotfix semántico: false se presenta como "no confirmado" › overnight_doctor_present=false no produce "Solo llamado"
+[1A[2K[34/110] [chromium] › tests\e2e\semantic-copy.spec.ts:48:3 › Hotfix semántico: false se presenta como "no confirmado" › emergencias24h=false usa el mismo copy neutral en toda la ficha
+
+
+[1A[2K[35/110] [chromium] › tests\e2e\semantic-copy.spec.ts:43:3 › Hotfix semántico: false se presenta como "no confirmado" › has_hospitalization=false no produce "No disponible"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[36/110] [chromium] › tests\e2e\semantic-copy.spec.ts:64:3 › Hotfix semántico: false se presenta como "no confirmado" › los estados positivos confirmados siguen mostrándose
+[1A[2K[37/110] [chromium] › tests\e2e\semantic-copy.spec.ts:57:3 › Hotfix semántico: false se presenta como "no confirmado" › hotelMascotas=false se mantiene neutral
+[1A[2K[38/110] [chromium] › tests\e2e\semantic-copy.spec.ts:74:3 › Hotfix semántico: badges de verificación › record_status VERIFIED sin evidencia no afirma auditoría por llamada
+[1A[2K[39/110] [chromium] › tests\e2e\semantic-copy.spec.ts:81:3 › Hotfix semántico: badges de verificación › una fuente vacía no se rellena con "Llamada directa"
+[1A[2K[40/110] [chromium] › tests\e2e\semantic-copy.spec.ts:86:3 › Hotfix semántico: badges de verificación › con fecha y fuente reales se muestran tal cual
+[1A[2K[41/110] [chromium] › tests\e2e\semantic-copy.spec.ts:92:3 › Hotfix semántico: badges de verificación › REVIEW_REQUIRED conserva la advertencia
+[1A[2K[42/110] [chromium] › tests\e2e\semantic-copy.spec.ts:99:3 › Hotfix semántico: el Tier no cambia › las etiquetas de Tier se mantienen
+[1A[2K[43/110] [chromium] › tests\e2e\semantic-copy.spec.ts:108:3 › Hotfix semántico: otras vistas › la página de zona no etiqueta las fichas como "Verificadas"
+[1A[2K  25) [chromium] › tests\e2e\semantic-copy.spec.ts:86:3 › Hotfix semántico: badges de verificación › con fecha y fuente reales se muestran tal cual 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/la-vete-escazu/", waiting until "domcontentloaded"[22m
+
+
+      85 |
+      86 |   test('con fecha y fuente reales se muestran tal cual', async ({ page }) => {
+    > 87 |     await page.goto(FICHA_CONFIRMADA, { waitUntil: 'domcontentloaded' });
+         |                ^
+      88 |     await expect(page.locator('[data-audit="review-evidence"]')).toHaveText('Con fuente y fecha de revisión');
+      89 |     await expect(page.locator('[data-audit="last-review"]')).toContainText('2026-06-08');
+      90 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:87:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-50867-reales-se-muestran-tal-cual-chromium\error-context.md
+
+
+[1A[2K  26) [chromium] › tests\e2e\semantic-copy.spec.ts:92:3 › Hotfix semántico: badges de verificación › REVIEW_REQUIRED conserva la advertencia 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/aruma-centro-veterinario-upala/", waiting until "domcontentloaded"[22m
+
+
+      91 |
+      92 |   test('REVIEW_REQUIRED conserva la advertencia', async ({ page }) => {
+    > 93 |     await page.goto(FICHA_EN_REVISION, { waitUntil: 'domcontentloaded' });
+         |                ^
+      94 |     await expect(page.locator('[data-audit="record-status"]')).toContainText('Pendiente de Auditoría');
+      95 |   });
+      96 | });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:93:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-48eaa-RED-conserva-la-advertencia-chromium\error-context.md
+
+
+[1A[2K  27) [chromium] › tests\e2e\semantic-copy.spec.ts:74:3 › Hotfix semántico: badges de verificación › record_status VERIFIED sin evidencia no afirma auditoría por llamada 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/agromedica-escazu/", waiting until "domcontentloaded"[22m
+
+
+      73 | test.describe('Hotfix semántico: badges de verificación', () => {
+      74 |   test('record_status VERIFIED sin evidencia no afirma auditoría por llamada', async ({ page }) => {
+    > 75 |     await page.goto(FICHA_SIN_EVIDENCIA, { waitUntil: 'domcontentloaded' });
+         |                ^
+      76 |     await expect(page.locator('[data-audit="record-status"]')).toHaveText('Ficha revisada');
+      77 |     await expect(page.locator('[data-audit="review-evidence"]')).toHaveText('Revisión sin documentar');
+      78 |     await expect(page.locator('[data-audit="last-review"]')).toContainText('Sin fecha de revisión registrada');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:75:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-f176f-firma-auditoría-por-llamada-chromium\error-context.md
+
+
+[1A[2K  28) [chromium] › tests\e2e\semantic-copy.spec.ts:81:3 › Hotfix semántico: badges de verificación › una fuente vacía no se rellena con "Llamada directa" 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "domcontentloaded"[22m
+
+
+      80 |
+      81 |   test('una fuente vacía no se rellena con "Llamada directa"', async ({ page }) => {
+    > 82 |     await page.goto(FICHA_INCIDENTE, { waitUntil: 'domcontentloaded' });
+         |                ^
+      83 |     await expect(page.locator('[data-audit="last-review"]')).not.toContainText('Llamada directa');
+      84 |   });
+      85 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:82:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-95ba2-ellena-con-Llamada-directa--chromium\error-context.md
+
+
+[1A[2K  29) [chromium] › tests\e2e\semantic-copy.spec.ts:64:3 › Hotfix semántico: false se presenta como "no confirmado" › los estados positivos confirmados siguen mostrándose 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/la-vete-escazu/", waiting until "domcontentloaded"[22m
+
+
+      63 |
+      64 |   test('los estados positivos confirmados siguen mostrándose', async ({ page }) => {
+    > 65 |     await page.goto(FICHA_CONFIRMADA, { waitUntil: 'domcontentloaded' });
+         |                ^
+      66 |     await expect(page.locator('[data-capability="overnight-doctor"]')).toContainText('Confirmado Permanente');
+      67 |     await expect(page.locator('[data-capability="hospitalization"]')).toContainText('Disponible');
+      68 |     await expect(page.locator('[data-capability="emergency-247"]').first()).toContainText('Confirmada en esta ficha');
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:65:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-25505-firmados-siguen-mostrándose-chromium\error-context.md
+
+
+[1A[2K  30) [chromium] › tests\e2e\semantic-copy.spec.ts:57:3 › Hotfix semántico: false se presenta como "no confirmado" › hotelMascotas=false se mantiene neutral 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/clinica/hems-una-heredia/", waiting until "domcontentloaded"[22m
+
+
+      56 |
+      57 |   test('hotelMascotas=false se mantiene neutral', async ({ page }) => {
+    > 58 |     await page.goto(FICHA_INCIDENTE, { waitUntil: 'domcontentloaded' });
+         |                ^
+      59 |     for (const texto of await page.locator('[data-capability="pet-hotel"]').allInnerTexts()) {
+      60 |       expect(texto.trim()).toBe('No confirmado');
+      61 |     }
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:58:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-1f445-s-false-se-mantiene-neutral-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K  31) [chromium] › tests\e2e\semantic-copy.spec.ts:99:3 › Hotfix semántico: el Tier no cambia › las etiquetas de Tier se mantienen 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('body')
+    Expected substring: [32m"Tier A"[39m
+    Received string:    [31m""[39m
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('body')[22m
+
+
+       99 |   test('las etiquetas de Tier se mantienen', async ({ page }) => {
+      100 |     await page.goto(FICHA_CONFIRMADA, { waitUntil: 'domcontentloaded' });
+    > 101 |     await expect(page.locator('body')).toContainText('Tier A');
+          |                                        ^
+      102 |     await page.goto(FICHA_INCIDENTE, { waitUntil: 'domcontentloaded' });
+      103 |     await expect(page.locator('body')).toContainText('Tier B');
+      104 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:101:40
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-71c95-quetas-de-Tier-se-mantienen-chromium\error-context.md
+
+
+[1A[2K  32) [chromium] › tests\e2e\semantic-copy.spec.ts:108:3 › Hotfix semántico: otras vistas › la página de zona no etiqueta las fichas como "Verificadas" 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-9cee8-as-fichas-como-Verificadas--chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[44/110] [chromium] › tests\e2e\semantic-copy.spec.ts:114:3 › Hotfix semántico: otras vistas › las cards del directorio no afirman ausencia de servicios
+
+
+[1A[2K[45/110] [chromium] › tests\e2e\tier1-features.spec.ts:53:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 2. should sort clinics by proximity with user location set to San José coordinates
+[1A[2K[46/110] [chromium] › tests\e2e\tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button
+[1A[2K[47/110] [chromium] › tests\e2e\smoke.spec.ts:4:3 › Vet24 CR - Smoke Test Suite › should load the homepage and display the main sections and elements
+[1A[2K[48/110] [chromium] › tests\e2e\tier1-features.spec.ts:102:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 4. should format distance badge text as A X.X km
+[1A[2K[49/110] [chromium] › tests\e2e\tier1-features.spec.ts:87:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 3. should calculate distances in kilometers and display them on distance badges
+
+
+
+
+
+
+
+
+[1A[2K[50/110] [chromium] › tests\e2e\tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change
+[1A[2K[51/110] [chromium] › tests\e2e\tier1-features.spec.ts:140:5 › Tier 1: Feature Coverage › Interactive Map › 6. should render the Leaflet map container on the main page
+[1A[2K  33) [chromium] › tests\e2e\tier1-features.spec.ts:102:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 4. should format distance badge text as A X.X km 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-69c89-ance-badge-text-as-A-X-X-km-chromium\error-context.md
+
+
+[1A[2K  34) [chromium] › tests\e2e\smoke.spec.ts:4:3 › Vet24 CR - Smoke Test Suite › should load the homepage and display the main sections and elements 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      4 |   test('should load the homepage and display the main sections and elements', async ({ page }) => {
+      5 |     // Navigate to the homepage
+    > 6 |     await page.goto('/');
+        |                ^
+      7 |
+      8 |     // Assert that the page title contains expected site identity
+      9 |     await expect(page).toHaveTitle(/Veterinarias abiertas ahora/);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\smoke.spec.ts:6:16
+
+    Error Context: test-results\smoke-Vet24-CR---Smoke-Tes-d860e--main-sections-and-elements-chromium\error-context.md
+
+
+[1A[2K  35) [chromium] › tests\e2e\semantic-copy.spec.ts:114:3 › Hotfix semántico: otras vistas › las cards del directorio no afirman ausencia de servicios 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      113 |
+      114 |   test('las cards del directorio no afirman ausencia de servicios', async ({ page }) => {
+    > 115 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+          |                ^
+      116 |     const grid = page.locator('#clinicas-grid');
+      117 |     for (const texto of ['No Disponible', 'No Atiende', 'Solo llamado']) {
+      118 |       await expect(grid).not.toContainText(texto);
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\semantic-copy.spec.ts:115:16
+
+    Error Context: test-results\semantic-copy-Hotfix-semán-c8a43-irman-ausencia-de-servicios-chromium\error-context.md
+
+
+[1A[2K  36) [chromium] › tests\e2e\tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-8bf83-ordenar-por-cercanía-button-chromium\error-context.md
+
+
+[1A[2K  37) [chromium] › tests\e2e\tier1-features.spec.ts:53:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 2. should sort clinics by proximity with user location set to San José coordinates 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-1cedf-set-to-San-José-coordinates-chromium\error-context.md
+
+
+[1A[2K  38) [chromium] › tests\e2e\tier1-features.spec.ts:87:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 3. should calculate distances in kilometers and display them on distance badges 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-eab72-lay-them-on-distance-badges-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[52/110] [chromium] › tests\e2e\tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating
+[1A[2K[53/110] [chromium] › tests\e2e\tier1-features.spec.ts:196:5 › Tier 1: Feature Coverage › Predictive Text Search › 11. should filter clinics grid by name
+[1A[2K[54/110] [chromium] › tests\e2e\tier1-features.spec.ts:209:5 › Tier 1: Feature Coverage › Predictive Text Search › 12. should filter clinics grid by canton
+[1A[2K[55/110] [chromium] › tests\e2e\tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map
+[1A[2K[56/110] [chromium] › tests\e2e\tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map
+[1A[2K[57/110] [chromium] › tests\e2e\tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup
+[1A[2K  39) [chromium] › tests\e2e\tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-21e50-hen-user-coordinates-change-chromium\error-context.md
+
+
+[1A[2K  40) [chromium] › tests\e2e\tier1-features.spec.ts:140:5 › Tier 1: Feature Coverage › Interactive Map › 6. should render the Leaflet map container on the main page 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-18b12--container-on-the-main-page-chromium\error-context.md
+
+
+
+
+
+
+
+
+[1A[2K[58/110] [chromium] › tests\e2e\tier1-features.spec.ts:236:5 › Tier 1: Feature Coverage › Predictive Text Search › 14. should filter clinics grid by service/tag (e.g. exóticos)
+
+
+[1A[2K[59/110] [chromium] › tests\e2e\tier1-features.spec.ts:223:5 › Tier 1: Feature Coverage › Predictive Text Search › 13. should filter clinics grid by zone
+[1A[2K  41) [chromium] › tests\e2e\tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-9dff5-n-buttons-CTAs-in-map-popup-chromium\error-context.md
+
+
+[1A[2K  42) [chromium] › tests\e2e\tier1-features.spec.ts:209:5 › Tier 1: Feature Coverage › Predictive Text Search › 12. should filter clinics grid by canton 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-9d8b0-lter-clinics-grid-by-canton-chromium\error-context.md
+
+
+[1A[2K  43) [chromium] › tests\e2e\tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-f7a4e-ing-a-clinic-pin-on-the-map-chromium\error-context.md
+
+
+[1A[2K  44) [chromium] › tests\e2e\tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-084db-ting-the-clinics-on-the-map-chromium\error-context.md
+
+
+[1A[2K  45) [chromium] › tests\e2e\tier1-features.spec.ts:196:5 › Tier 1: Feature Coverage › Predictive Text Search › 11. should filter clinics grid by name 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-b05af-filter-clinics-grid-by-name-chromium\error-context.md
+
+
+[1A[2K  46) [chromium] › tests\e2e\tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-8e85d-n-the-map-after-geolocating-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[60/110] [chromium] › tests\e2e\tier1-features.spec.ts:263:5 › Tier 1: Feature Coverage › Empty State Fallback › 16. should display empty state container when 0 matches found
+[1A[2K[61/110] [chromium] › tests\e2e\tier1-features.spec.ts:249:5 › Tier 1: Feature Coverage › Predictive Text Search › 15. should clear search and restore all clinics when clicking reset/clear search button
+[1A[2K[62/110] [chromium] › tests\e2e\tier1-features.spec.ts:293:5 › Tier 1: Feature Coverage › Empty State Fallback › 20. should restore clinics list when clearing search inputs or resetting filters
+[1A[2K[63/110] [chromium] › tests\e2e\tier1-features.spec.ts:285:5 › Tier 1: Feature Coverage › Empty State Fallback › 19. should display empty state when filter combinations result in 0 matches
+[1A[2K[64/110] [chromium] › tests\e2e\tier1-features.spec.ts:307:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 21. should show report incorrect data button on clinic detail page
+[1A[2K[65/110] [chromium] › tests\e2e\tier1-features.spec.ts:312:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 22. should open report incorrect data modal when clicking report button
+[1A[2K[66/110] [chromium] › tests\e2e\tier1-features.spec.ts:318:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 23. should show validation error when submitting empty description in form
+[1A[2K[67/110] [chromium] › tests\e2e\tier1-features.spec.ts:329:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 24. should show success message after mock submitting report form with POST request intercepted
+[1A[2K[68/110] [chromium] › tests\e2e\tier1-features.spec.ts:354:10 › Tier 1: Feature Coverage › Report Incorrect Data form › 25. should hide report modal when clicking close button
+[1A[2K[69/110] [chromium] › tests\e2e\tier1-features.spec.ts:365:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61. should activate SOS flow on homepage when clicking SOS button
+
+
+
+
+
+
+[1A[2K[70/110] [chromium] › tests\e2e\tier1-features.spec.ts:382:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow
+
+
+[1A[2K[71/110] [chromium] › tests\e2e\tier1-features.spec.ts:273:5 › Tier 1: Feature Coverage › Empty State Fallback › 18. should list closest verified clinics in empty state fallback list when geolocation is active
+[1A[2K[72/110] [chromium] › tests\e2e\tier1-features.spec.ts:268:5 › Tier 1: Feature Coverage › Empty State Fallback › 17. should show visible empty state warning messages
+[1A[2K  47) [chromium] › tests\e2e\tier1-features.spec.ts:285:5 › Tier 1: Feature Coverage › Empty State Fallback › 19. should display empty state when filter combinations result in 0 matches 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-652c1-nations-result-in-0-matches-chromium\error-context.md
+
+
+[1A[2K  48) [chromium] › tests\e2e\tier1-features.spec.ts:293:5 › Tier 1: Feature Coverage › Empty State Fallback › 20. should restore clinics list when clearing search inputs or resetting filters 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-7a2a1-inputs-or-resetting-filters-chromium\error-context.md
+
+
+[1A[2K  49) [chromium] › tests\e2e\tier1-features.spec.ts:249:5 › Tier 1: Feature Coverage › Predictive Text Search › 15. should clear search and restore all clinics when clicking reset/clear search button 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-dc745-g-reset-clear-search-button-chromium\error-context.md
+
+
+[1A[2K  50) [chromium] › tests\e2e\tier1-features.spec.ts:263:5 › Tier 1: Feature Coverage › Empty State Fallback › 16. should display empty state container when 0 matches found 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-96ce6-tainer-when-0-matches-found-chromium\error-context.md
+
+
+[1A[2K  51) [chromium] › tests\e2e\tier1-features.spec.ts:365:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61. should activate SOS flow on homepage when clicking SOS button 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-89980-ge-when-clicking-SOS-button-chromium\error-context.md
+
+
+[1A[2K  52) [chromium] › tests\e2e\tier1-features.spec.ts:382:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-ca0b9-her-24-7-clinic-in-SOS-flow-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[73/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully
+
+
+[1A[2K[74/110] [chromium] › tests\e2e\tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page
+[1A[2K[75/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:9:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 26. should handle geolocation permission denied gracefully without crashing
+
+
+
+
+
+
+[1A[2K[76/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:26:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 27. should handle geolocation timeout gracefully
+[1A[2K[77/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo)
+[1A[2K[78/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:120:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 32. should handle clinics with missing or zero coordinates by displaying sin coordenadas and excluding from map
+[1A[2K[79/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption
+[1A[2K[80/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic
+[1A[2K  53) [chromium] › tests\e2e\tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('#mapa-loading')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('#mapa-loading')[22m
+    [2m    13 × locator resolved to <div id="mapa-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-bg z-10 transition-colors duration-200">…</div>[22m
+    [2m       - unexpected value "visible"[22m
+
+
+      113 |   test.describe('Map Edge Cases', () => {
+      114 |     test('31. should render and handle cluttered pins at close coordinates successfully', async ({ page }) => {
+    > 115 |       await expect(page.locator('#mapa-loading')).toBeHidden();
+          |                                                   ^
+      116 |       const markerCount = await page.locator('.leaflet-marker-icon').count();
+      117 |       expect(markerCount).toBeGreaterThan(5);
+      118 |     });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:115:51
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-7adc9-se-coordinates-successfully-chromium\error-context.md
+
+
+[1A[2K  54) [chromium] › tests\e2e\tier2-boundaries.spec.ts:120:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 32. should handle clinics with missing or zero coordinates by displaying sin coordenadas and excluding from map 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-0b8d2-adas-and-excluding-from-map-chromium\error-context.md
+
+
+[1A[2K  55) [chromium] › tests\e2e\tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      14 |
+      15 | test.describe('Tier 1: Feature Coverage', () => {
+    > 16 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      17 |     // Navigate to homepage before each test
+      18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+      19 |   });
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:16:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "domcontentloaded"[22m
+
+
+      16 |   test.beforeEach(async ({ page }) => {
+      17 |     // Navigate to homepage before each test
+    > 18 |     await page.goto('/', { waitUntil: 'domcontentloaded' });
+         |                ^
+      19 |   });
+      20 |
+      21 |   test.describe('Geolocation Proximity Sorting', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier1-features.spec.ts:18:16
+
+    Error Context: test-results\tier1-features-Tier-1-Feat-d7d89--SOS-button-on-details-page-chromium\error-context.md
+
+
+
+
+[1A[2K  56) [chromium] › tests\e2e\tier2-boundaries.spec.ts:9:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 26. should handle geolocation permission denied gracefully without crashing 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-4bb42-gracefully-without-crashing-chromium\error-context.md
+
+
+
+
+[1A[2K[81/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:136:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 33. should handle Leaflet load failure gracefully
+[1A[2K  57) [chromium] › tests\e2e\tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo) 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-063f7--extreme-coordinates-Tokyo--chromium\error-context.md
+
+
+[1A[2K  58) [chromium] › tests\e2e\tier2-boundaries.spec.ts:26:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 27. should handle geolocation timeout gracefully 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-c2cd4-location-timeout-gracefully-chromium\error-context.md
+
+
+[1A[2K  59) [chromium] › tests\e2e\tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-52a81-act-coordinates-of-a-clinic-chromium\error-context.md
+
+
+[1A[2K  60) [chromium] › tests\e2e\tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-09b9b-te-markers-or-UI-corruption-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[82/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number
+[1A[2K[83/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:188:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 35. should toggle map visibility when clicking toggle map button
+
+
+[1A[2K[84/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:198:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 36. should normalize accents and handle special characters in search input
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[85/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:209:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 37. should handle extremely long search queries without crashing
+
+
+
+
+[1A[2K[86/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:214:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 38. should trim leading and trailing whitespaces from search input
+[1A[2K[87/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:220:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 39. should perform case-insensitive search matching
+[1A[2K[88/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:226:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 40. should escape HTML and script tags in search input safely (prevent XSS)
+[1A[2K  61) [chromium] › tests\e2e\tier2-boundaries.spec.ts:188:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 35. should toggle map visibility when clicking toggle map button 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-06d7d--clicking-toggle-map-button-chromium\error-context.md
+
+
+[1A[2K  62) [chromium] › tests\e2e\tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-4e55e--clinic-has-no-phone-number-chromium\error-context.md
+
+
+[1A[2K  63) [chromium] › tests\e2e\tier2-boundaries.spec.ts:136:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 33. should handle Leaflet load failure gracefully 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      141 |
+      142 |       // Reload homepage to apply the routing interceptor
+    > 143 |       await page.goto('/');
+          |                  ^
+      144 |
+      145 |       // Main content should still load and not crash
+      146 |       await expect(page.locator('#hero-title')).toBeVisible();
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:143:18
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-9d5d2-let-load-failure-gracefully-chromium\error-context.md
+
+
+[1A[2K  64) [chromium] › tests\e2e\tier2-boundaries.spec.ts:198:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 36. should normalize accents and handle special characters in search input 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-e93dc--characters-in-search-input-chromium\error-context.md
+
+
+
+
+[1A[2K  65) [chromium] › tests\e2e\tier2-boundaries.spec.ts:214:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 38. should trim leading and trailing whitespaces from search input 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-f6385-itespaces-from-search-input-chromium\error-context.md
+
+
+[1A[2K  66) [chromium] › tests\e2e\tier2-boundaries.spec.ts:220:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 39. should perform case-insensitive search matching 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-95caf-insensitive-search-matching-chromium\error-context.md
+
+
+[1A[2K[89/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:288:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 46. should show validation errors when submitting empty report form
+[1A[2K[90/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:296:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 47. should show validation error when contact phone has invalid format
+[1A[2K[91/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:306:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 48. should submit successfully when description has extremely long text
+[1A[2K[92/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:317:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 49. should preserve or reset form fields when modal is closed and reopened
+[1A[2K[93/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:327:10 › Tier 2: Boundary & Corner Cases › Report Form Boundaries › 50. should disable submit button during submission to prevent duplicate reports
+[1A[2K  67) [chromium] › tests\e2e\tier2-boundaries.spec.ts:226:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 40. should escape HTML and script tags in search input safely (prevent XSS) 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-ed414-h-input-safely-prevent-XSS--chromium\error-context.md
+
+
+[1A[2K  68) [chromium] › tests\e2e\tier2-boundaries.spec.ts:209:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 37. should handle extremely long search queries without crashing 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-095a2-ch-queries-without-crashing-chromium\error-context.md
+
+
+
+
+[1A[2K[94/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:237:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 41. should restore all clinics when clicking reset all filters button in empty state
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[95/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:258:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 43. should hide low-confidence and review-required clinics when status filters are active
+
+
+
+
+
+
+[1A[2K[96/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:246:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 42. should display empty state when all clinics are closed under open now filter
+
+
+[1A[2K[97/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:273:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 44. should hide empty state immediately when search query is cleared
+[1A[2K[98/110] [chromium] › tests\e2e\tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements
+[1A[2K[99/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input
+[1A[2K[100/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order
+[1A[2K[101/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:59:3 › Tier 3: Cross-Feature Combinations › 53. should support combining open now status, 24/7 filter, species filter, and text search concurrently
+[1A[2K[102/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:80:3 › Tier 3: Cross-Feature Combinations › 54. should show closest closed clinics in fallback grid when geolocation is active and search yields zero open clinics
+[1A[2K  69) [chromium] › tests\e2e\tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-d282f-render-empty-state-elements-chromium\error-context.md
+
+
+[1A[2K  70) [chromium] › tests\e2e\tier2-boundaries.spec.ts:273:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 44. should hide empty state immediately when search query is cleared 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-d312c-hen-search-query-is-cleared-chromium\error-context.md
+
+
+[1A[2K  71) [chromium] › tests\e2e\tier2-boundaries.spec.ts:246:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 42. should display empty state when all clinics are closed under open now filter 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-a250a-losed-under-open-now-filter-chromium\error-context.md
+
+
+[1A[2K  72) [chromium] › tests\e2e\tier2-boundaries.spec.ts:258:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 43. should hide low-confidence and review-required clinics when status filters are active 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 2: Boundary & Corner Cases', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test.describe('Geolocation Boundaries', () => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier2-boundaries.spec.ts:5:16
+
+    Error Context: test-results\tier2-boundaries-Tier-2-Bo-a5b3e-n-status-filters-are-active-chromium\error-context.md
+
+
+[1A[2K  73) [chromium] › tests\e2e\tier3-combinations.spec.ts:80:3 › Tier 3: Cross-Feature Combinations › 54. should show closest closed clinics in fallback grid when geolocation is active and search yields zero open clinics 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+      15 |   test.beforeEach(async ({ page }) => {
+    > 16 |     await page.goto('/');
+         |                ^
+      17 |   });
+      18 |
+      19 |   test('51. should filter by search text while proximity sorting is active and preserve sorted order', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:16:16
+
+    Error Context: test-results\tier3-combinations-Tier-3--7c99c-ch-yields-zero-open-clinics-chromium\error-context.md
+
+
+[1A[2K  74) [chromium] › tests\e2e\tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+      15 |   test.beforeEach(async ({ page }) => {
+    > 16 |     await page.goto('/');
+         |                ^
+      17 |   });
+      18 |
+      19 |   test('51. should filter by search text while proximity sorting is active and preserve sorted order', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:16:16
+
+    Error Context: test-results\tier3-combinations-Tier-3--736b2-iltered-out-by-search-input-chromium\error-context.md
+
+
+[1A[2K[103/110] [chromium] › tests\e2e\tier4-workloads.spec.ts:60:8 › Tier 4: Real-World Application Scenarios › 58. should execute scenario: user reporting incorrect schedule data on details page
+[1A[2K  75) [chromium] › tests\e2e\tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+
+    Error Context: test-results\tier3-combinations-Tier-3--33868-e-and-preserve-sorted-order-chromium\error-context.md
+
+
+[1A[2K  76) [chromium] › tests\e2e\tier3-combinations.spec.ts:59:3 › Tier 3: Cross-Feature Combinations › 53. should support combining open now status, 24/7 filter, species filter, and text search concurrently 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: browserContext.newPage: Test timeout of 30000ms exceeded.
+
+    Error Context: test-results\tier3-combinations-Tier-3--2ac35-nd-text-search-concurrently-chromium\error-context.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1A[2K[104/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active
+[1A[2K[105/110] [chromium] › tests\e2e\tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation
+[1A[2K[106/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied
+[1A[2K[107/110] [chromium] › tests\e2e\tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics
+[1A[2K[108/110] [chromium] › tests\e2e\tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José
+[1A[2K[109/110] [chromium] › tests\e2e\tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency
+
+
+[1A[2K[110/110] [chromium] › tests\e2e\tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets
+[1A[2K  77) [chromium] › tests\e2e\tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+      15 |   test.beforeEach(async ({ page }) => {
+    > 16 |     await page.goto('/');
+         |                ^
+      17 |   });
+      18 |
+      19 |   test('51. should filter by search text while proximity sorting is active and preserve sorted order', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:16:16
+
+    Error Context: test-results\tier3-combinations-Tier-3--ca49f--when-geolocation-is-active-chromium\error-context.md
+
+
+[1A[2K  78) [chromium] › tests\e2e\tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:4:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test('56. should execute scenario: user at Heredia with late-night surgery emergency', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:5:16
+
+    Error Context: test-results\tier4-workloads-Tier-4-Rea-83d38--after-refusing-geolocation-chromium\error-context.md
+
+
+[1A[2K  79) [chromium] › tests\e2e\tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test('56. should execute scenario: user at Heredia with late-night surgery emergency', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:5:16
+
+    Error Context: test-results\tier4-workloads-Tier-4-Rea-14b1a-lter-combination-and-resets-chromium\error-context.md
+
+
+[1A[2K  80) [chromium] › tests\e2e\tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test('56. should execute scenario: user at Heredia with late-night surgery emergency', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:5:16
+
+    Error Context: test-results\tier4-workloads-Tier-4-Rea-cddc6-ate-night-surgery-emergency-chromium\error-context.md
+
+
+[1A[2K  81) [chromium] › tests\e2e\tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+      15 |   test.beforeEach(async ({ page }) => {
+    > 16 |     await page.goto('/');
+         |                ^
+      17 |   });
+      18 |
+      19 |   test('51. should filter by search text while proximity sorting is active and preserve sorted order', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:16:16
+
+    Error Context: test-results\tier3-combinations-Tier-3--643ab-nly-that-province-s-clinics-chromium\error-context.md
+
+
+[1A[2K  82) [chromium] › tests\e2e\tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      13 |
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+    > 15 |   test.beforeEach(async ({ page }) => {
+         |        ^
+      16 |     await page.goto('/');
+      17 |   });
+      18 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:15:8
+
+    Error: page.goto: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      14 | test.describe('Tier 3: Cross-Feature Combinations', () => {
+      15 |   test.beforeEach(async ({ page }) => {
+    > 16 |     await page.goto('/');
+         |                ^
+      17 |   });
+      18 |
+      19 |   test('51. should filter by search text while proximity sorting is active and preserve sorted order', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier3-combinations.spec.ts:16:16
+
+    Error Context: test-results\tier3-combinations-Tier-3--a4ef6-en-search-filter-is-applied-chromium\error-context.md
+
+
+[1A[2K  83) [chromium] › tests\e2e\tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José 
+
+    [31mTest timeout of 30000ms exceeded while running "beforeEach" hook.[39m
+
+      2 |
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+    > 4 |   test.beforeEach(async ({ page }) => {
+        |        ^
+      5 |     await page.goto('/');
+      6 |   });
+      7 |
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:4:8
+
+    Error: page.goto: net::ERR_ABORTED; maybe frame was detached?
+    Call log:
+    [2m  - navigating to "http://localhost:4321/", waiting until "load"[22m
+
+
+      3 | test.describe('Tier 4: Real-World Application Scenarios', () => {
+      4 |   test.beforeEach(async ({ page }) => {
+    > 5 |     await page.goto('/');
+        |                ^
+      6 |   });
+      7 |
+      8 |   test('56. should execute scenario: user at Heredia with late-night surgery emergency', async ({ page, context }) => {
+        at C:\Users\grcx1\OneDrive\Documentos\Proyectos\vete\b4-blog-seed\tests\e2e\tier4-workloads.spec.ts:5:16
+
+    Error Context: test-results\tier4-workloads-Tier-4-Rea-9e2c3-exotic-pet-care-in-San-José-chromium\error-context.md
+
+
+[1A[2K  83 failed
+    [chromium] › tests\e2e\agent-markdown.spec.ts:16:3 › AR3 — mirrors Markdown y negociación › sirve todas las familias directas y negociadas sin mezclar caché 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390 ──
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440 
+    [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440 ─
+    [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/ existe y tiene canonical con barra final 
+    [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/guias-por-especie/ existe y tiene canonical con barra final 
+    [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/costos-y-acceso/ existe y tiene canonical con barra final 
+    [chromium] › tests\e2e\blog.spec.ts:21:3 › blog B4 › los cinco artículos están publicados, enlazados y tienen Article válido 
+    [chromium] › tests\e2e\blog.spec.ts:36:3 › blog B4 › sin scroll horizontal y foco visible en ambos viewports 
+    [chromium] › tests\e2e\blog.spec.ts:48:3 › blog B4 › evidencia visual de los cinco artículos en móvil y escritorio 
+    [chromium] › tests\e2e\blog.spec.ts:64:1 › B3: política editorial publicada y enlazada desde el footer 
+    [chromium] › tests\e2e\blog.spec.ts:74:1 › B4: header y footer enlazan /blog/ con artículos publicados 
+    [chromium] › tests\e2e\blog.spec.ts:91:1 › B4: catálogo activo genera enlaces inversos en fichas y zonas 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/hems-una-heredia/ 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/agromedica-escazu/ 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/aruma-centro-veterinario-upala/ 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:29:5 › Hotfix semántico: false se presenta como "no confirmado" › ninguna afirmación no sustentada en /clinica/la-vete-escazu/ 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:57:3 › Hotfix semántico: false se presenta como "no confirmado" › hotelMascotas=false se mantiene neutral 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:64:3 › Hotfix semántico: false se presenta como "no confirmado" › los estados positivos confirmados siguen mostrándose 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:74:3 › Hotfix semántico: badges de verificación › record_status VERIFIED sin evidencia no afirma auditoría por llamada 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:81:3 › Hotfix semántico: badges de verificación › una fuente vacía no se rellena con "Llamada directa" 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:86:3 › Hotfix semántico: badges de verificación › con fecha y fuente reales se muestran tal cual 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:92:3 › Hotfix semántico: badges de verificación › REVIEW_REQUIRED conserva la advertencia 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:99:3 › Hotfix semántico: el Tier no cambia › las etiquetas de Tier se mantienen 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:108:3 › Hotfix semántico: otras vistas › la página de zona no etiqueta las fichas como "Verificadas" 
+    [chromium] › tests\e2e\semantic-copy.spec.ts:114:3 › Hotfix semántico: otras vistas › las cards del directorio no afirman ausencia de servicios 
+    [chromium] › tests\e2e\smoke.spec.ts:4:3 › Vet24 CR - Smoke Test Suite › should load the homepage and display the main sections and elements 
+    [chromium] › tests\e2e\tier1-features.spec.ts:22:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 1. should request geolocation permission when clicking ordenar por cercanía button 
+    [chromium] › tests\e2e\tier1-features.spec.ts:53:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 2. should sort clinics by proximity with user location set to San José coordinates 
+    [chromium] › tests\e2e\tier1-features.spec.ts:87:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 3. should calculate distances in kilometers and display them on distance badges 
+    [chromium] › tests\e2e\tier1-features.spec.ts:102:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 4. should format distance badge text as A X.X km 
+    [chromium] › tests\e2e\tier1-features.spec.ts:116:5 › Tier 1: Feature Coverage › Geolocation Proximity Sorting › 5. should updated sorting order when user coordinates change 
+    [chromium] › tests\e2e\tier1-features.spec.ts:140:5 › Tier 1: Feature Coverage › Interactive Map › 6. should render the Leaflet map container on the main page 
+    [chromium] › tests\e2e\tier1-features.spec.ts:144:5 › Tier 1: Feature Coverage › Interactive Map › 7. should render user current location pin on the map after geolocating 
+    [chromium] › tests\e2e\tier1-features.spec.ts:154:5 › Tier 1: Feature Coverage › Interactive Map › 8. should display pins representing the clinics on the map 
+    [chromium] › tests\e2e\tier1-features.spec.ts:163:5 › Tier 1: Feature Coverage › Interactive Map › 9. should open popup when clicking a clinic pin on the map 
+    [chromium] › tests\e2e\tier1-features.spec.ts:174:5 › Tier 1: Feature Coverage › Interactive Map › 10. should display correct details and action buttons (CTAs) in map popup 
+    [chromium] › tests\e2e\tier1-features.spec.ts:196:5 › Tier 1: Feature Coverage › Predictive Text Search › 11. should filter clinics grid by name 
+    [chromium] › tests\e2e\tier1-features.spec.ts:209:5 › Tier 1: Feature Coverage › Predictive Text Search › 12. should filter clinics grid by canton 
+    [chromium] › tests\e2e\tier1-features.spec.ts:249:5 › Tier 1: Feature Coverage › Predictive Text Search › 15. should clear search and restore all clinics when clicking reset/clear search button 
+    [chromium] › tests\e2e\tier1-features.spec.ts:263:5 › Tier 1: Feature Coverage › Empty State Fallback › 16. should display empty state container when 0 matches found 
+    [chromium] › tests\e2e\tier1-features.spec.ts:285:5 › Tier 1: Feature Coverage › Empty State Fallback › 19. should display empty state when filter combinations result in 0 matches 
+    [chromium] › tests\e2e\tier1-features.spec.ts:293:5 › Tier 1: Feature Coverage › Empty State Fallback › 20. should restore clinics list when clearing search inputs or resetting filters 
+    [chromium] › tests\e2e\tier1-features.spec.ts:365:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61. should activate SOS flow on homepage when clicking SOS button 
+    [chromium] › tests\e2e\tier1-features.spec.ts:382:5 › Tier 1: Feature Coverage › SOS Emergency Button › 61b. should prioritize the nearest open clinic over a farther 24/7 clinic in SOS flow 
+    [chromium] › tests\e2e\tier1-features.spec.ts:414:5 › Tier 1: Feature Coverage › SOS Emergency Button › 62. should redirect to homepage with sos=true parameter when clicking SOS button on details page 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:9:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 26. should handle geolocation permission denied gracefully without crashing 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:26:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 27. should handle geolocation timeout gracefully 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:55:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 28. should sort correctly and display large distance when user is at extreme coordinates (Tokyo) 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:78:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 29. should show zero distance when user is at exact coordinates of a clinic 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:98:5 › Tier 2: Boundary & Corner Cases › Geolocation Boundaries › 30. should handle rapid repeated clicks of geolocation button without duplicate markers or UI corruption 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:114:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 31. should render and handle cluttered pins at close coordinates successfully 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:120:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 32. should handle clinics with missing or zero coordinates by displaying sin coordenadas and excluding from map 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:136:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 33. should handle Leaflet load failure gracefully 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:151:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 34. should not show call button in popup if clinic has no phone number 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:188:5 › Tier 2: Boundary & Corner Cases › Map Edge Cases › 35. should toggle map visibility when clicking toggle map button 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:198:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 36. should normalize accents and handle special characters in search input 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:209:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 37. should handle extremely long search queries without crashing 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:214:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 38. should trim leading and trailing whitespaces from search input 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:220:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 39. should perform case-insensitive search matching 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:226:5 › Tier 2: Boundary & Corner Cases › Search Boundaries › 40. should escape HTML and script tags in search input safely (prevent XSS) 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:246:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 42. should display empty state when all clinics are closed under open now filter 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:258:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 43. should hide low-confidence and review-required clinics when status filters are active 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:273:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 44. should hide empty state immediately when search query is cleared 
+    [chromium] › tests\e2e\tier2-boundaries.spec.ts:281:5 › Tier 2: Boundary & Corner Cases › Empty State Boundaries › 45. should verify details page does not render empty state elements 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:19:3 › Tier 3: Cross-Feature Combinations › 51. should filter by search text while proximity sorting is active and preserve sorted order 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:44:3 › Tier 3: Cross-Feature Combinations › 52. should dynamically hide map markers of clinics filtered out by search input 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:59:3 › Tier 3: Cross-Feature Combinations › 53. should support combining open now status, 24/7 filter, species filter, and text search concurrently 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:80:3 › Tier 3: Cross-Feature Combinations › 54. should show closest closed clinics in fallback grid when geolocation is active and search yields zero open clinics 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:103:3 › Tier 3: Cross-Feature Combinations › 55. should display user location pin on the map when geolocation is active 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:113:3 › Tier 3: Cross-Feature Combinations › 56. should adjust map center/bounds dynamically to fit visible markers when search filter is applied 
+    [chromium] › tests\e2e\tier3-combinations.spec.ts:155:3 › Tier 3: Cross-Feature Combinations › 57. should render interactive map on province-specific pages containing only that province's clinics 
+    [chromium] › tests\e2e\tier4-workloads.spec.ts:8:3 › Tier 4: Real-World Application Scenarios › 56. should execute scenario: user at Heredia with late-night surgery emergency 
+    [chromium] › tests\e2e\tier4-workloads.spec.ts:35:3 › Tier 4: Real-World Application Scenarios › 57. should execute scenario: user looking for exotic pet care in San José 
+    [chromium] › tests\e2e\tier4-workloads.spec.ts:86:3 › Tier 4: Real-World Application Scenarios › 59. should execute scenario: user recovers directory search after refusing geolocation 
+    [chromium] › tests\e2e\tier4-workloads.spec.ts:118:3 › Tier 4: Real-World Application Scenarios › 60. should execute scenario: user navigates through complex dashboard filter combination and resets 
+  11 skipped
+  16 passed (9.4m)

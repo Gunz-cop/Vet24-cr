@@ -1,0 +1,1706 @@
+[
+  {
+    "path": "/clinica/hems-una-heredia/",
+    "width": 1440,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de HEMSHorarioAbierto ahoraL-V 9am-7pm | S-D solo emergencias 10am-5pmEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Heredia (UNA)Hotel para mascotasNo confirmado",
+        "href": null,
+        "rect": {
+          "x": 208,
+          "y": 374,
+          "width": 672,
+          "height": 171
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "L-V 9am-7pm | S-D solo emergencias 10am-5pm",
+        "href": null,
+        "rect": {
+          "x": 960.875,
+          "y": 627.5,
+          "width": 165.9375,
+          "height": 38
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": true,
+        "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+        "href": null,
+        "rect": {
+          "x": 208,
+          "y": 569,
+          "width": 672,
+          "height": 111.5
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora2260-9234",
+        "href": "tel:+50622609234",
+        "rect": {
+          "x": 208,
+          "y": 704.5,
+          "width": 159,
+          "height": 118
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (2260-9234)",
+        "href": "tel:+50622609234",
+        "rect": {
+          "x": 946,
+          "y": 299.5,
+          "width": 252,
+          "height": 68
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "text": "Llamar secundario (2261-1775)",
+        "href": "tel:+50622611775",
+        "rect": {
+          "x": 946,
+          "y": 379.5,
+          "width": 252,
+          "height": 50
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50622609234"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50622609234"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "href": "tel:+50622611775"
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-call-sidebar-1",
+      "btn-call-sidebar-2"
+    ]
+  },
+  {
+    "path": "/clinica/hems-una-heredia/",
+    "width": 390,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de HEMSHorarioAbierto ahoraL-V 9am-7pm | S-D solo emergencias 10am-5pmEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Heredia (UNA)Hotel para mascotasNo confirmado",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 409.5,
+          "width": 358,
+          "height": 388
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "L-V 9am-7pm | S-D solo emergencias 10am-5pm",
+        "href": null,
+        "rect": {
+          "x": 66.609375,
+          "y": 3843.53125,
+          "width": 254.125,
+          "height": 38
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": true,
+        "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 821.5,
+          "width": 358,
+          "height": 171.75
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora2260-9234",
+        "href": "tel:+50622609234",
+        "rect": {
+          "x": 16,
+          "y": 1017.25,
+          "width": 173,
+          "height": 116
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (2260-9234)",
+        "href": "tel:+50622609234",
+        "rect": {
+          "x": 42,
+          "y": 3543.53125,
+          "width": 306,
+          "height": 48
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "text": "Llamar secundario (2261-1775)",
+        "href": "tel:+50622611775",
+        "rect": {
+          "x": 42,
+          "y": 3603.53125,
+          "width": 306,
+          "height": 50
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50622609234"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50622609234"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "href": "tel:+50622611775"
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-call-sidebar-1",
+      "btn-call-sidebar-2"
+    ]
+  },
+  {
+    "path": "/clinica/hospital-vet-medical-care-heredia/",
+    "width": 1440,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de Hospital Veterinario Medical CareHorarioAbierto ahora24/7 todos los díasEmergencia 24/7Confirmada en esta fichaZonaVeterinarias en Heredia centroHotel para mascotasSí, confirmado",
+        "href": null,
+        "rect": {
+          "x": 208,
+          "y": 400,
+          "width": 672,
+          "height": 131
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "24/7 todos los días",
+        "href": null,
+        "rect": {
+          "x": 965,
+          "y": 647.5,
+          "width": 126.9375,
+          "height": 18
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora2262-6826",
+        "href": "tel:+50622626826",
+        "rect": {
+          "x": 208,
+          "y": 555,
+          "width": 159,
+          "height": 118
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "text": "WhatsAppEnviar mensaje",
+        "href": "https://wa.me/50686396793",
+        "rect": {
+          "x": 379,
+          "y": 555,
+          "width": 159,
+          "height": 118
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (2262-6826)",
+        "href": "tel:+50622626826",
+        "rect": {
+          "x": 946,
+          "y": 299.5,
+          "width": 252,
+          "height": 68
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "text": "Enviar WhatsApp (8639-6793)",
+        "href": "https://wa.me/50686396793",
+        "rect": {
+          "x": 946,
+          "y": 379.5,
+          "width": 252,
+          "height": 70
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50622626826"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "href": "https://wa.me/50686396793"
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50622626826"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "href": "https://wa.me/50686396793"
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-quick-wa",
+      "btn-call-sidebar-1",
+      "btn-wa-sidebar"
+    ]
+  },
+  {
+    "path": "/clinica/hospital-vet-medical-care-heredia/",
+    "width": 390,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de Hospital Veterinario Medical CareHorarioAbierto ahora24/7 todos los díasEmergencia 24/7Confirmada en esta fichaZonaVeterinarias en Heredia centroHotel para mascotasSí, confirmado",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 468.25,
+          "width": 358,
+          "height": 368
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "24/7 todos los días",
+        "href": null,
+        "rect": {
+          "x": 69,
+          "y": 4360.78125,
+          "width": 126.9375,
+          "height": 18
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora2262-6826",
+        "href": "tel:+50622626826",
+        "rect": {
+          "x": 16,
+          "y": 860.25,
+          "width": 173,
+          "height": 118
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "text": "WhatsAppEnviar mensaje",
+        "href": "https://wa.me/50686396793",
+        "rect": {
+          "x": 201,
+          "y": 860.25,
+          "width": 173,
+          "height": 118
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (2262-6826)",
+        "href": "tel:+50622626826",
+        "rect": {
+          "x": 42,
+          "y": 4060.78125,
+          "width": 306,
+          "height": 48
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "text": "Enviar WhatsApp (8639-6793)",
+        "href": "https://wa.me/50686396793",
+        "rect": {
+          "x": 42,
+          "y": 4120.78125,
+          "width": 306,
+          "height": 50
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50622626826"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "href": "https://wa.me/50686396793"
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50622626826"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "href": "https://wa.me/50686396793"
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-quick-wa",
+      "btn-call-sidebar-1",
+      "btn-wa-sidebar"
+    ]
+  },
+  {
+    "path": "/clinica/veterinaria-gocha-santo-domingo/",
+    "width": 1440,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de Veterinaria GochaHorarioAbierto ahoraL-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfonoEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Santo Domingo de HerediaHotel para mascotasNo confirmado",
+        "href": null,
+        "rect": {
+          "x": 208,
+          "y": 400,
+          "width": 672,
+          "height": 211
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "L-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfono",
+        "href": null,
+        "rect": {
+          "x": 957.28125,
+          "y": 709.5,
+          "width": 240.640625,
+          "height": 38
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": true,
+        "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+        "href": null,
+        "rect": {
+          "x": 208,
+          "y": 635,
+          "width": 672,
+          "height": 111.5
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora4000-2795",
+        "href": "tel:+50640002795",
+        "rect": {
+          "x": 208,
+          "y": 770.5,
+          "width": 159,
+          "height": 118
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "text": "WhatsAppEnviar mensaje",
+        "href": "https://wa.me/50689646632",
+        "rect": {
+          "x": 379,
+          "y": 770.5,
+          "width": 159,
+          "height": 118
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (4000-2795)",
+        "href": "tel:+50640002795",
+        "rect": {
+          "x": 946,
+          "y": 299.5,
+          "width": 252,
+          "height": 68
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "text": "Llamar secundario (2244-8726)",
+        "href": "tel:+50622448726",
+        "rect": {
+          "x": 946,
+          "y": 379.5,
+          "width": 252,
+          "height": 50
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "text": "Enviar WhatsApp (8964-6632)",
+        "href": "https://wa.me/50689646632",
+        "rect": {
+          "x": 946,
+          "y": 441.5,
+          "width": 252,
+          "height": 70
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50640002795"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "href": "https://wa.me/50689646632"
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50640002795"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "href": "tel:+50622448726"
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "href": "https://wa.me/50689646632"
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-quick-wa",
+      "btn-call-sidebar-1",
+      "btn-call-sidebar-2",
+      "btn-wa-sidebar"
+    ]
+  },
+  {
+    "path": "/clinica/veterinaria-gocha-santo-domingo/",
+    "width": 390,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": true,
+        "text": "Datos rápidos de Veterinaria GochaHorarioAbierto ahoraL-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfonoEmergencia 24/7No confirmado como 24/7ZonaVeterinarias en Santo Domingo de HerediaHotel para mascotasNo confirmado",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 455,
+          "width": 358,
+          "height": 388
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": true,
+        "text": "L-S 8:30am-6:30pm · Dom cerrado — urgencias nocturnas por teléfono",
+        "href": null,
+        "rect": {
+          "x": 62.5,
+          "y": 4286.78125,
+          "width": 256.46875,
+          "height": 38
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": true,
+        "text": "Sin servicio 24/7 confirmadoEsta veterinaria no cuenta con servicio de emergencia confirmado las 24 horas. Si tienes una emergencia nocturna, busca clínicas marcadas como 24/7 en el directorio.",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 867,
+          "width": 358,
+          "height": 171.75
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "text": "Llamar ahora4000-2795",
+        "href": "tel:+50640002795",
+        "rect": {
+          "x": 16,
+          "y": 1062.75,
+          "width": 173,
+          "height": 118
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "text": "WhatsAppEnviar mensaje",
+        "href": "https://wa.me/50689646632",
+        "rect": {
+          "x": 201,
+          "y": 1062.75,
+          "width": 173,
+          "height": 118
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "text": "Llamar principal (4000-2795)",
+        "href": "tel:+50640002795",
+        "rect": {
+          "x": 42,
+          "y": 3924.78125,
+          "width": 306,
+          "height": 48
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "text": "Llamar secundario (2244-8726)",
+        "href": "tel:+50622448726",
+        "rect": {
+          "x": 42,
+          "y": 3984.78125,
+          "width": 306,
+          "height": 50
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "text": "Enviar WhatsApp (8964-6632)",
+        "href": "https://wa.me/50689646632",
+        "rect": {
+          "x": 42,
+          "y": 4046.78125,
+          "width": 306,
+          "height": 50
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": false
+      },
+      {
+        "selector": "#search-input",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": false
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": false
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": false
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": false
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": false
+      },
+      {
+        "selector": "#results-count",
+        "present": false
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": true,
+        "href": "tel:+50640002795"
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": true,
+        "href": "https://wa.me/50689646632"
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": true,
+        "href": "tel:+50640002795"
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": true,
+        "href": "tel:+50622448726"
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": true,
+        "href": "https://wa.me/50689646632"
+      }
+    ],
+    "focusOrder": [
+      "btn-quick-call",
+      "btn-quick-wa",
+      "btn-call-sidebar-1",
+      "btn-call-sidebar-2",
+      "btn-wa-sidebar"
+    ]
+  },
+  {
+    "path": "/zona/guapiles/",
+    "width": 1440,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": false
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": false
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": true,
+        "text": "Abierto ahoraAsistencia Veterinaria S.A.Asistencia Veterinaria S.A.Guápiles, LimónGuápiles Centro, LimónL-S 8am-6pmConsulta veterinaria, cirugías programadas y farmacia veterinaria en el cantón de Pococí.Llamar🚗 WazeVer detallesCompartirAbierto ahoraAtlantic VetAtlantic VetGuápiles, LimónGuápiles Centro, Pococí, LimónL-S 8am-6pmAtención médica integral, farmacia y venta de alimento para pequeñas especies en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Dr. CárdenasClinica Veterinaria Dr. CardenasGuápiles, LimónCalle 8, Guápiles CentroL-S 8am-7pmAtención veterinaria dedicada y cirugías generales en calle 8, Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Pet Shop TauroClinica Veterinaria Pet Shop TauroGuápiles, Limón200 m oeste del cementerio de GuápilesL-S 8am-6pmConsulta veterinaria general, vacunas y amplia tienda de accesorios en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraColono Agropecuario GuápilesColono Agropecuario GuapilesGuápiles, LimónA un costado de Colono Construcción, GuápilesL-S 8am-6pmConsultorio veterinario, farmacia completa y alimentos para mascotas y ganado en Guápiles.Llamar🚗 WazeVer detallesCompartirAbierto ahoraClínica Veterinaria MuriClinica Veterinaria MuriGuápiles, Limón75 metros norte del Banco Popular, GuápilesL-S 9am-6pmClínica veterinaria en Guápiles centro, cerca del Banco Popular, con WhatsApp publicado para citas y consultas.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+        "href": null,
+        "rect": {
+          "x": 112,
+          "y": 1394.578125,
+          "width": 1216,
+          "height": 769.5
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#search-input",
+        "present": true,
+        "text": "",
+        "href": null,
+        "rect": {
+          "x": 130,
+          "y": 555.390625,
+          "width": 1180,
+          "height": 44
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": true,
+        "text": "Abierto ahora",
+        "href": null,
+        "rect": {
+          "x": 129,
+          "y": 612.390625,
+          "width": 130.609375,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": true,
+        "text": "Emergencias 24/7",
+        "href": null,
+        "rect": {
+          "x": 267.609375,
+          "y": 612.390625,
+          "width": 158.71875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": true,
+        "text": "Cerca de mí",
+        "href": null,
+        "rect": {
+          "x": 434.328125,
+          "y": 612.390625,
+          "width": 125.171875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": true,
+        "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+        "href": null,
+        "rect": {
+          "x": 584.5,
+          "y": 612.390625,
+          "width": 532.875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": true,
+        "text": "🏨 Hotel para mascotas",
+        "href": null,
+        "rect": {
+          "x": 1125.375,
+          "y": 612.390625,
+          "width": 179.828125,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#results-count",
+        "present": true,
+        "text": "6 de 6",
+        "href": null,
+        "rect": {
+          "x": 204.09375,
+          "y": 664.484375,
+          "width": 39.828125,
+          "height": 18
+        },
+        "aboveFold": true,
+        "visible": true
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": []
+  },
+  {
+    "path": "/zona/guapiles/",
+    "width": 390,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": false
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": false
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": true,
+        "text": "Abierto ahoraAsistencia Veterinaria S.A.Asistencia Veterinaria S.A.Guápiles, LimónGuápiles Centro, LimónL-S 8am-6pmConsulta veterinaria, cirugías programadas y farmacia veterinaria en el cantón de Pococí.Llamar🚗 WazeVer detallesCompartirAbierto ahoraAtlantic VetAtlantic VetGuápiles, LimónGuápiles Centro, Pococí, LimónL-S 8am-6pmAtención médica integral, farmacia y venta de alimento para pequeñas especies en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Dr. CárdenasClinica Veterinaria Dr. CardenasGuápiles, LimónCalle 8, Guápiles CentroL-S 8am-7pmAtención veterinaria dedicada y cirugías generales en calle 8, Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraClínica Veterinaria Pet Shop TauroClinica Veterinaria Pet Shop TauroGuápiles, Limón200 m oeste del cementerio de GuápilesL-S 8am-6pmConsulta veterinaria general, vacunas y amplia tienda de accesorios en Guápiles.LlamarWhatsAppVer detalles🚗 WazeCompartirAbierto ahoraColono Agropecuario GuápilesColono Agropecuario GuapilesGuápiles, LimónA un costado de Colono Construcción, GuápilesL-S 8am-6pmConsultorio veterinario, farmacia completa y alimentos para mascotas y ganado en Guápiles.Llamar🚗 WazeVer detallesCompartirAbierto ahoraClínica Veterinaria MuriClinica Veterinaria MuriGuápiles, Limón75 metros norte del Banco Popular, GuápilesL-S 9am-6pmClínica veterinaria en Guápiles centro, cerca del Banco Popular, con WhatsApp publicado para citas y consultas.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 1391.578125,
+          "width": 358,
+          "height": 2379.25
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#search-input",
+        "present": true,
+        "text": "",
+        "href": null,
+        "rect": {
+          "x": 34,
+          "y": 721.390625,
+          "width": 322,
+          "height": 44
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": true,
+        "text": "Abierto ahora",
+        "href": null,
+        "rect": {
+          "x": 33,
+          "y": 778.390625,
+          "width": 130.609375,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": true,
+        "text": "Emergencias 24/7",
+        "href": null,
+        "rect": {
+          "x": 171.609375,
+          "y": 778.390625,
+          "width": 158.71875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": true,
+        "text": "Cerca de mí",
+        "href": null,
+        "rect": {
+          "x": 338.328125,
+          "y": 778.390625,
+          "width": 125.171875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": true,
+        "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+        "href": null,
+        "rect": {
+          "x": 488.5,
+          "y": 778.390625,
+          "width": 532.875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": true,
+        "text": "🏨 Hotel para mascotas",
+        "href": null,
+        "rect": {
+          "x": 1029.375,
+          "y": 778.390625,
+          "width": 179.828125,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#results-count",
+        "present": true,
+        "text": "6 de 6",
+        "href": null,
+        "rect": {
+          "x": 108.09375,
+          "y": 830.484375,
+          "width": 39.828125,
+          "height": 18
+        },
+        "aboveFold": true,
+        "visible": true
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": []
+  },
+  {
+    "path": "/zona/san-pablo-heredia/",
+    "width": 1440,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": false
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": false
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": true,
+        "text": "Abierto ahoraLa Vete San PabloLa Vete San PabloSan Pablo de Heredia, HerediaTaller SYS 300 m oeste, San Pablo de HerediaL-S 8am-8pm | D 8am-7pm🐢 Exóticos🏨 Hotel reportadoSucursal en el corazón de San Pablo. Amplio horario para citas de rutina y pet shop completo.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+        "href": null,
+        "rect": {
+          "x": 112,
+          "y": 1394.578125,
+          "width": 1216,
+          "height": 406.75
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#search-input",
+        "present": true,
+        "text": "",
+        "href": null,
+        "rect": {
+          "x": 130,
+          "y": 555.390625,
+          "width": 1180,
+          "height": 44
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": true,
+        "text": "Abierto ahora",
+        "href": null,
+        "rect": {
+          "x": 129,
+          "y": 612.390625,
+          "width": 130.609375,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": true,
+        "text": "Emergencias 24/7",
+        "href": null,
+        "rect": {
+          "x": 267.609375,
+          "y": 612.390625,
+          "width": 158.71875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": true,
+        "text": "Cerca de mí",
+        "href": null,
+        "rect": {
+          "x": 434.328125,
+          "y": 612.390625,
+          "width": 125.171875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": true,
+        "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+        "href": null,
+        "rect": {
+          "x": 584.5,
+          "y": 612.390625,
+          "width": 532.875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": true,
+        "text": "🏨 Hotel para mascotas",
+        "href": null,
+        "rect": {
+          "x": 1125.375,
+          "y": 612.390625,
+          "width": 179.828125,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#results-count",
+        "present": true,
+        "text": "1 de 1",
+        "href": null,
+        "rect": {
+          "x": 204.09375,
+          "y": 664.484375,
+          "width": 34.25,
+          "height": 18
+        },
+        "aboveFold": true,
+        "visible": true
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": []
+  },
+  {
+    "path": "/zona/san-pablo-heredia/",
+    "width": 390,
+    "measurements": [
+      {
+        "selector": "[aria-labelledby=\"seo-quick-facts-title\"]",
+        "present": false
+      },
+      {
+        "selector": "#clinic-schedule-text",
+        "present": false
+      },
+      {
+        "selector": "#warning-diurnal-alert",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      },
+      {
+        "selector": "#clinicas-grid",
+        "present": true,
+        "text": "Abierto ahoraLa Vete San PabloLa Vete San PabloSan Pablo de Heredia, HerediaTaller SYS 300 m oeste, San Pablo de HerediaL-S 8am-8pm | D 8am-7pm🐢 Exóticos🏨 Hotel reportadoSucursal en el corazón de San Pablo. Amplio horario para citas de rutina y pet shop completo.LlamarWhatsAppVer detalles🚗 WazeCompartir",
+        "href": null,
+        "rect": {
+          "x": 16,
+          "y": 1467.578125,
+          "width": 358,
+          "height": 429.5
+        },
+        "aboveFold": false,
+        "visible": true
+      },
+      {
+        "selector": "#search-input",
+        "present": true,
+        "text": "",
+        "href": null,
+        "rect": {
+          "x": 34,
+          "y": 777.390625,
+          "width": 322,
+          "height": 44
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-open",
+        "present": true,
+        "text": "Abierto ahora",
+        "href": null,
+        "rect": {
+          "x": 33,
+          "y": 834.390625,
+          "width": 130.609375,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-quick-247",
+        "present": true,
+        "text": "Emergencias 24/7",
+        "href": null,
+        "rect": {
+          "x": 171.609375,
+          "y": 834.390625,
+          "width": 158.71875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#btn-use-location",
+        "present": true,
+        "text": "Cerca de mí",
+        "href": null,
+        "rect": {
+          "x": 338.328125,
+          "y": 834.390625,
+          "width": 125.171875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#animal-filters-container",
+        "present": true,
+        "text": "Todos🐶🐱 Domésticos🐢 Exóticos🐠 Peces🐴 Granja",
+        "href": null,
+        "rect": {
+          "x": 488.5,
+          "y": 834.390625,
+          "width": 532.875,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#filter-hotel",
+        "present": true,
+        "text": "🏨 Hotel para mascotas",
+        "href": null,
+        "rect": {
+          "x": 1029.375,
+          "y": 834.390625,
+          "width": 179.828125,
+          "height": 39.09375
+        },
+        "aboveFold": true,
+        "visible": true
+      },
+      {
+        "selector": "#results-count",
+        "present": true,
+        "text": "1 de 1",
+        "href": null,
+        "rect": {
+          "x": 108.09375,
+          "y": 886.484375,
+          "width": 34.25,
+          "height": 18
+        },
+        "aboveFold": false,
+        "visible": true
+      }
+    ],
+    "keyboard": [
+      {
+        "selector": "#btn-quick-call",
+        "present": false
+      },
+      {
+        "selector": "#btn-quick-wa",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-1",
+        "present": false
+      },
+      {
+        "selector": "#btn-call-sidebar-2",
+        "present": false
+      },
+      {
+        "selector": "#btn-wa-sidebar",
+        "present": false
+      }
+    ],
+    "focusOrder": []
+  }
+]

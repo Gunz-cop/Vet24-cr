@@ -1,0 +1,27 @@
+
+Running 19 tests using 1 worker
+
+
+
+
+
+[1A[2K[1/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 390
+[1A[2K[2/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 390
+[1A[2K[3/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 390
+[1A[2K[4/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 390
+[1A[2K[5/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 390
+[1A[2K[6/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hems-una-heredia/ 1440
+[1A[2K[7/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/hospital-vet-medical-care-heredia/ 1440
+[1A[2K[8/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /clinica/veterinaria-gocha-santo-domingo/ 1440
+[1A[2K[9/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/san-pablo-heredia/ 1440
+[1A[2K[10/19] [chromium] › tests\e2e\blog-emergency-layout.spec.ts:7:60 › B2 emergencia /zona/guapiles/ 1440
+[1A[2K[11/19] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/ existe y tiene canonical con barra final
+[1A[2K[12/19] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/guias-por-especie/ existe y tiene canonical con barra final
+[1A[2K[13/19] [chromium] › tests\e2e\blog.spec.ts:13:5 › blog B4 › /blog/costos-y-acceso/ existe y tiene canonical con barra final
+[1A[2K[14/19] [chromium] › tests\e2e\blog.spec.ts:21:3 › blog B4 › los cinco artículos están publicados, enlazados y tienen Article válido
+[1A[2K[15/19] [chromium] › tests\e2e\blog.spec.ts:36:3 › blog B4 › sin scroll horizontal y foco visible en ambos viewports
+[1A[2K[16/19] [chromium] › tests\e2e\blog.spec.ts:48:3 › blog B4 › evidencia visual de los cinco artículos en móvil y escritorio
+[1A[2K[17/19] [chromium] › tests\e2e\blog.spec.ts:64:1 › B3: política editorial publicada y enlazada desde el footer
+[1A[2K[18/19] [chromium] › tests\e2e\blog.spec.ts:74:1 › B4: header y footer enlazan /blog/ con artículos publicados
+[1A[2K[19/19] [chromium] › tests\e2e\blog.spec.ts:91:1 › B4: catálogo activo genera enlaces inversos en fichas y zonas
+[1A[2K  19 passed (40.8s)

@@ -1,0 +1,1 @@
+node --use-system-ca docs/blog/evidencia/b4/verify-sources.mjs
