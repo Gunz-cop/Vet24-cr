@@ -159,6 +159,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--brand-text-muted);
 }
 
+.status-pill.is-unconfirmed {
+  background: var(--brand-surface);
+  border-color: var(--brand-card-border);
+  color: var(--brand-text-muted);
+}
+
 /* ── Map (dark mode tiles) ─────────────────────────────────────────── */
 
 html:not(.light) .leaflet-tile-container {

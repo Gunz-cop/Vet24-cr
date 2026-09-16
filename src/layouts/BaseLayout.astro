@@ -293,44 +293,6 @@ const shareImageUrl = new URL(shareImage, Astro.url.origin).href;
         }));
       });
 
-      // Lightweight conversion analytics for SEO landing pages.
-      document.addEventListener('click', (event) => {
-        const target = event.target as HTMLElement | null;
-        const el = target?.closest('a,button') as HTMLElement | null;
-        if (!el) return;
-
-        const href = el instanceof HTMLAnchorElement ? el.href : '';
-        const id = el.id || '';
-        let action = '';
-
-        if (href.startsWith('tel:')) action = 'call_click';
-        else if (href.includes('wa.me')) action = 'whatsapp_click';
-        else if (href.includes('waze.com')) action = 'waze_click';
-        else if (href.includes('google.com/maps')) action = 'maps_click';
-        else if (el.classList.contains('share-btn')) action = 'share_click';
-        else if (id === 'btn-open-report') action = 'report_open';
-
-        if (!action) return;
-
-        const payload = JSON.stringify({
-          query: window.location.pathname,
-          province: document.querySelector('[data-page-province]')?.getAttribute('data-page-province') || null,
-          canton: document.querySelector('[data-page-zone]')?.getAttribute('data-page-zone') || null,
-          filter_type: action,
-        });
-
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon('/api/analytics', new Blob([payload], { type: 'application/json' }));
-          return;
-        }
-
-        fetch('/api/analytics', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: payload,
-          keepalive: true,
-        }).catch(() => {});
-      }, { capture: true });
     </script>
     {mostrarAnuncios && (
       <script is:inline>

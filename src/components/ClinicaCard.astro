@@ -1,5 +1,6 @@
 ---
 import BadgeHorario from './BadgeHorario.astro';
+import { parseScheduleToRules } from '../lib/schedule';
 
 interface Props {
   clinica: {
@@ -45,68 +46,7 @@ const whatsappHref = clinica.whatsapp ? `https://wa.me/506${cleanPhone(clinica.w
 const wazeHref = clinica.waze_url || `https://waze.com/ul?q=${encodeURIComponent(clinica.nombre + ', ' + clinica.direccion)}`;
 
 // Calculate schedule pattern for client-side JS open/closed status check
-const normalizeHours = (text: string) => {
-  return text
-    .toLowerCase()
-    .replace(/\s+/g, '')
-    .replace(/:00/g, '')
-    .replace(/a\.m\.|am/g, 'am')
-    .replace(/p\.m\.|pm/g, 'pm');
-};
-
-const hourTo24 = (value: string) => {
-  const match = value.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)$/);
-  if (!match) return null;
-  let hour = Number(match[1]);
-  const minutes = match[2] ? Number(match[2]) : 0;
-  const period = match[3];
-  if (period === 'pm' && hour < 12) hour += 12;
-  if (period === 'am' && hour === 12) hour = 0;
-  return hour + minutes / 60;
-};
-
-const rangeToSchedule = (days: string, start: string, end: string) => {
-  const startHour = hourTo24(start);
-  const endHour = hourTo24(end);
-  if (startHour === null || endHour === null) return "";
-  return `${days}:${startHour}-${endHour}`;
-};
-
-let scheduleAttr = "";
-if (clinica.emergencias24h) {
-  scheduleAttr = "24h";
-} else {
-  const text = normalizeHours(clinica.horarioTexto);
-  if (text.includes("oxígeno") || text.includes("10am-9pm")) {
-    scheduleAttr = "1-6:10-21,0:10-20";
-  } else if (text.includes("concasa") || text.includes("8am-9pm")) {
-    scheduleAttr = "1-5:8-21,6:9-19,0:9-17";
-  } else if (text.includes("medical care") || text.includes("9am-9pm")) {
-    scheduleAttr = "1-0:9-21";
-  } else if (text.includes("hems") || text.includes("9am-7pm")) {
-    scheduleAttr = "1-5:9-19,6-0:10-17";
-  } else {
-    const rules: string[] = [];
-    const dayPatterns = [
-      { pattern: /l-d(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-0" },
-      { pattern: /l-s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-6" },
-      { pattern: /l-v(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-5" },
-      { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6-0" },
-      { pattern: /d(?:yferiados)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "0" },
-      { pattern: /s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6" },
-    ];
-
-    for (const { pattern, days } of dayPatterns) {
-      const match = text.match(pattern);
-      if (match) {
-        const rule = rangeToSchedule(days, match[1], match[2]);
-        if (rule) rules.push(rule);
-      }
-    }
-
-    scheduleAttr = [...new Set(rules)].join(",");
-  }
-}
+const scheduleAttr = parseScheduleToRules(clinica.horarioTexto, clinica.emergencias24h);
 ---
 <article
   class="relative flex flex-col justify-between bg-brand-card-bg border border-brand-card-border rounded-2xl p-5 hover:border-brand-primary/40 hover:shadow-lg hover:shadow-black/10 transition-all duration-200 group overflow-hidden"

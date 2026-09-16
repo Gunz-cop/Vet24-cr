@@ -11,6 +11,7 @@ import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
 import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
+import { parseScheduleToRules, getOpeningHoursFromSchedule } from '../../lib/schedule';
 import {
   overnightDoctorStatus,
   hospitalizationStatus,
@@ -112,72 +113,8 @@ const shortenedWeb = webUrl ? (linkzipCache[webUrl] || webUrl) : null;
 const shortenedFacebook = facebookUrl ? (linkzipCache[facebookUrl] || facebookUrl) : null;
 const shortenedInstagram = instagramUrl ? (linkzipCache[instagramUrl] || instagramUrl) : null;
 
-const normalizeHours = (text: string) => {
-  return text
-    .toLowerCase()
-    .replace(/\s+/g, '')
-    .replace(/:00/g, '')
-    .replace(/a\.m\.|am/g, 'am')
-    .replace(/p\.m\.|pm/g, 'pm');
-};
-
-const hourTo24 = (value: string) => {
-  const match = value.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)$/);
-  if (!match) return null;
-  let hour = Number(match[1]);
-  const minutes = match[2] ? Number(match[2]) : 0;
-  const period = match[3];
-  if (period === 'pm' && hour < 12) hour += 12;
-  if (period === 'am' && hour === 12) hour = 0;
-  return hour + minutes / 60;
-};
-
-const rangeToSchedule = (days: string, start: string, end: string) => {
-  const startHour = hourTo24(start);
-  const endHour = hourTo24(end);
-  if (startHour === null || endHour === null) return "";
-  return `${days}:${startHour}-${endHour}`;
-};
-
-const getClientScheduleAttr = () => {
-  if (emergencias24h) return "24h";
-
-  const text = normalizeHours(horarioTexto);
-  if (text.includes("oxígeno") || text.includes("10am-9pm")) {
-    return "1-6:10-21,0:10-20";
-  }
-  if (text.includes("concasa") || text.includes("8am-9pm")) {
-    return "1-5:8-21,6:9-19,0:9-17";
-  }
-  if (text.includes("medical care") || text.includes("9am-9pm")) {
-    return "1-0:9-21";
-  }
-  if (text.includes("hems") || text.includes("9am-7pm")) {
-    return "1-5:9-19,6-0:10-17";
-  }
-
-  const rules: string[] = [];
-  const dayPatterns = [
-    { pattern: /l-d(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-0" },
-    { pattern: /l-s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-6" },
-    { pattern: /l-v(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "1-5" },
-    { pattern: /s-d(?:soloemergencias)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6-0" },
-    { pattern: /d(?:yferiados)?(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "0" },
-    { pattern: /s(\d{1,2}(?::\d{2})?(?:am|pm))-(\d{1,2}(?::\d{2})?(?:am|pm))/, days: "6" },
-  ];
-
-  for (const { pattern, days } of dayPatterns) {
-    const match = text.match(pattern);
-    if (match) {
-      const rule = rangeToSchedule(days, match[1], match[2]);
-      if (rule) rules.push(rule);
-    }
-  }
-
-  return [...new Set(rules)].join(",");
-};
-
-const scheduleAttr = getClientScheduleAttr();
+const scheduleAttr = parseScheduleToRules(horarioTexto, emergencias24h);
+const getOpeningHoursSpec = () => getOpeningHoursFromSchedule(horarioTexto, emergencias24h);
 
 // Collect social media and website URLs for schema sameAs (must use original URLs for SEO)
 const schemaSameAs: string[] = [];
@@ -191,102 +128,6 @@ const schemaImage = emergencias24h
   : (atiendeExoticos
       ? "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&q=80&w=800" // Exotic/Nature look
       : "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"); // Standard vet clinic
-
-interface OpeningHoursSpec {
-  "@type": "OpeningHoursSpecification";
-  dayOfWeek: string[];
-  opens: string;
-  closes: string;
-}
-
-const getOpeningHoursSpec = (): OpeningHoursSpec[] => {
-  if (emergencias24h) {
-    return [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    }];
-  }
-  
-  const text = horarioTexto.toLowerCase();
-  if (text.includes("10am-9pm")) {
-    return [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "10:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
-        "opens": "10:00",
-        "closes": "20:00"
-      }
-    ];
-  } else if (text.includes("8am-9pm")) {
-    return [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
-        "opens": "09:00",
-        "closes": "17:00"
-      }
-    ];
-  } else if (text.includes("9am-9pm")) {
-    return [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "09:00",
-        "closes": "21:00"
-      }
-    ];
-  } else if (text.includes("9am-7pm")) {
-    return [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday"],
-        "opens": "10:00",
-        "closes": "17:00"
-      }
-    ];
-  } else {
-    return [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "08:00",
-        "closes": "20:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
-        "opens": "08:00",
-        "closes": "19:00"
-      }
-    ];
-  }
-};
 
 const getProvinceSlug = (prov: string) => {
   const map: Record<string, string> = {
@@ -1036,13 +877,21 @@ const schemaFaq = {
 
 <script>
   function init() {
-    function isOpenBySchedule(schedule: string) {
-      if (!schedule) return false;
+    function getCostaRicaTime() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const crTime = new Date(utc - (3600000 * 6));
+      return {
+        day: crTime.getDay(),
+        hour: crTime.getHours() + crTime.getMinutes() / 60
+      };
+    }
+
+    function isOpenBySchedule(schedule: string): boolean | null {
+      if (!schedule) return null; // null = Por confirmar
       if (schedule === '24h') return true;
 
-      const now = new Date();
-      const day = now.getDay();
-      const hour = now.getHours() + now.getMinutes() / 60;
+      const { day, hour } = getCostaRicaTime();
       const rules = schedule.split(',').filter(Boolean);
 
       return rules.some((rule) => {
@@ -1072,12 +921,18 @@ const schemaFaq = {
       badges.forEach((badge) => {
         const schedule = badge.getAttribute('data-schedule') || '';
         const isOpen = isOpenBySchedule(schedule);
-
-        badge.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
         const spacing = badge.getAttribute('data-detail-status') === 'block' ? 'mt-2 ' : '';
-        badge.className = isOpen
-          ? `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-brand-success-bg text-brand-success border border-brand-success-border shadow-sm w-fit`
-          : `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-brand-card-bg text-brand-text-muted border border-brand-card-border shadow-sm w-fit`;
+
+        if (isOpen === null) {
+          badge.textContent = 'Horario por confirmar · Llamar';
+          badge.className = `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-brand-surface text-brand-text-muted border border-brand-card-border shadow-sm w-fit`;
+        } else if (isOpen) {
+          badge.textContent = 'Abierto ahora';
+          badge.className = `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-brand-success-bg text-brand-success border border-brand-success-border shadow-sm w-fit`;
+        } else {
+          badge.textContent = 'Cerrado ahora';
+          badge.className = `detail-status-badge ${spacing}inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl bg-brand-card-bg text-brand-text-muted border border-brand-card-border shadow-sm w-fit`;
+        }
       });
     }
 

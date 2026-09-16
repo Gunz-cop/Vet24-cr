@@ -6,7 +6,14 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = "./dist"
 binding = "ASSETS"
-run_worker_first = ["/", "/clinica/*", "/provincia/*", "/zona/*"]
+run_worker_first = ["/", "/clinica/*", "/provincia/*", "/zona/*", "/admin", "/admin/*", "/api/admin", "/api/admin/*", "/api/status-override", "/api/status-override/", "/api/cron-check-links", "/api/cron-check-links/", "/api/analytics", "/api/analytics/"]
+
+[vars]
+ADMIN_ORIGIN = "https://vet24cr.com"
+ADMIN_ENABLED = "false"
+ACCESS_TEAM_DOMAIN = ""
+ACCESS_AUD = ""
+ADMIN_SUBJECTS = ""
 
 [[d1_databases]]
 binding = "DB"

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-export const SITEMAP_FILTER_PATTERN = String.raw`[\\/]?(api|auth\.md|llms\.txt|\.well-known|md)([/.]|$)`;
+export const SITEMAP_FILTER_PATTERN = String.raw`[\\/]?(admin|api|auth\.md|llms\.txt|\.well-known|md)([/.]|$)`;
 
 export function extractSitemapFilterPattern(source: string): string {
   const match = source.match(/filter\s*:\s*\([^)]*\)\s*=>\s*!\/(.+)\/\.test/s);

@@ -11,8 +11,8 @@ test("run_worker_first cubre solo las familias HTML contractuales", () => {
   const here = fileURLToPath(new URL(".", import.meta.url));
   const wrangler = readFileSync(join(here, "../../wrangler.toml"), "utf8");
   const configured = wrangler.match(/run_worker_first\s*=\s*\[([^\]]*)\]/s)?.[1].match(/"[^"]+"/g)?.map((value) => value.slice(1, -1));
-  assert.deepEqual(configured, ["/", "/clinica/*", "/provincia/*", "/zona/*"]);
-  assert.equal(configured?.some((path) => path.startsWith("/api/")), false);
+  assert.deepEqual(configured, ["/", "/clinica/*", "/provincia/*", "/zona/*", "/admin", "/admin/*", "/api/admin", "/api/admin/*", "/api/status-override", "/api/status-override/", "/api/cron-check-links", "/api/cron-check-links/", "/api/analytics", "/api/analytics/"]);
+  assert.equal(configured?.includes("/api/*"), false);
 });
 
 test("negocia Markdown solo con preferencia explícita y q válida", () => {

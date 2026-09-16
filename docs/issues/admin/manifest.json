@@ -1,0 +1,239 @@
+{
+  "sdd": {
+    "path": "docs/sdd-panel-admin-y-skill.md",
+    "version": "1.2 candidata",
+    "sha256": "10797303D82C4D7E2B5020EEA4312E40901FD7DBC2275A3BB68442A17C7532B5",
+    "audit": "APROBADO",
+    "auditPath": "docs/auditorias/admin/sdd-r3.md"
+  },
+  "issues": [
+    {
+      "key": "I01",
+      "number": 27,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/27",
+      "title": "fix(schedule): modelo semanal y evaluación conservadora",
+      "priority": "P0",
+      "deps": [],
+      "requirements": [
+        "R02"
+      ],
+      "sections": [
+        "§3.1"
+      ]
+    },
+    {
+      "key": "I02",
+      "number": 28,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/28",
+      "title": "feat(skill): validar fichas y empaquetar investigar-veterinaria",
+      "priority": "P1",
+      "deps": [
+        27
+      ],
+      "requirements": [
+        "R01",
+        "R03"
+      ],
+      "sections": [
+        "§3.2",
+        "§4",
+        "§12.5",
+        "§12.7"
+      ]
+    },
+    {
+      "key": "I03",
+      "number": 29,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/29",
+      "title": "fix(schedule): sanear legado y cerrar deuda de fichas",
+      "priority": "P1",
+      "deps": [
+        28
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "sections": [
+        "§3.2",
+        "§4",
+        "§12.5",
+        "§12.7"
+      ]
+    },
+    {
+      "key": "I04",
+      "number": 30,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/30",
+      "title": "feat(admin): proteger runtime Workers con Cloudflare Access",
+      "priority": "P0",
+      "deps": [],
+      "requirements": [
+        "R09",
+        "R12"
+      ],
+      "sections": [
+        "§5",
+        "§12.1",
+        "§12.8"
+      ]
+    },
+    {
+      "key": "I05",
+      "number": 31,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/31",
+      "title": "feat(admin): migraciones D1, auditoría y overrides concurrentes",
+      "priority": "P0",
+      "deps": [
+        27,
+        30
+      ],
+      "requirements": [
+        "R06",
+        "R09"
+      ],
+      "sections": [
+        "§6",
+        "§12.3",
+        "§12.4"
+      ]
+    },
+    {
+      "key": "I06",
+      "number": 32,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/32",
+      "title": "fix(schedule): unificar estado público y alertas temporales",
+      "priority": "P0",
+      "deps": [
+        27,
+        31
+      ],
+      "requirements": [
+        "R07",
+        "R12"
+      ],
+      "sections": [
+        "§7.1",
+        "§6.2"
+      ]
+    },
+    {
+      "key": "I07",
+      "number": 33,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/33",
+      "title": "feat(admin): persistir y gestionar reportes privados",
+      "priority": "P1",
+      "deps": [
+        30,
+        31
+      ],
+      "requirements": [
+        "R04",
+        "R09"
+      ],
+      "sections": [
+        "§6",
+        "§12.3"
+      ]
+    },
+    {
+      "key": "I08",
+      "number": 34,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/34",
+      "title": "feat(admin): propuestas Markdown mediante GitHub App y PR",
+      "priority": "P1",
+      "deps": [
+        28,
+        30,
+        31
+      ],
+      "requirements": [
+        "R08",
+        "R09"
+      ],
+      "sections": [
+        "§8",
+        "§12.2",
+        "§12.3"
+      ]
+    },
+    {
+      "key": "I09",
+      "number": 35,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/35",
+      "title": "feat(admin): catálogo y editor visual de fichas",
+      "priority": "P1",
+      "deps": [
+        28,
+        31,
+        33,
+        34
+      ],
+      "requirements": [
+        "R04",
+        "R05",
+        "R08"
+      ],
+      "sections": [
+        "§7.2",
+        "§6.2",
+        "§3.1"
+      ]
+    },
+    {
+      "key": "I10",
+      "number": 36,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/36",
+      "title": "ci: verificar contratos, Workers y flujos administrativos",
+      "priority": "P0",
+      "deps": [
+        28,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "requirements": [
+        "R10",
+        "R12"
+      ],
+      "sections": [
+        "§9",
+        "§12.6",
+        "§12.8",
+        "§12.7"
+      ]
+    },
+    {
+      "key": "I11",
+      "number": 37,
+      "url": "https://github.com/Gunz-cop/Vet24-cr/issues/37",
+      "title": "feat(admin): preflight, operación, rollout y reversión",
+      "priority": "P1",
+      "deps": [
+        29,
+        36
+      ],
+      "requirements": [
+        "R11"
+      ],
+      "sections": [
+        "§9",
+        "§12.4",
+        "§12.8",
+        "§12.2"
+      ]
+    }
+  ],
+  "issueAudit": {
+    "verdict": "APROBADO",
+    "path": "docs/auditorias/admin/issues-r2.md",
+    "snapshot": "docs/auditorias/admin/issues-r2-snapshot.json",
+    "model": "gpt-5.6-luna",
+    "reasoningEffort": "medium",
+    "verifiedBodies": 11
+  }
+}

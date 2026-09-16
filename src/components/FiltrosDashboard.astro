@@ -338,9 +338,16 @@
 
       if (statusBadge) {
         statusBadge.classList.add('status-pill');
-        statusBadge.classList.toggle('is-open', isOpen);
-        statusBadge.classList.toggle('is-closed', !isOpen);
-        statusBadge.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+        if (!schedule && !is247) {
+          statusBadge.classList.remove('is-open', 'is-closed');
+          statusBadge.classList.add('is-unconfirmed');
+          statusBadge.textContent = 'Horario por confirmar';
+        } else {
+          statusBadge.classList.remove('is-unconfirmed');
+          statusBadge.classList.toggle('is-open', isOpen);
+          statusBadge.classList.toggle('is-closed', !isOpen);
+          statusBadge.textContent = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+        }
       }
     });
 
@@ -364,31 +371,6 @@
   let inSOSFlow = false;
   let originalCardsOrder: HTMLElement[] = [];
   let autoGeoTimeoutId: any = null;
-  let debounceTimeoutId: any = null;
-
-  async function logInteraction(data: { query?: string; province?: string; canton?: string; filter_type?: string }) {
-    try {
-      let province = data.province || null;
-      if (!province) {
-        const pathParts = window.location.pathname.split('/').filter(Boolean);
-        if (pathParts[0] === 'provincia' && pathParts[1]) {
-          province = pathParts[1];
-        }
-      }
-      await fetch('/api/analytics', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: data.query || null,
-          province: province,
-          canton: data.canton || null,
-          filter_type: data.filter_type || null
-        })
-      });
-    } catch (e) {
-      console.warn('Error recording search analytics:', e);
-    }
-  }
 
   function scrollToFirstVisibleResult() {
     const firstVisibleCard = document.querySelector<HTMLElement>('#clinicas-grid article:not(.hidden)');
@@ -747,13 +729,6 @@
       if (clearBtn) clearBtn.classList.toggle('hidden', !searchQuery);
       applyAllFilters();
 
-      // Debounce analytics
-      if (debounceTimeoutId) clearTimeout(debounceTimeoutId);
-      if (searchQuery) {
-        debounceTimeoutId = setTimeout(() => {
-          logInteraction({ query: searchQuery, filter_type: 'search' });
-        }, 1500);
-      }
     });
 
     searchInput?.addEventListener('keydown', (e) => {
@@ -800,7 +775,6 @@
       setChipActive(filterOpenBtn, filterOnlyOpen);
       applyAllFilters();
       scrollToFirstVisibleResult();
-      logInteraction({ filter_type: filterOnlyOpen ? 'filter_open_true' : 'filter_open_false' });
     });
 
     // ── Solo 24/7 ──
@@ -809,7 +783,6 @@
       setChipActive(filter247Btn, filterOnly247);
       applyAllFilters();
       scrollToFirstVisibleResult();
-      logInteraction({ filter_type: filterOnly247 ? 'filter_247_true' : 'filter_247_false' });
     });
 
     // ── Hotel para mascotas ──
@@ -818,7 +791,6 @@
       setChipActive(hotelBtn, filterOnlyHotel);
       applyAllFilters();
       scrollToFirstVisibleResult();
-      logInteraction({ filter_type: filterOnlyHotel ? 'filter_hotel_true' : 'filter_hotel_false' });
     });
 
     // ── Geolocation ──
@@ -853,14 +825,12 @@
           sortByProximity(userLat, userLng);
           applyAllFilters();
           scrollToFirstVisibleResult();
-          logInteraction({ filter_type: 'geo_gps_success' });
         },
         (err) => {
           console.warn('Geolocation error:', err.message);
           if (geoBtnText) geoBtnText.textContent = 'Cerca de mí';
           geoBtn.classList.remove('opacity-60', 'pointer-events-none');
           alert('No pudimos acceder a tu ubicación. Revisa los permisos del navegador.');
-          logInteraction({ filter_type: 'geo_gps_error' });
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
       );
@@ -873,7 +843,6 @@
         activeAnimal = btn.getAttribute('data-filter-animal') || 'todos';
         applyAllFilters();
         scrollToFirstVisibleResult();
-        logInteraction({ filter_type: `filter_animal_${activeAnimal}` });
       });
     });
 

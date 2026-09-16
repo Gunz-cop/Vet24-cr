@@ -1,0 +1,19 @@
+{
+  "audit":"issues-r2","repo":"Gunz-cop/Vet24-cr","fetchedAt":"2026-09-15T22:15:00-06:00",
+  "source":"gh issue view #27..#37 --json number,title,body,state,url,labels,updatedAt",
+  "sddSha256":"10797303D82C4D7E2B5020EEA4312E40901FD7DBC2275A3BB68442A17C7532B5",
+  "hashEncoding":"SHA256 of exact UTF-8 title/body strings returned remotely; labels and deps captured verbatim.",
+  "issues":[
+    {"n":27,"key":"I01","bodySha256":"DE1E7FE6755304B51D72D4B16418D47822BA2BAC3E44B752EA4FDB8E11AF1945","labels":["admin","data-integrity","P0"],"deps":[]},
+    {"n":28,"key":"I02","bodySha256":"C50826549689A4AF0455B821978180D78DECD37304E01AC702FFBEDF4EDCDCA4","labels":["admin","data-integrity","skill","P1"],"deps":[27]},
+    {"n":29,"key":"I03","bodySha256":"3A08EA458712CC18466C9BD37A893FA2B11D151EC3011BCB6F3248AE48E3C92C","labels":["admin","data-integrity","skill","P1"],"deps":[28]},
+    {"n":30,"key":"I04","bodySha256":"20E820492EFE58DF324A04669B6CDFFD2532BC7BC5237E99610E91D0D7333955","labels":["admin","security","P0"],"deps":[]},
+    {"n":31,"key":"I05","bodySha256":"78321667D43B0189F19CCB029A75CF8F1068D16A104023270528C8D290226CCB","labels":["admin","data-integrity","security","P0"],"deps":[27,30]},
+    {"n":32,"key":"I06","bodySha256":"B501959D6C4B5260315CCFA755524E5AB47EF7AFA5A5D5B3855CD01C42CDE6E3","labels":["admin","data-integrity","P0"],"deps":[27,31]},
+    {"n":33,"key":"I07","bodySha256":"5DCC5F5466D42DDF8F559C1E6A36FFA96C4F52D970597894F4DAF334EB9086CC","labels":["admin","data-integrity","security","P1"],"deps":[30,31]},
+    {"n":34,"key":"I08","bodySha256":"FC26C3AA24E80860608FF22CEC05DEB993731C8C598C667A4F4990FE3CBAC88B","labels":["admin","security","P1"],"deps":[28,30,31]},
+    {"n":35,"key":"I09","bodySha256":"7238286794349F3C6B12AAB75D04ED2E48E128D516BA4B3F982BBD2AED3B1B26","labels":["admin","skill","P1"],"deps":[28,31,33,34]},
+    {"n":36,"key":"I10","bodySha256":"D81839EDAFBB39DD9C73D6056941C8B12FB8C104A6F2468BE8337A10CFFA9B67","labels":["admin","data-integrity","security","ci","P0"],"deps":[28,30,31,32,33,34,35]},
+    {"n":37,"key":"I11","bodySha256":"15BBD5039612FC38BD858F81B07A91CDC6B9FBFA548B11300C866A1C043688E4","labels":["admin","security","ci","P1"],"deps":[29,36]}
+  ]
+}

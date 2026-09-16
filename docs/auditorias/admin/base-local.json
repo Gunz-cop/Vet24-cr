@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-09-16T03:31:23.5873142Z",
+  "head": "3d03ecc0da65f2127a66b7935baa39e1bdd2d6b5",
+  "branch": "codex/blog-b3-politica-atribucion",
+  "status": [
+    " M src/components/ClinicaCard.astro",
+    " M src/components/FiltrosDashboard.astro",
+    " M src/pages/clinica/[slug].astro",
+    " M src/styles/global.css",
+    "?? docs/analisis-creacion-fichas-y-horarios.md",
+    "?? docs/guia-implementacion-skill-horarios-y-ci.md",
+    "?? docs/plan-panel-administrativo.md",
+    "?? docs/sdd-panel-admin-y-skill.md",
+    "?? src/lib/schedule.ts",
+    "?? tests/unit/schedule.test.ts"
+  ],
+  "tests": {
+    "passed": 86,
+    "scope": "local working tree",
+    "failed": 0,
+    "command": "npm test"
+  },
+  "inputs": [
+    {
+      "path": "docs/analisis-creacion-fichas-y-horarios.md",
+      "sha256": "9668F06B20C2BEFC8332C6922105B8882C9B5491F64093D8BF2A8BAD5482CC0C"
+    },
+    {
+      "path": "docs/guia-implementacion-skill-horarios-y-ci.md",
+      "sha256": "B62297E255B77E1426049C5792AE5929CBD0FEAFBDF34A51E98831E918E03BC3"
+    },
+    {
+      "path": "docs/plan-panel-administrativo.md",
+      "sha256": "7D32A718B230EEE09BC596D57C4F4EC4B7D31E1961501A52698E2585337C1568"
+    },
+    {
+      "path": "src/lib/schedule.ts",
+      "sha256": "D156356CE351944F45C92DCFF62F954AD77E9750FFAB43C58088E1544B1B6F40"
+    },
+    {
+      "path": "tests/unit/schedule.test.ts",
+      "sha256": "EA58A13F57B372F86CAA7C232B0FE26A2EDECC7D6BC4318E23E5033747C56C39"
+    }
+  ]
+}
