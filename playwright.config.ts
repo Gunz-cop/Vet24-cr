@@ -1,8 +1,7 @@
 import { defineConfig, devices, test as baseTest } from '@playwright/test';
 import path from 'path';
 
-const port = process.env.PLAYWRIGHT_PORT || '4321';
-const baseURL = process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${port}`;
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:4321';
 
 // Custom test fixture that intercepts OpenStreetMap tile requests
 export const test = baseTest.extend({
@@ -45,7 +44,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `npx wrangler dev --local --ip 127.0.0.1 --port ${port} --show-interactive-dev-session=false`,
+    command: 'npm run preview',
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
