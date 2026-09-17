@@ -69,7 +69,8 @@ export async function authenticate(request: Request, env: AdminConfig, identity?
   try {
     const { payload } = await jwtVerify(token, getJwks(config.domain!), { algorithms: ['RS256'], issuer: config.domain, audience: config.aud, requiredClaims: ['iss', 'aud', 'exp', 'nbf', 'sub'] });
     const sub = payload.sub;
-    const email = typeof payload.email === 'string' ? payload.email : undefined;
+    const assertedEmail = request.headers.get('Cf-Access-Authenticated-User-Email')?.trim();
+    const email = typeof payload.email === 'string' ? payload.email : assertedEmail || undefined;
     if (typeof sub !== 'string' || !isAllowedSubject(config.subjects!, { sub, email })) return { response: adminResponse(403, request, 'FORBIDDEN') };
     return { identity: { sub, email } };
   } catch { return { response: adminResponse(401, request, 'UNAUTHORIZED') }; }
