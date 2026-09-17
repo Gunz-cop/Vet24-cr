@@ -95,7 +95,7 @@ test.describe('Hotfix semántico: badges de verificación', () => {
   });
 });
 
-test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
+test.describe('Semántica de fichas en HTML inicial', () => {
   test('expone horario, evidencia, alcance y límites sin JavaScript', async ({ request }) => {
     const response = await request.get('/clinica/hospital-vet-medical-care-heredia/');
     expect(response.status()).toBe(200);
@@ -103,7 +103,7 @@ test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
 
     expect(html).toContain('Horario reportado');
     expect(html).toContain('24/7 todos los días');
-    expect(html).toContain('Verificado el <time datetime="2026-09-04">2026-09-04</time> mediante Confirmación directa del establecimiento por correo electrónico y llamada telefónica.');
+    expect(html).toContain('Confirmado oficialmente el <time datetime="2026-09-04">2026-09-04</time> mediante Confirmación directa del establecimiento por correo electrónico y llamada telefónica.');
     expect(html).toContain('la atención de emergencias veterinarias durante todo el día y la noche');
     expect(html).toContain('Presencia médica durante la noche</dt><dd class="mt-1 font-bold text-brand-text">Sí, confirmada en esta ficha');
     expect(html).toContain('Hospitalización</dt><dd class="mt-1 font-bold text-brand-text">Sí, confirmada en esta ficha');
@@ -117,6 +117,8 @@ test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
   test('no usa el placeholder SSR en fichas con horario definitivo', async ({ request }) => {
     for (const [url, horario] of [
       ['/clinica/hospital-vet-medical-care-heredia/', '24/7 todos los días'],
+      ['/clinica/vehasa-hatillo/', 'L-V 8am-7pm, S 8am-6pm, D 8am-4pm'],
+      ['/clinica/hospital-vet-drs-chacon-guadalupe/', '24/7'],
       ['/clinica/agrovet-don-bosco-quepos/', 'L-S 8am-7pm'],
       ['/clinica/la-vete-escazu/', 'L-S 8am-8pm | D 8am-7pm | Emergencias 24/7'],
     ] as const) {
@@ -148,6 +150,27 @@ test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
     expect(entity).not.toHaveProperty('geo');
     expect(entity).not.toHaveProperty('lastReviewed');
     expect(webPage.lastReviewed).toBe('2026-09-04');
+  });
+});
+
+test.describe('Semántica de confirmación oficial en todas las fichas', () => {
+  test('VEHASA expone fecha y método junto al horario', async ({ request }) => {
+    const html = await (await request.get('/clinica/vehasa-hatillo/')).text();
+
+    expect(html).toContain('data-verification-summary');
+    expect(html).toContain('data-official-confirmation="confirmed"');
+    expect(html).toContain('Confirmado oficialmente el <time datetime="2026-06-20">2026-06-20</time> mediante Auditoría telefónica.');
+    expect(html).toContain('L-V 8am-7pm, S 8am-6pm, D 8am-4pm');
+    expect(html).toContain('lastReviewed":"2026-06-20"');
+  });
+
+  test('una ficha con datos revisados pero sin confirmación oficial mantiene copy neutral', async ({ request }) => {
+    const html = await (await request.get('/clinica/la-vete-escazu/')).text();
+
+    expect(html).toContain('data-official-confirmation="unconfirmed"');
+    expect(html).toContain('No hay confirmación oficial registrada para esta ficha.');
+    expect(html).not.toContain('Confirmado oficialmente el');
+    expect(html).not.toContain('lastReviewed');
   });
 });
 

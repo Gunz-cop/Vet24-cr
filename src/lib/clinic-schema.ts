@@ -74,6 +74,8 @@ export const clinicSchema = z.object({
     hotelFuente: z.string().optional().default(""),
     confidence_score: z.enum(["high", "medium", "low"]).optional().default("medium"),
     record_status: z.enum(["VERIFIED", "PARTIAL", "REVIEW_REQUIRED", "CANDIDATE_REMOVAL"]).optional().default("PARTIAL"),
+    // Separado de `record_status`: VERIFIED no implica confirmación oficial del establecimiento.
+    officially_confirmed: z.boolean().optional().default(false),
     emergency_tier: z.enum(["Tier A", "Tier B", "Tier C", "Tier D"]).optional().default("Tier C"),
     last_verified: z.string().optional().default(""),
     phone_verified: z.boolean().optional().default(false),

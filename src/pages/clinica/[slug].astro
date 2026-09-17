@@ -62,6 +62,7 @@ const {
   copyDiferenciador,
   confidence_score = "medium",
   record_status = "PARTIAL",
+  officially_confirmed = false,
   emergency_tier = "Tier C",
   last_verified = "",
   phone_verified = false,
@@ -103,6 +104,9 @@ const verificationInput = {
 const statusBadge = recordStatusBadge(record_status);
 const evidenceBadge = reviewEvidenceBadge(verificationInput);
 const lastReview = lastReviewLabel(verificationInput);
+const hasOfficialVerification = officially_confirmed === true
+  && last_verified.trim().length > 0
+  && verification_source.trim().length > 0;
 
 // Clean phone numbers for href links
 const cleanPhone = (num: string) => num.replace(/\D/g, '');
@@ -182,7 +186,7 @@ const schemaMarkup = {
   "telephone": telefono1 || whatsapp || "",
   "priceRange": isMedicalCarePilot ? undefined : "$$",
   "sameAs": schemaSameAs.length > 0 ? schemaSameAs : undefined,
-  "contactPoint": isMedicalCarePilot && whatsappHref ? [{
+  "contactPoint": whatsappHref ? [{
     "@type": "ContactPoint",
     "contactType": "WhatsApp",
     "telephone": whatsapp,
@@ -208,7 +212,7 @@ const schemaMarkup = {
   "openingHoursSpecification": getOpeningHoursSpec()
 };
 
-const schemaWebPage = isMedicalCarePilot && last_verified ? {
+const schemaWebPage = hasOfficialVerification ? {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": `${clinicCanonical}#webpage`,
@@ -401,50 +405,74 @@ const schemaFaq = {
           </div>
         </section>
 
-        {isMedicalCarePilot && (
-          <section class="rounded-2xl border border-brand-primary/30 bg-brand-primary/5 p-5 sm:p-6" aria-labelledby="verification-summary-title" data-verification-summary>
-            <h2 id="verification-summary-title" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif]">
-              Qué significa esta información
-            </h2>
-            <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-              <div>
-                <dt class="font-semibold text-brand-text-muted">Horario reportado</dt>
-                <dd class="mt-1 font-bold text-brand-text">{horarioTexto}</dd>
-                <p class="mt-2 text-xs text-brand-text-muted leading-relaxed">
-                  Verificado el <time datetime={last_verified}>{last_verified}</time> mediante {verification_source}.
-                </p>
-              </div>
-              <div>
-                <dt class="font-semibold text-brand-text-muted">Emergencias 24/7</dt>
-                <dd class="mt-1 font-bold text-brand-emergency">{emergency247Fact.label}</dd>
-              </div>
+        <section class="rounded-2xl border border-brand-primary/30 bg-brand-primary/5 p-5 sm:p-6" aria-labelledby="verification-summary-title" data-verification-summary data-official-confirmation={hasOfficialVerification ? 'confirmed' : 'unconfirmed'}>
+          <h2 id="verification-summary-title" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif]">
+            Estado de esta información
+          </h2>
+          <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Horario reportado</dt>
+              <dd class="mt-1 font-bold text-brand-text">{horarioTexto}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Confirmación oficial</dt>
+              {hasOfficialVerification ? (
+                <dd class="mt-1 text-brand-text leading-relaxed">
+                  Confirmado oficialmente el <time datetime={last_verified}>{last_verified}</time> mediante {verification_source}.
+                </dd>
+              ) : (
+                <dd class="mt-1 text-brand-text leading-relaxed">
+                  No hay confirmación oficial registrada para esta ficha. El horario y los servicios son datos reportados; confirma por teléfono o WhatsApp antes de trasladarte.
+                </dd>
+              )}
+            </div>
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Emergencias 24/7</dt>
+              <dd class="mt-1 font-bold text-brand-emergency">{emergency247Fact.label}</dd>
+            </div>
+            {emergencias24h && (
               <div class="sm:col-span-2">
                 <dt class="font-semibold text-brand-text-muted">Alcance del 24/7 registrado</dt>
                 <dd class="mt-1 text-brand-text leading-relaxed">
-                  En esta ficha, 24/7 se refiere a la atención de emergencias veterinarias durante todo el día y la noche. Las capacidades siguientes se registran por separado; no se infieren únicamente del 24/7.
+                  {hasOfficialVerification
+                    ? 'En esta ficha, 24/7 se refiere a la atención de emergencias veterinarias durante todo el día y la noche.'
+                    : 'La ficha registra atención de emergencias 24/7, pero este dato no tiene confirmación oficial registrada.'}
+                  {' '}Las capacidades siguientes se registran por separado; no se infieren únicamente del 24/7.
                 </dd>
               </div>
-              <div>
-                <dt class="font-semibold text-brand-text-muted">Presencia médica durante la noche</dt>
-                <dd class="mt-1 font-bold text-brand-text">{overnightStatus.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
-              </div>
-              <div>
-                <dt class="font-semibold text-brand-text-muted">Hospitalización</dt>
-                <dd class="mt-1 font-bold text-brand-text">{hospitalizationState.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
-              </div>
-              <div>
-                <dt class="font-semibold text-brand-text-muted">Cirugía de emergencia</dt>
-                <dd class="mt-1 font-bold text-brand-text">{emergencySurgeryStatus.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
-              </div>
-              <div class="sm:col-span-2 border-t border-brand-primary/20 pt-3">
-                <dt class="font-semibold text-brand-text-muted">Lo que Vet24 no puede garantizar en tiempo real</dt>
-                <dd class="mt-1 text-brand-text leading-relaxed">
-                  Esta revisión no garantiza que en este momento haya cupo de hospitalización, un profesional específico disponible o que las condiciones sigan sin cambios. Contacta al establecimiento antes de trasladarte.
-                </dd>
-              </div>
-            </dl>
-          </section>
-        )}
+            )}
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Presencia médica durante la noche</dt>
+              <dd class="mt-1 font-bold text-brand-text">
+                {overnightStatus.confirmed
+                  ? (hasOfficialVerification ? 'Sí, confirmada en esta ficha' : 'Sí, registrada en esta ficha; no confirmada oficialmente')
+                  : 'No confirmado'}
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Hospitalización</dt>
+              <dd class="mt-1 font-bold text-brand-text">
+                {hospitalizationState.confirmed
+                  ? (hasOfficialVerification ? 'Sí, confirmada en esta ficha' : 'Sí, registrada en esta ficha; no confirmada oficialmente')
+                  : 'No confirmado'}
+              </dd>
+            </div>
+            <div>
+              <dt class="font-semibold text-brand-text-muted">Cirugía de emergencia</dt>
+              <dd class="mt-1 font-bold text-brand-text">
+                {emergencySurgeryStatus.confirmed
+                  ? (hasOfficialVerification ? 'Sí, confirmada en esta ficha' : 'Sí, registrada en esta ficha; no confirmada oficialmente')
+                  : 'No confirmado'}
+              </dd>
+            </div>
+            <div class="sm:col-span-2 border-t border-brand-primary/20 pt-3">
+              <dt class="font-semibold text-brand-text-muted">Lo que Vet24 no puede garantizar en tiempo real</dt>
+              <dd class="mt-1 text-brand-text leading-relaxed">
+                Esta revisión no garantiza que en este momento haya cupo de hospitalización, un profesional específico disponible o que las condiciones sigan sin cambios. Contacta al establecimiento antes de trasladarte.
+              </dd>
+            </div>
+          </dl>
+        </section>
 
         {!emergencias24h && (
           <div class="bg-brand-warning-bg border border-brand-warning-border rounded-2xl p-4 sm:p-5 flex items-start gap-3 relative overflow-hidden transition-colors duration-200" id="warning-diurnal-alert">
@@ -542,7 +570,9 @@ const schemaFaq = {
                 Revisión del Registro
               </h2>
               <p class="text-xs text-brand-text-muted mt-0.5">
-                Metadatos de revisión registrados en esta ficha. No sustituyen una confirmación directa con la clínica.
+                Metadatos de revisión registrados en esta ficha. {hasOfficialVerification
+                  ? 'Esta ficha registra una confirmación oficial.'
+                  : 'No equivalen a una confirmación oficial del establecimiento.'}
               </p>
             </div>
             

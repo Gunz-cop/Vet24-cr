@@ -25,6 +25,7 @@ estado: "verificado"
 copyDiferenciador: "Hospital veterinario abierto 24/7 con médico veterinario presencial en sitio toda la noche. Ofrece consultas veterinarias, medicina preventiva, imágenes médicas, tienda de mascotas, laboratorio propio (también sirve como laboratorio externo para colegas), internamiento, cirugías, cremación, farmacia veterinaria y limpiezas dentales. Atiende perros, gatos y pequeños animales de compañía exóticos (conejos, erizos, hámsters, cuilos y otros) y cuenta con hotel exclusivamente para gatos con reserva previa. Abrió en 2021."
 confidence_score: "high"
 record_status: "VERIFIED"
+officially_confirmed: true
 emergency_tier: "Tier A"
 last_verified: "2026-09-04"
 phone_verified: true

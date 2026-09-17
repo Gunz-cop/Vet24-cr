@@ -22,6 +22,7 @@ estado: "verificado"
 copyDiferenciador: "Hospital veterinario de referencia en Hatillo Centro. Atención de urgencias nocturnas sujeta a disponibilidad de personal."
 confidence_score: "high"
 record_status: "VERIFIED"
+officially_confirmed: true
 emergency_tier: "Tier B"
 last_verified: "2026-06-20"
 phone_verified: true
