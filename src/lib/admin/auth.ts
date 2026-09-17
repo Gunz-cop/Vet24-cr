@@ -38,15 +38,15 @@ export function adminResponse(status: number, request: Request, error: string): 
 }
 
 function configuration(request: Request, env: AdminConfig) {
-  const origin = env.ADMIN_ORIGIN || 'https://vet24cr.com';
-  if (new URL(request.url).origin !== origin) return { response: adminResponse(403, request, 'FORBIDDEN') };
+  const origins = (env.ADMIN_ORIGIN || 'https://vet24cr.com').split(',').map(value => value.trim()).filter(Boolean);
+  if (!origins.includes(new URL(request.url).origin)) return { response: adminResponse(403, request, 'FORBIDDEN') };
   const domain = (env.ACCESS_TEAM_DOMAIN || '').replace(/\/$/, '');
   const aud = (env.ACCESS_AUD || '').trim();
   const subjects = (env.ADMIN_SUBJECTS || '').split(',').map(s => s.trim()).filter(Boolean);
   let validDomain = false;
   try { const url = new URL(domain); validDomain = url.protocol === 'https:' && url.origin === domain && !url.username && !url.password; } catch { /* unavailable */ }
   if (!env.ADMIN_ORIGIN || !(env.ADMIN_ENABLED === true || env.ADMIN_ENABLED === 'true') || !validDomain || !aud || !subjects.length) return { response: adminResponse(503, request, 'ADMIN_UNAVAILABLE') };
-  return { origin, domain, aud, subjects };
+  return { origin: origins.join(','), domain, aud, subjects };
 }
 function getJwks(domain: string) {
   let keys = jwksCache.get(domain);
@@ -85,7 +85,8 @@ export function methodResponse(request: Request, allowed: string): Response | un
 export async function enforceMutation(request: Request, origin: string): Promise<Response | undefined> {
   const method = methodResponse(request, 'POST, PUT, PATCH, DELETE');
   if (method) return method;
-  if (request.headers.get('Origin') !== origin || request.headers.get('X-Vet24-Admin') !== '1') return adminResponse(403, request, 'FORBIDDEN');
+  const origins = origin.split(',').map(value => value.trim()).filter(Boolean);
+  if (!origins.includes(request.headers.get('Origin') || '') || request.headers.get('X-Vet24-Admin') !== '1') return adminResponse(403, request, 'FORBIDDEN');
   const site = request.headers.get('Sec-Fetch-Site');
   if (site && site !== 'same-origin') return adminResponse(403, request, 'FORBIDDEN');
   if (request.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return adminResponse(415, request, 'UNSUPPORTED_MEDIA_TYPE');
