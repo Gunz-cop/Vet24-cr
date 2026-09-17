@@ -8,7 +8,7 @@ export const handleStatusOverride = async (request: Request, runtimeEnv?: { DB?:
   const slug = new URL(request.url).searchParams.get("slug");
   // Keep the legacy no-argument probe fail-closed while allowing the public
   // page's slug-scoped read path to use D1.
-  if (!slug) return adminResponse(503, request, "LIVE_UNAVAILABLE");
+  if (!slug) return adminResponse(503, request, "LIVE_NOT_READY");
   if (!/^[-a-z0-9]+$/.test(slug)) return adminResponse(400, request, "INVALID_SLUG");
   if (!runtimeEnv?.DB) return adminResponse(503, request, "LIVE_UNAVAILABLE");
   let override;
