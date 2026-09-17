@@ -2,7 +2,9 @@ import { test, expect } from '../../playwright.config';
 
 test('el bundle niega acceso administrativo directo en host local sin redirigir', async ({ request }) => {
   for (const path of ['/admin', '/admin/', '/admin/index.html', '/admin/nueva/', '/admin/editar/hems-una-heredia/', '/admin/assets/accidental.html', '/api/admin', '/api/admin/clinics/']) {
-    for (const method of ['GET', 'HEAD', 'POST', 'OPTIONS']) {
+    // Astro preview handles OPTIONS before the application middleware. The
+    // complete OPTIONS matrix is covered by tests/integration/admin-worker.test.mjs.
+    for (const method of ['GET', 'HEAD', 'POST']) {
       const response = await request.fetch(path, { method, maxRedirects: 0 });
       expect(response.status(), `${method} ${path}`).toBe(403);
       expect(response.headers()['cache-control']).toBe('private, no-store');
@@ -16,7 +18,9 @@ test('el bundle niega acceso administrativo directo en host local sin redirigir'
 
 test('compatibilidad y tombstones cumplen métodos sobre el Worker compilado', async ({ request }) => {
   for (const suffix of ['', '/']) {
-    for (const method of ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']) {
+    // Astro preview handles OPTIONS before the application middleware. The
+    // complete OPTIONS matrix is covered by tests/integration/admin-worker.test.mjs.
+    for (const method of ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE']) {
       for (const authorization of ['', 'Bearer legacy-rejected']) {
         const response = await request.fetch(`/api/status-override${suffix}`, { method, headers: { authorization }, maxRedirects: 0 });
         expect(response.status(), `${method} status-override${suffix}`).toBe(['GET', 'HEAD'].includes(method) ? 503 : 405);
