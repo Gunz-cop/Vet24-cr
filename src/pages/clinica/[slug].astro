@@ -11,7 +11,7 @@ import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
 import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
-import { parseScheduleToRules, getOpeningHoursFromSchedule, serializeSchedule } from '../../lib/schedule';
+import { parseLegacySchedule, parseScheduleToRules, getOpeningHoursFromSchedule, serializeSchedule } from '../../lib/schedule';
 import { getPublicOverride } from '../../lib/public-overrides';
 import { env } from 'cloudflare:workers';
 import {
@@ -118,6 +118,12 @@ const shortenedWeb = webUrl ? (linkzipCache[webUrl] || webUrl) : null;
 const shortenedFacebook = facebookUrl ? (linkzipCache[facebookUrl] || facebookUrl) : null;
 const shortenedInstagram = instagramUrl ? (linkzipCache[instagramUrl] || instagramUrl) : null;
 
+const parsedLegacySchedule = parseLegacySchedule(horarioTexto);
+const hasDefinitiveSchedule = parsedLegacySchedule.status === 'parsed'
+  || (schedule_verified === true && parsedLegacySchedule.status === 'invalid' && horarioTexto.trim().length > 0);
+const initialScheduleStatus = hasDefinitiveSchedule
+  ? 'Horario reportado'
+  : 'Verificando horario...';
 const scheduleAttr = parseScheduleToRules(horarioTexto, emergencias24h);
 const getOpeningHoursSpec = () => getOpeningHoursFromSchedule(horarioTexto, emergencias24h);
 
@@ -309,7 +315,7 @@ const schemaFaq = {
               data-detail-status="inline"
               data-schedule={scheduleAttr}
             >
-              {isMedicalCarePilot ? 'Estado actual: no informado' : 'Verificando horario...'}
+              {initialScheduleStatus}
             </span>
             <span
               class={`inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full border ${
@@ -363,7 +369,7 @@ const schemaFaq = {
               data-detail-status="block"
               data-schedule={scheduleAttr}
             >
-              {isMedicalCarePilot ? 'Estado actual: no informado' : 'Verificando horario...'}
+              {initialScheduleStatus}
             </span>
             <p class="mt-1 text-sm font-bold text-brand-text">{horarioTexto}</p>
           </div>
@@ -404,16 +410,13 @@ const schemaFaq = {
               <div>
                 <dt class="font-semibold text-brand-text-muted">Horario reportado</dt>
                 <dd class="mt-1 font-bold text-brand-text">{horarioTexto}</dd>
+                <p class="mt-2 text-xs text-brand-text-muted leading-relaxed">
+                  Verificado el <time datetime={last_verified}>{last_verified}</time> mediante {verification_source}.
+                </p>
               </div>
               <div>
                 <dt class="font-semibold text-brand-text-muted">Emergencias 24/7</dt>
                 <dd class="mt-1 font-bold text-brand-emergency">{emergency247Fact.label}</dd>
-              </div>
-              <div class="sm:col-span-2">
-                <dt class="font-semibold text-brand-text-muted">Verificación de estos datos</dt>
-                <dd class="mt-1 text-brand-text">
-                  Verificado el <time datetime={last_verified}>{last_verified}</time> mediante {verification_source}.
-                </dd>
               </div>
               <div class="sm:col-span-2">
                 <dt class="font-semibold text-brand-text-muted">Alcance del 24/7 registrado</dt>

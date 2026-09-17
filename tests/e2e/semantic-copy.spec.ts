@@ -114,6 +114,22 @@ test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
     expect(html).not.toContain('Verificando horario...');
   });
 
+  test('no usa el placeholder SSR en fichas con horario definitivo', async ({ request }) => {
+    for (const [url, horario] of [
+      ['/clinica/hospital-vet-medical-care-heredia/', '24/7 todos los días'],
+      ['/clinica/agrovet-don-bosco-quepos/', 'L-S 8am-7pm'],
+      ['/clinica/la-vete-escazu/', 'L-S 8am-8pm | D 8am-7pm | Emergencias 24/7'],
+    ] as const) {
+      const response = await request.get(url);
+      expect(response.status()).toBe(200);
+      const html = await response.text();
+
+      expect(html).toContain(horario);
+      expect(html).toContain('Horario reportado');
+      expect(html).not.toContain('Verificando horario...');
+    }
+  });
+
   test('mantiene coherencia entre JSON-LD y los datos visibles del piloto', async ({ request }) => {
     const html = await (await request.get('/clinica/hospital-vet-medical-care-heredia/')).text();
     const jsonLd = [...html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)]
