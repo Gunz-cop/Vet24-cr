@@ -37,6 +37,7 @@ export async function getStaticPaths() {
 const { clinica } = Astro.props;
 const publicOverride = await getPublicOverride(clinica.data.slug, env as unknown as { DB?: D1Database }).catch(() => null);
 const publicScheduleText = publicOverride?.schedule ? serializeSchedule(publicOverride.schedule).horarioTexto : null;
+const isMedicalCarePilot = clinica.data.slug === 'hospital-vet-medical-care-heredia';
 const { Content } = await render(clinica);
 
 const {
@@ -170,13 +171,19 @@ const schemaMarkup = {
   // así que su `description` usa datos estables, no copy operativo. Sin el CTA
   // de Vet24, porque aquí se describe la entidad, no la página del directorio.
   "description": entityDesc,
-  "image": schemaImage,
+  "image": isMedicalCarePilot ? undefined : schemaImage,
   "url": clinicCanonical,
   "telephone": telefono1 || whatsapp || "",
-  "priceRange": "$$",
+  "priceRange": isMedicalCarePilot ? undefined : "$$",
   "sameAs": schemaSameAs.length > 0 ? schemaSameAs : undefined,
+  "contactPoint": isMedicalCarePilot && whatsappHref ? [{
+    "@type": "ContactPoint",
+    "contactType": "WhatsApp",
+    "telephone": whatsapp,
+    "url": whatsappHref
+  }] : undefined,
   "hasMap": maps_url || undefined,
-  "geo": latitude && longitude ? {
+  "geo": !isMedicalCarePilot && latitude && longitude ? {
     "@type": "GeoCoordinates",
     "latitude": latitude,
     "longitude": longitude
@@ -194,6 +201,16 @@ const schemaMarkup = {
   },
   "openingHoursSpecification": getOpeningHoursSpec()
 };
+
+const schemaWebPage = isMedicalCarePilot && last_verified ? {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${clinicCanonical}#webpage`,
+  "url": clinicCanonical,
+  "name": `${nombre} | Vet24 Costa Rica`,
+  "lastReviewed": last_verified,
+  "mainEntity": { "@id": clinicCanonical }
+} : null;
 
 // Breadcrumb Schema Markup
 const schemaBreadcrumbs = {
@@ -267,6 +284,7 @@ const schemaFaq = {
   <script type="application/ld+json" set:html={JSON.stringify(schemaMarkup)} />
   <script type="application/ld+json" set:html={JSON.stringify(schemaBreadcrumbs)} />
   <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  {schemaWebPage && <script type="application/ld+json" set:html={JSON.stringify(schemaWebPage)} />}
 
   <div class="max-w-5xl mx-auto py-4" data-page-province={getProvinceSlug(provincia)} data-page-zone={getClinicZoneSlug(zona)}>
     <!-- Back Button -->
@@ -291,7 +309,7 @@ const schemaFaq = {
               data-detail-status="inline"
               data-schedule={scheduleAttr}
             >
-              Verificando horario...
+              {isMedicalCarePilot ? 'Estado actual: no informado' : 'Verificando horario...'}
             </span>
             <span
               class={`inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full border ${
@@ -345,7 +363,7 @@ const schemaFaq = {
               data-detail-status="block"
               data-schedule={scheduleAttr}
             >
-              Verificando horario...
+              {isMedicalCarePilot ? 'Estado actual: no informado' : 'Verificando horario...'}
             </span>
             <p class="mt-1 text-sm font-bold text-brand-text">{horarioTexto}</p>
           </div>
@@ -376,6 +394,54 @@ const schemaFaq = {
             </p>
           </div>
         </section>
+
+        {isMedicalCarePilot && (
+          <section class="rounded-2xl border border-brand-primary/30 bg-brand-primary/5 p-5 sm:p-6" aria-labelledby="verification-summary-title" data-verification-summary>
+            <h2 id="verification-summary-title" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif]">
+              Qué significa esta información
+            </h2>
+            <dl class="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+              <div>
+                <dt class="font-semibold text-brand-text-muted">Horario reportado</dt>
+                <dd class="mt-1 font-bold text-brand-text">{horarioTexto}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-brand-text-muted">Emergencias 24/7</dt>
+                <dd class="mt-1 font-bold text-brand-emergency">{emergency247Fact.label}</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="font-semibold text-brand-text-muted">Verificación de estos datos</dt>
+                <dd class="mt-1 text-brand-text">
+                  Verificado el <time datetime={last_verified}>{last_verified}</time> mediante {verification_source}.
+                </dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="font-semibold text-brand-text-muted">Alcance del 24/7 registrado</dt>
+                <dd class="mt-1 text-brand-text leading-relaxed">
+                  En esta ficha, 24/7 se refiere a la atención de emergencias veterinarias durante todo el día y la noche. Las capacidades siguientes se registran por separado; no se infieren únicamente del 24/7.
+                </dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-brand-text-muted">Presencia médica durante la noche</dt>
+                <dd class="mt-1 font-bold text-brand-text">{overnightStatus.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-brand-text-muted">Hospitalización</dt>
+                <dd class="mt-1 font-bold text-brand-text">{hospitalizationState.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-brand-text-muted">Cirugía de emergencia</dt>
+                <dd class="mt-1 font-bold text-brand-text">{emergencySurgeryStatus.confirmed ? 'Sí, confirmada en esta ficha' : 'No confirmado'}</dd>
+              </div>
+              <div class="sm:col-span-2 border-t border-brand-primary/20 pt-3">
+                <dt class="font-semibold text-brand-text-muted">Lo que Vet24 no puede garantizar en tiempo real</dt>
+                <dd class="mt-1 text-brand-text leading-relaxed">
+                  Esta revisión no garantiza que en este momento haya cupo de hospitalización, un profesional específico disponible o que las condiciones sigan sin cambios. Contacta al establecimiento antes de trasladarte.
+                </dd>
+              </div>
+            </dl>
+          </section>
+        )}
 
         {!emergencias24h && (
           <div class="bg-brand-warning-bg border border-brand-warning-border rounded-2xl p-4 sm:p-5 flex items-start gap-3 relative overflow-hidden transition-colors duration-200" id="warning-diurnal-alert">

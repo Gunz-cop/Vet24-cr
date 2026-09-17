@@ -95,6 +95,46 @@ test.describe('Hotfix semántico: badges de verificación', () => {
   });
 });
 
+test.describe('Piloto semántico: Medical Care en HTML inicial', () => {
+  test('expone horario, evidencia, alcance y límites sin JavaScript', async ({ request }) => {
+    const response = await request.get('/clinica/hospital-vet-medical-care-heredia/');
+    expect(response.status()).toBe(200);
+    const html = await response.text();
+
+    expect(html).toContain('Horario reportado');
+    expect(html).toContain('24/7 todos los días');
+    expect(html).toContain('Verificado el <time datetime="2026-09-04">2026-09-04</time> mediante Confirmación directa del establecimiento por correo electrónico y llamada telefónica.');
+    expect(html).toContain('la atención de emergencias veterinarias durante todo el día y la noche');
+    expect(html).toContain('Presencia médica durante la noche</dt><dd class="mt-1 font-bold text-brand-text">Sí, confirmada en esta ficha');
+    expect(html).toContain('Hospitalización</dt><dd class="mt-1 font-bold text-brand-text">Sí, confirmada en esta ficha');
+    expect(html).toContain('Cirugía de emergencia</dt><dd class="mt-1 font-bold text-brand-text">Sí, confirmada en esta ficha');
+    expect(html).toContain('no se infieren únicamente del 24/7');
+    expect(html).toContain('no puede garantizar en tiempo real');
+    expect(html).toContain('Contacta al establecimiento antes de trasladarte');
+    expect(html).not.toContain('Verificando horario...');
+  });
+
+  test('mantiene coherencia entre JSON-LD y los datos visibles del piloto', async ({ request }) => {
+    const html = await (await request.get('/clinica/hospital-vet-medical-care-heredia/')).text();
+    const jsonLd = [...html.matchAll(/<script type="application\/ld\+json">([^<]+)<\/script>/g)]
+      .map((match) => JSON.parse(match[1]));
+    const entity = jsonLd.find((value) => Array.isArray(value['@type']) && value['@type'].includes('VeterinaryCare'));
+    const webPage = jsonLd.find((value) => value['@type'] === 'WebPage');
+
+    expect(entity.name).toBe('Hospital Veterinario Medical Care');
+    expect(entity.telephone).toBe('2262-6826');
+    expect(entity.address.streetAddress).toContain('25 m oeste de la Escuela Moya Murillo');
+    expect(entity.openingHoursSpecification).toHaveLength(7);
+    expect(entity.contactPoint[0].contactType).toBe('WhatsApp');
+    expect(entity.contactPoint[0].telephone).toBe('8639-6793');
+    expect(entity).not.toHaveProperty('priceRange');
+    expect(entity).not.toHaveProperty('image');
+    expect(entity).not.toHaveProperty('geo');
+    expect(entity).not.toHaveProperty('lastReviewed');
+    expect(webPage.lastReviewed).toBe('2026-09-04');
+  });
+});
+
 test.describe('Hotfix semántico: el Tier no cambia', () => {
   test('las etiquetas de Tier se mantienen', async ({ page }) => {
     await page.goto(FICHA_CONFIRMADA, { waitUntil: 'domcontentloaded' });
