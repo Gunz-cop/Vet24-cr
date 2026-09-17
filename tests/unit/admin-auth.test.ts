@@ -76,5 +76,7 @@ test('mutaciones: CSRF, JSON exacto, límite real incremental y failclosed', asy
   const streamed = new Request(`${config.ADMIN_ORIGIN}/api/admin/x`, { method: 'POST', headers, body: stream, duplex: 'half' } as RequestInit);
   assert.equal((await enforceMutation(streamed, config.ADMIN_ORIGIN))?.status, 413);
   assert.equal(cancelled, true);
-  assert.equal((await guardAdmin(request(), config, { sub: 'editor' })).response?.status, 503);
+  // Auth/CSRF/body validation succeeds here; route-specific validation belongs
+  // to the API handler after the shared boundary.
+  assert.equal((await guardAdmin(request(), config, { sub: 'editor' })).response, undefined);
 });

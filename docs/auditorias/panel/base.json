@@ -1,0 +1,62 @@
+{
+  "baseCommit": "24dc03d58ba970710a26bbb1f7f175556c500f14",
+  "scope": "Especificación detallada del panel administrativo I09 y sus integraciones",
+  "authorModel": "gpt-5.6-luna",
+  "authorReasoning": "medium",
+  "auditorModel": "gpt-5.6-luna",
+  "auditorReasoning": "high",
+  "dependencies": [
+    {
+      "path": "docs/sdd-panel-admin-y-skill.md",
+      "sha256": "10797303D82C4D7E2B5020EEA4312E40901FD7DBC2275A3BB68442A17C7532B5"
+    },
+    {
+      "path": "docs/issues/admin/I02.md",
+      "sha256": "C50826549689A4AF0455B821978180D78DECD37304E01AC702FFBEDF4EDCDCA4"
+    },
+    {
+      "path": "docs/issues/admin/I05.md",
+      "sha256": "78321667D43B0189F19CCB029A75CF8F1068D16A104023270528C8D290226CCB"
+    },
+    {
+      "path": "docs/issues/admin/I07.md",
+      "sha256": "5DCC5F5466D42DDF8F559C1E6A36FFA96C4F52D970597894F4DAF334EB9086CC"
+    },
+    {
+      "path": "docs/issues/admin/I08.md",
+      "sha256": "FC26C3AA24E80860608FF22CEC05DEB993731C8C598C667A4F4990FE3CBAC88B"
+    },
+    {
+      "path": "docs/issues/admin/I09.md",
+      "sha256": "7238286794349F3C6B12AAB75D04ED2E48E128D516BA4B3F982BBD2AED3B1B26"
+    },
+    {
+      "path": "docs/issues/admin/I10.md",
+      "sha256": "D81839EDAFBB39DD9C73D6056941C8B12FB8C104A6F2468BE8337A10CFFA9B67"
+    },
+    {
+      "path": "docs/issues/admin/I11.md",
+      "sha256": "15BBD5039612FC38BD858F81B07A91CDC6B9FBFA548B11300C866A1C043688E4"
+    },
+    {
+      "path": "src/lib/clinic-schema.ts",
+      "sha256": "3AA2C87219C0B9243E89261C9331474DA89F5AEF129311B47A8792A00674FCCC"
+    },
+    {
+      "path": "src/lib/schedule.ts",
+      "sha256": "27CE5636A5FBEBE4269556AC6BFF6F4B6751F7DAFD8FE1D244DF759B6D9F8794"
+    },
+    {
+      "path": "src/lib/admin/auth.ts",
+      "sha256": "E15FD814A2DB0BAE1101B93524EF0E75AE9A75F3242759BB112CA07A160F3F2B"
+    },
+    {
+      "path": "src/worker.ts",
+      "sha256": "BD707D9E8449119C5FC343180CB2DD6D5A6C94127F508278DC6E437178AFD9BA"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "8988CFCA75C605ED98480FD5116F93439B49F39038CD2C9A069D0323B14C50D0"
+    }
+  ]
+}

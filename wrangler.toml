@@ -3,6 +3,9 @@ main = "src/worker.ts"
 compatibility_date = "2026-06-09"
 compatibility_flags = ["nodejs_compat"]
 
+[triggers]
+crons = ["* * * * *"]
+
 [assets]
 directory = "./dist"
 binding = "ASSETS"

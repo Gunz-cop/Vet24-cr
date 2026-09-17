@@ -1,4 +1,89 @@
 ---
 export const prerender = false;
+import Shell from '../../components/admin/Shell.astro';
+const reportView = Astro.url.searchParams.get('view') === 'reportes';
 ---
-<html><head><title>Administración</title></head><body><h1>Acceso administrativo</h1><p>La interfaz administrativa no está habilitada.</p></body></html>
+<Shell title={reportView ? 'Reportes de fichas' : 'Catálogo privado'} active={reportView ? 'reportes' : 'catalogo'}>
+  {reportView ? (
+    <>
+      <p class="admin-muted">Revisa reportes sin exponer el contacto fuera de esta vista. Las revisiones concurrentes se rechazan para no perder cambios.</p>
+      <form id="report-filters" class="admin-toolbar" role="search">
+        <div><label for="report-status">Estado</label><select id="report-status" name="status"><option value="">Todos</option><option value="new">Nuevos</option><option value="reviewed">Revisados</option><option value="resolved">Resueltos</option></select></div>
+        <div><label for="report-slug">Slug de clínica</label><input id="report-slug" name="slug" pattern="[-a-z0-9]+" /></div>
+        <button type="submit">Buscar reportes</button>
+      </form>
+      <div id="report-status-message" class="admin-status" aria-live="polite"></div>
+      <div class="admin-grid"><table class="admin-table"><thead><tr><th>Clínica</th><th>Motivo</th><th>Descripción</th><th>Contacto</th><th>Estado</th><th>Revisión</th><th>Acciones</th></tr></thead><tbody id="report-rows"></tbody></table></div>
+      <div class="admin-actions admin-section"><button id="report-prev" class="secondary" type="button" disabled>Anterior</button><button id="report-next" type="button" disabled>Siguiente</button></div>
+    </>
+  ) : (
+    <>
+      <p class="admin-muted">Busca fichas publicadas y revisa problemas calculados. “Por confirmar” no significa que el dato esté roto.</p>
+      <form id="catalog-filters" class="admin-toolbar" role="search">
+        <div><label for="q">Buscar clínica, slug o zona</label><input id="q" name="q" type="search" maxlength="100" autocomplete="off" /></div>
+        <div><label for="provincia">Provincia</label><input id="provincia" name="provincia" /></div>
+        <div><label for="estado">Estado</label><select id="estado" name="estado"><option value="">Todos</option><option>pendiente</option><option>publicado</option><option>verificado</option><option>inactivo</option></select></div>
+        <div><label for="issue">Problema</label><select id="issue" name="issue"><option value="">Todos</option><option value="horario">Horario</option><option value="datos">Datos</option><option value="coordenadas">Coordenadas</option><option value="evidencia">Evidencia</option><option value="conflicto">Conflicto</option></select></div>
+        <div><label for="verification">Verificación</label><select id="verification" name="verification"><option value="">Todas</option><option value="pending">Por confirmar</option></select></div>
+        <label class="admin-check"><input type="checkbox" name="alerts" value="active" /> Alertas activas</label>
+        <label class="admin-check"><input type="checkbox" name="reports" value="pending" /> Reportes pendientes</label>
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="catalog-status" class="admin-status" aria-live="polite"></div>
+      <div class="admin-actions"><a class="admin-card" href="/admin/nueva/">+ Crear borrador de ficha</a><span id="catalog-count" class="admin-muted"></span></div>
+      <div class="admin-grid"><table class="admin-table"><thead><tr><th>Clínica</th><th>Ubicación</th><th>Estado</th><th>Verificación</th><th>Problemas</th><th>Acciones</th></tr></thead><tbody id="catalog-rows"></tbody></table></div>
+      <div class="admin-actions admin-section"><button id="prev-page" class="secondary" type="button" disabled>Anterior</button><button id="next-page" type="button" disabled>Siguiente</button></div>
+    </>
+  )}
+</Shell>
+<script define:vars={{ reportView }}>
+  // @ts-nocheck
+  const isReports = reportView;
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  if (isReports) {
+    const form = document.querySelector('#report-filters'), rows = document.querySelector('#report-rows'), status = document.querySelector('#report-status-message');
+    const next = document.querySelector('#report-next'), prev = document.querySelector('#report-prev'); let cursor = null, history = []; const reportKeys = new Map();
+    const query = () => { const params = new URLSearchParams(new FormData(form)); params.set('limit', '25'); if (cursor) params.set('cursor', cursor); return params; };
+    async function loadReports(reset = false) {
+      if (reset) { cursor = null; history = []; }
+      status.textContent = 'Cargando reportes…'; status.className = 'admin-status';
+      try {
+        const response = await fetch('/api/admin/reports/?' + query(), { credentials: 'same-origin', cache: 'no-store' });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || data.error || 'No se pudieron cargar los reportes');
+        rows.innerHTML = data.items.length ? data.items.map(item => `<tr><td data-label="Clínica">${esc(item.clinicName)}<br><small>${esc(item.slug)}</small></td><td data-label="Motivo">${esc(item.reason)}</td><td data-label="Descripción">${esc(item.description)}</td><td data-label="Contacto">${esc(item.contact || 'No proporcionado')}</td><td data-label="Estado"><select class="report-state" data-id="${esc(item.id)}"><option ${item.status === 'new' ? 'selected' : ''}>new</option><option ${item.status === 'reviewed' ? 'selected' : ''}>reviewed</option><option ${item.status === 'resolved' ? 'selected' : ''}>resolved</option></select></td><td data-label="Revisión">${esc(item.revision)}</td><td data-label="Acciones"><input class="report-note" data-id="${esc(item.id)}" maxlength="2000" placeholder="Nota de resolución" aria-label="Nota de resolución" /><button class="report-update" data-id="${esc(item.id)}" data-revision="${esc(item.revision)}" type="button">Guardar</button></td></tr>`).join('') : '<tr><td class="admin-empty" colspan="7">No hay reportes con este filtro.</td></tr>';
+        rows.querySelectorAll('.report-update').forEach(button => button.addEventListener('click', async () => {
+          button.disabled = true;
+          const id = button.dataset.id;
+          const select = rows.querySelector(`.report-state[data-id="${CSS.escape(id)}"]`);
+          const note = rows.querySelector(`.report-note[data-id="${CSS.escape(id)}"]`);
+          try {
+            const key = reportKeys.get(id) || crypto.randomUUID(); reportKeys.set(id, key);
+            const response = await fetch('/api/admin/reports/' + encodeURIComponent(id) + '/', { method: 'PATCH', headers: { 'Content-Type': 'application/json', 'X-Vet24-Admin': '1', 'Idempotency-Key': key }, body: JSON.stringify({ expectedRevision: Number(button.dataset.revision), status: select.value, resolutionNote: note.value }) });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.message || result.error || 'No se pudo actualizar el reporte');
+            reportKeys.delete(id); await loadReports();
+          } catch (error) { status.textContent = error.message + ' Recarga el reporte antes de reaplicar.'; status.className = 'admin-status error'; button.disabled = false; }
+        }));
+        next.disabled = !data.nextCursor; next.dataset.cursor = data.nextCursor || ''; prev.disabled = !history.length;
+        status.textContent = 'Reportes actualizados.'; status.className = 'admin-status success';
+      } catch (error) { rows.innerHTML = '<tr><td class="admin-empty" colspan="6">No se pudieron cargar los reportes.</td></tr>'; status.textContent = error.message + ' Puedes reintentar.'; status.className = 'admin-status error'; }
+    }
+    form.addEventListener('submit', event => { event.preventDefault(); loadReports(true); });
+    next.addEventListener('click', () => { if (next.dataset.cursor) { history.push(cursor); cursor = next.dataset.cursor; loadReports(); } });
+    prev.addEventListener('click', () => { cursor = history.pop() || null; loadReports(); });
+    loadReports();
+  } else {
+    const form = document.querySelector('#catalog-filters'), rows = document.querySelector('#catalog-rows'), status = document.querySelector('#catalog-status'), count = document.querySelector('#catalog-count');
+    const next = document.querySelector('#next-page'), prev = document.querySelector('#prev-page'); let cursor = null, history = [];
+    function query() {
+      const params = new URLSearchParams(new FormData(form));
+      for (const [key, value] of [...params.entries()]) if (!value.trim()) params.delete(key);
+      params.set('limit','25');
+      if(cursor) params.set('cursor', cursor);
+      return params;
+    }
+    async function load(reset = false) { if(reset){ cursor=null; history=[]; } status.textContent='Cargando catálogo…'; status.className='admin-status'; rows.innerHTML='<tr><td colspan="6">Cargando…</td></tr>'; try { const response=await fetch('/api/admin/clinics/?'+query(),{credentials:'same-origin',cache:'no-store'}); const data=await response.json(); if(!response.ok) throw new Error(data.message || data.error || 'No se pudo cargar el catálogo'); rows.innerHTML=data.items.length?data.items.map(item=>`<tr><td data-label="Clínica"><a href="/admin/editar/${encodeURIComponent(item.slug)}/">${esc(item.nombre)}</a><br><small>${esc(item.slug)}</small></td><td data-label="Ubicación">${esc(item.provincia)} · ${esc(item.zona)}</td><td data-label="Estado"><span class="admin-badge">${esc(item.estado)}</span></td><td data-label="Verificación">${item.address_verified&&item.schedule_verified?'Confirmada':'Por confirmar'}</td><td data-label="Problemas">${item.problems.length?item.problems.map(p=>esc(p.explanation)).join('<br>'):'—'}</td><td data-label="Acciones"><a href="/admin/editar/${encodeURIComponent(item.slug)}/">Editar</a></td></tr>`).join(''):'<tr><td class="admin-empty" colspan="6">No hay fichas con este filtro. <button type="button" id="clear-filters" class="secondary">Limpiar filtros</button></td></tr>'; count.textContent=`${data.counts.totalFiltered} resultado(s)`; next.disabled=!data.nextCursor; next.dataset.cursor=data.nextCursor||''; prev.disabled=!history.length; status.textContent='Catálogo actualizado.'; status.className='admin-status success'; document.querySelector('#clear-filters')?.addEventListener('click',()=>{form.reset();load(true)}); } catch(error) { rows.innerHTML='<tr><td class="admin-empty" colspan="6">No se pudo cargar el catálogo.</td></tr>'; status.textContent=error.message+' Puedes reintentar.'; status.className='admin-status error'; } }
+    form.addEventListener('submit',e=>{e.preventDefault();load(true)}); next.addEventListener('click',()=>{if(next.dataset.cursor){history.push(cursor);cursor=next.dataset.cursor;load()}}); prev.addEventListener('click',()=>{cursor=history.pop()||null;load()}); load();
+  }
+</script>

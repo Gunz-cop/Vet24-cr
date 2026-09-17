@@ -11,11 +11,11 @@ const legacy = files(join(root, 'functions')).filter((p) => /\.(js|mjs|cjs|ts)$/
 if (legacy.length) throw new Error(`Handlers legacy ejecutables encontrados: ${legacy.map((p) => p.slice(root.length + 1)).join(', ')}`);
 const bundleIndex = process.argv.indexOf('--bundle');
 const apiFiles = files(join(root, 'src', 'pages', 'api')).filter((p) => /\.(ts|js|mjs|cjs)$/.test(p));
-const apiInventory = ['src/pages/api/analytics.ts', 'src/pages/api/catalog.json.ts', 'src/pages/api/clinics-links-manifest.json.js', 'src/pages/api/cron-check-links.ts', 'src/pages/api/openapi.json.ts', 'src/pages/api/report-incorrect/index.ts', 'src/pages/api/status-override.ts'];
+const apiInventory = ['src/pages/api/admin/[...path].ts', 'src/pages/api/analytics.ts', 'src/pages/api/catalog.json.ts', 'src/pages/api/clinics-links-manifest.json.js', 'src/pages/api/cron-check-links.ts', 'src/pages/api/openapi.json.ts', 'src/pages/api/report-incorrect/index.ts', 'src/pages/api/status-override.ts'];
 const apiRelative = apiFiles.map((p) => p.slice(root.length + 1).replaceAll('\\', '/'));
 if (bundleIndex < 0 && (apiRelative.some((p) => !apiInventory.includes(p)) || apiInventory.some((p) => !apiRelative.includes(p)))) throw new Error(`Inventario API inesperado: ${apiRelative.join(', ')}`);
 const mutators = apiFiles.filter((p) => /(?:export\s+(?:async\s+)?function\s+|export\s+const\s+)(?:POST|PUT|PATCH|DELETE|ALL)\b|export\s*\{[^}]*\b(?:POST|PUT|PATCH|DELETE|ALL)\b[^}]*\}\s*from/.test(readFileSync(p, 'utf8'))).map((p) => p.slice(root.length + 1).replaceAll('\\', '/'));
-const allowedMutators = ['src/pages/api/report-incorrect/index.ts', 'src/pages/api/analytics.ts', 'src/pages/api/cron-check-links.ts', 'src/pages/api/status-override.ts'];
+const allowedMutators = ['src/pages/api/admin/[...path].ts', 'src/pages/api/report-incorrect/index.ts', 'src/pages/api/analytics.ts', 'src/pages/api/cron-check-links.ts', 'src/pages/api/status-override.ts'];
 if (mutators.some((p) => !allowedMutators.includes(p))) throw new Error(`API mutadora fuera de inventario permitido: ${mutators.join(', ')}`);
 const targets = bundleIndex >= 0 ? [process.argv[bundleIndex + 1] || 'dist/server'] : ['src', 'scripts', 'wrangler.toml', 'astro.config.mjs', '.github', 'package.json'];
 const self = resolve(root, 'scripts/admin/check-runtime-boundary.mjs');

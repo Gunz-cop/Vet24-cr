@@ -21,11 +21,21 @@ const jsonResponse = (body: Record<string, unknown>, status = 200) => {
 
 export async function POST({ request }: APIContext) {
   try {
-    const body = await request.json() as Record<string, string>;
-    const clinic = body.clinic || "Sin clínica indicada";
-    const reason = body.reason || "Sin motivo indicado";
-    const description = body.description || "Sin descripción";
-    const contact = body.contact || "";
+    const parsed = await request.json().catch(() => null);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return jsonResponse({ error: "INVALID_REPORT" }, 422);
+    const body = parsed as Record<string, unknown>;
+    let invalidReport = false;
+    const readText = (field: string, fallback: string, max: number) => {
+      const value = body[field];
+      if (value === undefined || value === null || value === "") return fallback;
+      if (typeof value !== "string" || value.length > max) { invalidReport = true; return fallback; }
+      return value.trim();
+    };
+    const clinic = readText("clinic", "Sin clínica indicada", 200);
+    const reason = readText("reason", "Sin motivo indicado", 120);
+    const description = readText("description", "Sin descripción", 5000);
+    const contact = readText("contact", "", 320);
+    if (invalidReport) return jsonResponse({ error: "INVALID_REPORT" }, 422);
 
     const ip = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
     const msgUint8 = new TextEncoder().encode(ip);
@@ -33,12 +43,12 @@ export async function POST({ request }: APIContext) {
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     const ipHash = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 
-    const db = (env as any)?.DB;
-    if (db) {
-      try {
+    const db = (env as { DB?: D1Database }).DB;
+    if (!db) return jsonResponse({ error: "LIVE_UNAVAILABLE" }, 503);
+    try {
         const rateCheck = await db.prepare(
           "SELECT COUNT(*) as count FROM reports WHERE ip_hash = ? AND created_at > datetime('now', '-15 minutes')"
-        ).bind(ipHash).first();
+        ).bind(ipHash).first<{ count: number }>();
 
         if (rateCheck && rateCheck.count >= 3) {
           return jsonResponse({
@@ -56,9 +66,9 @@ export async function POST({ request }: APIContext) {
           contact,
           ipHash
         ).run();
-      } catch (dbErr: any) {
-        console.error("Error al guardar el reporte en Cloudflare D1:", dbErr.message);
-      }
+    } catch (dbErr: unknown) {
+      console.error("Error al guardar el reporte en Cloudflare D1:", dbErr instanceof Error ? dbErr.message : String(dbErr));
+      return jsonResponse({ error: "LIVE_UNAVAILABLE" }, 503);
     }
 
     const emailBinding = (env as any)?.EMAIL;
@@ -67,31 +77,28 @@ export async function POST({ request }: APIContext) {
 
     if (!emailBinding?.send) {
       console.warn("Cloudflare Email binding EMAIL is not configured. Logging report instead:", body);
-      return jsonResponse({
-        success: true,
-        mocked: true,
-        db_saved: !!db,
-        message: "Report received (Local fallback mode)",
-      });
+      return jsonResponse({ success: true, db_saved: true, email_sent: false });
     }
 
-    const sendResult = await emailBinding.send({
-      to: toEmail,
-      from: {
-        email: fromEmail,
-        name: "Vet24 Reportes",
-      },
-      ...(isEmail(contact) ? { replyTo: contact } : {}),
-      subject: `[Vet24] Inconsistencia: ${clinic}`,
-      text: [
-        "Alerta de inconsistencia en clínica",
-        "",
-        `Clínica: ${clinic}`,
-        `Motivo: ${reason}`,
-        `Descripción: ${description}`,
-        `Contacto: ${contact || "No proporcionado"}`,
-      ].join("\n"),
-      html: `
+    let sendResult: { messageId?: string } | null = null;
+    try {
+      sendResult = await emailBinding.send({
+        to: toEmail,
+        from: {
+          email: fromEmail,
+          name: "Vet24 Reportes",
+        },
+        ...(isEmail(contact) ? { replyTo: contact } : {}),
+        subject: `[Vet24] Inconsistencia: ${clinic}`,
+        text: [
+          "Alerta de inconsistencia en clínica",
+          "",
+          `Clínica: ${clinic}`,
+          `Motivo: ${reason}`,
+          `Descripción: ${description}`,
+          `Contacto: ${contact || "No proporcionado"}`,
+        ].join("\n"),
+        html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #25312b;">
           <h2 style="color: #e71d54; border-bottom: 2px solid #f4b6c8; padding-bottom: 10px;">Alerta de inconsistencia en clínica</h2>
           <p style="font-size: 16px;">Un usuario reportó datos posiblemente incorrectos en Vet24.</p>
@@ -114,8 +121,12 @@ export async function POST({ request }: APIContext) {
             </tr>
           </table>
         </div>
-      `,
-    });
+        `,
+      });
+    } catch (emailError: unknown) {
+      console.error("Reporte guardado, pero falló el correo:", emailError instanceof Error ? emailError.message : String(emailError));
+      return jsonResponse({ success: true, db_saved: true, email_sent: false });
+    }
 
     return jsonResponse({
       success: true,

@@ -11,7 +11,9 @@ import { absoluteUrl, canonicalUrl } from '../../lib/seo';
 import { getClinicZoneSlug } from '../../lib/zones';
 import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
-import { parseScheduleToRules, getOpeningHoursFromSchedule } from '../../lib/schedule';
+import { parseScheduleToRules, getOpeningHoursFromSchedule, serializeSchedule } from '../../lib/schedule';
+import { getPublicOverride } from '../../lib/public-overrides';
+import { env } from 'cloudflare:workers';
 import {
   overnightDoctorStatus,
   hospitalizationStatus,
@@ -33,6 +35,8 @@ export async function getStaticPaths() {
 }
 
 const { clinica } = Astro.props;
+const publicOverride = await getPublicOverride(clinica.data.slug, env as unknown as { DB?: D1Database }).catch(() => null);
+const publicScheduleText = publicOverride?.schedule ? serializeSchedule(publicOverride.schedule).horarioTexto : null;
 const { Content } = await render(clinica);
 
 const {
@@ -316,6 +320,21 @@ const schemaFaq = {
             </span>
           </div>
         </header>
+
+        {publicOverride && (publicOverride.temporarilyClosed || publicOverride.message || publicScheduleText) && (
+          <aside class={`rounded-2xl p-4 sm:p-5 flex items-start gap-3 relative overflow-hidden shadow-md ${publicOverride.temporarilyClosed ? 'bg-brand-danger-bg/25 border border-brand-danger-border' : 'bg-brand-primary/10 border border-brand-primary/20'}`} aria-live="polite" data-public-override="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class={`w-6 h-6 shrink-0 mt-0.5 ${publicOverride.temporarilyClosed ? 'text-brand-danger-text' : 'text-brand-primary'}`}>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+            </svg>
+            <div>
+              <h2 class={`text-sm font-bold uppercase tracking-wide ${publicOverride.temporarilyClosed ? 'text-brand-danger-text' : 'text-brand-primary'}`}>
+                {publicOverride.temporarilyClosed ? 'Clínica cerrada temporalmente' : 'Aviso de disponibilidad'}
+              </h2>
+              {publicOverride.message && <p class="text-sm text-brand-text-muted mt-1 leading-relaxed">{publicOverride.message}</p>}
+              {publicScheduleText && <p class="text-sm text-brand-text-muted mt-1 leading-relaxed">Horario temporal: {publicScheduleText}</p>}
+            </div>
+          </aside>
+        )}
 
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" aria-labelledby="seo-quick-facts-title">
           <h2 id="seo-quick-facts-title" class="sr-only">Datos rápidos de {nombre}</h2>
@@ -1087,6 +1106,7 @@ const schemaFaq = {
 
     // Check for real-time status overrides from Cloudflare D1
     const slug = window.location.pathname.split('/').filter(Boolean).pop();
+    const escapeOverrideText = (value: unknown): string => String(value ?? '').replace(/[&<>"']/g, (character: string) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? ''));
     if (slug) {
       fetch(`/api/status-override?slug=${slug}`)
         .then(res => res.json() as Promise<{
@@ -1100,9 +1120,10 @@ const schemaFaq = {
         .then(data => {
           if (data.success && data.override) {
             const override = data.override;
+            const serverOverride = document.querySelector('[data-public-override="true"]');
             
             // 1. Handle temporary closure override
-            if (override.is_temporarily_closed) {
+            if (!serverOverride && override.is_temporarily_closed) {
               const header = document.querySelector('header');
               if (header) {
                 const alertBar = document.createElement('div');
@@ -1112,9 +1133,9 @@ const schemaFaq = {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                   </svg>
                   <div>
-                    <h3 class="text-sm font-bold text-brand-danger-text uppercase tracking-wide">⚠️ CLÍNICA CERRADA TEMPORALMENTE</h3>
+                    <h3 class="text-sm font-bold text-brand-danger-text uppercase tracking-wide">CLÍNICA CERRADA TEMPORALMENTE</h3>
                     <p class="text-xs text-brand-text-muted mt-1 font-semibold leading-relaxed">
-                      ${override.override_status_text || 'Esta clínica se encuentra cerrada temporalmente por motivos de fuerza mayor. Por favor, comunícate por teléfono antes de viajar.'}
+                      ${escapeOverrideText(override.override_status_text || 'Esta clínica se encuentra cerrada temporalmente por motivos de fuerza mayor. Por favor, comunícate por teléfono antes de viajar.')}
                     </p>
                   </div>
                 `;
@@ -1123,7 +1144,7 @@ const schemaFaq = {
               
               const diurnalAlert = document.getElementById('warning-diurnal-alert');
               if (diurnalAlert) diurnalAlert.classList.add('hidden');
-            } else if (override.override_status_text) {
+            } else if (!serverOverride && override.override_status_text) {
               const header = document.querySelector('header');
               if (header) {
                 const infoBar = document.createElement('div');
@@ -1136,7 +1157,7 @@ const schemaFaq = {
                   <div>
                     <h3 class="text-sm font-bold text-brand-primary uppercase tracking-wide">Aviso de Disponibilidad en Tiempo Real</h3>
                     <p class="text-xs text-brand-text-muted mt-1 font-semibold leading-relaxed">
-                      ${override.override_status_text}
+                      ${escapeOverrideText(override.override_status_text)}
                     </p>
                   </div>
                 `;

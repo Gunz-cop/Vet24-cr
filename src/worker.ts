@@ -4,12 +4,13 @@ import { guardAdmin, isProtectedFamily, protectResponse } from "./lib/admin/auth
 import { handleStatusOverride } from './pages/api/status-override';
 import { handleAnalytics } from './pages/api/analytics';
 import { handleCronCheckLinks } from './pages/api/cron-check-links';
+import { runProposalRunner } from './lib/admin/proposal-runner';
 
 const worker = {
   async fetch(request: Request, env: Env, context: ExecutionContext): Promise<Response> {
     // Dispatch the single endpoint implementations before Astro's slash redirects.
     const path = new URL(request.url).pathname.replace(/\/$/, '');
-    if (path === '/api/status-override') return handleStatusOverride(request);
+    if (path === '/api/status-override') return handleStatusOverride(request, env);
     if (path === '/api/analytics') return handleAnalytics(request);
     if (path === '/api/cron-check-links') return handleCronCheckLinks(request);
     if (isProtectedFamily(new URL(request.url).pathname)) {
@@ -26,6 +27,11 @@ const worker = {
     return handleAgentRequest(request, env, context, (delegatedRequest, delegatedEnv, delegatedContext) =>
       officialHandler.fetch(delegatedRequest, delegatedEnv, delegatedContext),
     );
+  },
+  async scheduled(_controller: ScheduledController, env: Env, context: ExecutionContext): Promise<void> {
+    context.waitUntil(runProposalRunner(env).catch((error) => {
+      console.error(JSON.stringify({ event: 'proposal_runner_failed', error: error instanceof Error ? error.message : String(error) }));
+    }));
   },
 };
 

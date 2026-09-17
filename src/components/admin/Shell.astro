@@ -1,0 +1,14 @@
+---
+const { title, active = 'catalogo' } = Astro.props;
+import '../../styles/admin.css';
+---
+<div class="admin-page">
+  <a class="admin-skip" href="#admin-content">Saltar al contenido</a>
+  <header class="admin-header"><a class="admin-brand" href="/admin/">Vet24 · Administración</a><span>Sesión Access · <a href="/cdn-cgi/access/logout">Cerrar sesión</a></span></header>
+  <nav class="admin-nav" aria-label="Navegación administrativa">
+    <a aria-current={active === 'catalogo' ? 'page' : undefined} href="/admin/">Catálogo</a>
+    <a aria-current={active === 'reportes' ? 'page' : undefined} href="/admin/?view=reportes">Reportes</a>
+    <a aria-current={active === 'nueva' ? 'page' : undefined} href="/admin/nueva/">Nueva ficha</a>
+  </nav>
+  <main id="admin-content" class="admin-main"><h1>{title}</h1><slot /></main>
+</div>

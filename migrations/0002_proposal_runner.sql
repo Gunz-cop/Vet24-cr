@@ -1,0 +1,11 @@
+ALTER TABLE clinic_proposals ADD COLUMN next_attempt_at TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN lease_owner TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN lease_until TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN state_version INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE clinic_proposals ADD COLUMN branch_name TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN commit_sha TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN blob_sha TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN tree_sha TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN parent_sha TEXT;
+ALTER TABLE clinic_proposals ADD COLUMN evidence_blob_sha TEXT;
+CREATE INDEX IF NOT EXISTS idx_clinic_proposals_ready ON clinic_proposals (status, next_attempt_at, lease_until, updated_at);

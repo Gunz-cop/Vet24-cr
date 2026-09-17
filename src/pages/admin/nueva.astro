@@ -1,4 +1,83 @@
 ---
 export const prerender = false;
+import Shell from '../../components/admin/Shell.astro';
 ---
-<html><head><title>Nueva clínica</title></head><body><h1>Nueva clínica</h1><p>Función no disponible.</p></body></html>
+<Shell title="Nueva ficha · borrador">
+  <p class="admin-muted">El formulario permanece local hasta que esté completo. Crear el borrador no crea una ruta pública ni modifica el catálogo.</p>
+  <div id="new-status" class="admin-status" aria-live="polite"></div>
+  <form id="new-clinic" class="admin-form">
+    <fieldset><legend>Identidad y ubicación</legend><div class="admin-form-grid">
+      <div><label for="new-id">UUID del borrador</label><input id="new-id" readonly /></div>
+      <div><label for="new-name">Nombre <span>(obligatorio)</span></label><input id="new-name" required /></div>
+      <div><label for="new-slug">Slug <span>(obligatorio)</span></label><input id="new-slug" required pattern="[a-z0-9-]+" /><p class="admin-help">Solo minúsculas, números y guiones; se verifica en servidor.</p></div>
+      <div><label for="new-province">Provincia <span>(obligatorio)</span></label><input id="new-province" required /></div>
+      <div><label for="new-zone">Zona <span>(obligatorio)</span></label><input id="new-zone" required /></div>
+      <div><label for="new-address">Dirección <span>(obligatorio)</span></label><input id="new-address" required /></div>
+      <div><label for="new-lat">Latitud verificable</label><input id="new-lat" type="number" step="any" inputmode="decimal" /></div>
+      <div><label for="new-lng">Longitud verificable</label><input id="new-lng" type="number" step="any" inputmode="decimal" /></div>
+    </div></fieldset>
+    <fieldset><legend>Evidencia mínima</legend><div class="admin-form-grid">
+      <div><label for="new-source">Fuente pública HTTPS</label><input id="new-source" type="url" required /></div>
+      <div><label for="new-observed">Observada en UTC</label><input id="new-observed" type="datetime-local" required /></div>
+    </div><p class="admin-help">No se aceptan coordenadas 0,0, fuentes inaccesibles ni afirmaciones verificadas sin referencias.</p></fieldset>
+    <fieldset><legend>Capacidades independientes</legend><p class="admin-help">Cada capacidad debe indicarse explícitamente. “Por confirmar” bloquea la propuesta y nunca se envía como dato.</p><div class="admin-form-grid admin-check-grid">
+      {['emergencias24h:Emergencias 24h','atiendeExoticos:Animales exóticos','cirugiaEmergencia:Cirugía de emergencia','atiendeGranja:Animales de granja','atiendePeces:Peces ornamentales','hotelMascotas:Hotel para mascotas','has_surgery:Cirugía','has_hospitalization:Hospitalización','overnight_doctor_present:Médico nocturno presente','accepts_emergency_walkins:Recibe emergencias presenciales'].map(item => { const [name, label] = item.split(':'); return <label for={`new-cap-${name}`}><span>{label}</span><select id={`new-cap-${name}`} name={name}><option value="unknown" selected>Por confirmar</option><option value="true">Sí</option><option value="false">No</option></select></label>; })}
+    </div></fieldset>
+    <fieldset><legend>Horario estructurado</legend><p class="admin-help">Cada día puede quedar por confirmar, cerrado, cita previa o abierto. Para abrir un día, indica al menos un intervalo con inicio y fin; no se precargan horas.</p><div id="new-schedule-editor" class="schedule-editor" aria-label="Editor de horario semanal"></div></fieldset>
+    <fieldset><legend>Cuerpo editorial</legend><div class="admin-form-grid"><div><label for="new-copy">Texto diferenciador <span>(obligatorio)</span></label><textarea id="new-copy" required rows="4"></textarea></div><div><label for="new-body">Markdown de la ficha</label><textarea id="new-body" rows="8"></textarea></div></div></fieldset>
+    <div class="admin-actions"><button id="new-propose" type="button">Proponer ficha</button><a href="/admin/">Cancelar</a></div>
+  </form>
+</Shell>
+<script>
+  // @ts-nocheck
+  const form = document.querySelector('#new-clinic');
+  const status = document.querySelector('#new-status');
+  const id = crypto.randomUUID();
+  let proposalKey = crypto.randomUUID();
+  const dayNames = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  document.querySelector('#new-id').value = id;
+  const value = (selector) => document.querySelector(selector).value.trim();
+  const key = () => crypto.randomUUID();
+  const setStatus = (message, kind = '') => { status.textContent = message; status.className = `admin-status ${kind}`; };
+  const capabilityLabels = { emergencias24h: 'Emergencias 24h', atiendeExoticos: 'Animales exóticos', cirugiaEmergencia: 'Cirugía de emergencia', atiendeGranja: 'Animales de granja', atiendePeces: 'Peces ornamentales', hotelMascotas: 'Hotel para mascotas', has_surgery: 'Cirugía', has_hospitalization: 'Hospitalización', overnight_doctor_present: 'Médico nocturno presente', accepts_emergency_walkins: 'Recibe emergencias presenciales' };
+  const scheduleDraft = { version: 1, timeZone: 'America/Costa_Rica', days: dayNames.map(() => ({ kind: 'unknown' })), exceptions: [] };
+  const renderSchedule = () => {
+    const root = document.querySelector('#new-schedule-editor');
+    root.innerHTML = scheduleDraft.days.map((day, dayIndex) => {
+      const intervals = day.kind === 'open' ? day.intervals.map((range, rangeIndex) => `<div class="schedule-interval"><label for="new-start-${dayIndex}-${rangeIndex}">Inicio</label><input id="new-start-${dayIndex}-${rangeIndex}" type="time" data-day="${dayIndex}" data-range="${rangeIndex}" data-edge="start" value="${range.start}" /><label for="new-end-${dayIndex}-${rangeIndex}">Fin</label><input id="new-end-${dayIndex}-${rangeIndex}" type="time" data-day="${dayIndex}" data-range="${rangeIndex}" data-edge="end" value="${range.end}" /><button type="button" class="secondary remove-interval" data-day="${dayIndex}" data-range="${rangeIndex}">Quitar</button></div>`).join('') : '<span class="admin-muted">Sin intervalo</span>';
+      return `<div class="schedule-day"><label for="new-kind-${dayIndex}">${dayNames[dayIndex]}</label><select id="new-kind-${dayIndex}" data-day="${dayIndex}" class="new-schedule-kind"><option value="unknown" ${day.kind === 'unknown' ? 'selected' : ''}>Por confirmar</option><option value="closed" ${day.kind === 'closed' ? 'selected' : ''}>Cerrado</option><option value="appointment" ${day.kind === 'appointment' ? 'selected' : ''}>Cita previa</option><option value="open" ${day.kind === 'open' ? 'selected' : ''}>Abierto</option></select><div class="schedule-intervals">${intervals}</div>${day.kind === 'open' ? `<button type="button" class="secondary add-interval" data-day="${dayIndex}">Añadir intervalo</button>` : ''}</div>`;
+    }).join('');
+    root.querySelectorAll('.new-schedule-kind').forEach(select => select.addEventListener('change', () => { const day = scheduleDraft.days[Number(select.dataset.day)]; day.kind = select.value; if (day.kind === 'open') day.intervals = [{ start: '', end: '' }]; else delete day.intervals; renderSchedule(); }));
+    root.querySelectorAll('.add-interval').forEach(button => button.addEventListener('click', () => { scheduleDraft.days[Number(button.dataset.day)].intervals.push({ start: '', end: '' }); renderSchedule(); }));
+    root.querySelectorAll('.remove-interval').forEach(button => button.addEventListener('click', () => { const day = scheduleDraft.days[Number(button.dataset.day)]; day.intervals.splice(Number(button.dataset.range), 1); if (!day.intervals.length) day.intervals.push({ start: '', end: '' }); renderSchedule(); }));
+    root.querySelectorAll('input[data-edge]').forEach(input => input.addEventListener('change', () => { scheduleDraft.days[Number(input.dataset.day)].intervals[Number(input.dataset.range)][input.dataset.edge] = input.value; }));
+  };
+  const readSchedule = () => ({ version: 1, timeZone: 'America/Costa_Rica', days: scheduleDraft.days.map(day => {
+    if (day.kind !== 'open') return { kind: day.kind };
+    if (!day.intervals.every(range => /^\d{2}:\d{2}$/.test(range.start) && /^\d{2}:\d{2}$/.test(range.end))) throw new Error('Completa inicio y fin de cada intervalo de los días abiertos.');
+    const intervals = day.intervals.map(range => ({ start: Number(range.start.slice(0, 2)) * 60 + Number(range.start.slice(3)), end: Number(range.end.slice(0, 2)) * 60 + Number(range.end.slice(3)) }));
+    if (!intervals.every(range => range.start < range.end)) throw new Error('Cada intervalo debe tener un inicio anterior a su fin.');
+    return { kind: 'open', intervals };
+  }), exceptions: [] });
+  renderSchedule();
+  document.querySelector('#new-propose').onclick = async (event) => {
+    if (!form.reportValidity()) return;
+    const unknownCapabilities = Object.keys(capabilityLabels).filter(name => value(`#new-cap-${name}`) === 'unknown');
+    if (unknownCapabilities.length) { setStatus(`Indica explícitamente estas capacidades antes de proponer: ${unknownCapabilities.map(name => capabilityLabels[name]).join(', ')}.`, 'error'); return; }
+    let schedule;
+    try { schedule = readSchedule(); } catch (error) { setStatus(error.message, 'error'); return; }
+    const lat = Number(value('#new-lat')); const lng = Number(value('#new-lng'));
+    if (!Number.isFinite(lat) || !Number.isFinite(lng) || (lat === 0 && lng === 0)) { setStatus('Las coordenadas deben ser válidas y distintas de 0,0.', 'error'); return; }
+    const source = value('#new-source');
+    try { new URL(source); } catch { setStatus('La fuente debe ser una URL válida.', 'error'); return; }
+    const base = await fetch('/api/admin/clinics/?limit=1', { cache: 'no-store' }).then(async response => response.ok ? response.json() : null).catch(() => null);
+    if (!base?.baseCommit) { setStatus('La revisión base no está disponible; el borrador se conserva localmente.', 'error'); return; }
+    const slug = value('#new-slug');
+    const capabilityValues = Object.fromEntries(Object.keys(capabilityLabels).map(name => [name, value(`#new-cap-${name}`) === 'true']));
+    const horarioTexto = dayNames.map((day, index) => `${day} ${schedule.days[index].kind === 'unknown' ? 'por confirmar' : schedule.days[index].kind === 'closed' ? 'cerrado' : schedule.days[index].kind === 'appointment' ? 'cita previa' : schedule.days[index].intervals.map(range => `${String(Math.floor(range.start / 60)).padStart(2, '0')}:${String(range.start % 60).padStart(2, '0')}-${String(Math.floor(range.end / 60)).padStart(2, '0')}:${String(range.end % 60).padStart(2, '0')}`).join(', ')}`).join(' | ');
+    const clinic = { id, nombre: value('#new-name'), slug, provincia: value('#new-province'), zona: value('#new-zone'), direccion: value('#new-address'), telefono1: '', telefono2: '', whatsapp: '', horarioTexto, schedule_v1: schedule, categoriaHorario: 'Horario normal', ...capabilityValues, hotelVerificacion: 'no-confirmado', hotelFuente: '', confidence_score: 'low', record_status: 'PARTIAL', emergency_tier: 'Tier C', last_verified: '', phone_verified: false, address_verified: false, schedule_verified: false, emergency_verified: false, verification_notes: [], verification_source: source, latitude: lat, longitude: lng, waze_url: `https://www.waze.com/ul?ll=${lat}%2C${lng}&navigate=yes`, maps_url: `https://www.google.com/maps/search/?api=1&query=${lat}%2C${lng}`, web: '', facebook: '', instagram: '', estado: 'pendiente', copyDiferenciador: value('#new-copy') };
+    const body = { slug, newClinic: true, baseCommit: base.baseCommit, blobSha: null, clinic, bodyMarkdown: value('#new-body'), evidence: { schemaVersion: 1, slug, observedAt: new Date(value('#new-observed')).toISOString(), fuentes: [{ url: source, tipo: 'publica' }], facts: [{ field: 'direccion', value: value('#new-address'), references: [0], confidence: 'medium' }], conflicts: [] } };
+    const button = event.currentTarget; button.disabled = true; setStatus('Enviando propuesta…');
+    try { const response = await fetch('/api/admin/clinic-proposals/', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Vet24-Admin': '1', 'Idempotency-Key': proposalKey }, body: JSON.stringify(body) }); const result = await response.json(); if (!response.ok) throw new Error(result.message || result.error || 'No se pudo crear la propuesta'); setStatus(`Propuesta ${result.status}. Operación ${result.operationId}.`, 'success'); proposalKey = key(); } catch (error) { setStatus(`${error.message} El borrador se conserva.`, 'error'); } finally { button.disabled = false; }
+  };
+</script>

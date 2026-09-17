@@ -1,0 +1,68 @@
+{
+  "spec": "docs/spec-panel-administrativo.md",
+  "sha256": "264BCB0159496116373F99F1808E405C6D8D8D796FD693139560D6530E658F2B",
+  "status": "PASS",
+  "baseCommit": "24dc03d58ba970710a26bbb1f7f175556c500f14",
+  "author": {
+    "model": "gpt-5.6-luna",
+    "reasoning": "medium"
+  },
+  "auditor": {
+    "model": "gpt-5.6-luna",
+    "reasoning": "high"
+  },
+  "finalAudit": "docs/auditorias/panel/spec-r5.md",
+  "finalAuditSha256": "CCBAD259BE9E91F3A34DE03984F1C2F83F10F5204F4DDC87D47AFE3484A64198",
+  "approvedSnapshot": "docs/auditorias/panel/spec-r6.snapshot.md",
+  "closedFindings": [
+    "H-01",
+    "H-02",
+    "H-03",
+    "H-04",
+    "H-05",
+    "H-06",
+    "H-07",
+    "H-08",
+    "H-09",
+    "H-10",
+    "H-11",
+    "H-12",
+    "H-13",
+    "H-14",
+    "H-15",
+    "H-16",
+    "H-17"
+  ],
+  "audits": [
+    {
+      "verdict": "FAIL",
+      "candidate": "spec-r1.snapshot.md",
+      "report": "spec-r1.md"
+    },
+    {
+      "verdict": "FAIL",
+      "candidate": "spec-r3.snapshot.md",
+      "report": "spec-r2.md"
+    },
+    {
+      "verdict": "FAIL",
+      "candidate": "spec-r4.snapshot.md",
+      "report": "spec-r3.md"
+    },
+    {
+      "verdict": "FAIL",
+      "candidate": "spec-r5.snapshot.md",
+      "report": "spec-r4.md"
+    },
+    {
+      "verdict": "PASS",
+      "candidate": "spec-r6.snapshot.md",
+      "report": "spec-r5.md"
+    }
+  ],
+  "notes": [
+    "spec-r2.snapshot.md fue una revisión intermedia corregida tras precheck del coordinador antes de auditoría independiente.",
+    "Se preservan los bytes aprobados; observaciones P2 no bloqueantes constan en el informe final.",
+    "Esta entrega no modifica código, SDD normativo ni infraestructura; no se hizo commit ni push de la nueva spec."
+  ]
+}

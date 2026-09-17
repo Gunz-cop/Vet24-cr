@@ -7,6 +7,7 @@ export type AdminConfig = {
 };
 const MAX_BODY = 64 * 1024;
 const jwksCache = new Map<string, ReturnType<typeof createRemoteJWKSet>>();
+export function validIdempotencyKey(value: string | null) { return !!value && /^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(value); }
 
 export function adminPath(pathname: string) {
   let decoded = pathname;
@@ -114,6 +115,11 @@ export async function guardAdmin(request: Request, env: AdminConfig, identity?: 
   if (path.ambiguous) return { response: adminResponse(400, request, 'INVALID_PATH') };
   const method = methodResponse(request, path.ui ? 'GET, HEAD' : 'GET, HEAD, POST, PUT, PATCH, DELETE');
   if (method) return { response: method };
-  if (!['GET', 'HEAD'].includes(request.method)) return { response: await enforceMutation(request, env.ADMIN_ORIGIN!) ?? adminResponse(503, request, 'ADMIN_UNAVAILABLE') };
+  // Validate a tee'd request so the authenticated route still receives the
+  // original body. The validator owns the clone and applies the hard limit.
+  if (!['GET', 'HEAD'].includes(request.method)) {
+    const mutationResponse = await enforceMutation(request.clone() as unknown as Request, env.ADMIN_ORIGIN!);
+    if (mutationResponse) return { response: mutationResponse };
+  }
   return auth;
 }
