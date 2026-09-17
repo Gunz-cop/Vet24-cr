@@ -1,6 +1,6 @@
 import { createRemoteJWKSet, jwtVerify } from 'jose';
 
-export type AdminIdentity = { sub: string };
+export type AdminIdentity = { sub: string; email?: string };
 export type AdminConfig = {
   ADMIN_ORIGIN?: string; ADMIN_ENABLED?: string | boolean; ACCESS_TEAM_DOMAIN?: string;
   ACCESS_AUD?: string; ADMIN_SUBJECTS?: string;
@@ -57,16 +57,21 @@ function getJwks(domain: string) {
   }
   return keys;
 }
+function isAllowedSubject(subjects: string[], identity: AdminIdentity) {
+  return subjects.includes(identity.sub) || (!!identity.email && subjects.includes(identity.email));
+}
 export async function authenticate(request: Request, env: AdminConfig, identity?: AdminIdentity): Promise<{ identity?: AdminIdentity; response?: Response }> {
   const config = configuration(request, env);
   if (config.response) return { response: config.response };
-  if (identity) return config.subjects!.includes(identity.sub) ? { identity } : { response: adminResponse(403, request, 'FORBIDDEN') };
+  if (identity) return isAllowedSubject(config.subjects!, identity) ? { identity } : { response: adminResponse(403, request, 'FORBIDDEN') };
   const token = request.headers.get('Cf-Access-Jwt-Assertion');
   if (!token) return { response: adminResponse(401, request, 'UNAUTHORIZED') };
   try {
     const { payload } = await jwtVerify(token, getJwks(config.domain!), { algorithms: ['RS256'], issuer: config.domain, audience: config.aud, requiredClaims: ['iss', 'aud', 'exp', 'nbf', 'sub'] });
-    if (typeof payload.sub !== 'string' || !config.subjects!.includes(payload.sub)) return { response: adminResponse(403, request, 'FORBIDDEN') };
-    return { identity: { sub: payload.sub } };
+    const sub = payload.sub;
+    const email = typeof payload.email === 'string' ? payload.email : undefined;
+    if (typeof sub !== 'string' || !isAllowedSubject(config.subjects!, { sub, email })) return { response: adminResponse(403, request, 'FORBIDDEN') };
+    return { identity: { sub, email } };
   } catch { return { response: adminResponse(401, request, 'UNAUTHORIZED') }; }
 }
 export function methodResponse(request: Request, allowed: string): Response | undefined {

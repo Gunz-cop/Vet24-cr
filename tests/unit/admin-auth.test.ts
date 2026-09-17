@@ -34,6 +34,9 @@ test('RS256 real: firma, claims obligatorios, allowlist y caché JWKS sin bypass
   const sign = (payload: Record<string, unknown>, kid = 'key') => new SignJWT(payload).setProtectedHeader({ alg: 'RS256', kid }).sign(privateKey);
   const token = await sign(claims);
   assert.equal((await authenticate(req('/api/admin/', 'GET', token), config)).identity?.sub, 'editor');
+  const emailConfig = { ...config, ADMIN_SUBJECTS: 'G1721m@icloud.com' };
+  const emailToken = await sign({ ...claims, sub: 'cloudflare-user-uuid', email: 'G1721m@icloud.com' });
+  assert.equal((await authenticate(req('/api/admin/', 'GET', emailToken), emailConfig)).identity?.email, 'G1721m@icloud.com');
   for (const key of ['iss', 'aud', 'sub', 'nbf', 'exp']) {
     const payload = { ...claims }; delete payload[key];
     assert.equal((await authenticate(req('/api/admin/', 'GET', await sign(payload)), config)).response?.status, 401, key);
