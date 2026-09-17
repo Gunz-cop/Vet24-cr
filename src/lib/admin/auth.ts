@@ -58,7 +58,7 @@ function getJwks(domain: string) {
   return keys;
 }
 function isAllowedSubject(subjects: string[], identity: AdminIdentity) {
-  return subjects.includes(identity.sub) || (!!identity.email && subjects.includes(identity.email));
+  return subjects.includes(identity.sub) || (!!identity.email && subjects.some(subject => subject.toLowerCase() === identity.email!.toLowerCase()));
 }
 export async function authenticate(request: Request, env: AdminConfig, identity?: AdminIdentity): Promise<{ identity?: AdminIdentity; response?: Response }> {
   const config = configuration(request, env);
