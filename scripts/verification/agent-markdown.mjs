@@ -106,9 +106,24 @@ async function verifyBuild() {
   const wrangler = await readFile(join(root, "wrangler.toml"), "utf8");
   const runWorkerFirst = wrangler.match(/run_worker_first\s*=\s*\[([^\]]*)\]/s);
   const configured = runWorkerFirst?.[1].match(/"[^"]+"/g)?.map((value) => value.slice(1, -1)) ?? [];
-  const required = ["/", "/clinica/*", "/provincia/*", "/zona/*"];
+  const required = [
+    "/",
+    "/clinica/*",
+    "/provincia/*",
+    "/zona/*",
+    "/admin",
+    "/admin/*",
+    "/api/admin",
+    "/api/admin/*",
+    "/api/status-override",
+    "/api/status-override/",
+    "/api/cron-check-links",
+    "/api/cron-check-links/",
+    "/api/analytics",
+    "/api/analytics/",
+  ];
   check(JSON.stringify(configured) === JSON.stringify(required), `wrangler: run_worker_first debe ser ${JSON.stringify(required)}, fue ${JSON.stringify(configured)}`);
-  check(!configured.some((path) => path === "/api/*" || path.startsWith("/api/")), "wrangler: captura general de /api/");
+  check(!configured.includes("/api/*"), "wrangler: captura general de /api/");
 
   const agentSource = await Promise.all([
     readFile(join(root, "src/worker.ts"), "utf8"),
