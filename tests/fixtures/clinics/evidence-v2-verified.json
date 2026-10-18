@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "slug": "clinica-ejemplo",
+  "observedAt": "2026-10-20T15:42:00Z",
+  "identity": {
+    "googlePlaceId": "ChIJ_EJEMPLO_SINTETICO_123",
+    "placeIdCheckedAt": "2026-10-20",
+    "matchMethod": "places_text_search+phone+distance",
+    "branchNote": "Única sede con este teléfono; la marca homónima está a más de 8 km."
+  },
+  "sources": [
+    { "id": "s1", "kind": "official_site", "url": "https://clinica-ejemplo.cr/contacto", "method": "motor", "consultedAt": "2026-10-20T15:30:00Z", "capturedBy": "engine", "note": "JSON-LD VeterinaryCare con telephone y openingHoursSpecification" },
+    { "id": "s2", "kind": "official_social", "platform": "facebook", "url": "https://www.facebook.com/clinica.ejemplo", "method": "navegador_dueno", "consultedAt": "2026-10-20T15:35:00Z", "publishedAt": "2026-09-30T00:00:00Z", "capturedBy": "owner" },
+    { "id": "s3", "kind": "direct_confirmation", "method": "whatsapp", "reference": "conf-2026-10-20-001", "consultedAt": "2026-10-20T15:40:00Z", "capturedBy": "operator" }
+  ],
+  "facts": [
+    { "field": "telefono1", "value": "2254-1920", "status": "confirmed", "confidence": "high", "sources": ["s1", "s3"], "observedAt": "2026-10-20T15:40:00Z", "reviewBy": "2027-10-20" },
+    { "field": "schedule_v1.days.1", "value": { "kind": "open", "intervals": [{ "start": 480, "end": 1140 }] }, "status": "confirmed", "confidence": "high", "sources": ["s1", "s2", "s3"], "observedAt": "2026-10-20T15:40:00Z", "reviewBy": "2027-04-18" },
+    { "field": "location", "value": { "lat": 9.91751, "lng": -84.09623, "location_source": "clinic_confirmed" }, "status": "confirmed", "confidence": "high", "sources": ["s3"], "observedAt": "2026-10-20T15:40:00Z", "reviewBy": "2028-10-20" },
+    { "field": "atiendeExoticos", "value": true, "status": "reported", "confidence": "medium", "sources": ["s1"], "observedAt": "2026-10-20T15:30:00Z", "reviewBy": "2027-10-20" }
+  ],
+  "conflicts": [],
+  "checks": [
+    { "provider": "official_site", "checkedAt": "2026-10-20T15:30:00Z", "outcome": "match", "codes": ["jsonld_found"] }
+  ],
+  "pending": [
+    { "field": "schedule_v1.days.0", "level": 3, "action": "Preguntar por WhatsApp si abren domingos." }
+  ],
+  "externalRefs": { "emergencyAccess": "research/emergency-access-evidence.json#clinica-ejemplo" }
+}
