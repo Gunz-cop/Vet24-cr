@@ -19,6 +19,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm run validate:clinics
+      - run: npm run check:no-google-content
       - run: npm run build:no-shorten
       - run: node scripts/verification/agent-markdown.mjs
       - run: npm run types:worker
