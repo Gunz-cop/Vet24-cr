@@ -47,6 +47,29 @@ export const directConfirmationSchema = z.strictObject({
   reference: z.string().trim().min(1),
 });
 
+/**
+ * Procedencia de las coordenadas guardadas. No existe un valor "google": las
+ * coordenadas de Google Maps/Places no son almacenables (diseño motor de fichas §4.2).
+ * `legacy_unknown` marca datos heredados sin fuente y es deuda para fichas existentes.
+ */
+export const LOCATION_SOURCES = ['clinic_confirmed', 'official_site', 'operator_pin', 'legacy_unknown'] as const;
+export type LocationSource = typeof LOCATION_SOURCES[number];
+export const STORABLE_LOCATION_SOURCES = ['clinic_confirmed', 'official_site', 'operator_pin'] as const satisfies readonly LocationSource[];
+/** URL HTTPS pública sin credenciales ni puerto (misma regla que `safeHttps` de la API admin). */
+export function isSafeHttpsUrl(value: unknown, maxLength = 2048): value is string {
+  if (typeof value !== 'string' || value.length > maxLength) return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && !url.username && !url.password && !url.port
+      && url.hostname.includes('.') && !['localhost', '127.0.0.1', '::1'].includes(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+/** `place_id` es el único identificador de Google que puede guardarse indefinidamente. */
+export const googlePlaceIdSchema = z.string().max(512).regex(/^[A-Za-z0-9_-]{10,}$/, 'place_id inválido');
+
 export function emptySchedule(kind: 'unknown' | 'closed' = 'unknown'): ScheduleV1 {
   return scheduleSchema.parse({ version: 1, timeZone: 'America/Costa_Rica', days: Array.from({ length: 7 }, () => ({ kind })), exceptions: [] });
 }
@@ -90,6 +113,11 @@ export const clinicSchema = z.object({
     verification_source: z.string().optional().default(""),
     latitude: z.number().optional().default(0),
     longitude: z.number().optional().default(0),
+    // Campos opcionales del motor de fichas (§4.1); las reglas estrictas viven en clinic-validate.ts.
+    location_source: z.enum(LOCATION_SOURCES).optional().default('legacy_unknown'),
+    location_verified_at: z.iso.date().optional(),
+    google_place_id: googlePlaceIdSchema.optional(),
+    google_place_id_checked_at: z.iso.date().optional(),
     waze_url: z.string().optional().default(""),
     maps_url: z.string().optional().default(""),
     web: z.string().optional().default(""),
