@@ -87,8 +87,8 @@ const scheduleAttr = parseScheduleToRules(clinica.horarioTexto, clinica.emergenc
         <span class="status-pill" data-status-for={clinica.slug}>
           Verificando…
         </span>
-        <span class={`text-xs font-bold text-brand-primary ${distance !== undefined ? '' : 'hidden'}`} data-distance-for={clinica.slug}>
-          {distance !== undefined ? `A ${distance.toFixed(1)} km` : ''}
+        <span class={`text-xs font-bold text-brand-primary ${distance !== undefined ? '' : 'hidden'}`} data-distance-for={clinica.slug} title="Distancia aproximada en línea recta; la ruta real suele ser más larga">
+          {distance !== undefined ? `A ~${distance.toFixed(1)} km` : ''}
         </span>
       </div>
       {clinica.categoriaHorario !== "Horario normal" && (

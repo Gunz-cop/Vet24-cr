@@ -223,7 +223,8 @@
               ${isPreferredTier ? 'Veterinaria de emergencias abierta más cercana' : 'Veterinaria abierta más cercana (horario regular)'}
             </span>
             <span class="text-sm font-bold text-brand-emergency">
-              A ${minDistance.toFixed(1)} km de ti
+              A ~${minDistance.toFixed(1)} km de ti en línea recta
+              <a href="/privacidad#distancia" class="ml-1 font-normal underline text-brand-text-muted" aria-label="Cómo se calcula la distancia">ⓘ ¿cómo se calcula?</a>
             </span>
           </div>
 
@@ -411,7 +412,7 @@
           const cLng = parseFloat(card.getAttribute('data-longitude') || '0');
           if (cLat !== 0 || cLng !== 0) {
             const km = haversineKm(parseFloat(edgeLatAttr), parseFloat(edgeLngAttr), cLat, cLng);
-            distBadge.textContent = `A ${km.toFixed(1)} km`;
+            distBadge.textContent = `A ~${km.toFixed(1)} km`;
             distBadge.classList.remove('hidden');
           } else {
             distBadge.classList.add('hidden');
@@ -599,7 +600,7 @@
                   </span>
                 </div>
                 <span class="text-xs text-brand-text-muted capitalize">📍 ${zone}</span>
-                <span class="text-xs font-semibold text-brand-primary">A ${dist.toFixed(1)} km de ti</span>
+                <span class="text-xs font-semibold text-brand-primary">A ~${dist.toFixed(1)} km de ti (línea recta)</span>
               </a>
             `).join('');
             fallbackSection.classList.remove('hidden');
@@ -699,7 +700,7 @@
       if (distBadge) {
         if (lat2 !== 0 || lng2 !== 0) {
           const km = haversineKm(lat, lng, lat2, lng2);
-          distBadge.textContent = `A ${km.toFixed(1)} km`;
+          distBadge.textContent = `A ~${km.toFixed(1)} km`;
           distBadge.classList.remove('hidden', 'opacity-40');
         } else {
           distBadge.textContent = 'Sin coordenadas';

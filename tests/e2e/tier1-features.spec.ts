@@ -99,7 +99,7 @@ test.describe('Tier 1: Feature Coverage', () => {
       expect(badgeText).toContain('km');
     });
 
-    test('4. should format distance badge text as A X.X km', async ({ page, context }) => {
+    test('4. should format distance badge text as A ~X.X km', async ({ page, context }) => {
       await context.grantPermissions(['geolocation']);
       await context.setGeolocation({ latitude: 9.9281, longitude: -84.0907 });
 
@@ -110,7 +110,7 @@ test.describe('Tier 1: Feature Coverage', () => {
 
       const firstBadge = page.locator('[data-distance-for]').first();
       await expect(firstBadge).toBeVisible();
-      await expect(firstBadge).toHaveText(/A \d+(\.\d+)? km/);
+      await expect(firstBadge).toHaveText(/A ~\d+(\.\d+)? km/);
     });
 
     test('5. should updated sorting order when user coordinates change', async ({ page, context }) => {
