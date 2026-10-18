@@ -15,6 +15,7 @@ import Shell from '../../components/admin/Shell.astro';
       <div><label for="new-address">Dirección <span>(obligatorio)</span></label><input id="new-address" required /></div>
       <div><label for="new-lat">Latitud verificable</label><input id="new-lat" type="number" step="any" inputmode="decimal" /></div>
       <div><label for="new-lng">Longitud verificable</label><input id="new-lng" type="number" step="any" inputmode="decimal" /></div>
+      <div><label for="new-location-source">Fuente de las coordenadas <span>(obligatorio)</span></label><select id="new-location-source" required><option value="" selected>Selecciona la fuente</option><option value="clinic_confirmed">Pin o coordenada enviada por la clínica</option><option value="official_site">Publicada en el sitio oficial de la clínica</option><option value="operator_pin">Pin del operador sobre el mapa OSM</option></select><p class="admin-help">Nunca coordenadas copiadas de Google Maps. Mínimo 4 decimales; mejor 5.</p></div>
     </div></fieldset>
     <fieldset><legend>Evidencia mínima</legend><div class="admin-form-grid">
       <div><label for="new-source">Fuente pública HTTPS</label><input id="new-source" type="url" required /></div>
@@ -30,6 +31,7 @@ import Shell from '../../components/admin/Shell.astro';
 </Shell>
 <script>
   // @ts-nocheck
+  import { buildNavLinks } from '../../lib/clinic-lookup/nav-links.ts';
   const form = document.querySelector('#new-clinic');
   const status = document.querySelector('#new-status');
   const id = crypto.randomUUID();
@@ -68,6 +70,10 @@ import Shell from '../../components/admin/Shell.astro';
     try { schedule = readSchedule(); } catch (error) { setStatus(error.message, 'error'); return; }
     const lat = Number(value('#new-lat')); const lng = Number(value('#new-lng'));
     if (!Number.isFinite(lat) || !Number.isFinite(lng) || (lat === 0 && lng === 0)) { setStatus('Las coordenadas deben ser válidas y distintas de 0,0.', 'error'); return; }
+    // Misma regla que validate:clinics: decimales de la representación numérica más corta.
+    const decimals = (number) => (String(Math.abs(number)).split('.')[1] || '').length;
+    if (Math.min(decimals(lat), decimals(lng)) < 4) { setStatus('Las coordenadas necesitan al menos 4 decimales (unos 11 m); lo ideal son 5.', 'error'); return; }
+    const locationVerifiedAt = new Date(Date.now() - 6 * 3600_000).toISOString().slice(0, 10);
     const source = value('#new-source');
     try { new URL(source); } catch { setStatus('La fuente debe ser una URL válida.', 'error'); return; }
     const base = await fetch('/api/admin/clinics/?limit=1', { cache: 'no-store' }).then(async response => response.ok ? response.json() : null).catch(() => null);
@@ -75,7 +81,7 @@ import Shell from '../../components/admin/Shell.astro';
     const slug = value('#new-slug');
     const capabilityValues = Object.fromEntries(Object.keys(capabilityLabels).map(name => [name, value(`#new-cap-${name}`) === 'true']));
     const horarioTexto = dayNames.map((day, index) => `${day} ${schedule.days[index].kind === 'unknown' ? 'por confirmar' : schedule.days[index].kind === 'closed' ? 'cerrado' : schedule.days[index].kind === 'appointment' ? 'cita previa' : schedule.days[index].intervals.map(range => `${String(Math.floor(range.start / 60)).padStart(2, '0')}:${String(range.start % 60).padStart(2, '0')}-${String(Math.floor(range.end / 60)).padStart(2, '0')}:${String(range.end % 60).padStart(2, '0')}`).join(', ')}`).join(' | ');
-    const clinic = { id, nombre: value('#new-name'), slug, provincia: value('#new-province'), zona: value('#new-zone'), direccion: value('#new-address'), telefono1: '', telefono2: '', whatsapp: '', horarioTexto, schedule_v1: schedule, categoriaHorario: 'Horario normal', ...capabilityValues, hotelVerificacion: 'no-confirmado', hotelFuente: '', confidence_score: 'low', record_status: 'PARTIAL', emergency_tier: 'Tier C', last_verified: '', phone_verified: false, address_verified: false, schedule_verified: false, emergency_verified: false, verification_notes: [], verification_source: source, latitude: lat, longitude: lng, waze_url: `https://www.waze.com/ul?ll=${lat}%2C${lng}&navigate=yes`, maps_url: `https://www.google.com/maps/search/?api=1&query=${lat}%2C${lng}`, web: '', facebook: '', instagram: '', estado: 'pendiente', copyDiferenciador: value('#new-copy') };
+    const clinic = { id, nombre: value('#new-name'), slug, provincia: value('#new-province'), zona: value('#new-zone'), direccion: value('#new-address'), telefono1: '', telefono2: '', whatsapp: '', horarioTexto, schedule_v1: schedule, categoriaHorario: 'Horario normal', ...capabilityValues, hotelVerificacion: 'no-confirmado', hotelFuente: '', confidence_score: 'low', record_status: 'PARTIAL', emergency_tier: 'Tier C', last_verified: '', phone_verified: false, address_verified: false, schedule_verified: false, emergency_verified: false, verification_notes: [], verification_source: source, latitude: lat, longitude: lng, location_source: value('#new-location-source'), location_verified_at: locationVerifiedAt, ...buildNavLinks({ nombre: value('#new-name'), direccion: value('#new-address'), zona: value('#new-zone'), provincia: value('#new-province') }), web: '', facebook: '', instagram: '', estado: 'pendiente', copyDiferenciador: value('#new-copy') };
     const body = { slug, newClinic: true, baseCommit: base.baseCommit, blobSha: null, clinic, bodyMarkdown: value('#new-body'), evidence: { schemaVersion: 1, slug, observedAt: new Date(value('#new-observed')).toISOString(), fuentes: [{ url: source, tipo: 'publica' }], facts: [{ field: 'direccion', value: value('#new-address'), references: [0], confidence: 'medium' }], conflicts: [] } };
     const button = event.currentTarget; button.disabled = true; setStatus('Enviando propuesta…');
     try { const response = await fetch('/api/admin/clinic-proposals/', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Vet24-Admin': '1', 'Idempotency-Key': proposalKey }, body: JSON.stringify(body) }); const result = await response.json(); if (!response.ok) throw new Error(result.message || result.error || 'No se pudo crear la propuesta'); setStatus(`Propuesta ${result.status}. Operación ${result.operationId}.`, 'success'); proposalKey = key(); } catch (error) { setStatus(`${error.message} El borrador se conserva.`, 'error'); } finally { button.disabled = false; }
