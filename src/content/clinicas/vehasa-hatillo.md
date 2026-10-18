@@ -35,8 +35,8 @@ overnight_doctor_present: false
 accepts_emergency_walkins: false
 verification_notes: ["Auditado por falsos positivos de 24/7. No hay confirmación de médico nocturno permanente."]
 verification_source: "Auditoría telefónica"
-latitude: 9.9122
-longitude: -84.094
+latitude: 9.917601
+longitude: -84.096189
 waze_url: "https://waze.com/ul?q=Hospital%20Veterinario%20VEHASA%20Hatillo%20San%20Jos%C3%A9%20Costa%20Rica&navigate=yes"
 maps_url: "https://www.google.com/maps/search/?api=1&query=Hospital%20Veterinario%20VEHASA%20Hatillo%20San%20Jos%C3%A9%20Costa%20Rica"
 ---
