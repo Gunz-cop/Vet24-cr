@@ -18,6 +18,7 @@
     "test:admin:worker": "node --test tests/integration/admin-worker.test.mjs",
     "deploy:dry-run": "wrangler deploy --dry-run --env-file .env.ci",
     "test:unit": "node --test tests/unit/*.test.ts",
+    "validate:clinics": "node scripts/clinics/validate-clinics.ts",
     "shorten": "node scripts/shorten-links.js",
     "preview": "astro preview",
     "indexing": "node scripts/google-indexing.js",
