@@ -6,20 +6,10 @@ import ClinicaCard from '../../components/ClinicaCard.astro';
 import FiltrosDashboard from '../../components/FiltrosDashboard.astro';
 import MapaClinicas from '../../components/MapaClinicas.astro';
 import { absoluteUrl, canonicalUrl, normalizeSlug } from '../../lib/seo';
-import { getClinicZoneSlug, getClinicZoneName, priorityZones } from '../../lib/zones';
+import { getClinicZoneSlug, getClinicZoneName, priorityZones, publishedProvinces } from '../../lib/zones';
 
 export async function getStaticPaths() {
-  const provincesMap = [
-    { nombre: "San José", slug: "san-jose" },
-    { nombre: "Heredia", slug: "heredia" },
-    { nombre: "Alajuela", slug: "alajuela" },
-    { nombre: "Cartago", slug: "cartago" },
-    { nombre: "Guanacaste", slug: "guanacaste" },
-    { nombre: "Puntarenas", slug: "puntarenas" },
-    { nombre: "Limón", slug: "limon" }
-  ];
-  
-  return provincesMap.map(prov => ({
+  return publishedProvinces.map(prov => ({
     params: { provincia: prov.slug },
     props: { 
       nombreProvincia: prov.nombre, 

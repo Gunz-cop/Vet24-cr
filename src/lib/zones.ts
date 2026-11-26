@@ -1,5 +1,15 @@
 import { normalizeSlug } from "./seo";
 
+export const publishedProvinces = [
+  { nombre: "San José", slug: "san-jose" },
+  { nombre: "Heredia", slug: "heredia" },
+  { nombre: "Alajuela", slug: "alajuela" },
+  { nombre: "Cartago", slug: "cartago" },
+  { nombre: "Guanacaste", slug: "guanacaste" },
+  { nombre: "Puntarenas", slug: "puntarenas" },
+  { nombre: "Limón", slug: "limon" }
+] as const;
+
 export const priorityZones = [
   { nombre: "Guápiles", slug: "guapiles" },
   { nombre: "San Pablo de Heredia", slug: "san-pablo-heredia", aliases: ["san-pablo-de-heredia"] },
