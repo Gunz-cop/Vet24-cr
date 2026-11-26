@@ -7,8 +7,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BadgeHorario from '../../components/BadgeHorario.astro';
 import linkzipCacheData from '../../linkzip-cache.json';
 const linkzipCache: Record<string, string> = linkzipCacheData;
-import { absoluteUrl, canonicalUrl } from '../../lib/seo';
-import { getClinicZoneSlug } from '../../lib/zones';
+import { absoluteUrl, canonicalUrl, normalizeSlug } from '../../lib/seo';
+import { getClinicZoneSlug, getPriorityZoneBySlug, publishedProvinces } from '../../lib/zones';
 import { buildClinicMetaDescription, buildClinicEntityDescription } from '../../lib/metaDescription';
 import AdBanner from '../../components/AdBanner.astro';
 import { parseLegacySchedule, parseScheduleToRules, getOpeningHoursFromSchedule, serializeSchedule } from '../../lib/schedule';
@@ -144,22 +144,14 @@ const schemaImage = emergencias24h
       ? "https://images.unsplash.com/photo-1535268647977-a403b69fc756?auto=format&fit=crop&q=80&w=800" // Exotic/Nature look
       : "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"); // Standard vet clinic
 
-const getProvinceSlug = (prov: string) => {
-  const map: Record<string, string> = {
-    "san josé": "san-jose",
-    "heredia": "heredia",
-    "alajuela": "alajuela",
-    "cartago": "cartago",
-    "guanacaste": "guanacaste",
-    "puntarenas": "puntarenas",
-    "limón": "limon"
-  };
-  return map[prov.toLowerCase()] || prov.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-").replace(/^-+|-+$/g, "");
-};
+const provinceSlug = normalizeSlug(provincia);
+const publishedProvince = publishedProvinces.some(({ slug }) => slug === provinceSlug);
 
 const clinicCanonical = canonicalUrl(`/clinica/${clinica.data.slug}/`);
-const provinceCanonical = absoluteUrl(`/provincia/${getProvinceSlug(provincia)}/`);
-const zoneCanonical = absoluteUrl(`/zona/${getClinicZoneSlug(zona)}/`);
+const provinceCanonical = publishedProvince ? absoluteUrl(`/provincia/${provinceSlug}/`) : null;
+const publishedZone = getPriorityZoneBySlug(zona);
+const directoryHref = publishedZone ? absoluteUrl(`/zona/${publishedZone.slug}/`) : provinceCanonical ?? '/';
+const directoryLabel = publishedZone?.nombre ?? (publishedProvince ? provincia : 'Costa Rica');
 
 const pageTitle = nombre;
 
@@ -233,15 +225,15 @@ const schemaBreadcrumbs = {
       "name": "Inicio",
       "item": absoluteUrl("/")
     },
-    {
+    ...(provinceCanonical ? [{
       "@type": "ListItem",
       "position": 2,
       "name": provincia,
       "item": provinceCanonical
-    },
+    }] : []),
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": provinceCanonical ? 3 : 2,
       "name": nombre,
       "item": clinicCanonical
     }
@@ -296,7 +288,7 @@ const schemaFaq = {
   <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
   {schemaWebPage && <script type="application/ld+json" set:html={JSON.stringify(schemaWebPage)} />}
 
-  <div class="max-w-5xl mx-auto py-4" data-page-province={getProvinceSlug(provincia)} data-page-zone={getClinicZoneSlug(zona)}>
+  <div class="max-w-5xl mx-auto py-4" data-page-province={provinceSlug} data-page-zone={getClinicZoneSlug(zona)}>
     <!-- Back Button -->
     <a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-primary-hover mb-6 transition-colors" id="btn-back">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5">
@@ -389,8 +381,9 @@ const schemaFaq = {
           </div>
           <div class="rounded-2xl border border-brand-card-border bg-brand-card-bg/45 p-4">
             <span class="block text-[10px] font-bold uppercase tracking-wider text-brand-text-muted">Zona</span>
-            <a href={zoneCanonical} class="mt-1 inline-flex text-sm font-bold text-brand-primary hover:text-brand-primary-hover">
-              Veterinarias en {zona}
+            {!publishedZone && <p class="mt-1 text-sm font-bold text-brand-text">{zona}</p>}
+            <a href={directoryHref} class="mt-1 inline-flex text-sm font-bold text-brand-primary hover:text-brand-primary-hover">
+              Veterinarias en {directoryLabel}
             </a>
           </div>
           <div class={`rounded-2xl border p-4 ${hotelMascotas ? (hotelVerificacion === 'confirmado' ? 'border-brand-success-border bg-brand-success-bg/40' : 'border-brand-warning-border bg-brand-warning-bg/40') : 'border-brand-card-border bg-brand-card-bg/45'}`}>
