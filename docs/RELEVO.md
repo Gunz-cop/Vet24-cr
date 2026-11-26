@@ -19,7 +19,7 @@ Mensaje para otra sesión: «Leé `docs/RELEVO.md` y `TODO.md` de Vet24. Decime 
 
 ## Cómo seguir con Search Console
 
-El código del MCP está en el commit `8a5eb61` del repositorio local `/workspace/search-console-mcp`. Su paquete de recuperación `search-console-mcp.bundle` está en el espacio de trabajo y guardado en el Drive privado del dueño. Cloná el paquete con `git clone search-console-mcp.bundle search-console-mcp`. GitHub rechazó la creación del repositorio privado desde esta sesión.
+El código del MCP ya está en `main` de un repositorio privado independiente, en el commit `4f8cbbe`. El dueño tiene el enlace en la conversación de puesta en marcha. Hay una copia de recuperación anterior a la importación en su Drive privado como `search-console-mcp.bundle`. Para recuperar esa copia, usá `git clone search-console-mcp.bundle search-console-mcp`.
 
 El Worker está configurado con `sc-domain:vet24cr.com` y ofrece consultas de rendimiento e inspección de URLs. Pasaron la comprobación de tipos, la compilación de Cloudflare y la prueba de las dos herramientas con Google simulado, incluido el rechazo de propiedades fuera de la lista permitida.
 
