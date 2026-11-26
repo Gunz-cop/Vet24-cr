@@ -46,6 +46,15 @@ const sortedClinicas = [...filteredClinicas].sort((a, b) => {
   return priorityB - priorityA;
 });
 
+const isCartago = slugProvincia === 'cartago';
+const cartagoEmergencyContacts = isCartago ? sortedClinicas.flatMap(({ data }) => {
+  const phone = data.telefono1?.replace(/\D/g, '');
+  const verifiedContact = data.phone_verified && data.schedule_verified && data.emergency_verified;
+  const emergency247 = data.emergencias24h && data.categoriaHorario === '24/7 Emergencias' && data.emergency_tier === 'Tier A';
+  if (phone?.length !== 8 || !verifiedContact || !emergency247) return [];
+  return [{ clinic: data, phoneHref: `tel:+506${phone}` }];
+}) : [];
+
 // Build map data array
 const mapData = sortedClinicas.map(c => ({
   nombre: c.data.nombre,
@@ -64,7 +73,9 @@ const mapData = sortedClinicas.map(c => ({
 // "abiertas" es como lo busca la gente ("veterinarias en heredia abiertas",
 // 7,21% de CTR); "emergencias" es como lo describimos nosotros. Misma
 // plantilla que las páginas de zona, que convierten 2-3 veces mejor.
-const pageTitle = `Veterinarias en ${nombreProvincia}: abiertas hoy y 24 horas`;
+const pageTitle = isCartago
+  ? 'Veterinarias 24 horas en Cartago'
+  : `Veterinarias en ${nombreProvincia}: abiertas hoy y 24 horas`;
 // Misma estructura que las páginas de zona: "abiertas hoy" al principio, donde
 // coincide con la consulta y Google puede resaltarlo, y acciones concretas en
 // lugar de "atención nocturna", que nadie busca.
@@ -138,6 +149,32 @@ const schemaBreadcrumbs = {
         <span class="text-brand-text font-bold bg-brand-card-bg px-2.5 py-1 rounded-lg border border-brand-card-border transition-colors duration-200">{sortedClinicas.length} clínicas</span>
       </div>
     </div>
+
+    {cartagoEmergencyContacts.length > 0 && (
+      <section class="mb-6 rounded-2xl border border-brand-card-border bg-brand-card-bg p-4 sm:p-5" aria-labelledby="emergencias-cartago-title">
+        <h2 id="emergencias-cartago-title" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif]">
+          Urgencias veterinarias 24 horas en Cartago
+        </h2>
+        <p class="mt-1 text-sm text-brand-text-muted">
+          Llamá antes de salir para confirmar si pueden recibir a tu mascota y cómo ingresar de noche.
+        </p>
+        <ul class="mt-4 grid gap-x-5 gap-y-2 md:grid-cols-2">
+          {cartagoEmergencyContacts.map(({ clinic, phoneHref }) => (
+            <li class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-xl border border-brand-card-border px-3 py-2">
+              <div>
+                <a href={`/clinica/${clinic.slug}/`} class="text-sm font-semibold text-brand-text hover:text-brand-primary-hover underline underline-offset-2">
+                  {clinic.nombre}
+                </a>
+                <p class="text-sm text-brand-text-muted">{clinic.zona} · {clinic.horarioTexto}</p>
+              </div>
+              <a href={phoneHref} aria-label={`Llamar ${clinic.telefono1}, ${clinic.nombre}`} class="inline-flex min-h-11 items-center whitespace-nowrap rounded-lg px-2 text-sm font-bold text-brand-primary hover:bg-brand-primary/10 hover:text-brand-primary-hover">
+                Llamar {clinic.telefono1}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <!-- Primary filters -->
     <FiltrosDashboard />
